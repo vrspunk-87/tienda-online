@@ -19,9 +19,11 @@ de cambiar algo que no conozcas**.
 
 ## Qué es el proyecto
 
-Una **tienda online sin pago en la web**: el cliente elige productos y envía un **pedido**, que
-llega a una **hoja de Google** (como las propuestas de la web de la plataforma), con aviso por
-correo. El cobro y la entrega se gestionan fuera de la web.
+Una **tienda online sin venta ni pago en la web**: un catálogo con **precios orientativos** en el
+que el cliente reúne productos en una **lista de presupuesto** y envía una **solicitud de
+presupuesto**. La solicitud llega a una **hoja de Google** (como las propuestas de la web de la
+plataforma), con aviso a la tienda y acuse de recibo al cliente. La tienda contacta al cliente y,
+si se ponen de acuerdo, la venta se cierra fuera de la web.
 
 - **Productos**, cada uno asociado a un **fabricante** y a una **categoría / subcategoría**.
 - Las **categorías y subcategorías son las opciones del menú** de la web.
@@ -39,46 +41,46 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
   vista previa con el estilo de la web). Ojo: desde Decap 3.10, `public_folder` sin barra
   (`"img"`) y el build normaliza a `/img/…` (ver el README de la plataforma).
 - **Formulario** (`api/propuesta.js`, `api/_lib/formulario.js`, ALTCHA, Apps Script → hoja de
-  Google, avisos por correo, diagnóstico): base para los **pedidos**.
+  Google, avisos por correo, diagnóstico): base para las **solicitudes de presupuesto**.
 - Despliegue con GitHub Actions, entornos de prueba y gitflow, Dependabot (`cooldown` de 14 días),
   comprobación diaria, `scripts/actualizar-decap.js` y la hoja de tareas sincronizada con Trello
   (`scripts/trello-a-excel.js`).
 
 ## Estado
 
-**Vacío.** Lo siguiente es el **plan por fases** y la estructura base:
+**Fase 0 (decisiones) cerrada; fase 1 sin empezar.** No hay código todavía: solo el plan y los
+borradores legales. **Plan detallado por fases: [docs/PLAN.md](docs/PLAN.md)** (fases 0 a 8).
 
-1. Catálogo: colecciones de Decap (fabricantes, categorías con subcategorías por relación,
-   productos) y menú generado desde las categorías.
-2. Fichas de producto y listados por categoría, subcategoría y fabricante (con datos
-   estructurados de producto para Google y filtros en el buscador).
-3. Cesta en el navegador y pedido: **el servidor recalcula los precios con el catálogo que genera
-   el build; nunca se fía de los precios que envía el navegador**. Número de pedido y estado en la
-   hoja; aviso a la tienda y, si se decide, confirmación al cliente.
-4. Lo legal y la puesta en marcha.
+## Decisiones (5-11-2026; detalle y motivos en docs/PLAN.md, fase 0)
 
-### Decisiones pendientes (antes de construir)
-
-- **Alojamiento**: el plan gratuito de Vercel (Hobby) es para uso **personal y no comercial**; una
-  tienda es uso comercial. Opciones: Vercel Pro (de pago) u otro alojamiento cuyo plan gratuito
-  permita uso comercial (p. ej. Cloudflare Pages). **Comprobar las condiciones vigentes.** El
-  despliegue por GitHub Actions de la plataforma existe por una limitación de Vercel Hobby: puede no
-  hacer falta.
-- **Legal**: aunque no se pague en la web, venta a consumidores → información precontractual,
-  condiciones de venta, desistimiento, aviso legal; los pedidos llevan **datos personales**
-  (política de privacidad, plazo de conservación). Lo debe revisar alguien con conocimientos
-  legales.
-- **Tamaño del catálogo**: con decenas o pocos cientos de productos, todo como en la plataforma. Con
-  miles o cambios de precio frecuentes: importación desde CSV/Excel (Decap no edita en bloque) e
-  imágenes fuera del repositorio (p. ej. Cloudinary).
-
-### Preguntas abiertas a Víctor
-
-- ¿Cuántos productos, aproximadamente, y cada cuánto cambian los precios?
-- ¿Variantes (talla, color…) o stock que controlar?
-- ¿Se muestran precios o es una petición de presupuesto?
-- ¿Correo de confirmación al cliente?
-- ¿Quién gestiona los pedidos y cómo (estados, avisos)?
+- **Vocabulario**: «lista de presupuesto» y «solicitud de presupuesto», **no** «cesta», «pedido» ni
+  «compra»; «precio orientativo».
+- **Catálogo**: unos **200 productos**, sin variantes ni stock, **máximo 5 fotos** por producto,
+  imágenes en el repositorio (el build avisa a partir de 700 MB). Carga y modificación **en
+  bloque** con Excel + carpeta de imágenes (la hace Víctor; quizá la tienda más adelante), además
+  del panel, donde editan Víctor y la tienda.
+- **Estados del producto**: **disponible**; **en oferta** (precio de oferta entre dos fechas, por
+  días, hora de Madrid; se muestran precio anterior tachado, porcentaje y fecha de fin);
+  **no disponible** (retirado de la web pública, 404; solo queda en el panel).
+- **Condición**: nuevo o **segunda mano** (indicado en la ficha, con estado y garantía de al menos
+  12 meses).
+- **Ficha**: fotos en **carrusel** que se amplía al pulsar.
+- **Precios**: «Precio orientativo, IVA incluido». El precio de oferta **se respeta** si la
+  solicitud llega dentro de las fechas.
+- **Solicitud**: **nombre, correo y teléfono obligatorios**; «Observaciones», opcional. Número
+  correlativo y estado en la hoja; aviso a la tienda y acuse al cliente.
+- **Cuentas**: GitHub (repositorio privado) y Cloudflare en las cuentas personales de Víctor; la
+  hoja y los correos, en la **cuenta gratuita de Google (Gmail) de la tienda** (cupo de unos 100
+  correos al día → topes); la dirección de los avisos se guarda en el script, no en la web.
+- **Alojamiento**: **Cloudflare Pages, plan gratuito** (uso comercial permitido; Vercel Hobby no lo
+  permite). Las funciones van en `functions/api/` (formato de Cloudflare) y deben ser ligeras
+  (10 ms de CPU por petición); límite de 20.000 ficheros por despliegue.
+- **Dominio**: se compra **al final**; hasta entonces, direcciones `pages.dev` con `noindex`.
+- **Legal**: borradores de partida en `public/_paginas/` y
+  [docs/BORRADORES-LEGALES.md](docs/BORRADORES-LEGALES.md) (con preguntas para quien revise).
+  En el desistimiento, devolución a cargo del cliente y revisión del producto antes de reembolsar
+  (descontando la pérdida de valor, no negando el reembolso). **Pendiente: quién los revisa** y
+  los datos de la tienda (titular, NIF, dirección…).
 
 ## Normas del proyecto
 
@@ -103,10 +105,13 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 ## Seguridad (no romper)
 
 - Login del panel: verificación del `state` y entrega del token **solo** a una lista exacta de webs
-  (sin comodines en `*.vercel.app` u otros dominios compartidos).
+  (sin comodines en `*.pages.dev` u otros dominios compartidos).
 - Todo el HTML generado pasa por `sanitize-html`. Política de seguridad de contenidos (CSP) en las
-  páginas públicas: nada de scripts en línea (la cesta, en un fichero JS propio).
-- Pedidos: validación en el servidor, CAPTCHA (ALTCHA), límites, **precios recalculados en el
+  páginas públicas: nada de scripts en línea (la lista de presupuesto y el carrusel, en ficheros JS
+  propios).
+- Solicitudes de presupuesto: validación en el servidor, CAPTCHA (ALTCHA), límites, **precios recalculados en el
   servidor** y avisos sin datos personales innecesarios. Las claves van en el alojamiento o en
   GitHub: **nunca en el código**.
+- **Nunca** un formulario que pida datos de tarjeta u otros medios de pago: el plan gratuito de
+  Cloudflare lo prohíbe y la tienda no cobra en la web.
 - Si un cambio afecta a cualquiera de estos puntos, explícalo claramente en el resumen final.
