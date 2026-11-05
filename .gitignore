@@ -1,0 +1,8 @@
+node_modules/
+dist/
+
+# Ajustes personales de Claude Code (no se suben)
+.claude/settings.local.json
+
+# Exportaciones de Trello (llevan usuarios y comentarios del equipo)
+trello-export/
