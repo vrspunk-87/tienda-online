@@ -15,7 +15,7 @@ En esta web puedes consultar nuestros productos y **solicitar presupuesto** de l
 
 ## 3. Cómo funciona
 
-1. Añade a tu **lista de presupuesto** los productos que te interesen (o pulsa «Solicitar presupuesto» en la ficha de un producto).
+1. En la ficha de cada producto que te interese, pulsa **«Añadir a la solicitud»**. En «Mi solicitud de presupuesto» puedes indicar cuántas unidades quieres de cada uno.
 2. Rellena el formulario con tu **nombre, correo electrónico y teléfono** y, si quieres, tus observaciones, y envíalo.
 3. Recibirás un **correo de acuse de recibo** con el número de tu solicitud y los productos elegidos.
 4. La tienda se pondrá en contacto contigo en un plazo de [2 días laborables] para darte el presupuesto y resolver tus dudas.

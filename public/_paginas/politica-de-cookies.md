@@ -9,9 +9,9 @@ noindex: true
 
 **No** usa cookies de análisis, publicidad ni seguimiento, propias ni de terceros. Por eso no te mostramos un aviso de cookies.
 
-## Tu lista de presupuesto
+## Tu solicitud de presupuesto
 
-Para recordar los productos que añades a tu **lista de presupuesto**, la web guarda en tu navegador (almacenamiento local) los **identificadores** de esos productos. No contiene datos personales, no se envía a ningún servidor hasta que tú envías la solicitud y solo sirve para el servicio que has pedido. Puedes borrarla vaciando la lista o borrando los datos del sitio en tu navegador.
+Para recordar los productos que añades a tu **solicitud de presupuesto**, la web guarda en tu navegador (almacenamiento local) los **identificadores** de esos productos y las unidades. No contiene datos personales, no se envía a ningún servidor hasta que tú envías la solicitud y solo sirve para el servicio que has pedido. Puedes borrarla quitando los productos de tu solicitud o borrando los datos del sitio en tu navegador.
 
 ## Verificación «No soy un robot»
 

@@ -16,8 +16,12 @@ invitación al repositorio). Los cambios se ven en la web 1-2 minutos después d
   oferta no hace falta tocar nada: la web vuelve sola al precio normal (para la siguiente oferta,
   basta con cambiar el precio y las fechas).
   Cuando se venda o se retire, estado «No disponible». Si es un accesorio, elige en «Compatible
-  con» las máquinas para las que sirve.
+  con» las máquinas para las que sirve (escribe el nombre, el modelo, la referencia, el fabricante
+  o la categoría para encontrarlas). En «Características», si dejas vacía la característica, el
+  valor sale en una fila entera (p. ej. «Incluye maleta de transporte»).
 - **Catálogo: fabricantes**: nombre e imagen (logotipo). No tienen página.
+- **Solicitud de presupuesto**: activar o desactivar que los clientes preparen y envíen solicitudes
+  desde la web, y sus textos. Desactivada, en las fichas sale «Pedir información» (a Contacto).
 
 ### Encontrar productos en el panel
 

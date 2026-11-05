@@ -93,6 +93,18 @@ const revisarEnlaces = lista => (lista || []).forEach(m => {
 });
 revisarEnlaces(SITIO.menu);
 revisarEnlaces(SITIO.legales);
+// Solicitud de presupuesto (Decap → Solicitud de presupuesto → public/_datos/solicitud.yml)
+const DATOS_SOLICITUD = fs.existsSync(`${PUB}/_datos/solicitud.yml`) ? leerYaml(fs.readFileSync(`${PUB}/_datos/solicitud.yml`, 'utf8')) || {} : {};
+const SOLICITUD = {
+  activa: DATOS_SOLICITUD.activa !== false,
+  titulo: DATOS_SOLICITUD.titulo || 'Mi solicitud de presupuesto',
+  introduccion: DATOS_SOLICITUD.introduccion || '',
+  aceptacion: DATOS_SOLICITUD.aceptacion || 'He leído y acepto las condiciones de la solicitud de presupuesto y la información sobre protección de datos.',
+  infoPrivacidad: DATOS_SOLICITUD.info_privacidad || '',
+  boton: DATOS_SOLICITUD.boton || 'Enviar solicitud',
+};
+SITIO.solicitud = SOLICITUD.activa; // contador del menú (scripts/layout.js)
+if (!SOLICITUD.activa) console.log('Solicitud de presupuesto desactivada (Decap → Solicitud de presupuesto): sin botón, contador ni formulario.');
 const construir = ruta => construirLayout(SITIO, ruta);
 
 // Listados (Decap → Ajustes del sitio → Listados e imágenes)
@@ -397,7 +409,8 @@ const productosTodos = leerColeccion(`${PUB}/_productos`).map(p => {
     imagenes: imagenes.slice(0, 5),
     resumen: m.description || resumir(p.cuerpo),
     caracteristicas: (Array.isArray(m.caracteristicas) ? m.caracteristicas : [])
-      .map(c => ({ nombre: String(c?.nombre || '').trim(), valor: String(c?.valor || '').trim() })).filter(c => c.nombre && c.valor),
+      // La característica es opcional: sin ella, el valor ocupa la fila entera
+      .map(c => ({ nombre: String(c?.nombre || '').trim(), valor: String(c?.valor || '').trim() })).filter(c => c.valor),
     tipo: 'Producto',
     url: `/productos/${p.slug}/`,
   };
@@ -717,8 +730,8 @@ const tarjetaProducto = (p, { oculta = false } = {}) => `
       </div>
       <div class="card-body d-flex flex-column">
         <p class="producto-fabricante small mb-1">${logoFabricante(p.fabricante, 18)}<span>${esc(fabricanteDe(p))}</span></p>
-        <h3 class="h6 card-title mb-1"><a class="stretched-link text-reset text-decoration-none" href="${p.url}">${esc(p.modelo || p.nombre)}</a></h3>
-        <p class="small text-body-secondary mb-2 producto-nombre">${esc(p.nombre)}</p>
+        <h3 class="h6 card-title mb-1 producto-nombre"><a class="stretched-link text-reset text-decoration-none" href="${p.url}">${esc(p.nombre)}</a></h3>
+        ${p.modelo ? `<p class="small text-body-secondary mb-2">Modelo ${esc(p.modelo)}</p>` : ''}
         <p class="producto-precio mt-auto mb-0">${precioHtml(p)}</p>
       </div>
     </article>
@@ -1174,6 +1187,8 @@ function completar(html, ruta, seo = {}) {
   body.insertAdjacentHTML('beforeend', '  <script src="/vendor/bootstrap.bundle.min.js" defer></script>\n  <script src="/js/extras.js" defer></script>\n');
   // Rejillas de productos (paginación, orden al azar y filtro por fabricante)
   if (raiz.querySelector('[data-rejilla]')) body.insertAdjacentHTML('beforeend', '  <script src="/js/catalogo.js" defer></script>\n');
+  // Solicitud de presupuesto: contador del menú, botón de las fichas y página /presupuesto/
+  if (SOLICITUD.activa) body.insertAdjacentHTML('beforeend', '  <script src="/js/presupuesto.js" defer></script>\n');
 
   return raiz.toString().replace(/\n[ \t]*\n(?=[ \t]*\n)/g, '\n');
 }
@@ -1288,7 +1303,7 @@ const filtrosProducto = p => [
 for (const p of productos) {
   p.html = md(p.cuerpo, p.url);
   const cat = p.categoria;
-  const trozosMigas = cat ? [...migasDe(cat), { texto: tituloProducto(p), url: p.url }] : [{ texto: 'Catálogo', url: '/catalogo/' }, { texto: tituloProducto(p), url: p.url }];
+  const trozosMigas = cat ? [...migasDe(cat), { texto: p.nombre, url: p.url }] : [{ texto: 'Catálogo', url: '/catalogo/' }, { texto: p.nombre, url: p.url }];
   const [principal, ...resto] = p.imagenes;
   const fotos = principal ? `
       <div class="ficha-fotos">
@@ -1312,12 +1327,20 @@ for (const p of productos) {
         <div class="col-lg-6">${fotos}</div>
         <div class="col-lg-6">
           <p class="producto-fabricante mb-1">${logoFabricante(p.fabricante, 22)}<span>${esc(fabricanteDe(p))}</span></p>
-          <h1 class="display-6 fw-bold mb-2">${esc(p.modelo || p.nombre)}</h1>
-          <p class="lead text-body-secondary">${esc(p.nombre)}</p>
+          <h1 class="display-6 fw-bold mb-2">${esc(p.nombre)}</h1>
+          ${p.modelo ? `<p class="lead text-body-secondary">Modelo ${esc(p.modelo)}</p>` : ''}
           ${p.segundaMano ? '<p><span class="badge etiqueta-segunda position-static">Segunda mano</span></p>' : ''}
           <div class="ficha-precio my-3">${precioHtml(p, { ficha: true })}
             <span class="d-block small text-body-secondary mt-1">Precio orientativo, IVA incluido.</span></div>
-          <p><a class="btn btn-destacado btn-lg" href="/paginas/contacto-y-horario/">Pedir información</a></p>
+          ${SOLICITUD.activa ? `<div class="d-flex flex-wrap gap-2 align-items-center" data-pagefind-ignore="all">
+            <button type="button" class="btn btn-destacado btn-lg" data-anadir-solicitud="${esc(p.slug)}" hidden>
+              <i class="bi bi-clipboard-plus me-2" aria-hidden="true"></i><span>Añadir a la solicitud</span>
+            </button>
+            <a class="btn btn-outline-primary btn-lg" href="/presupuesto/" data-ver-solicitud hidden>Ver mi solicitud</a>
+            <noscript><a class="btn btn-destacado btn-lg" href="/paginas/contacto-y-horario/">Pedir información</a></noscript>
+          </div>
+          <p class="small text-body-secondary mt-2 mb-0" data-estado-solicitud role="status" aria-live="polite"></p>`
+            : '<p data-pagefind-ignore="all"><a class="btn btn-outline-primary btn-lg" href="/paginas/contacto-y-horario/">Pedir información</a></p>'}
           <dl class="row ficha-datos small mt-4 mb-0">
             ${datos.map(([k, v]) => `<dt class="col-4 col-sm-3">${k}</dt><dd class="col-8 col-sm-9">${v}</dd>`).join('')}
           </dl>
@@ -1326,7 +1349,7 @@ for (const p of productos) {
       ${p.html.trim() ? `<section class="mt-5 articulo"><h2 class="h4 fw-bold">Descripción</h2><div class="articulo-cuerpo">${p.html}</div></section>` : ''}
       ${p.caracteristicas.length ? `<section class="mt-5 articulo"><h2 class="h4 fw-bold">Características</h2>
         <table class="table table-sm ficha-caracteristicas"><tbody>
-          ${p.caracteristicas.map(c => `<tr><th scope="row">${esc(c.nombre)}</th><td>${esc(c.valor)}</td></tr>`).join('')}
+          ${p.caracteristicas.map(c => (c.nombre ? `<tr><th scope="row">${esc(c.nombre)}</th><td>${esc(c.valor)}</td></tr>` : `<tr><td colspan="2">${esc(c.valor)}</td></tr>`)).join('')}
         </tbody></table></section>` : ''}
       ${p.compatibles.length ? `<section class="mt-5" data-pagefind-ignore="all"><h2 class="h4 fw-bold">Compatible con</h2>
         <ul class="list-inline mb-0">${p.compatibles.map(m => `<li class="list-inline-item mb-2"><a class="btn btn-outline-primary btn-sm" href="${m.url}">${esc(tituloProducto(m))}</a></li>`).join('')}</ul></section>` : ''}
@@ -1340,6 +1363,7 @@ for (const p of productos) {
     ${relacionadosCat.length ? `<section class="mt-5" aria-labelledby="relacionados-titulo" data-pagefind-ignore="all">
       <h2 class="h4 fw-bold mb-4" id="relacionados-titulo">Más en ${esc(cat.titulo)}</h2>
       <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">${relacionadosCat.map(a => tarjetaProducto(a)).join('')}</div>
+      <p class="mt-4 mb-0"><a class="btn btn-outline-primary" href="${cat.url}">Ver todo en ${esc(cat.titulo)}</a></p>
     </section>` : ''}`;
 
   const jsonld = [{
@@ -1362,7 +1386,7 @@ for (const p of productos) {
   }];
 
   escribir(path.join(DIST, p.url, 'index.html'), completar(paginaDesdePlantilla(cuerpo, { buscable: false, ancho: true }), p.url, {
-    titulo: tituloCompleto(`${tituloProducto(p)} · ${p.nombre}`),
+    titulo: tituloCompleto(`${p.nombre} · ${tituloProducto(p)}`),
     descripcion: p.resumen || `${p.nombre}: ${tituloProducto(p)}.`,
     imagen: p.imagenes[0]?.src,
     imagenAlt: p.imagenes[0]?.alt || p.nombre,
@@ -1401,6 +1425,108 @@ const bloqueResumenCatalogo = (nivel = 'h2') => (productos.length ? `
       ${rejillaProductos(productos, { porPagina: LISTADOS.productosPortada, aleatorio: true, maxSinJs: LISTADOS.productosPortada, etiqueta: 'Productos del catálogo' })}` : '');
 const bloqueOfertas = () => (ofertas.length ? rejillaProductos(ofertas, { porPagina: LISTADOS.ofertasPortada, maxSinJs: LISTADOS.ofertasPortada, etiqueta: 'Productos en oferta' }) : '');
 
+/* =========================================================
+   9c. Solicitud de presupuesto: /presupuesto/ (Decap → Solicitud de presupuesto)
+       La lista se guarda en el navegador (public/js/presupuesto.js), que la pinta con los
+       datos de /presupuesto/productos.json. PARTE VISUAL: el envío real (función del
+       servidor y hoja de Google) llega en la fase 5, tras el despliegue (docs/PLAN.md).
+   ========================================================= */
+if (SOLICITUD.activa) {
+  // Datos públicos de los productos visibles para pintar la solicitud (nada que no esté ya en las fichas)
+  const miniatura = src => optimizadas.get(src)?.fuentes[0]?.url || src;
+  escribir(path.join(DIST, 'presupuesto/productos.json'), JSON.stringify(productos.map(p => ({
+    id: p.slug,
+    nombre: p.nombre,
+    modelo: p.modelo,
+    fabricante: fabricanteDe(p),
+    url: p.url,
+    precio: p.precio,
+    ...(p.enOferta ? { precioOferta: p.oferta.precio, ofertaHasta: p.oferta.fin } : {}),
+    imagen: p.imagenes[0] ? miniatura(p.imagenes[0].src) : '',
+  }))));
+
+  const privacidad = '/paginas/politica-de-privacidad/';
+  const condiciones = '/paginas/condiciones-solicitud-presupuesto/';
+  const cuerpo = `
+    <h1 class="display-5 fw-bold">${esc(SOLICITUD.titulo)}</h1>
+    ${SOLICITUD.introduccion ? `<p class="lead text-body-secondary">${esc(SOLICITUD.introduccion)}</p>` : ''}
+    <div class="solicitud mt-4" data-solicitud data-datos="/presupuesto/productos.json">
+      <p class="text-body-secondary" data-solicitud-cargando>Cargando tu solicitud…</p>
+      <noscript><div class="alert alert-secondary">Para preparar la solicitud hace falta JavaScript. También puedes llamarnos o escribirnos: <a href="/paginas/contacto-y-horario/">Contacto y horario</a>.</div></noscript>
+      <div class="alert alert-warning" data-solicitud-aviso role="status" hidden></div>
+      <div class="solicitud-vacia text-center py-5" data-solicitud-vacia hidden>
+        <p class="lead mb-3">Tu solicitud está vacía.</p>
+        <p class="text-body-secondary">En la ficha de cada producto, pulsa «Añadir a la solicitud».</p>
+        <a class="btn btn-destacado btn-lg" href="/catalogo/">Ver el catálogo</a>
+      </div>
+      <section data-solicitud-lista hidden aria-labelledby="solicitud-productos">
+        <h2 class="h4 fw-bold mb-3" id="solicitud-productos">Productos</h2>
+        <ul class="list-unstyled solicitud-lista mb-3" data-solicitud-items></ul>
+        <p class="solicitud-total mb-1">Total orientativo: <strong data-solicitud-total></strong></p>
+        <p class="small text-body-secondary mb-0" data-solicitud-nota>Precios orientativos, IVA incluido: la tienda te confirmará la disponibilidad y el precio final.</p>
+        <p class="mt-3 mb-0"><a href="/catalogo/" class="fw-semibold">← Seguir viendo el catálogo</a></p>
+      </section>
+      <form class="formulario mt-5" data-solicitud-form method="post" action="/api/solicitud" novalidate hidden>
+        <h2 class="h4 fw-bold">Tus datos</h2>
+        <p class="small text-body-secondary mb-4">Los campos con <span class="text-danger">*</span> son obligatorios.</p>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="s-nombre">Nombre <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control" type="text" id="s-nombre" name="nombre" maxlength="120" autocomplete="name" required>
+          <div class="invalid-feedback">Escribe tu nombre.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="s-correo">Correo electrónico <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control" type="email" id="s-correo" name="correo" maxlength="160" autocomplete="email" required>
+          <div class="invalid-feedback">Escribe un correo válido, p. ej. nombre@ejemplo.es.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="s-telefono">Teléfono <span class="text-danger" aria-hidden="true">*</span></label>
+          <input class="form-control" type="tel" id="s-telefono" name="telefono" maxlength="20" autocomplete="tel" inputmode="tel" pattern="[0-9+\\(\\)\\s.\\-]{9,20}" required>
+          <div class="invalid-feedback">Escribe un teléfono (9 cifras como mínimo).</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold" for="s-observaciones">Observaciones</label>
+          <textarea class="form-control" id="s-observaciones" name="observaciones" rows="4" maxlength="2000" aria-describedby="s-observaciones-ayuda"></textarea>
+          <div class="form-text" id="s-observaciones-ayuda">Dudas sobre los productos, horario en que prefieres que te llamemos…</div>
+        </div>
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="s-acepto" name="acepto" value="si" required>
+          <label class="form-check-label" for="s-acepto">${esc(SOLICITUD.aceptacion)}
+            (<a href="${condiciones}" target="_blank" rel="noopener">condiciones</a> · <a href="${privacidad}" target="_blank" rel="noopener">protección de datos</a>)
+            <span class="text-danger" aria-hidden="true">*</span></label>
+          <div class="invalid-feedback">Tienes que aceptar para enviar la solicitud.</div>
+        </div>
+        <button type="submit" class="btn btn-destacado btn-lg">${esc(SOLICITUD.boton)}</button>
+        <div class="mt-3" data-solicitud-resultado role="status" aria-live="polite"></div>
+        ${SOLICITUD.infoPrivacidad ? `<p class="small text-body-secondary mt-4 mb-0">${esc(SOLICITUD.infoPrivacidad)} <a href="${privacidad}">Más información</a>.</p>` : ''}
+      </form>
+    </div>`;
+  escribir(path.join(DIST, 'presupuesto/index.html'), completar(paginaDesdePlantilla(cuerpo, { buscable: false }), '/presupuesto/', {
+    titulo: tituloCompleto(SOLICITUD.titulo),
+    descripcion: 'Revisa los productos de tu solicitud de presupuesto y envíanos tus datos.',
+    noindex: true,
+  }));
+}
+
+// /ofertas/: todas las ofertas vigentes, con los mismos filtros que una categoría
+{
+  const cuerpo = `
+    ${migas([{ texto: 'Catálogo', url: '/catalogo/' }, { texto: 'Ofertas', url: '/ofertas/' }])}
+    <h1 class="display-5 fw-bold">Ofertas</h1>
+    <p class="lead text-body-secondary">Precios de oferta válidos hasta la fecha indicada en cada producto. Precios orientativos, IVA incluido.</p>
+    <section class="mt-4" aria-labelledby="ofertas-titulo" data-pagefind-ignore="all">
+      <h2 class="h4 fw-bold mb-4" id="ofertas-titulo">${ofertas.length ? `${ofertas.length} ${ofertas.length === 1 ? 'producto en oferta' : 'productos en oferta'}` : 'Productos en oferta'}</h2>
+      ${ofertas.length ? rejillaProductos(ofertas, { porPagina: LISTADOS.productosPorPagina, filtro: true, etiqueta: 'Productos en oferta' })
+        : '<p class="text-body-secondary">Ahora mismo no hay ofertas. <a href="/catalogo/">Ver todo el catálogo</a>.</p>'}
+    </section>`;
+  escribir(path.join(DIST, 'ofertas/index.html'), completar(paginaDesdePlantilla(cuerpo, { buscable: false, ancho: true }), '/ofertas/', {
+    titulo: tituloCompleto('Ofertas'),
+    descripcion: `Ofertas de ${SITIO.nombre}: máquinas de coser y accesorios con precio rebajado durante unos días.`,
+    jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Ofertas', url: abs('/ofertas/'), publisher: REF_ORG }],
+  }));
+  sitemap.push({ ruta: '/ofertas/' });
+}
+
 // /catalogo/: categorías y, debajo, las ofertas o, si no hay, el resumen al azar
 {
   const cuerpo = `
@@ -1408,7 +1534,10 @@ const bloqueOfertas = () => (ofertas.length ? rejillaProductos(ofertas, { porPag
     <p class="lead text-body-secondary">Precios orientativos, IVA incluido. Elige una categoría o mira ${ofertas.length ? 'las ofertas' : 'algunos de nuestros productos'}.</p>
     ${categoriasPrincipales.length ? `<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mt-2">${categoriasPrincipales.map(tarjetaCategoria).join('')}</div>` : ''}
     <section class="mt-5" aria-labelledby="catalogo-lista-titulo">
-      <h2 class="h4 fw-bold mb-4" id="catalogo-lista-titulo">${ofertas.length ? 'Ofertas' : 'Productos'}</h2>
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+        <h2 class="h4 fw-bold mb-0" id="catalogo-lista-titulo">${ofertas.length ? 'Ofertas' : 'Productos'}</h2>
+        ${ofertas.length ? '<a href="/ofertas/" class="fw-bold enlace-flecha">Ver todas las ofertas</a>' : ''}
+      </div>
       ${ofertas.length ? bloqueOfertas() : productos.length ? bloqueResumenCatalogo() : '<p class="text-body-secondary">Todavía no hay productos en el catálogo.</p>'}
     </section>`;
   escribir(path.join(DIST, 'catalogo/index.html'), completar(paginaDesdePlantilla(cuerpo, { buscable: false, ancho: true }), '/catalogo/', {
@@ -1498,7 +1627,7 @@ function htmlsDe(dir) {
   });
 }
 
-const generadas = new Set([...noticias, ...paginas, ...productos, ...categorias, { url: '/catalogo/' }].map(x => path.join(DIST, x.url, 'index.html')));
+const generadas = new Set([...noticias, ...paginas, ...productos, ...categorias, { url: '/catalogo/' }, { url: '/ofertas/' }, { url: '/presupuesto/' }].map(x => path.join(DIST, x.url, 'index.html')));
 for (const fichero of htmlsDe(DIST)) {
   if (generadas.has(fichero)) continue;
   const rel = '/' + path.relative(DIST, fichero).split(path.sep).join('/');

@@ -1,8 +1,7 @@
 # Máquinas de Coser Zafra — tienda online
 
-Web de la tienda: un **catálogo con precios orientativos** en el que el cliente reúne productos
-en una **lista de presupuesto** y envía una **solicitud de presupuesto** (no se compra ni se paga
-en la web). Plan completo y decisiones: [docs/PLAN.md](docs/PLAN.md). Normas para Claude Code:
+Web de la tienda: un **catálogo con precios orientativos** en el que el cliente va llenando una
+**solicitud de presupuesto** (productos y unidades) y la envía (no se compra ni se paga en la web). Plan completo y decisiones: [docs/PLAN.md](docs/PLAN.md). Normas para Claude Code:
 [CLAUDE.md](CLAUDE.md).
 
 ## Estado
@@ -12,7 +11,10 @@ en la web). Plan completo y decisiones: [docs/PLAN.md](docs/PLAN.md). Normas par
   (borradores) y funciones del login del panel en formato de Cloudflare, probadas en local.
 - **Fase 2 (catálogo en el panel) y parte de la 4:** hechas. Fabricantes, categorías y productos en
   el panel; menú del catálogo; portada con resumen del catálogo y ofertas; páginas de categoría;
-  ficha básica de producto. Ver «Catálogo» más abajo.
+  ficha básica de producto; página de ofertas. Ver «Catálogo» más abajo.
+- **Fase 5, parte visual:** hecha. «Añadir a la solicitud», contador, página «Mi solicitud de
+  presupuesto» con unidades y formulario; activable desde el panel. **El envío real llega tras el
+  despliegue.** Ver «Solicitud de presupuesto».
 - **Fase 1b (despliegue):** pendiente. Crear el proyecto en Cloudflare Pages, la aplicación OAuth
   de GitHub, las variables, los entornos de prueba y la reconstrucción diaria.
 
@@ -122,6 +124,7 @@ en producción (hay una entrada de prueba en el blog para comprobarlo).
 | Productos (fabricante, modelo, referencia opcional, categoría, precio, estado, oferta, condición, hasta 5 fotos, características, «Compatible con») | Catálogo: productos | `/productos/<identificador>/` |
 | Fabricantes (nombre e imagen) | Catálogo: fabricantes | sin página: filtro y fichas |
 | Todo el catálogo: categorías y ofertas (o productos al azar) | — | `/catalogo/` |
+| Todas las ofertas vigentes, con filtros (enlace «Ver todas las ofertas» en la portada y en `/catalogo/`) | — | `/ofertas/` |
 
 - **Identificador** de un producto: lo crea el panel a partir del fabricante y el modelo y no cambia.
 - **Estados**: «Disponible»; «En oferta» (precio de oferta entre dos fechas, ambas incluidas, hora de
@@ -133,6 +136,10 @@ en producción (hay una entrada de prueba en el blog para comprobarlo).
 - **Portada y `/catalogo/`**: productos barajados en cada visita y ofertas (las más recientes
   primero), N por página (Ajustes → Listados). En las categorías, filtros por fabricante y «Solo segunda mano»
   (salen solo si hay más de un fabricante o productos nuevos y de segunda mano; se combinan).
+- **Ficha**: el **nombre** es el título y el modelo va debajo (también en las tarjetas); «Más en …»
+  lleva el botón «Ver todo en …» a su categoría o subcategoría. Las **características** pueden
+  ir sin nombre: entonces el valor ocupa la fila entera.
+- **«Compatible con»** (panel): se busca por nombre, modelo, referencia, fabricante o categoría.
 - **Panel**: la lista de productos se puede filtrar (fabricante, categoría, ofertas, no
   disponibles, segunda mano; los filtros se combinan), agrupar y ordenar, y el buscador del panel
   encuentra por modelo, referencia, fabricante o nombre (están en el «summary» de la colección). Los
@@ -144,6 +151,33 @@ en producción (hay una entrada de prueba en el blog para comprobarlo).
 - **Datos de prueba**: 2 fabricantes, 7 categorías y 12 productos «Solo para pruebas» (uno de cada
   caso: ofertas vigente, futura y caducada, segunda mano, sin precio, no disponible, accesorios).
   Bórralos desde el panel cuando haya datos reales (y sus fotos `public/img/productos/prueba-*`).
+
+## Solicitud de presupuesto
+
+Panel → **Solicitud de presupuesto** (`public/_datos/solicitud.yml`): activarla o desactivarla y sus
+textos (título, introducción, casilla de aceptación, información de privacidad, botón). Desactivada,
+no se ven el botón de las fichas, el contador del menú ni la página `/presupuesto/` (la ficha enseña
+«Pedir información», que lleva a Contacto y horario).
+
+- Ficha: «Añadir a la solicitud»; si ya está, «Añadir otra unidad» y «Ver mi solicitud».
+- Menú: icono con el número de productos (en el móvil, junto al botón del menú).
+- `/presupuesto/`: productos con unidades (1-99), subtotales y total orientativo, quitar, aviso si
+  alguno ya no está disponible (se quita de la solicitud guardada en el navegador del cliente),
+  formulario y «Enviar solicitud».
+- **Un producto solo deja de estar disponible cuando se marca «No disponible» en el panel** (o se
+  borra). Nada lo cambia solo: ni enviar solicitudes (no hay stock), ni que termine una oferta
+  (vuelve a su precio normal).
+- Se guarda en el navegador de quien la prepara (`localStorage`: identificadores y unidades). Los
+  datos que se pintan salen de `/presupuesto/productos.json`, que genera el build.
+- **PROVISIONAL**: «Enviar solicitud» comprueba los campos y avisa de que el envío no está activo.
+  La función del servidor, la hoja de Google y los correos llegan tras el despliegue (fase 5).
+
+**Prueba realizada (solicitud):** con Playwright en escritorio y móvil: añadir dos veces el mismo
+producto (2 ud.), añadir otros dos, un identificador inexistente se quita con aviso, totales
+correctos (249 € × 2 + 12,50 € = 510,50 €; con 3 prensatelas, 535,50 €; un producto «a consultar»
+aparte), cambiar unidades, quitar, enviar vacío (marca los campos) y completo (aviso de envío no
+activo), solicitud vacía; build con la solicitud desactivada: sin botón, contador ni página y sin
+enlaces rotos; sin errores en la consola.
 
 **Prueba realizada (catálogo):** build en local y en producción (sin los datos de prueba: el
 catálogo sale vacío y las secciones de la portada no aparecen, sin fotos de prueba publicadas);

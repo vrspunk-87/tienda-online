@@ -126,7 +126,7 @@ collections:
       - { label: "Modelo", name: "modelo", widget: "string", hint: "p. ej. «HD 4432». Junto con el fabricante forma el identificador del producto." }
       - { label: "Referencia (opcional)", name: "referencia", widget: "string", required: false, hint: "La del fabricante o la de la tienda. Se muestra en la ficha y se puede buscar." }
       - { label: "Categoría", name: "categoria", widget: "relation", collection: "categorias", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], hint: "Si la categoría tiene subcategorías, elige la subcategoría." }
-      - { label: "Compatible con (solo accesorios)", name: "compatible_con", widget: "relation", collection: "productos", search_fields: ["title", "modelo"], value_field: "{{slug}}", display_fields: ["title", "modelo"], multiple: true, required: false, hint: "Las máquinas para las que sirve este accesorio. En la ficha de cada máquina aparecerá en «Accesorios para esta máquina»." }
+      - { label: "Compatible con (solo accesorios)", name: "compatible_con", widget: "relation", collection: "productos", search_fields: ["title", "modelo", "referencia", "fabricante", "categoria"], value_field: "{{slug}}", display_fields: ["fabricante", "modelo", "title"], options_length: 100, multiple: true, required: false, hint: "Las máquinas para las que sirve este accesorio (salen en su ficha, en «Accesorios para esta máquina»). Escribe para buscar por nombre, modelo, referencia, fabricante o categoría (p. ej. «domesticas» o el nombre del fabricante)." }
       - { label: "Fecha de alta", name: "date", widget: "datetime", required: false, hint: "Para ordenar por novedad." }
       - { label: "Precio orientativo (€, IVA incluido)", name: "precio", widget: "number", value_type: "float", min: 0, step: 0.01, required: false, hint: "Déjalo vacío para mostrar «Precio a consultar»." }
       - label: "Estado"
@@ -177,10 +177,11 @@ collections:
         widget: "list"
         required: false
         collapsed: true
-        summary: "{{fields.nombre}}: {{fields.valor}}"
+        summary: "{{fields.nombre | default('·')}} {{fields.valor}}"
+        hint: "Con característica y valor se muestra como «Puntadas: 23». Sin característica, el valor ocupa la fila entera (p. ej. «Incluye maleta de transporte»)."
         fields:
-          - { label: "Característica", name: "nombre", widget: "string", hint: "p. ej. «Puntadas»" }
-          - { label: "Valor", name: "valor", widget: "string", hint: "p. ej. «23»" }
+          - { label: "Característica (opcional)", name: "nombre", widget: "string", required: false, hint: "p. ej. «Puntadas»" }
+          - { label: "Valor", name: "valor", widget: "string", hint: "p. ej. «23» o, sin característica, una frase completa" }
       - { label: "Descripción", name: "body", widget: "markdown", required: false }
 
   - name: "fabricantes"
@@ -196,6 +197,26 @@ collections:
       - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nombre", name: "title", widget: "string" }
       - { label: "Imagen o logotipo", name: "imagen", widget: "image", required: false, hint: "Se muestra junto al nombre. Mejor PNG con fondo transparente." }
+
+  # ------------------------------------------------------------------
+  # SOLICITUD DE PRESUPUESTO: activarla o no, y sus textos (docs/PLAN.md, fase 5)
+  # ------------------------------------------------------------------
+  - name: "solicitud"
+    label: "Solicitud de presupuesto"
+    description: "El cliente añade productos a su solicitud desde las fichas, indica cuántas unidades quiere y la envía con sus datos desde /presupuesto/. Desactivada, no se ven ni el botón «Añadir a la solicitud», ni el contador del menú, ni el formulario."
+    editor:
+      preview: false
+    files:
+      - name: "ajustes"
+        label: "Solicitud de presupuesto"
+        file: "public/_datos/solicitud.yml"
+        fields:
+          - { label: "Solicitud de presupuesto activa", name: "activa", widget: "boolean", default: true, hint: "Desactívala para quitar de la web el botón «Añadir a la solicitud», el contador del menú y el formulario. En las fichas queda un enlace a Contacto y horario." }
+          - { label: "Título de la página", name: "titulo", widget: "string", default: "Mi solicitud de presupuesto" }
+          - { label: "Introducción", name: "introduccion", widget: "text", required: false }
+          - { label: "Texto de la casilla de aceptación", name: "aceptacion", widget: "text", hint: "Casilla obligatoria. Debajo se añaden solos los enlaces a las condiciones y a la política de privacidad. Pendiente de revisión legal (docs/BORRADORES-LEGALES.md)." }
+          - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Pendiente de revisión legal." }
+          - { label: "Texto del botón", name: "boton", widget: "string", default: "Enviar solicitud" }
 
   # ------------------------------------------------------------------
   # PORTADA: textos del bloque principal

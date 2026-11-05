@@ -12,13 +12,13 @@ Las respuestas a las preguntas abiertas cambian el enfoque inicial («tienda con
 |---|---|---|
 | Productos y precios | «Bastantes», cada uno con **varias imágenes** | Hace falta **carga y modificación en bloque** (Excel + carpeta de imágenes) además del panel, y vigilar el peso de las imágenes en el repositorio |
 | Variantes o stock | No: sin stock ni variantes | Sin tallas, colores ni cantidades. Cada producto tiene un **estado**: **disponible**, **en oferta** (precio rebajado entre dos fechas fijadas en su ficha del panel) o **no disponible** (no se ve en la web) |
-| ¿Precios o presupuesto? | **Precios orientativos**; el cliente **solicita presupuesto**, no compra | La «cesta» pasa a ser una **lista de presupuesto** y el «pedido», una **solicitud de presupuesto**. Los precios se muestran siempre como orientativos |
+| ¿Precios o presupuesto? | **Precios orientativos**; el cliente **solicita presupuesto**, no compra | La «cesta» y el «pedido» pasan a ser la **solicitud de presupuesto** (el cliente la va llenando y la envía). Los precios se muestran siempre como orientativos |
 | Correo al cliente | Sí | Correo de **acuse de recibo** («hemos recibido tu solicitud; la tienda te contactará en breve») |
 | Gestión | Hoja de Google en Drive (como las propuestas) y aviso al correo de la tienda; la tienda gestiona con el cliente | Una fila por solicitud con **número** y **estado** editable en la hoja; la web no interviene después |
 
 **Vocabulario** (en la web, el código y la documentación): *producto*, *fabricante*, *categoría* y
-*subcategoría*; *lista de presupuesto* (no «cesta»); *solicitud de presupuesto* o *solicitud* (no
-«pedido» ni «compra»); *precio orientativo*.
+*subcategoría*; *solicitud de presupuesto* o *solicitud* (lo que el cliente va llenando y envía: no
+«cesta», «pedido» ni «compra»); «Añadir a la solicitud»; *precio orientativo*.
 
 ## Fase 0 — Decisiones previas (sin código)
 
@@ -162,7 +162,7 @@ Colecciones de Decap (`public/config.yml`) y lectura en el build:
      **subcategoría o categoría** (relación);
    - **compatible con** (solo en los accesorios, opcional): lista de productos (relación con la
      misma colección) con los que sirve el accesorio. Los **accesorios son productos** como los
-     demás (su propia categoría, precio, estado, fotos, oferta, lista de presupuesto); la relación
+     demás (su propia categoría, precio, estado, fotos, oferta, solicitud de presupuesto); la relación
      se guarda **en el accesorio** (un prensatelas sirve para muchas máquinas: se edita una sola
      vez) y el build la muestra en los dos sentidos;
    - **precio orientativo** (número) y, opcional, texto «a consultar» en lugar de precio;
@@ -201,6 +201,11 @@ Colecciones de Decap (`public/config.yml`) y lectura en el build:
    año en la plataforma).
 
 ## Fase 3 — Carga y modificación en bloque
+
+**Decidido (6-11-2026):** la **exportación** a Excel se hará **desde el panel** (descargar el Excel
+con todo el catálogo para trabajarlo) y la **importación**, también desde el panel, después del
+despliegue (fase 1b). Las órdenes `npm run exportar` / `npm run importar` siguen siendo la base
+técnica (las ejecutará una acción de GitHub).
 
 El panel sirve para el día a día (un producto, un precio, una oferta, retirar un producto). Para altas y
 cambios masivos, un circuito con Excel que **no necesita saber de Git ni de Markdown**:
@@ -267,7 +272,7 @@ comprobar el informe y el `git diff`.
 - **Ficha básica**: fotos (principal y miniaturas enlazadas, sin carrusel todavía), fabricante con
   su imagen, modelo, referencia, condición, precio u oferta, características, descripción,
   «Compatible con», «Accesorios para esta máquina» y «Más en la categoría». Botón provisional
-  «Pedir información» (a Contacto) hasta la lista de presupuesto de la fase 5.
+  «Pedir información» (a Contacto) hasta la solicitud de presupuesto de la fase 5 (ya hecha: ver la fase 5).
 - Paginación, orden al azar y filtro en `public/js/catalogo.js` (sin JavaScript se ven los N
   primeros en un orden que cambia cada día, o la lista completa en las categorías).
 
@@ -285,9 +290,9 @@ comprobar el informe y el `git diff`.
    - etiqueta **«Segunda mano»** con el estado del producto y su garantía, si es el caso;
    - **fabricante, modelo y referencia** (si la tiene) junto al nombre;
    - en una máquina, bloque **«Accesorios para esta máquina»** (los accesorios disponibles que la
-     incluyen en «compatible con»), cada uno con su botón «Añadir a mi lista de presupuesto»; en un
+     incluyen en «compatible con»), cada uno con su botón «Añadir a la solicitud»; en un
      accesorio, **«Compatible con»** con enlaces a esas máquinas (solo las visibles);
-   - fabricante y categoría enlazados, características, botones «Añadir a mi lista de presupuesto» y «Solicitar presupuesto de este
+   - fabricante y categoría enlazados, características, botones «Añadir a la solicitud» y «Solicitar presupuesto de este
    producto», productos relacionados (misma subcategoría o fabricante).
 2. **Listados con paginación**: `/categorias/<categoria>/`, `/categorias/<categoria>/<subcategoria>/`
    (las direcciones son `/catalogo/<categoria>/` y `/catalogo/<categoria>/<subcategoria>/`; los
@@ -302,16 +307,30 @@ comprobar el informe y el `git diff`.
    comprobar los requisitos vigentes de Google antes de decidir.
 7. Accesibilidad como en la plataforma (contraste, teclado, textos alternativos).
 
-## Fase 5 — Lista de presupuesto y solicitud
+## Fase 5 — Solicitud de presupuesto
+
+**Parte visual hecha (6-11-2026), a petición de Víctor; el envío real, tras el despliegue (fase 1b):**
+- Ficha: «Añadir a la solicitud» (otra pulsación suma una unidad) y «Ver mi solicitud»; contador en
+  el menú (en el móvil, junto al botón del menú).
+- `/presupuesto/` («Mi solicitud de presupuesto»): productos con **número de unidades** (1-99),
+  precio por unidad y subtotal, quitar, total orientativo («a consultar» aparte), aviso si un
+  producto ya no está disponible (solo pasa si en el panel se marcó «No disponible» o se borró); formulario (nombre, correo, teléfono, observaciones, aceptación) y
+  botón «Enviar solicitud». **Al enviar se comprueban los campos y se avisa de que el envío todavía
+  no está activo.**
+- Panel → **Solicitud de presupuesto**: activarla o desactivarla (desactivada no salen el botón, el
+  contador ni la página; en la ficha queda «Pedir información» a Contacto) y sus textos.
+- Datos de los productos para la página: `/presupuesto/productos.json` (lo genera el build).
+- **Cambio sobre lo previsto**: hay **cantidades** (para accesorios, agujas…). El servidor las tendrá
+  que validar (1-99) y la hoja guardará las unidades de cada producto.
 
 Basada en el formulario de propuestas (`api/propuesta.js`, `api/_lib/formulario.js`, ALTCHA, Apps
 Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
 
 **En el navegador**
 
-1. **Lista de presupuesto** guardada en el navegador (`localStorage`), en un fichero propio
-   `public/js/presupuesto.js` (la CSP prohíbe scripts en línea). Solo guarda identificadores; como los
-   productos son únicos, no hay cantidades. Contador en la cabecera.
+1. **Solicitud** guardada en el navegador (`localStorage`), en un fichero propio
+   `public/js/presupuesto.js` (la CSP prohíbe scripts en línea). Guarda identificadores y unidades.
+   Contador en la cabecera. *(Hecho.)*
 2. Página **`/presupuesto/`**: productos de la lista (nombre, foto, precio orientativo y total
    orientativo calculados con los datos publicados), quitar productos y formulario: **nombre, correo
    y teléfono obligatorios**; «Observaciones» opcional; casilla de aceptación de las condiciones y

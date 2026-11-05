@@ -21,7 +21,7 @@ de cambiar algo que no conozcas**.
 ## Qué es el proyecto
 
 Una **tienda online sin venta ni pago en la web**: un catálogo con **precios orientativos** en el
-que el cliente reúne productos en una **lista de presupuesto** y envía una **solicitud de
+que el cliente va llenando y envía una **solicitud de
 presupuesto**. La solicitud llega a una **hoja de Google** (como las propuestas de la web de la
 plataforma), con aviso a la tienda y acuse de recibo al cliente. La tienda contacta al cliente y,
 si se ponen de acuerdo, la venta se cierra fuera de la web.
@@ -50,7 +50,9 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 ## Estado
 
 **Fase 0 cerrada; fase 1a (base en local) hecha; fase 2 (catálogo en el panel) y parte de la 4
-(menú, portada, categorías, ficha básica) hechas; fase 1b (despliegue en Cloudflare) pendiente.**
+(menú, portada, categorías, ofertas, ficha básica) hechas; parte visual de la solicitud de presupuesto
+(fase 5, sin envío real) hecha; fase 1b (despliegue en Cloudflare) pendiente.** Excel: exportación e
+importación desde el panel en la fase 3, tras el despliegue.
 Hay datos de catálogo «Solo para pruebas» (fabricantes «Marca Prueba…», categorías y 12 productos
 con fotos provisionales `prueba-*.jpg`): se ven en local y en pruebas, nunca en producción; se
 borran cuando haya datos reales.
@@ -66,15 +68,17 @@ si cambia.
 
 ## Decisiones (5-11-2026; detalle y motivos en docs/PLAN.md, fase 0)
 
-- **Vocabulario**: «lista de presupuesto» y «solicitud de presupuesto», **no** «cesta», «pedido» ni
-  «compra»; «precio orientativo».
+- **Vocabulario**: «solicitud de presupuesto» (lo que el cliente va llenando y envía; botón «Añadir a
+  la solicitud», página «Mi solicitud de presupuesto»), **no** «cesta», «pedido» ni «compra»;
+  «precio orientativo».
 - **Catálogo**: unos **200 productos**, sin variantes ni stock, **máximo 5 fotos** por producto,
   imágenes en el repositorio (el build avisa a partir de 700 MB). Carga y modificación **en
   bloque** con Excel + carpeta de imágenes (la hace Víctor; quizá la tienda más adelante), además
   del panel, donde editan Víctor y la tienda.
 - **Estados del producto**: **disponible**; **en oferta** (precio de oferta entre dos fechas, por
   días, hora de Madrid; se muestran precio anterior tachado, porcentaje y fecha de fin);
-  **no disponible** (retirado de la web pública, 404; solo queda en el panel).
+  **no disponible** (retirado de la web pública, 404; solo queda en el panel). **Solo se marca a
+  mano en el panel**: nada lo cambia solo (ni las solicitudes, sin stock, ni el fin de una oferta).
 - **Nombre**: **Máquinas de Coser Zafra** (Zafra, Badajoz); logo, iconos y colores siguen provisionales.
 - **Producto**: fabricante, **modelo** (obligatorio) y **referencia** (opcional); clave interna =
   **identificador** (nombre del fichero, no cambia). **Accesorios** = productos con «compatible con»
@@ -129,7 +133,7 @@ si cambia.
 - Login del panel: verificación del `state` y entrega del token **solo** a una lista exacta de webs
   (sin comodines en `*.pages.dev` u otros dominios compartidos).
 - Todo el HTML generado pasa por `sanitize-html`. Política de seguridad de contenidos (CSP) en las
-  páginas públicas: nada de scripts en línea (la lista de presupuesto y el carrusel, en ficheros JS
+  páginas públicas: nada de scripts en línea (la solicitud de presupuesto y el carrusel, en ficheros JS
   propios).
 - Solicitudes de presupuesto: validación en el servidor, CAPTCHA (ALTCHA), límites, **precios recalculados en el
   servidor** y avisos sin datos personales innecesarios. Las claves van en el alojamiento o en

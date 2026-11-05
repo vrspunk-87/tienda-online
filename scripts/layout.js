@@ -103,6 +103,16 @@ export function construir(sitio, ruta) {
             <i class="bi bi-search" aria-hidden="true"></i><span class="d-lg-none ms-2">Buscar</span>
           </a>
         </li>`;
+  // Solicitud de presupuesto (si está activa): icono con el número de productos, que pone
+  // public/js/presupuesto.js
+  // (en el móvil no se repite dentro del menú: está a la vista junto al botón del menú)
+  const solicitud = sitio.solicitud ? `
+        <li class="nav-item d-none d-lg-block">
+          <a class="nav-link${actual === '/presupuesto' ? ' active' : ''}"${actual === '/presupuesto' ? ' aria-current="page"' : ''} href="/presupuesto/" title="Mi solicitud de presupuesto" data-enlace-solicitud>
+            <i class="bi bi-clipboard-check" aria-hidden="true"></i><span class="visually-hidden">Mi solicitud de presupuesto</span>
+            <span class="badge rounded-pill contador-solicitud" data-contador-solicitud hidden></span>
+          </a>
+        </li>` : '';
   // Botón destacado al final del menú (Ajustes → Menú superior: diseño → Botón destacado)
   const cfgBoton = (sitio.navbar || {}).boton || {};
   const hrefBoton = cfgBoton.texto ? hrefDe(cfgBoton) : '#';
@@ -110,13 +120,22 @@ export function construir(sitio, ruta) {
         <li class="nav-item nav-destacado">
           <a class="btn btn-destacado"${actual === limpia(hrefBoton) ? ' aria-current="page"' : ''} href="${esc(hrefBoton)}">${esc(cfgBoton.texto)}</a>
         </li>` : '';
-  const enlaces = (claseUl = '') => `<ul class="navbar-nav ${claseUl}">${menu.map(opcion).join('')}${buscar}${destacado}</ul>`;
+  const enlaces = (claseUl = '') => `<ul class="navbar-nav ${claseUl}">${menu.map(opcion).join('')}${solicitud}${buscar}${destacado}</ul>`;
 
+  // En el móvil, el acceso a la solicitud (con su contador) queda a la vista junto al botón del menú
+  const solicitudMovil = sitio.solicitud ? `
+      <a class="nav-link me-3 position-relative enlace-solicitud-movil" href="/presupuesto/" title="Mi solicitud de presupuesto" data-enlace-solicitud>
+        <i class="bi bi-clipboard-check fs-4" aria-hidden="true"></i><span class="visually-hidden">Mi solicitud de presupuesto</span>
+        <span class="badge rounded-pill contador-solicitud position-absolute top-0 start-100 translate-middle" data-contador-solicitud hidden></span>
+      </a>` : '';
+  // Solicitud y botón del menú juntos a la derecha, en la misma línea que el logo
   const boton = tipo => `
+      <div class="d-flex align-items-center ms-auto d-lg-none cabecera-acciones">${solicitudMovil}
       <button class="navbar-toggler" type="button" data-bs-toggle="${tipo}" data-bs-target="#menu"
               aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
         <span class="navbar-toggler-icon"></span>
-      </button>`;
+      </button>
+      </div>`;
 
   const DISENOS = {
     // Logo a la izquierda, enlaces a la derecha; en móvil se despliega hacia abajo
