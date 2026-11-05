@@ -1,0 +1,392 @@
+backend:
+  name: github
+  repo: vrspunk-87/tienda-online
+  branch: main
+  base_url: https://tienda-online.pages.dev
+  auth_endpoint: api/auth
+  # base_url: dirección de producción, donde funciona el login (functions/api/auth.js).
+  # Provisional hasta comprar el dominio (fase 8 de docs/PLAN.md).
+
+# En local (localhost), el panel usa el servidor local de Decap («npm run panel») y
+# edita los ficheros de tu copia del repositorio, sin iniciar sesión. En la web
+# publicada esta opción no tiene efecto.
+local_backend: true
+locale: "es"
+
+# Borradores y revisión: cada contenido pasa por Borrador → En revisión → Listo
+# antes de publicarse (pestaña "Flujo editorial" del panel). Para publicar
+# directamente sin revisión, borra esta línea.
+publish_mode: editorial_workflow
+
+# Nombres de fichero sin tildes ni caracteres raros (quienes-somos, no quiénes-somos)
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+media_folder: "public/img"
+public_folder: "/img"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    label_singular: "Entrada del blog"
+    folder: "public/_posts/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    # Cada entrada se guarda en una subcarpeta por año (public/_posts/blog/2026/...)
+    # para que el panel siga siendo ágil con cientos de entradas. La URL no cambia.
+    path: "{{year}}/{{slug}}"
+    # Con «path», Decap guardaría las imágenes junto a cada entrada (en _posts/blog/<año>/),
+    # que no se publica: se indica que van, como todas, a public/img («/» = raíz del repo).
+    media_folder: "/public/img"
+    public_folder: "/img"
+    sortable_fields: ["date", "title"]
+    view_groups:
+      - { label: "Año", field: "date", pattern: '\d{4}' }
+    description: "Cada entrada se publica en /blog/nombre-del-fichero/. Escribe los títulos en minúsculas normales (no todo en MAYÚSCULAS): se leen mejor y posicionan mejor en Google."
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Título", name: "title", widget: "string", hint: "En minúsculas normales e incluyendo palabras que buscaría la gente." }
+      - { label: "Fecha de publicación", name: "date", widget: "datetime" }
+      - { label: "Resumen para buscadores y redes (opcional)", name: "description", widget: "text", required: false, hint: "1-2 frases (máx. ~155 caracteres). Si lo dejas vacío se usa el principio del texto." }
+      - { label: "Descripción para Google (opcional)", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
+      - { label: "Imagen destacada", name: "thumbnail", widget: "image", required: false, hint: "Es la que sale al compartir en WhatsApp o Facebook. Mejor horizontal." }
+      - { label: "Descripción de la imagen (texto alternativo)", name: "thumbnail_alt", widget: "string", required: false, hint: "Qué se ve en la imagen, p. ej. «Mesa de roble restaurada en el escaparate de la tienda»." }
+      - { label: "Cuerpo", name: "body", widget: "markdown" }
+
+  - name: "paginas"
+    label: "Páginas"
+    label_singular: "Página"
+    description: "Cada página se ve en /paginas/nombre-del-fichero/. Para que salga en el menú o en el pie, añádela en Ajustes del sitio."
+    folder: "public/_paginas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descripción breve (bajo el título, en la portada y en buscadores)", name: "description", widget: "string", required: false }
+      - { label: "Descripción para Google (opcional)", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
+      - { label: "Imagen de cabecera", name: "imagen", widget: "image", required: false }
+      - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false, hint: "Qué se ve en la imagen." }
+      - { label: "Contenido", name: "body", widget: "markdown", required: false }
+      - { label: "Ocultar en buscadores", name: "noindex", widget: "boolean", default: false, required: false, hint: "Para páginas como el aviso legal: no aparecen en Google ni en el sitemap." }
+
+  # ------------------------------------------------------------------
+  # CATÁLOGO: categorías, productos y fabricantes (docs/PLAN.md, fase 2)
+  # ------------------------------------------------------------------
+  - name: "categorias"
+    label: "Catálogo: categorías"
+    label_singular: "Categoría"
+    description: "Categorías y subcategorías del catálogo. Salen en el menú «Catálogo» (por su orden) y cada una tiene su página: /catalogo/categoria/ y /catalogo/categoria/subcategoria/. Una subcategoría es una categoría con «Categoría padre»; solo hay dos niveles."
+    folder: "public/_categorias"
+    create: true
+    slug: "{{slug}}"
+    media_folder: "/public/img/catalogo"
+    public_folder: "/img/catalogo"
+    sortable_fields: ["orden", "title"]
+    summary: "{{title}}{{padre | ternary(' (subcategoría)', '')}}"
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «Máquinas de coser» o, como subcategoría, «Domésticas». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
+      - { label: "Categoría padre (solo en las subcategorías)", name: "padre", widget: "relation", collection: "categorias", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false, hint: "Déjalo vacío para una categoría principal. Elige una categoría principal (sin padre) para que esta sea su subcategoría." }
+      - { label: "Orden en el menú", name: "orden", widget: "number", value_type: "int", default: 10, required: false, hint: "Las de número más bajo salen antes (dentro de su categoría, en las subcategorías)." }
+      - { label: "Descripción breve", name: "description", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título, en las tarjetas y en Google." }
+      - { label: "Imagen (opcional)", name: "imagen", widget: "image", required: false, hint: "Sale en la tarjeta de la categoría. Mejor horizontal." }
+      - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false }
+      - { label: "Texto (opcional)", name: "body", widget: "markdown", required: false, hint: "Introducción de la página de la categoría, antes de los productos." }
+
+  - name: "productos"
+    label: "Catálogo: productos"
+    label_singular: "Producto"
+    description: "Máquinas, accesorios y demás productos. Cada producto visible tiene su ficha en /productos/identificador/. Los accesorios son productos: en «Compatible con» se eligen las máquinas para las que sirven."
+    folder: "public/_productos"
+    create: true
+    # Identificador: fabricante y modelo (p. ej. marca-uno-hd-4432); no cambia aunque se edite el producto
+    slug: "{{fields.fabricante}}-{{fields.modelo}}"
+    media_folder: "/public/img/productos"
+    public_folder: "/img/productos"
+    sortable_fields: ["date", "title", "modelo"]
+    # El buscador del panel busca en el nombre y en los campos de este resumen: fabricante, modelo y referencia
+    summary: "{{fabricante}} {{modelo}} · {{title}} · {{estado}}{{referencia | ternary(' · ref. ', '')}}{{referencia}}"
+    # Filtros y agrupaciones de la lista de productos del panel. Los filtros por fabricante y por
+    # categoría los añade el build (scripts/build.js) con los que existen en cada despliegue.
+    view_filters:
+      - { label: "En oferta", field: "estado", pattern: "^oferta$" }
+      - { label: "No disponibles", field: "estado", pattern: "^no_disponible$" }
+      - { label: "Segunda mano", field: "condicion", pattern: "^segunda_mano$" }
+    view_groups:
+      - { label: "Fabricante", field: "fabricante" }
+      - { label: "Categoría", field: "categoria" }
+      - { label: "Estado", field: "estado" }
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Nombre", name: "title", widget: "string", hint: "Nombre descriptivo, p. ej. «Máquina de coser mecánica de uso intensivo»." }
+      - { label: "Fabricante", name: "fabricante", widget: "relation", collection: "fabricantes", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"] }
+      - { label: "Modelo", name: "modelo", widget: "string", hint: "p. ej. «HD 4432». Junto con el fabricante forma el identificador del producto." }
+      - { label: "Referencia (opcional)", name: "referencia", widget: "string", required: false, hint: "La del fabricante o la de la tienda. Se muestra en la ficha y se puede buscar." }
+      - { label: "Categoría", name: "categoria", widget: "relation", collection: "categorias", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], hint: "Si la categoría tiene subcategorías, elige la subcategoría." }
+      - { label: "Compatible con (solo accesorios)", name: "compatible_con", widget: "relation", collection: "productos", search_fields: ["title", "modelo"], value_field: "{{slug}}", display_fields: ["title", "modelo"], multiple: true, required: false, hint: "Las máquinas para las que sirve este accesorio. En la ficha de cada máquina aparecerá en «Accesorios para esta máquina»." }
+      - { label: "Fecha de alta", name: "date", widget: "datetime", required: false, hint: "Para ordenar por novedad." }
+      - { label: "Precio orientativo (€, IVA incluido)", name: "precio", widget: "number", value_type: "float", min: 0, step: 0.01, required: false, hint: "Déjalo vacío para mostrar «Precio a consultar»." }
+      - label: "Estado"
+        name: "estado"
+        widget: "select"
+        default: "disponible"
+        options:
+          - { label: "Disponible", value: "disponible" }
+          - { label: "En oferta", value: "oferta" }
+          - { label: "No disponible (no se ve en la web)", value: "no_disponible" }
+      - label: "Oferta (solo con estado «En oferta»)"
+        name: "oferta"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Precio rebajado entre dos fechas (ambas incluidas, hora de Madrid). Fuera de esas fechas se muestra el precio normal."
+        fields:
+          - { label: "Precio de oferta (€)", name: "precio", widget: "number", value_type: "float", min: 0, step: 0.01, required: false }
+          - { label: "Desde", name: "inicio", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
+          - { label: "Hasta", name: "fin", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
+      - label: "Condición"
+        name: "condicion"
+        widget: "select"
+        default: "nuevo"
+        options:
+          - { label: "Nuevo", value: "nuevo" }
+          - { label: "Segunda mano", value: "segunda_mano" }
+      - label: "Segunda mano (solo si lo es)"
+        name: "segunda_mano"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Estado del producto", name: "estado", widget: "string", required: false, hint: "p. ej. «Muy buen estado, pequeño arañazo en el lateral»." }
+          - { label: "Garantía (meses)", name: "garantia", widget: "number", value_type: "int", min: 12, default: 12, required: false, hint: "Mínimo 12 meses." }
+      - label: "Fotos"
+        name: "imagenes"
+        widget: "list"
+        max: 5
+        summary: "{{fields.alt}}"
+        hint: "De 1 a 5. La primera es la principal (la de las tarjetas). Arrastra para cambiar el orden."
+        fields:
+          - { label: "Foto", name: "imagen", widget: "image" }
+          - { label: "Descripción de la foto (texto alternativo)", name: "alt", widget: "string", required: false, hint: "Qué se ve, p. ej. «Vista frontal con el prensatelas bajado». Si lo dejas vacío se usa el nombre del producto." }
+      - { label: "Resumen (opcional)", name: "description", widget: "text", required: false, hint: "1-2 frases para Google y al compartir. Si lo dejas vacío se usa el principio de la descripción." }
+      - label: "Características"
+        name: "caracteristicas"
+        widget: "list"
+        required: false
+        collapsed: true
+        summary: "{{fields.nombre}}: {{fields.valor}}"
+        fields:
+          - { label: "Característica", name: "nombre", widget: "string", hint: "p. ej. «Puntadas»" }
+          - { label: "Valor", name: "valor", widget: "string", hint: "p. ej. «23»" }
+      - { label: "Descripción", name: "body", widget: "markdown", required: false }
+
+  - name: "fabricantes"
+    label: "Catálogo: fabricantes"
+    label_singular: "Fabricante"
+    description: "Fabricantes de los productos. No tienen página propia: sirven para asociar y filtrar los productos, y su nombre e imagen salen en las fichas."
+    folder: "public/_fabricantes"
+    create: true
+    slug: "{{slug}}"
+    media_folder: "/public/img/fabricantes"
+    public_folder: "/img/fabricantes"
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Imagen o logotipo", name: "imagen", widget: "image", required: false, hint: "Se muestra junto al nombre. Mejor PNG con fondo transparente." }
+
+  # ------------------------------------------------------------------
+  # PORTADA: textos del bloque principal
+  # ------------------------------------------------------------------
+  - name: "portada"
+    label: "Portada"
+    description: "Textos del bloque principal de la portada. Las entradas del blog de la portada salen solas."
+    files:
+      - name: "textos"
+        label: "Textos de la portada"
+        file: "public/_datos/portada.yml"
+        fields:
+          - label: "Bloque principal (arriba)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Antetítulo", name: "antetitulo", widget: "string", required: false, hint: "Texto pequeño en mayúsculas encima del titular." }
+              - { label: "Titular", name: "titulo", widget: "string", hint: "Es el título principal de la web (también para Google). Mejor corto: una o dos frases." }
+              - { label: "Texto", name: "texto", widget: "text", required: false }
+              - label: "Botón principal"
+                name: "boton1"
+                widget: "object"
+                fields:
+                  - { label: "Texto", name: "texto", widget: "string", required: false, hint: "Déjalo vacío para no mostrar el botón." }
+                  - { label: "Dirección", name: "enlace", widget: "string", required: false, hint: "p. ej. /catalogo/ o /blog/" }
+              - label: "Botón secundario"
+                name: "boton2"
+                widget: "object"
+                fields:
+                  - { label: "Texto", name: "texto", widget: "string", required: false, hint: "Déjalo vacío para no mostrar el botón." }
+                  - { label: "Dirección", name: "enlace", widget: "string", required: false }
+
+  # ------------------------------------------------------------------
+  # AJUSTES DEL SITIO: nombre, logo, tema, colores, menú, pie y redes
+  # ------------------------------------------------------------------
+  - name: "ajustes"
+    label: "Ajustes del sitio"
+    description: "Nombre, logo, tema, colores, menú, pie y redes. Los cambios se aplican a toda la web en el siguiente despliegue (1-2 minutos)."
+    editor:
+      preview: false
+    files:
+      - name: "sitio"
+        label: "Ajustes generales, apariencia y menú"
+        file: "public/_datos/sitio.yml"
+        fields:
+          - { label: "Nombre de la web", name: "nombre", widget: "string" }
+          - { label: "Nombre corto", name: "nombre_corto", widget: "string", required: false, hint: "Se usa si alguien añade la web a la pantalla de inicio del móvil." }
+          - { label: "Descripción", name: "descripcion", widget: "text", hint: "1-2 frases. Sale en Google, al compartir la portada y en el RSS." }
+          - { label: "Localidad", name: "localidad", widget: "string", required: false }
+          - { label: "Provincia", name: "provincia", widget: "string", required: false }
+          - { label: "Logo", name: "logo", widget: "image", required: false, hint: "Se muestra a la izquierda del menú (40 px de alto). Mejor PNG con fondo transparente." }
+          - { label: "Imagen por defecto al compartir", name: "imagen_compartir", widget: "image", hint: "La que sale en WhatsApp/Facebook cuando una página no tiene imagen propia. Tamaño ideal: 1200×630 px." }
+
+          - label: "Apariencia"
+            name: "apariencia"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Tema"
+                name: "tema"
+                widget: "select"
+                default: "tienda"
+                hint: "«Tienda» es el diseño propio, provisional y neutro. Sus colores se cambian abajo, en «Colores de la marca»."
+                options:
+                  - { label: "Tienda (diseño propio)", value: "tienda" }
+              - label: "Colores de la marca"
+                name: "marca"
+                widget: "object"
+                collapsed: true
+                required: false
+                hint: "Déjalos vacíos para usar los de por defecto. El build avisa si un color no se lee bien sobre el fondo."
+                fields:
+                  - { label: "Texto (y fondos oscuros: menú, pie)", name: "texto", widget: "color", required: false, default: "#1f2933" }
+                  - { label: "Fondo de la web", name: "fondo", widget: "color", required: false, default: "#ffffff" }
+                  - { label: "Acento (botones y enlaces destacados)", name: "acento", widget: "color", required: false, default: "#2f6f8f" }
+              # Opciones antiguas: ocultas en el panel (el build las sigue admitiendo)
+              - { label: "Fuentes de Google (oculto)", name: "fuentes_google", widget: "hidden", default: false, required: false }
+              - { label: "Color principal (oculto)", name: "color_principal", widget: "hidden", default: "", required: false }
+              - { label: "Color de los enlaces (oculto)", name: "color_enlaces", widget: "hidden", default: "", required: false }
+              - { label: "Color de la barra del navegador en el móvil", name: "color_barra_movil", widget: "color", required: false, default: "#ffffff" }
+              - { label: "CSS adicional (avanzado)", name: "css_adicional", widget: "text", required: false, hint: "Solo para retoques puntuales y si sabes CSS: se añade al final de los estilos y puede descolocar el diseño. Si algo se rompe, vacía este campo. Para cambiar colores usa «Colores de la marca»." }
+
+          - label: "Menú superior: diseño"
+            name: "navbar"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Diseño"
+                name: "diseno"
+                widget: "select"
+                default: "clasico"
+                options:
+                  - { label: "Clásico: logo a la izquierda, enlaces a la derecha", value: "clasico" }
+                  - { label: "Centrado: logo arriba y enlaces debajo, centrados", value: "centrado" }
+                  - { label: "Lateral: en el móvil el menú sale como panel lateral", value: "lateral" }
+                  - { label: "Pantalla completa: en el móvil el menú ocupa toda la pantalla", value: "pantalla" }
+              - label: "Color"
+                name: "color"
+                widget: "select"
+                default: "blanco"
+                options:
+                  - { label: "Blanco", value: "blanco" }
+                  - { label: "Gris claro", value: "claro" }
+                  - { label: "Color principal", value: "primario" }
+                  - { label: "Oscuro", value: "oscuro" }
+              - { label: "Fijo arriba al hacer scroll", name: "fijo", widget: "boolean", default: true }
+              - label: "Botón destacado (al final del menú)"
+                name: "boton"
+                widget: "object"
+                collapsed: true
+                required: false
+                hint: "Por ejemplo «Contacto». Déjalo vacío para no mostrarlo."
+                fields:
+                  - { label: "Texto", name: "texto", widget: "string", required: false }
+                  - { label: "Dirección", name: "enlace", widget: "string", required: false, hint: "p. ej. /paginas/contacto/" }
+              - { label: "Mostrar el buscador (lupa) en el menú", name: "buscador", widget: "boolean", default: true, required: false }
+
+          - label: "Menú superior: opciones"
+            name: "menu"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.texto}}"
+            hint: "Arrastra para cambiar el orden. Si una opción tiene subopciones, se muestra como desplegable; si además tiene página o dirección, al pulsar el texto se va a esa página y la flecha abre el desplegable."
+            fields:
+              - { label: "Texto", name: "texto", widget: "string" }
+              - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false, hint: "Elige una página creada en Páginas… " }
+              - { label: "…o dirección", name: "enlace", widget: "string", required: false, hint: "…o escribe una dirección: / (inicio), /blog/, /buscar/ o una web externa. Si rellenas las dos, manda la dirección." }
+              - { label: "Marcar también como activa en (avanzado)", name: "tambien", widget: "list", required: false, hint: "Rutas en las que esta opción debe aparecer resaltada, p. ej. /blog para «Blog»." }
+              - { label: "Desplegable del catálogo", name: "catalogo", widget: "boolean", default: false, required: false, hint: "Actívalo en la opción «Catálogo»: su desplegable se rellena solo con las categorías y subcategorías. Con texto y dirección (/catalogo/), al pulsar el texto se va a esa página y la flecha abre el desplegable." }
+              - label: "Subopciones (desplegable)"
+                name: "hijos"
+                widget: "list"
+                required: false
+                collapsed: true
+                summary: "{{fields.texto}}"
+                hint: "Escribe --- como texto para poner una línea separadora."
+                fields:
+                  - { label: "Texto", name: "texto", widget: "string" }
+                  - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false }
+                  - { label: "…o dirección", name: "enlace", widget: "string", required: false }
+                  - { label: "Marcar también como activa en (avanzado)", name: "tambien", widget: "list", required: false }
+
+          - label: "Enlaces legales del pie"
+            name: "legales"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.texto}}"
+            fields:
+              - { label: "Texto", name: "texto", widget: "string" }
+              - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false }
+              - { label: "…o dirección", name: "enlace", widget: "string", required: false }
+
+          - label: "Redes sociales y contacto (pie)"
+            name: "redes"
+            widget: "object"
+            collapsed: true
+            hint: "Los que dejes vacíos no se muestran."
+            fields:
+              - { label: "Facebook (dirección completa)", name: "facebook", widget: "string", required: false }
+              - { label: "Instagram (dirección completa)", name: "instagram", widget: "string", required: false }
+              - { label: "Correo electrónico", name: "email", widget: "string", required: false }
+              - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Con prefijo de país, sin + ni espacios. Ejemplo: 34610114417" }
+              - { label: "Mostrar el icono RSS", name: "rss", widget: "boolean", default: true, required: false }
+
+          - label: "Listados e imágenes"
+            name: "listados"
+            widget: "object"
+            collapsed: true
+            hint: "Cuántos elementos se muestran por página. Cuando hay más, se crean páginas 2, 3..."
+            fields:
+              - { label: "Entradas por página (en el Blog)", name: "noticias_por_pagina", widget: "number", value_type: "int", min: 3, max: 60, default: 12 }
+              - { label: "Productos por página en el resumen del catálogo (portada y Catálogo)", name: "productos_portada", widget: "number", value_type: "int", min: 4, max: 48, default: 8, hint: "Se muestran en orden aleatorio. Mejor múltiplo de 4 (4 por fila en el ordenador)." }
+              - { label: "Productos por página en Ofertas (portada y Catálogo)", name: "ofertas_portada", widget: "number", value_type: "int", min: 4, max: 48, default: 8, hint: "Primero las ofertas que empezaron más recientemente." }
+              - { label: "Productos por página en cada categoría", name: "productos_por_pagina", widget: "number", value_type: "int", min: 4, max: 96, default: 12 }
+
+          - label: "Compresión de imágenes al subirlas"
+            name: "imagenes"
+            widget: "object"
+            collapsed: true
+            hint: "Al publicar, las fotos grandes se reducen automáticamente para que el repositorio no crezca demasiado (lo hace una acción de GitHub)."
+            fields:
+              - { label: "Ancho máximo (píxeles)", name: "ancho_maximo", widget: "number", value_type: "int", min: 800, max: 4000, default: 2000 }
+              - { label: "Calidad JPEG/WebP (1-100)", name: "calidad", widget: "number", value_type: "int", min: 50, max: 95, default: 82 }
+              - { label: "Solo comprimir si pesan más de (KB)", name: "peso_maximo_kb", widget: "number", value_type: "int", min: 100, max: 5000, default: 500 }
+
+          - label: "Avanzado"
+            name: "avanzado"
+            widget: "object"
+            collapsed: true
+            hint: "Cambia esto solo si sabes lo que haces."
+            fields:
+              - { label: "Dirección pública de la web", name: "url", widget: "string", hint: "Sin barra al final. Provisional: https://tienda-online.pages.dev. Al comprar el dominio, cámbiala aquí y en base_url de config.yml (ver docs/PLAN.md, fase 8)." }
+              - { label: "Permitir que Google indexe la web", name: "indexable", widget: "boolean", default: false, required: false, hint: "Desactivado hasta conectar el dominio definitivo: así Google no guarda la dirección provisional. Solo tiene efecto en producción." }
+              - { label: "Avisos de la comprobación diaria (usuarios de GitHub)", name: "avisos_github", widget: "list", required: false, hint: "Usuarios de GitHub (sin @) separados por comas, p. ej. usuaria-uno, usuario-dos. Si la comprobación diaria encuentra un fallo (web caída o formulario roto), los menciona en la incidencia y GitHub les manda un correo. Tienen que tener acceso al repositorio. No se publica en la web." }

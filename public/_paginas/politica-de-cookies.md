@@ -11,7 +11,7 @@ noindex: true
 
 ## Tu lista de presupuesto
 
-Para recordar los productos que añades a tu **lista de presupuesto**, la web guarda en tu navegador (almacenamiento local) las **referencias** de esos productos. No contiene datos personales, no se envía a ningún servidor hasta que tú envías la solicitud y solo sirve para el servicio que has pedido. Puedes borrarla vaciando la lista o borrando los datos del sitio en tu navegador.
+Para recordar los productos que añades a tu **lista de presupuesto**, la web guarda en tu navegador (almacenamiento local) los **identificadores** de esos productos. No contiene datos personales, no se envía a ningún servidor hasta que tú envías la solicitud y solo sirve para el servicio que has pedido. Puedes borrarla vaciando la lista o borrando los datos del sitio en tu navegador.
 
 ## Verificación «No soy un robot»
 

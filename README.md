@@ -1,1 +1,171 @@
-# tienda-online
+# Máquinas de Coser Zafra — tienda online
+
+Web de la tienda: un **catálogo con precios orientativos** en el que el cliente reúne productos
+en una **lista de presupuesto** y envía una **solicitud de presupuesto** (no se compra ni se paga
+en la web). Plan completo y decisiones: [docs/PLAN.md](docs/PLAN.md). Normas para Claude Code:
+[CLAUDE.md](CLAUDE.md).
+
+## Estado
+
+- **Fase 0 (decisiones):** cerrada.
+- **Fase 1a (base en local):** hecha. Generador, panel, tema provisional, blog, páginas legales
+  (borradores) y funciones del login del panel en formato de Cloudflare, probadas en local.
+- **Fase 2 (catálogo en el panel) y parte de la 4:** hechas. Fabricantes, categorías y productos en
+  el panel; menú del catálogo; portada con resumen del catálogo y ofertas; páginas de categoría;
+  ficha básica de producto. Ver «Catálogo» más abajo.
+- **Fase 1b (despliegue):** pendiente. Crear el proyecto en Cloudflare Pages, la aplicación OAuth
+  de GitHub, las variables, los entornos de prueba y la reconstrucción diaria.
+
+## Cómo funciona
+
+```
+ Decap (/admin/) ──commit──▶ GitHub ──▶ Cloudflare Pages: npm run build ──▶ dist/ ──▶ web
+                                          (scripts/build.js)       + functions/api/ (login del panel)
+```
+
+1. Quien edita escribe en el panel `/admin/`. Decap guarda los cambios como ficheros en GitHub.
+2. Cada cambio en el repositorio lanza un despliegue en Cloudflare Pages, que ejecuta
+   `npm run build`.
+3. El build copia `public/` a `dist/` y genera las páginas finales. **Nunca hay que editar nada
+   dentro de `dist/`** (se crea desde cero en cada build y no está en el repositorio).
+
+Se parte de la web de la plataforma (`web-plataforma`), copiada y adaptada. Lo que **no** se ha
+traído: propuestas, temas, actividades y calendario, formulario de propuestas (volverá adaptado
+como solicitud de presupuesto en la fase 5), canales de WhatsApp/Telegram, estadísticas de Vercel,
+el despliegue por GitHub Actions y la marca «Otra Zafra». Las noticias son ahora el **blog**.
+
+## Estructura del proyecto
+
+```
+functions/api/auth.js, callback.js  Login del panel con GitHub (funciones de Cloudflare Pages)
+lib/origenes.js                     Webs que pueden usar el login (lista exacta) y ramas con panel
+scripts/build.js                    Generador: crea dist/ a partir de public/ (también el catálogo)
+scripts/layout.js                   Cabecera y pie (a partir de los Ajustes del sitio)
+scripts/temas/tienda.css            Tema «Tienda» (provisional y neutro)
+scripts/comprimir-imagenes.js       Compresión de imágenes grandes (node scripts/comprimir-imagenes.js)
+plantillas/articulo.html            Plantilla de las entradas del blog y las páginas
+docs/PLAN.md                        Plan por fases y decisiones
+docs/BORRADORES-LEGALES.md          Guía de los textos legales y preguntas para quien los revise
+docs/GUIA-EDICION.md                Guía para quien edita en el panel
+
+public/                             ← LO QUE SE EDITA
+  index.html                        Portada (el build rellena las secciones dinámicas)
+  blog/index.html                   Listado del blog
+  404.html, buscar/index.html       Página de error y buscador
+  config.yml                        ← CONFIGURACIÓN DE DECAP (colecciones y campos)
+  _datos/sitio.yml                  ← AJUSTES DEL SITIO: nombre, tema, colores, menú, pie, redes
+  _datos/portada.yml                ← TEXTOS DE LA PORTADA
+  _posts/blog/<año>/                Entradas del blog (las crea Decap)
+  _paginas/                         Páginas (las crea Decap): Sobre nosotros, Dónde estamos,
+                                    Contacto y horario (provisionales) y los borradores legales
+  _productos/, _categorias/,        Catálogo (los crea Decap). Ahora, datos «Solo para pruebas»
+  _fabricantes/
+  js/catalogo.js                    Rejillas de productos: paginación, orden al azar y filtro
+  _headers, _redirects              Cabeceras de seguridad y caché, y redirecciones (Cloudflare)
+  css/estilos.css, js/              Estilos y scripts propios (sin scripts en línea: CSP)
+  img/                              Imágenes; logo.png, compartir.jpg e iconos/ son PROVISIONALES
+  admin/                            Panel de Decap (servido desde la propia web)
+```
+
+## Trabajar en local
+
+Requisitos: Node.js 22.
+
+| Orden | Para qué |
+|---|---|
+| `npm ci` | Instala las dependencias exactas de `package-lock.json` |
+| `npm run build` | Genera `dist/` (entorno «local»: aviso de pruebas, no indexable) |
+| `npm run web` | Genera y sirve la web en http://localhost:3000 |
+| `npm run panel` | Servidor local de Decap: con `npm run web` en otra ventana, el panel en http://localhost:3000/admin/ edita tus ficheros sin iniciar sesión |
+| `npm run funciones` | Genera y sirve la web **con las funciones** de Cloudflare en http://localhost:8788 (para probar `/api/auth` y `/api/callback`) |
+
+Para `npm run funciones` hace falta un fichero `.dev.vars` (no se sube: está en `.gitignore`):
+
+```
+OAUTH_CLIENT_ID=prueba
+OAUTH_CLIENT_SECRET=prueba
+```
+
+Con valores de prueba se comprueba que `/api/auth` rechaza webs no permitidas (403) y redirige
+a GitHub desde las permitidas (302); el login completo solo funciona desplegado (fase 1b).
+
+**Prueba realizada (fase 1a):** build en local, producción, `develop` y una rama sin panel;
+`npm audit` sin vulnerabilidades; 0 enlaces rotos; capturas en escritorio y móvil; con
+`npm run funciones`: portada 200, login desde una web ajena 403, desde la propia 302 con cookie
+`HttpOnly`, vuelta sin `state` 400, cabeceras de `_headers` aplicadas.
+
+**Imágenes automáticas para compartir:** el título se dibuja letra a letra con un trazado propio,
+porque `toPathData()` de opentype.js escribe a veces `NaN` en una coordenada (según la posición) y
+la letra y el resto de la línea desaparecían (se veía con «MÁQUINAS DE COSER»). La web de la
+plataforma tiene el mismo fallo.
+
+## Entornos
+
+El build deduce el entorno de la rama que le pasa Cloudflare (`CF_PAGES_BRANCH`) o de la variable
+`ENTORNO_WEB`:
+
+| Rama | Entorno | Indexable | Panel |
+|---|---|---|---|
+| `main` | producción | solo si «Permitir que Google indexe la web» está activado (Ajustes → Avanzado). **Desactivado hasta tener el dominio** | sí |
+| `develop`, `staging`, `dev-victor` | pruebas (aviso amarillo) | no | sí, edita su rama |
+| otras (`feature/…`, borradores `cms/…`) | pruebas | no | no |
+| (en tu equipo) | local | no | con `npm run panel` |
+
+El contenido marcado como «Solo para pruebas» se ve en local y en los entornos de prueba, nunca
+en producción (hay una entrada de prueba en el blog para comprobarlo).
+
+## Catálogo
+
+| Qué | Dónde se edita | Dirección |
+|---|---|---|
+| Categorías y subcategorías (una subcategoría tiene «Categoría padre»; dos niveles) | Catálogo: categorías | `/catalogo/<categoria>/` y `/catalogo/<categoria>/<subcategoria>/` |
+| Productos (fabricante, modelo, referencia opcional, categoría, precio, estado, oferta, condición, hasta 5 fotos, características, «Compatible con») | Catálogo: productos | `/productos/<identificador>/` |
+| Fabricantes (nombre e imagen) | Catálogo: fabricantes | sin página: filtro y fichas |
+| Todo el catálogo: categorías y ofertas (o productos al azar) | — | `/catalogo/` |
+
+- **Identificador** de un producto: lo crea el panel a partir del fabricante y el modelo y no cambia.
+- **Estados**: «Disponible»; «En oferta» (precio de oferta entre dos fechas, ambas incluidas, hora de
+  Madrid; fuera de ellas, precio normal); «No disponible» (no se publica, ni sus fotos).
+- **Accesorios**: son productos; en «Compatible con» se eligen las máquinas. La ficha de la máquina
+  muestra «Accesorios para esta máquina» y la del accesorio, «Compatible con».
+- **Menú**: la opción con «Desplegable del catálogo» (Ajustes → Menú) se rellena sola con las
+  categorías y subcategorías, por su orden.
+- **Portada y `/catalogo/`**: productos barajados en cada visita y ofertas (las más recientes
+  primero), N por página (Ajustes → Listados). En las categorías, filtros por fabricante y «Solo segunda mano»
+  (salen solo si hay más de un fabricante o productos nuevos y de segunda mano; se combinan).
+- **Panel**: la lista de productos se puede filtrar (fabricante, categoría, ofertas, no
+  disponibles, segunda mano; los filtros se combinan), agrupar y ordenar, y el buscador del panel
+  encuentra por modelo, referencia, fabricante o nombre (están en el «summary» de la colección). Los
+  filtros de fabricante y categoría los añade el build a `dist/config.yml` con los que existen.
+- **Avisos del build**: falta de modelo, fabricante o categoría; producto sin fotos; referencias
+  repetidas; garantía de segunda mano menor de 12 meses; ofertas incompletas o mal escritas;
+  «Compatible con» a productos que no existen. Una **oferta terminada** no es un aviso: el producto
+  se muestra solo como disponible, con su precio normal (el build lo anota como información).
+- **Datos de prueba**: 2 fabricantes, 7 categorías y 12 productos «Solo para pruebas» (uno de cada
+  caso: ofertas vigente, futura y caducada, segunda mano, sin precio, no disponible, accesorios).
+  Bórralos desde el panel cuando haya datos reales (y sus fotos `public/img/productos/prueba-*`).
+
+**Prueba realizada (catálogo):** build en local y en producción (sin los datos de prueba: el
+catálogo sale vacío y las secciones de la portada no aparecen, sin fotos de prueba publicadas);
+0 enlaces rotos; con Playwright: 8 productos por página y 2 páginas en la portada, orden distinto
+al recargar, filtro por fabricante en una categoría, clic en «Sobre nosotros» lleva a su página y la
+flecha abre el desplegable, sin errores en la consola; capturas en escritorio y móvil. Panel con
+`decap-server`: filtros «Fabricante: Marca Prueba Dos» + «Categoría: Máquinas de coser» dejan sus 3
+máquinas; la búsqueda «HD 100» y la de la referencia «PRE-002» encuentran su producto.
+
+## Ajustes del sitio y tema
+
+Desde Decap → Ajustes del sitio: nombre, descripción, logo, imagen para compartir, colores de la
+marca (texto, fondo y acento; el build avisa si no se leen bien), menú, enlaces legales del pie,
+redes y dirección pública. El logo, los iconos y los colores son **provisionales** hasta tener
+los definitivos (el tema se llama «Tienda» internamente).
+
+## Seguridad
+
+- Login del panel: `state` en cookie `HttpOnly` y el token **solo** para las webs de la lista
+  exacta de `lib/origenes.js` (sin comodines en `pages.dev`, que es un dominio compartido).
+- Todo el HTML del contenido pasa por `sanitize-html`; política de seguridad de contenidos (CSP)
+  en todas las páginas: solo scripts de la propia web y sin scripts en línea.
+- Nada se sirve desde CDN externos. Las claves van en Cloudflare: **nunca en el código**.
+- Nunca un formulario que pida datos de tarjeta (lo prohíbe el plan gratuito de Cloudflare y la
+  tienda no cobra en la web).

@@ -1,6 +1,10 @@
 node_modules/
 dist/
 
+# Pruebas locales de las funciones de Cloudflare (npm run funciones): claves y caché
+.dev.vars
+.wrangler/
+
 # Ajustes personales de Claude Code (no se suben)
 .claude/settings.local.json
 

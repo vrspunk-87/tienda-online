@@ -1,0 +1,37 @@
+{
+  "name": "tienda-online",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "web": "npm run build && npx --yes serve@14.2.6 dist -l 3000",
+    "panel": "npx --yes decap-server@3.11.5",
+    "funciones": "npm run build && npx --yes wrangler@4.151.3 pages dev dist --port 8788"
+  },
+  "dependencies": {
+    "@fontsource-variable/nunito": "5.3.0",
+    "@fontsource-variable/nunito-sans": "5.3.0",
+    "@fontsource/montserrat": "5.3.0",
+    "bootstrap": "5.3.8",
+    "bootstrap-icons": "1.13.2",
+    "bootswatch": "5.3.8",
+    "marked": "18.1.2",
+    "node-html-parser": "9.0.5",
+    "opentype.js": "2.0.0",
+    "pagefind": "1.5.2",
+    "sanitize-html": "2.18.1",
+    "sharp": "0.35.5",
+    "yaml": "2.9.1"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "devDependencies": {
+    "exceljs": "4.4.0"
+  },
+  "overrides": {
+    "exceljs": {
+      "uuid": "11.1.1"
+    }
+  }
+}

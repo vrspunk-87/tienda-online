@@ -7,7 +7,8 @@ de cambiar algo que no conozcas**.
 ## Norma principal: solo modificar ficheros, nunca Git
 
 - **Nunca hagas commits, push, merge, rebase, checkout, reset, stash, tags ni ninguna otra
-  operación que cambie el repositorio o las ramas.** Tampoco uses `gh` ni la CLI de `vercel`.
+  operación que cambie el repositorio o las ramas.** Tampoco uses `gh`, la CLI de `vercel` ni
+  despliegues con `wrangler` (`wrangler pages deploy`); `npm run funciones` (prueba local) sí.
 - **Solo puedes modificar ficheros** en esta carpeta. La persona que te lo pide revisa los
   cambios (Sourcetree → File Status) y hace ella el commit y el push.
 - Sí puedes usar Git **solo para leer**: `git status`, `git diff`, `git log`, `git branch`,
@@ -48,8 +49,20 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 ## Estado
 
-**Fase 0 (decisiones) cerrada; fase 1 sin empezar.** No hay código todavía: solo el plan y los
-borradores legales. **Plan detallado por fases: [docs/PLAN.md](docs/PLAN.md)** (fases 0 a 8).
+**Fase 0 cerrada; fase 1a (base en local) hecha; fase 2 (catálogo en el panel) y parte de la 4
+(menú, portada, categorías, ficha básica) hechas; fase 1b (despliegue en Cloudflare) pendiente.**
+Hay datos de catálogo «Solo para pruebas» (fabricantes «Marca Prueba…», categorías y 12 productos
+con fotos provisionales `prueba-*.jpg`): se ven en local y en pruebas, nunca en producción; se
+borran cuando haya datos reales.
+Base copiada y adaptada de la plataforma: generador, panel, blog, tema provisional «Tienda»,
+borradores legales y login del panel como funciones de Cloudflare (`functions/api/`,
+`lib/origenes.js`). Logo, iconos y colores **provisionales**. Detalle en
+[README.md](README.md); **plan por fases: [docs/PLAN.md](docs/PLAN.md)** (fases 0 a 8).
+
+**Instalar y construir desde Linux (Claude Code):** en la carpeta conectada npm no puede renombrar
+`node_modules`; se copia el proyecto a una carpeta de trabajo fuera de ella (sin `node_modules`,
+`.git` ni `dist`), se hace `npm ci` / `npm run build` allí y solo se devuelve `package-lock.json`
+si cambia.
 
 ## Decisiones (5-11-2026; detalle y motivos en docs/PLAN.md, fase 0)
 
@@ -62,9 +75,18 @@ borradores legales. **Plan detallado por fases: [docs/PLAN.md](docs/PLAN.md)** (
 - **Estados del producto**: **disponible**; **en oferta** (precio de oferta entre dos fechas, por
   días, hora de Madrid; se muestran precio anterior tachado, porcentaje y fecha de fin);
   **no disponible** (retirado de la web pública, 404; solo queda en el panel).
+- **Nombre**: **Máquinas de Coser Zafra** (Zafra, Badajoz); logo, iconos y colores siguen provisionales.
+- **Producto**: fabricante, **modelo** (obligatorio) y **referencia** (opcional); clave interna =
+  **identificador** (nombre del fichero, no cambia). **Accesorios** = productos con «compatible con»
+  (relación guardada en el accesorio, se muestra en las dos fichas).
 - **Condición**: nuevo o **segunda mano** (indicado en la ficha, con estado y garantía de al menos
   12 meses).
-- **Ficha**: fotos en **carrusel** que se amplía al pulsar.
+- **Ficha**: fotos en **carrusel** que se amplía al pulsar (fase 4; ahora, ficha básica).
+- **Fabricantes**: nombre e imagen, **sin página**; solo para asociar y filtrar.
+- **Menú**: Catálogo (primera opción, desplegable automático de categorías y subcategorías, que son
+  páginas del panel), Sobre nosotros (→ Dónde estamos), Contacto y horario, Blog.
+- **Portada y /catalogo/**: resumen del catálogo barajado en cada visita y Ofertas (primero las que
+  empezaron más recientemente), 8 por página, ajustable en Ajustes → Listados.
 - **Precios**: «Precio orientativo, IVA incluido». El precio de oferta **se respeta** si la
   solicitud llega dentro de las fechas.
 - **Solicitud**: **nombre, correo y teléfono obligatorios**; «Observaciones», opcional. Número

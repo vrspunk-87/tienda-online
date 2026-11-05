@@ -1,0 +1,66 @@
+nombre: Máquinas de Coser Zafra
+nombre_corto: Coser Zafra
+descripcion: Máquinas de coser y accesorios en Zafra. Consulta el catálogo con
+  precios orientativos y solicita presupuesto sin compromiso.
+localidad: Zafra
+provincia: Badajoz
+logo: /img/logo.png
+imagen_compartir: /img/compartir.jpg
+apariencia:
+  tema: tienda
+  marca:
+    texto: "#1f2933"
+    fondo: "#ffffff"
+    acento: "#2f6f8f"
+  fuentes_google: false
+  color_principal: ""
+  color_enlaces: ""
+  color_barra_movil: "#1f2933"
+  css_adicional: ""
+navbar:
+  diseno: clasico
+  color: blanco
+  fijo: true
+  buscador: true
+menu:
+  - texto: Catálogo
+    enlace: /catalogo/
+    catalogo: true
+  - texto: Sobre nosotros
+    pagina: sobre-nosotros
+    hijos:
+      - texto: Dónde estamos
+        pagina: donde-estamos
+  - texto: Contacto y horario
+    pagina: contacto-y-horario
+  - texto: Blog
+    enlace: /blog/
+legales:
+  - texto: Aviso legal
+    pagina: aviso-legal
+  - texto: Privacidad
+    pagina: politica-de-privacidad
+  - texto: Cookies
+    pagina: politica-de-cookies
+  - texto: Condiciones de la solicitud de presupuesto
+    pagina: condiciones-solicitud-presupuesto
+redes:
+  facebook: ""
+  instagram: ""
+  email: ""
+  whatsapp: ""
+  rss: true
+listados:
+  noticias_por_pagina: 12
+  productos_portada: 8
+  ofertas_portada: 4
+  productos_por_pagina: 4
+imagenes:
+  ancho_maximo: 2000
+  calidad: 82
+  peso_maximo_kb: 500
+avanzado:
+  url: https://tienda-online.pages.dev
+  indexable: false
+  avisos_github:
+    - "@vrspunk-87"

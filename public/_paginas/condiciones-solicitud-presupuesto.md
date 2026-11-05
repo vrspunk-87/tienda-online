@@ -7,7 +7,7 @@ noindex: true
 
 ## 1. Quiénes somos
 
-Esta web pertenece a [Nombre y apellidos o razón social], con nombre comercial [Nombre de la tienda], NIF [NIF], domicilio en [dirección postal], correo [correo de la tienda] y teléfono [teléfono de la tienda]. Más datos en el [aviso legal](/paginas/aviso-legal/).
+Esta web pertenece a [Nombre y apellidos o razón social], con nombre comercial Máquinas de Coser Zafra, NIF [NIF], domicilio en [dirección postal], correo [correo de la tienda] y teléfono [teléfono de la tienda]. Más datos en el [aviso legal](/paginas/aviso-legal/).
 
 ## 2. Esta web no vende: es un catálogo
 
@@ -64,7 +64,7 @@ Estas condiciones se rigen por la legislación española. Si eres consumidor, se
 *(Solo debe cumplimentar y enviar este formulario si desea desistir del contrato.)*
 
 - A la atención de [Nombre y apellidos o razón social], [dirección postal], [correo de la tienda]:
-- Por la presente le comunico que desisto de mi contrato de venta del siguiente bien: [referencia y nombre del producto]
+- Por la presente le comunico que desisto de mi contrato de venta del siguiente bien: [nombre, fabricante y modelo del producto]
 - Recibido el: [fecha]
 - Nombre del consumidor: …
 - Domicilio del consumidor: …

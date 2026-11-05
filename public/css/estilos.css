@@ -1,0 +1,228 @@
+/*
+  Ajustes propios encima del tema (para cambios del día a día está el campo
+  «CSS adicional» en Decap → Ajustes del sitio → Apariencia).
+  Usa siempre las variables del tema (--bs-primary, --bs-dark...)
+  para que todo se adapte solo si cambias de tema en tema.css.
+*/
+
+/* Logo de la cabecera */
+.logo {
+  height: 40px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+@media (max-width: 575.98px) {
+  .logo { height: 34px; }
+}
+
+/* Que los saltos a una sección no queden tapados por la cabecera fija */
+section[id] { scroll-margin-top: 80px; }
+
+/* Iconos del pie: botones redondos con buen tamaño para el dedo */
+.social {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 1.15rem;
+}
+
+/* Portada */
+.hero {
+  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+.hero h1 { max-width: 20ch; line-height: 1.1; }
+.hero .lead { max-width: 55ch; }
+
+/* Separación entre secciones */
+.seccion { padding-top: 4rem; padding-bottom: 4rem; }
+
+/* Tarjetas de las entradas del blog */
+.noticia .card-img-top { aspect-ratio: 16 / 9; object-fit: cover; }
+.noticia .stretched-link:hover,
+.noticia .stretched-link:focus-visible { text-decoration: underline; }
+
+/* Artículo */
+.articulo { max-width: 760px; }
+.articulo-cuerpo { font-size: 1.1rem; line-height: 1.7; }
+.articulo-cuerpo img { max-width: 100%; height: auto; }
+.articulo-cuerpo blockquote {
+  border-left: 4px solid var(--bs-primary);
+  padding-left: 1rem;
+  color: var(--bs-secondary-color);
+}
+
+/* Menú centrado: un poco más de aire entre logo y enlaces en escritorio */
+@media (min-width: 992px) {
+  .nav-centrado .navbar-brand { margin-right: 0; }
+  .nav-centrado .navbar-collapse { margin-top: .25rem; }
+}
+
+/* Las imágenes de las tarjetas llevan width/height (evita saltos al cargar) */
+.noticia picture { display: block; }
+.noticia .card-img-top { height: auto; }
+
+/* Enlace "Saltar al contenido" (solo visible al navegar con teclado) */
+.saltar:focus {
+  position: fixed;
+  top: .5rem;
+  left: .5rem;
+  z-index: 2000;
+  padding: .5rem 1rem;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  border: 2px solid var(--bs-primary);
+  border-radius: .375rem;
+}
+
+/* Botones de compartir */
+.compartir .btn { display: inline-flex; align-items: center; gap: .4rem; }
+
+/* Enlaces legales del pie */
+.enlaces-legales a { text-decoration: none; }
+.enlaces-legales a:hover { text-decoration: underline; }
+
+/* Títulos dentro del texto de las entradas y páginas */
+.articulo-cuerpo h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; }
+.articulo-cuerpo h3 { font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; }
+
+/* Pie: el build calcula un fondo con contraste suficiente (--tienda-pie-bg) */
+.pie-web { background: var(--tienda-pie-bg, var(--bs-dark)); color: rgba(255, 255, 255, .88); }
+.pie-web .link-light { color: #fff !important; }
+
+/* Buscador (Pagefind) con los colores del tema */
+#buscador {
+  --pagefind-ui-primary: var(--bs-primary);
+  --pagefind-ui-text: var(--bs-body-color);
+  --pagefind-ui-background: var(--bs-body-bg);
+  --pagefind-ui-border: var(--bs-border-color);
+  --pagefind-ui-tag: var(--bs-tertiary-bg);
+  --pagefind-ui-font: inherit;
+  --pagefind-ui-border-radius: .375rem;
+}
+
+/* Paginación legible con cualquier tema (algunos la pintan en colores con poco contraste) */
+.pagination {
+  --bs-pagination-color: var(--bs-link-color);
+  --bs-pagination-bg: var(--bs-body-bg);
+  --bs-pagination-border-color: var(--bs-border-color);
+  --bs-pagination-hover-color: var(--bs-link-hover-color);
+  --bs-pagination-hover-bg: var(--bs-tertiary-bg);
+  --bs-pagination-hover-border-color: var(--bs-border-color);
+  --bs-pagination-focus-color: var(--bs-link-hover-color);
+  --bs-pagination-focus-bg: var(--bs-tertiary-bg);
+  --bs-pagination-active-color: var(--tienda-texto-sobre-principal, #fff);
+  --bs-pagination-active-bg: var(--bs-primary);
+  --bs-pagination-active-border-color: var(--bs-primary);
+  --bs-pagination-disabled-color: var(--bs-secondary-color);
+  --bs-pagination-disabled-bg: var(--bs-body-bg);
+  --bs-pagination-disabled-border-color: var(--bs-border-color);
+}
+
+/* Aviso de entorno de pruebas (solo fuera de producción) */
+.aviso-entorno {
+  background: repeating-linear-gradient(45deg, #ffd43b, #ffd43b 12px, #fcc419 12px, #fcc419 24px);
+  color: #212529;
+  text-align: center;
+  font-size: .9rem;
+  padding: .4rem 1rem;
+  border-bottom: 2px solid #212529;
+}
+.aviso-entorno a { color: #212529; font-weight: 600; }
+
+/* ---------- Añadido para la tienda ---------- */
+
+/* Antetítulo pequeño encima de un título */
+.antetitulo {
+  display: block;
+  margin-bottom: .5rem;
+  font-size: .8125rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--bs-primary);
+}
+
+/* Portada */
+.hero { background: var(--bs-tertiary-bg); border-bottom: 1px solid var(--bs-border-color); }
+
+/* Enlaces «Ver todo…» con flecha */
+.enlace-flecha { text-decoration: none; }
+.enlace-flecha::after { content: " →"; }
+.enlace-flecha:hover { text-decoration: underline; }
+
+/* Botón destacado: color de acento de la marca */
+.btn-destacado {
+  --bs-btn-bg: var(--bs-primary); --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-color: var(--tienda-texto-sobre-principal, #fff);
+  --bs-btn-hover-bg: var(--bs-dark); --bs-btn-hover-border-color: var(--bs-dark); --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--bs-dark); --bs-btn-active-border-color: var(--bs-dark); --bs-btn-active-color: #fff;
+  font-weight: 600;
+}
+
+/* Botones del editor (Decap → «+» → Botón) */
+.boton-p { margin: 1.5rem 0; }
+
+/* Resalte opcional en un titular */
+.resalte { color: var(--bs-primary); }
+
+/* Pie */
+.pie-titulo { font-size: .875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #fff; }
+.pie-marca { color: #fff; font-weight: 700; font-size: 1.15rem; }
+.pie-marca:hover { color: #fff; text-decoration: underline; }
+.pie-enlaces a { color: rgba(255, 255, 255, .88); text-decoration: none; }
+.pie-enlaces a:hover { color: #fff; text-decoration: underline; }
+.pie-legal { border-top: 1px solid rgba(255, 255, 255, .2); }
+.logo-pie { height: 56px; width: auto; object-fit: contain; }
+
+/* Menú a pantalla completa (diseño «pantalla», en el móvil) */
+@media (max-width: 991.98px) {
+  .menu-pantalla { height: 100vh !important; }
+}
+
+/* ---------- Menú: opciones con página propia y desplegable ----------
+   El texto lleva a la página y la flecha abre el desplegable */
+.nav-dividido { display: flex; flex-wrap: wrap; align-items: center; }
+.nav-dividido > .dropdown-toggle-split { padding-left: .25rem; padding-right: .25rem; }
+@media (max-width: 991.98px) {
+  .nav-dividido > .dropdown-menu { flex-basis: 100%; }
+  /* En el móvil, la flecha con buen tamaño para el dedo */
+  .nav-dividido > .dropdown-toggle-split { padding: .5rem .9rem; }
+}
+.dropdown-item.sub { font-size: .95em; }
+
+/* ---------- Catálogo ---------- */
+.producto .producto-foto { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--bs-tertiary-bg); }
+.producto .producto-foto picture, .producto .producto-foto img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.producto-sin-foto { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 8rem; font-size: 2.5rem; color: var(--bs-secondary-color); background: var(--bs-tertiary-bg); }
+.producto .stretched-link:hover, .producto .stretched-link:focus-visible,
+.categoria .stretched-link:hover, .categoria .stretched-link:focus-visible { text-decoration: underline !important; }
+.producto:hover, .categoria:hover { box-shadow: 0 6px 18px rgba(0, 0, 0, .08) !important; }
+.producto-nombre { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.producto-fabricante { display: flex; align-items: center; gap: .4rem; color: var(--bs-secondary-color); font-weight: 600; }
+.logo-fabricante { width: auto; max-width: 80px; object-fit: contain; }
+.categoria .card-img-top { aspect-ratio: 16 / 9; object-fit: cover; height: auto; }
+
+/* Precio y ofertas (el rojo de la oferta tiene contraste suficiente sobre blanco) */
+.precio { font-weight: 800; font-size: 1.1rem; }
+.precio-oferta { color: #b42318; }
+.precio-anterior { color: var(--bs-secondary-color); font-size: .9em; }
+.precio-consultar { font-weight: 600; font-size: 1rem; color: var(--bs-secondary-color); }
+.descuento { background: #b42318; color: #fff; vertical-align: .15em; }
+.etiqueta-oferta, .etiqueta-segunda { position: absolute; top: .5rem; left: .5rem; font-size: .75rem; }
+.etiqueta-oferta { background: #b42318; color: #fff; }
+.etiqueta-segunda { background: var(--bs-dark); color: #fff; }
+.etiqueta-oferta + .etiqueta-segunda { top: 2.1rem; }
+.etiqueta-segunda.position-static { position: static; }
+
+/* Ficha de producto */
+.ficha-precio .precio { font-size: 1.75rem; }
+.ficha-foto-principal img { width: 100%; height: auto; }
+.ficha-miniaturas img { width: 96px; height: 96px; object-fit: cover; border: 1px solid var(--bs-border-color); }
+.ficha-datos dt { font-weight: 600; color: var(--bs-secondary-color); }
+.ficha-caracteristicas th { width: 40%; font-weight: 600; }
+.migas .breadcrumb { font-size: .9rem; }

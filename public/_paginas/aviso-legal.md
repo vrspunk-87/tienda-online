@@ -10,7 +10,7 @@ noindex: true
 En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de esta web:
 
 - **Titular:** [Nombre y apellidos de la persona autónoma, o razón social de la sociedad]
-- **Nombre comercial:** [Nombre de la tienda]
+- **Nombre comercial:** Máquinas de Coser Zafra
 - **NIF:** [NIF]
 - **Domicilio:** [Dirección postal completa]
 - **Correo electrónico:** [correo de la tienda]
@@ -19,7 +19,7 @@ En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad 
 
 ## Objeto de la web
 
-Esta web es un **catálogo** de los productos de [Nombre de la tienda]. Permite consultarlos y **solicitar presupuesto** de los que interesen. **En esta web no se venden productos ni se realizan pagos**: tras recibir una solicitud, la tienda se pone en contacto con quien la envió para, si ambas partes están de acuerdo, acordar la venta fuera de la web. El funcionamiento se explica en las [condiciones de la solicitud de presupuesto](/paginas/condiciones-solicitud-presupuesto/).
+Esta web es un **catálogo** de los productos de Máquinas de Coser Zafra. Permite consultarlos y **solicitar presupuesto** de los que interesen. **En esta web no se venden productos ni se realizan pagos**: tras recibir una solicitud, la tienda se pone en contacto con quien la envió para, si ambas partes están de acuerdo, acordar la venta fuera de la web. El funcionamiento se explica en las [condiciones de la solicitud de presupuesto](/paginas/condiciones-solicitud-presupuesto/).
 
 ## Precios
 

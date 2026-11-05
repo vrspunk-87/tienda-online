@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar</title>
+  <meta name="description" content="Busca en la web de la tienda.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/css/tema.css">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+</head>
+<body>
+  <div id="cabecera"></div>
+
+  <main class="flex-grow-1 container seccion articulo">
+    <h1 class="display-5 fw-bold mb-4">Buscar</h1>
+    <!-- Buscador de Pagefind: el índice lo crea el build en /pagefind/ -->
+    <div id="buscador"></div>
+    <noscript><p>El buscador necesita JavaScript.</p></noscript>
+  </main>
+
+  <div id="pie"></div>
+
+  <script src="/pagefind/pagefind-ui.js"></script>
+  <script src="/js/buscar.js"></script>
+</body>
+</html>

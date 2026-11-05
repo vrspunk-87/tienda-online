@@ -1,0 +1,62 @@
+/*
+  Tema «Tienda» (diseño propio, PROVISIONAL y neutro hasta tener logo y colores).
+  Se añade detrás de Bootstrap cuando en Decap → Ajustes del sitio → Apariencia → Tema
+  se elige «Tienda». Los colores (--tienda-texto, --tienda-fondo, --tienda-acento) los
+  genera el build a partir de «Colores de la marca»; aquí solo se usan las variables.
+*/
+
+/* ---------- Letras (servidas desde la propia web, licencia OFL) ---------- */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 1000;
+  src: url("/vendor/fonts/nunito-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 1000;
+  src: url("/vendor/fonts/nunito-sans-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+:root, [data-bs-theme=light] {
+  --tienda-fuente-titulos: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-body-font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-body-font-size: 1.0625rem;
+  --bs-body-line-height: 1.6;
+  --bs-secondary-color: color-mix(in srgb, var(--tienda-texto) 70%, var(--tienda-fondo));
+  --bs-border-color: color-mix(in srgb, var(--tienda-texto) 12%, var(--tienda-fondo));
+  --bs-border-radius: 8px;
+  --bs-border-radius-lg: 12px;
+  --bs-emphasis-color: var(--tienda-texto);
+  --bs-focus-ring-color: color-mix(in srgb, var(--tienda-acento) 40%, transparent);
+}
+
+/* ---------- Tipografía ---------- */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6,
+.navbar-brand {
+  font-family: var(--tienda-fuente-titulos);
+  letter-spacing: -.01em;
+}
+h1, .h1, h2, .h2, [class*="display-"] { font-weight: 800; }
+h3, .h3, h4, .h4, h5, .h5 { font-weight: 700; }
+
+/* ---------- Botones ---------- */
+.btn-primary {
+  --bs-btn-bg: var(--tienda-acento); --bs-btn-border-color: var(--tienda-acento); --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--tienda-texto); --bs-btn-hover-border-color: var(--tienda-texto); --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--tienda-texto); --bs-btn-active-border-color: var(--tienda-texto); --bs-btn-active-color: #fff;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--tienda-acento); --bs-btn-border-color: var(--tienda-acento);
+  --bs-btn-hover-bg: var(--tienda-acento); --bs-btn-hover-border-color: var(--tienda-acento); --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--tienda-acento); --bs-btn-active-border-color: var(--tienda-acento); --bs-btn-active-color: #fff;
+}
+
+/* ---------- Tarjetas ---------- */
+.card { border-color: var(--bs-border-color); }
+.card.shadow-sm { box-shadow: 0 1px 3px rgba(0, 0, 0, .06) !important; }
+.card.noticia:hover { box-shadow: 0 6px 18px rgba(0, 0, 0, .08) !important; }

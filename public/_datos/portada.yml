@@ -1,0 +1,11 @@
+hero:
+  antetitulo: Máquinas de coser · Zafra
+  titulo: Máquinas de coser y accesorios
+  texto: Consulta nuestro catálogo con precios orientativos y solicita
+    presupuesto sin compromiso.
+  boton1:
+    texto: Ver el catálogo
+    enlace: /catalogo/
+  boton2:
+    texto: Ver el blog
+    enlace: /blog/

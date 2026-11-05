@@ -82,8 +82,8 @@ podemos enviarte el correo de confirmación, pero la tienda se pondrá en contac
 > Hemos recibido tu solicitud de presupuesto **S-AAAA-NNNN** del [fecha]. Estos son los productos
 > que has elegido:
 >
-> - [Referencia] — [Nombre del producto] — [precio orientativo] €
-> - [Referencia] — [Nombre del producto] — **Oferta: [precio de oferta] €** (antes [precio] €;
+> - [Nombre del producto] ([fabricante] [modelo], ref. [referencia, si la tiene]) — [precio orientativo] €
+> - [Nombre del producto] ([fabricante] [modelo]) — **Oferta: [precio de oferta] €** (antes [precio] €;
 >   se respeta porque tu solicitud se recibió durante la oferta)
 > - …
 >
@@ -94,7 +94,7 @@ podemos enviarte el correo de confirmación, pero la tienda se pondrá en contac
 >
 > Si no has enviado tú esta solicitud, ignora este correo o escríbenos para que borremos tus datos.
 >
-> [Nombre de la tienda] · [teléfono] · [dirección]
+> Máquinas de Coser Zafra · [teléfono] · [dirección]
 > Información sobre protección de datos: [dirección de la web]/paginas/politica-de-privacidad/
 
 No incluye el nombre ni las observaciones del cliente (para que el formulario no sirva para enviar

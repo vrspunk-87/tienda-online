@@ -1,0 +1,5 @@
+# Redirecciones de Cloudflare Pages. Formato: origen destino [código], una por línea.
+# «*» al final del origen vale por cualquier resto de la dirección (y «:splat» lo repite
+# en el destino). El build no avisa de enlaces rotos hacia los orígenes de esta lista.
+# Ejemplo:
+# /antigua-pagina/ /paginas/nueva/ 301

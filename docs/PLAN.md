@@ -36,6 +36,11 @@ Lo que hay que cerrar antes de construir, porque cambia la estructura.
 - **Ofertas por días**: empiezan a las 0:00 del día de inicio y acaban a las 23:59 del día de fin,
   hora de Madrid. Se muestran el **precio anterior tachado**, el **porcentaje de descuento** y la
   **fecha de fin** («Oferta hasta el 30 de noviembre»).
+- **Nombre de la tienda: Máquinas de Coser Zafra** (Zafra, Badajoz).
+- **Datos del producto**: además del fabricante, **modelo obligatorio** y **referencia opcional**. Como la
+  referencia puede faltar, cada producto tiene un **identificador** interno (nombre del fichero).
+- **Accesorios**: son **productos** como los demás; cada accesorio indica con qué productos es
+  **compatible** y la web lo muestra en las dos fichas (fases 2 y 4).
 - **No disponible = retirado de la web pública**: solo queda en el panel. Su antigua dirección da
   la página 404.
 - **Alojamiento: Cloudflare Pages, plan gratuito** (Vercel Hobby no permite uso comercial y Vercel
@@ -103,6 +108,13 @@ Resultado: decisiones anotadas aquí y resumidas en `CLAUDE.md` (sección «Deci
 
 ## Fase 1 — Base copiada y adaptada de la plataforma
 
+**1a (en local): hecha el 5-11-2026** (puntos 1 a 7 salvo el despliegue; ver README). Quitado de la
+plataforma: propuestas, temas, actividades, formulario, canales y estadísticas de Vercel; las
+noticias son ahora el **blog** (`/blog/`). **1b (desplegado): pendiente** — proyecto de Cloudflare
+Pages (comprobar el nombre y ajustar `lib/origenes.js` y `base_url`), aplicación OAuth de GitHub,
+variables `OAUTH_CLIENT_ID` y `OAUTH_CLIENT_SECRET`, versión de Node del build, entornos de
+prueba y prueba del login real.
+
 Se copia de `web-plataforma` lo reaprovechable y se adapta aquí (`web-plataforma` solo se
 consulta):
 
@@ -131,15 +143,28 @@ página de ejemplo.
 
 ## Fase 2 — Catálogo en el panel
 
+**Hecha el 5-11-2026 junto con parte de la fase 4** (ver «Adelantado de la fase 4» al final de esta
+fase). Pendiente de la fase 2: la prueba de volumen (punto 8).
+
 Colecciones de Decap (`public/config.yml`) y lectura en el build:
 
-1. **Fabricantes** (`public/_fabricantes/`): nombre, logo (opcional), descripción, web.
+1. **Fabricantes** (`public/_fabricantes/`): nombre e imagen (logotipo). **Sin página propia**: solo
+   sirven para asociar y filtrar los productos; su nombre e imagen salen en tarjetas y fichas.
 2. **Categorías** (`public/_categorias/`): nombre, descripción, imagen, **orden en el menú** y
    **categoría padre** (relación opcional con otra categoría → subcategoría). Solo dos niveles: el
    build avisa si una subcategoría tiene a su vez padre o si hay ciclos.
 3. **Productos** (`public/_productos/`):
-   - **referencia** única (también nombre del fichero y de la carpeta de imágenes);
-   - nombre, fabricante (relación), **subcategoría o categoría** (relación);
+   - **identificador** único, interno: es el nombre del fichero, la dirección de la ficha y la
+     carpeta de imágenes. Decap lo crea al dar de alta el producto a partir del fabricante y el
+     modelo (p. ej. `singer-heavy-duty-4432`) y **no cambia** aunque se edite el producto;
+   - nombre, fabricante (relación), **modelo** (obligatorio), **referencia** (opcional: la del
+     fabricante o la de la tienda; se muestra en la ficha y se busca en el buscador),
+     **subcategoría o categoría** (relación);
+   - **compatible con** (solo en los accesorios, opcional): lista de productos (relación con la
+     misma colección) con los que sirve el accesorio. Los **accesorios son productos** como los
+     demás (su propia categoría, precio, estado, fotos, oferta, lista de presupuesto); la relación
+     se guarda **en el accesorio** (un prensatelas sirve para muchas máquinas: se edita una sola
+     vez) y el build la muestra en los dos sentidos;
    - **precio orientativo** (número) y, opcional, texto «a consultar» en lugar de precio;
    - **estado**: disponible / en oferta / no disponible;
    - **oferta** (se muestra en el panel solo con estado «en oferta»): precio de oferta, fecha de
@@ -154,10 +179,14 @@ Colecciones de Decap (`public/config.yml`) y lectura en el build:
    - destacado (portada), «solo para pruebas» (como en la plataforma).
 4. **Menú generado** desde las categorías (con sus subcategorías como desplegable), ordenado por el
    campo de orden; las páginas fijas (quiénes somos, contacto…) siguen en Ajustes del sitio.
-5. **Validación en el build** con `console.warn('Aviso: …')`: referencias repetidas, relaciones a
+5. **Validación en el build** con `console.warn('Aviso: …')`: identificadores repetidos, referencias
+   repetidas (aviso, no error), producto sin modelo, «compatible con» que apunta a sí mismo o a un
+   producto que no existe, relaciones a
    fabricantes o categorías que no existen, precio no numérico, producto sin imágenes o sin texto
    alternativo, oferta sin precio o sin fechas, precio de oferta igual o mayor que el normal, fin
-   antes del inicio y **ofertas caducadas** (para que alguien las pase a «disponible»).
+   antes del inicio. Las **ofertas terminadas** no son un aviso: el producto pasa solo a mostrarse como
+   disponible, con su precio normal (en el panel sigue «En oferta» hasta que se cambie o se pongan
+   fechas nuevas); el build lo anota como información.
 6. **Productos no disponibles**: el build no genera su ficha ni los incluye en listados, menú (una
    subcategoría sin productos visibles no sale), sitemap, buscador ni `catalogo.json`, y **no
    publica sus imágenes**. Siguen en el panel para volver a activarlos. Su antigua dirección da la
@@ -186,21 +215,24 @@ npm run importar               → escribe public/_productos/ y public/img/produ
 ```
 
 1. **Plantilla Excel** `catalogo/productos.xlsx` (fuera de `public/`): una fila por producto y una
-   columna por campo (referencia, nombre, fabricante, categoría, subcategoría, precio orientativo,
+   columna por campo (identificador, nombre, fabricante, modelo, referencia, categoría,
+   subcategoría, compatible con (identificadores separados por comas), precio orientativo,
    estado, precio de oferta, inicio y fin de la oferta, condición (nuevo / segunda mano), estado del
    producto y garantía, destacado, descripción, características, **imágenes**). Pestañas de ayuda con las
    listas válidas de fabricantes, categorías y estados (desplegables en las celdas).
-2. **Imágenes por convención de nombre**: `catalogo/imagenes/<referencia>-1.jpg`,
-   `<referencia>-2.jpg`… (el número fija el orden; la 1 es la principal). La columna «imágenes» es
+   En las filas nuevas el identificador puede ir vacío: el importador lo crea a partir del
+   fabricante y el modelo (y lo escribe en el Excel en la siguiente exportación).
+2. **Imágenes por convención de nombre**: `catalogo/imagenes/<identificador>-1.jpg`,
+   `<identificador>-2.jpg`… (el número fija el orden; la 1 es la principal). La columna «imágenes» es
    opcional: si está vacía, se usan las que sigan la convención. Texto alternativo: columna propia
    o, si falta, el nombre del producto (con aviso).
 3. **`scripts/importar-catalogo.js`** (`exceljs` y `sharp`, ya usados en la plataforma):
-   - valida todo antes de escribir nada (referencias únicas, fabricantes y categorías existentes,
+   - valida todo antes de escribir nada (identificadores únicos, «compatible con» válido, fabricantes y categorías existentes,
      precios, imágenes que existen, **5 como máximo**, formato) y para con un informe claro si hay errores;
    - **crea o actualiza** solo los campos que vienen en el Excel; no borra productos que no estén
      en él (los lista como aviso; para retirar uno, estado «no disponible» o borrarlo en el panel);
    - **reduce y comprime** las imágenes al importarlas (ancho y calidad máximos de Ajustes) y las
-     guarda en `public/img/productos/<referencia>/`; si una imagen no ha cambiado, no la reescribe;
+     guarda en `public/img/productos/<identificador>/`; si una imagen no ha cambiado, no la reescribe;
    - informe final: nuevos, modificados (con el campo y el valor anterior), sin cambios, avisos.
 4. **`scripts/exportar-catalogo.js`**: genera el Excel desde los ficheros actuales, para que los
    cambios hechos en el panel no se pierdan. **Regla: exportar siempre antes de editar el Excel.**
@@ -220,9 +252,28 @@ npm run importar               → escribe public/_productos/ y public/img/produ
 Prueba: importar el catálogo ficticio de la fase 2, cambiar precios y estados, volver a importar y
 comprobar el informe y el `git diff`.
 
+**Adelantado de la fase 4 (5-11-2026), a petición de Víctor:**
+- **Menú**: «Catálogo» primera opción, con desplegable automático de categorías y subcategorías; «Sobre
+  nosotros» con desplegable («Dónde estamos»); «Contacto y horario»; «Blog». En las opciones con
+  página y desplegable, el texto lleva a la página y la flecha abre el desplegable.
+- **Portada**: botones «Ver el catálogo» y «Ver el blog»; bajo el bloque principal, **resumen del
+  catálogo** (foto, fabricante, modelo y precio), **8 por página** (ajustable) en dos filas,
+  **barajado en cada visita**; debajo, si hay ofertas, **Ofertas** (precio de oferta, anterior
+  tachado y porcentaje), 8 por página (ajustable), primero las que **empezaron más recientemente**.
+- **`/catalogo/`**: tarjetas de las categorías y, debajo, las ofertas o, si no hay, el resumen
+  barajado como en la portada.
+- **Páginas de categoría y subcategoría** con su texto del panel, sus subcategorías y sus productos
+  (paginados en el navegador, con filtro por fabricante).
+- **Ficha básica**: fotos (principal y miniaturas enlazadas, sin carrusel todavía), fabricante con
+  su imagen, modelo, referencia, condición, precio u oferta, características, descripción,
+  «Compatible con», «Accesorios para esta máquina» y «Más en la categoría». Botón provisional
+  «Pedir información» (a Contacto) hasta la lista de presupuesto de la fase 5.
+- Paginación, orden al azar y filtro en `public/js/catalogo.js` (sin JavaScript se ven los N
+  primeros en un orden que cambia cada día, o la lista completa en las categorías).
+
 ## Fase 4 — Fichas, listados, portada y buscador
 
-1. **Ficha de producto** `/productos/<referencia>/`:
+1. **Ficha de producto** `/productos/<identificador>/`:
    - **carrusel** con las fotos (hasta 5): flechas, puntos o miniaturas, deslizar con el dedo en el
      móvil y flechas del teclado. Al **pulsar una foto se amplía** a pantalla completa, con el
      mismo carrusel, y se cierra con la X, la tecla Esc o tocando fuera. JS propio en un fichero
@@ -232,16 +283,21 @@ comprobar el informe y el `git diff`.
    - precio con «orientativo» y, en oferta, el **precio de oferta destacado**, el anterior
      **tachado**, el **porcentaje de descuento** y «Oferta hasta el …»;
    - etiqueta **«Segunda mano»** con el estado del producto y su garantía, si es el caso;
+   - **fabricante, modelo y referencia** (si la tiene) junto al nombre;
+   - en una máquina, bloque **«Accesorios para esta máquina»** (los accesorios disponibles que la
+     incluyen en «compatible con»), cada uno con su botón «Añadir a mi lista de presupuesto»; en un
+     accesorio, **«Compatible con»** con enlaces a esas máquinas (solo las visibles);
    - fabricante y categoría enlazados, características, botones «Añadir a mi lista de presupuesto» y «Solicitar presupuesto de este
    producto», productos relacionados (misma subcategoría o fabricante).
 2. **Listados con paginación**: `/categorias/<categoria>/`, `/categorias/<categoria>/<subcategoria>/`
-   y `/fabricantes/<fabricante>/`; orden por novedad o precio (enlaces a páginas generadas, sin
-   depender de JS). Etiqueta «Oferta» en las tarjetas de los productos en oferta.
-3. **Página `/ofertas/`** con los productos en oferta vigente (enlace en el menú solo si hay alguno).
-4. **Portada**: destacados, ofertas, categorías principales y novedades.
-5. **Buscador Pagefind** con filtros por categoría, fabricante, «en oferta» y «segunda mano».
-6. **SEO y datos estructurados** `Product` (nombre, imágenes, marca, referencia y condición:
-   nueva o usada). Con precios
+   (las direcciones son `/catalogo/<categoria>/` y `/catalogo/<categoria>/<subcategoria>/`; los
+   fabricantes no tienen página, se filtran en cada listado). Etiqueta «Oferta» en las tarjetas de los productos en oferta.
+3. **Ofertas**: en la portada y en `/catalogo/` (hecho). Página propia `/ofertas/`, solo si se pide.
+4. **Portada**: hecha (resumen del catálogo y ofertas); «destacados» queda para más adelante si se pide.
+5. **Buscador Pagefind** con filtros por categoría, fabricante, «en oferta» y «segunda mano»; se
+   puede buscar por modelo y por referencia.
+6. **SEO y datos estructurados** `Product` (nombre, imágenes, marca, modelo, referencia como `sku`,
+   condición nueva o usada y, en los accesorios, `isAccessoryOrSparePartFor`). Con precios
    orientativos, en principio **sin `offers`** (no enviar a Google un precio que no es firme):
    comprobar los requisitos vigentes de Google antes de decidir.
 7. Accesibilidad como en la plataforma (contraste, teclado, textos alternativos).
@@ -254,7 +310,7 @@ Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
 **En el navegador**
 
 1. **Lista de presupuesto** guardada en el navegador (`localStorage`), en un fichero propio
-   `public/js/presupuesto.js` (la CSP prohíbe scripts en línea). Solo guarda referencias; como los
+   `public/js/presupuesto.js` (la CSP prohíbe scripts en línea). Solo guarda identificadores; como los
    productos son únicos, no hay cantidades. Contador en la cabecera.
 2. Página **`/presupuesto/`**: productos de la lista (nombre, foto, precio orientativo y total
    orientativo calculados con los datos publicados), quitar productos y formulario: **nombre, correo
@@ -267,14 +323,14 @@ Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
 
 **En el servidor** (`functions/api/solicitud.js`)
 
-4. El build genera `catalogo.json` (referencia, nombre, precio y, si la hay, oferta con su precio y
+4. El build genera `catalogo.json` (identificador, nombre, modelo, referencia, precio y, si la hay, oferta con su precio y
    fechas) solo con los productos disponibles o en oferta, y la función lo lleva incorporado
    (se importa al empaquetarla; en la plataforma, `api/propuesta.js` leía `formulario.yml`). **El servidor recalcula nombres, precios y total con
    ese catálogo; nunca usa los que envía el navegador.** El precio de oferta se aplica según la
    **fecha del momento del envío** (hora de Madrid) —la tienda respeta el precio de oferta en las
    solicitudes recibidas dentro de las fechas—, así que es correcto aunque la reconstrucción
    diaria se retrase.
-5. Rechaza referencias inexistentes o **no disponibles** (se informa al cliente y no se guardan).
+5. Rechaza identificadores inexistentes o **no disponibles** (se informa al cliente y no se guardan).
    La página `/presupuesto/` también marca y quita de la lista los productos que hayan dejado de
    estar disponibles desde que se añadieron, y actualiza los precios si ha empezado o terminado una
    oferta.
@@ -287,9 +343,9 @@ Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
    (`LockService`) para que no se repita con dos envíos simultáneos.
 8. **Hoja «Solicitudes»**: una fila por solicitud con número, fecha, **estado** (desplegable:
    Nueva, En revisión, Contactado, Aceptada, Rechazada, Cancelada), datos del cliente,
-   referencias, nombres y precio aplicado a cada uno (indicando si era de oferta), total orientativo, observaciones, consentimiento y versión del texto, y
+   nombre, modelo y referencia de cada producto y precio aplicado a cada uno (indicando si era de oferta), total orientativo, observaciones, consentimiento y versión del texto, y
    columnas libres para la tienda (notas, precio final). Todo como texto (sin fórmulas), como en la
-   plataforma. Opcional: pestaña «Líneas» con una fila por producto, para filtrar por referencia.
+   plataforma. Opcional: pestaña «Líneas» con una fila por producto, para filtrar por producto.
 9. **Aviso a la tienda** (al correo de la tienda, guardado en el script): número de solicitud, número de productos, total orientativo y enlace a la
    hoja; sin observaciones ni datos personales del cliente.
 10. **Acuse de recibo al cliente**: texto fijo editable en el panel («Hemos recibido tu solicitud
@@ -305,7 +361,7 @@ Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
 
 Prueba (con el script de Google simulado, como en la plataforma): solicitud correcta con fila,
 aviso y acuse; precios manipulados en el navegador → se ignoran; producto no disponible; oferta que empieza o termina
-entre la reconstrucción y el envío; referencia
+entre la reconstrucción y el envío; identificador
 inventada; robot; límites; números correlativos con envíos simultáneos; texto que empieza por
 `=` guardado como texto.
 
@@ -369,7 +425,7 @@ de la tienda, o un abogado con un encargo puntual.
 | Cambios del panel pisados por el Excel | Exportar antes de editar; aviso del importador |
 | Precios manipulados | Recalculados en el servidor con el catálogo del build |
 | Solicitar un producto que ya no está disponible | Solo entran en `catalogo.json` los disponibles; la tienda lo pasa a «no disponible» al venderlo |
-| Oferta que no empieza o no acaba a tiempo en la web | Reconstrucción diaria a medianoche; el servidor aplica el precio por fecha; aviso del build con ofertas caducadas |
+| Oferta que no empieza o no acaba a tiempo en la web | Reconstrucción diaria a medianoche; el servidor aplica el precio por fecha; nota del build con las ofertas terminadas |
 | Formulario usado para enviar correos a terceros | ALTCHA, límites, tope diario y acuse sin texto del cliente |
 | Cupo de correo de Google | Tope configurable por debajo del cupo; la solicitud se guarda aunque no salga el acuse |
 | Uso comercial en un plan gratuito que no lo permite | Cloudflare Pages lo permite; nunca recoger datos de tarjetas en la web |

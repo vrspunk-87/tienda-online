@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página no encontrada</title>
+  <meta name="description" content="La página que buscas no existe o se ha movido.">
+  <link rel="stylesheet" href="/css/tema.css">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <div id="cabecera"></div>
+
+  <main class="flex-grow-1 container seccion">
+    <div class="row">
+      <div class="col-lg-8">
+        <h1 class="display-5 fw-bold">No encontramos esta página</h1>
+        <p class="lead text-body-secondary">Puede que el enlace esté mal escrito o que el contenido se haya movido o ya no esté disponible.</p>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <a class="btn btn-destacado" href="/">Ir al inicio</a>
+          <a class="btn btn-outline-primary" href="/buscar/">Buscar en la web</a>
+          <a class="btn btn-outline-primary" href="/blog/">Ver el blog</a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="h4 fw-bold mt-5 mb-4">Últimas entradas del blog</h2>
+    <!-- El build pone aquí las últimas entradas del blog -->
+    <div id="bloque-noticias" data-limit="3" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+  </main>
+
+  <div id="pie"></div>
+
+</body>
+</html>
