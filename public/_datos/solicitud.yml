@@ -1,12 +1,12 @@
 activa: true
 titulo: Mi solicitud de presupuesto
-introduccion: Revisa los productos, indica cuántas unidades quieres de cada uno y
-  envíanos tus datos. La tienda se pondrá en contacto contigo para confirmar
+introduccion: Revisa los productos, indica cuántas unidades quieres de cada uno
+  y envíanos tus datos. La tienda se pondrá en contacto contigo para confirmar
   disponibilidad y precio final. Enviar la solicitud no te obliga a comprar.
-aceptacion: He leído y acepto las condiciones de la solicitud de presupuesto y la
-  información sobre protección de datos.
-info_privacidad: "Responsable: [Nombre o razón social]. Finalidad: responder a tu
-  solicitud de presupuesto y, si se acuerda, gestionar la venta. Base legal:
+aceptacion: He leído y acepto las condiciones de la solicitud de presupuesto y
+  la información sobre protección de datos.
+info_privacidad: "Responsable: [Nombre o razón social]. Finalidad: responder a
+  tu solicitud de presupuesto y, si se acuerda, gestionar la venta. Base legal:
   medidas precontractuales a petición tuya. Destinatarios: no se ceden datos
   salvo obligación legal; proveedores de alojamiento y correo (Cloudflare y
   Google). Derechos: acceso, rectificación, supresión y otros, en [correo de la
