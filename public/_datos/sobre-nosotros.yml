@@ -1,0 +1,65 @@
+provisional: true
+antetitulo: Sobre nosotros
+titulo: Toda una vida cosiendo en Zafra
+texto: |-
+  Somos una tienda familiar especializada en máquinas de coser. Empezamos vendiendo y arreglando máquinas a las costureras del pueblo y hoy atendemos también a talleres, tapiceros y escuelas de costura de toda la comarca.
+
+  Nos gusta que te lleves la máquina que de verdad necesitas: te escuchamos, te enseñamos varias, la probamos contigo y, cuando ya la tienes en casa, seguimos aquí para lo que haga falta.
+foto: ""
+foto_alt: ""
+desde: 1992
+cifras:
+  - numero: "{años}"
+    texto: años de experiencia
+  - numero: "{marcas}"
+    texto: marcas en el catálogo
+  - numero: Taller
+    texto: propio de reparación
+servicios:
+  - titulo: Venta
+    texto: Máquinas domésticas, industriales, bordadoras y todos sus accesorios.
+    icono: tienda
+    enlace_texto: Ver el catálogo
+    enlace: /catalogo/
+  - titulo: Segunda mano
+    texto: Máquinas revisadas en nuestro taller y con garantía de 12 meses.
+    icono: segunda_mano
+    enlace_texto: Ver el catálogo
+    enlace: /catalogo/
+  - titulo: Taller
+    texto: Reparación, limpieza y puesta a punto de máquinas de todas las marcas.
+    icono: taller
+    enlace_texto: Pedir cita
+    enlace: /paginas/contacto-y-horario/
+  - titulo: Asesoramiento
+    texto: Te ayudamos a elegir y te enseñamos a sacarle partido a tu máquina.
+    icono: asesoria
+    enlace_texto: Hablar con nosotros
+    enlace: /paginas/contacto-y-horario/
+porque:
+  titulo: Por qué comprar con nosotros
+  lista:
+    - titulo: La pruebas antes de llevártela
+      texto: En la tienda tienes las máquinas montadas para que cosas con ellas y compares.
+      icono: check
+    - titulo: Te enseñamos a usarla
+      texto: Al recogerla te explicamos el enhebrado, las puntadas y el mantenimiento básico.
+      icono: asesoria
+    - titulo: Servicio técnico propio
+      texto: Si algo falla, la arreglamos aquí mismo, sin envíos ni esperas largas.
+      icono: taller
+    - titulo: Recambios y accesorios
+      texto: Agujas, prensatelas, bobinas y más para que no te quedes a medias.
+      icono: precio
+historia:
+  - año: "1992"
+    texto: Abrimos la primera tienda en el centro de Zafra.
+  - año: "2005"
+    texto: Empezamos a trabajar con máquinas industriales para talleres.
+  - año: "2015"
+    texto: Montamos nuestro propio taller de reparación.
+  - año: "2026"
+    texto: Estrenamos la web con todo el catálogo y la solicitud de presupuesto.
+marcas:
+  mostrar: true
+  titulo: Marcas con las que trabajamos

@@ -12,3 +12,17 @@ info_privacidad: "Responsable: [Nombre o razón social]. Finalidad: responder a
   Google). Derechos: acceso, rectificación, supresión y otros, en [correo de la
   tienda]."
 boton: Enviar solicitud
+ventajas:
+  - texto: "Sin compromiso: no pagas nada ahora"
+    icono: check
+  - texto: Puedes verlo antes en la tienda
+    icono: tienda
+preferencia_contacto:
+  mostrar: true
+  pregunta: ¿Cómo prefieres que te contestemos?
+  opciones:
+    - llamada
+    - whatsapp
+    - correo
+accesorios: true
+notas: true

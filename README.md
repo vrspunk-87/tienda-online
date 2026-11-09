@@ -45,6 +45,8 @@ scripts/build.js                    Generador: crea dist/ a partir de public/ (t
 scripts/layout.js                   Cabecera y pie (a partir de los Ajustes del sitio)
 scripts/temas/tienda.css            Tema «Tienda» (provisional y neutro)
 scripts/comprimir-imagenes.js       Compresión de imágenes grandes (node scripts/comprimir-imagenes.js)
+scripts/pruebas-carga.mjs           Entorno local de pruebas con carga (ver «Probar con volumen»)
+docs/PRUEBA-DE-CARGA.md             Prueba de carga: hasta cuántos productos aguanta y por qué
 plantillas/articulo.html            Plantilla de las entradas del blog y las páginas
 docs/PLAN.md                        Plan por fases y decisiones
 docs/BORRADORES-LEGALES.md          Guía de los textos legales y preguntas para quien los revise
@@ -52,21 +54,20 @@ docs/GUIA-EDICION.md                Guía para quien edita en el panel
 
 public/                             ← LO QUE SE EDITA
   index.html                        Portada (el build rellena las secciones dinámicas)
-  blog/index.html                   Listado del blog
   404.html, buscar/index.html       Página de error y buscador
   config.yml                        ← CONFIGURACIÓN DE DECAP (colecciones y campos)
-  _datos/sitio.yml                  ← AJUSTES DEL SITIO: nombre, tema, colores, menú, pie, redes
-  _datos/portada.yml                ← TEXTOS DE LA PORTADA
+  _datos/sitio.yml                  ← AJUSTES DEL SITIO: nombre, portada, tema, colores, menú, pie, redes
   _posts/blog/<año>/                Entradas del blog (las crea Decap)
-  _paginas/                         Páginas (las crea Decap): Sobre nosotros, Dónde estamos,
-                                    Contacto y horario (provisionales) y los borradores legales
+  _paginas/                         Páginas de texto libre (las crea Decap): los borradores legales
+  _datos/contacto.yml, sobre-nosotros.yml  Contacto y horario, y Sobre nosotros (páginas con datos)
   _productos/, _categorias/,        Catálogo (los crea Decap). Ahora, datos «Solo para pruebas»
   _fabricantes/
   js/catalogo.js                    Rejillas de productos: paginación, orden al azar y filtro
   _headers, _redirects              Cabeceras de seguridad y caché, y redirecciones (Cloudflare)
   css/estilos.css, js/              Estilos y scripts propios (sin scripts en línea: CSP)
   img/                              Imágenes; logo.png, compartir.jpg e iconos/ son PROVISIONALES
-  admin/                            Panel de Decap (servido desde la propia web)
+  admin/                            Panel de Decap (servido desde la propia web); campos.js: campos
+                                    propios (categoría del producto con desplegables dependientes)
 ```
 
 ## Trabajar en local
@@ -114,13 +115,13 @@ El build deduce el entorno de la rama que le pasa Cloudflare (`CF_PAGES_BRANCH`)
 | (en tu equipo) | local | no | con `npm run panel` |
 
 El contenido marcado como «Solo para pruebas» se ve en local y en los entornos de prueba, nunca
-en producción (hay una entrada de prueba en el blog para comprobarlo).
+en producción. Los productos y la entrada del blog de prueba se borraron el 8-11-2026.
 
 ## Catálogo
 
 | Qué | Dónde se edita | Dirección |
 |---|---|---|
-| Categorías y subcategorías (una subcategoría tiene «Categoría padre»; dos niveles) | Catálogo: categorías | `/catalogo/<categoria>/` y `/catalogo/<categoria>/<subcategoria>/` |
+| Catálogo en tres niveles: tipos de producto › categorías › subcategorías (campo oculto `nivel`; el orden, en Ajustes del sitio) | Catálogo: tipos de producto, Catálogo: categorías y Catálogo: subcategorías | `/catalogo/<categoria>/`, `/catalogo/<categoria>/<subcategoria>/` y `/catalogo/<categoria>/<subcategoria>/<sub-subcategoria>/` |
 | Productos (fabricante, modelo, referencia opcional, categoría, precio, estado, oferta, condición, hasta 5 fotos, características, «Compatible con») | Catálogo: productos | `/productos/<identificador>/` |
 | Fabricantes (nombre e imagen) | Catálogo: fabricantes | sin página: filtro y fichas |
 | Todo el catálogo: categorías y ofertas (o productos al azar) | — | `/catalogo/` |
@@ -131,11 +132,35 @@ en producción (hay una entrada de prueba en el blog para comprobarlo).
   Madrid; fuera de ellas, precio normal); «No disponible» (no se publica, ni sus fotos).
 - **Accesorios**: son productos; en «Compatible con» se eligen las máquinas. La ficha de la máquina
   muestra «Accesorios para esta máquina» y la del accesorio, «Compatible con».
-- **Menú**: la opción con «Desplegable del catálogo» (Ajustes → Menú) se rellena sola con las
-  categorías y subcategorías, por su orden.
-- **Portada y `/catalogo/`**: productos barajados en cada visita y ofertas (las más recientes
-  primero), N por página (Ajustes → Listados). En las categorías, filtros por fabricante y «Solo segunda mano»
-  (salen solo si hay más de un fabricante o productos nuevos y de segunda mano; se combinan).
+- **Menú**: dos filas en el ordenador. La opción con «Desplegable del catálogo» (Ajustes → Menú)
+  crea la barra del catálogo (segunda fila): «Todo el catálogo», cada tipo de producto con su número
+  de productos y un panel con sus categorías y subcategorías (en el orden de Ajustes del sitio →
+  «Orden del catálogo en el menú»; lo que no esté ahí sale al final de su nivel, en alfabético, y el
+  build avisa) y «Ofertas». Su color se elige en Ajustes → Menú superior: diseño → Barra del
+  catálogo. En el móvil, el catálogo va arriba del menú y se navega por niveles.
+  Las categorías actuales siguen los árboles de máquinas y accesorios de la guía de la herramienta
+  de fabricantes.
+- **Buscador** (Pagefind, índice creado en cada despliegue): productos, categorías, entradas del
+  blog y páginas. /buscar/ muestra las categorías que coinciden, los productos con las tarjetas y
+  filtros del catálogo y el bloque del blog y las páginas; la caja de la cabecera da sugerencias
+  mientras se escribe (public/js/buscar.js y public/js/extras.js).
+- **Imágenes**: el build avisa de formatos que los navegadores no muestran (JXL, HEIC, TIFF…).
+- **Portada, `/catalogo/` y `/ofertas/`**: bloques configurables en Ajustes del sitio → Ajustes
+  generales → «Portada», «Página Catálogo», «Página Ofertas» y «Página Blog»: cada bloque
+  (productos barajados en cada visita, ofertas con las más recientes primero, entradas del blog)
+  se puede ocultar y tiene su número por página (paginación en el navegador, `public/js/catalogo.js`).
+  Lo de Página Catálogo vale también para cada tipo, categoría y subcategoría (sus productos y sus
+  ofertas). Filtros en «Nuestros productos» y «Productos en oferta» del catálogo y en /ofertas/:
+  barra compacta: «Fabricante (N)» despliega un panel con los logos (en gris hasta pasar el ratón
+  o marcarlos; varios = cualquiera de ellos), «Segunda mano», «En oferta (N)», «Precio» (deslizador en el ordenador; «Desde / Hasta» y
+  rangos rápidos en el móvil), «Ordenar» (recomendados, precio, nombre, modelo, novedades),
+  etiquetas con «×» de lo marcado,
+  «Quitar filtros» y cuántos productos se ven (salen solo si hay más de un fabricante o productos
+  nuevos y de segunda mano; se combinan). Las tarjetas de producto llevan pespunte, el logo del
+  fabricante sobre la foto y un botón «+» que añade el producto a la solicitud sin entrar en la ficha.
+  Paginación: «Mostrando 1–12 de 40 productos» y páginas en círculos, con «…» si hay muchas. Las ofertas se navegan como el catálogo:
+  /ofertas/ muestra las tarjetas de los tipos de producto y cada una lleva a
+  /ofertas/<tipo>/…/ con solo sus ofertas (y sus tarjetas, con cuántas ofertas tiene cada una).
 - **Ficha**: el **nombre** es el título y el modelo va debajo (también en las tarjetas); «Más en …»
   lleva el botón «Ver todo en …» a su categoría o subcategoría. Las **características** pueden
   ir sin nombre: entonces el valor ocupa la fila entera.
@@ -148,17 +173,8 @@ en producción (hay una entrada de prueba en el blog para comprobarlo).
   repetidas; garantía de segunda mano menor de 12 meses; ofertas incompletas o mal escritas;
   «Compatible con» a productos que no existen. Una **oferta terminada** no es un aviso: el producto
   se muestra solo como disponible, con su precio normal (el build lo anota como información).
-- **Datos de prueba**: 2 fabricantes, 7 categorías y 12 productos «Solo para pruebas» (uno de cada
-  caso: ofertas vigente, futura y caducada, segunda mano, sin precio, no disponible, accesorios).
-  Bórralos desde el panel cuando haya datos reales (y sus fotos `public/img/productos/prueba-*`).
-
-## Solicitud de presupuesto
-
-Panel → **Solicitud de presupuesto** (`public/_datos/solicitud.yml`): activarla o desactivarla y sus
-textos (título, introducción, casilla de aceptación, información de privacidad, botón). Desactivada,
-no se ven el botón de las fichas, el contador del menú ni la página `/presupuesto/` (la ficha enseña
-«Pedir información», que lleva a Contacto y horario).
-
+- **Datos de prueba**: borrados el 8-11-2026 (17 productos, sus fotos y la entrada del blog). Para
+  probar cambios con datos, crea productos con «Solo para pruebas» marcado: no salen en producción.
 - Ficha: «Añadir a la solicitud»; si ya está, «Añadir otra unidad» y «Ver mi solicitud».
 - Menú: icono con el número de productos (en el móvil, junto al botón del menú).
 - `/presupuesto/`: productos con unidades (1-99), subtotales y total orientativo, quitar, aviso si
@@ -203,3 +219,19 @@ los definitivos (el tema se llama «Tienda» internamente).
 - Nada se sirve desde CDN externos. Las claves van en Cloudflare: **nunca en el código**.
 - Nunca un formulario que pida datos de tarjeta (lo prohíbe el plan gratuito de Cloudflare y la
   tienda no cobra en la web).
+
+## Probar con volumen
+
+Para ver la web llena sin tocar el catálogo real:
+
+```
+node scripts/pruebas-carga.mjs media     # 150 productos y 40 entradas
+npm run web                              # http://localhost:3000
+node scripts/pruebas-carga.mjs limpiar   # quitarlo
+```
+
+Escenarios: `pequena` (40 y 10), `media` (150 y 40), `grande` (500 y 120), `sin-blog` (150
+productos, ninguna entrada) y `solo-blog` (ningún producto, 20 entradas), estos dos para ver qué
+desaparece con «Secciones sin contenido: ocultar». Usa las categorías y fabricantes reales y mezcla
+ofertas, precio a consultar, no disponibles, segunda mano, accesorios con compatibles y de 0 a 5
+fotos. Va marcado «Solo para pruebas» (producción no lo publica) y Git lo ignora.

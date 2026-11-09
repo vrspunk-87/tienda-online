@@ -25,6 +25,11 @@ slug:
 
 media_folder: "public/img"
 public_folder: "/img"
+# Tamaño máximo de cada fichero que se sube desde el panel: 8 MB. Decap 3.3 solo lo admite campo a
+# campo («media_library: { config: { max_file_size } }» en cada campo de imagen o fichero; un
+# «media_library» general busca una biblioteca externa y el panel no arranca). Las fotos más grandes
+# que el ancho o el peso de «Ajustes del sitio → Compresión de imágenes» se reducen después con
+# scripts/comprimir-imagenes.js (en la instalación real, automáticamente; docs/PLAN.md)
 
 collections:
   - name: "blog"
@@ -49,11 +54,23 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
       - { label: "Título", name: "title", widget: "string", hint: "En minúsculas normales e incluyendo palabras que buscaría la gente." }
       - { label: "Fecha de publicación", name: "date", widget: "datetime" }
-      - { label: "Resumen para buscadores y redes (opcional)", name: "description", widget: "text", required: false, hint: "1-2 frases (máx. ~155 caracteres). Si lo dejas vacío se usa el principio del texto." }
-      - { label: "Descripción para Google (opcional)", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
-      - { label: "Imagen destacada", name: "thumbnail", widget: "image", required: false, hint: "Es la que sale al compartir en WhatsApp o Facebook. Mejor horizontal." }
+      - { label: "Tema", name: "tema", widget: "string", required: false, hint: "Opcional. Una o dos palabras, p. ej. «Consejos», «Accesorios» o «Mantenimiento». Sale en una píldora en la tarjeta y en la entrada, y cada tema tiene su página en el blog (/blog/tema/…). Escríbelo siempre igual en todas las entradas del mismo tema." }
+      - { label: "Resumen", name: "description", widget: "text", required: false, hint: "1-2 frases (máx. ~155 caracteres). Sale bajo el título de la entrada, en su tarjeta y en Google. Si lo dejas vacío, en la tarjeta y en Google se usa el principio del texto (y bajo el título no sale nada)." }
+      - { label: "Descripción para Google", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
+      - { label: "Imagen destacada", name: "thumbnail", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Es la que sale al compartir en WhatsApp o Facebook. Mejor horizontal." }
       - { label: "Descripción de la imagen (texto alternativo)", name: "thumbnail_alt", widget: "string", required: false, hint: "Qué se ve en la imagen, p. ej. «Mesa de roble restaurada en el escaparate de la tienda»." }
       - { label: "Cuerpo", name: "body", widget: "markdown" }
+      - label: "Recuadro final"
+        name: "cta"
+        widget: "object"
+        collapsed: true
+        required: false
+        hint: "Recuadro con tijeras al final de la entrada, con un botón al catálogo y otro para preguntar por WhatsApp (o llamar). Si no rellenas nada, lleva al catálogo con un texto general."
+        fields:
+          - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+          - { label: "Tipo, categoría o subcategoría del catálogo", name: "categoria", widget: "relation", collection: "catalogo", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false, hint: "Opcional: a dónde lleva el botón (p. ej. Prensatelas en una entrada sobre prensatelas). Vacío: al catálogo." }
+          - { label: "Texto", name: "texto", widget: "string", required: false, hint: "Opcional. P. ej. «¿Buscas prensatelas para tu máquina? Mira los que tenemos o pregúntanos cuál te sirve.» La primera frase se destaca." }
+          - { label: "Texto del botón", name: "boton", widget: "string", required: false, hint: "Opcional. Por defecto, «Ver <categoría>» o «Ver el catálogo»." }
 
   - name: "paginas"
     label: "Páginas"
@@ -66,8 +83,8 @@ collections:
       - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Descripción breve (bajo el título, en la portada y en buscadores)", name: "description", widget: "string", required: false }
-      - { label: "Descripción para Google (opcional)", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
-      - { label: "Imagen de cabecera", name: "imagen", widget: "image", required: false }
+      - { label: "Descripción para Google", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
+      - { label: "Imagen de cabecera", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false }
       - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false, hint: "Qué se ve en la imagen." }
       - { label: "Contenido", name: "body", widget: "markdown", required: false }
       - { label: "Ocultar en buscadores", name: "noindex", widget: "boolean", default: false, required: false, hint: "Para páginas como el aviso legal: no aparecen en Google ni en el sitemap." }
@@ -75,26 +92,96 @@ collections:
   # ------------------------------------------------------------------
   # CATÁLOGO: categorías, productos y fabricantes (docs/PLAN.md, fase 2)
   # ------------------------------------------------------------------
-  - name: "categorias"
-    label: "Catálogo: categorías"
-    label_singular: "Categoría"
-    description: "Categorías y subcategorías del catálogo. Salen en el menú «Catálogo» (por su orden) y cada una tiene su página: /catalogo/categoria/ y /catalogo/categoria/subcategoria/. Una subcategoría es una categoría con «Categoría padre»; solo hay dos niveles."
+  - name: "tipos"
+    label: "Catálogo: tipos de producto"
+    label_singular: "Tipo de producto"
+    description: "Primer nivel del catálogo (p. ej. Máquinas domésticas, Bordadoras, Accesorios). Cada uno tiene su página (/catalogo/tipo/). El orden del menú se decide en Ajustes del sitio → «Orden del catálogo en el menú»."
     folder: "public/_categorias"
+    filter: { field: "nivel", value: "tipo" }
     create: true
     slug: "{{slug}}"
     media_folder: "/public/img/catalogo"
     public_folder: "/img/catalogo"
-    sortable_fields: ["orden", "title"]
-    summary: "{{title}}{{padre | ternary(' (subcategoría)', '')}}"
+    sortable_fields: ["title"]
+    summary: "{{title}}"
     fields:
       - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
-      - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «Máquinas de coser» o, como subcategoría, «Domésticas». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
-      - { label: "Categoría padre (solo en las subcategorías)", name: "padre", widget: "relation", collection: "categorias", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false, hint: "Déjalo vacío para una categoría principal. Elige una categoría principal (sin padre) para que esta sea su subcategoría." }
-      - { label: "Orden en el menú", name: "orden", widget: "number", value_type: "int", default: 10, required: false, hint: "Las de número más bajo salen antes (dentro de su categoría, en las subcategorías)." }
+      - { label: "Nivel", name: "nivel", widget: "hidden", default: "tipo" }
+      - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «Bordadoras». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
       - { label: "Descripción breve", name: "description", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título, en las tarjetas y en Google." }
-      - { label: "Imagen (opcional)", name: "imagen", widget: "image", required: false, hint: "Sale en la tarjeta de la categoría. Mejor horizontal." }
+      - { label: "Imagen", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Sale en la tarjeta. Mejor horizontal." }
       - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false }
-      - { label: "Texto (opcional)", name: "body", widget: "markdown", required: false, hint: "Introducción de la página de la categoría, antes de los productos." }
+      - { label: "Texto", name: "body", widget: "markdown", required: false, hint: "Introducción de su página, antes de los productos." }
+
+  - name: "categorias"
+    label: "Catálogo: categorías"
+    label_singular: "Categoría"
+    description: "Segundo nivel: cuelgan de un tipo de producto (p. ej. Bordadoras › Industriales). Su página es /catalogo/tipo/categoria/. El orden del menú se decide en Ajustes del sitio → «Orden del catálogo en el menú»."
+    folder: "public/_categorias"
+    filter: { field: "nivel", value: "categoria" }
+    create: true
+    slug: "{{slug}}"
+    media_folder: "/public/img/catalogo"
+    public_folder: "/img/catalogo"
+    sortable_fields: ["title"]
+    summary: "{{title}} · dentro de {{padre}}"
+    view_groups:
+      - { label: "Tipo de producto", field: "padre" }
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Nivel", name: "nivel", widget: "hidden", default: "categoria" }
+      - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «Industriales». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
+      - { label: "Tipo de producto", name: "padre", widget: "categoria-catalogo", niveles: 1, obligatorios: 1, hint: "El tipo de producto del que cuelga." }
+      - { label: "Descripción breve", name: "description", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título, en las tarjetas y en Google." }
+      - { label: "Imagen", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Sale en la tarjeta. Mejor horizontal." }
+      - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false }
+      - { label: "Texto", name: "body", widget: "markdown", required: false, hint: "Introducción de su página, antes de los productos." }
+
+  - name: "subcategorias"
+    label: "Catálogo: subcategorías"
+    label_singular: "Subcategoría"
+    description: "Tercer y último nivel: cuelgan de una categoría (p. ej. Bordadoras › Industriales › 1 Cabezal). Su página es /catalogo/tipo/categoria/subcategoria/. El orden del menú se decide en Ajustes del sitio → «Orden del catálogo en el menú»."
+    folder: "public/_categorias"
+    filter: { field: "nivel", value: "subcategoria" }
+    create: true
+    slug: "{{slug}}"
+    media_folder: "/public/img/catalogo"
+    public_folder: "/img/catalogo"
+    sortable_fields: ["title"]
+    summary: "{{title}} · dentro de {{padre}}"
+    view_groups:
+      - { label: "Categoría", field: "padre" }
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Nivel", name: "nivel", widget: "hidden", default: "subcategoria" }
+      - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «1 Cabezal». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
+      - { label: "Categoría", name: "padre", widget: "categoria-catalogo", niveles: 2, obligatorios: 2, hint: "La categoría de la que cuelga: elige primero su tipo de producto." }
+      - { label: "Descripción breve", name: "description", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título, en las tarjetas y en Google." }
+      - { label: "Imagen", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Sale en la tarjeta. Mejor horizontal." }
+      - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false }
+      - { label: "Texto", name: "body", widget: "markdown", required: false, hint: "Introducción de su página, antes de los productos." }
+
+  # Todas las categorías juntas, oculta en el menú del panel: la usan los campos que eligen una
+  # categoría de cualquier nivel (la del producto y el orden del menú en Ajustes del sitio)
+  - name: "catalogo"
+    label: "Catálogo: todas las categorías"
+    label_singular: "Categoría"
+    hide: true
+    folder: "public/_categorias"
+    create: false
+    slug: "{{slug}}"
+    media_folder: "/public/img/catalogo"
+    public_folder: "/img/catalogo"
+    summary: "{{title}}"
+    fields:
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Nivel", name: "nivel", widget: "hidden" }
+      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Cuelga de", name: "padre", widget: "string", required: false }
+      - { label: "Descripción breve", name: "description", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título, en las tarjetas y en Google." }
+      - { label: "Imagen", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Sale en la tarjeta. Mejor horizontal." }
+      - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false }
+      - { label: "Texto", name: "body", widget: "markdown", required: false, hint: "Introducción de su página, antes de los productos." }
 
   - name: "productos"
     label: "Catálogo: productos"
@@ -124,11 +211,15 @@ collections:
       - { label: "Nombre", name: "title", widget: "string", hint: "Nombre descriptivo, p. ej. «Máquina de coser mecánica de uso intensivo»." }
       - { label: "Fabricante", name: "fabricante", widget: "relation", collection: "fabricantes", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"] }
       - { label: "Modelo", name: "modelo", widget: "string", hint: "p. ej. «HD 4432». Junto con el fabricante forma el identificador del producto." }
-      - { label: "Referencia (opcional)", name: "referencia", widget: "string", required: false, hint: "La del fabricante o la de la tienda. Se muestra en la ficha y se puede buscar." }
-      - { label: "Categoría", name: "categoria", widget: "relation", collection: "categorias", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], hint: "Si la categoría tiene subcategorías, elige la subcategoría." }
+      - { label: "Referencia", name: "referencia", widget: "string", required: false, hint: "La del fabricante o la de la tienda. Se muestra en la ficha y se puede buscar." }
+      - { label: "Catálogo", name: "categoria", widget: "categoria-catalogo", niveles: 3, obligatorios: 1, hint: "El tipo de producto es obligatorio; la categoría y la subcategoría, opcionales. Cada desplegable solo ofrece lo que cuelga del anterior, en el orden de Ajustes del sitio. El producto sale en la página de lo que elijas y en las de los niveles superiores (se guarda el nivel más concreto: public/admin/campos.js)." }
       - { label: "Compatible con (solo accesorios)", name: "compatible_con", widget: "relation", collection: "productos", search_fields: ["title", "modelo", "referencia", "fabricante", "categoria"], value_field: "{{slug}}", display_fields: ["fabricante", "modelo", "title"], options_length: 100, multiple: true, required: false, hint: "Las máquinas para las que sirve este accesorio (salen en su ficha, en «Accesorios para esta máquina»). Escribe para buscar por nombre, modelo, referencia, fabricante o categoría (p. ej. «domesticas» o el nombre del fabricante)." }
       - { label: "Fecha de alta", name: "date", widget: "datetime", required: false, hint: "Para ordenar por novedad." }
-      - { label: "Precio orientativo (€, IVA incluido)", name: "precio", widget: "number", value_type: "float", min: 0, step: 0.01, required: false, hint: "Déjalo vacío para mostrar «Precio a consultar»." }
+      # Máquinas industriales: dos precios. Con una categoría de «tipo_dos_precios», este campo pasa a
+      # llamarse «Precio Completa» y aparece «Precio Cabezal» (public/admin/campos.js; la web lee
+      # la misma opción en scripts/build.js). Igual en la oferta.
+      - { label: "Precio orientativo (€, IVA incluido)", name: "precio", widget: "precio-producto", tipo_dos_precios: "maquinas-industriales", etiqueta_dos_precios: "Precio Completa (€, IVA incluido)", required: false, hint: "Déjalo vacío para mostrar «Precio a consultar». En las máquinas industriales es el de la máquina completa." }
+      - { label: "Precio Cabezal (€, IVA incluido)", name: "precio_cabezal", widget: "precio-producto", rol: "cabezal", tipo_dos_precios: "maquinas-industriales", required: false, hint: "Solo máquinas industriales: el precio del cabezal solo. Vacío = se vende solo completa." }
       - label: "Estado"
         name: "estado"
         widget: "select"
@@ -144,7 +235,8 @@ collections:
         collapsed: true
         hint: "Precio rebajado entre dos fechas (ambas incluidas, hora de Madrid). Fuera de esas fechas se muestra el precio normal."
         fields:
-          - { label: "Precio de oferta (€)", name: "precio", widget: "number", value_type: "float", min: 0, step: 0.01, required: false }
+          - { label: "Precio de oferta (€)", name: "precio", widget: "precio-producto", tipo_dos_precios: "maquinas-industriales", etiqueta_dos_precios: "Precio de oferta Completa (€)", required: false }
+          - { label: "Precio de oferta Cabezal (€)", name: "precio_cabezal", widget: "precio-producto", rol: "cabezal", tipo_dos_precios: "maquinas-industriales", required: false, hint: "Solo si el cabezal también está rebajado." }
           - { label: "Desde", name: "inicio", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
           - { label: "Hasta", name: "fin", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
       - label: "Condición"
@@ -169,19 +261,29 @@ collections:
         summary: "{{fields.alt}}"
         hint: "De 1 a 5. La primera es la principal (la de las tarjetas). Arrastra para cambiar el orden."
         fields:
-          - { label: "Foto", name: "imagen", widget: "image" }
+          - { label: "Foto", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } } }
           - { label: "Descripción de la foto (texto alternativo)", name: "alt", widget: "string", required: false, hint: "Qué se ve, p. ej. «Vista frontal con el prensatelas bajado». Si lo dejas vacío se usa el nombre del producto." }
-      - { label: "Resumen (opcional)", name: "description", widget: "text", required: false, hint: "1-2 frases para Google y al compartir. Si lo dejas vacío se usa el principio de la descripción." }
-      - label: "Características"
+      - { label: "Resumen", name: "description", widget: "text", required: false, hint: "1-2 frases para Google y al compartir. Si lo dejas vacío se usa el principio de la descripción." }
+      - label: "Características (puntos clave)"
+        name: "destacados"
+        widget: "list"
+        required: false
+        collapsed: true
+        summary: "{{fields.texto}}"
+        hint: "Lo más importante del producto en frases cortas, p. ej. «23 puntadas», «Enhebrador automático», «Ideal para tejidos gruesos». Salen en la pestaña «Características», con una marca de visto. Sin ninguna, no sale la pestaña."
+        fields:
+          - { label: "Texto", name: "texto", widget: "string" }
+      - label: "Ficha técnica"
         name: "caracteristicas"
         widget: "list"
         required: false
         collapsed: true
         summary: "{{fields.nombre | default('·')}} {{fields.valor}}"
-        hint: "Con característica y valor se muestra como «Puntadas: 23». Sin característica, el valor ocupa la fila entera (p. ej. «Incluye maleta de transporte»)."
+        hint: "Datos técnicos en tabla, p. ej. «Puntadas: 23», «Peso: 6,5 kg», «Potencia: 70 W». Sin dato, el valor ocupa la fila entera. En la pestaña «Ficha técnica» salen además el fabricante, el modelo, la referencia, la condición y la categoría."
         fields:
-          - { label: "Característica (opcional)", name: "nombre", widget: "string", required: false, hint: "p. ej. «Puntadas»" }
+          - { label: "Característica", name: "nombre", widget: "string", required: false, hint: "p. ej. «Puntadas»" }
           - { label: "Valor", name: "valor", widget: "string", hint: "p. ej. «23» o, sin característica, una frase completa" }
+      - { label: "Ficha técnica en PDF", name: "ficha_pdf", widget: "file", media_library: { config: { max_file_size: 8000000 } }, required: false, media_folder: "/public/img/fichas", public_folder: "/img/fichas", hint: "Opcional: la ficha o el manual del fabricante. Sale como botón «Descargar la ficha técnica (PDF)» en la pestaña «Ficha técnica»." }
       - { label: "Descripción", name: "body", widget: "markdown", required: false }
 
   - name: "fabricantes"
@@ -196,7 +298,7 @@ collections:
     fields:
       - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nombre", name: "title", widget: "string" }
-      - { label: "Imagen o logotipo", name: "imagen", widget: "image", required: false, hint: "Se muestra junto al nombre. Mejor PNG con fondo transparente." }
+      - { label: "Imagen o logotipo", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Se muestra junto al nombre, en pequeño: mejor horizontal, sin márgenes alrededor y en PNG (fondo transparente), WebP o SVG. Los formatos JXL y HEIC no se ven en muchos navegadores." }
 
   # ------------------------------------------------------------------
   # SOLICITUD DE PRESUPUESTO: activarla o no, y sus textos (docs/PLAN.md, fase 5)
@@ -214,47 +316,174 @@ collections:
           - { label: "Solicitud de presupuesto activa", name: "activa", widget: "boolean", default: true, hint: "Desactívala para quitar de la web el botón «Añadir a la solicitud», el contador del menú y el formulario. En las fichas queda un enlace a Contacto y horario." }
           - { label: "Título de la página", name: "titulo", widget: "string", default: "Mi solicitud de presupuesto" }
           - { label: "Introducción", name: "introduccion", widget: "text", required: false }
-          - { label: "Texto de la casilla de aceptación", name: "aceptacion", widget: "text", hint: "Casilla obligatoria. Debajo se añaden solos los enlaces a las condiciones y a la política de privacidad. Pendiente de revisión legal (docs/BORRADORES-LEGALES.md)." }
+          - { label: "Texto de la casilla de aceptación", name: "aceptacion", widget: "text", hint: "Casilla obligatoria. Se añaden solos los enlaces a las condiciones y a la política de privacidad, que se abren en una ventana con dos pestañas: hay que abrir las dos para poder aceptar. Pendiente de revisión legal (docs/BORRADORES-LEGALES.md)." }
           - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Pendiente de revisión legal." }
           - { label: "Texto del botón", name: "boton", widget: "string", default: "Enviar solicitud" }
+          - label: "Frases bajo el resumen"
+            name: "ventajas"
+            widget: "list"
+            required: false
+            collapsed: true
+            summary: "{{fields.texto}}"
+            hint: "Frases cortas que dan confianza, debajo del total (p. ej. «Sin compromiso: no pagas nada ahora», «Te contestamos en 24-48 h laborables»). Pon solo lo que la tienda pueda cumplir. Sin ninguna, no sale nada."
+            fields:
+              - { label: "Texto", name: "texto", widget: "string" }
+              - label: "Icono"
+                name: "icono"
+                widget: "select"
+                default: "check"
+                options:
+                  - { label: "Marca de visto", value: "check" }
+                  - { label: "Teléfono", value: "telefono" }
+                  - { label: "Tienda", value: "tienda" }
+                  - { label: "Bocadillo (asesoramiento)", value: "asesoria" }
+                  - { label: "Etiqueta (precio)", value: "precio" }
+                  - { label: "Camión (envío)", value: "envio" }
+                  - { label: "Herramientas (taller)", value: "taller" }
+                  - { label: "Escudo (garantía)", value: "garantia" }
+          - label: "Preferencia de contacto"
+            name: "preferencia_contacto"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Pregunta opcional del formulario: cómo prefiere el cliente que le contestéis."
+            fields:
+              - { label: "Preguntarla", name: "mostrar", widget: "boolean", default: true, required: false }
+              - { label: "Pregunta", name: "pregunta", widget: "string", default: "¿Cómo prefieres que te contestemos?", required: false }
+              - { label: "Opciones", name: "opciones", widget: "select", multiple: true, default: ["llamada", "whatsapp", "correo"], required: false, options: [{ label: "Llamada", value: "llamada" }, { label: "WhatsApp", value: "whatsapp" }, { label: "Correo", value: "correo" }], hint: "Con una sola opción, no se pregunta." }
+          - { label: "Sugerir accesorios compatibles", name: "accesorios", widget: "boolean", default: true, required: false, hint: "Bajo los productos, los accesorios marcados como «Compatible con» alguna máquina de la solicitud, con su botón «+»." }
+          - { label: "Permitir una nota en cada producto", name: "notas", widget: "boolean", default: true, required: false, hint: "Enlace «Añadir una nota» en cada producto (p. ej. «¿Hacéis demostración?»)." }
 
   # ------------------------------------------------------------------
-  # PORTADA: textos del bloque principal
+  # CONTACTO Y SOBRE NOSOTROS: páginas con datos (no texto libre)
   # ------------------------------------------------------------------
-  - name: "portada"
-    label: "Portada"
-    description: "Textos del bloque principal de la portada. Las entradas del blog de la portada salen solas."
+  - name: "tienda"
+    label: "Contacto y Sobre nosotros"
+    description: "Los datos de la tienda (dirección, teléfono, horario…) y la presentación. Salen en /paginas/contacto-y-horario/ y /paginas/sobre-nosotros/, en el pie, en los botones de WhatsApp y Llamar de las fichas y en los datos que lee Google."
+    editor:
+      preview: false
     files:
-      - name: "textos"
-        label: "Textos de la portada"
-        file: "public/_datos/portada.yml"
+      - name: "contacto"
+        label: "Contacto y horario"
+        file: "public/_datos/contacto.yml"
         fields:
-          - label: "Bloque principal (arriba)"
-            name: "hero"
-            widget: "object"
+          - { label: "Textos de ejemplo (aviso)", name: "provisional", widget: "boolean", default: false, required: false, hint: "Mientras esté marcado, la página avisa de que los datos son de ejemplo. Desmárcalo cuando estén revisados." }
+          - { label: "Título", name: "titulo", widget: "string", default: "Contacto y horario" }
+          - { label: "Introducción", name: "introduccion", widget: "text", required: false }
+          - { label: "Teléfono", name: "telefono", widget: "string", required: false, hint: "p. ej. 924 55 55 55. Sale como «Llámanos» y en el botón «Llamar» de las fichas." }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Con prefijo de país, sin + ni espacios, p. ej. 34610114417. Sale como «WhatsApp», en el pie y en «Preguntar por WhatsApp» de las fichas." }
+          - { label: "Correo electrónico", name: "correo", widget: "string", required: false }
+          - { label: "Dirección (calle y número)", name: "direccion", widget: "string", required: false }
+          - { label: "Código postal", name: "codigo_postal", widget: "string", required: false }
+          - { label: "Localidad", name: "localidad", widget: "string", required: false }
+          - { label: "Provincia", name: "provincia", widget: "string", required: false }
+          - { label: "Enlace a Google Maps", name: "mapa_enlace", widget: "string", required: false, hint: "En Google Maps, busca la tienda → «Compartir» → «Copiar enlace». Es el botón «Abrir en Google Maps». El mapa de la página se hace solo con la dirección y no se carga hasta que se pulsa «Ver el mapa» (así Google no pone cookies sin permiso)." }
+          - label: "Horario"
+            name: "horario"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.dias}} {{fields.manana}} {{fields.tarde}}"
+            hint: "Una fila por grupo de días con el mismo horario. Horas como 10:00-13:30. Sin mañana ni tarde, sale «Cerrado». Con esto se calcula «Abierto ahora · cierra a las…»."
             fields:
-              - { label: "Antetítulo", name: "antetitulo", widget: "string", required: false, hint: "Texto pequeño en mayúsculas encima del titular." }
-              - { label: "Titular", name: "titulo", widget: "string", hint: "Es el título principal de la web (también para Google). Mejor corto: una o dos frases." }
-              - { label: "Texto", name: "texto", widget: "text", required: false }
-              - label: "Botón principal"
-                name: "boton1"
-                widget: "object"
+              - { label: "Días", name: "dias", widget: "select", multiple: true, options: [{ label: "Lunes", value: "lunes" }, { label: "Martes", value: "martes" }, { label: "Miércoles", value: "miercoles" }, { label: "Jueves", value: "jueves" }, { label: "Viernes", value: "viernes" }, { label: "Sábado", value: "sabado" }, { label: "Domingo", value: "domingo" }] }
+              - { label: "Mañana", name: "manana", widget: "string", required: false, hint: "p. ej. 10:00-13:30 (vacío: cerrado por la mañana)" }
+              - { label: "Tarde", name: "tarde", widget: "string", required: false, hint: "p. ej. 17:00-20:00 (vacío: cerrado por la tarde)" }
+          - { label: "Nota bajo el horario", name: "nota_horario", widget: "string", required: false, hint: "p. ej. «Festivos: cerrado»." }
+          - label: "Aviso de cierre (vacaciones, festivos…)"
+            name: "aviso"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Sale sobre el horario hasta el día «Hasta». Entre «Desde» y «Hasta», «Abierto ahora» pasa a «Cerrado» con este texto."
+            fields:
+              - { label: "Texto", name: "texto", widget: "string", required: false, hint: "p. ej. «Cerrado por vacaciones del 24 al 26 de diciembre»." }
+              - { label: "Desde", name: "desde", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
+              - { label: "Hasta", name: "hasta", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
+          - label: "Cómo llegar"
+            name: "como_llegar"
+            widget: "list"
+            collapsed: true
+            required: false
+            summary: "{{fields.texto}}"
+            hint: "Frases cortas bajo el mapa: aparcamiento, referencias, accesibilidad, autobús…"
+            fields:
+              - { label: "Texto", name: "texto", widget: "string" }
+              - { label: "Icono", name: "icono", widget: "select", default: "referencia", options: [{ label: "Aparcamiento", value: "aparcamiento" }, { label: "Referencia (señal)", value: "referencia" }, { label: "Accesible", value: "accesible" }, { label: "Autobús", value: "autobus" }, { label: "Tren", value: "tren" }, { label: "Coche", value: "coche" }] }
+      - name: "sobre_nosotros"
+        label: "Sobre nosotros"
+        file: "public/_datos/sobre-nosotros.yml"
+        fields:
+          - { label: "Textos de ejemplo (aviso)", name: "provisional", widget: "boolean", default: false, required: false, hint: "Mientras esté marcado, la página avisa de que los textos son de ejemplo. Desmárcalo cuando estén revisados." }
+          - { label: "Antetítulo", name: "antetitulo", widget: "string", required: false }
+          - { label: "Titular", name: "titulo", widget: "string" }
+          - { label: "Presentación", name: "texto", widget: "markdown", required: false, hint: "Quiénes sois, cómo empezasteis y por qué la gente vuelve. Dos o tres párrafos." }
+          - { label: "Foto de la tienda", name: "foto", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Mejor horizontal (4:3). Sin foto sale un recuadro con el nombre de la tienda." }
+          - { label: "Descripción de la foto", name: "foto_alt", widget: "string", required: false }
+          - { label: "Año de apertura", name: "desde", widget: "number", value_type: "int", required: false, hint: "Sale en el sello «desde…» de la foto. En las cifras, «{años}» se convierte en los años que lleváis." }
+          - label: "Cifras"
+            name: "cifras"
+            widget: "list"
+            collapsed: true
+            required: false
+            summary: "{{fields.numero}} {{fields.texto}}"
+            hint: "Dos o tres datos llamativos. En «Número» puedes poner {años} (años desde la apertura) o {marcas} (fabricantes del catálogo) y se calculan solos."
+            fields:
+              - { label: "Número", name: "numero", widget: "string" }
+              - { label: "Texto", name: "texto", widget: "string" }
+          - label: "Qué hacemos"
+            name: "servicios"
+            widget: "list"
+            collapsed: true
+            required: false
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Texto", name: "texto", widget: "string", required: false }
+              - { label: "Icono", name: "icono", widget: "select", default: "check", options: [{ label: "Marca de visto", value: "check" }, { label: "Tienda", value: "tienda" }, { label: "Reciclar (segunda mano)", value: "segunda_mano" }, { label: "Herramientas (taller)", value: "taller" }, { label: "Bocadillo (asesoramiento)", value: "asesoria" }, { label: "Etiqueta (precio)", value: "precio" }, { label: "Camión (envío)", value: "envio" }, { label: "Escudo (garantía)", value: "garantia" }, { label: "Teléfono", value: "telefono" }] }
+              - { label: "Texto del enlace", name: "enlace_texto", widget: "string", required: false }
+              - { label: "Dirección del enlace", name: "enlace", widget: "string", required: false, hint: "p. ej. /catalogo/ o /paginas/contacto-y-horario/" }
+          - label: "Por qué comprar con nosotros"
+            name: "porque"
+            widget: "object"
+            collapsed: true
+            required: false
+            fields:
+              - { label: "Título", name: "titulo", widget: "string", default: "Por qué comprar con nosotros", required: false }
+              - label: "Razones"
+                name: "lista"
+                widget: "list"
+                required: false
+                summary: "{{fields.titulo}}"
                 fields:
-                  - { label: "Texto", name: "texto", widget: "string", required: false, hint: "Déjalo vacío para no mostrar el botón." }
-                  - { label: "Dirección", name: "enlace", widget: "string", required: false, hint: "p. ej. /catalogo/ o /blog/" }
-              - label: "Botón secundario"
-                name: "boton2"
-                widget: "object"
-                fields:
-                  - { label: "Texto", name: "texto", widget: "string", required: false, hint: "Déjalo vacío para no mostrar el botón." }
-                  - { label: "Dirección", name: "enlace", widget: "string", required: false }
+                  - { label: "Título", name: "titulo", widget: "string" }
+                  - { label: "Texto", name: "texto", widget: "string", required: false }
+                  - { label: "Icono", name: "icono", widget: "select", default: "check", options: [{ label: "Marca de visto", value: "check" }, { label: "Tienda", value: "tienda" }, { label: "Reciclar (segunda mano)", value: "segunda_mano" }, { label: "Herramientas (taller)", value: "taller" }, { label: "Bocadillo (asesoramiento)", value: "asesoria" }, { label: "Etiqueta (precio)", value: "precio" }, { label: "Camión (envío)", value: "envio" }, { label: "Escudo (garantía)", value: "garantia" }, { label: "Teléfono", value: "telefono" }] }
+          - label: "Nuestra historia"
+            name: "historia"
+            widget: "list"
+            collapsed: true
+            required: false
+            summary: "{{fields.año}} · {{fields.texto}}"
+            hint: "Momentos importantes en una línea de tiempo. Vacía, no sale."
+            fields:
+              - { label: "Año", name: "año", widget: "string" }
+              - { label: "Texto", name: "texto", widget: "string" }
+          - label: "Marcas"
+            name: "marcas"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Los logos de los fabricantes del catálogo (los que tienen logo), en gris."
+            fields:
+              - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+              - { label: "Título", name: "titulo", widget: "string", default: "Marcas con las que trabajamos", required: false }
 
   # ------------------------------------------------------------------
   # AJUSTES DEL SITIO: nombre, logo, tema, colores, menú, pie y redes
   # ------------------------------------------------------------------
   - name: "ajustes"
     label: "Ajustes del sitio"
-    description: "Nombre, logo, tema, colores, menú, pie y redes. Los cambios se aplican a toda la web en el siguiente despliegue (1-2 minutos)."
+    description: "Nombre, logo, portada, tema, colores, menú, pie y redes. Los cambios se aplican a toda la web en el siguiente despliegue (1-2 minutos)."
     editor:
       preview: false
     files:
@@ -267,8 +496,139 @@ collections:
           - { label: "Descripción", name: "descripcion", widget: "text", hint: "1-2 frases. Sale en Google, al compartir la portada y en el RSS." }
           - { label: "Localidad", name: "localidad", widget: "string", required: false }
           - { label: "Provincia", name: "provincia", widget: "string", required: false }
-          - { label: "Logo", name: "logo", widget: "image", required: false, hint: "Se muestra a la izquierda del menú (40 px de alto). Mejor PNG con fondo transparente." }
-          - { label: "Imagen por defecto al compartir", name: "imagen_compartir", widget: "image", hint: "La que sale en WhatsApp/Facebook cuando una página no tiene imagen propia. Tamaño ideal: 1200×630 px." }
+          - { label: "Logo", name: "logo", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Se muestra a la izquierda del menú (40 px de alto). Mejor PNG con fondo transparente." }
+          - { label: "Imagen por defecto al compartir", name: "imagen_compartir", widget: "image", media_library: { config: { max_file_size: 8000000 } }, hint: "La que sale en WhatsApp/Facebook cuando una página no tiene imagen propia. Tamaño ideal: 1200×630 px." }
+
+          - label: "Portada"
+            name: "portada"
+            widget: "object"
+            collapsed: true
+            hint: "Bloque principal (textos, ventajas, tipos de producto y último artículo del blog) y, debajo, los bloques Catálogo, Ofertas y Blog: si se muestran y cuántos elementos por página."
+            fields:
+              - label: "Bloque principal (arriba)"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Antetítulo", name: "antetitulo", widget: "string", required: false, hint: "Texto pequeño en mayúsculas encima del titular." }
+                  - { label: "Titular", name: "titulo", widget: "string", hint: "Es el título principal de la web (también para Google). Mejor corto: una o dos frases." }
+                  - { label: "Texto", name: "texto", widget: "text", required: false }
+                  - label: "Ventajas"
+                    name: "ventajas"
+                    widget: "list"
+                    required: false
+                    collapsed: true
+                    summary: "{{fields.texto}}"
+                    hint: "Frases cortas que salen con un icono debajo del texto (p. ej. «Presupuesto sin compromiso»). Mejor 3 o 4. Sin ninguna, no sale nada."
+                    fields:
+                      - { label: "Texto", name: "texto", widget: "string" }
+                      - label: "Icono"
+                        name: "icono"
+                        widget: "select"
+                        default: "check"
+                        options:
+                          - { label: "Marca de visto", value: "check" }
+                          - { label: "Bocadillo (asesoramiento)", value: "asesoria" }
+                          - { label: "Etiqueta (precio)", value: "precio" }
+                          - { label: "Reciclar (segunda mano)", value: "segunda_mano" }
+                          - { label: "Tienda", value: "tienda" }
+                          - { label: "Camión (envío)", value: "envio" }
+                          - { label: "Herramientas (taller)", value: "taller" }
+                          - { label: "Escudo (garantía)", value: "garantia" }
+                          - { label: "Teléfono", value: "telefono" }
+                  - { label: "Mostrar el último artículo del blog", name: "ultimo_articulo", widget: "boolean", default: true, required: false, hint: "Tarjeta con la fecha, el tema, el tiempo de lectura y el título de la entrada más reciente, debajo del texto. Se actualiza sola al publicar. A la derecha salen siempre los tipos de producto («Explora el catálogo»), en el orden del menú y con su número de productos." }
+              - label: "Bloque «Catálogo»"
+                name: "catalogo"
+                widget: "object"
+                collapsed: true
+                hint: "Productos del catálogo al azar (cambian en cada visita), con la barra de filtros (fabricante, segunda mano y «En oferta») y enlace a todo el catálogo. Sin productos no se muestra."
+                fields:
+                  - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+                  - { label: "Productos por página", name: "por_pagina", widget: "number", value_type: "int", min: 12, max: 48, step: 12, default: 12, hint: "De 12 en 12 (12, 24, 36 o 48): así las filas quedan completas en el ordenador (4 por fila), la tableta (3) y el móvil (2). Si hay más, se pasan con los botones de página." }
+              - label: "Bloque «Ofertas»"
+                name: "ofertas"
+                widget: "object"
+                collapsed: true
+                hint: "Ofertas vigentes, primero las que empezaron más recientemente, con enlace a la página Ofertas. Sin ofertas no se muestra."
+                fields:
+                  - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+                  - { label: "Productos por página", name: "por_pagina", widget: "number", value_type: "int", min: 12, max: 48, step: 12, default: 12, hint: "De 12 en 12 (12, 24, 36 o 48): así las filas quedan completas en el ordenador (4 por fila), la tableta (3) y el móvil (2). Si hay más, se pasan con los botones de página." }
+              - label: "Bloque «Blog»"
+                name: "blog"
+                widget: "object"
+                collapsed: true
+                hint: "Entradas del blog, de la más reciente a la más antigua, con enlace al blog. Sin entradas no se muestra."
+                fields:
+                  - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+                  - { label: "Entradas que se muestran", name: "por_pagina", widget: "number", value_type: "int", min: 3, max: 12, step: 3, default: 3, hint: "De 3 en 3 (3 por fila en el ordenador). Se muestran las más recientes, sin pasar de página, con el enlace «Ver todo el blog»." }
+
+          - label: "Página Catálogo"
+            name: "pagina_catalogo"
+            widget: "object"
+            collapsed: true
+            hint: "Textos de /catalogo/ y bloques de /catalogo/ (debajo de los tipos de producto) y de cada tipo de producto, categoría y subcategoría."
+            fields:
+              - { label: "Descripción breve", name: "descripcion", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título de la página Catálogo y en Google." }
+              - { label: "Texto", name: "texto", widget: "markdown", required: false, hint: "Introducción de la página Catálogo, debajo de la descripción." }
+              - label: "Listado de productos"
+                name: "productos"
+                widget: "object"
+                collapsed: true
+                hint: "«Nuestros productos», con los filtros de fabricante y segunda mano: en /catalogo/, todos al azar (cambian en cada visita); en un tipo, categoría o subcategoría, los suyos (con los de lo que cuelga de ella)."
+                fields:
+                  - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+                  - { label: "Productos por página", name: "por_pagina", widget: "number", value_type: "int", min: 12, max: 48, step: 12, default: 12, hint: "De 12 en 12 (12, 24, 36 o 48): así las filas quedan completas en el ordenador (4 por fila), la tableta (3) y el móvil (2). Si hay más, se pasan con los botones de página." }
+              - label: "Bloque «Ofertas»"
+                name: "ofertas"
+                widget: "object"
+                collapsed: true
+                hint: "«Productos en oferta», con los mismos filtros: en /catalogo/, todas; en un tipo, categoría o subcategoría, solo las suyas. Sin ofertas no se muestra."
+                fields:
+                  - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+                  - { label: "Productos por página", name: "por_pagina", widget: "number", value_type: "int", min: 12, max: 48, step: 12, default: 12, hint: "De 12 en 12 (12, 24, 36 o 48): así las filas quedan completas en el ordenador (4 por fila), la tableta (3) y el móvil (2). Si hay más, se pasan con los botones de página." }
+              - label: "Bloque «Blog»"
+                name: "blog"
+                widget: "object"
+                collapsed: true
+                hint: "Entradas del blog, con enlace al blog. Sin entradas no se muestra."
+                fields:
+                  - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+                  - { label: "Entradas que se muestran", name: "por_pagina", widget: "number", value_type: "int", min: 3, max: 12, step: 3, default: 3, hint: "De 3 en 3 (3 por fila en el ordenador). Se muestran las más recientes, sin pasar de página, con el enlace «Ver todo el blog»." }
+
+          - label: "Página Ofertas"
+            name: "pagina_ofertas"
+            widget: "object"
+            collapsed: true
+            hint: "La página /ofertas/ (y las de ofertas de cada tipo, categoría y subcategoría): textos, ofertas por página y blog."
+            fields:
+              - { label: "Descripción breve", name: "descripcion", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título de la página Ofertas y en Google." }
+              - { label: "Texto", name: "texto", widget: "markdown", required: false, hint: "Introducción de la página Ofertas, debajo de la descripción." }
+              - label: "Listado de ofertas"
+                name: "productos"
+                widget: "object"
+                collapsed: true
+                hint: "Todas las ofertas vigentes, primero las que empezaron más recientemente."
+                fields:
+                  - { label: "Productos por página", name: "por_pagina", widget: "number", value_type: "int", min: 12, max: 48, step: 12, default: 12, hint: "De 12 en 12 (12, 24, 36 o 48): así las filas quedan completas en el ordenador (4 por fila), la tableta (3) y el móvil (2). Si hay más, se pasan con los botones de página." }
+              - label: "Bloque «Blog»"
+                name: "blog"
+                widget: "object"
+                collapsed: true
+                hint: "Entradas del blog, con enlace al blog. Sin entradas no se muestra."
+                fields:
+                  - { label: "Mostrar", name: "mostrar", widget: "boolean", default: true, required: false }
+                  - { label: "Entradas que se muestran", name: "por_pagina", widget: "number", value_type: "int", min: 3, max: 12, step: 3, default: 3, hint: "De 3 en 3 (3 por fila en el ordenador). Se muestran las más recientes, sin pasar de página, con el enlace «Ver todo el blog»." }
+
+          - label: "Página Blog"
+            name: "pagina_blog"
+            widget: "object"
+            collapsed: true
+            hint: "La página /blog/ (y las de cada tema): textos, la entrada destacada y cuántas entradas por página (si hay más, se crean /blog/pagina/2/, 3…)."
+            fields:
+              - { label: "Título", name: "titulo", widget: "string", required: false, default: "Blog" }
+              - { label: "Descripción", name: "descripcion", widget: "string", required: false, default: "Novedades, consejos y noticias de la tienda.", hint: "Bajo el título y en Google." }
+              - { label: "Texto", name: "texto", widget: "markdown", required: false, hint: "Introducción en el recuadro con tijeras (solo en la primera página del blog). La primera frase se destaca. Vacío: no sale el recuadro." }
+              - { label: "Destacar la última entrada", name: "destacada", widget: "boolean", default: true, required: false, hint: "La más reciente sale en grande encima de las demás (en la primera página)." }
+              - { label: "Entradas por página", name: "por_pagina", widget: "number", value_type: "int", min: 3, max: 60, step: 3, default: 12, hint: "De 3 en 3 (3 por fila en el ordenador). Si hay más, se crean /blog/pagina/2/, 3…" }
 
           - label: "Apariencia"
             name: "apariencia"
@@ -332,7 +692,57 @@ collections:
                 fields:
                   - { label: "Texto", name: "texto", widget: "string", required: false }
                   - { label: "Dirección", name: "enlace", widget: "string", required: false, hint: "p. ej. /paginas/contacto/" }
-              - { label: "Mostrar el buscador (lupa) en el menú", name: "buscador", widget: "boolean", default: true, required: false }
+              - { label: "Mostrar el buscador en el menú", name: "buscador", widget: "boolean", default: true, required: false, hint: "En el ordenador, una caja de búsqueda junto al logo; en el móvil, «Buscar» dentro del menú." }
+              - label: "Barra del catálogo (ordenador)"
+                name: "barra_catalogo"
+                widget: "object"
+                collapsed: true
+                required: false
+                hint: "Segunda fila del menú con «Todo el catálogo», los tipos de producto (cada uno con su panel de categorías) y «Ofertas». Sale si en «Menú» hay una opción con «Desplegable del catálogo». En el móvil, el catálogo va arriba dentro del menú."
+                fields:
+                  - label: "Color"
+                    name: "color"
+                    widget: "select"
+                    default: "gris"
+                    options:
+                      - { label: "Gris suave (recomendado)", value: "gris" }
+                      - { label: "Blanco", value: "blanco" }
+                      - { label: "Color de la marca (acento)", value: "marca" }
+                      - { label: "Oscuro", value: "oscuro" }
+                      - { label: "Personalizado (el de abajo)", value: "personalizado" }
+                  - { label: "Color personalizado", name: "color_personalizado", widget: "color", required: false, hint: "Solo si en «Color» eliges «Personalizado». El texto se pone blanco u oscuro según lo que mejor se lea." }
+
+          - label: "Secciones sin contenido (catálogo, ofertas, solicitud y blog)"
+            name: "catalogo_vacias"
+            widget: "select"
+            default: "mostrar"
+            hint: "Con «Ocultarlos», lo que no tiene contenido desaparece de toda la web (menús, barra del catálogo, inicio, pie, tarjetas y buscador) y su página no se publica: los tipos, categorías y subcategorías sin productos; sin ningún producto, el catálogo, las ofertas y «Mi solicitud»; sin ofertas, las ofertas; y sin entradas, el blog y su RSS. Todo vuelve a salir solo en cuanto tenga contenido. En el panel todo sigue disponible."
+            options:
+              - { label: "Mostrarlos (con «Todavía no hay productos»)", value: "mostrar" }
+              - { label: "Ocultarlos de toda la web", value: "ocultar" }
+          - { label: "Número de productos en insignias", name: "insignias_productos", widget: "boolean", default: true, required: false, hint: "Las bolitas con el número de productos (o de ofertas) junto a cada tipo, categoría y subcategoría: en la barra y los desplegables del catálogo, el menú del móvil, el inicio, las tarjetas, el pie y el buscador. Desmárcalo para ocultarlas en toda la web." }
+          - label: "Orden del catálogo en el menú"
+            name: "catalogo_orden"
+            widget: "list"
+            collapsed: true
+            required: false
+            summary: "{{fields.categoria}}"
+            hint: "Orden del desplegable «Catálogo»: tipos de producto, dentro de cada uno sus categorías y dentro de cada categoría sus subcategorías. Arrastra para ordenar. Lo que no esté aquí sale al final, por orden alfabético (y el despliegue avisa)."
+            fields:
+              - { label: "Tipo de producto", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["tipo"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
+              - label: "Categorías"
+                name: "hijos"
+                widget: "list"
+                collapsed: true
+                required: false
+                summary: "{{fields.categoria}}"
+                fields:
+                  - { label: "Categoría", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["categoria"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
+                  - label: "Subcategorías"
+                    name: "hijos"
+                    widget: "list"
+                    required: false
+                    field: { label: "Subcategoría", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["subcategoria"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
 
           - label: "Menú superior: opciones"
             name: "menu"
@@ -345,7 +755,7 @@ collections:
               - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false, hint: "Elige una página creada en Páginas… " }
               - { label: "…o dirección", name: "enlace", widget: "string", required: false, hint: "…o escribe una dirección: / (inicio), /blog/, /buscar/ o una web externa. Si rellenas las dos, manda la dirección." }
               - { label: "Marcar también como activa en (avanzado)", name: "tambien", widget: "list", required: false, hint: "Rutas en las que esta opción debe aparecer resaltada, p. ej. /blog para «Blog»." }
-              - { label: "Desplegable del catálogo", name: "catalogo", widget: "boolean", default: false, required: false, hint: "Actívalo en la opción «Catálogo»: su desplegable se rellena solo con las categorías y subcategorías. Con texto y dirección (/catalogo/), al pulsar el texto se va a esa página y la flecha abre el desplegable." }
+              - { label: "Desplegable del catálogo", name: "catalogo", widget: "boolean", default: false, required: false, hint: "Actívalo en la opción «Catálogo»: en vez de salir en la primera fila, se crea la barra del catálogo (segunda fila en el ordenador, caja arriba del menú en el móvil) con «Todo el catálogo», los tipos de producto con sus categorías y subcategorías (en el orden de «Orden del catálogo en el menú») y «Ofertas». El texto de la opción se usa como título de esa barra." }
               - label: "Subopciones (desplegable)"
                 name: "hijos"
                 widget: "list"
@@ -373,34 +783,24 @@ collections:
             name: "redes"
             widget: "object"
             collapsed: true
-            hint: "Los que dejes vacíos no se muestran."
+            hint: "Los que dejes vacíos no se muestran. El correo y el WhatsApp del pie se rellenan en «Contacto y Sobre nosotros» → «Contacto y horario»."
             fields:
               - { label: "Facebook (dirección completa)", name: "facebook", widget: "string", required: false }
               - { label: "Instagram (dirección completa)", name: "instagram", widget: "string", required: false }
-              - { label: "Correo electrónico", name: "email", widget: "string", required: false }
-              - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Con prefijo de país, sin + ni espacios. Ejemplo: 34610114417" }
+              - { label: "Correo electrónico (oculto: va en Contacto y horario)", name: "email", widget: "hidden", required: false }
+              - { label: "WhatsApp (oculto: va en Contacto y horario)", name: "whatsapp", widget: "hidden", required: false }
+              - { label: "Teléfono (oculto: va en Contacto y horario)", name: "telefono", widget: "hidden", required: false }
               - { label: "Mostrar el icono RSS", name: "rss", widget: "boolean", default: true, required: false }
-
-          - label: "Listados e imágenes"
-            name: "listados"
-            widget: "object"
-            collapsed: true
-            hint: "Cuántos elementos se muestran por página. Cuando hay más, se crean páginas 2, 3..."
-            fields:
-              - { label: "Entradas por página (en el Blog)", name: "noticias_por_pagina", widget: "number", value_type: "int", min: 3, max: 60, default: 12 }
-              - { label: "Productos por página en el resumen del catálogo (portada y Catálogo)", name: "productos_portada", widget: "number", value_type: "int", min: 4, max: 48, default: 8, hint: "Se muestran en orden aleatorio. Mejor múltiplo de 4 (4 por fila en el ordenador)." }
-              - { label: "Productos por página en Ofertas (portada y Catálogo)", name: "ofertas_portada", widget: "number", value_type: "int", min: 4, max: 48, default: 8, hint: "Primero las ofertas que empezaron más recientemente." }
-              - { label: "Productos por página en cada categoría", name: "productos_por_pagina", widget: "number", value_type: "int", min: 4, max: 96, default: 12 }
 
           - label: "Compresión de imágenes al subirlas"
             name: "imagenes"
             widget: "object"
             collapsed: true
-            hint: "Al publicar, las fotos grandes se reducen automáticamente para que el repositorio no crezca demasiado (lo hace una acción de GitHub)."
+            hint: "Las fotos más anchas o pesadas que esto se reducen para que el repositorio no crezca demasiado (scripts/comprimir-imagenes.js; en la instalación real lo hará una acción de GitHub al publicar). La web no publica más de 1600 px de ancho, así que más no se aprovecha. El panel no deja subir ficheros de más de 8 MB."
             fields:
-              - { label: "Ancho máximo (píxeles)", name: "ancho_maximo", widget: "number", value_type: "int", min: 800, max: 4000, default: 2000 }
+              - { label: "Ancho máximo (píxeles)", name: "ancho_maximo", widget: "number", value_type: "int", min: 800, max: 4000, default: 1600 }
               - { label: "Calidad JPEG/WebP (1-100)", name: "calidad", widget: "number", value_type: "int", min: 50, max: 95, default: 82 }
-              - { label: "Solo comprimir si pesan más de (KB)", name: "peso_maximo_kb", widget: "number", value_type: "int", min: 100, max: 5000, default: 500 }
+              - { label: "Solo comprimir si pesan más de (KB)", name: "peso_maximo_kb", widget: "number", value_type: "int", min: 100, max: 5000, default: 400 }
 
           - label: "Avanzado"
             name: "avanzado"

@@ -4,25 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buscar</title>
-  <meta name="description" content="Busca en la web de la tienda.">
+  <meta name="description" content="Busca en la web de la tienda: máquinas, accesorios, categorías y entradas del blog.">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="/css/tema.css">
   <link rel="stylesheet" href="/css/estilos.css">
-  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
 </head>
 <body>
   <div id="cabecera"></div>
 
-  <main class="flex-grow-1 container seccion articulo">
-    <h1 class="display-5 fw-bold mb-4">Buscar</h1>
-    <!-- Buscador de Pagefind: el índice lo crea el build en /pagefind/ -->
-    <div id="buscador"></div>
-    <noscript><p>El buscador necesita JavaScript.</p></noscript>
+  <!-- Resultados del buscador (Pagefind: el índice lo crea el build en /pagefind/).
+       public/js/buscar.js busca lo que llega en ?q= y rellena: el resumen, las categorías que
+       coinciden (píldoras), los productos (tarjetas y filtros como en el catálogo; el build deja
+       aquí todas las tarjetas en [data-buscador]) y el bloque del blog y las páginas. Sin
+       resultados (o sin nada escrito) se ven las sugerencias, «Pregúntanos» y los tipos. -->
+  <main class="flex-grow-1" data-busqueda>
+    <section class="busqueda-cabecera">
+      <div class="container">
+        <h1 class="busqueda-titulo">Buscar en la web</h1>
+        <form class="busqueda-caja" action="/buscar/" method="get" role="search">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <label class="visually-hidden" for="busqueda-q">Qué quieres buscar</label>
+          <input id="busqueda-q" type="search" name="q" placeholder="Máquinas, accesorios, fabricantes, modelos…" autocomplete="off" data-busqueda-q>
+          <button class="btn btn-destacado" type="submit">Buscar</button>
+        </form>
+        <p class="busqueda-resumen" data-busqueda-resumen aria-live="polite"></p>
+        <div class="busqueda-cats" data-busqueda-cats hidden></div>
+      </div>
+    </section>
+    <div data-buscador></div>
+    <noscript><div class="container seccion"><p>El buscador necesita JavaScript.</p></div></noscript>
   </main>
 
   <div id="pie"></div>
 
-  <script src="/pagefind/pagefind-ui.js"></script>
-  <script src="/js/buscar.js"></script>
+  <script src="/js/buscar.js" defer></script>
 </body>
 </html>

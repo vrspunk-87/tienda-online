@@ -12,63 +12,30 @@
   <div id="cabecera"></div>
 
   <main class="flex-grow-1">
-    <!-- Portada. Los textos con data-portada se editan en Decap → Portada (public/_datos/portada.yml) -->
+    <!-- Portada. Los textos con data-portada se editan en Decap → Ajustes del sitio → Portada (portada en public/_datos/sitio.yml) -->
     <section class="hero">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
+        <!-- A la izquierda, los textos y las ventajas; a la derecha, «Explora el catálogo» con los tipos
+             de producto y su número de productos; debajo de los textos, el último artículo del blog.
+             Los tipos, las ventajas y el artículo los pone el build (scripts/build.js, aplicarPortada).
+             En el móvil: textos, catálogo y artículo, en ese orden. -->
+        <div class="hero-rejilla">
+          <div class="hero-texto">
             <p class="antetitulo" data-portada="hero.antetitulo">Máquinas de coser · Zafra</p>
             <h1 class="display-4 fw-bold" data-portada="hero.titulo">Máquinas de coser y accesorios</h1>
             <p class="lead text-body-secondary" data-portada="hero.texto">Consulta nuestro catálogo con precios orientativos y solicita presupuesto sin compromiso.</p>
-            <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
-              <a href="/catalogo/" class="btn btn-destacado btn-lg" data-portada-boton="hero.boton1">Ver el catálogo</a>
-              <a href="/blog/" class="btn btn-outline-primary btn-lg" data-portada-boton="hero.boton2">Ver el blog</a>
-            </div>
+            <div data-hero-ventajas></div>
           </div>
+          <div data-hero-catalogo></div>
+          <div data-hero-blog></div>
         </div>
       </div>
     </section>
 
-    <!-- Resumen del catálogo: el build pone aquí los productos (se barajan en cada visita y se
-         paginan de N en N: Ajustes del sitio → Listados). Sin productos, la sección no se muestra. -->
-    <section class="container seccion" id="catalogo" data-seccion-catalogo>
-      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
-        <div>
-          <p class="antetitulo">Catálogo</p>
-          <h2 class="mb-0">Nuestros productos</h2>
-        </div>
-        <a href="/catalogo/" class="fw-bold enlace-flecha">Ver todo el catálogo</a>
-      </div>
-      <div id="rejilla-catalogo"></div>
-    </section>
-
-    <!-- Ofertas vigentes, primero las que empezaron más recientemente. Sin ofertas, no se muestra. -->
-    <section class="bg-body-tertiary" id="ofertas" data-seccion-ofertas>
-      <div class="container seccion">
-        <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
-          <div>
-            <p class="antetitulo">Ofertas</p>
-            <h2 class="mb-0">Productos en oferta</h2>
-          </div>
-          <a href="/ofertas/" class="fw-bold enlace-flecha">Ver todas las ofertas</a>
-        </div>
-        <div id="rejilla-ofertas"></div>
-      </div>
-    </section>
-
-    <section class="container seccion" id="ultimas-entradas">
-      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
-        <div>
-          <p class="antetitulo">Blog</p>
-          <h2 class="mb-0">Últimas entradas</h2>
-        </div>
-        <a href="/blog/" class="fw-bold enlace-flecha">Ver todo el blog</a>
-      </div>
-      <!-- El build pone aquí las últimas entradas del blog (data-limit = cuántas) -->
-      <div id="bloque-noticias" data-limit="3" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <p class="text-body-secondary w-100">Cargando las últimas entradas…</p>
-      </div>
-    </section>
+    <!-- Bloques Catálogo, Ofertas y Blog: los genera el build (scripts/build.js, bloquesPortada)
+         según Ajustes del sitio → Portada (si se muestran y cuántos por página), con el mismo
+         estilo que en el catálogo: título con pespunte y, en los productos, la barra de filtros. -->
+    <div data-bloques-portada></div>
   </main>
 
   <div id="pie"></div>

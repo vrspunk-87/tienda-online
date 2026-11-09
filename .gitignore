@@ -10,3 +10,21 @@ dist/
 
 # Exportaciones de Trello (llevan usuarios y comentarios del equipo)
 trello-export/
+
+# Contenido del entorno local de pruebas con carga (node scripts/pruebas-carga.mjs)
+public/_productos/prueba-carga-*
+public/_posts/blog/**/*-prueba-carga-*
+public/img/productos/prueba-carga-*
+public/img/blog/prueba-carga-*
+
+# Material de trabajo (tarifas de proveedores con precios netos, Excel de importación y fotos sacadas): no se sube
+input/
+
+# Modo completo de la consulta de fabricantes (puede ocupar varios GB): no se sube
+resultados-completos*.json
+resultados-completos*.xlsx
+img-completo/
+
+# Carpetas de trabajo de Claude (hojas de revisión, vistas previas) y consultas sueltas de fabricantes: no se suben
+Claude outputs/
+consulta-*/

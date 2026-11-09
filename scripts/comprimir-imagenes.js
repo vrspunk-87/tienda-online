@@ -18,9 +18,9 @@ import { parse as leerYaml } from 'yaml';
 
 const DIR = 'public/img';
 const ajustes = (leerYaml(fs.readFileSync('public/_datos/sitio.yml', 'utf8')) || {}).imagenes || {};
-const ANCHO = Number(ajustes.ancho_maximo) || 2000;
+const ANCHO = Number(ajustes.ancho_maximo) || 1600;
 const CALIDAD = Number(ajustes.calidad) || 82;
-const PESO_KB = Number(ajustes.peso_maximo_kb) || 500;
+const PESO_KB = Number(ajustes.peso_maximo_kb) || 400;
 // Ficheros que no se tocan (logo, imagen para compartir, iconos)
 const EXCLUIR = [/^logo\./, /^compartir\./, /^iconos\//];
 

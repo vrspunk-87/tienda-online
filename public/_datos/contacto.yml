@@ -1,0 +1,41 @@
+provisional: true
+titulo: Contacto y horario
+introduccion: Ven a vernos a la tienda, llámanos o escríbenos. Te asesoramos sin compromiso
+  y, si quieres, probamos la máquina contigo antes de que decidas.
+telefono: ""
+whatsapp: ""
+correo: ""
+direccion: "[Calle y número]"
+codigo_postal: "06300"
+localidad: Zafra
+provincia: Badajoz
+mapa_enlace: https://www.google.com/maps/search/?api=1&query=Zafra%20Badajoz
+horario:
+  - dias:
+      - lunes
+      - martes
+      - miercoles
+      - jueves
+      - viernes
+    manana: 10:00-13:30
+    tarde: 17:00-20:00
+  - dias:
+      - sabado
+    manana: 10:00-13:30
+    tarde: ""
+  - dias:
+      - domingo
+    manana: ""
+    tarde: ""
+nota_horario: Los festivos nacionales, autonómicos y locales de Zafra la tienda está cerrada.
+aviso:
+  texto: ""
+  desde: ""
+  hasta: ""
+como_llegar:
+  - texto: Aparcamiento gratuito a pocos metros, en [calle cercana]
+    icono: aparcamiento
+  - texto: Junto a [referencia conocida del centro de Zafra]
+    icono: referencia
+  - texto: Acceso a la tienda sin escalones
+    icono: accesible

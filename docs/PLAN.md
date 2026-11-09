@@ -150,9 +150,12 @@ Colecciones de Decap (`public/config.yml`) y lectura en el build:
 
 1. **Fabricantes** (`public/_fabricantes/`): nombre e imagen (logotipo). **Sin página propia**: solo
    sirven para asociar y filtrar los productos; su nombre e imagen salen en tarjetas y fichas.
-2. **Categorías** (`public/_categorias/`): nombre, descripción, imagen, **orden en el menú** y
-   **categoría padre** (relación opcional con otra categoría → subcategoría). Solo dos niveles: el
-   build avisa si una subcategoría tiene a su vez padre o si hay ciclos.
+2. **Categorías** (`public/_categorias/`): nombre, descripción, imagen y **categoría padre**
+   (relación opcional con otra categoría). **Hasta tres niveles** (tipos de producto › categorías ›
+   subcategorías); el build avisa de ciclos y de un cuarto nivel. En el panel, una sección por
+   nivel (7-11-2026), según el campo oculto `nivel`. Orden: Ajustes del sitio →
+   «Orden del catálogo en el menú» (7-11-2026; sin campo «orden» en las categorías). Menú del
+   catálogo en acordeón con los tres niveles, abierto por la rama de la página actual.
 3. **Productos** (`public/_productos/`):
    - **identificador** único, interno: es el nombre del fichero, la dirección de la ficha y la
      carpeta de imágenes. Decap lo crea al dar de alta el producto a partir del fabricante y el
@@ -221,8 +224,9 @@ npm run importar               → escribe public/_productos/ y public/img/produ
 
 1. **Plantilla Excel** `catalogo/productos.xlsx` (fuera de `public/`): una fila por producto y una
    columna por campo (identificador, nombre, fabricante, modelo, referencia, categoría,
-   subcategoría, compatible con (identificadores separados por comas), precio orientativo,
-   estado, precio de oferta, inicio y fin de la oferta, condición (nuevo / segunda mano), estado del
+   subcategoría, compatible con (identificadores separados por comas), precio orientativo
+   (en las máquinas industriales, el de la completa), **precio cabezal**, estado, precio de oferta,
+   **precio de oferta cabezal**, inicio y fin de la oferta, condición (nuevo / segunda mano), estado del
    producto y garantía, destacado, descripción, características, **imágenes**). Pestañas de ayuda con las
    listas válidas de fabricantes, categorías y estados (desplegables en las celdas).
    En las filas nuevas el identificador puede ir vacío: el importador lo crea a partir del
@@ -232,8 +236,13 @@ npm run importar               → escribe public/_productos/ y public/img/produ
    opcional: si está vacía, se usan las que sigan la convención. Texto alternativo: columna propia
    o, si falta, el nombre del producto (con aviso).
 3. **`scripts/importar-catalogo.js`** (`exceljs` y `sharp`, ya usados en la plataforma):
-   - valida todo antes de escribir nada (identificadores únicos, «compatible con» válido, fabricantes y categorías existentes,
+   - valida todo antes de escribir nada (identificadores únicos, «compatible con» válido, fabricantes existentes,
      precios, imágenes que existen, **5 como máximo**, formato) y para con un informe claro si hay errores;
+   - **tipos, categorías y subcategorías nuevos** (decidido 9-11-2026): en el Excel son desplegables
+     con los de la web, pero se puede escribir uno nuevo (Excel solo avisa). El importador los da de
+     alta (el tipo; la categoría dentro del tipo de su fila; la subcategoría dentro de su categoría),
+     con su identificador a partir del nombre, y los lista en el informe para revisarlos (descripción,
+     foto y lugar en «Orden del catálogo en el menú»);
    - **crea o actualiza** solo los campos que vienen en el Excel; no borra productos que no estén
      en él (los lista como aviso; para retirar uno, estado «no disponible» o borrarlo en el panel);
    - **reduce y comprime** las imágenes al importarlas (ancho y calidad máximos de Ajustes) y las
@@ -322,6 +331,9 @@ comprobar el informe y el `git diff`.
 - Datos de los productos para la página: `/presupuesto/productos.json` (lo genera el build).
 - **Cambio sobre lo previsto**: hay **cantidades** (para accesorios, agujas…). El servidor las tendrá
   que validar (1-99) y la hoja guardará las unidades de cada producto.
+- **Dos precios (9-11-2026)**: las máquinas industriales con «Precio Cabezal» se piden como completa
+  (su identificador) o cabezal («<identificador>~cabezal»; en `productos.json` lleva `version`). El
+  servidor tendrá que aceptar ese sufijo y la hoja/correo indicar «Completa» o «Cabezal».
 
 Basada en el formulario de propuestas (`api/propuesta.js`, `api/_lib/formulario.js`, ALTCHA, Apps
 Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
@@ -393,6 +405,13 @@ inventada; robot; límites; números correlativos con envíos simultáneos; text
    pasarlo a «no disponible» en el panel o en el Excel —, cuánto tiempo se guardan los datos).
 3. Prueba completa con el catálogo ficticio: carga, navegación en móvil, buscador, solicitud,
    correo recibido, hoja.
+4. **Pendiente (más adelante)**: escribir la descripción (texto alternativo) de cada foto de
+   producto («Vista frontal», «Detalle del panel», «Con la mesa de extensión»…), empezando por las
+   máquinas, y pasarla también a las columnas «Foto N: descripción» de las Excel de importación.
+   Hoy casi ninguna la tiene y la web usa el nombre del producto; el build lo resume en una sola
+   línea («N productos tienen alguna foto sin descripción») en vez de un aviso por producto (9-11-2026).
+   Igual con «N productos no tienen fotos» (con tres ejemplos) y con las descripciones para Google
+   acortadas automáticamente (solo el número de páginas).
 
 ## Fase 7 — Legal y privacidad
 
@@ -434,6 +453,17 @@ de la tienda, o un abogado con un encargo puntual.
    de claves), `scripts/actualizar-decap.js` y hoja de tareas con Trello si se usa.
 4. Carga del catálogo real con el importador, revisión, publicación.
 5. Solicitud real de prueba de principio a fin y entrega a la tienda (guías y accesos).
+6. **Volumen** (de la prueba de carga, [PRUEBA-DE-CARGA.md](PRUEBA-DE-CARGA.md), mejoras 2 y 5):
+   - **Conservar la caché de imágenes entre despliegues**: compilar en GitHub Actions guardando
+     `node_modules/.cache/tienda` (actions/cache) y publicar con `wrangler pages deploy`, o al menos
+     comprobar que Cloudflare la conserva. Sin ella, cada despliegue rehace todas las imágenes
+     (unos 15 min con 500 productos; el límite de Cloudflare es 20 min).
+   - **Compresión automática de las fotos al publicar**: una acción de GitHub que ejecute
+     `scripts/comprimir-imagenes.js` cuando cambie `public/img/` y guarde el resultado (el panel
+     ya limita los ficheros a 8 MB y el build avisa de las fotos pesadas).
+   - **Panel con muchos productos**: cuando pasen de unos cientos, agrupar o filtrar el listado de
+     «Catálogo: productos» por tipo (`view_groups` / `view_filters` en `public/config.yml`) y
+     comprobar que sigue siendo ágil.
 
 ## Riesgos y cómo se cubren
 

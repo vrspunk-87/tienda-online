@@ -6,6 +6,74 @@ localidad: Zafra
 provincia: Badajoz
 logo: /img/logo.png
 imagen_compartir: /img/compartir.jpg
+portada:
+  hero:
+    antetitulo: Máquinas de coser · Zafra
+    titulo: Máquinas de coser y accesorios
+    texto: Consulta nuestro catálogo con precios orientativos y solicita presupuesto
+      sin compromiso.
+    ventajas:
+      - texto: Presupuesto sin compromiso
+        icono: check
+      - texto: Te asesoramos en Zafra
+        icono: asesoria
+      - texto: Precios orientativos con IVA incluido
+        icono: precio
+      - texto: Nuevas y de segunda mano
+        icono: segunda_mano
+    ultimo_articulo: true
+  catalogo:
+    mostrar: true
+    por_pagina: 12
+  ofertas:
+    mostrar: false
+    por_pagina: 12
+  blog:
+    mostrar: true
+    por_pagina: 3
+pagina_catalogo:
+  descripcion: Máquinas de coser domésticas e industriales, bordadoras y
+    accesorios en Zafra. Consulta precios orientativos y pide tu presupuesto sin
+    compromiso.
+  texto: >-
+    En Máquinas de Coser Zafra reunimos todo lo que necesitas para coser y
+    bordar: desde tu primera máquina doméstica hasta equipos industriales para
+    talleres, bordadoras de uno o varios cabezales y los accesorios que marcan
+    la diferencia en cada labor.
+
+
+    Elige un tipo de producto para empezar o echa un vistazo a nuestras ofertas. Añade a tu solicitud lo que te interese y te preparamos un presupuesto ajustado, sin compromiso. ¿Tienes dudas? Te asesoramos para que aciertes a la primera.
+  productos:
+    mostrar: true
+    por_pagina: 12
+  ofertas:
+    mostrar: false
+    por_pagina: 12
+  blog:
+    mostrar: true
+    por_pagina: 3
+pagina_ofertas:
+  descripcion: Máquinas de coser, bordadoras y accesorios con precio rebajado
+    durante unos días. Aprovecha nuestras ofertas y pide presupuesto sin
+    compromiso.
+  texto: >-
+    Cada cierto tiempo rebajamos el precio de máquinas y accesorios
+    seleccionados. Las ofertas duran unos días: en cada producto verás el precio
+    rebajado, el descuento y la fecha en que termina.
+
+
+    Navega por tipo de producto para encontrar las ofertas que te interesan, añádelas a tu solicitud de presupuesto y te confirmamos precio y disponibilidad.
+  productos:
+    por_pagina: 12
+  blog:
+    mostrar: true
+    por_pagina: 3
+pagina_blog:
+  titulo: Blog
+  descripcion: Novedades, consejos y noticias de la tienda.
+  texto: "Aprende a sacarle partido a tu máquina. Consejos de mantenimiento, trucos de costura, novedades de las marcas y guías para elegir bien, escritos por el equipo de la tienda."
+  destacada: true
+  por_pagina: 12
 apariencia:
   tema: tienda
   marca:
@@ -22,17 +90,96 @@ navbar:
   color: blanco
   fijo: true
   buscador: true
+  barra_catalogo:
+    color: gris
+catalogo_vacias: ocultar
+insignias_productos: true
+catalogo_orden:
+  - categoria: maquinas-domesticas
+    hijos:
+      - categoria: mecanicas
+      - categoria: electronicas
+      - categoria: remalladoras-overlock
+      - categoria: recubridoras
+      - categoria: patchwork
+      - categoria: punching-fieltrado
+  - categoria: maquinas-industriales
+    hijos:
+      - categoria: pespunte-recto
+      - categoria: overlock-y-recubridoras
+      - categoria: zig-zag
+      - categoria: doble-arrastre
+      - categoria: triple-arrastre
+      - categoria: cadeneta
+      - categoria: ojales-botones-y-presillas
+      - categoria: costura-programada
+      - categoria: puntada-invisible
+      - categoria: reparacion-de-calzado
+      - categoria: maquina-de-columna
+      - categoria: maquinas-especiales
+      - categoria: accesorios-y-motores
+  - categoria: bordadoras
+    hijos:
+      - categoria: bordadoras-domesticas
+      - categoria: bordadoras-industriales
+        hijos:
+          - 1-cabezal
+          - 2-cabezales
+          - multicabezales
+  - categoria: accesorios
+    hijos:
+      - categoria: prensatelas
+        hijos:
+          - prensatelas-coser-en-general
+          - prensatelas-botones-y-ojales
+          - prensatelas-materiales-elasticos
+          - prensatelas-cremalleras
+          - prensatelas-dobladillos-y-pespuntes
+          - prensatelas-costura-decorativa
+          - prensatelas-patchwork
+          - prensatelas-acolchado
+          - juegos-de-prensatelas
+          - prensatelas-overlock-remalladoras
+      - categoria: accesorios-especiales-costura
+        hijos:
+          - placas-de-aguja
+          - cajas-de-bobina
+          - mesa-extraible
+          - maletas-y-bolsas
+          - accesorios-ayuda-costura
+          - agujas-maquina-de-coser
+          - surtido-de-agujas
+      - categoria: accesorios-maquinas-bordar
+        hijos:
+          - modulos-de-bordado
+          - kits-de-bordado
+          - bastidores-y-adaptadores
+          - herramientas-designworks
+          - bolsas-modulo-bordado
+          - actualizacion-maquina-bordar
+          - agujas-para-bordar
+      - categoria: accesorios-maquinas-overlock
+        hijos:
+          - overlock-prensatelas
+          - overlock-soporte
+          - bolsas-overlock
+          - recipiente-restos-overlock
+          - guias-costura-enhebrado
+          - agujas-overlock
+  - categoria: acolchado
+  - categoria: planchado
+    hijos:
+      - categoria: accesorios-de-planchado
+      - categoria: generadores-de-vapor
+      - categoria: mesas-de-planchar
 menu:
   - texto: Catálogo
     enlace: /catalogo/
     catalogo: true
   - texto: Sobre nosotros
-    pagina: sobre-nosotros
-    hijos:
-      - texto: Dónde estamos
-        pagina: donde-estamos
+    enlace: /paginas/sobre-nosotros/
   - texto: Contacto y horario
-    pagina: contacto-y-horario
+    enlace: /paginas/contacto-y-horario/
   - texto: Blog
     enlace: /blog/
 legales:
@@ -49,16 +196,12 @@ redes:
   instagram: ""
   email: ""
   whatsapp: ""
+  telefono: ""
   rss: true
-listados:
-  noticias_por_pagina: 12
-  productos_portada: 8
-  ofertas_portada: 4
-  productos_por_pagina: 4
 imagenes:
-  ancho_maximo: 2000
+  ancho_maximo: 1600
   calidad: 82
-  peso_maximo_kb: 500
+  peso_maximo_kb: 400
 avanzado:
   url: https://tienda-online.pages.dev
   indexable: false

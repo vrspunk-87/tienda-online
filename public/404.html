@@ -19,14 +19,17 @@
         <div class="d-flex flex-wrap gap-2 mt-4">
           <a class="btn btn-destacado" href="/">Ir al inicio</a>
           <a class="btn btn-outline-primary" href="/buscar/">Buscar en la web</a>
-          <a class="btn btn-outline-primary" href="/blog/">Ver el blog</a>
+          <a class="btn btn-outline-primary" href="/catalogo/" data-si-catalogo>Ver el catálogo</a>
+          <a class="btn btn-outline-primary" href="/blog/" data-si-blog>Ver el blog</a>
         </div>
       </div>
     </div>
 
-    <h2 class="h4 fw-bold mt-5 mb-4">Últimas entradas del blog</h2>
-    <!-- El build pone aquí las últimas entradas del blog -->
-    <div id="bloque-noticias" data-limit="3" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+    <!-- El build pone aquí las últimas entradas del blog (sin entradas, no sale; tampoco el botón) -->
+    <section data-si-blog>
+      <h2 class="h4 fw-bold mt-5 mb-4">Últimas entradas del blog</h2>
+      <div id="bloque-noticias" data-limit="3" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+    </section>
   </main>
 
   <div id="pie"></div>
