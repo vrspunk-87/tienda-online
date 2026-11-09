@@ -92,6 +92,11 @@ OAUTH_CLIENT_SECRET=prueba
 Con valores de prueba se comprueba que `/api/auth` rechaza webs no permitidas (403) y redirige
 a GitHub desde las permitidas (302); el login completo solo funciona desplegado (fase 1b).
 
+**Desplegado (fase 1b, 9-11-2026):** Cloudflare Pages, proyecto `maquinas-de-coser-zafra`:
+producción en https://maquinas-de-coser-zafra.pages.dev (rama `main`) y pruebas en
+https://develop.maquinas-de-coser-zafra.pages.dev (rama `develop`). Login del panel con GitHub
+probado en las dos. Detalles de la configuración en `docs/PLAN.md` (fase 1b).
+
 **Prueba realizada (fase 1a):** build en local, producción, `develop` y una rama sin panel;
 `npm audit` sin vulnerabilidades; 0 enlaces rotos; capturas en escritorio y móvil; con
 `npm run funciones`: portada 200, login desde una web ajena 403, desde la propia 302 con cookie
@@ -110,7 +115,7 @@ El build deduce el entorno de la rama que le pasa Cloudflare (`CF_PAGES_BRANCH`)
 | Rama | Entorno | Indexable | Panel |
 |---|---|---|---|
 | `main` | producción | solo si «Permitir que Google indexe la web» está activado (Ajustes → Avanzado). **Desactivado hasta tener el dominio** | sí |
-| `develop`, `staging`, `dev-victor` | pruebas (aviso amarillo) | no | sí, edita su rama |
+| `develop`, `dev-victor` | pruebas (aviso amarillo) | no | sí, edita su rama |
 | otras (`feature/…`, borradores `cms/…`) | pruebas | no | no |
 | (en tu equipo) | local | no | con `npm run panel` |
 

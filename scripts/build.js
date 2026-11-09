@@ -2829,7 +2829,7 @@ Disallow: /
 `);
 
 // Panel de Decap en los entornos de prueba:
-//  - develop, staging, dev-*, feature/*…: el panel edita SU rama. El build ajusta
+//  - develop, dev-victor, feature/*…: el panel edita SU rama. El build ajusta
 //    /config.yml (rama y prefijo de etiquetas del flujo editorial) y añade un aviso.
 //    El login se hace en producción y solo entrega el token a las webs permitidas
 //    (lib/origenes.js).

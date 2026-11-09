@@ -51,7 +51,7 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 **Fase 0 cerrada; fase 1a (base en local) hecha; fase 2 (catálogo en el panel) y parte de la 4
 (menú, portada, categorías, ofertas, ficha básica) hechas; parte visual de la solicitud de presupuesto
-(fase 5, sin envío real) hecha; fase 1b (despliegue en Cloudflare) pendiente.** Excel: exportación e
+(fase 5, sin envío real) hecha; fase 1b (despliegue en Cloudflare Pages, proyecto `maquinas-de-coser-zafra`, login del panel probado) hecha el 9-11-2026.** Excel: exportación e
 importación desde el panel en la fase 3, tras el despliegue.
 Catálogo cargado (9-11-2026) desde la tarifa de J. Pujol 03/2026 (input/, ignorado por Git: lleva precios
 netos): 96 productos y 35 accesorios, todos «Solo para pruebas» hasta revisarlos con el Excel

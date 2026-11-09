@@ -110,11 +110,16 @@ Resultado: decisiones anotadas aquí y resumidas en `CLAUDE.md` (sección «Deci
 
 **1a (en local): hecha el 5-11-2026** (puntos 1 a 7 salvo el despliegue; ver README). Quitado de la
 plataforma: propuestas, temas, actividades, formulario, canales y estadísticas de Vercel; las
-noticias son ahora el **blog** (`/blog/`). **1b (desplegado): en curso** — proyecto de Cloudflare
-Pages **creado el 9-11-2026: `maquinas-de-coser-zafra`** (https://maquinas-de-coser-zafra.pages.dev; ya ajustados
-`lib/origenes.js`, `base_url` y la dirección del sitio; primer despliegue de `main` correcto). Falta: aplicación OAuth de GitHub,
-variables `OAUTH_CLIENT_ID` y `OAUTH_CLIENT_SECRET`, versión de Node del build, entornos de
-prueba y prueba del login real.
+noticias son ahora el **blog** (`/blog/`). **1b (desplegado): hecha el 9-11-2026** — proyecto de Cloudflare
+Pages **`maquinas-de-coser-zafra`** (conectado a GitHub, «Build system» versión 3): producción
+https://maquinas-de-coser-zafra.pages.dev desde `main` y pruebas https://develop.maquinas-de-coser-zafra.pages.dev
+(«Preview branch» = ramas personalizadas: `develop` y `dev-victor`, en https://dev-victor.maquinas-de-coser-zafra.pages.dev; `staging` no se usa). Build `npm run build`, salida `dist`, `NODE_VERSION=22`
+en Production y Preview. Ajustados `lib/origenes.js`, `base_url` y la dirección del sitio. Aplicación
+OAuth de GitHub «Panel Máquinas de Coser Zafra» (Redirect URI exacta
+`https://maquinas-de-coser-zafra.pages.dev/api/callback`, sin comodines ni caducidad de tokens, porque
+Decap no los renueva); `OAUTH_CLIENT_ID` y `OAUTH_CLIENT_SECRET` (secreto) solo en Production.
+**Login del panel probado en producción y en `develop`.** Ojo: Cloudflare ofrece crear un *Worker*
+por defecto; esta web necesita **Pages** (carpeta `functions/` y `CF_PAGES_BRANCH`).
 
 Se copia de `web-plataforma` lo reaprovechable y se adapta aquí (`web-plataforma` solo se
 consulta):
@@ -441,7 +446,7 @@ de la tienda, o un abogado con un encargo puntual.
 ## Fase 8 — Despliegue y puesta en marcha
 
 1. Cloudflare Pages conectado al repositorio: **producción** desde `main` y **entornos de prueba por
-   rama** (`develop`, `staging`… cada uno con su dirección), gitflow adaptado de la plataforma,
+   rama** (`develop` y `dev-victor`, cada uno con su dirección; `staging` no se usa), gitflow adaptado de la plataforma,
    variables de entorno por entorno (claves **nunca en el código**). La **reconstrucción diaria**
    (ofertas) la lanza una tarea programada de GitHub Actions poco después de medianoche, hora de
    Madrid, con un enlace de despliegue (*deploy hook*) de Cloudflare guardado como secreto.

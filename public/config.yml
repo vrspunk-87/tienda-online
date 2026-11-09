@@ -50,7 +50,7 @@ collections:
       - { label: "Año", field: "date", pattern: '\d{4}' }
     description: "Cada entrada se publica en /blog/nombre-del-fichero/. Escribe los títulos en minúsculas normales (no todo en MAYÚSCULAS): se leen mejor y posicionan mejor en Google."
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
       - { label: "Título", name: "title", widget: "string", hint: "En minúsculas normales e incluyendo palabras que buscaría la gente." }
       - { label: "Fecha de publicación", name: "date", widget: "datetime" }
@@ -80,7 +80,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Descripción breve (bajo el título, en la portada y en buscadores)", name: "description", widget: "string", required: false }
       - { label: "Descripción para Google", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
@@ -105,7 +105,7 @@ collections:
     sortable_fields: ["title"]
     summary: "{{title}}"
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nivel", name: "nivel", widget: "hidden", default: "tipo" }
       - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «Bordadoras». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
       - { label: "Descripción breve", name: "description", widget: "text", required: false, hint: "1-2 frases. Sale bajo el título, en las tarjetas y en Google." }
@@ -128,7 +128,7 @@ collections:
     view_groups:
       - { label: "Tipo de producto", field: "padre" }
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nivel", name: "nivel", widget: "hidden", default: "categoria" }
       - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «Industriales». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
       - { label: "Tipo de producto", name: "padre", widget: "categoria-catalogo", niveles: 1, obligatorios: 1, hint: "El tipo de producto del que cuelga." }
@@ -152,7 +152,7 @@ collections:
     view_groups:
       - { label: "Categoría", field: "padre" }
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nivel", name: "nivel", widget: "hidden", default: "subcategoria" }
       - { label: "Nombre", name: "title", widget: "string", hint: "p. ej. «1 Cabezal». El nombre del fichero (y la dirección) se crea a partir de él y no cambia aunque luego cambies el nombre." }
       - { label: "Categoría", name: "padre", widget: "categoria-catalogo", niveles: 2, obligatorios: 2, hint: "La categoría de la que cuelga: elige primero su tipo de producto." }
@@ -174,7 +174,7 @@ collections:
     public_folder: "/img/catalogo"
     summary: "{{title}}"
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nivel", name: "nivel", widget: "hidden" }
       - { label: "Nombre", name: "title", widget: "string" }
       - { label: "Cuelga de", name: "padre", widget: "string", required: false }
@@ -207,7 +207,7 @@ collections:
       - { label: "Categoría", field: "categoria" }
       - { label: "Estado", field: "estado" }
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nombre", name: "title", widget: "string", hint: "Nombre descriptivo, p. ej. «Máquina de coser mecánica de uso intensivo»." }
       - { label: "Fabricante", name: "fabricante", widget: "relation", collection: "fabricantes", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"] }
       - { label: "Modelo", name: "modelo", widget: "string", hint: "p. ej. «HD 4432». Junto con el fabricante forma el identificador del producto." }
@@ -296,7 +296,7 @@ collections:
     media_folder: "/public/img/fabricantes"
     public_folder: "/img/fabricantes"
     fields:
-      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, staging, dev-…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
+      - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
       - { label: "Nombre", name: "title", widget: "string" }
       - { label: "Imagen o logotipo", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Se muestra junto al nombre, en pequeño: mejor horizontal, sin márgenes alrededor y en PNG (fondo transparente), WebP o SVG. Los formatos JXL y HEIC no se ven en muchos navegadores." }
 
