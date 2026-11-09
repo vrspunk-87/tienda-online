@@ -453,6 +453,10 @@ de la tienda, o un abogado con un encargo puntual.
    **Hecho el 9-11-2026** (adelantado): `.github/workflows/reconstruccion-diaria.yml` (dos horarios en UTC,
    cada uno solo actúa en su época del año), `sincronizar-ramas.yml` (`main` → `develop` y
    `dev-victor`) y `.github/dependabot.yml`; configuración en el README.
+   **Probado el 9-11-2026**: reconstrucción diaria lanzada a mano (despliegue de producción); una
+   publicación desde el panel (rama `cms/…`, Pull Request fusionado en `main`) llegó sola a `develop` y
+   `dev-victor` y Cloudflare desplegó las tres. Build: ~15 s en producción (sin los productos «Solo para
+   pruebas») y 3-4 min en las ramas de pruebas con las ~2.000 versiones de las fotos sin caché (punto 6).
 2. **Dominio** (se compra ahora): conectarlo en Cloudflare, HTTPS, cambiar la URL del sitio en los
    ajustes y en la lista de webs del login, **quitar el `noindex`** y el bloqueo de `robots.txt`,
    redirigir la dirección `pages.dev` de producción al dominio, dar de alta la web en Google Search
