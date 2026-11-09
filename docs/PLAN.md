@@ -450,12 +450,15 @@ de la tienda, o un abogado con un encargo puntual.
    variables de entorno por entorno (claves **nunca en el código**). La **reconstrucción diaria**
    (ofertas) la lanza una tarea programada de GitHub Actions poco después de medianoche, hora de
    Madrid, con un enlace de despliegue (*deploy hook*) de Cloudflare guardado como secreto.
+   **Hecho el 9-11-2026** (adelantado): `.github/workflows/reconstruccion-diaria.yml` (dos horarios en UTC,
+   cada uno solo actúa en su época del año), `sincronizar-ramas.yml` (`main` → `develop` y
+   `dev-victor`) y `.github/dependabot.yml`; configuración en el README.
 2. **Dominio** (se compra ahora): conectarlo en Cloudflare, HTTPS, cambiar la URL del sitio en los
    ajustes y en la lista de webs del login, **quitar el `noindex`** y el bloqueo de `robots.txt`,
    redirigir la dirección `pages.dev` de producción al dominio, dar de alta la web en Google Search
    Console y, si se quiere, correo con el dominio (cambiar el remitente y la dirección de los
    avisos en el script de Google).
-3. Dependabot (`cooldown` 14 días), comprobación diaria (web, formulario de solicitudes, caducidad
+3. Dependabot (`cooldown` 14 días; **hecho el 9-11-2026**), comprobación diaria (pendiente: tras la fase 5) (web, formulario de solicitudes, caducidad
    de claves), `scripts/actualizar-decap.js` y hoja de tareas con Trello si se usa.
 4. Carga del catálogo real con el importador, revisión, publicación.
 5. Solicitud real de prueba de principio a fin y entrega a la tienda (guías y accesos).

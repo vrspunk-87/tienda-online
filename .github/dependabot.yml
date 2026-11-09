@@ -1,0 +1,28 @@
+# Avisos y propuestas de actualización de dependencias (copiado de web-plataforma).
+# Siguiendo el gitflow, Dependabot propone las actualizaciones contra `develop` (no directamente
+# contra producción): se comprueban en https://develop.maquinas-de-coser-zafra.pages.dev y llegan a
+# producción con el resto de cambios. Las alertas de seguridad siempre se calculan sobre `main`.
+#
+# cooldown: solo propone versiones publicadas hace al menos 14 días (norma del proyecto: las
+# versiones recién publicadas a veces se retiran o traen errores). No afecta a las actualizaciones
+# de SEGURIDAD, que llegan en cuanto hay arreglo (y siempre contra main).
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    target-branch: develop
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14
+    open-pull-requests-limit: 3
+    groups:
+      dependencias:
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: "/"
+    target-branch: develop
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 14

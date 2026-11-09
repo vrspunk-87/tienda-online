@@ -1,0 +1,65 @@
+# RECONSTRUCCIÓN DIARIA DE LA WEB
+#
+# La web es estática: las ofertas empiezan a las 0:00 y acaban a las 23:59 (hora de Madrid), pero
+# la web no cambia hasta que se vuelve a generar. Cada noche, poco después de medianoche en Madrid,
+# este flujo llama al «deploy hook» de Cloudflare Pages y la web de producción (main) se regenera
+# con la fecha nueva: empiezan y terminan las ofertas del día.
+#
+# Medianoche en Madrid son las 23:00 UTC en invierno y las 22:00 UTC en verano, y el cron de GitHub
+# va en UTC. Por eso hay dos horarios y cada uno solo actúa en su época del año (se comprueba con
+# el desfase horario de Madrid de ese día). Así sigue funcionando aunque GitHub retrase la tarea.
+#
+# Configuración (una vez):
+#   - Cloudflare → maquinas-de-coser-zafra → Settings → Build → Deploy Hooks → «+»:
+#     nombre «reconstruccion-diaria», rama «main». Copiar la dirección.
+#   - GitHub → Settings → Secrets and variables → Actions → New repository secret:
+#     CF_DEPLOY_HOOK_MAIN = esa dirección (quien la tenga puede lanzar despliegues: nunca en el código).
+#
+# Se puede lanzar a mano: Actions → Reconstrucción diaria → Run workflow.
+# Las tareas programadas solo se ejecutan desde la rama principal (main). Ver docs/PLAN.md (fase 8).
+
+name: Reconstrucción diaria
+
+on:
+  schedule:
+    - cron: "7 22 * * *"   # 00:07 en Madrid en verano (UTC+2)
+    - cron: "7 23 * * *"   # 00:07 en Madrid en invierno (UTC+1)
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: reconstruccion-diaria
+  cancel-in-progress: false
+
+jobs:
+  reconstruir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Lanzar el despliegue de producción en Cloudflare
+        env:
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK_MAIN }}
+          EVENTO: ${{ github.event_name }}
+          HORARIO: ${{ github.event.schedule }}
+        run: |
+          DESFASE=$(TZ=Europe/Madrid date +%z)
+          echo "Hora en Madrid: $(TZ=Europe/Madrid date '+%Y-%m-%d %H:%M') (UTC${DESFASE})"
+          if [ "$EVENTO" = "schedule" ]; then
+            if { [ "$DESFASE" = "+0200" ] && [ "$HORARIO" != "7 22 * * *" ]; } || \
+               { [ "$DESFASE" = "+0100" ] && [ "$HORARIO" != "7 23 * * *" ]; }; then
+              echo "Este horario no corresponde a la época del año actual: no se hace nada."
+              exit 0
+            fi
+          fi
+          if [ -z "$HOOK" ]; then
+            echo "::error::Falta el secreto CF_DEPLOY_HOOK_MAIN (ver la cabecera de este fichero)."
+            exit 1
+          fi
+          CODIGO=$(curl -sS -o respuesta.json -w '%{http_code}' -X POST "$HOOK")
+          echo "Cloudflare respondió $CODIGO"
+          if [ "${CODIGO:0:1}" != "2" ]; then
+            echo "::error::Cloudflare no aceptó el despliegue (código $CODIGO)."
+            exit 1
+          fi
+          echo "- Lanzada la reconstrucción de producción ($(TZ=Europe/Madrid date '+%d/%m/%Y %H:%M'), hora de Madrid)" >> "$GITHUB_STEP_SUMMARY"

@@ -97,6 +97,14 @@ producción en https://maquinas-de-coser-zafra.pages.dev (rama `main`) y pruebas
 https://develop.maquinas-de-coser-zafra.pages.dev (rama `develop`). Login del panel con GitHub
 probado en las dos. Detalles de la configuración en `docs/PLAN.md` (fase 1b).
 
+**Acciones de GitHub (`.github/`, 9-11-2026):**
+
+| Fichero | Qué hace | Configuración |
+|---|---|---|
+| `workflows/reconstruccion-diaria.yml` | A las 0:07 (hora de Madrid) llama al *deploy hook* de Cloudflare y regenera producción: empiezan y terminan las ofertas del día | Secreto `CF_DEPLOY_HOOK_MAIN` (Cloudflare → Settings → Build → Deploy Hooks, rama `main`) |
+| `workflows/sincronizar-ramas.yml` | Cada vez que cambia `main`, la fusiona en `develop` y `dev-victor` (si hay conflictos, abre un Pull Request); a mano, crea las ramas que falten | Settings → Actions → General → *Read and write permissions* |
+| `dependabot.yml` | Propone cada mes actualizaciones (npm y acciones) contra `develop`, solo de versiones con 14 días o más | Nada |
+
 **Prueba realizada (fase 1a):** build en local, producción, `develop` y una rama sin panel;
 `npm audit` sin vulnerabilidades; 0 enlaces rotos; capturas en escritorio y móvil; con
 `npm run funciones`: portada 200, login desde una web ajena 403, desde la propia 302 con cookie

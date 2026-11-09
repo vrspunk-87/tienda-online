@@ -1,0 +1,92 @@
+# SINCRONIZAR RAMAS (gitflow, adaptado de web-plataforma)
+#
+# El CONTENIDO (productos, categorías, ajustes…) se publica desde el panel directamente en `main`.
+# Para que las ramas de pruebas no se queden atrás (y para que los arreglos urgentes lleguen también
+# a ellas), cada vez que cambia `main` este flujo fusiona `main` en `develop` y en `dev-victor`.
+# Cloudflare Pages vuelve a desplegar sola cada rama que recibe cambios (no hace falta lanzarlo).
+#
+# Si una fusión tiene conflictos, no la fuerza: abre un Pull Request «Sincronizar main → <rama>»
+# para resolverlo a mano.
+#
+# Lanzado a mano (Actions → Sincronizar ramas → Run workflow) además CREA las ramas que falten, a
+# partir de `main`.
+#
+# Requisito: GitHub → Settings → Actions → General → Workflow permissions → «Read and write
+# permissions» (y, para el PR de conflictos, «Allow GitHub Actions to create and approve pull requests»).
+# «staging» no se usa en esta web. Ver docs/PLAN.md (fase 8).
+
+name: Sincronizar ramas
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write        # fusionar y crear ramas
+  pull-requests: write   # abrir el PR si hay conflictos
+
+concurrency:
+  group: sincronizar-ramas
+  cancel-in-progress: false
+
+env:
+  RAMAS: "develop dev-victor"
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Preparar Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Crear las ramas que falten (solo al lanzarlo a mano)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          for RAMA in $RAMAS; do
+            if git ls-remote --exit-code --heads origin "$RAMA" > /dev/null; then
+              echo "Ya existe: $RAMA"
+            else
+              git push origin "origin/main:refs/heads/$RAMA"
+              echo "Creada: $RAMA (desde main)"
+              echo "- Creada la rama \`$RAMA\` desde \`main\`" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+
+      - name: Fusionar main en las ramas de pruebas
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for RAMA in $RAMAS; do
+            if ! git ls-remote --exit-code --heads origin "$RAMA" > /dev/null; then
+              echo "No existe $RAMA: se omite (lanza este flujo a mano para crearla)."
+              continue
+            fi
+            git fetch origin "$RAMA"
+            git checkout -B "$RAMA" "origin/$RAMA"
+            if git merge-base --is-ancestor origin/main HEAD; then
+              echo "$RAMA ya contiene main."
+              continue
+            fi
+            if git merge --no-edit -m "Sincronizar main en $RAMA" origin/main; then
+              git push origin "$RAMA"
+              echo "- \`$RAMA\` actualizada con \`main\`" >> "$GITHUB_STEP_SUMMARY"
+            else
+              git merge --abort
+              echo "::warning::Conflicto al fusionar main en $RAMA: se abre un Pull Request para resolverlo."
+              EXISTE=$(gh pr list --base "$RAMA" --head main --state open --json number --jq 'length')
+              if [ "$EXISTE" = "0" ]; then
+                gh pr create --base "$RAMA" --head main \
+                  --title "Sincronizar main → $RAMA (hay conflictos)" \
+                  --body "La sincronización automática de \`main\` en \`$RAMA\` ha encontrado conflictos. Resuélvelos en este PR (o en local) y fusiónalo."
+              fi
+              echo "- ⚠️ Conflicto en \`$RAMA\`: abierto PR de sincronización" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
