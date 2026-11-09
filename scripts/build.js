@@ -72,7 +72,7 @@ const SITIO = {
   provincia: AJUSTES.provincia || '',
   logo: AJUSTES.logo || '',
   imagenCompartir: AJUSTES.imagen_compartir || '/img/compartir.jpg',
-  url: av.url || 'https://tienda-online.pages.dev',
+  url: av.url || 'https://maquinas-de-coser-zafra.pages.dev',
   // Hasta tener el dominio definitivo, la web no se deja indexar (docs/PLAN.md, fase 0)
   indexable: av.indexable === true,
   colorTema: ap.color_barra_movil || '#ffffff',

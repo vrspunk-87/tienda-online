@@ -110,8 +110,9 @@ Resultado: decisiones anotadas aquí y resumidas en `CLAUDE.md` (sección «Deci
 
 **1a (en local): hecha el 5-11-2026** (puntos 1 a 7 salvo el despliegue; ver README). Quitado de la
 plataforma: propuestas, temas, actividades, formulario, canales y estadísticas de Vercel; las
-noticias son ahora el **blog** (`/blog/`). **1b (desplegado): pendiente** — proyecto de Cloudflare
-Pages (comprobar el nombre y ajustar `lib/origenes.js` y `base_url`), aplicación OAuth de GitHub,
+noticias son ahora el **blog** (`/blog/`). **1b (desplegado): en curso** — proyecto de Cloudflare
+Pages **creado el 9-11-2026: `maquinas-de-coser-zafra`** (https://maquinas-de-coser-zafra.pages.dev; ya ajustados
+`lib/origenes.js`, `base_url` y la dirección del sitio; primer despliegue de `main` correcto). Falta: aplicación OAuth de GitHub,
 variables `OAUTH_CLIENT_ID` y `OAUTH_CLIENT_SECRET`, versión de Node del build, entornos de
 prueba y prueba del login real.
 
