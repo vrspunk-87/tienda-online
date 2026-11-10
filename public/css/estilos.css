@@ -1245,3 +1245,8 @@ a.pildora-tema:hover { filter: brightness(1.1); }
 
 /* Ajustes → «Número de productos en insignias»: no */
 .sin-insignias :is(.insignia-menu, .pie-insignia, .tarjeta-categoria-n, .hero-insignia):not(.ficha-pestana *) { display: none !important; }
+
+/* Solicitud de presupuesto: campo trampa contra el spam (fuera de la vista) y casilla «No soy un robot» (ALTCHA) */
+.campo-trampa { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+altcha-widget { display: block; max-width: 22rem; --altcha-border-radius: .6rem; --altcha-max-width: 22rem; }
+[data-campo-verificacion].con-error altcha-widget { --altcha-color-border: var(--bs-danger); }
