@@ -1251,3 +1251,64 @@ a.pildora-tema:hover { filter: brightness(1.1); }
 .campo-trampa { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 altcha-widget { display: block; max-width: 22rem; --altcha-border-radius: .6rem; --altcha-max-width: 22rem; }
 [data-campo-verificacion].con-error altcha-widget { --altcha-color-border: var(--bs-danger); }
+
+/* =========================================================
+   Logo e identidad (10-11-2026): letra Courgette en rojo, aguja con hilo (public/img/logo.svg),
+   insignias en gris claro (el rojo queda para «Mi solicitud»), títulos de los listados con la
+   letra del logo y barra del catálogo que cabe con todos los tipos y «Ofertas».
+   ========================================================= */
+:root { --insignia-fondo: #e3e6ea; --insignia-texto: #1f2933; }
+.navbar-brand.fw-bold, .pie-marca { font-weight: 400 !important; }
+.marca-texto { font-family: "Courgette", cursive; color: var(--bs-primary); line-height: 1; font-size: 1.55rem; }
+.marca-ultima { display: block; font-size: 1.3em; padding-left: 2.6em; }
+.navbar-brand .logo { height: 50px; max-width: 60px; }
+.pie-marca .marca-texto { color: #ff8a8a; font-size: 1.4rem; }
+.logo-pie { background: #fff; padding: 4px; }
+@media (max-width: 991.98px) {
+  .navbar-brand > span.marca-texto { font-size: 1.15rem; white-space: nowrap; }
+  .navbar-brand .marca-ultima { display: inline; font-size: 1em; padding-left: 0; }
+  .navbar-brand .logo { height: 36px; }
+}
+/* Móviles muy estrechos: el nombre vuelve a dos líneas para no chocar con «Mi solicitud» y el menú */
+@media (max-width: 399.98px) {
+  .navbar-brand > span.marca-texto { font-size: .95rem; }
+  .navbar-brand .marca-ultima { display: block; font-size: 1.2em; padding-left: 1.4em; }
+  .navbar-brand .logo { height: 32px; }
+}
+
+/* Títulos de catálogo, categorías, ofertas, blog, páginas y «Mi solicitud» (no los de las fichas ni las entradas) */
+.titulo-marca { font-family: "Courgette", cursive; font-weight: 400 !important; color: var(--bs-primary); letter-spacing: 0; }
+
+/* Insignias con el número de productos: gris claro (al pasar el ratón por la barra, rojas) */
+.insignia-menu, .barra-catalogo .barra-enlace > .insignia-menu, .insignia-menu.insignia-mini, .tarjeta-categoria-n, .hero-insignia {
+  background: var(--insignia-fondo); color: var(--insignia-texto); box-shadow: none;
+}
+
+/* Barra del catálogo: más compacta para que quepan los tipos y «Ofertas»; si aun así no caben,
+   pasa a dos líneas en lugar de salirse de la pantalla */
+.barra-items { flex-wrap: wrap; row-gap: .25rem; }
+.barra-enlace { padding: .45rem .5rem; font-size: .9rem; gap: .3rem; }
+.barra-todo > i { display: none; }
+.barra-todo::after { margin-left: .5rem; }
+@media (max-width: 1439.98px) {
+  .barra-enlace { padding: .4rem .35rem; font-size: .84rem; gap: .25rem; }
+  .barra-catalogo .insignia-menu { min-width: 1.25rem; height: 1.25rem; font-size: .62rem; padding: 0 .25rem; }
+  .barra-todo { margin-right: .1rem; }
+  .barra-todo::after { margin-left: .35rem; }
+  .barra-flecha { display: none; }
+}
+
+/* Títulos de sección («Nuestros productos», «Productos de…», «Más en…», «Qué hacemos»…): letra del logo en gris oscuro */
+.titulo-bloque h2 { font-family: "Courgette", cursive; font-weight: 400; font-size: 2rem; color: var(--bs-emphasis-color); letter-spacing: 0; }
+.titulo-bloque h2 > * { font-family: var(--bs-body-font-family); }
+@media (max-width: 575.98px) { .titulo-bloque h2 { font-size: 1.65rem; } }
+
+/* Sobre nosotros: foto sin marco (p. ej. ovalada sobre blanco) y galería de la tienda */
+.sobre-foto-libre::after { display: none; }
+.sobre-foto-libre img, .sobre-foto-libre picture { aspect-ratio: auto; object-fit: contain; border-radius: 0; }
+.sobre-galeria { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.sobre-galeria figure { margin: 0; }
+.sobre-galeria figure > :is(img, picture) { position: relative; display: block; }
+.sobre-galeria img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 1rem; box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .08); }
+.sobre-galeria figcaption { margin-top: .5rem; font-size: .9rem; color: var(--bs-secondary-color); }
+@media (max-width: 767.98px) { .sobre-galeria { grid-template-columns: 1fr; } }

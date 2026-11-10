@@ -5,8 +5,21 @@ texto: |-
   Somos una tienda familiar especializada en máquinas de coser. Empezamos vendiendo y arreglando máquinas a las costureras del pueblo y hoy atendemos también a talleres, tapiceros y escuelas de costura de toda la comarca.
 
   Nos gusta que te lleves la máquina que de verdad necesitas: te escuchamos, te enseñamos varias, la probamos contigo y, cuando ya la tienes en casa, seguimos aquí para lo que haga falta.
-foto: ""
-foto_alt: ""
+foto: /img/sobre-nosotros-duenos.jpg
+foto_alt: Las personas que atienden Máquinas de Coser Zafra
+foto_marco: false
+galeria:
+  titulo: Nuestra tienda
+  fotos:
+    - imagen: /img/sobre-nosotros-tienda-1.jpg
+      alt: Máquina de coser con una prenda a medio coser en la tienda
+      pie: ""
+    - imagen: /img/sobre-nosotros-tienda-2.jpg
+      alt: Mostrador con vitrina y un maniquí en la tienda
+      pie: ""
+    - imagen: /img/sobre-nosotros-tienda-3.jpg
+      alt: Estanterías de cristal con máquinas de coser expuestas
+      pie: ""
 desde: 1992
 cifras:
   - numero: "{años}"

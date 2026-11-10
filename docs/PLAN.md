@@ -432,6 +432,23 @@ inventada; robot; límites; números correlativos con envíos simultáneos; text
 
 ## Fase 6 — Ajustes, guías y pruebas completas
 
+**Identidad visual (10-11-2026, elegida por Víctor a partir del logo de la antigua web):** letra Courgette
+en rojo `#c1121f` (Ajustes del sitio → Apariencia → acento), nombre en dos líneas en el ordenador y en una
+en el móvil (dos en móviles de menos de 400 px), dibujo de aguja con hilo y pespunte en lugar de la foto
+del prensatelas (`public/img/logo.svg`; iconos en `public/img/iconos/`), insignias de número de productos
+en gris claro (el rojo queda para «Mi solicitud»), títulos de catálogo, categorías, ofertas, blog, páginas
+y «Mi solicitud» con la letra del logo (no los nombres de producto ni las entradas). Barra del catálogo
+más compacta: cabe con todos los tipos y «Ofertas» desde 1200 px y, si no, pasa a dos líneas (antes se
+salía de la pantalla en portátiles de 1366 px). Pendiente: decidir si las ofertas llevan un color propio.
+Titular de la portada en la letra del logo (rojo) y títulos de sección («Nuestros productos»…) en la
+misma letra en gris oscuro. Imágenes para compartir con la nueva identidad: la de por defecto
+(`public/img/compartir.jpg`, se regenera con `node scripts/generar-imagen-compartir.js`, todo en el cuadrado
+central porque WhatsApp recorta en cuadrado) y las automáticas de categorías y páginas (fondo blanco, logo
+y pespunte). «Sobre nosotros»: fotos de la antigua web mejoradas (ampliadas ×4 sin inventar detalles):
+la de los dueños, ovalada, como foto principal sin marco (`foto_marco: false`) y la galería «Nuestra
+tienda» (campo `galeria`, editable en el panel). Pendiente: confirmar que ambos dan permiso para salir en
+la web y, si se quiere, pies de foto.
+
 1. Ajustes del sitio en el panel: datos de la tienda, textos del precio orientativo, de la página de
    gracias y del acuse, límites, compresión de imágenes, cómo se muestran las ofertas.
 2. Guías: `docs/GUIA-EDICION.md` (panel), `docs/CARGA-EN-BLOQUE.md` (Excel) y

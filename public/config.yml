@@ -440,6 +440,24 @@ collections:
           - { label: "Presentación", name: "texto", widget: "markdown", required: false, hint: "Quiénes sois, cómo empezasteis y por qué la gente vuelve. Dos o tres párrafos." }
           - { label: "Foto de la tienda", name: "foto", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Mejor horizontal (4:3). Sin foto sale un recuadro con el nombre de la tienda." }
           - { label: "Descripción de la foto", name: "foto_alt", widget: "string", required: false }
+          - { label: "Foto con marco", name: "foto_marco", widget: "boolean", default: true, required: false, hint: "Con marco: la foto se recorta en un rectángulo 4:3 con esquinas redondeadas y pespunte. Desmárcalo para una foto que ya tiene su forma (p. ej. ovalada sobre fondo blanco): se muestra entera, sin marco." }
+          - label: "Galería de la tienda"
+            name: "galeria"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Fotos de la tienda debajo de la presentación. Mejor horizontales (4:3). Sin fotos no se muestra."
+            fields:
+              - { label: "Título", name: "titulo", widget: "string", default: "Nuestra tienda", required: false }
+              - label: "Fotos"
+                name: "fotos"
+                widget: "list"
+                required: false
+                summary: "{{fields.alt}}"
+                fields:
+                  - { label: "Foto", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } } }
+                  - { label: "Descripción (para quien no ve la foto)", name: "alt", widget: "string", required: false }
+                  - { label: "Pie de foto (opcional)", name: "pie", widget: "string", required: false, hint: "Texto corto que sale debajo de la foto." }
           - { label: "Año de apertura", name: "desde", widget: "number", value_type: "int", required: false, hint: "Sale en el sello «desde…» de la foto. En las cifras, «{años}» se convierte en los años que lleváis." }
           - label: "Cifras"
             name: "cifras"

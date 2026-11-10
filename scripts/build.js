@@ -908,16 +908,30 @@ const md = (txt, origen) => botonesEditor(enlacesPropios(avisarNegritasTitulo(op
 
 /* =========================================================
    4b. Imágenes automáticas para compartir (1200×630)
-       Para entradas del blog y páginas sin imagen: el título sobre un
-       fondo con los colores de la marca. Es la que sale al compartir por WhatsApp o Facebook y la
-       que reciben las herramientas de redes por RSS. El texto se dibuja con la
-       fuente Montserrat incluida en el proyecto (no depende del servidor).
+       Para entradas del blog y páginas sin imagen: el título sobre el fondo de la marca y, abajo,
+       un pespunte con el logo y el nombre de la tienda en la letra del logo (Courgette). Es la que
+       sale al compartir por WhatsApp o Facebook y la que reciben las herramientas de redes por RSS.
+       El texto se dibuja con las fuentes incluidas en el proyecto (no depende del servidor).
    ========================================================= */
 let fuenteTitulos = null;
 try {
   const b = fs.readFileSync('node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff');
   fuenteTitulos = opentype.parse(b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength));
 } catch { console.warn('Aviso: no se encontró la fuente de los títulos; no se generan imágenes automáticas.'); }
+let fuenteMarca = null; // la del logo, para el nombre de la tienda
+try {
+  const b = fs.readFileSync('node_modules/@fontsource/courgette/files/courgette-latin-400-normal.woff');
+  fuenteMarca = opentype.parse(b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength));
+} catch { /* sin ella, el nombre va en Montserrat */ }
+// El dibujo del logo (si es un SVG del proyecto) para pintarlo dentro de la imagen
+const logoSvgInterior = (() => {
+  try {
+    if (!/\.svg$/i.test(SITIO.logo || '')) return '';
+    const t = fs.readFileSync(path.join(PUB, SITIO.logo), 'utf8');
+    const vb = (t.match(/viewBox="([^"]+)"/) || [])[1] || '0 0 64 64';
+    return { vb: vb.split(/\s+/).map(Number), cuerpo: t.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>[\s\S]*$/, '').replace(/<!--[\s\S]*?-->/g, '') };
+  } catch { return ''; }
+})();
 
 // Trazado SVG de una letra: M, L, Q, C y Z con un decimal
 const redondear = v => Math.round(v * 10) / 10;
@@ -959,14 +973,22 @@ async function imagenAutomatica(item, etiqueta) {
   // se dibujan
   const trazos = (texto, x, yy, t, relleno) => fuenteTitulos.getPaths(texto, x, yy, t)
     .map(datosTrazado).filter(Boolean).map(d => `<path d="${d}" ${relleno}/>`).join('');
-  const caminos = lineas.map(l => { const d = trazos(l, X, y, tam, 'fill="#ffffff"'); y += alto; return d; }).join('');
+  const caminos = lineas.map(l => { const d = trazos(l, X, y, tam, `fill="${MARCA.texto}"`); y += alto; return d; }).join('');
   const etq = trazos(etiqueta.toUpperCase(), X, 205, 26, `fill="${MARCA.acento}"`);
-  const pie = trazos(SITIO.nombre.toUpperCase(), X, H - 158, 24, 'fill="#ffffff" fill-opacity="0.7"');
+  // Pie: pespunte, logo y nombre de la tienda en la letra del logo
+  const yPie = H - 92;
+  const conLogo = logoSvgInterior ? 64 + 18 : 0;
+  const pie = (fuenteMarca
+    ? fuenteMarca.getPaths(SITIO.nombre, X + conLogo, yPie + 14, 44).map(datosTrazado).filter(Boolean).map(d => `<path d="${d}" fill="${MARCA.acento}"/>`).join('')
+    : trazos(SITIO.nombre.toUpperCase(), X + conLogo, yPie + 8, 24, `fill="${MARCA.acento}"`));
+  const logo = logoSvgInterior
+    ? `<g transform="translate(${X} ${yPie - 40}) scale(${64 / (logoSvgInterior.vb[2] || 64)})">${logoSvgInterior.cuerpo}</g>` : '';
 
-  // Fondo del color del texto, franja y etiqueta del color de acento
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="${MARCA.texto}"/>
+  // Fondo de la marca, franja y etiqueta del color de acento y pespunte abajo (como en la web)
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="${MARCA.fondo}"/>
     <rect x="${X}" y="150" width="120" height="10" fill="${MARCA.acento}"/>
-    ${etq}${caminos}${pie}</svg>`;
+    <path d="M40 ${H - 150}H${W - 40}" stroke="${MARCA.acento}" stroke-width="4" stroke-dasharray="18 12" stroke-linecap="round" opacity=".45"/>
+    ${etq}${caminos}${logo}${pie}</svg>`;
 
   fs.mkdirSync(path.join(DIST, 'img/compartir'), { recursive: true });
   const enCache = path.join(CACHE, `compartir-${huella(VERSION_CACHE, svg)}.jpg`);
@@ -1486,6 +1508,7 @@ if (esTemaPropio(tema)) {
   for (const [pkg, fichero, licencia] of [
     ['@fontsource-variable/nunito', 'nunito-latin-wght-normal.woff2', 'nunito-LICENSE.txt'],
     ['@fontsource-variable/nunito-sans', 'nunito-sans-latin-wght-normal.woff2', 'nunito-sans-LICENSE.txt'],
+    ['@fontsource/courgette', 'courgette-latin-400-normal.woff2', 'courgette-LICENSE.txt'], // logo y títulos
   ]) {
     fs.copyFileSync(path.join(NM, pkg, 'files', fichero), path.join(VENDOR, 'fonts', fichero));
     fs.copyFileSync(path.join(NM, pkg, 'LICENSE'), path.join(VENDOR, 'fonts', licencia));
@@ -1955,7 +1978,7 @@ function publicarListadoBlog({ lista, base, titulo, entradilla, descripcion, tem
     const hasta = i * porPagina + trozo.length + extra;
     const cuerpo = cabeceraPagina(`
     ${migas(tema ? [{ texto: 'Blog', url: '/blog/' }, { texto: titulo }] : [{ texto: 'Blog' }])}
-    <h1 class="display-5 fw-bold">${esc(titulo)}${n > 1 ? ` <span class="blog-pagina-n">· página ${n}</span>` : ''}</h1>
+    <h1 class="titulo-marca display-5 fw-bold">${esc(titulo)}${n > 1 ? ` <span class="blog-pagina-n">· página ${n}</span>` : ''}</h1>
     ${entradilla ? `<p class="lead text-body-secondary">${esc(entradilla)}</p>` : ''}
     ${!tema && n === 1 ? introPagina(cfgBlog.texto, '/blog/') : ''}
     ${botonesCompartir(titulo, base)}
@@ -1996,7 +2019,7 @@ for (const p of paginas.filter(x => !PAGINAS_CON_DATOS.includes(x.slug))) {
   const cuerpo = `
     <article>
       ${migas([{ texto: p.titulo }])}
-      <h1 class="display-5 fw-bold">${esc(p.titulo)}</h1>
+      <h1 class="titulo-marca display-5 fw-bold">${esc(p.titulo)}</h1>
       ${p.meta.description ? `<p class="lead text-body-secondary">${esc(p.meta.description)}</p>` : ''}
       ${p.imagen ? imgHtml(p.imagen, p.imagenAlt, { clase: 'img-fluid rounded my-4', diferida: false }) : ''}
       <div class="articulo-cuerpo mt-4">${md(p.cuerpo, p.url)}</div>
@@ -2047,7 +2070,7 @@ const URL_SOBRE = '/paginas/sobre-nosotros/';
       <div class="container">
         ${migas([{ texto: C.titulo }])}
         ${C.provisional ? avisoProvisional('Datos') : ''}
-        <h1 class="pagina-titulo">${esc(C.titulo)}</h1>
+        <h1 class="titulo-marca pagina-titulo">${esc(C.titulo)}</h1>
         ${C.introduccion ? `<p class="pagina-intro">${esc(C.introduccion)}</p>` : ''}
         ${insigniaAbierto()}
         ${botonesCompartir(C.titulo, URL_CONTACTO)}
@@ -2115,6 +2138,9 @@ const URL_SOBRE = '/paginas/sobre-nosotros/';
   const historia = (Array.isArray(S.historia) ? S.historia : []).filter(x => x?.texto);
   const marcas = S.marcas?.mostrar !== false && conLogo.length;
   const titulo = S.titulo || 'Sobre nosotros';
+  // Galería «Nuestra tienda» (opcional): fotos con su descripción y, si se quiere, un pie
+  const galeria = (Array.isArray(S.galeria?.fotos) ? S.galeria.fotos : []).filter(f => f?.imagen);
+  const fotoSinMarco = S.foto_marco === false;
   const tarjetaIcono = (x, conEnlace) => `<div class="caja-icono">
           <span class="caja-icono-icono"><i class="bi ${ICONOS_VENTAJA[x.icono] || ICONOS_VENTAJA.check}" aria-hidden="true"></i></span>
           <h3>${esc(x.titulo)}</h3>
@@ -2128,17 +2154,24 @@ const URL_SOBRE = '/paginas/sobre-nosotros/';
       <div class="sobre-rejilla">
         <div>
           ${S.antetitulo ? `<p class="antetitulo">${esc(S.antetitulo)}</p>` : ''}
-          <h1 class="sobre-titulo">${esc(titulo)}</h1>
+          <h1 class="titulo-marca sobre-titulo">${esc(titulo)}</h1>
           ${S.texto ? `<div class="sobre-texto">${md(S.texto, URL_SOBRE)}</div>` : ''}
           ${cifras.length ? `<ul class="sobre-cifras">${cifras.map(c => `<li><b>${esc(c.numero)}</b><span>${esc(c.texto)}</span></li>`).join('')}</ul>` : ''}
           ${botonesCompartir(titulo, URL_SOBRE, { clase: 'mt-4' })}
         </div>
-        <div class="sobre-foto">
+        <div class="sobre-foto${fotoSinMarco ? ' sobre-foto-libre' : ''}">
           ${S.foto ? imgHtml(S.foto, S.foto_alt || `La tienda ${SITIO.nombre}`, { tam: '(min-width: 992px) 45vw, 100vw', diferida: false }) : `<div class="sobre-foto-vacia" aria-hidden="true"><i class="bi bi-scissors"></i><span>${esc(SITIO.nombre)}</span></div>`}
           ${Number.isFinite(anio) ? `<span class="sobre-sello"><span>desde</span><b>${anio}</b></span>` : ''}
         </div>
       </div>
     </section>
+    ${galeria.length ? `<section class="container seccion pt-0" aria-labelledby="galeria-titulo">
+      <div class="titulo-bloque"><h2 id="galeria-titulo">${esc(S.galeria?.titulo || 'Nuestra tienda')}</h2></div>
+      <div class="sobre-galeria">${galeria.map(f => `<figure>
+          ${imgHtml(f.imagen, f.alt || `La tienda ${SITIO.nombre}`, { tam: '(min-width: 992px) 30vw, 100vw' })}
+          ${f.pie ? `<figcaption>${esc(f.pie)}</figcaption>` : ''}
+        </figure>`).join('')}</div>
+    </section>` : ''}
     ${servicios.length ? `<section class="container seccion pt-0" aria-labelledby="servicios-titulo">
       <div class="titulo-bloque"><h2 id="servicios-titulo">Qué hacemos</h2></div>
       <div class="cajas-icono">${servicios.map(x => tarjetaIcono(x, true)).join('')}</div>
@@ -2389,7 +2422,7 @@ for (const c of categorias) {
   const ofertasLista = ofertas.filter(p => lista.includes(p));
   const cuerpo = cabeceraPagina(`
     ${migas(migasDe(c))}
-    <h1 class="display-5 fw-bold">${esc(c.titulo)}</h1>
+    <h1 class="titulo-marca display-5 fw-bold">${esc(c.titulo)}</h1>
     ${c.meta.description ? `<p class="lead text-body-secondary">${esc(c.meta.description)}</p>` : ''}
     ${introPagina(c.cuerpo, c.url, 'Precios orientativos, IVA incluido.')}
     ${botonesCompartir(c.titulo, c.url)}
@@ -2496,7 +2529,7 @@ if (SOLICITUD.activa) {
     <section class="solicitud-cabecera">
       <div class="container">
         ${migas([{ texto: SOLICITUD.titulo }])}
-        <h1 class="solicitud-titulo">${esc(SOLICITUD.titulo)}</h1>
+        <h1 class="titulo-marca solicitud-titulo">${esc(SOLICITUD.titulo)}</h1>
         ${SOLICITUD.introduccion ? `<p class="solicitud-intro">${esc(SOLICITUD.introduccion)}</p>` : ''}
         <ol class="solicitud-pasos" data-solicitud-pasos>
           <li class="actual" data-paso="1"><b>1</b>Revisa tu solicitud</li>
@@ -2641,7 +2674,7 @@ for (const c of [null, ...categorias]) {
     ...(c ? [...c.ancestros, c].map(x => ({ texto: x.titulo, url: urlOfertas(x) })) : [])];
   const cuerpo = cabeceraPagina(`
     ${migas(trozosMigas)}
-    <h1 class="display-5 fw-bold">${c ? `Ofertas: ${esc(c.titulo)}` : 'Ofertas'}</h1>
+    <h1 class="titulo-marca display-5 fw-bold">${c ? `Ofertas: ${esc(c.titulo)}` : 'Ofertas'}</h1>
     ${!c && cfgOfertas.descripcion ? `<p class="lead text-body-secondary">${esc(cfgOfertas.descripcion)}</p>` : ''}
     ${c || !cfgOfertas.descripcion ? `<p class="lead text-body-secondary">${hijos.length ? `Elige ${c ? (c.nivel === 1 ? 'una categoría' : 'una subcategoría') : 'un tipo de producto'} para ver sus ofertas.` : 'Estas son sus ofertas vigentes.'}</p>` : ''}
     ${introPagina(c ? '' : cfgOfertas.texto, '/ofertas/', 'Precios de oferta válidos hasta la fecha indicada en cada producto. Precios orientativos, IVA incluido.')}
@@ -2669,7 +2702,7 @@ if (!SIN_CATALOGO) {
   const verProductos = BLOQUES.catalogo.productos.mostrar && productos.length;
   const cuerpo = cabeceraPagina(`
     ${migas([{ texto: 'Catálogo' }])}
-    <h1 class="display-5 fw-bold">Catálogo</h1>
+    <h1 class="titulo-marca display-5 fw-bold">Catálogo</h1>
     <p class="lead text-body-secondary">${cfgCatalogo.descripcion ? esc(cfgCatalogo.descripcion) : `Elige un tipo de producto${verProductos ? ' o mira nuestros productos' : ''}.`}</p>
     ${introPagina(cfgCatalogo.texto, '/catalogo/', 'Precios orientativos, IVA incluido.')}
     ${botonesCompartir('Catálogo', '/catalogo/')}

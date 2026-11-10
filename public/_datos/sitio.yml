@@ -4,7 +4,7 @@ descripcion: Máquinas de coser y accesorios en Zafra. Consulta el catálogo con
   precios orientativos y solicita presupuesto sin compromiso.
 localidad: Zafra
 provincia: Badajoz
-logo: /img/logo.png
+logo: /img/logo.svg
 imagen_compartir: /img/compartir.jpg
 portada:
   hero:
@@ -79,7 +79,7 @@ apariencia:
   marca:
     texto: "#1f2933"
     fondo: "#ffffff"
-    acento: "#2f6f8f"
+    acento: "#c1121f"
   fuentes_google: false
   color_principal: ""
   color_enlaces: ""

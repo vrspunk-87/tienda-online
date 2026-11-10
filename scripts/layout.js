@@ -38,10 +38,13 @@ export function construir(sitio, ruta) {
         || (m.tambien || []).some(p => p && actual.startsWith(p));
   };
 
+  // Nombre con la letra del logo; la última palabra («Zafra») baja a una segunda línea en el
+  // ordenador (en el móvil va todo en una línea). estilos.css → «Logo»
+  const nombreMarca = `<span class="marca-texto">${esc(sitio.nombre).replace(/ (\S+)$/, ' <span class="marca-ultima">$1</span>')}</span>`;
   const marca = `
       <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="/">
         ${sitio.logo ? `<img src="${esc(sitio.logo)}" alt="${esc(sitio.nombre)}" class="logo" width="40" height="40">` : ''}
-        <span>${esc(sitio.nombre)}</span>
+        ${nombreMarca}
       </a>`;
 
   // En los desplegables solo se marca la página exacta en la que se está
@@ -320,7 +323,7 @@ export function construir(sitio, ruta) {
             <div class="pie-columna-marca">
               <a class="pie-marca" href="/">
                 ${sitio.logo ? `<img src="${esc(sitio.logo)}" alt="" class="logo-pie" width="46" height="46" loading="lazy">` : ''}
-                <span>${esc(sitio.nombre)}</span>
+                ${nombreMarca}
               </a>
               ${sitio.descripcion ? `<p class="pie-descripcion">${esc(sitio.descripcion)}</p>` : ''}
               ${REDES.length ? `<ul class="pie-redes" aria-label="Redes sociales">
