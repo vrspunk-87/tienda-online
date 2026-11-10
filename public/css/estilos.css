@@ -1312,3 +1312,5 @@ altcha-widget { display: block; max-width: 22rem; --altcha-border-radius: .6rem;
 .sobre-galeria img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 1rem; box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .08); }
 .sobre-galeria figcaption { margin-top: .5rem; font-size: .9rem; color: var(--bs-secondary-color); }
 @media (max-width: 767.98px) { .sobre-galeria { grid-template-columns: 1fr; } }
+/* Botones de compartir en el bloque principal de la portada (fondo gris): círculos blancos */
+.hero-texto .compartir-icono { background: var(--bs-body-bg); box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .06); }

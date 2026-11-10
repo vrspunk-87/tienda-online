@@ -2741,6 +2741,7 @@ function aplicarPortada(raiz) {
   // Bloque principal: ventajas, tipos de producto y último artículo del blog
   const poner = (sel, html) => { const el = raiz.querySelector(sel); if (!el) return; if (html) el.insertAdjacentHTML('afterend', html); el.remove(); };
   poner('[data-hero-ventajas]', heroVentajas());
+  poner('[data-hero-compartir]', botonesCompartir(SITIO.nombre, '/', { clase: 'mt-4' })); // como en el resto de páginas
   poner('[data-hero-catalogo]', heroCatalogo());
   poner('[data-hero-blog]', heroBlog());
 }
