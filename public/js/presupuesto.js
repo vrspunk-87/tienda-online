@@ -14,8 +14,10 @@
   La solicitud se guarda en este navegador (localStorage): solo identificadores y cantidades,
   sin datos personales. Los nombres y precios se leen de /presupuesto/productos.json, que
   genera el build: un producto que ya no está disponible se quita solo.
-  PARTE VISUAL: el envío real llega en la fase 5 (docs/PLAN.md); de momento, al enviar se
-  comprueban los campos y se avisa de que el envío no está activo.
+  Envío (fase 5): se manda a /api/solicitud (functions/api/solicitud.js) con la casilla «No soy un
+  robot» (ALTCHA), un campo trampa y el tiempo de rellenado. El servidor recalcula nombres y precios
+  con el catálogo publicado y lo guarda en la hoja de Google de la tienda; al terminar se muestra el
+  número de solicitud y la lista se vacía.
   Va en un fichero aparte porque la política de seguridad de la web no permite scripts
   escritos dentro del HTML.
 */
@@ -449,24 +451,136 @@
     const obs = form.elements.observaciones;
     obs?.addEventListener('blur', () => { obs.value = obs.value.trim(); });
 
-    form.addEventListener('submit', ev => {
+    /* ---------- Envío ---------- */
+    const inicioFormulario = Date.now();
+    const resultado = q('[data-solicitud-resultado]');
+    const botonEnviar = form.querySelector('button[type="submit"]');
+    const bloqueVerif = q('[data-campo-verificacion]');
+    const errorVerif = q('[data-error-verificacion]');
+    const widget = () => form.querySelector('altcha-widget');
+    function mostrar(clase, texto) { resultado.className = clase; resultado.textContent = texto; }
+    function errorVerificacion(texto) {
+      if (!bloqueVerif) return;
+      bloqueVerif.classList.toggle('con-error', !!texto);
+      if (errorVerif) { errorVerif.textContent = texto || ''; errorVerif.classList.toggle('d-block', !!texto); }
+    }
+    const valorVerificacion = () => form.querySelector('input[name="altcha"]')?.value || '';
+    function asegurarVerificacion() {
+      const w = widget();
+      if (!w || valorVerificacion()) return Promise.resolve(true);
+      if (typeof w.verify !== 'function') return Promise.resolve(false);
+      mostrar('mt-3 text-body-secondary', 'Comprobando que no eres un robot…');
+      return new Promise(resolver => {
+        let hecho = false;
+        const fin = ok => { if (hecho) return; hecho = true; clearTimeout(reloj); w.removeEventListener('statechange', cambio); resolver(ok && !!valorVerificacion()); };
+        const cambio = e => { const st = e.detail?.state; if (st === 'verified') fin(true); else if (st === 'error' || st === 'expired') fin(false); };
+        const reloj = setTimeout(() => fin(false), 30000);
+        w.addEventListener('statechange', cambio);
+        const estado = typeof w.getState === 'function' ? w.getState() : '';
+        if (estado !== 'verifying') { try { w.verify(); } catch (e) { fin(false); } }
+      });
+    }
+    function reiniciarVerificacion() { const w = widget(); if (w && typeof w.reset === 'function') w.reset(); }
+    form.addEventListener('statechange', e => { if (e.detail?.state === 'verified') errorVerificacion(''); });
+    // Los errores que devuelve el servidor se quitan en cuanto se corrige el campo
+    // Preferencia de contacto: se pueden marcar varias, pero siempre queda al menos una
+    form.querySelectorAll('input[name="preferencia"]').forEach(i => i.addEventListener('change', () => {
+      if (!form.querySelector('input[name="preferencia"]:checked')) i.checked = true;
+    }));
+    ['acepto', 'observaciones'].forEach(n => form.elements[n]?.addEventListener(n === 'acepto' ? 'change' : 'input', () => form.elements[n].setCustomValidity('')));
+    function exito(numero, mensaje, acuse) {
+      guardar([]); contador(); pintar();
+      vacia.hidden = true;
+      const caja = el('div', 'alert alert-success my-4 solicitud-exito');
+      caja.setAttribute('role', 'status');
+      caja.appendChild(el('h2', 'h4 fw-bold', numero ? `Solicitud ${numero} enviada` : 'Solicitud enviada'));
+      caja.appendChild(el('p', 'mb-2', mensaje || resultado.dataset.exito || '¡Solicitud enviada!'));
+      if (numero && acuse === false) caja.appendChild(el('p', 'mb-2', 'Hoy no hemos podido mandarte el correo con el resumen, pero tu solicitud está guardada: apunta el número por si nos llamas.'));
+      const seguir = el('a', 'btn btn-outline-primary', 'Seguir viendo el catálogo'); seguir.href = '/catalogo/';
+      caja.appendChild(seguir);
+      contenido.before(caja);
+      paso(4);
+      caja.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    form.addEventListener('submit', async ev => {
       ev.preventDefault();
-      const resultado = q('[data-solicitud-resultado]');
       Object.keys(REGLAS).forEach(n => { const i = form.elements[n]; if (i) { i.value = n === 'correo' ? i.value.replace(/\s+/g, '') : limpiar(i.value); validarCampo(i); } });
       if (obs) obs.value = obs.value.trim();
       form.classList.add('was-validated');
-      if (!form.checkValidity()) {
-        resultado.className = 'mt-3 text-danger fw-semibold';
-        resultado.textContent = 'Revisa los campos marcados.';
-        const primero = form.querySelector(':invalid'); if (primero) primero.focus();
+      // La casilla interna del widget ALTCHA es «required»: no cuenta aquí, se comprueba aparte
+      const invalidos = [...form.elements].filter(i => i.willValidate && !i.closest('altcha-widget') && !i.checkValidity());
+      if (invalidos.length) {
+        mostrar('mt-3 text-danger fw-semibold', 'Revisa los campos marcados.');
+        invalidos[0].focus();
         return;
       }
+      // Si la casilla «No soy un robot» no está marcada (o se desmarcó con un clic
+      // después de verificarse sola), se hace la comprobación ahora sin pedir nada más.
+      botonEnviar.disabled = true;
+      const verificado = await asegurarVerificacion();
+      botonEnviar.disabled = false;
+      errorVerificacion(verificado ? '' : 'No se ha podido comprobar que no eres un robot. Marca la casilla «No soy un robot» y vuelve a enviar.');
+      if (!verificado) {
+        mostrar('mt-3 text-danger fw-semibold', 'Revisa los campos marcados.');
+        if (widget()) widget().focus();
+        return;
+      }
+      const lista = leer().filter(x => productos.has(x.id));
+      if (!lista.length) { mostrar('mt-3 text-danger fw-semibold', 'Tu solicitud no tiene productos.'); return; }
       paso(3);
-      // PROVISIONAL (fase 5): todavía no hay función de envío ni hoja de Google conectada
-      resultado.className = 'mt-3 alert alert-info';
-      resultado.textContent = 'Todavía no se pueden enviar solicitudes desde la web: el envío se activará en breve. Mientras tanto, llámanos o escríbenos (ver Contacto y horario). Tu solicitud se queda guardada en este navegador.';
+      const datos = {
+        nombre: form.elements.nombre.value,
+        telefono: form.elements.telefono.value,
+        correo: form.elements.correo.value,
+        preferencia: [...form.querySelectorAll('input[name="preferencia"]:checked')].map(i => i.value),
+        observaciones: obs ? obs.value : '',
+        acepto: form.elements.acepto.checked ? 'si' : '',
+        altcha: valorVerificacion(),
+        web: form.elements.web ? form.elements.web.value : '',
+        _t: Date.now() - inicioFormulario,
+        productos: lista.map(x => ({ id: x.id, cantidad: x.cantidad, ...(x.nota ? { nota: x.nota } : {}) })),
+      };
+      botonEnviar.disabled = true;
+      mostrar('mt-3 text-body-secondary', 'Enviando tu solicitud…');
+      let r, j = {};
+      try {
+        r = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(datos) });
+        j = await r.json().catch(() => ({}));
+      } catch (e) {
+        botonEnviar.disabled = false;
+        mostrar('mt-3 alert alert-danger', 'No se ha podido enviar: comprueba tu conexión a internet y vuelve a intentarlo. Tu solicitud sigue guardada en este navegador.');
+        return;
+      }
+      botonEnviar.disabled = false;
+      if (r.ok && j.ok) { mostrar('mt-3', ''); exito(j.numero, j.mensaje, j.acuse); return; }
+      reiniciarVerificacion();
+      if (j.error === 'revisar' && j.errores) {
+        const campos = { nombre: 'nombre', telefono: 'telefono', correo: 'correo', acepto: 'acepto', observaciones: 'observaciones' };
+        let primero = null;
+        for (const [campo, texto] of Object.entries(j.errores)) {
+          if (campo === 'verificacion') { errorVerificacion(texto); primero = primero || widget(); continue; }
+          const input = form.elements[campos[campo]];
+          if (!input) continue;
+          input.setCustomValidity(texto);
+          const fb = input.parentElement.querySelector('.invalid-feedback'); if (fb) fb.textContent = texto;
+          primero = primero || input;
+        }
+        mostrar('mt-3 text-danger fw-semibold', j.errores.productos || 'Revisa los campos marcados.');
+        if (primero) primero.focus();
+        return;
+      }
+      if (j.error === 'no_disponibles' && Array.isArray(j.noDisponibles)) {
+        guardar(leer().filter(x => !j.noDisponibles.includes(x.id)));
+        j.noDisponibles.forEach(id => productos.delete(id));
+        contador(); pintar();
+        aviso.textContent = j.mensaje; aviso.hidden = false;
+        aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        mostrar('mt-3 text-danger fw-semibold', j.mensaje);
+        return;
+      }
+      mostrar('mt-3 alert alert-danger', j.mensaje || 'No se ha podido enviar la solicitud. Vuelve a intentarlo en unos minutos o llámanos. Tu solicitud sigue guardada en este navegador.');
     });
   }
-
   contador();
 })();

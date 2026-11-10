@@ -118,7 +118,20 @@ const SOLICITUD = {
   },
   accesorios: DATOS_SOLICITUD.accesorios !== false,
   notas: DATOS_SOLICITUD.notas !== false,
+  // Envío (fase 5): mensaje tras enviar, acuse de recibo al cliente y límites anti-abuso
+  mensajeExito: DATOS_SOLICITUD.mensaje_exito || '¡Solicitud enviada! Te hemos mandado un correo con el resumen. La tienda se pondrá en contacto contigo en breve para confirmarte la disponibilidad y el precio final.',
+  acuse: {
+    asunto: (DATOS_SOLICITUD.acuse || {}).asunto || 'Hemos recibido tu solicitud de presupuesto',
+    texto: (DATOS_SOLICITUD.acuse || {}).texto || 'Gracias por tu solicitud de presupuesto. La tienda la revisará y se pondrá en contacto contigo en breve para confirmarte la disponibilidad y el precio final.',
+  },
+  limites: (() => {
+    const l = DATOS_SOLICITUD.limites || {};
+    const n = (v, def, max) => Math.min(max, Math.max(1, parseInt(v, 10) || def));
+    // Los correos de una cuenta gratuita de Google son unos 100 al día: avisos + acuses por debajo
+    return { porHora: n(l.por_hora, 30, 300), avisosDia: n(l.avisos_dia, 40, 90), acusesDia: n(l.acuses_dia, 45, 90), maxProductos: n(l.max_productos, 30, 100) };
+  })(),
 };
+if (SOLICITUD.limites.avisosDia + SOLICITUD.limites.acusesDia > 95) console.warn(`Aviso (Solicitud de presupuesto): los topes diarios de avisos (${SOLICITUD.limites.avisosDia}) y acuses (${SOLICITUD.limites.acusesDia}) suman más de 95; con una cuenta gratuita de Google se pueden mandar unos 100 correos al día.`);
 // Contacto y horario y Sobre nosotros (Decap → Contacto y Sobre nosotros): páginas con datos
 const leerDatos = f => (fs.existsSync(`${PUB}/_datos/${f}`) ? leerYaml(fs.readFileSync(`${PUB}/_datos/${f}`, 'utf8')) || {} : {});
 const DATOS_CONTACTO = leerDatos('contacto.yml');
@@ -1497,6 +1510,10 @@ fs.writeFileSync(path.join(VENDOR, 'tema.css'), cssTemaVendor);
 // dirección hace que, al cambiar el tema o los colores, se descargue el nuevo al momento
 const VERSION_TEMA = huella(cssTemaVendor).slice(0, 10);
 fs.copyFileSync(path.join(NM, 'bootstrap/dist/js/bootstrap.bundle.min.js'), path.join(VENDOR, 'bootstrap.bundle.min.js'));
+// Casilla «No soy un robot» de la solicitud de presupuesto (ALTCHA, servida desde la propia web)
+fs.mkdirSync(path.join(VENDOR, 'altcha'), { recursive: true });
+fs.copyFileSync(path.join(NM, 'altcha/dist/main/altcha.i18n.min.js'), path.join(VENDOR, 'altcha/altcha.min.js'));
+fs.copyFileSync(path.join(NM, 'altcha/LICENSE.txt'), path.join(VENDOR, 'altcha/LICENSE.txt'));
 fs.copyFileSync(path.join(NM, 'bootstrap-icons/font/bootstrap-icons.min.css'), path.join(VENDOR, 'bootstrap-icons/bootstrap-icons.min.css'));
 fs.cpSync(path.join(NM, 'bootstrap-icons/font/fonts'), path.join(VENDOR, 'bootstrap-icons/fonts'), { recursive: true });
 
@@ -2399,9 +2416,43 @@ const bloqueBlog = porPagina => rejillaNoticias(noticias.slice(0, porPagina), { 
 /* =========================================================
    9c. Solicitud de presupuesto: /presupuesto/ (Decap → Solicitud de presupuesto)
        La lista se guarda en el navegador (public/js/presupuesto.js), que la pinta con los
-       datos de /presupuesto/productos.json. PARTE VISUAL: el envío real (función del
-       servidor y hoja de Google) llega en la fase 5, tras el despliegue (docs/PLAN.md).
+       datos de /presupuesto/productos.json. El envío lo recibe functions/api/solicitud.js
+       (lib/solicitud-api.js) y lo guarda en la hoja de Google (docs/solicitudes/).
    ========================================================= */
+// Catálogo para la función del servidor (functions/api/solicitud.js): con él se recalculan nombres,
+// precios y total de cada solicitud (nunca con lo que manda el navegador). Lleva las ofertas con
+// sus fechas, también las que aún no han empezado, para aplicarlas según el día del envío aunque
+// la reconstrucción diaria se retrase. Se genera siempre (la función lo importa) y no se sube a Git.
+{
+  const ofertaDe = (p, precio) => (p.estado === 'oferta' && p.oferta.inicio && p.oferta.fin && precio != null
+    ? { oferta: { precio, inicio: p.oferta.inicio, fin: p.oferta.fin } } : {});
+  const prodServidor = {};
+  for (const p of productos) {
+    const comun = { nombre: p.nombre, modelo: p.modelo, referencia: p.referencia, fabricante: fabricanteDe(p), url: abs(p.url) };
+    if (p.dosPrecios) {
+      prodServidor[p.slug] = { ...comun, version: 'Completa', precio: p.precio ?? null, ...ofertaDe(p, p.oferta.precio) };
+      prodServidor[`${p.slug}~cabezal`] = { ...comun, version: 'Cabezal', precio: p.precioCabezal ?? null, ...ofertaDe(p, p.oferta.precioCabezal) };
+    } else prodServidor[p.slug] = { ...comun, precio: p.precio ?? null, ...ofertaDe(p, p.oferta.precio) };
+  }
+  const textoConsentimiento = `${SOLICITUD.aceptacion}\n${SOLICITUD.infoPrivacidad}`;
+  const datosServidor = {
+    generado: new Date().toISOString(),
+    entorno: ENTORNO,
+    activa: SOLICITUD.activa,
+    tienda: SITIO.nombre,
+    web: URL_BASE,
+    preferencias: SOLICITUD.preferencia.mostrar ? SOLICITUD.preferencia.opciones : [],
+    notas: SOLICITUD.notas,
+    consentimiento: { version: crypto.createHash('sha256').update(textoConsentimiento).digest('hex').slice(0, 10) },
+    mensajeExito: SOLICITUD.mensajeExito,
+    acuse: SOLICITUD.acuse,
+    limites: SOLICITUD.limites,
+    productos: prodServidor,
+  };
+  fs.mkdirSync('lib/generado', { recursive: true });
+  fs.writeFileSync('lib/generado/solicitud-datos.js', `// Generado por scripts/build.js (no editar ni subir a Git): catálogo de la solicitud de presupuesto\nexport default ${JSON.stringify(datosServidor)};\n`);
+}
+
 if (SOLICITUD.activa) {
   // Datos públicos de los productos visibles para pintar la solicitud (nada que no esté ya en las fichas)
   const miniatura = src => optimizadas.get(src)?.fuentes[0]?.url || src;
@@ -2490,12 +2541,21 @@ if (SOLICITUD.activa) {
               ${campo('s-telefono', 'Teléfono', '<input class="form-control" type="tel" id="s-telefono" name="telefono" maxlength="20" autocomplete="tel" inputmode="tel" required>', 'Escribe un teléfono (9 cifras como mínimo).')}
               ${campo('s-correo', 'Correo electrónico', '<input class="form-control" type="email" id="s-correo" name="correo" maxlength="160" autocomplete="email" required>', 'Escribe un correo válido, p. ej. nombre@ejemplo.es.', 'ancho')}
               ${pref.mostrar && pref.opciones.length > 1 ? `<fieldset class="ancho">
-                <legend class="form-label">${esc(pref.pregunta)}</legend>
-                <div class="solicitud-chips">${pref.opciones.map((o, k) => `<label class="solicitud-chip"><input type="radio" name="preferencia" value="${o}"${k === 0 ? ' checked' : ''}><span><i class="bi ${OPCIONES_CONTACTO[o][1]}" aria-hidden="true"></i>${OPCIONES_CONTACTO[o][0]}</span></label>`).join('')}</div>
+                <legend class="form-label">${esc(pref.pregunta)} <span class="solicitud-pista">Puedes marcar varias.</span></legend>
+                <div class="solicitud-chips" data-preferencias>${pref.opciones.map((o, k) => `<label class="solicitud-chip"><input type="checkbox" name="preferencia" value="${o}"${k === 0 ? ' checked' : ''}><span><i class="bi ${OPCIONES_CONTACTO[o][1]}" aria-hidden="true"></i>${OPCIONES_CONTACTO[o][0]}</span></label>`).join('')}</div>
               </fieldset>` : ''}
               <div class="ancho">
                 <label class="form-label" for="s-observaciones">Observaciones</label>
                 <textarea class="form-control" id="s-observaciones" name="observaciones" rows="3" maxlength="2000" placeholder="Dudas sobre los productos, horario en que prefieres que te llamemos…"></textarea>
+              </div>
+              <!-- Campo trampa contra el spam: las personas no lo ven; los robots lo rellenan -->
+              <div class="campo-trampa" aria-hidden="true">
+                <label for="s-web">No rellenes este campo</label>
+                <input type="text" id="s-web" name="web" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore>
+              </div>
+              <div class="ancho" data-campo-verificacion>
+                <altcha-widget challenge="/api/desafio" name="altcha" language="es" auto="onfocus" type="checkbox"></altcha-widget>
+                <div class="invalid-feedback" data-error-verificacion></div>
               </div>
               <div class="ancho form-check solicitud-acepto">
                 <input class="form-check-input" type="checkbox" id="s-acepto" name="acepto" value="si" required${legales.length ? ' data-legal-casilla' : ''}>
@@ -2506,7 +2566,7 @@ if (SOLICITUD.activa) {
               </div>
               <div class="ancho">
                 <button type="submit" class="btn btn-destacado btn-lg"><i class="bi bi-send me-2" aria-hidden="true"></i>${esc(SOLICITUD.boton)}</button>
-                <div class="mt-3" data-solicitud-resultado role="status" aria-live="polite"></div>
+                <div class="mt-3" data-solicitud-resultado role="status" aria-live="polite" data-exito="${esc(SOLICITUD.mensajeExito)}"></div>
               </div>
               ${SOLICITUD.infoPrivacidad ? `<p class="ancho solicitud-legal">${esc(SOLICITUD.infoPrivacidad)} <a href="${privacidad}">Más información</a>.</p>` : ''}
             </div>
@@ -2560,7 +2620,7 @@ if (SOLICITUD.activa) {
         </div>
       </div>` : ''}
     </div>`;
-  escribir(path.join(DIST, 'presupuesto/index.html'), completar(paginaDesdePlantilla(cuerpo, { buscable: false, secciones: true }), '/presupuesto/', {
+  escribir(path.join(DIST, 'presupuesto/index.html'), completar(paginaDesdePlantilla(cuerpo + '\n    <script type="module" src="/vendor/altcha/altcha.min.js"></script>', { buscable: false, secciones: true }), '/presupuesto/', {
     titulo: tituloCompleto(SOLICITUD.titulo),
     descripcion: 'Revisa los productos de tu solicitud de presupuesto y envíanos tus datos.',
     noindex: true,

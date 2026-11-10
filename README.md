@@ -12,9 +12,9 @@ Web de la tienda: un **catálogo con precios orientativos** en el que el cliente
 - **Fase 2 (catálogo en el panel) y parte de la 4:** hechas. Fabricantes, categorías y productos en
   el panel; menú del catálogo; portada con resumen del catálogo y ofertas; páginas de categoría;
   ficha básica de producto; página de ofertas. Ver «Catálogo» más abajo.
-- **Fase 5, parte visual:** hecha. «Añadir a la solicitud», contador, página «Mi solicitud de
-  presupuesto» con unidades y formulario; activable desde el panel. **El envío real llega tras el
-  despliegue.** Ver «Solicitud de presupuesto».
+- **Fase 5:** parte visual hecha y envío real hecho en código (10-11-2026): número de solicitud,
+  hoja de Google, aviso a la tienda y acuse al cliente. Falta configurarlo en Google y Cloudflare
+  (primero en `develop` con una cuenta de pruebas): [docs/solicitudes/CONFIGURAR.md](docs/solicitudes/CONFIGURAR.md).
 - **Fase 1b (despliegue):** pendiente. Crear el proyecto en Cloudflare Pages, la aplicación OAuth
   de GitHub, las variables, los entornos de prueba y la reconstrucción diaria.
 
@@ -198,8 +198,10 @@ en producción. Los productos y la entrada del blog de prueba se borraron el 8-1
   (vuelve a su precio normal).
 - Se guarda en el navegador de quien la prepara (`localStorage`: identificadores y unidades). Los
   datos que se pintan salen de `/presupuesto/productos.json`, que genera el build.
-- **PROVISIONAL**: «Enviar solicitud» comprueba los campos y avisa de que el envío no está activo.
-  La función del servidor, la hoja de Google y los correos llegan tras el despliegue (fase 5).
+- «Enviar solicitud» la manda a `/api/solicitud` (Cloudflare Pages Functions), que comprueba
+  «No soy un robot» (ALTCHA), recalcula precios y ofertas con el catálogo publicado y la pasa al
+  script de Google de la hoja (número `S-AAAA-NNNN`, aviso a la tienda y acuse al cliente).
+  Configuración: [docs/solicitudes/CONFIGURAR.md](docs/solicitudes/CONFIGURAR.md). Pruebas: `npm test`.
 
 **Prueba realizada (solicitud):** con Playwright en escritorio y móvil: añadir dos veces el mismo
 producto (2 ud.), añadir otros dos, un identificador inexistente se quita con aviso, totales

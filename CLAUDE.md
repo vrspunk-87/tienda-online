@@ -51,7 +51,8 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 **Fase 0 cerrada; fase 1a (base en local) hecha; fase 2 (catálogo en el panel) y parte de la 4
 (menú, portada, categorías, ofertas, ficha básica) hechas; parte visual de la solicitud de presupuesto
-(fase 5, sin envío real) hecha; fase 1b (despliegue en Cloudflare Pages, proyecto `maquinas-de-coser-zafra`, login del panel probado) hecha el 9-11-2026.** Excel: exportación e
+(fase 5) hecha y envío real hecho en código el 10-11-2026 (falta configurarlo en Google/Cloudflare y
+probarlo en `develop`: docs/solicitudes/CONFIGURAR.md); fase 1b (despliegue en Cloudflare Pages, proyecto `maquinas-de-coser-zafra`, login del panel probado) hecha el 9-11-2026.** Excel: exportación e
 importación desde el panel en la fase 3, tras el despliegue.
 Catálogo cargado (9-11-2026) desde la tarifa de J. Pujol 03/2026 (input/, ignorado por Git: lleva precios
 netos): 96 productos y 35 accesorios, todos «Solo para pruebas» hasta revisarlos con el Excel
@@ -234,7 +235,11 @@ si cambia.
   con dos pestañas, contenido de las páginas legales): la casilla no se marca hasta haber abierto
   las dos; «He leído y acepto» la marca. Configurable en Decap → Solicitud de presupuesto:
   `ventajas`, `preferencia_contacto` (mostrar, pregunta, opciones), `accesorios`, `notas`.
-  El envío real sigue pendiente (fase 5): preferencia y notas habrá que mandarlas también.
+  Envío real (10-11-2026): `functions/api/{solicitud,desafio,estado-solicitudes}.js` + `lib/solicitud*.js`,
+  `lib/verificacion.js` (ALTCHA con Web Crypto: altcha-lib usa node:crypto) y el catálogo generado
+  `lib/generado/solicitud-datos.js` (gitignored). Script de Google: docs/solicitudes/apps-script.gs.
+  La casilla interna del widget ALTCHA es «required»: presupuesto.js la excluye de la validación y,
+  si no está verificada al enviar, llama a `verify()`.
 - **Buscador** (8-11-2026, Pagefind con su API, sin la interfaz por defecto). Índice: productos
   (filtros tipo/fabricante/categoría/oferta/condición; meta image (miniatura), precio, fabricante),
   entradas del blog (meta fecha), páginas y, ahora, tipos/categorías/subcategorías (tipo

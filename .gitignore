@@ -28,3 +28,6 @@ img-completo/
 # Carpetas de trabajo de Claude (hojas de revisión, vistas previas) y consultas sueltas de fabricantes: no se suben
 Claude outputs/
 consulta-*/
+
+# Catálogo de la solicitud de presupuesto para la función del servidor (lo genera scripts/build.js en cada build)
+lib/generado/

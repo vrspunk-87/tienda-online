@@ -26,3 +26,16 @@ preferencia_contacto:
     - correo
 accesorios: true
 notas: true
+mensaje_exito: ¡Solicitud enviada! Te hemos mandado un correo con el resumen. La
+  tienda se pondrá en contacto contigo en breve para confirmarte la
+  disponibilidad y el precio final.
+acuse:
+  asunto: Hemos recibido tu solicitud de presupuesto
+  texto: Gracias por tu solicitud de presupuesto. La tienda la revisará y se
+    pondrá en contacto contigo en breve para confirmarte la disponibilidad y el
+    precio final.
+limites:
+  por_hora: 30
+  avisos_dia: 40
+  acuses_dia: 45
+  max_productos: 30

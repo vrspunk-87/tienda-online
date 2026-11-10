@@ -324,6 +324,28 @@ comprobar el informe y el `git diff`.
 
 ## Fase 5 — Solicitud de presupuesto
 
+**Envío real hecho en código (10-11-2026); falta configurarlo y probarlo en `develop` con una cuenta de
+Google de pruebas de Víctor** (guía: [solicitudes/CONFIGURAR.md](solicitudes/CONFIGURAR.md)). Cuando
+exista la cuenta de la tienda se repiten los pasos de Google y se ponen las variables en Producción; el
+código no cambia.
+- Servidor (Pages Functions): `functions/api/solicitud.js` (envío), `functions/api/desafio.js`
+  (ALTCHA) y `functions/api/estado-solicitudes.js` (diagnóstico con `DIAGNOSTICO_CLAVE`). La lógica
+  está en `lib/solicitud.js` (validación y recálculo), `lib/verificacion.js` (ALTCHA con Web Crypto)
+  y `lib/solicitud-api.js`; pruebas en `lib/solicitud.test.mjs` (`npm test`).
+- El catálogo del servidor es `lib/generado/solicitud-datos.js` (lo genera el build, no va a Git) en
+  vez del `catalogo.json` previsto en el punto 4; productos de dos precios como `<id>~cabezal`.
+- Google: `docs/solicitudes/apps-script.gs` (numeración, «Solicitudes» y «Líneas», aviso, acuse,
+  topes, diagnóstico, `crearSecreto`, `generarClavesCloudflare`, `probarCorreo`).
+- Variables de Cloudflare: `SOLICITUDES_URL`, `SOLICITUDES_SECRETO`, `ALTCHA_SECRETO`,
+  `DIAGNOSTICO_CLAVE` (de momento solo en Preview).
+- Panel: «Mensaje tras enviar», «Correo de acuse al cliente» y «Límites contra abusos».
+- Probado: pruebas unitarias, `wrangler pages dev` con el script simulado (diagnóstico, envío correcto
+  con precios recalculados, ALTCHA falso rechazado) y navegador (Playwright) en `/presupuesto/` hasta
+  «Solicitud S-2026-… enviada». En esa prueba salió y se corrigió un fallo: si el cliente pulsaba
+  «No soy un robot» después de que se hubiera verificado sola, la desmarcaba; ahora al enviar se
+  verifica de nuevo sin pedir nada.
+- Pendiente: punto 3 (envío sin JavaScript) y la comprobación diaria del formulario (GitHub Actions, ver más abajo).
+
 **Parte visual hecha (6-11-2026), a petición de Víctor; el envío real, tras el despliegue (fase 1b):**
 - Ficha: «Añadir a la solicitud» (otra pulsación suma una unidad) y «Ver mi solicitud»; contador en
   el menú (en el móvil, junto al botón del menú).
@@ -342,7 +364,7 @@ comprobar el informe y el `git diff`.
   servidor tendrá que aceptar ese sufijo y la hoja/correo indicar «Completa» o «Cabezal».
 
 Basada en el formulario de propuestas (`api/propuesta.js`, `api/_lib/formulario.js`, ALTCHA, Apps
-Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
+Script). Configuración: `docs/solicitudes/CONFIGURAR.md`.
 
 **En el navegador**
 
@@ -383,8 +405,10 @@ Script). Detalle técnico en `docs/SOLICITUDES.md` cuando se haga.
    nombre, modelo y referencia de cada producto y precio aplicado a cada uno (indicando si era de oferta), total orientativo, observaciones, consentimiento y versión del texto, y
    columnas libres para la tienda (notas, precio final). Todo como texto (sin fórmulas), como en la
    plataforma. Opcional: pestaña «Líneas» con una fila por producto, para filtrar por producto.
-9. **Aviso a la tienda** (al correo de la tienda, guardado en el script): número de solicitud, número de productos, total orientativo y enlace a la
-   hoja; sin observaciones ni datos personales del cliente.
+9. **Aviso a la tienda** (al correo de la tienda, guardado en el script): **solicitud completa**
+   (decisión de Víctor, 10-11-2026): datos de contacto, preferencia, productos con precio, nota y
+   enlace, total, observaciones y enlace a la hoja; en texto plano y con «Responder» al correo del
+   cliente. Solo va a la tienda; el acuse al cliente sigue sin incluir nada escrito por él.
 10. **Acuse de recibo al cliente**: texto fijo editable en el panel («Hemos recibido tu solicitud
     S-2026-0001; la tienda se pondrá en contacto contigo en breve»), lista de productos con precio
     orientativo **tomada del catálogo**, marcando los de **precio de oferta** (que se respeta), y aviso de que los precios no son firmes. **No incluye nada

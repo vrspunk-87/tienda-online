@@ -353,6 +353,27 @@ collections:
               - { label: "Opciones", name: "opciones", widget: "select", multiple: true, default: ["llamada", "whatsapp", "correo"], required: false, options: [{ label: "Llamada", value: "llamada" }, { label: "WhatsApp", value: "whatsapp" }, { label: "Correo", value: "correo" }], hint: "Con una sola opción, no se pregunta." }
           - { label: "Sugerir accesorios compatibles", name: "accesorios", widget: "boolean", default: true, required: false, hint: "Bajo los productos, los accesorios marcados como «Compatible con» alguna máquina de la solicitud, con su botón «+»." }
           - { label: "Permitir una nota en cada producto", name: "notas", widget: "boolean", default: true, required: false, hint: "Enlace «Añadir una nota» en cada producto (p. ej. «¿Hacéis demostración?»)." }
+          - { label: "Mensaje tras enviar", name: "mensaje_exito", widget: "text", required: false, default: "¡Solicitud enviada! Te hemos mandado un correo con el resumen. La tienda se pondrá en contacto contigo en breve para confirmarte la disponibilidad y el precio final.", hint: "Sale en la página, junto al número de solicitud (S-AAAA-NNNN)." }
+          - label: "Correo de acuse al cliente"
+            name: "acuse"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Correo automático que recibe el cliente al enviar la solicitud. Debajo del texto se añade solo la lista de productos con sus precios orientativos y el número de solicitud. Responder a ese correo llega a la tienda."
+            fields:
+              - { label: "Asunto", name: "asunto", widget: "string", default: "Hemos recibido tu solicitud de presupuesto", required: false }
+              - { label: "Texto", name: "texto", widget: "text", default: "Gracias por tu solicitud de presupuesto. La tienda la revisará y se pondrá en contacto contigo en breve para confirmarte la disponibilidad y el precio final.", required: false }
+          - label: "Límites contra abusos"
+            name: "limites"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Una cuenta gratuita de Google manda unos 100 correos al día: avisos + acuses deben sumar menos de 95. Si se llega a un tope, la solicitud se guarda igualmente en la hoja; solo deja de mandarse ese correo hasta el día siguiente."
+            fields:
+              - { label: "Solicitudes por hora (toda la web)", name: "por_hora", widget: "number", value_type: "int", min: 1, max: 300, default: 30, required: false }
+              - { label: "Avisos a la tienda al día", name: "avisos_dia", widget: "number", value_type: "int", min: 0, max: 90, default: 40, required: false }
+              - { label: "Acuses al cliente al día", name: "acuses_dia", widget: "number", value_type: "int", min: 0, max: 90, default: 45, required: false }
+              - { label: "Productos distintos por solicitud", name: "max_productos", widget: "number", value_type: "int", min: 1, max: 100, default: 30, required: false }
 
   # ------------------------------------------------------------------
   # CONTACTO Y SOBRE NOSOTROS: páginas con datos (no texto libre)
