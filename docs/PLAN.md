@@ -344,7 +344,11 @@ código no cambia.
   «Solicitud S-2026-… enviada». En esa prueba salió y se corrigió un fallo: si el cliente pulsaba
   «No soy un robot» después de que se hubiera verificado sola, la desmarcaba; ahora al enviar se
   verifica de nuevo sin pedir nada.
-- Pendiente: punto 3 (envío sin JavaScript) y la comprobación diaria del formulario (GitHub Actions, ver más abajo).
+- Punto 3 (envío sin JavaScript): **descartado por decisión de Víctor (10-11-2026)**. «No soy un robot» necesita
+  JavaScript y un formulario sin él sería más fácil de usar para spam; sin JavaScript, las fichas muestran
+  «Pedir información» y `/presupuesto/` enlaza a Contacto y horario (teléfono, WhatsApp, correo).
+- Producción configurada con la cuenta de la tienda (10-11-2026): diagnóstico «Todo correcto». La solicitud
+  sigue oculta en producción porque todos los productos están «Solo para pruebas».
 
 **Parte visual hecha (6-11-2026), a petición de Víctor; el envío real, tras el despliegue (fase 1b):**
 - Ficha: «Añadir a la solicitud» (otra pulsación suma una unidad) y «Ver mi solicitud»; contador en
@@ -486,8 +490,9 @@ de la tienda, o un abogado con un encargo puntual.
    redirigir la dirección `pages.dev` de producción al dominio, dar de alta la web en Google Search
    Console y, si se quiere, correo con el dominio (cambiar el remitente y la dirección de los
    avisos en el script de Google).
-3. Dependabot (`cooldown` 14 días; **hecho el 9-11-2026**), comprobación diaria (pendiente: tras la fase 5) (web, formulario de solicitudes, caducidad
-   de claves), `scripts/actualizar-decap.js` y hoja de tareas con Trello si se usa.
+3. Dependabot (`cooldown` 14 días; **hecho el 9-11-2026**), comprobación diaria (**hecha el 10-11-2026**:
+   `.github/workflows/comprobacion-diaria.yml`; web, solicitudes y que la reconstrucción diaria funcione;
+   abre una incidencia y menciona a `avanzado.avisos_github`; secreto `DIAGNOSTICO_CLAVE` en GitHub), `scripts/actualizar-decap.js` y hoja de tareas con Trello si se usa.
 4. Carga del catálogo real con el importador, revisión, publicación.
 5. Solicitud real de prueba de principio a fin y entrega a la tienda (guías y accesos).
 6. **Volumen** (de la prueba de carga, [PRUEBA-DE-CARGA.md](PRUEBA-DE-CARGA.md), mejoras 2 y 5):

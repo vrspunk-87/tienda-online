@@ -1,0 +1,240 @@
+# COMPROBACIÓN DIARIA DE LA WEB (adaptada de web-plataforma)
+#
+# Cada mañana comprueba que todo sigue funcionando aunque nadie publique nada:
+#
+#   1. La web de producción responde (portada con código 200).
+#   2. Las solicitudes de presupuesto funcionan: /api/estado-solicitudes dice «Todo correcto»
+#      en producción (casilla «No soy un robot» y conexión con la hoja de Google de la tienda).
+#   3. La web se ha regenerado en las últimas 30 horas: si no, ha fallado la reconstrucción
+#      diaria (y las ofertas no empiezan ni terminan a su hora).
+#
+# Si algo falla, ABRE UNA INCIDENCIA en GitHub (Issues), que llega por correo a quien sigue el
+# repositorio. Si ya hay una abierta, añade un comentario en lugar de abrir otra. Cuando todo
+# vuelve a estar bien, comenta y la cierra.
+#
+# Además MENCIONA (@usuario) a los usuarios de GitHub de Decap → Ajustes del sitio → Avanzado →
+# «Avisos de la comprobación diaria» (avanzado.avisos_github en public/_datos/sitio.yml, leído
+# siempre de main): GitHub les manda un correo aunque no sigan el repositorio.
+# La dirección de la web también se lee de ahí (avanzado.url): al poner el dominio, no hay que
+# tocar este fichero.
+#
+# Configuración (GitHub → Settings → Secrets and variables → Actions → New repository secret):
+#   - DIAGNOSTICO_CLAVE   la misma que la variable DIAGNOSTICO_CLAVE de Cloudflare en PRODUCCIÓN
+#
+# Mientras la solicitud de presupuesto esté desactivada u oculta (p. ej. todos los productos
+# «Solo para pruebas»), se comprueba igual que esté bien configurada y solo se anota en el resumen.
+#
+# Se puede lanzar a mano: Actions → Comprobación diaria → Run workflow.
+# Las tareas programadas solo se ejecutan desde la rama principal (main).
+
+name: Comprobación diaria
+
+on:
+  schedule:
+    - cron: "41 6 * * *"   # 06:41 UTC (07:41 en Madrid en invierno, 08:41 en verano); minuto «raro» a propósito
+  workflow_dispatch:
+
+permissions:
+  contents: read  # leer public/_datos/sitio.yml
+  issues: write   # abrir, comentar y cerrar la incidencia
+
+concurrency:
+  group: comprobacion-diaria
+  cancel-in-progress: false
+
+env:
+  WEB_POR_DEFECTO: https://maquinas-de-coser-zafra.pages.dev
+  HORAS_MAX_SIN_REGENERAR: "30"
+  ETIQUETA: comprobacion-diaria
+  TITULO_INCIDENCIA: "⚠️ Comprobación diaria: algo no funciona en la web"
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Solo el fichero de ajustes, y siempre el de main (lo que se edita en Decap)
+      - name: Leer los ajustes del sitio
+        uses: actions/checkout@v7
+        continue-on-error: true
+        with:
+          ref: main
+          sparse-checkout: public/_datos/sitio.yml
+          sparse-checkout-cone-mode: false
+
+      - name: Comprobar la web, las solicitudes y la reconstrucción
+        id: comprobar
+        env:
+          DIAGNOSTICO_CLAVE: ${{ secrets.DIAGNOSTICO_CLAVE }}
+        run: |
+          PROBLEMAS="$RUNNER_TEMP/problemas.md"
+          RESUMEN="$RUNNER_TEMP/resumen.md"
+          : > "$PROBLEMAS"
+          : > "$RESUMEN"
+          problema() { echo "- ❌ $1" >> "$PROBLEMAS"; echo "| $2 | ❌ $1 |" >> "$RESUMEN"; echo "::error::$1"; }
+          correcto() { echo "| $1 | ✅ $2 |" >> "$RESUMEN"; echo "Correcto: $1 ($2)"; }
+          nota() { echo "| $1 | ℹ️ $2 |" >> "$RESUMEN"; echo "Nota: $1 ($2)"; }
+
+          # Dirección de la web: avanzado.url de los ajustes (sin la barra final)
+          WEB_URL=""
+          if [ -f public/_datos/sitio.yml ] && command -v yq > /dev/null; then
+            WEB_URL=$(yq -r '.avanzado.url // ""' public/_datos/sitio.yml 2> /dev/null || true)
+          fi
+          if ! [[ "$WEB_URL" =~ ^https://[A-Za-z0-9.-]+(/.*)?$ ]]; then
+            echo "::warning::No se pudo leer avanzado.url de public/_datos/sitio.yml; se usa $WEB_POR_DEFECTO."
+            WEB_URL="$WEB_POR_DEFECTO"
+          fi
+          WEB_URL="${WEB_URL%/}"
+          echo "Web: $WEB_URL"
+
+          # ---- 1. La web responde ----
+          CODIGO=000
+          for INTENTO in 1 2 3; do
+            CODIGO=$(curl -sS -L -o /dev/null -w '%{http_code}' --max-time 30 "$WEB_URL/") || CODIGO=000
+            [ "$CODIGO" = "200" ] && break
+            [ "$INTENTO" -lt 3 ] && { echo "La web responde $CODIGO; nuevo intento en 30 s…"; sleep 30; }
+          done
+          if [ "$CODIGO" = "200" ]; then
+            correcto "Web" "responde (HTTP 200)"
+          else
+            problema "La web no responde bien: HTTP $CODIGO tras 3 intentos ($WEB_URL)." "Web"
+          fi
+
+          # ---- 2. Las solicitudes de presupuesto ----
+          # La clave nunca aparece en el registro: GitHub oculta el secreto y se oculta también su
+          # versión codificada para la URL; la URL se pasa a curl por la entrada estándar.
+          RESPUESTA="$RUNNER_TEMP/estado-solicitudes.json"
+          if [ -z "$DIAGNOSTICO_CLAVE" ]; then
+            problema "Falta el secreto DIAGNOSTICO_CLAVE en GitHub: no se pueden comprobar las solicitudes ni la reconstrucción." "Solicitudes"
+          else
+            CLAVE_URL=$(jq -rn --arg v "$DIAGNOSTICO_CLAVE" '$v | @uri')
+            echo "::add-mask::$CLAVE_URL"
+            CODIGO=000
+            for INTENTO in 1 2; do
+              CODIGO=$(printf 'url = "%s/api/estado-solicitudes?clave=%s"\n' "$WEB_URL" "$CLAVE_URL" \
+                | curl -sS --config - -o "$RESPUESTA" -w '%{http_code}' --max-time 45) || CODIGO=000
+              [ "$CODIGO" = "200" ] && jq -e '.resumen | startswith("Todo correcto")' "$RESPUESTA" > /dev/null 2>&1 && break
+              [ "$INTENTO" -lt 2 ] && { echo "El diagnóstico no dice «Todo correcto»; nuevo intento en 60 s…"; sleep 60; }
+            done
+            if [ "$CODIGO" = "404" ]; then
+              problema "El diagnóstico de las solicitudes responde «No encontrado»: el secreto DIAGNOSTICO_CLAVE de GitHub no coincide con la variable DIAGNOSTICO_CLAVE de Cloudflare en Producción (o esa variable ya no existe)." "Solicitudes"
+            elif [ "$CODIGO" != "200" ] || ! jq -e . "$RESPUESTA" > /dev/null 2>&1; then
+              problema "El diagnóstico de las solicitudes no responde (HTTP $CODIGO)." "Solicitudes"
+            elif jq -e '(.resumen | startswith("Todo correcto")) and .entorno == "produccion"' "$RESPUESTA" > /dev/null; then
+              correcto "Solicitudes" "todo correcto ($(jq -r '"aviso a la tienda: \(.aviso_a_la_tienda // "?"); correos que quedan hoy: \(.correos_que_quedan_hoy // "?")"' "$RESPUESTA"))"
+              if ! jq -e '.solicitud_activa' "$RESPUESTA" > /dev/null; then
+                nota "Solicitud en la web" "desactivada u oculta (panel, o ningún producto publicado): nadie puede enviar solicitudes ahora"
+              fi
+              if ! jq -e '.aviso_a_la_tienda == "configurado"' "$RESPUESTA" > /dev/null; then
+                problema "Las solicitudes se guardan, pero no se avisa a la tienda: falta la propiedad AVISO_PARA en el script de Google." "Aviso a la tienda"
+              fi
+            else
+              DETALLE=$(jq -r '"entorno: \(.entorno); variables: \(.variables | to_entries | map("\(.key)=\(.value)") | join(", ")); casilla «No soy un robot»: \(.verificacion_robot); hoja de Google: \(.hoja_de_google)"' "$RESPUESTA")
+              problema "Las solicitudes de presupuesto no funcionan. $DETALLE" "Solicitudes"
+            fi
+          fi
+
+          # ---- 3. La web se ha regenerado hace poco (reconstrucción diaria) ----
+          if [ -f "$RESPUESTA" ] && GENERADO=$(jq -er '.catalogo_generado // empty' "$RESPUESTA" 2> /dev/null); then
+            if GEN_S=$(date -u -d "$GENERADO" +%s 2> /dev/null); then
+              HORAS=$(( ($(date -u +%s) - GEN_S) / 3600 ))
+              if [ "$HORAS" -gt "$HORAS_MAX_SIN_REGENERAR" ]; then
+                problema "La web no se regenera desde hace $HORAS horas ($GENERADO UTC): revisa la acción «Reconstrucción diaria» y los despliegues de Cloudflare." "Reconstrucción"
+              else
+                correcto "Reconstrucción" "web generada hace $HORAS h"
+              fi
+            else
+              problema "El diagnóstico da una fecha de generación no válida («$GENERADO»)." "Reconstrucción"
+            fi
+          elif [ -n "$DIAGNOSTICO_CLAVE" ] && [ "$CODIGO" = "200" ]; then
+            problema "El diagnóstico no dice cuándo se generó la web (falta catalogo_generado): ¿está desplegada la última versión?" "Reconstrucción"
+          fi
+
+          {
+            echo "## Comprobación diaria"
+            echo
+            echo "Web: $WEB_URL"
+            echo
+            echo "| Comprobación | Resultado |"
+            echo "|---|---|"
+            cat "$RESUMEN"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "problemas=$(grep -c . "$PROBLEMAS" || true)" >> "$GITHUB_OUTPUT"
+
+      - name: Abrir, comentar o cerrar la incidencia
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RESULTADO: ${{ steps.comprobar.outcome }}
+          NUM_PROBLEMAS: ${{ steps.comprobar.outputs.problemas }}
+        run: |
+          PROBLEMAS="$RUNNER_TEMP/problemas.md"
+          touch "$PROBLEMAS"
+          if [ "$RESULTADO" != "success" ]; then
+            echo "- ❌ La propia comprobación ha fallado antes de terminar: revisa el registro de la ejecución." >> "$PROBLEMAS"
+            NUM_PROBLEMAS=1
+          fi
+          EJECUCION="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          GUIA="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/blob/main/docs/solicitudes/CONFIGURAR.md#si-algo-falla"
+
+          # Usuarios de GitHub a los que avisar (Decap → Ajustes del sitio → Avanzado).
+          # Se aceptan con o sin «@», en lista o separados por comas; los no válidos se ignoran.
+          MENCIONES=""
+          AJUSTES=public/_datos/sitio.yml
+          if [ ! -f "$AJUSTES" ]; then
+            echo "::warning::No se pudo leer $AJUSTES de main: no se menciona a nadie (la incidencia se abre igual)."
+          elif ! command -v yq > /dev/null; then
+            echo "::warning::No está disponible yq para leer $AJUSTES: no se menciona a nadie."
+          else
+            LISTA=$(yq -r '.avanzado.avisos_github // "" | ((select(tag == "!!seq") | .[]), (select(tag == "!!str")))' "$AJUSTES" 2> /dev/null | tr ',;' '  ') \
+              || { echo "::warning::$AJUSTES no se pudo interpretar: no se menciona a nadie."; LISTA=""; }
+            for USUARIO in $LISTA; do
+              USUARIO="${USUARIO#@}"
+              if [[ "$USUARIO" =~ ^[A-Za-z0-9]([A-Za-z0-9-]{0,37}[A-Za-z0-9])?$ ]]; then
+                case " $MENCIONES " in *" @$USUARIO "*) ;; *) MENCIONES="${MENCIONES:+$MENCIONES }@$USUARIO" ;; esac
+              else
+                echo "::warning::«$USUARIO» no es un usuario de GitHub válido (Decap → Ajustes del sitio → Avanzado → Avisos de la comprobación diaria): se ignora."
+              fi
+            done
+          fi
+          echo "Se avisa a: ${MENCIONES:-nadie (lista vacía)}"
+          echo "Avisados: ${MENCIONES:-nadie (lista de Decap vacía)}" >> "$GITHUB_STEP_SUMMARY"
+
+          gh label create "$ETIQUETA" --color D93F0B --description "Avisos de la comprobación diaria de la web" --force > /dev/null 2>&1 || true
+          # Incidencia abierta de días anteriores (por la etiqueta o, si no se pudo crear, por el título)
+          ABIERTA=$(gh issue list --state open --limit 100 --json number,title,labels \
+            --jq '[.[] | select(.title == env.TITULO_INCIDENCIA or any(.labels[]; .name == env.ETIQUETA))] | sort_by(.number) | .[0].number // empty')
+
+          if [ "${NUM_PROBLEMAS:-0}" != "0" ]; then
+            {
+              echo "La comprobación diaria del $(date -u +%F) ha encontrado problemas:"
+              echo
+              cat "$PROBLEMAS"
+              echo
+              echo "- Ejecución: $EJECUCION"
+              echo "- Qué hacer: [docs/solicitudes/CONFIGURAR.md → Si algo falla]($GUIA)"
+              echo
+              echo "Esta incidencia se cierra sola cuando la comprobación vuelve a salir bien."
+              if [ -n "$MENCIONES" ]; then echo; echo "Avisando a: $MENCIONES"; fi
+            } > "$RUNNER_TEMP/cuerpo.md"
+            if [ -n "$ABIERTA" ]; then
+              gh issue comment "$ABIERTA" --body-file "$RUNNER_TEMP/cuerpo.md"
+              echo "Comentario añadido en la incidencia #$ABIERTA."
+            else
+              gh issue create --title "$TITULO_INCIDENCIA" --label "$ETIQUETA" --body-file "$RUNNER_TEMP/cuerpo.md" \
+                || gh issue create --title "$TITULO_INCIDENCIA" --body-file "$RUNNER_TEMP/cuerpo.md"
+            fi
+          elif [ -n "$ABIERTA" ]; then
+            gh issue comment "$ABIERTA" --body "✅ La comprobación del $(date -u +%F) ha salido bien: todo funciona de nuevo ($EJECUCION). Se cierra la incidencia.${MENCIONES:+ $MENCIONES}"
+            gh issue close "$ABIERTA"
+            echo "Incidencia #$ABIERTA cerrada: todo vuelve a funcionar."
+          else
+            echo "Todo correcto; no hay incidencias abiertas."
+          fi
+
+          # La ejecución sale en rojo si hay problemas, para verlo también en la pestaña Actions
+          if [ "${NUM_PROBLEMAS:-0}" != "0" ]; then
+            echo "::error::La comprobación diaria ha encontrado problemas (ver la incidencia)."
+            exit 1
+          fi

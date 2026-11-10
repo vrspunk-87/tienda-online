@@ -93,6 +93,15 @@ Las solicitudes de prueba se pueden borrar de la hoja sin problema. El contador 
 4. Antes de abrirlo al público: revisión legal de los textos (docs/BORRADORES-LEGALES.md) y de
    «Información básica de protección de datos» en el panel (Solicitud de presupuesto).
 
+## Comprobación diaria
+
+Cada mañana (06:41 UTC) la acción de GitHub «Comprobación diaria» mira que la web responde, que este
+diagnóstico dice «Todo correcto» en producción y que la web se ha regenerado en las últimas 30 horas.
+Si algo falla abre una incidencia en GitHub y menciona a los usuarios de Ajustes del sitio → Avanzado →
+«Avisos de la comprobación diaria». Necesita el secreto `DIAGNOSTICO_CLAVE` en GitHub (Settings →
+Secrets and variables → Actions) con **el mismo valor que en Cloudflare Producción**. Si cambias esa
+clave en Cloudflare, cámbiala también en GitHub.
+
 ## Qué se puede cambiar desde el panel
 
 Panel → **Solicitud de presupuesto**: «Mensaje tras enviar», «Correo de acuse al cliente» (asunto y texto)
