@@ -34,7 +34,7 @@ import { parse as leerYaml, parseDocument } from 'yaml';
 import { marked } from 'marked';
 import { parse as leerHtml } from 'node-html-parser';
 import { construir as construirLayout } from './layout.js';
-import { RAMAS_CON_PANEL } from '../lib/origenes.js';
+import { RAMAS_CON_PANEL, PROYECTO_PAGES } from '../lib/origenes.js';
 import opentype from 'opentype.js';
 import crypto from 'crypto';
 import sanitizeHtml from 'sanitize-html';
@@ -174,6 +174,31 @@ const CONTACTO = {
   llegar: (Array.isArray(DATOS_CONTACTO.como_llegar) ? DATOS_CONTACTO.como_llegar : []).filter(x => String(x?.texto || '').trim()),
 };
 CONTACTO.direccionCompleta = [CONTACTO.direccion, [CONTACTO.cp, CONTACTO.localidad].filter(Boolean).join(' '), CONTACTO.provincia && CONTACTO.provincia !== CONTACTO.localidad ? `(${CONTACTO.provincia})` : ''].filter(Boolean).join(', ').replace(', (', ' (');
+// Datos de la tienda en los textos legales y en los de la solicitud: se escriben con marcadores
+// ({titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono}) y se rellenan con los de
+// «Contacto y Sobre nosotros → Contacto». Así se cambian en un solo sitio. Si falta un dato, queda
+// un hueco visible ([NIF]…) y el build avisa de dónde.
+const sinCorchetes = v => (/\[[^\]]*\]/.test(v) ? '' : v);
+const DATOS_LEGALES = {
+  titular: sinCorchetes(String(DATOS_CONTACTO.titular || '').trim()),
+  nif: sinCorchetes(String(DATOS_CONTACTO.nif || '').trim()),
+  nombre_comercial: SITIO.nombre,
+  direccion: sinCorchetes(CONTACTO.direccion) ? CONTACTO.direccionCompleta : '',
+  correo: CONTACTO.correo,
+  telefono: CONTACTO.telefono,
+};
+const HUECOS_LEGALES = { titular: 'Titular (nombre o razón social)', nif: 'NIF', nombre_comercial: 'Nombre comercial', direccion: 'Dirección', correo: 'Correo', telefono: 'Teléfono' };
+const datosSinRellenar = new Map(); // dato → dónde se usa
+function rellenarDatos(texto, donde) {
+  return String(texto ?? '').replace(/\{(titular|nif|nombre_comercial|direccion|correo|telefono)\}/g, (m, k) => {
+    if (DATOS_LEGALES[k]) return DATOS_LEGALES[k];
+    if (!datosSinRellenar.has(k)) datosSinRellenar.set(k, new Set());
+    datosSinRellenar.get(k).add(donde);
+    return `[${HUECOS_LEGALES[k]}]`;
+  });
+}
+SOLICITUD.aceptacion = rellenarDatos(SOLICITUD.aceptacion, 'Solicitud de presupuesto');
+SOLICITUD.infoPrivacidad = rellenarDatos(SOLICITUD.infoPrivacidad, 'Solicitud de presupuesto');
 // Para el pie (scripts/layout.js): dirección, teléfono, WhatsApp, correo y el horario con el que el
 // navegador calcula «Abierto / Cerrado · abre…»
 SITIO.contacto = {
@@ -219,7 +244,8 @@ const VERSION_CACHE = 'v1';
 fs.mkdirSync(CACHE, { recursive: true });
 const huella = (...partes) => crypto.createHash('md5').update(partes.join('|')).digest('hex');
 let usosCache = 0, generadasNuevas = 0;
-const URL_BASE = SITIO.url.replace(/\/+$/, '');
+// Dirección de la web pública (Ajustes → Avanzado). URL_BASE, más abajo, es la del entorno que se construye
+const URL_PUBLICA = SITIO.url.replace(/\/+$/, '');
 
 // Entorno para el que se construye (ver comentario del principio)
 const RAMA_CF = String(process.env.CF_PAGES_BRANCH || '').trim();
@@ -240,6 +266,15 @@ if (!ES_PRODUCCION) {
 } else if (!INDEXABLE) {
   console.log('Producción sin indexar: «Permitir que Google indexe la web» está desactivado (Ajustes → Avanzado).');
 }
+// Dirección del entorno que se construye: en producción, la pública; en los entornos de prueba de
+// Cloudflare (develop, dev-victor…), la suya (<rama>.<proyecto>.pages.dev). Así los enlaces al
+// compartir, la imagen que lee WhatsApp (og:image) y la dirección canónica apuntan a ese entorno y no a
+// la web pública, donde la página o la foto pueden no existir (p. ej. productos «Solo para pruebas»).
+// Cloudflare forma el nombre de la rama en minúsculas, con «-» en lugar de lo que no sea letra o
+// número y como mucho 28 caracteres. Se puede forzar con la variable URL_ENTORNO.
+const aliasRama = r => r.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 28).replace(/^-+|-+$/g, '');
+const URL_BASE = (process.env.URL_ENTORNO
+  || (!ES_PRODUCCION && RAMA_CF && aliasRama(RAMA_CF) ? `https://${aliasRama(RAMA_CF)}.${PROYECTO_PAGES}.pages.dev` : URL_PUBLICA)).replace(/\/+$/, '');
 const DOMINIO = new URL(URL_BASE).hostname;
 const abs = p => (/^https?:\/\//.test(p) ? p : URL_BASE + p);
 
@@ -422,7 +457,7 @@ const noticias = leerColeccion(`${PUB}/_posts/blog`)
   .sort((a, b) => (b.fecha || 0) - (a.fecha || 0));
 
 const paginas = leerColeccion(`${PUB}/_paginas`)
-  .map(p => { prepararImagenes(p, 'imagen'); return p; })
+  .map(p => { prepararImagenes(p, 'imagen'); p.cuerpo = rellenarDatos(p.cuerpo, p.meta.title || p.slug); return p; })
   .map(p => ({
     ...p,
     titulo: p.meta.title || p.slug,
@@ -1783,7 +1818,7 @@ function completar(html, ruta, seo = {}) {
   <div class="aviso-entorno" role="note">
     <i class="bi bi-cone-striped me-1" aria-hidden="true"></i>Entorno de pruebas: <strong>${esc(ENTORNO)}</strong>.
     No es la web pública: el panel edita la rama «${esc(RAMA_GIT || ENTORNO)}».
-    <a href="${esc(URL_BASE)}/">Ir a la web pública</a>
+    <a href="${esc(URL_PUBLICA)}/">Ir a la web pública</a>
   </div>`);
   }
 
@@ -3015,7 +3050,7 @@ if (!ES_PRODUCCION && !ES_LOCAL) {
 <style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem;line-height:1.6}</style>
 </head><body>
 <h1>Esta vista previa no tiene panel</h1>
-<p>El panel solo funciona en la <a href="${esc(URL_BASE)}/admin/">web pública</a> y en los entornos de
+<p>El panel solo funciona en la <a href="${esc(URL_PUBLICA)}/admin/">web pública</a> y en los entornos de
 ${RAMAS_CON_PANEL.map(r => `<code>${esc(r)}</code>`).join(', ')}. Esta es la vista previa de la rama
 <code>${esc(RAMA_GIT || ENTORNO)}</code> (una tarea, un borrador o una actualización automática).
 Para probar el panel con esta rama, hazlo en local con <code>npm run panel</code>.</p>
@@ -3226,6 +3261,7 @@ if (rotos.length) {
    ========================================================= */
 if (descripcionesAcortadas.length) nota(`${descripcionesAcortadas.length} página${descripcionesAcortadas.length === 1 ? '' : 's'} con la descripción para Google acortada automáticamente (más de ${MAX_DESCRIPCION} caracteres); en la web se sigue viendo el texto completo.`);
 if (excluidosPrueba) console.log(`Contenido «Solo para pruebas» no publicado: ${excluidosPrueba}.`);
+if (datosSinRellenar.size) console.warn(`Aviso: faltan datos de la tienda en «Contacto y Sobre nosotros → Contacto»; salen como huecos en los textos legales: ${[...datosSinRellenar].map(([k, d]) => `${HUECOS_LEGALES[k]} (${[...d].join(', ')})`).join('; ')}.`);
 console.log(`Web generada en ${DIST}/ para «${ENTORNO}»: ${productos.length} productos (${ofertas.length} en oferta, ${productosTodos.length - productos.length} no disponibles), ${categorias.length} categorías, ${fabricantes.length} fabricantes, ${noticias.length} entradas del blog, `
   + `${paginas.length} páginas, ${sitemap.length} URLs en el sitemap, `
   + `${optimizadas.size} imágenes optimizadas, ${paginasIndexadas} páginas en el buscador, ${new Set(rotos.map(r => r.ref)).size} enlaces rotos.`);

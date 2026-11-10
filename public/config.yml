@@ -86,7 +86,7 @@ collections:
       - { label: "Descripción para Google", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
       - { label: "Imagen de cabecera", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false }
       - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false, hint: "Qué se ve en la imagen." }
-      - { label: "Contenido", name: "body", widget: "markdown", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown", required: false, hint: "En los textos legales, los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y Sobre nosotros → Contacto»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}." }
       - { label: "Ocultar en buscadores", name: "noindex", widget: "boolean", default: false, required: false, hint: "Para páginas como el aviso legal: no aparecen en Google ni en el sitemap." }
 
   # ------------------------------------------------------------------
@@ -317,7 +317,7 @@ collections:
           - { label: "Título de la página", name: "titulo", widget: "string", default: "Mi solicitud de presupuesto" }
           - { label: "Introducción", name: "introduccion", widget: "text", required: false }
           - { label: "Texto de la casilla de aceptación", name: "aceptacion", widget: "text", hint: "Casilla obligatoria. Se añaden solos los enlaces a las condiciones y a la política de privacidad, que se abren en una ventana con dos pestañas: hay que abrir las dos para poder aceptar. Pendiente de revisión legal (docs/BORRADORES-LEGALES.md)." }
-          - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Pendiente de revisión legal." }
+          - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y Sobre nosotros → Contacto»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}. Pendiente de revisión legal." }
           - { label: "Texto del botón", name: "boton", widget: "string", default: "Enviar solicitud" }
           - label: "Frases bajo el resumen"
             name: "ventajas"
@@ -391,6 +391,8 @@ collections:
           - { label: "Textos de ejemplo (aviso)", name: "provisional", widget: "boolean", default: false, required: false, hint: "Mientras esté marcado, la página avisa de que los datos son de ejemplo. Desmárcalo cuando estén revisados." }
           - { label: "Título", name: "titulo", widget: "string", default: "Contacto y horario" }
           - { label: "Introducción", name: "introduccion", widget: "text", required: false }
+          - { label: "Titular (nombre y apellidos o razón social)", name: "titular", widget: "string", required: false, hint: "Quien es responsable de la web y de los datos: la persona autónoma o la sociedad. Sale en el aviso legal, la política de privacidad, las condiciones de la solicitud y el texto de protección de datos del formulario (marcador {titular})." }
+          - { label: "NIF", name: "nif", widget: "string", required: false, hint: "Sale en los textos legales (marcador {nif})." }
           - { label: "Teléfono", name: "telefono", widget: "string", required: false, hint: "p. ej. 924 55 55 55. Sale como «Llámanos» y en el botón «Llamar» de las fichas." }
           - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Con prefijo de país, sin + ni espacios, p. ej. 34610114417. Sale como «WhatsApp», en el pie y en «Preguntar por WhatsApp» de las fichas." }
           - { label: "Correo electrónico", name: "correo", widget: "string", required: false }

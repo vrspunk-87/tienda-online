@@ -1,15 +1,17 @@
 provisional: true
 titulo: Contacto y horario
-introduccion: Ven a vernos a la tienda, llámanos o escríbenos. Te asesoramos sin compromiso
-  y, si quieres, probamos la máquina contigo antes de que decidas.
-telefono: ""
-whatsapp: ""
-correo: ""
-direccion: "[Calle y número]"
+introduccion: Ven a vernos a la tienda, llámanos o escríbenos. Te asesoramos sin
+  compromiso y, si quieres, probamos la máquina contigo antes de que decidas.
+titular: Pedro Rodríguez Saavedra
+nif: ""
+telefono: 924 55 37 13
+whatsapp: "34609157208"
+correo: maquinasalfazafra@gmail.com
+direccion: C/Fuente Grande, 9
 codigo_postal: "06300"
 localidad: Zafra
 provincia: Badajoz
-mapa_enlace: https://www.google.com/maps/search/?api=1&query=Zafra%20Badajoz
+mapa_enlace: https://maps.app.goo.gl/a43sEndVixfr7Npj6
 horario:
   - dias:
       - lunes

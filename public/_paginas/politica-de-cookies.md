@@ -3,7 +3,7 @@ title: Política de cookies
 description: Información sobre el uso de cookies y del almacenamiento del navegador en esta web.
 noindex: true
 ---
-> **Borrador pendiente de revisar** por una persona con conocimientos legales. Si en el futuro se añaden herramientas que usen cookies (por ejemplo, vídeos de YouTube incrustados o Google Analytics), habrá que actualizar esta página y añadir un aviso de consentimiento.
+> **Borrador pendiente de revisión legal.** Si en el futuro se añaden herramientas que usen cookies (por ejemplo, vídeos de YouTube o mapas incrustados, o Google Analytics), habrá que actualizar esta página y añadir un aviso de consentimiento.
 
 ## ¿Usa cookies esta web?
 
@@ -11,7 +11,7 @@ noindex: true
 
 ## Tu solicitud de presupuesto
 
-Para recordar los productos que añades a tu **solicitud de presupuesto**, la web guarda en tu navegador (almacenamiento local) los **identificadores** de esos productos y las unidades. No contiene datos personales, no se envía a ningún servidor hasta que tú envías la solicitud y solo sirve para el servicio que has pedido. Puedes borrarla quitando los productos de tu solicitud o borrando los datos del sitio en tu navegador.
+Para recordar los productos que añades a tu **solicitud de presupuesto**, la web guarda en tu navegador (almacenamiento local) los **identificadores** de esos productos, las unidades y, si las escribes, las **notas** de cada producto. No se envía a ningún servidor hasta que tú envías la solicitud y solo sirve para el servicio que has pedido. Se borra al enviar la solicitud; también puedes borrarla quitando los productos de tu solicitud o borrando los datos del sitio en tu navegador.
 
 ## Verificación «No soy un robot»
 
@@ -19,11 +19,11 @@ La casilla del formulario (ALTCHA) funciona en tu propio navegador, sin cookies 
 
 ## Alojamiento
 
-La web está alojada en Cloudflare. [Comprobar si Cloudflare instala alguna cookie técnica, por ejemplo de protección frente a robots, con la configuración elegida; si lo hace, describirla aquí.] [Si se activan las estadísticas de visitas de Cloudflare (Web Analytics, sin cookies), indicarlo aquí.]
+La web está alojada en Cloudflare, que no instala cookies con la configuración actual. [Revisar al conectar el dominio propio: si se activa la protección frente a robots de Cloudflare, puede instalar una cookie técnica (__cf_bm); en ese caso, describirla aquí.]
 
 ## Enlaces a otros sitios
 
-Si sigues un enlace a otros sitios (fabricantes, redes sociales, mapas), esos sitios pueden usar sus propias cookies según sus políticas.
+Si sigues un enlace a otros sitios (fabricantes, redes sociales, mapas, WhatsApp), esos sitios pueden usar sus propias cookies según sus políticas.
 
 ## Panel de administración
 

@@ -3,11 +3,11 @@ title: Condiciones de la solicitud de presupuesto
 description: Cómo funciona la solicitud de presupuesto, qué significan los precios orientativos y cómo se acuerda la venta.
 noindex: true
 ---
-> **Borrador pendiente de revisar.** Sustituye los datos entre [corchetes], decide las opciones marcadas y haz que lo revise una persona con conocimientos legales antes de publicar la web.
+> **Borrador pendiente de revisión legal.** Los datos de la tienda se rellenan solos desde «Contacto y Sobre nosotros → Contacto». Decide las opciones entre [corchetes] y, antes de abrir la web al público, haz que lo revise una persona con conocimientos legales.
 
 ## 1. Quiénes somos
 
-Esta web pertenece a [Nombre y apellidos o razón social], con nombre comercial Máquinas de Coser Zafra, NIF [NIF], domicilio en [dirección postal], correo [correo de la tienda] y teléfono [teléfono de la tienda]. Más datos en el [aviso legal](/paginas/aviso-legal/).
+Esta web pertenece a {titular}, empresario individual (autónomo) con nombre comercial {nombre_comercial}, NIF {nif}, domicilio en {direccion}, correo {correo} y teléfono {telefono}. Más datos en el [aviso legal](/paginas/aviso-legal/).
 
 ## 2. Esta web no vende: es un catálogo
 
@@ -16,9 +16,9 @@ En esta web puedes consultar nuestros productos y **solicitar presupuesto** de l
 ## 3. Cómo funciona
 
 1. En la ficha de cada producto que te interese, pulsa **«Añadir a la solicitud»**. En «Mi solicitud de presupuesto» puedes indicar cuántas unidades quieres de cada uno.
-2. Rellena el formulario con tu **nombre, correo electrónico y teléfono** y, si quieres, tus observaciones, y envíalo.
+2. Rellena el formulario con tu **nombre, correo electrónico y teléfono**, indica cómo prefieres que te contestemos (llamada, WhatsApp o correo) y, si quieres, añade tus observaciones. Después, envíalo.
 3. Recibirás un **correo de acuse de recibo** con el número de tu solicitud y los productos elegidos.
-4. La tienda se pondrá en contacto contigo en un plazo de [2 días laborables] para darte el presupuesto y resolver tus dudas.
+4. La tienda se pondrá en contacto contigo, por el medio que hayas elegido, en un plazo de [2 días laborables] para darte el presupuesto y resolver tus dudas.
 5. Si los dos estamos de acuerdo, **se acuerda la venta fuera de la web** (en la tienda, por teléfono o por correo).
 
 Para solicitar presupuesto debes ser **mayor de edad**.
@@ -31,7 +31,7 @@ Para solicitar presupuesto debes ser **mayor de edad**.
 
 ## 5. Disponibilidad
 
-Cada producto es **único**. Solicitar presupuesto **no reserva** el producto: la tienda te confirmará si sigue disponible. Los productos que ya no están disponibles se retiran de la web.
+Solicitar presupuesto **no reserva** el producto ni las unidades pedidas: la tienda te confirmará si están disponibles y, si hubiera que pedirlos al fabricante o al distribuidor, el plazo aproximado. Los productos de segunda mano son unidades únicas. Los productos que ya no están disponibles se retiran de la web.
 
 ## 6. Cómo se formaliza la venta
 
@@ -39,7 +39,7 @@ Antes de cerrar la venta, la tienda te facilitará, en papel o en otro soporte d
 
 ## 7. Derecho de desistimiento
 
-- **Si la venta se acuerda a distancia** (por teléfono o por correo, sin que estemos los dos presentes a la vez), puedes **desistir sin dar explicaciones en un plazo de 14 días naturales** desde el día en que recibes el producto. Para hacerlo, comunícanoslo de forma clara (por ejemplo, por correo a [correo de la tienda]); puedes usar el modelo de formulario que hay al final de esta página. Te devolveremos lo pagado, incluidos los gastos de entrega iniciales, en un plazo máximo de 14 días naturales desde que nos comuniques tu decisión, por el mismo medio de pago que usaste salvo que acordemos otro.
+- **Si la venta se acuerda a distancia** (por teléfono o por correo, sin que estemos los dos presentes a la vez), puedes **desistir sin dar explicaciones en un plazo de 14 días naturales** desde el día en que recibes el producto. Para hacerlo, comunícanoslo de forma clara (por ejemplo, por correo a {correo}); puedes usar el modelo de formulario que hay al final de esta página. Te devolveremos lo pagado, incluidos los gastos de entrega iniciales, en un plazo máximo de 14 días naturales desde que nos comuniques tu decisión, por el mismo medio de pago que usaste salvo que acordemos otro.
 - **Devolución del producto:** debes devolverlo en un plazo de 14 días naturales desde que nos comuniques que desistes. **Los gastos de devolución corren de tu cuenta.** Podemos **retener el reembolso hasta recibir el producto** (o hasta que nos presentes una prueba de su envío) y **revisarlo al recibirlo**. Si el producto ha perdido valor por una manipulación distinta de la necesaria para comprobar su naturaleza, sus características o su funcionamiento (lo que podrías hacer en una tienda), descontaremos del reembolso esa pérdida de valor.
 - **Si la venta se acuerda en la tienda**, en persona, no hay derecho legal de desistimiento. [Si la tienda ofrece igualmente devoluciones, indicar aquí sus condiciones.]
 - [Revisar si algún producto está excluido, por ejemplo si se hace o se modifica a medida.]
@@ -53,7 +53,7 @@ Los productos tienen la garantía legal prevista en el texto refundido de la Ley
 
 ## 9. Dudas y reclamaciones
 
-Puedes escribirnos a [correo de la tienda], llamarnos al [teléfono] o visitarnos en [dirección]. [Si la tienda tiene establecimiento abierto al público: indicar que dispone de hojas de reclamaciones. Si está adherida al Sistema Arbitral de Consumo, indicarlo.]
+Puedes escribirnos a {correo}, llamarnos al {telefono} o visitarnos en {direccion}. En la tienda tienes a tu disposición **hojas de reclamaciones**. [Confirmar que la tienda dispone de ellas. Si está adherida al Sistema Arbitral de Consumo, indicarlo aquí.]
 
 ## 10. Legislación aplicable
 
@@ -63,7 +63,7 @@ Estas condiciones se rigen por la legislación española. Si eres consumidor, se
 
 *(Solo debe cumplimentar y enviar este formulario si desea desistir del contrato.)*
 
-- A la atención de [Nombre y apellidos o razón social], [dirección postal], [correo de la tienda]:
+- A la atención de {titular}, {direccion}, {correo}:
 - Por la presente le comunico que desisto de mi contrato de venta del siguiente bien: [nombre, fabricante y modelo del producto]
 - Recibido el: [fecha]
 - Nombre del consumidor: …

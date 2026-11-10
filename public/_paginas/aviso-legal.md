@@ -3,23 +3,22 @@ title: Aviso legal
 description: Información legal sobre la titularidad y el uso de esta web.
 noindex: true
 ---
-> **Borrador pendiente de revisar.** Sustituye los datos entre [corchetes] y haz que lo revise una persona con conocimientos legales antes de publicar la web.
+> **Borrador pendiente de revisión legal.** Los datos de la tienda se rellenan solos desde «Contacto y Sobre nosotros → Contacto». Antes de abrir la web al público, que lo revise una persona con conocimientos legales.
 
 ## Titular de la web
 
-En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de esta web:
+En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de esta web, que ejerce la actividad como empresario individual (autónomo):
 
-- **Titular:** [Nombre y apellidos de la persona autónoma, o razón social de la sociedad]
-- **Nombre comercial:** Máquinas de Coser Zafra
-- **NIF:** [NIF]
-- **Domicilio:** [Dirección postal completa]
-- **Correo electrónico:** [correo de la tienda]
-- **Teléfono:** [teléfono de la tienda]
-- **Datos registrales:** [Solo si es una sociedad: Registro Mercantil de …, tomo …, folio …, hoja …]
+- **Titular:** {titular}
+- **Nombre comercial:** {nombre_comercial}
+- **NIF:** {nif}
+- **Domicilio del establecimiento:** {direccion}
+- **Correo electrónico:** {correo}
+- **Teléfono:** {telefono}
 
 ## Objeto de la web
 
-Esta web es un **catálogo** de los productos de Máquinas de Coser Zafra. Permite consultarlos y **solicitar presupuesto** de los que interesen. **En esta web no se venden productos ni se realizan pagos**: tras recibir una solicitud, la tienda se pone en contacto con quien la envió para, si ambas partes están de acuerdo, acordar la venta fuera de la web. El funcionamiento se explica en las [condiciones de la solicitud de presupuesto](/paginas/condiciones-solicitud-presupuesto/).
+Esta web es un **catálogo** de los productos de {nombre_comercial}. Permite consultarlos y **solicitar presupuesto** de los que interesen. **En esta web no se venden productos ni se realizan pagos**: tras recibir una solicitud, la tienda se pone en contacto con quien la envió para, si ambas partes están de acuerdo, acordar la venta fuera de la web. El funcionamiento se explica en las [condiciones de la solicitud de presupuesto](/paginas/condiciones-solicitud-presupuesto/).
 
 ## Precios
 
@@ -35,7 +34,7 @@ Los textos, fotografías, logotipos y diseño de esta web pertenecen a su titula
 
 ## Enlaces a otros sitios
 
-Esta web puede contener enlaces a sitios de terceros (por ejemplo, las webs de los fabricantes o redes sociales). El titular no se responsabiliza de sus contenidos ni de sus políticas de privacidad.
+Esta web puede contener enlaces a sitios de terceros (por ejemplo, las webs de los fabricantes, mapas o redes sociales). El titular no se responsabiliza de sus contenidos ni de sus políticas de privacidad.
 
 ## Responsabilidad
 

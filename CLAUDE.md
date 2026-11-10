@@ -51,6 +51,10 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 **Identidad (10-11-2026): logo con letra Courgette roja `#c1121f` y aguja con hilo (`public/img/logo.svg`, clase `.marca-texto` en layout.js), insignias gris claro (`--insignia-fondo`), `.titulo-marca` en los h1 de listados; ver docs/PLAN.md fase 6.**
 
+**Datos legales (10-11-2026):** los textos legales (_paginas) y los de la solicitud usan marcadores {titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono} que el build rellena con contacto.yml (`rellenarDatos`); si falta un dato sale «[NIF]»… y un aviso agrupado.
+
+**URL_BASE (10-11-2026):** en los entornos de prueba de Cloudflare es `https://<rama>.maquinas-de-coser-zafra.pages.dev` (og:image, og:url, canónica y enlaces de compartir apuntan al propio entorno); `URL_PUBLICA` es la de Ajustes → Avanzado (enlace «Ir a la web pública»). Antes todo apuntaba a producción y al compartir desde develop WhatsApp no encontraba la página ni la imagen.
+
 **Fase 0 cerrada; fase 1a (base en local) hecha; fase 2 (catálogo en el panel) y parte de la 4
 (menú, portada, categorías, ofertas, ficha básica) hechas; parte visual de la solicitud de presupuesto
 (fase 5) hecha y envío real hecho en código el 10-11-2026 (falta configurarlo en Google/Cloudflare y
