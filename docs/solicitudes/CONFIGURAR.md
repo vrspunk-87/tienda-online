@@ -76,7 +76,8 @@ de `develop` → **Reintentar implementación** (o sube cualquier cambio a `deve
    ve a **Mi solicitud**, rellena tus datos con un correo tuyo y envía. Debes ver «Solicitud S-2026-0001 enviada».
 3. Comprueba:
    - la hoja tiene la fila en «Solicitudes» (Estado «Nueva», Entorno «develop») y una fila por producto en «Líneas»;
-   - te llega el aviso a `AVISO_PARA` con el asunto empezando por «[Pruebas: develop]»;
+   - te llega el aviso a `AVISO_PARA` con el asunto empezando por «[Pruebas: develop]» y la solicitud
+     completa (datos de contacto, productos y observaciones; «Responder» contesta al cliente);
    - te llega el acuse al correo que pusiste en el formulario.
 
 Las solicitudes de prueba se pueden borrar de la hoja sin problema. El contador sigue (la siguiente será

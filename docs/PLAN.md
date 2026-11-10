@@ -405,8 +405,10 @@ Script). Configuración: `docs/solicitudes/CONFIGURAR.md`.
    nombre, modelo y referencia de cada producto y precio aplicado a cada uno (indicando si era de oferta), total orientativo, observaciones, consentimiento y versión del texto, y
    columnas libres para la tienda (notas, precio final). Todo como texto (sin fórmulas), como en la
    plataforma. Opcional: pestaña «Líneas» con una fila por producto, para filtrar por producto.
-9. **Aviso a la tienda** (al correo de la tienda, guardado en el script): número de solicitud, número de productos, total orientativo y enlace a la
-   hoja; sin observaciones ni datos personales del cliente.
+9. **Aviso a la tienda** (al correo de la tienda, guardado en el script): **solicitud completa**
+   (decisión de Víctor, 10-11-2026): datos de contacto, preferencia, productos con precio, nota y
+   enlace, total, observaciones y enlace a la hoja; en texto plano y con «Responder» al correo del
+   cliente. Solo va a la tienda; el acuse al cliente sigue sin incluir nada escrito por él.
 10. **Acuse de recibo al cliente**: texto fijo editable en el panel («Hemos recibido tu solicitud
     S-2026-0001; la tienda se pondrá en contacto contigo en breve»), lista de productos con precio
     orientativo **tomada del catálogo**, marcando los de **precio de oferta** (que se respeta), y aviso de que los precios no son firmes. **No incluye nada

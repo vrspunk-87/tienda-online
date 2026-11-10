@@ -2541,8 +2541,8 @@ if (SOLICITUD.activa) {
               ${campo('s-telefono', 'Teléfono', '<input class="form-control" type="tel" id="s-telefono" name="telefono" maxlength="20" autocomplete="tel" inputmode="tel" required>', 'Escribe un teléfono (9 cifras como mínimo).')}
               ${campo('s-correo', 'Correo electrónico', '<input class="form-control" type="email" id="s-correo" name="correo" maxlength="160" autocomplete="email" required>', 'Escribe un correo válido, p. ej. nombre@ejemplo.es.', 'ancho')}
               ${pref.mostrar && pref.opciones.length > 1 ? `<fieldset class="ancho">
-                <legend class="form-label">${esc(pref.pregunta)}</legend>
-                <div class="solicitud-chips">${pref.opciones.map((o, k) => `<label class="solicitud-chip"><input type="radio" name="preferencia" value="${o}"${k === 0 ? ' checked' : ''}><span><i class="bi ${OPCIONES_CONTACTO[o][1]}" aria-hidden="true"></i>${OPCIONES_CONTACTO[o][0]}</span></label>`).join('')}</div>
+                <legend class="form-label">${esc(pref.pregunta)} <span class="solicitud-pista">Puedes marcar varias.</span></legend>
+                <div class="solicitud-chips" data-preferencias>${pref.opciones.map((o, k) => `<label class="solicitud-chip"><input type="checkbox" name="preferencia" value="${o}"${k === 0 ? ' checked' : ''}><span><i class="bi ${OPCIONES_CONTACTO[o][1]}" aria-hidden="true"></i>${OPCIONES_CONTACTO[o][0]}</span></label>`).join('')}</div>
               </fieldset>` : ''}
               <div class="ancho">
                 <label class="form-label" for="s-observaciones">Observaciones</label>

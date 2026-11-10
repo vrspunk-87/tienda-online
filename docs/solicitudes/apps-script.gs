@@ -12,7 +12,8 @@
  *  - les da un número correlativo (S-2026-0001), sin repetirse aunque lleguen dos a la vez;
  *  - guarda una fila por solicitud en la pestaña «Solicitudes» (con un desplegable de estado)
  *    y una fila por producto en «Líneas»;
- *  - avisa a la tienda por correo (sin datos del cliente: número, productos, total y enlace);
+ *  - avisa a la tienda por correo con la solicitud completa (datos de contacto, productos,
+ *    observaciones y notas; «Responder» contesta al cliente);
  *  - manda el acuse de recibo al cliente (texto fijo de la web y productos del catálogo; NUNCA
  *    nada escrito por el cliente, para que nadie use el formulario para mandar correos a terceros).
  * Instrucciones: docs/solicitudes/CONFIGURAR.md
@@ -84,7 +85,7 @@ function doPost(e) {
     var productosTexto = lineas.map(function (l) { return l.unidades + ' × ' + nombreLinea(l) + ' — ' + precioLinea(l); }).join('\n');
 
     var hoja = pestana(PESTANA, CABECERAS);
-    var fila = [numero, datos.fecha, 'Nueva', c.nombre, c.telefono, c.correo, PREFERENCIAS[c.preferencia] || c.preferencia || '',
+    var fila = [numero, datos.fecha, 'Nueva', c.nombre, c.telefono, c.correo, textoPreferencias(c.preferencia),
       productosTexto, String(lineas.length), euros(datos.total), datos.aConsultar ? String(datos.aConsultar) : '',
       c.observaciones || '', 'Sí', datos.consentimiento || '', '', datos.entorno || '', '', ''];
     hoja.appendRow(fila.map(comoTexto));
@@ -143,6 +144,12 @@ function comoTexto(valor) {
   return /^[=+\-@\t\r]/.test(t) ? "'" + t : t;
 }
 
+// Preferencias de contacto (puede haber varias): «Llamada, WhatsApp»
+function textoPreferencias(p) {
+  var lista = Array.isArray(p) ? p : (p ? [p] : []);
+  return lista.map(function (x) { return PREFERENCIAS[x] || String(x); }).join(', ');
+}
+
 function euros(v) {
   if (v === null || v === undefined || v === '' || isNaN(Number(v))) return '';
   var n = Number(v);
@@ -158,7 +165,7 @@ function fechaCorta(aaaammdd) {
 }
 
 function nombreLinea(l) {
-  var extra = [l.version, l.modelo ? 'modelo ' + l.modelo : '', l.referencia ? 'ref. ' + l.referencia : ''].filter(String);
+  var extra = [l.version, l.modelo ? 'modelo ' + l.modelo : '', l.referencia ? 'ref. ' + l.referencia : ''].filter(Boolean);
   return l.nombre + (extra.length ? ' (' + extra.join(', ') + ')' : '');
 }
 
@@ -177,7 +184,9 @@ function contar(props, tipo, maximo) {
   return { n: n, queda: n < maximo };
 }
 
-// Aviso a la tienda SIN datos del cliente: número, productos, total y enlace a la hoja.
+// Aviso a la tienda con la solicitud completa: datos de contacto, productos, observaciones y notas.
+// Solo va a AVISO_PARA (el correo de la tienda), en texto plano (nada de lo escrito por el cliente
+// puede convertirse en enlaces o formato engañoso), y «Responder» contesta al cliente.
 // Al llegar al tope diario manda un único aviso de que se ha alcanzado.
 function enviarAviso(props, datos, numero, maximo, pruebas) {
   var para = props.getProperty('AVISO_PARA');
@@ -192,15 +201,30 @@ function enviarAviso(props, datos, numero, maximo, pruebas) {
         '\n\nSi no es normal, puede ser un envío masivo: se puede desactivar la solicitud de presupuesto desde el panel de la web.' });
     return;
   }
-  MailApp.sendEmail({
-    to: para,
-    subject: prefijo + 'Nueva solicitud de presupuesto ' + numero,
-    body: 'Se ha recibido la solicitud de presupuesto ' + numero + ' desde la web.\n\n' +
-      'Productos: ' + datos.lineas.length + '\n' +
-      'Total orientativo: ' + (euros(datos.total) || '—') + (datos.aConsultar ? ' (+ ' + datos.aConsultar + ' con precio a consultar)' : '') + '\n\n' +
-      'Los datos del cliente están en la hoja de solicitudes:\n' + url +
-      '\n\n(Por seguridad, este aviso no incluye los datos del cliente ni lo que haya escrito.)',
-  });
+  var c = datos.cliente || {};
+  var productos = datos.lineas.map(function (l) {
+    var t = '- ' + l.unidades + ' × ' + nombreLinea(l) + '\n    ' + precioLinea(l) +
+      (l.subtotal != null && l.unidades > 1 ? ' · subtotal ' + euros(l.subtotal) : '');
+    if (l.fabricante) t += '\n    Fabricante: ' + l.fabricante;
+    if (l.url) t += '\n    ' + l.url;
+    if (l.nota) t += '\n    Nota del cliente: ' + l.nota;
+    return t;
+  }).join('\n\n');
+  var cuerpo = 'Nueva solicitud de presupuesto ' + numero + ' (' + (datos.fecha || '') + ')\n\n' +
+    'CLIENTE\n' +
+    'Nombre: ' + (c.nombre || '') + '\n' +
+    'Teléfono: ' + (c.telefono || '') + '\n' +
+    'Correo: ' + (c.correo || '') + '\n' +
+    (textoPreferencias(c.preferencia) ? 'Prefiere que le contestéis por: ' + textoPreferencias(c.preferencia) + '\n' : '') +
+    '\nPRODUCTOS (' + datos.lineas.length + ')\n' + productos + '\n\n' +
+    'Total orientativo: ' + (euros(datos.total) || '—') + (datos.aConsultar ? ' (+ ' + datos.aConsultar + ' con precio a consultar)' : '') + '\n\n' +
+    'OBSERVACIONES\n' + (c.observaciones ? c.observaciones : '(ninguna)') + '\n\n' +
+    'Acuse de recibo al cliente: se envía a continuación (salvo tope diario).\n' +
+    'Hoja de solicitudes (estado, notas y precio final):\n' + url + '\n\n' +
+    'Para contestar al cliente basta con «Responder». Ojo: el correo y el teléfono los ha escrito el cliente y no están comprobados; no abras enlaces que vengan en las observaciones si no te fías.';
+  var opciones = { to: para, subject: prefijo + 'Nueva solicitud de presupuesto ' + numero, body: cuerpo, name: (datos.tienda || 'Tienda') + ' (web)' };
+  if (c.correo) opciones.replyTo = c.correo;
+  MailApp.sendEmail(opciones);
 }
 
 // Acuse de recibo al cliente: texto fijo de la web y productos del catálogo (nada escrito por el cliente)

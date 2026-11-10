@@ -483,6 +483,10 @@
     function reiniciarVerificacion() { const w = widget(); if (w && typeof w.reset === 'function') w.reset(); }
     form.addEventListener('statechange', e => { if (e.detail?.state === 'verified') errorVerificacion(''); });
     // Los errores que devuelve el servidor se quitan en cuanto se corrige el campo
+    // Preferencia de contacto: se pueden marcar varias, pero siempre queda al menos una
+    form.querySelectorAll('input[name="preferencia"]').forEach(i => i.addEventListener('change', () => {
+      if (!form.querySelector('input[name="preferencia"]:checked')) i.checked = true;
+    }));
     ['acepto', 'observaciones'].forEach(n => form.elements[n]?.addEventListener(n === 'acepto' ? 'change' : 'input', () => form.elements[n].setCustomValidity('')));
     function exito(numero, mensaje, acuse) {
       guardar([]); contador(); pintar();
@@ -529,7 +533,7 @@
         nombre: form.elements.nombre.value,
         telefono: form.elements.telefono.value,
         correo: form.elements.correo.value,
-        preferencia: form.elements.preferencia ? (form.querySelector('input[name="preferencia"]:checked')?.value || '') : '',
+        preferencia: [...form.querySelectorAll('input[name="preferencia"]:checked')].map(i => i.value),
         observaciones: obs ? obs.value : '',
         acepto: form.elements.acepto.checked ? 'si' : '',
         altcha: valorVerificacion(),
