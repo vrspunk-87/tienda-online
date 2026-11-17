@@ -41,8 +41,9 @@ marca «Solo para pruebas».
 12. Fase 8: conservar la caché de imágenes entre despliegues.
 
 **D. Salida a producción**
-13. Dominio: comprarlo y conectarlo en Cloudflare; cambiar la dirección en Ajustes → Avanzado,
-    `lib/origenes.js` y la URL de vuelta de la app OAuth de GitHub; revisar la cookie `__cf_bm`.
+13. Dominio `maquinasdecoserzafra.es` (comprado en Strato el 17-11-2026): código cambiado (Ajustes →
+    Avanzado, `base_url`, `lib/origenes.js`, entornos en subdominios, comprobación diaria). Falta lo de
+    fuera del código (fase 8, punto 2) y revisar la cookie `__cf_bm`. Sigue sin indexar.
 14. Quitar «Solo para pruebas» a lo revisado, activar «indexable», Google Search Console, quitar los
     avisos de borrador, solicitud real de prueba (y borrar después la fila y la propiedad `contador-2026`),
     volver a generar `public/img/compartir.jpg` si cambia el nombre o el logo.
@@ -548,11 +549,31 @@ de la tienda, o un abogado con un encargo puntual.
    publicación desde el panel (rama `cms/…`, Pull Request fusionado en `main`) llegó sola a `develop` y
    `dev-victor` y Cloudflare desplegó las tres. Build: ~15 s en producción (sin los productos «Solo para
    pruebas») y 3-4 min en las ramas de pruebas con las ~2.000 versiones de las fotos sin caché (punto 6).
-2. **Dominio** (se compra ahora): conectarlo en Cloudflare, HTTPS, cambiar la URL del sitio en los
-   ajustes y en la lista de webs del login, **quitar el `noindex`** y el bloqueo de `robots.txt`,
-   redirigir la dirección `pages.dev` de producción al dominio, dar de alta la web en Google Search
-   Console y, si se quiere, correo con el dominio (cambiar el remitente y la dirección de los
-   avisos en el script de Google).
+2. **Dominio**: `maquinasdecoserzafra.es`, **comprado en Strato el 17-11-2026**. Los DNS se quedan
+   en Strato: en los `.es` Strato solo deja cambiar los servidores de nombres de los subdominios
+   (FAQ #2877), así que no se pueden delegar en Cloudflare y Pages no puede servir el dominio sin
+   `www`. Producción en **`www.maquinasdecoserzafra.es`** (Strato redirige el dominio sin www).
+   Los entornos siguen en `<rama>.maquinas-de-coser-zafra.pages.dev`: se probó `develop.` con un
+   CNAME a la rama y Pages servía producción (con DNS externos asocia los dominios propios solo a
+   producción).
+   - **Hecho en el código (17-11-2026)**: `avanzado.url` en `public/_datos/sitio.yml`, `base_url` en
+     `public/config.yml`, `DOMINIO_PROPIO` en `lib/origenes.js` (lista del login: dominio y `www`;
+     siguen las `pages.dev`) y `WEB_POR_DEFECTO` de la comprobación diaria. **Sin indexar**:
+     `indexable: false`, así que `noindex` y `robots.txt` bloqueando también en el dominio.
+   - **Fuera del código, antes de subir el cambio a `main`**: (1) Cloudflare: quitar la zona
+     `maquinasdecoserzafra.es` que se creó al intentar delegar los DNS (quedó «pendiente»).
+     (2) Strato → Dominios → (rueda) → DNS → Registros TXT y CNAME: CNAME `www` →
+     `maquinas-de-coser-zafra.pages.dev.` (3) Pages → `maquinas-de-coser-zafra` → Dominios
+     personalizados → `www.maquinasdecoserzafra.es` → «My DNS provider» (CNAME) hasta que salga
+     «Activo» (certificado incluido). (4) Strato → Servidor web → Configurar redirección → Externo:
+     `https://www.maquinasdecoserzafra.es` (para `https://` sin www hace falta el SSL de Strato).
+     (5) App OAuth de GitHub: página `https://www.maquinasdecoserzafra.es` y URL de vuelta
+     `https://www.maquinasdecoserzafra.es/api/callback`. Correo de Strato: los registros MX, SPF,
+     DKIM y DMARC no se tocan.
+   - **Pendiente para la salida real**: **quitar el `noindex`** («Permitir que Google indexe la
+     web»), redirigir la dirección `pages.dev` de producción al dominio, Google Search Console y,
+     si se quiere, correo con el dominio (cambiar el remitente y la dirección de los avisos en el
+     script de Google).
 3. Dependabot (`cooldown` 14 días; **hecho el 9-11-2026**), comprobación diaria (**hecha el 10-11-2026**:
    `.github/workflows/comprobacion-diaria.yml`; web, solicitudes y que la reconstrucción diaria funcione;
    abre una incidencia y menciona a `avanzado.avisos_github`; secreto `DIAGNOSTICO_CLAVE` en GitHub), `scripts/actualizar-decap.js` y hoja de tareas con Trello si se usa.

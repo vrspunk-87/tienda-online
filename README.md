@@ -97,6 +97,14 @@ producción en https://maquinas-de-coser-zafra.pages.dev (rama `main`) y pruebas
 https://develop.maquinas-de-coser-zafra.pages.dev (rama `develop`). Login del panel con GitHub
 probado en las dos. Detalles de la configuración en `docs/PLAN.md` (fase 1b).
 
+**Dominio (17-11-2026):** `maquinasdecoserzafra.es` (comprado en Strato, con los DNS en Strato:
+en los `.es` no deja delegarlos en Cloudflare). Producción en https://www.maquinasdecoserzafra.es
+(Strato redirige el dominio sin www). Las pruebas siguen en
+https://develop.maquinas-de-coser-zafra.pages.dev y https://dev-victor.maquinas-de-coser-zafra.pages.dev:
+con los DNS fuera de Cloudflare, Pages asocia los dominios propios siempre a producción. **La web sigue sin indexar** («Permitir que Google
+indexe la web» desactivado: `noindex` y `robots.txt` bloqueando) hasta la salida real. Pasos en
+`docs/PLAN.md` (fase 8, punto 2).
+
 **Acciones de GitHub (`.github/`, 9-11-2026):**
 
 | Fichero | Qué hace | Configuración |
@@ -228,7 +236,8 @@ los definitivos (el tema se llama «Tienda» internamente).
 ## Seguridad
 
 - Login del panel: `state` en cookie `HttpOnly` y el token **solo** para las webs de la lista
-  exacta de `lib/origenes.js` (sin comodines en `pages.dev`, que es un dominio compartido).
+  exacta de `lib/origenes.js` (sin comodines en `pages.dev`, que es un dominio compartido;
+  incluye el dominio propio, con y sin `www`).
 - Todo el HTML del contenido pasa por `sanitize-html`; política de seguridad de contenidos (CSP)
   en todas las páginas: solo scripts de la propia web y sin scripts en línea.
 - Nada se sirve desde CDN externos. Las claves van en Cloudflare: **nunca en el código**.

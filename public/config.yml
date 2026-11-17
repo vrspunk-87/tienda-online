@@ -2,10 +2,10 @@ backend:
   name: github
   repo: vrspunk-87/tienda-online
   branch: main
-  base_url: https://maquinas-de-coser-zafra.pages.dev
+  base_url: https://www.maquinasdecoserzafra.es
   auth_endpoint: api/auth
   # base_url: dirección de producción, donde funciona el login (functions/api/auth.js).
-  # Provisional hasta comprar el dominio (fase 8 de docs/PLAN.md).
+  # Dominio propio desde el 17-11-2026; debe coincidir con la URL de vuelta de la app OAuth de GitHub.
 
 # En local (localhost), el panel usa el servidor local de Decap («npm run panel») y
 # edita los ficheros de tu copia del repositorio, sin iniciar sesión. En la web
@@ -847,6 +847,6 @@ collections:
             collapsed: true
             hint: "Cambia esto solo si sabes lo que haces."
             fields:
-              - { label: "Dirección pública de la web", name: "url", widget: "string", hint: "Sin barra al final. Provisional: https://maquinas-de-coser-zafra.pages.dev. Al comprar el dominio, cámbiala aquí y en base_url de config.yml (ver docs/PLAN.md, fase 8)." }
-              - { label: "Permitir que Google indexe la web", name: "indexable", widget: "boolean", default: false, required: false, hint: "Desactivado hasta conectar el dominio definitivo: así Google no guarda la dirección provisional. Solo tiene efecto en producción." }
+              - { label: "Dirección pública de la web", name: "url", widget: "string", hint: "Sin barra al final: https://www.maquinasdecoserzafra.es. Si cambia, cámbiala también en base_url de config.yml y en la app OAuth de GitHub (ver docs/PLAN.md, fase 8)." }
+              - { label: "Permitir que Google indexe la web", name: "indexable", widget: "boolean", default: false, required: false, hint: "Desactivado hasta la salida real: así Google no guarda la web a medio hacer. Solo tiene efecto en producción." }
               - { label: "Avisos de la comprobación diaria (usuarios de GitHub)", name: "avisos_github", widget: "list", required: false, hint: "Usuarios de GitHub (sin @) separados por comas, p. ej. usuaria-uno, usuario-dos. Si la comprobación diaria encuentra un fallo (web caída o formulario roto), los menciona en la incidencia y GitHub les manda un correo. Tienen que tener acceso al repositorio. No se publica en la web." }

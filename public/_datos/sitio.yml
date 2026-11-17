@@ -205,7 +205,7 @@ imagenes:
   calidad: 82
   peso_maximo_kb: 400
 avanzado:
-  url: https://maquinas-de-coser-zafra.pages.dev
+  url: https://www.maquinasdecoserzafra.es
   indexable: false
   avisos_github:
     - "@vrspunk-87"

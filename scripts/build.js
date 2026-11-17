@@ -34,7 +34,7 @@ import { parse as leerYaml, parseDocument } from 'yaml';
 import { marked } from 'marked';
 import { parse as leerHtml } from 'node-html-parser';
 import { construir as construirLayout } from './layout.js';
-import { RAMAS_CON_PANEL, PROYECTO_PAGES } from '../lib/origenes.js';
+import { RAMAS_CON_PANEL, PROYECTO_PAGES, DOMINIO_PROPIO } from '../lib/origenes.js';
 import opentype from 'opentype.js';
 import crypto from 'crypto';
 import sanitizeHtml from 'sanitize-html';
@@ -72,7 +72,7 @@ const SITIO = {
   provincia: AJUSTES.provincia || '',
   logo: AJUSTES.logo || '',
   imagenCompartir: AJUSTES.imagen_compartir || '/img/compartir.jpg',
-  url: av.url || 'https://maquinas-de-coser-zafra.pages.dev',
+  url: av.url || `https://www.${DOMINIO_PROPIO}`,
   // Hasta tener el dominio definitivo, la web no se deja indexar (docs/PLAN.md, fase 0)
   indexable: av.indexable === true,
   colorTema: ap.color_barra_movil || '#ffffff',
@@ -272,6 +272,8 @@ if (!ES_PRODUCCION) {
 // la web pública, donde la página o la foto pueden no existir (p. ej. productos «Solo para pruebas»).
 // Cloudflare forma el nombre de la rama en minúsculas, con «-» en lugar de lo que no sea letra o
 // número y como mucho 28 caracteres. Se puede forzar con la variable URL_ENTORNO.
+// Los entornos se quedan en pages.dev aunque haya dominio propio: con los DNS en Strato, Pages
+// asocia los dominios personalizados siempre a producción, no a una rama (17-11-2026).
 const aliasRama = r => r.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 28).replace(/^-+|-+$/g, '');
 const URL_BASE = (process.env.URL_ENTORNO
   || (!ES_PRODUCCION && RAMA_CF && aliasRama(RAMA_CF) ? `https://${aliasRama(RAMA_CF)}.${PROYECTO_PAGES}.pages.dev` : URL_PUBLICA)).replace(/\/+$/, '');

@@ -51,6 +51,8 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 **Para retomar (17-11-2026):** estado y lista de pendientes en docs/PLAN.md → «Estado y pendientes». Siguiente paso propuesto: fase 3 (importador de Excel). A Víctor se le dan siempre los comandos de PowerShell para lo que tenga que hacer él (git, npm…).
 
+**Dominio (17-11-2026):** `maquinasdecoserzafra.es` (comprado en Strato y DNS en Strato: en los .es no deja delegarlos en Cloudflare); producción en `www` (Strato redirige el dominio sin www); los entornos siguen en `<rama>.maquinas-de-coser-zafra.pages.dev` (con DNS externos, Pages no asocia subdominios a ramas). `DOMINIO_PROPIO` en lib/origenes.js. Sigue `indexable: false` hasta la salida real. Pasos externos: docs/PLAN.md, fase 8, punto 2.
+
 **Identidad (10-11-2026): logo con letra Courgette roja `#c1121f` y aguja con hilo (`public/img/logo.svg`, clase `.marca-texto` en layout.js), insignias gris claro (`--insignia-fondo`), `.titulo-marca` en los h1 de listados; ver docs/PLAN.md fase 6.**
 
 **Datos legales (10-11-2026):** los textos legales (_paginas) y los de la solicitud usan marcadores {titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono} que el build rellena con contacto.yml (`rellenarDatos`); si falta un dato sale «[NIF]»… y un aviso agrupado.

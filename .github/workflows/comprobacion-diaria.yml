@@ -43,7 +43,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  WEB_POR_DEFECTO: https://maquinas-de-coser-zafra.pages.dev
+  WEB_POR_DEFECTO: https://www.maquinasdecoserzafra.es
   HORAS_MAX_SIN_REGENERAR: "30"
   ETIQUETA: comprobacion-diaria
   TITULO_INCIDENCIA: "⚠️ Comprobación diaria: algo no funciona en la web"
