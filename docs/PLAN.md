@@ -4,6 +4,52 @@ Plan de trabajo acordado a partir de las respuestas de Víctor (5 de noviembre d
 termina con algo que se puede probar en local y con su documentación en `README.md` o en `docs/`.
 Las fases se hacen en orden; dentro de cada una, los pasos también.
 
+## Estado y pendientes (17-11-2026) — para retomar en otra sesión
+
+**Hecho:** fases 0, 1 (1a local y 1b Cloudflare Pages), 2, 4, 5 (envío real; producción configurada con
+la cuenta de Google de la tienda, pero la web pública sin productos hasta la salida real) e identidad
+visual (logo, colores, imágenes al compartir, Sobre nosotros con fotos). GitHub Actions: reconstrucción
+diaria, sincronizar ramas, Dependabot y comprobación diaria. Panel: vistas previas con el aspecto de la
+web y productos agrupados por clasificación. Textos legales para un autónomo, con los datos de la
+tienda en un solo sitio (Contacto). Último commit: `2fa3b12` en main.
+
+**Siguiente paso propuesto: fase 3** (importar las Excel desde el panel; el importador debe ignorar las
+columnas «Revisar (avisos)» y «Modificaciones (desde la carga)»). Sirve también para quitar en bloque la
+marca «Solo para pruebas».
+
+**A. Lo decide o completa la tienda (no es código)**
+1. NIF en Contacto (sale como «[NIF]» en el aviso legal).
+2. Textos legales entre corchetes: plazo de respuesta, formas de pago, devoluciones en tienda,
+   exclusiones del desistimiento, conservación sin venta («[6 meses]»), quién consulta las solicitudes,
+   Sistema Arbitral de Consumo, Google Workspace o cuenta gratuita, fecha. Después, revisión legal.
+3. Contacto → «Cómo llegar»: «[calle cercana]» y «[referencia conocida del centro de Zafra]».
+4. Sobre nosotros: textos de ejemplo (año 1992, historia, servicios) por revisar; desmarcar «Textos de
+   ejemplo»; permiso de las dos personas de la foto.
+5. Color de las ofertas: dejarlas en rojo o darles uno propio.
+
+**B. Catálogo**
+6. Pendientes de las Excel (precios y referencias por confirmar: FEL970, Juki F17, apilador, Creator
+   Expres…; consultas a Jack y J. Pujol; repetir la búsqueda de Elna 782/770/780/920).
+7. Referencias repetidas que avisa el build (FFUTURA RA, FEL970, varias de Jack).
+8. 43 productos sin foto; fotos tomadas de otras tiendas (permiso o sustituir).
+9. Textos alternativos de las fotos (fase 6, punto 4).
+
+**C. Desarrollo**
+10. Fase 3: importador de Excel en el panel.
+11. Fase 6: guías (panel, carga en bloque, gestión de solicitudes: estados, conservación, borrar también
+    los correos) y prueba completa.
+12. Fase 8: conservar la caché de imágenes entre despliegues.
+
+**D. Salida a producción**
+13. Dominio: comprarlo y conectarlo en Cloudflare; cambiar la dirección en Ajustes → Avanzado,
+    `lib/origenes.js` y la URL de vuelta de la app OAuth de GitHub; revisar la cookie `__cf_bm`.
+14. Quitar «Solo para pruebas» a lo revisado, activar «indexable», Google Search Console, quitar los
+    avisos de borrador, solicitud real de prueba (y borrar después la fila y la propiedad `contador-2026`),
+    volver a generar `public/img/compartir.jpg` si cambia el nombre o el logo.
+
+**Forma de trabajar:** Víctor hace los commits; se le dan los comandos de PowerShell listos para copiar
+(carpeta `C:\Users\victor.ruanosantana\Downloads\tienda-online`, rama main salvo que se diga otra).
+
 ## Qué cambia respecto a lo previsto
 
 Las respuestas a las preguntas abiertas cambian el enfoque inicial («tienda con pedidos»):
