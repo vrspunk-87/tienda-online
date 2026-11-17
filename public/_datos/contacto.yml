@@ -23,9 +23,6 @@ horario:
     tarde: 17:00-20:00
   - dias:
       - sabado
-    manana: 10:00-13:30
-    tarde: ""
-  - dias:
       - domingo
     manana: ""
     tarde: ""

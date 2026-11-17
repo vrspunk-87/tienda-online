@@ -10,7 +10,6 @@ noindex: true
 El responsable es el titular de la tienda, que ejerce la actividad como empresario individual (autónomo):
 
 - **Responsable:** {titular} ({nombre_comercial})
-- **NIF:** {nif}
 - **Domicilio:** {direccion}
 - **Correo electrónico:** {correo}
 - **Teléfono:** {telefono}

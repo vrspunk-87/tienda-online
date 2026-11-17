@@ -71,7 +71,9 @@ pagina_ofertas:
 pagina_blog:
   titulo: Blog
   descripcion: Novedades, consejos y noticias de la tienda.
-  texto: "Aprende a sacarle partido a tu máquina. Consejos de mantenimiento, trucos de costura, novedades de las marcas y guías para elegir bien, escritos por el equipo de la tienda."
+  texto: Aprende a sacarle partido a tu máquina. Consejos de mantenimiento, trucos
+    de costura, novedades de las marcas y guías para elegir bien, escritos por
+    el equipo de la tienda.
   destacada: true
   por_pagina: 12
 apariencia:
@@ -192,8 +194,8 @@ legales:
   - texto: Condiciones de la solicitud de presupuesto
     pagina: condiciones-solicitud-presupuesto
 redes:
-  facebook: ""
-  instagram: ""
+  facebook: https://www.facebook.com/maquinasdecoserybordar/?locale=es_ES
+  instagram: https://www.instagram.com/maquinasalfazafra/
   email: ""
   whatsapp: ""
   telefono: ""

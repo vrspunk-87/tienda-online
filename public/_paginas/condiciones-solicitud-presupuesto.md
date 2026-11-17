@@ -7,7 +7,7 @@ noindex: true
 
 ## 1. Quiénes somos
 
-Esta web pertenece a {titular}, empresario individual (autónomo) con nombre comercial {nombre_comercial}, NIF {nif}, domicilio en {direccion}, correo {correo} y teléfono {telefono}. Más datos en el [aviso legal](/paginas/aviso-legal/).
+Esta web pertenece a {titular}, empresario individual (autónomo) con nombre comercial {nombre_comercial}, domicilio en {direccion}, correo {correo} y teléfono {telefono}. Más datos en el [aviso legal](/paginas/aviso-legal/).
 
 ## 2. Esta web no vende: es un catálogo
 

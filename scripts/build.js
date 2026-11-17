@@ -3024,6 +3024,30 @@ Disallow: /
   fs.writeFileSync(path.join(DIST, 'admin/conteos.json'), JSON.stringify({ productosPorCategoria }));
 }
 
+// Datos para el panel (public/admin/vista-previa.js y campos.js): nombres y orden del catálogo
+// (para agrupar los productos por su clasificación y para las migas de la vista previa), fabricantes,
+// datos de la tienda (rellenan los marcadores {titular}… de la vista previa) y textos de la solicitud.
+// Son los del último despliegue: lo que se edite en el panel y aún no se haya publicado no está aquí.
+{
+  const enOrden = [];
+  (function recorrer(lista) { for (const c of lista) { enOrden.push(c); recorrer(c.hijos || []); } })(categoriasPrincipales);
+  const datosPanel = {
+    tienda: SITIO.nombre,
+    tipoDosPrecios: TIPO_DOS_PRECIOS,
+    categorias: Object.fromEntries(enOrden.map((c, orden) => [c.slug, {
+      titulo: c.titulo, ruta: [...c.ancestros, c].map(x => x.titulo), url: c.url, tipo: (c.ancestros[0] || c).slug, orden,
+    }])),
+    fabricantes: Object.fromEntries(fabricantes.map(f => [f.slug, { nombre: f.nombre, imagen: f.imagen }])),
+    marcas: fabricantes.length,
+    legales: DATOS_LEGALES,
+    huecos: HUECOS_LEGALES,
+    solicitud: { activa: SOLICITUD.activa, ventajas: SOLICITUD.ventajas, iconos: ICONOS_VENTAJA },
+    contacto: { telefono: CONTACTO.telefono, whatsapp: CONTACTO.whatsapp },
+  };
+  fs.mkdirSync(path.join(DIST, 'admin'), { recursive: true });
+  fs.writeFileSync(path.join(DIST, 'admin/datos-panel.json'), JSON.stringify(datosPanel));
+}
+
 if (!ES_PRODUCCION && !ES_LOCAL) {
   if (PANEL_EN_ENTORNO) {
     const rutaConfig = path.join(DIST, 'config.yml');

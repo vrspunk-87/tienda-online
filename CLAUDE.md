@@ -53,6 +53,8 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 **Datos legales (10-11-2026):** los textos legales (_paginas) y los de la solicitud usan marcadores {titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono} que el build rellena con contacto.yml (`rellenarDatos`); si falta un dato sale «[NIF]»… y un aviso agrupado.
 
+**Panel (17-11-2026):** vistas previas con plantillas propias en public/admin/vista-previa.js para blog, páginas (marcadores rellenos), productos, contacto, sobre_nosotros y la solicitud (fichero «ajustes»); datos del último despliegue en dist/admin/datos-panel.json (build.js). Productos: agrupación «Clasificación» por defecto, con la ruta del catálogo y el orden del menú (public/admin/campos.js; Decap muestra «Group by» sin traducir).
+
 **URL_BASE (10-11-2026):** en los entornos de prueba de Cloudflare es `https://<rama>.maquinas-de-coser-zafra.pages.dev` (og:image, og:url, canónica y enlaces de compartir apuntan al propio entorno); `URL_PUBLICA` es la de Ajustes → Avanzado (enlace «Ir a la web pública»). Antes todo apuntaba a producción y al compartir desde develop WhatsApp no encontraba la página ni la imagen.
 
 **Fase 0 cerrada; fase 1a (base en local) hecha; fase 2 (catálogo en el panel) y parte de la 4

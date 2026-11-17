@@ -202,9 +202,11 @@ collections:
       - { label: "En oferta", field: "estado", pattern: "^oferta$" }
       - { label: "No disponibles", field: "estado", pattern: "^no_disponible$" }
       - { label: "Segunda mano", field: "condicion", pattern: "^segunda_mano$" }
+    # «Clasificación»: agrupa por tipo › categoría › subcategoría con sus nombres y en el orden del
+    # menú, y es la agrupación con la que se abre la lista (public/admin/campos.js)
     view_groups:
+      - { label: "Clasificación", field: "categoria" }
       - { label: "Fabricante", field: "fabricante" }
-      - { label: "Categoría", field: "categoria" }
       - { label: "Estado", field: "estado" }
     fields:
       - { label: "Solo para pruebas (no se publica en producción)", name: "prueba", widget: "boolean", default: false, required: false, hint: "Márcalo en el contenido que crees en un entorno de pruebas (develop, dev-victor…): se ve allí, pero nunca en la web pública aunque llegue a producción con una publicación." }
@@ -306,8 +308,6 @@ collections:
   - name: "solicitud"
     label: "Solicitud de presupuesto"
     description: "El cliente añade productos a su solicitud desde las fichas, indica cuántas unidades quiere y la envía con sus datos desde /presupuesto/. Desactivada, no se ven ni el botón «Añadir a la solicitud», ni el contador del menú, ni el formulario."
-    editor:
-      preview: false
     files:
       - name: "ajustes"
         label: "Solicitud de presupuesto"
@@ -381,8 +381,6 @@ collections:
   - name: "tienda"
     label: "Contacto y Sobre nosotros"
     description: "Los datos de la tienda (dirección, teléfono, horario…) y la presentación. Salen en /paginas/contacto-y-horario/ y /paginas/sobre-nosotros/, en el pie, en los botones de WhatsApp y Llamar de las fichas y en los datos que lee Google."
-    editor:
-      preview: false
     files:
       - name: "contacto"
         label: "Contacto y horario"

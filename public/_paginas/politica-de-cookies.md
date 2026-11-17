@@ -3,7 +3,7 @@ title: Política de cookies
 description: Información sobre el uso de cookies y del almacenamiento del navegador en esta web.
 noindex: true
 ---
-> **Borrador pendiente de revisión legal.** Si en el futuro se añaden herramientas que usen cookies (por ejemplo, vídeos de YouTube o mapas incrustados, o Google Analytics), habrá que actualizar esta página y añadir un aviso de consentimiento.
+> **Borrador pendiente de revisión legal.** Si en el futuro se añaden herramientas que usen cookies (por ejemplo, vídeos de YouTube incrustados o Google Analytics), habrá que actualizar esta página y añadir un aviso de consentimiento.
 
 ## ¿Usa cookies esta web?
 
@@ -20,6 +20,10 @@ La casilla del formulario (ALTCHA) funciona en tu propio navegador, sin cookies 
 ## Alojamiento
 
 La web está alojada en Cloudflare, que no instala cookies con la configuración actual. [Revisar al conectar el dominio propio: si se activa la protección frente a robots de Cloudflare, puede instalar una cookie técnica (__cf_bm); en ese caso, describirla aquí.]
+
+## Mapa de Google en «Contacto y horario»
+
+El mapa no se carga al abrir la página: solo se muestra si pulsas «Ver el mapa». A partir de ese momento lo sirve Google, que puede instalar sus propias cookies según su política. Si no lo pulsas, Google no recibe nada.
 
 ## Enlaces a otros sitios
 
