@@ -48,6 +48,8 @@ body a.header-link-active, body a.header-link-active span { color: var(--xl-acen
 body [class*="-AppHeaderButton"]:hover, body [class*="-AppHeaderButton"]:hover span { color: var(--xl-acento) !important; }
 body [class*="-AppHeaderQuickNewButton"] { background-color: var(--xl-acento) !important; color: #fff !important; border-radius: 8px; font-weight: 600; }
 body [class*="-AppHeaderQuickNewButton"]::after { border-top-color: #fff !important; }
+/* Menú de «Acceso rápido»: alineado por la derecha con el botón, para que no se salga de la pantalla */
+body [class*="-AppHeaderActions"] [role="menu"] ul { left: auto !important; right: 0 !important; }
 .xl-buscador input { border-radius: 20px !important; background-color: #f4f4f2 !important; border-color: var(--xl-borde) !important; }
 .xl-buscador input:focus { background-color: #fff !important; border-color: var(--xl-acento) !important; }
 .xl-ajustes { border-radius: 8px !important; }
@@ -110,7 +112,8 @@ body .Resizer { background: var(--xl-pespunte) !important; }
   body [class*="-AppHeaderQuickNewButton"]::before { content: "+"; font-size: 24px; line-height: 1; font-weight: 400; }
   body [class*="-AppHeaderQuickNewButton"]::after { display: none !important; }
   .xl-ajustes { margin-left: 0 !important; }
-  body [class*="-AppHeaderActions"] [role="menu"] { right: 0 !important; left: auto !important; max-width: calc(100vw - 16px); }
+  /* Menú «+» (Acceso rápido): fijo bajo la cabecera y dentro de la pantalla */
+  body [class*="-AppHeaderActions"] [role="menu"] ul { position: fixed !important; top: 56px !important; right: 8px !important; left: auto !important; width: auto !important; min-width: 0 !important; max-width: calc(100vw - 16px) !important; max-height: calc(100dvh - 72px); overflow: auto; }
 
   /* «Colecciones»: cajón que se abre con las tres rayas */
   body [class*="-CollectionContainer"] { margin: 12px 8px !important; }
@@ -156,7 +159,7 @@ body .Resizer { background: var(--xl-pespunte) !important; }
   body [class*="-ViewControls"] { top: auto !important; bottom: 76px !important; right: 8px !important; position: fixed !important; z-index: 299; }
   /* Ventanas de Decap (medios, avisos) a lo ancho */
   body [class*="-StyledModal"] { position: fixed !important; inset: 0 !important; width: 100vw !important; max-width: 100vw !important; height: 100dvh !important; max-height: 100dvh !important; transform: none !important; margin: 0 !important; border-radius: 0 !important; padding: 12px !important; overflow: auto !important; }
-  body [class*="-StyledModal"] [class*="-CloseButton"] { position: fixed !important; top: 8px !important; right: 8px !important; left: auto !important; z-index: 5; }
+  body [class*="-StyledModal"] [class*="-CloseButton"] { position: fixed !important; top: 8px !important; right: 8px !important; left: auto !important; margin: 0 !important; z-index: 5; }
   body [class*="-StyledModal"] [class*="-RowContainer"] { flex-wrap: wrap; gap: 6px; height: auto !important; }
   body [class*="-StyledModal"] [class*="-LibraryTitle"] { font-size: 20px !important; }
   body [class*="-StyledModal"] [class*="-SearchContainer"] { width: 100% !important; }

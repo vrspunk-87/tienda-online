@@ -284,8 +284,11 @@
       else b.addEventListener('click', () => {
         pagina = n;
         pintar();
+        // Sube hasta el listado descontando la cabecera fija (si no, tapa la primera fila)
+        const cabecera = document.querySelector('.cabecera-web.sticky-top');
+        const alto = cabecera ? Math.max(0, cabecera.getBoundingClientRect().bottom) : 0;
         const arriba = rejilla.getBoundingClientRect().top;
-        if (arriba < 0) rejilla.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (arriba < alto + 8) window.scrollTo({ top: window.scrollY + arriba - alto - 16, behavior: 'smooth' });
         const primero = caja.querySelector('[data-producto]:not([hidden]) a, [data-item]:not([hidden]) a');
         if (primero) primero.focus({ preventScroll: true });
       });

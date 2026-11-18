@@ -173,6 +173,9 @@ con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/
   blog y páginas. /buscar/ muestra las categorías que coinciden, los productos con las tarjetas y
   filtros del catálogo y el bloque del blog y las páginas; la caja de la cabecera da sugerencias
   mientras se escribe (public/js/buscar.js y public/js/extras.js).
+  Pagefind, si una palabra no está en el índice, la va acortando hasta encontrar algo («paraguas» →
+  «para»); para no enseñar resultados que no tienen que ver, `resultadoFiable` (en los dos ficheros)
+  exige que cada palabra buscada esté en el primer resultado o tal cual en el índice (18-11-2026).
 - **Imágenes**: el build avisa de formatos que los navegadores no muestran (JXL, HEIC, TIFF…).
 - **Portada, `/catalogo/` y `/ofertas/`**: bloques configurables en Ajustes del sitio → Ajustes
   generales → «Portada», «Página Catálogo», «Página Ofertas» y «Página Blog»: cada bloque

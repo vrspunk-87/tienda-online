@@ -66,6 +66,21 @@
     caja.setAttribute('aria-expanded', 'false');
     caja.setAttribute('aria-controls', lista.id);
     let pagefind = null, ultima = '', espera = null, activa = -1;
+    // Pagefind, si una palabra no está en el índice, la va acortando hasta que encuentra algo («paraguas» →
+    // «para», «xyzzyqwerty» → «xy»). Cada palabra buscada (de 4 letras o más) tiene que estar en el primer
+    // resultado (una palabra que empiece igual en al menos 3/4 de sus letras) o en el índice tal cual (búsqueda
+    // exacta, que respeta las variantes: «cosiendo» → «coser»); si no, se da por «sin resultados».
+    const normalBusqueda = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    async function resultadoFiable(pagefind, consulta, d) {
+      if (!d) return true;
+      const palabras = normalBusqueda([d.content, ...Object.values(d.meta || {})].join(' ')).split(/[^a-z0-9]+/).filter(Boolean);
+      for (const t of normalBusqueda(consulta).split(/[^a-z0-9]+/).filter(t => t.length >= 4)) {
+        const minimo = Math.min(t.length, Math.max(4, Math.ceil(t.length * 0.75)));
+        if (palabras.some(w => { let i = 0; while (i < t.length && i < w.length && t[i] === w[i]) i++; return i >= minimo; })) continue;
+        if (!(await pagefind.search(`"${t}"`)).results.length) return false;
+      }
+      return true;
+    }
     const cargar = () => pagefind || (pagefind = import('/pagefind/pagefind.js').then(async m => { await m.options({ excerptLength: 12 }); return m; }));
     const html = t => { const s = document.createElement('span'); s.textContent = t == null ? '' : String(t); return s.innerHTML; };
     const resaltar = (t, consulta) => {
@@ -99,6 +114,7 @@
         r = await m.search(consulta);
         if (consulta !== ultima) return;
         datos = await Promise.all(r.results.slice(0, 20).map(x => x.data()));
+        if (!(await resultadoFiable(m, consulta, datos[0]))) { datos = []; r = { results: [] }; }
       } catch (e) { cerrar(); return; }
       if (consulta !== ultima) return;
       const tipo = d => (d.filters && d.filters.tipo && d.filters.tipo[0]) || 'Página';

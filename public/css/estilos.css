@@ -1265,7 +1265,10 @@ altcha-widget { display: block; max-width: 22rem; --altcha-border-radius: .6rem;
 .pie-marca .marca-texto { color: #ff8a8a; font-size: 1.4rem; }
 .logo-pie { background: #fff; padding: 4px; }
 @media (max-width: 991.98px) {
-  .navbar-brand > span.marca-texto { font-size: 1.15rem; white-space: nowrap; }
+  .navbar-brand > span.marca-texto { font-size: 1.15rem; white-space: normal; min-width: 0; }
+  /* Con la letra del móvil más grande, el nombre se parte y, si aun así no cabe, se corta (no tapa
+     «Mi solicitud» ni el botón del menú) */
+  .navbar-brand { overflow-x: clip; }
   .navbar-brand .marca-ultima { display: inline; font-size: 1em; padding-left: 0; }
   .navbar-brand .logo { height: 36px; }
 }

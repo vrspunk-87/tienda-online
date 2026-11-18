@@ -23,6 +23,21 @@
   const limpia = u => { try { u = new URL(u, location.origin).pathname; } catch (e) { /* ruta relativa */ } return u.replace(/index\.html$/, '').replace(/\/+$/, '') || '/'; };
   const texto = t => { const s = document.createElement('span'); s.textContent = t; return s.innerHTML; };
   const plural = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`;
+  // Pagefind, si una palabra no está en el índice, la va acortando hasta que encuentra algo («paraguas» →
+  // «para», «xyzzyqwerty» → «xy»). Cada palabra buscada (de 4 letras o más) tiene que estar en el primer
+  // resultado (una palabra que empiece igual en al menos 3/4 de sus letras) o en el índice tal cual (búsqueda
+  // exacta, que respeta las variantes: «cosiendo» → «coser»); si no, se da por «sin resultados».
+  const normalBusqueda = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  async function resultadoFiable(pagefind, consulta, d) {
+    if (!d) return true;
+    const palabras = normalBusqueda([d.content, ...Object.values(d.meta || {})].join(' ')).split(/[^a-z0-9]+/).filter(Boolean);
+    for (const t of normalBusqueda(consulta).split(/[^a-z0-9]+/).filter(t => t.length >= 4)) {
+      const minimo = Math.min(t.length, Math.max(4, Math.ceil(t.length * 0.75)));
+      if (palabras.some(w => { let i = 0; while (i < t.length && i < w.length && t[i] === w[i]) i++; return i >= minimo; })) continue;
+      if (!(await pagefind.search(`"${t}"`)).results.length) return false;
+    }
+    return true;
+  }
 
   function mostrarVacio(sinResultados) {
     vacio.hidden = false;
@@ -146,6 +161,7 @@
       await pagefind.options({ excerptLength: 26 });
       const r = await pagefind.search(q);
       datos = await Promise.all(r.results.slice(0, 300).map(x => x.data()));
+      if (!(await resultadoFiable(pagefind, q, datos[0]))) datos = [];
     } catch (e) {
       resumen.textContent = 'No se ha podido usar el buscador. Recarga la página o vuelve a intentarlo más tarde.';
       return;

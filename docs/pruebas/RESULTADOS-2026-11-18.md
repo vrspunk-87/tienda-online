@@ -36,6 +36,18 @@ necesita un móvil de verdad (deslizar, teclado, cámara, compartir del sistema,
 6. Panel móvil 1.5 · El menú «+» (Acceso rápido) se sale por la derecha de la pantalla.
 7. Panel móvil 4.1 · En Medios la ✕ de cerrar queda casi fuera de la pantalla.
 
+**Correcciones hechas después (18-11-2026), comprobadas en la copia local**
+
+| Fallo | Estado | Qué se ha cambiado |
+|---|---|---|
+| 1. Web 3.6 | ✅ corregido | `public/js/catalogo.js`: al cambiar de página sube al listado descontando la cabecera fija (la primera fila queda a la vista: cabecera hasta 140 px, primera fila en 233 px). |
+| 2. Web 6.4 | ✅ corregido | `public/js/buscar.js` y `public/js/extras.js`: `resultadoFiable` descarta los resultados cuando Pagefind ha acortado la palabra. «xyzzyqwerty» y «paraguas» → «Sin resultados»; «prensat», «planchas», «cosiendo», «b790», «pfaf», «máquina remalladora» siguen encontrando. |
+| 3. Web 8.4 | ⏸️ pendiente de datos | No es código: faltan el NIF en «Contacto y horario» y la revisión de los textos legales ([fecha], [6 meses], [2 días laborables]…). Lo decide la tienda o quien los revise. |
+| 4. Web móvil 6.6 | ✅ corregido | `public/css/estilos.css`: en el móvil el nombre puede partirse y, si aun así no cabe, se corta; con la letra al 150 % queda en dos líneas sin tocar «Mi solicitud» ni el menú. Con la letra normal, igual que antes. |
+| 5. Panel 1.3 | ✔️ no era un fallo | Repetido con calma, «Acceso rápido → Entradas del blog» abre «Nueva entrada». En la prueba se pulsó antes de que el panel terminara de abrir la primera sección (el inicio salta solo a «Entradas del blog» y pisó el clic). |
+| 6. Panel móvil 1.5 | ✅ corregido | `public/admin/tema-panel.css`: el menú «+» queda fijo bajo la cabecera y dentro de la pantalla (220–404 px de 412). En el ordenador también se salía 13 px por la derecha: ahora se alinea con el botón. |
+| 7. Panel móvil 4.1 | ✅ corregido | `public/admin/tema-panel.css`: Decap ponía a la ✕ un margen de −40 px; ahora queda en 364–404 px y cierra la ventana. |
+
 **Matices (⚠️)**
 
 1. Web 1.4 · El panel de cada tipo se abre al pulsar, no al pasar el ratón (decidir: plan o comportamiento).
