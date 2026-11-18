@@ -12,8 +12,8 @@ Al pulsarlo:
 | Cambiar en bloque | **Quitar «Solo para pruebas»…** / **Marcar «Solo para pruebas»…** | Publicar o esconder de la web pública varias fichas a la vez |
 | (aparte, en rojo) | **Eliminar…** | Borrar varias fichas a la vez, sin pasar por un Excel |
 
-**Secciones con engranaje:** Catálogo: fabricantes (18-11-2026). Irán llegando: tipos de producto,
-categorías, subcategorías, productos y blog; páginas, además, con Word.
+**Secciones con engranaje:** Catálogo: fabricantes, tipos de producto, categorías y subcategorías
+(18-11-2026). Irán llegando: productos y blog; páginas, además, con Word.
 
 Todo pasa por un **informe** antes de guardar nada, y se guarda **en un único cambio** (commit) de
 la rama que edita el panel: en la web pública, `main`; en los entornos de pruebas, la suya. La web
@@ -49,6 +49,11 @@ otros navegadores va a la carpeta de descargas (en Firefox, según su ajuste «P
 | Poner o cambiar una imagen | Escribe el nombre del fichero (p. ej. `brother.png`) y súbelo junto al Excel o dentro del ZIP. Si la imagen ya está en la web, basta con el nombre |
 
 - Las filas vacías (solo con «Acción») se ignoran: están preparadas para las altas.
+- **Categorías y subcategorías:** la columna «Tipo de producto» o «Categoría» es un desplegable con la
+  ruta completa («Bordadoras › Industriales»), porque hay nombres que se repiten en varios tipos. Al dar
+  de alta una o cambiarla de sitio, el informe recuerda ponerle su lugar en Ajustes del sitio → «Orden
+  del catálogo en el menú» (si no, sale al final, en orden alfabético). Tipos, categorías y
+  subcategorías comparten los identificadores: no puede haber dos iguales aunque sean de distinto nivel.
 - Una fila con datos pero sin los obligatorios da error.
 - Las columnas de trabajo de las tarifas («Observaciones», «Revisar (avisos)», «Modificaciones
   (desde la carga)») se ignoran.
@@ -73,6 +78,9 @@ Tanto con el Excel como con **Eliminar…**:
   motivo. Primero hay que borrar sus productos o cambiarlos de fabricante.
 - Con la ficha se borran sus imágenes, salvo las que use otra ficha.
 - En **Eliminar…** hay que escribir el número de fichas para confirmar.
+- **Tipos, categorías y subcategorías:** no se borra uno que tenga categorías o subcategorías debajo
+  (bórralas antes en su sección) ni productos (cámbialos de categoría o bórralos antes). Al borrarlo,
+  se quita también de Ajustes del sitio → «Orden del catálogo en el menú».
 - Para quitar un producto de la web sin perderlo, es mejor «Estado: no disponible» (cuando llegue
   Productos) o «Marcar "Solo para pruebas"».
 

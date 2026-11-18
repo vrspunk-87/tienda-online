@@ -150,7 +150,7 @@ en producción. Los productos y la entrada del blog de prueba se borraron el 8-1
 | Todas las ofertas vigentes, con filtros (enlace «Ver todas las ofertas» en la portada y en `/catalogo/`) | — | `/ofertas/` |
 
 **Carga y cambios en bloque** (fase 3): engranaje en la lista de cada sección del panel (de momento,
-Fabricantes) con «Exportar a Excel», «Importar Excel», «Solo para pruebas» en bloque y «Eliminar»; todo
+Fabricantes, tipos de producto, categorías y subcategorías) con «Exportar a Excel», «Importar Excel», «Solo para pruebas» en bloque y «Eliminar»; todo
 con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/CARGA-EN-BLOQUE.md).
 
 - **Identificador** de un producto: lo crea el panel a partir del fabricante y el modelo y no cambia.

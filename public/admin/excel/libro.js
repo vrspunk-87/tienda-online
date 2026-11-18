@@ -9,7 +9,7 @@
 */
 import {
   COL_ID, COL_ACCION, ACCION_EDITAR, ACCION_BORRAR, VACIO, SI, NO, IGNORADAS, RE_SOLO_LECTURA,
-  aCelda, opcionesSelect, huellaTexto, valorCelda, maxBytes,
+  aCelda, opcionesSelect, opcionesCatalogo, nivelElegido, huellaTexto, valorCelda, maxBytes,
 } from './nucleo.js';
 
 const FILAS_PREPARADAS = 20;      // filas vacías con «Crear/Editar» para dar de alta
@@ -86,14 +86,15 @@ export async function crearLibro(ExcelJS, { cfg, col, perfil, columnas, actuales
     style: { protection: { locked: c.tipo === 'lectura' }, ...(c.tipo === 'lectura' ? { fill: { type: 'pattern', pattern: 'solid', fgColor: { argb: GRIS } }, font: { color: { argb: 'FF495057' } } } : {}) },
   }));
 
-  const ordenados = [...actuales].sort((a, b) => perfil.nombre(a.datos).localeCompare(perfil.nombre(b.datos), 'es'));
+  const clave = a => (perfil.clave ? perfil.clave(a, ctx) : perfil.nombre(a.datos));
+  const ordenados = [...actuales].sort((a, b) => clave(a).localeCompare(clave(b), 'es'));
   for (const a of ordenados) {
     const fila = {};
     for (const c of columnas.todas) {
       if (c.tipo === 'id') fila[c.titulo] = a.slug;
       else if (c.tipo === 'accion') fila[c.titulo] = ACCION_EDITAR;
       else if (c.tipo === 'lectura') fila[c.titulo] = c.l.valor(a.slug, ctx);
-      else fila[c.titulo] = aCelda(c, a.datos, a.cuerpo);
+      else fila[c.titulo] = aCelda(c, a.datos, a.cuerpo, ctx);
     }
     ws.addRow(fila);
   }
@@ -128,6 +129,7 @@ export async function crearLibro(ExcelJS, { cfg, col, perfil, columnas, actuales
     if (c.tipo === 'accion') formula = listaAccion;
     else if (c.widget === 'boolean') formula = listaSiNo;
     else if (c.widget === 'select') formula = lista(c.f.label, opcionesSelect(c.f).map(o => o.etiqueta));
+    else if (c.widget === 'categoria-catalogo') formula = lista(c.f.label, opcionesCatalogo(c, ctx).map(o => o.etiqueta));
     if (!formula) return;
     ws.dataValidations.add(rango(i), {
       type: 'list', allowBlank: true, formulae: [formula],
@@ -152,11 +154,12 @@ export async function crearLibro(ExcelJS, { cfg, col, perfil, columnas, actuales
     if (c.obligatorio) partes.push('Obligatorio.');
     if (c.widget === 'boolean') partes.push(`«${SI}» o «${NO}».`);
     if (c.widget === 'select') partes.push(`Una de: ${opcionesSelect(c.f).map(o => o.etiqueta).join(', ')}.`);
+    if (c.widget === 'categoria-catalogo') partes.push(`Elige ${({ tipo: 'el tipo de producto', categoria: 'la categoría (con su tipo delante: «Tipo › Categoría»)', subcategoria: 'la subcategoría' })[nivelElegido(c)]} del desplegable. Si cambias una ${perfil.uno} de sitio, revisa después su lugar en Ajustes del sitio → «Orden del catálogo en el menú».`);
     if (c.widget === 'image') {
       const max = maxBytes(c.f);
       partes.push(`Nombre del fichero de la imagen${max ? ` (máximo ${Math.round(max / 1e6)} MB)` : ''}.`);
     }
-    if (c.f.hint) partes.push(c.f.hint);
+    if (c.f.hint && c.widget !== 'categoria-catalogo') partes.push(c.f.hint);
     notas.addRow({ c: c.titulo, e: partes.join(' ') });
   }
   for (const c of columnas.todas.filter(x => x.tipo === 'lectura')) notas.addRow({ c: c.titulo, e: c.l.nota || 'Informativa: se ignora al importar.' });

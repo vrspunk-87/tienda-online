@@ -29,7 +29,7 @@ export const RE_SOLO_LECTURA = /\(solo lectura\)\s*$/i;
 const EXT_IMAGEN = /\.(png|jpe?g|webp|gif|svg|avif)$/i;
 
 // Tipos de campo del panel que se pasan a columnas (los demás, en las siguientes colecciones)
-const TIPOS = new Set(['string', 'text', 'markdown', 'number', 'boolean', 'select', 'image', 'datetime', 'color']);
+const TIPOS = new Set(['string', 'text', 'markdown', 'number', 'boolean', 'select', 'image', 'datetime', 'color', 'categoria-catalogo']);
 
 /* ---------- Perfiles: lo propio de cada colección ---------- */
 const plural = (n, uno, varios) => `${n} ${n === 1 ? uno : varios}`;
@@ -52,7 +52,43 @@ export const PERFILES = {
     // Logotipos: se suben tal cual (PNG, SVG…), sin reducirlos ni pasarlos a JPG
     reducirImagenes: false,
   },
+  tipos: perfilCatalogo('tipo', 'Tipos de producto', 'tipo de producto', 'tipos de producto'),
+  categorias: perfilCatalogo('categoria', 'Categorías', 'categoría', 'categorías'),
+  subcategorias: perfilCatalogo('subcategoria', 'Subcategorías', 'subcategoría', 'subcategorías'),
 };
+
+/* Tipos de producto, categorías y subcategorías: comparten carpeta (public/_categorias) y se
+   distinguen por el campo oculto «nivel». No se borra uno con hijas o con productos; al borrarlo, se
+   quita de Ajustes del sitio → «Orden del catálogo en el menú». */
+function perfilCatalogo(nivel, hoja, uno, varios) {
+  const HIJOS = { tipo: 'categorías', categoria: 'subcategorías', subcategoria: '' };
+  return {
+    hoja, uno, varios, nivel,
+    nombre: d => d.title || '',
+    identificar: d => slugificar(d.title),
+    // En el Excel, en el orden del árbol (Tipo › Categoría › Subcategoría)
+    clave: (a, ctx) => (ctx.catalogo?.ruta(a.slug) || [a.datos.title || a.slug]).join(' › '),
+    lectura: [{
+      titulo: 'Productos (solo lectura)',
+      nota: `Productos ${({ tipo: 'de este tipo de producto y de todo lo que cuelga de él', categoria: 'de esta categoría y de sus subcategorías', subcategoria: 'de esta subcategoría' })[nivel]} al exportar (también los «Solo para pruebas»), como en la lista del panel. Se ignora al importar.`,
+      valor: (slug, ctx) => ctx.catalogo?.productosTotal(slug) || 0,
+    }],
+    motivoNoBorrar: (slug, ctx, borrando = new Set()) => {
+      const cat = ctx.catalogo;
+      if (!cat) return '';
+      const hijas = cat.hijas(slug).filter(h => !borrando.has(h));
+      const prods = cat.productosDirectos(slug);
+      const partes = [];
+      if (hijas.length) partes.push(plural(hijas.length, HIJOS[nivel].replace(/s$/, ''), HIJOS[nivel]));
+      if (prods.length) partes.push(plural(prods.length, 'producto', 'productos'));
+      if (!partes.length) return '';
+      const seccion = { tipo: '«Catálogo: categorías»', categoria: '«Catálogo: subcategorías»' }[nivel];
+      return `Tiene ${partes.join(' y ')}: ${hijas.length ? `bórra${hijas.length === 1 ? 'la' : 'las'} antes en ${seccion}` : ''}${hijas.length && prods.length ? ' y ' : ''}${prods.length ? 'cambia sus productos de categoría o bórralos antes' : ''}.`;
+    },
+    quitarDelOrden: true,
+    reducirImagenes: false,
+  };
+}
 export const coleccionesConExcel = () => Object.keys(PERFILES);
 
 /* ---------- Utilidades ---------- */
@@ -93,6 +129,17 @@ export function leerEntrada(YAML, ruta, raw) {
   return { ruta, raw, datos, cuerpo, error, slug: nombreDeRuta(ruta).replace(/\.md$/, '') };
 }
 
+// YAML a texto como lo dejaría el panel (Decap parte las líneas largas a 80 caracteres). Si el fichero
+// ya existía, se elige la forma que menos líneas cambia (los creados con scripts no las parten).
+function yamlATexto(doc, original) {
+  const decap = doc.toString();
+  if (original === undefined) return decap;
+  const largo = doc.toString({ lineWidth: 0 });
+  const antes = new Set(String(original).replace(/\r\n/g, '\n').split('\n'));
+  const distintas = t => t.split('\n').filter(l => !antes.has(l)).length;
+  return distintas(largo) < distintas(decap) ? largo : decap;
+}
+
 // Escribe la ficha. Si ya existía, solo cambia los campos tocados (el resto queda igual que estaba)
 export function componer(YAML, actual, cambios, cuerpo, ordenCampos) {
   let doc;
@@ -109,7 +156,7 @@ export function componer(YAML, actual, cambios, cuerpo, ordenCampos) {
     for (const [k, v] of Object.entries(cambios)) if (k !== 'body' && !(k in obj) && v !== undefined) obj[k] = v;
     doc = new YAML.Document(obj);
   }
-  let fm = doc.toString({ lineWidth: 0 });
+  let fm = yamlATexto(doc, actual ? separar(actual.raw).fm : undefined);
   if (!fm.endsWith('\n')) fm += '\n';
   const c = cuerpo ?? '';
   const texto = `---\n${fm}---\n${c}`;
@@ -150,6 +197,9 @@ export function columnasDe(cfg, col, perfil) {
     });
   }
   return {
+    ordenCampos: (col.fields || []).map(f => f.name),
+    // Campos ocultos con valor fijo (p. ej. «nivel» de las categorías): se ponen en las altas
+    ocultos: (col.fields || []).filter(f => f.widget === 'hidden' && f.default !== undefined).map(f => ({ campo: f.name, valor: f.default })),
     todas: [
       { tipo: 'id', titulo: COL_ID },
       { tipo: 'accion', titulo: COL_ACCION },
@@ -162,9 +212,10 @@ export function columnasDe(cfg, col, perfil) {
 }
 
 /* ---------- De la ficha a la celda y de la celda al dato ---------- */
-export function aCelda(c, datos, cuerpo) {
+export function aCelda(c, datos, cuerpo, ctx) {
   const v = c.campo === 'body' ? cuerpo : datos[c.campo];
   switch (c.widget) {
+    case 'categoria-catalogo': return v ? (ctx?.catalogo?.porSlug.has(v) ? ctx.catalogo.etiqueta(v) : String(v)) : '';
     case 'boolean': return (v ?? c.f.default ?? false) ? SI : NO;
     case 'image': return v ? nombreDeRuta(v) : '';
     case 'select': {
@@ -193,7 +244,19 @@ export function valorCelda(v) {
 const vacia = v => v === '' || v === null || v === undefined || (typeof v === 'string' && !v.trim());
 
 // Devuelve { nada } (no tocar), { borrar } o { valor } o { error }
-export function leerValor(c, bruto) {
+// Nivel que se elige en un campo «categoria-catalogo» (el padre de una categoría o subcategoría)
+export const nivelElegido = c => ['tipo', 'categoria', 'subcategoria'][Math.min(3, Math.max(1, Number(c.f.niveles) || 3)) - 1];
+// Opciones de un campo «categoria-catalogo»: todas las del nivel, con su ruta («Tipo › Categoría»)
+export function opcionesCatalogo(c, ctx) {
+  const cat = ctx?.catalogo;
+  if (!cat) return [];
+  const niveles = Number(c.f.niveles) || 3;
+  const validos = niveles >= 3 ? ['tipo', 'categoria', 'subcategoria'] : [nivelElegido(c)];
+  return [...cat.porSlug.values()].filter(x => validos.includes(x.nivel)).map(x => ({ valor: x.slug, etiqueta: cat.etiqueta(x.slug) }))
+    .sort((a, b) => a.etiqueta.localeCompare(b.etiqueta, 'es'));
+}
+
+export function leerValor(c, bruto, ctx) {
   if (vacia(bruto)) return { nada: true };
   const texto = typeof bruto === 'string' ? bruto : String(bruto);
   if (texto.trim().toLowerCase() === VACIO) return { borrar: true };
@@ -216,14 +279,23 @@ export function leerValor(c, bruto) {
       return { valor: o.valor };
     }
     case 'image': return { valor: texto.trim().split(/[\\/]/).pop() }; // tal cual: se limpia al subirla
+    case 'categoria-catalogo': {
+      const ops = opcionesCatalogo(c, ctx);
+      const t = texto.trim().toLowerCase().replace(/\s*[›>]\s*/g, ' › ');
+      const o = ops.find(x => x.valor === texto.trim() || x.etiqueta.toLowerCase() === t)
+        || ops.filter(x => x.etiqueta.toLowerCase().endsWith(' › ' + t) || x.etiqueta.toLowerCase() === t).reduce((u, x, i, arr) => (arr.length === 1 ? x : u), null);
+      if (!o) return { error: `«${texto}» no es ${({ tipo: 'un tipo de producto', categoria: 'una categoría', subcategoria: 'una subcategoría' })[nivelElegido(c)]} que exista (elígelo del desplegable).` };
+      return { valor: o.valor };
+    }
     case 'text': case 'markdown': return { valor: texto.replace(/\r\n/g, '\n').replace(/\s+$/, '') };
     default: return { valor: texto.trim() };
   }
 }
 
 const igual = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
-const mostrar = (c, v) => {
+const mostrar = (c, v, ctx) => {
   if (v === undefined || v === null || v === '') return '(vacío)';
+  if (c.widget === 'categoria-catalogo' && ctx?.catalogo?.porSlug.has(v)) return ctx.catalogo.etiqueta(v);
   if (c.widget === 'boolean') return v ? SI : NO;
   if (c.widget === 'image') return nombreDeRuta(v);
   const t = String(v);
@@ -233,7 +305,7 @@ const mostrar = (c, v) => {
 /* ---------- Contexto: lo que hace falta de otras colecciones ---------- */
 // productos: [{ slug, datos }]; textos: [{ ruta, raw }] de todas las colecciones (para saber si una
 // imagen la usa otra ficha)
-export function crearContexto({ productos = [], textos = [] } = {}) {
+export function crearContexto({ productos = [], textos = [], categorias = [], sitio = null } = {}) {
   const productosPorFabricante = new Map();
   for (const p of productos) {
     const f = String(p.datos?.fabricante || '').trim();
@@ -241,8 +313,69 @@ export function crearContexto({ productos = [], textos = [] } = {}) {
     if (!productosPorFabricante.has(f)) productosPorFabricante.set(f, []);
     productosPorFabricante.get(f).push(p.slug);
   }
-  return { productos, textos, productosPorFabricante };
+  return { productos, textos, productosPorFabricante, catalogo: crearCatalogo(categorias, productos), sitio };
 }
+
+// El árbol del catálogo: niveles, hijas, rutas y productos de cada categoría
+export function crearCatalogo(categorias, productos = []) {
+  const porSlug = new Map(categorias.map(c => [c.slug, { slug: c.slug, titulo: String(c.datos.title || c.slug), nivel: c.datos.nivel || '', padre: String(c.datos.padre || '').trim() }]));
+  const hijas = new Map();
+  for (const c of porSlug.values()) {
+    if (!c.padre) continue;
+    if (!hijas.has(c.padre)) hijas.set(c.padre, []);
+    hijas.get(c.padre).push(c.slug);
+  }
+  const directos = new Map();
+  for (const p of productos) {
+    const c = String(p.datos?.categoria || '').trim();
+    if (!c) continue;
+    if (!directos.has(c)) directos.set(c, []);
+    directos.get(c).push(p.slug);
+  }
+  const ruta = slug => {
+    const r = [];
+    for (let x = porSlug.get(slug), vistos = new Set(); x && !vistos.has(x.slug); x = porSlug.get(x.padre)) { vistos.add(x.slug); r.unshift(x.titulo); }
+    return r;
+  };
+  const productosTotal = slug => (directos.get(slug) || []).length + (hijas.get(slug) || []).reduce((n, h) => n + productosTotal(h), 0);
+  const deNivel = nivel => [...porSlug.values()].filter(c => c.nivel === nivel);
+  return {
+    porSlug, ruta, productosTotal, deNivel,
+    hijas: slug => hijas.get(slug) || [],
+    productosDirectos: slug => directos.get(slug) || [],
+    etiqueta: slug => ruta(slug).join(' › '),
+  };
+}
+
+// Quita del «Orden del catálogo en el menú» (Ajustes del sitio) las categorías borradas. Se quitan
+// solo sus líneas del texto, sin volver a escribir el resto del fichero (así no cambia nada más).
+export function quitarDelOrden(YAML, raw, borradas) {
+  const crlf = String(raw).includes('\r\n');
+  const texto = String(raw).replace(/\r\n/g, '\n');
+  const doc = YAML.parseDocument(texto);
+  const lista = doc.get('catalogo_orden', true);
+  if (!lista || !YAML.isSeq(lista)) return null;
+  const tramos = [];
+  (function buscar(seq) {
+    for (const it of seq.items) {
+      const slug = YAML.isMap(it) ? String(it.get('categoria') ?? '') : String(YAML.isScalar(it) ? it.value : it ?? '');
+      if (borradas.has(slug.trim()) && it.range) {
+        const ini = texto.lastIndexOf('\n', it.range[0] - 1) + 1;
+        let fin = texto.indexOf('\n', Math.max(it.range[0], it.range[2] - 1));
+        fin = fin === -1 ? texto.length : fin + 1;
+        tramos.push([ini, fin]);
+        continue;
+      }
+      const h = YAML.isMap(it) ? it.get('hijos', true) : null;
+      if (h && YAML.isSeq(h)) buscar(h);
+    }
+  })(lista);
+  if (!tramos.length) return null;
+  let salida = texto;
+  for (const [ini, fin] of tramos.sort((a, b) => b[0] - a[0])) salida = salida.slice(0, ini) + salida.slice(fin);
+  return crlf ? salida.replace(/\n/g, '\r\n') : salida;
+}
+
 // ¿Usa alguna otra ficha esta imagen? (busca su dirección pública en el texto de las demás)
 function imagenEnUso(ctx, rutaPublica, excluir) {
   return ctx.textos.some(t => !excluir.has(t.ruta) && String(t.raw).includes(rutaPublica));
@@ -261,13 +394,17 @@ function planVacio() {
   medios: Map <carpeta del repositorio> → Map nombre → huella (imágenes que ya hay)
   subidos: Map nombre del fichero → { nombre, bytes, huella } (imágenes subidas con el Excel)
 */
-export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, filas, actuales, huellas, medios = new Map(), subidos = new Map(), ctx }) {
+export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, filas, actuales, ocupados, huellas, medios = new Map(), subidos = new Map(), ctx }) {
   const plan = planVacio();
   const porSlug = new Map(actuales.map(a => [a.slug, a]));
-  const usados = new Set(porSlug.keys());
+  // Identificadores ya usados en la carpeta (en el catálogo, también los de los otros niveles)
+  const usados = new Set([...(ocupados || []), ...porSlug.keys()]);
   const vistos = new Map();
   const campos = columnas.campos;
-  const ordenCampos = campos.map(c => c.campo);
+  const ordenCampos = columnas.ordenCampos || campos.map(c => c.campo);
+  // Lo que se quiere borrar en este Excel (para dejar borrar algo junto con lo que cuelga de ello)
+  const intencion = new Set(filas.filter(f => slugificar(String(valorCelda(f.celdas[COL_ACCION]) ?? '')) === slugificar(ACCION_BORRAR))
+    .map(f => slugificar(String(valorCelda(f.celdas[COL_ID]) ?? ''))).filter(Boolean));
   const borrando = new Set();
   const subidasUsadas = new Set();
 
@@ -300,7 +437,7 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
     /* Borrar */
     if (accion === ACCION_BORRAR) {
       if (!actual) { err(`No se puede borrar «${idTexto || '(sin identificador)'}»: no existe.`); continue; }
-      const motivo = perfil.motivoNoBorrar ? perfil.motivoNoBorrar(actual.slug, ctx) : '';
+      const motivo = perfil.motivoNoBorrar ? perfil.motivoNoBorrar(actual.slug, ctx, intencion) : '';
       if (motivo) { err(`No se puede borrar «${perfil.nombre(actual.datos) || actual.slug}»: ${motivo}`); continue; }
       plan.borrados.push({ fila: fila.n, slug: actual.slug, nombre: perfil.nombre(actual.datos) || actual.slug, arrastra: [] });
       borrando.add(actual.slug);
@@ -311,7 +448,7 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
     const nuevos = {};
     let erroneo = false;
     for (const c of campos) {
-      const r = leerValor(c, valorCelda(fila.celdas[c.titulo]));
+      const r = leerValor(c, valorCelda(fila.celdas[c.titulo]), ctx);
       if (r.error) { err(`«${c.f.label || c.campo}»: ${r.error}`); erroneo = true; continue; }
       if (r.nada) continue;
       if (r.borrar) {
@@ -358,6 +495,7 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
       }
       if (erroneo) continue;
       for (const c of campos) if (nuevos[c.campo] === undefined && c.f.default !== undefined) nuevos[c.campo] = c.f.default;
+      for (const o of columnas.ocultos || []) nuevos[o.campo] = o.valor;
       let slug = slugEscrito;
       if (slug) {
         if (usados.has(slug)) { err(`El identificador «${slug}» ya existe.`); continue; }
@@ -372,6 +510,7 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
       usados.add(slug);
       const cuerpo = 'body' in nuevos ? (nuevos.body ?? '') : '';
       plan.nuevos.push({ fila: fila.n, slug, nombre: perfil.nombre(nuevos) || slug });
+      if (perfil.quitarDelOrden) plan.avisos.push({ fila: fila.n, texto: `«${perfil.nombre(nuevos) || slug}» es ${perfil.uno === 'tipo de producto' ? 'nuevo' : 'nueva'}: ponle su lugar en Ajustes del sitio → «Orden del catálogo en el menú» (si no, sale al final, en orden alfabético).` });
       plan.escribir.push({ ruta: `${col.folder}/${slug}.md`, texto: componer(YAML, null, nuevos, cuerpo ? cuerpo + '\n' : '', ordenCampos) });
       continue;
     }
@@ -386,7 +525,8 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
       if (c.widget === 'boolean' && (antes ?? false) === (despues ?? false)) continue;
       if (igual(antes, despues) || (vacia(antes) && despues === undefined)) continue;
       cambios[c.campo] = despues;
-      lista.push({ campo: c.f.label || c.campo, antes: mostrar(c, antes), despues: mostrar(c, despues) });
+      lista.push({ campo: c.f.label || c.campo, antes: mostrar(c, antes, ctx), despues: mostrar(c, despues, ctx) });
+      if (c.widget === 'categoria-catalogo') plan.avisos.push({ fila: fila.n, texto: `«${perfil.nombre(actual.datos) || actual.slug}» cambia de sitio en el catálogo: revisa su lugar en Ajustes del sitio → «Orden del catálogo en el menú».` });
     }
     if (!lista.length) { plan.sinCambios++; continue; }
     const cuerpo = 'body' in cambios ? (cambios.body ? cambios.body + '\n' : '') : actual.cuerpo;
@@ -396,6 +536,7 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
 
   if (huellas === null && filas.length) plan.avisos.unshift({ fila: 0, texto: 'Este Excel no viene de «Exportar a Excel» del panel: no se puede comprobar si alguna ficha cambió en el panel después.' });
   completarBorrados(plan, { col, columnas, actuales, ctx, borrando });
+  quitarBorradosDelOrden(plan, { YAML, perfil, ctx, borrando });
   return plan;
 }
 
@@ -425,14 +566,15 @@ function completarBorrados(plan, { columnas, actuales, ctx, borrando }) {
 export async function planificarAccion({ YAML, col, perfil, columnas, actuales, slugs, accion, ctx }) {
   const plan = planVacio();
   const porSlug = new Map(actuales.map(a => [a.slug, a]));
-  const ordenCampos = columnas.campos.map(c => c.campo);
+  const ordenCampos = columnas.ordenCampos || columnas.campos.map(c => c.campo);
   const borrando = new Set();
+  const intencion = new Set(accion === 'borrar' ? slugs : []);
   for (const slug of slugs) {
     const a = porSlug.get(slug);
     if (!a) { plan.errores.push({ fila: 0, texto: `«${slug}» ya no existe.` }); continue; }
     const nombre = perfil.nombre(a.datos) || a.slug;
     if (accion === 'borrar') {
-      const motivo = perfil.motivoNoBorrar ? perfil.motivoNoBorrar(slug, ctx) : '';
+      const motivo = perfil.motivoNoBorrar ? perfil.motivoNoBorrar(slug, ctx, intencion) : '';
       if (motivo) { plan.errores.push({ fila: 0, texto: `No se puede borrar «${nombre}»: ${motivo}` }); continue; }
       plan.borrados.push({ fila: 0, slug, nombre, arrastra: [] });
       borrando.add(slug);
@@ -444,7 +586,17 @@ export async function planificarAccion({ YAML, col, perfil, columnas, actuales, 
     } else throw new Error(`Acción desconocida: ${accion}`);
   }
   completarBorrados(plan, { col, columnas, actuales, ctx, borrando });
+  quitarBorradosDelOrden(plan, { YAML, perfil, ctx, borrando });
   return plan;
+}
+
+// Al borrar tipos o categorías, también salen de «Orden del catálogo en el menú»
+function quitarBorradosDelOrden(plan, { YAML, perfil, ctx, borrando }) {
+  if (!perfil.quitarDelOrden || !borrando.size || !ctx?.sitio) return;
+  const nuevo = quitarDelOrden(YAML, ctx.sitio.raw, borrando);
+  if (!nuevo) return;
+  plan.escribir.push({ ruta: ctx.sitio.ruta, texto: nuevo });
+  for (const b of plan.borrados) b.arrastra.push('se quita de «Orden del catálogo en el menú»');
 }
 
 export const hayCambios = plan => plan.escribir.length + plan.borrar.length > 0;

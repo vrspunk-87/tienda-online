@@ -153,16 +153,29 @@ async function preparar(nombre) {
 }
 async function leerActuales(x) {
   const lista = await x.almacen.leerCarpeta(x.col.folder, 2);
-  const actuales = lista.map(f => leerEntrada(x.YAML, f.ruta, f.raw));
+  const todas = lista.map(f => leerEntrada(x.YAML, f.ruta, f.raw));
+  // Identificadores ocupados en la carpeta (tipos, categorías y subcategorías comparten carpeta)
+  x.ocupados = new Set(todas.map(a => a.slug));
+  // Solo las de esta sección (p. ej. «nivel: categoria»), como las filtra el panel
+  const f = x.col.filter;
+  const actuales = f ? todas.filter(a => String(a.datos[f.field] ?? '') === String(f.value)) : todas;
   const malas = actuales.filter(a => a.error);
   if (malas.length) throw new Error(`No se pueden leer: ${malas.map(a => a.ruta).join(', ')}.`);
   return actuales;
 }
-// Productos (para contarlos) y, si hace falta, el texto de todas las fichas (para saber si una
-// imagen la usa otra antes de borrarla)
+// Productos (para contarlos), el árbol del catálogo, Ajustes del sitio (orden del menú) y, si hace
+// falta, el texto de todas las fichas (para saber si una imagen la usa otra antes de borrarla)
 async function leerContexto(x, { textos = false } = {}) {
-  const prodCol = x.cfg.collections.find(c => c.name === 'productos');
-  const productos = prodCol ? (await x.almacen.leerCarpeta(prodCol.folder, 1)).map(f => leerEntrada(x.YAML, f.ruta, f.raw)) : [];
+  const leer = async (nombre, prof = 1) => {
+    const c = x.cfg.collections.find(k => k.name === nombre);
+    return c?.folder ? (await x.almacen.leerCarpeta(c.folder, prof)).map(f => leerEntrada(x.YAML, f.ruta, f.raw)) : [];
+  };
+  const rutaSitio = x.cfg.collections.flatMap(c => c.files || []).find(f => /(^|\/)sitio\.ya?ml$/.test(f.file || ''))?.file;
+  const [productos, categorias, sitio] = await Promise.all([
+    leer('productos'),
+    leer('catalogo'),
+    rutaSitio ? x.almacen.leerFicheros([rutaSitio]).then(l => l[0] || null) : null,
+  ]);
   let todos = [];
   if (textos) {
     const carpetas = [...new Set(x.cfg.collections.filter(c => c.folder).map(c => c.folder))];
@@ -170,7 +183,7 @@ async function leerContexto(x, { textos = false } = {}) {
     const ficheros = x.cfg.collections.flatMap(c => (c.files || []).map(f => f.file)).filter(Boolean);
     todos.push(...await x.almacen.leerFicheros(ficheros));
   }
-  return crearContexto({ productos, textos: todos });
+  return crearContexto({ productos, textos: todos, categorias, sitio });
 }
 async function leerMedios(x) {
   const medios = new Map();
@@ -292,7 +305,7 @@ async function importar(nombre) {
       const [actuales, ctx, medios] = await Promise.all([leerActuales(x), leerContexto(x, { textos: true }), leerMedios(x)]);
       const plan = leido.errores.length
         ? { nuevos: [], modificados: [], sinCambios: 0, borrados: [], avisos: [], errores: [], escribir: [], borrar: [], ignoradas: 0, imagenesUsadas: new Set() }
-        : await planificarImportacion({ YAML: x.YAML, cfg: x.cfg, col: x.col, perfil: x.perfil, columnas: x.columnas, filas: leido.filas, actuales, huellas: leido.huellas, medios, subidos, ctx });
+        : await planificarImportacion({ YAML: x.YAML, cfg: x.cfg, col: x.col, perfil: x.perfil, columnas: x.columnas, filas: leido.filas, actuales, ocupados: x.ocupados, huellas: leido.huellas, medios, subidos, ctx });
       plan.errores.unshift(...leido.errores);
       plan.avisos.unshift(...leido.avisos);
       const sinUso = [...subidos.keys()].filter(n => !plan.imagenesUsadas?.has(n));
@@ -368,11 +381,22 @@ async function enBloque(nombre, accion) {
     esperar(v, 'Preparando…');
     const x = await preparar(nombre);
     const [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x, { textos: accion === 'borrar' })]);
-    const items = [...actuales].sort((a, b) => x.perfil.nombre(a.datos).localeCompare(x.perfil.nombre(b.datos), 'es')).map(a => {
-      const motivo = accion === 'borrar' ? (x.perfil.motivoNoBorrar?.(a.slug, ctx) || '') : (A.ya(a) ? A.yaTexto : '');
-      return { a, motivo, marcado: false };
-    });
+    const clave = a => (x.perfil.clave ? x.perfil.clave(a, ctx) : x.perfil.nombre(a.datos)) || a.slug;
+    const items = [...actuales].sort((a, b) => clave(a).localeCompare(clave(b), 'es')).map(a => ({ a, motivo: '', marcado: false }));
+    // Lo que no se puede tocar, según lo ya marcado (un tipo se puede borrar si se borran a la vez sus categorías)
+    const repasar = () => {
+      for (let vuelta = 0; vuelta < 4; vuelta++) {
+        const marcados = new Set(items.filter(i => i.marcado).map(i => i.a.slug));
+        let cambio = false;
+        for (const i of items) {
+          i.motivo = accion === 'borrar' ? (x.perfil.motivoNoBorrar?.(i.a.slug, ctx, marcados) || '') : (A.ya(i.a) ? A.yaTexto : '');
+          if (i.motivo && i.marcado) { i.marcado = false; cambio = true; }
+        }
+        if (!cambio) break;
+      }
+    };
     const pintar = (filtro = '') => {
+      repasar();
       const f = filtro.trim().toLowerCase();
       const n = items.filter(i => i.marcado).length;
       v.poner(`<h2 class="${accion === 'borrar' ? 'xl-err' : ''}">${esc(A.titulo)}: ${esc(x.perfil.varios)}</h2>
@@ -380,7 +404,7 @@ async function enBloque(nombre, accion) {
         <input type="search" placeholder="Buscar por nombre" value="${esc(filtro)}" data-buscar>
         <div style="margin-top:8px"><a href="#" data-todos>Marcar los que se ven</a> · <a href="#" data-ninguno>Desmarcar todos</a></div>
         <div class="xl-lista">${items.map((i, k) => {
-          const nombreV = x.perfil.nombre(i.a.datos) || i.a.slug;
+          const nombreV = clave(i.a);
           if (f && !nombreV.toLowerCase().includes(f) && !i.a.slug.includes(f)) return '';
           return `<label class="${i.motivo ? 'xl-no' : ''}"><input type="checkbox" data-k="${k}" ${i.marcado ? 'checked' : ''} ${i.motivo ? 'disabled' : ''}><span style="flex:1">${esc(nombreV)} <span class="xl-gris">· ${esc(i.a.slug)}</span></span>${i.motivo ? `<span class="xl-gris" style="font-size:12px">${esc(i.motivo)}</span>` : ''}</label>`;
         }).join('')}</div>
