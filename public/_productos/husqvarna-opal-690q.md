@@ -1,0 +1,90 @@
+---
+prueba: true
+title: Husqvarna Viking OPAL 690Q
+fabricante: husqvarna
+modelo: OPAL 690Q
+referencia: '957375141'
+categoria: electronicas
+date: '2026-11-18T10:00:00.000+01:00'
+precio: 1649
+estado: disponible
+condicion: nuevo
+imagenes:
+- imagen: /img/productos/husqvarna-opal-690q-1.jpg
+- imagen: /img/productos/husqvarna-opal-690q-2.jpg
+- imagen: /img/productos/husqvarna-opal-690q-3.jpg
+- imagen: /img/productos/husqvarna-opal-690q-4.jpg
+- imagen: /img/productos/husqvarna-opal-690q-5.jpg
+description: Experimente un avance perfecto y uniforme en cualquier grosor de tejido.
+destacados:
+- texto: Característica cónica
+- texto: Puntadas Pictobram
+caracteristicas:
+- nombre: Tecnología EXCLUSIVE SENSOR SYSTEM
+  valor: Sí
+- nombre: Función Start/Stop (coser sin pedal de control)
+  valor: Sí
+- nombre: Cortador de hilo automático
+  valor: Sí
+- nombre: Función exclusiva SEWING ADVISOR
+  valor: Sí
+- nombre: Sensor del hilo de la canilla
+  valor: Sí
+- nombre: Gran pantalla táctil
+  valor: 3'' (64 x 48 mm)
+- nombre: Tensión de hilo electrónica autoajustable
+  valor: Sí
+- nombre: Amplio espacio de costura
+  valor: 8" (200 mm)
+- nombre: Puntadas utilitarias y decorativas
+  valor: '208'
+- nombre: Todas las puntadas (incluidas puntadas, letras, caracteres, etc.)
+  valor: '565'
+- nombre: Fuentes programables
+  valor: '4'
+- nombre: Luces LED en 3 lugares
+  valor: Sí
+- nombre: Menú Mis puntadas
+  valor: 12 Memorias, 240 puntadas
+- nombre: Selección de puntadas
+  valor: Pantalla táctil
+- nombre: Puntadas en pantalla a tamaño real
+  valor: Sí
+- nombre: Posiciones de la aguja
+  valor: '29'
+- nombre: Prensatelas a presión incluidos
+  valor: '10'
+- nombre: Estilos de ojal
+  valor: '7'
+- nombre: Exclusivo prensatelas para ojales Sensor de un paso
+  valor: Sí
+- nombre: Función FIX
+  valor: Sí
+- nombre: Función STOP
+  valor: Sí
+- nombre: Parada de la aguja arriba/abajo
+  valor: Sí
+- nombre: Ancho de puntada
+  valor: 7 mm
+- nombre: Seguridad de doble aguja y seguridad de ancho de puntada
+  valor: Sí
+- nombre: Control electrónico de velocidad
+  valor: 5 velocidades
+- nombre: Inversión instantánea y permanente
+  valor: Sí
+- nombre: Enhebrador de aguja incorporado
+  valor: Sí
+- nombre: Devanado de la canilla a través de la aguja
+  valor: Sí
+- nombre: Pasadores de carrete incorporados
+  valor: '2'
+- nombre: Cortadores de hilo
+  valor: '3'
+- nombre: Tapa blanda
+  valor: Sí
+- nombre: Dimensiones (largo x ancho x alto)
+  valor: 44 cm x 22 cm x 30 cm (17,3" x 8,7" x 11,8")
+- nombre: Peso
+  valor: 8,3 kg (18,3 lb.)
+---
+Experimente un avance perfecto y uniforme en cualquier grosor de tejido. La máquina de coser OPAL 690Q incorpora el increíble EXCLUSIVE SENSOR SYSTEM, antes solo disponible en nuestras máquinas de coser y bordar más avanzadas. Empiece a trabajar con los 25 accesorios gratuitos que se enumeran a continuación.

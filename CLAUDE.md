@@ -66,7 +66,7 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 (fase 5) hecha y envío real hecho en código el 10-11-2026 (falta configurarlo en Google/Cloudflare y
 probarlo en `develop`: docs/solicitudes/CONFIGURAR.md); fase 1b (despliegue en Cloudflare Pages, proyecto `maquinas-de-coser-zafra`, login del panel probado) hecha el 9-11-2026.** Excel: exportación e
 importación desde el panel en la fase 3, tras el despliegue.
-Catálogo cargado (9-11-2026) desde la tarifa de J. Pujol 03/2026 (input/, ignorado por Git: lleva precios
+Cargadas además el 18-11-2026 las Excel de Alfa Profesionales 2026, Janome 2022, Husqvarna Viking, PFAFF y Singer 09/2026 (144 productos, 602 fotos, «Solo para pruebas»; ver docs/PLAN.md). Catálogo cargado (9-11-2026) desde la tarifa de J. Pujol 03/2026 (input/, ignorado por Git: lleva precios
 netos): 96 productos y 35 accesorios, todos «Solo para pruebas» hasta revisarlos con el Excel
 input/Tarifa_Domestico_03_2026_importacion.xlsx (columna Observaciones). Tipos nuevos «Planchado»
 (Generadores de vapor, Mesas de planchar, Accesorios de planchado) y «Acolchado»; fabricantes nuevos

@@ -14,9 +14,8 @@ web y productos agrupados por clasificación. Textos legales para un autónomo, 
 tienda en un solo sitio (Contacto). **Dominio conectado (17-11-2026):** producción en
 https://www.maquinasdecoserzafra.es (DNS en Strato: CNAME `www` → `maquinas-de-coser-zafra.pages.dev`; el dominio sin
 www redirige con 301 desde Strato, con su SSL incluido); los entornos siguen en `<rama>.maquinas-de-coser-zafra.pages.dev`;
-login del panel probado; **sin indexar**. Último commit: `75c4989` en main.
-**Sin subir todavía** (comandos más abajo): categoría «Planchado › Planchas» (`public/_categorias/planchas.md` y su
-orden en `public/_datos/sitio.yml`) y este PLAN.
+login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planchas» (18-11-2026). Todo subido a main
+(último commit: `15e103c`).
 
 **Siguiente paso propuesto: fase 3** (importar las Excel desde el panel; el importador debe ignorar las
 columnas «Observaciones», «Revisar (avisos)» y «Modificaciones (desde la carga)» y tomar las fotos de la carpeta
@@ -44,19 +43,26 @@ Todo «Solo para pruebas». Las categorías dudosas ya las ha revisado Víctor (
 | `TARIFA_JACK_11_25_importacion.xlsx` | cargada en la web el 9-11 | `fotos-tarifa-jack-11-25` | fotos de tiendas (permiso), sin foto |
 | `TARIFA_ALFA_PROFESIONALES_2026_importacion.xlsx` | 28 productos + 5 accesorios, **completada con la web oficial de Alfa** (18-11) | `fotos-tarifa-alfa-2026` (156, 1200×1200, la 1.ª limpia) | «Foto con icono» (8709 Style, Style 8708 Plus), «Emparejado por nombre» (Essence), «Compatibilidad (universal)» (Funda Max) |
 | `Tarifa_Janome_2022_importacion.xlsx` (RMT, PDF escaneado, págs. 5-27) | 26 máquinas + 11 accesorios; 22 completadas con janome.es y 21 con fotos de 3 tiendas (`Janome-tiendas`, 18-11) | `fotos-tarifa-janome-2022` (1.ª de janome.es, con logotipo; hasta 5 con las de tiendas) | «Precio 2022» en todas; «Fotos de tiendas» (pedir permiso o sustituir); sin foto: Roja, MC9400QCP, Ricoma SW-1010 y 9 accesorios; con una sola: Pink 12, Green 12, 72922S, Black 22S; «Web incoherente» (72922S, 1030MX, Skyline S3); «Emparejado por nombre» (MC550E ↔ 550E LE); «Datos» (erratas de la tarifa) |
-| `TARIFA_HV_09_2026_importacion.xlsx` (Husqvarna Viking) | 17 máquinas | — | «Sin foto», «Sin textos»; Plan EVOLUCIÓN en Observaciones |
-| `TARIFA_PFAFF_09_2026_importacion.xlsx` | 26 productos (Elevate 680 completa y máquina sola) + unidad de bordado | — | «Sin foto», «Sin textos», «Precio 04-2026» (págs. 2-4) |
-| `TARIFA_SINGER_09_2026_importacion.xlsx` | 29 máquinas + unidad de bordado 905E (solo HD9125) | — | «Sin foto», «Sin textos»; sin códigos; no se copió el precio de distribuidor |
+| `TARIFA_HV_09_2026_importacion.xlsx` (Husqvarna Viking) | 17 máquinas; 16 completadas con europe.singer.com (18-11: descripción, características y ficha técnica) | `fotos-tarifa-hv-09-2026` (hasta 5, 1200×1200, la 1.ª limpia) | «Emparejado por nombre» (Topaz 55 ↔ TOPAZ 55Q, ONIX 30 ↔ ONYX 30); no está en la web: DESIGNER TOPAZ 25; Plan EVOLUCIÓN en Observaciones |
+| `TARIFA_PFAFF_09_2026_importacion.xlsx` | 26 productos (Elevate 680 completa y máquina sola) + unidad de bordado; 22 completados con europe.singer.com (18-11) y la unidad con 2 fotos | `fotos-tarifa-pfaff-09-2026` (hasta 5, 1200×1200, la 1.ª limpia) | «Precio 04-2026» (págs. 2-4); «Emparejado por nombre» (Quilt expression 710 SP Edit ↔ expression 710 Edición Especial, Ambition 610 ↔ 610 Azul); no están en la web: Creative Expression 750, Performance Icon, Admire Air 5000 y Admire 1000 |
+| `TARIFA_SINGER_09_2026_importacion.xlsx` | 29 máquinas + unidad de bordado 905E (solo HD9125); 20 completadas con europe.singer.com (18-11: textos, ficha técnica, accesorios incluidos y referencia si la web la da) | `fotos-tarifa-singer-09-2026` (hasta 5, 1200×1200, la 1.ª limpia) | «Emparejado por nombre» (6335 DENIM ↔ 6335M, 4432 BK ↔ Negra Edición Especial, S0105L ↔ S0105); no están en la web: EM9305, SE 9155, HD9125, Featherweight C240, HD500, M3305, 14T968DC, S060X, HD0465 y la 905E (siguen «Sin foto», «Sin textos»); no se copió el precio de distribuidor |
+
+**Cargadas en la web el 18-11-2026** (todas «Solo para pruebas»): Alfa Profesionales 2026, Janome 2022, Husqvarna Viking,
+PFAFF y Singer 09/2026: 144 productos y 602 fotos (`public/_productos/<fabricante>-<modelo>.md`, fotos en
+`public/img/productos/<identificador>-N.jpg`, recomprimidas a calidad 82). Carga puntual con un script que no se guarda en el
+repositorio (la fase 3 sigue pendiente): «Ficha técnica» «dato: valor» → `caracteristicas`, «Características» → `destacados`,
+«Compatible con» por modelo de la misma Excel. Build en develop: 459 productos, 0 enlaces rotos; aviso nuevo: la referencia
+«J7100014» se repite en la Janome 5060QDC y su mesa (viene así en la tarifa).
 
 Además, de antes: referencias repetidas que avisa el build (FFUTURA RA, FEL970, varias de Jack); 43 productos
 cargados sin foto; fotos tomadas de otras tiendas (permiso o sustituir); textos alternativos (fase 6, punto 4).
 
 **Completar con la web de los fabricantes** (herramienta `..\herramienta-consulta-fabricantes`, otro repositorio, con
-su propio CLAUDE.md): consultas lanzadas el 18-11 y sin terminar: Husqvarna Viking, PFAFF y Singer (europe.singer.com,
-con el arreglo del 429) y las tiendas con Janome (`Janome-tiendas`: fotos de tiendas, solo de referencia). Cuando
-acaben, completar sus Excel igual que la de Alfa (fotos elegidas, 1.ª limpia, 1200×1200; descripción, características
-y ficha técnica de la web oficial; Observaciones con la URL de cada foto). Scripts usados para Alfa y Janome:
-emparejan por referencia (o por modelo si la web no la publica) y no se guardan en el repositorio.
+su propio CLAUDE.md): la de las tiendas con Janome (`Janome-tiendas`) ya se ha usado en la Excel de Janome; las de Singer, PFAFF y Husqvarna Viking ya se han usado en sus Excel (18-11). Con `Singer-tiendas` y `PFAFF-tiendas` se han completado
+hasta 5 fotos y, en los modelos que no están en la web oficial, textos de tiendas (avisos «Fotos de tiendas» y «Textos de tiendas»:
+pedir permiso o reescribir antes de publicar).
+Scripts usados: emparejan por modelo y no se guardan en el repositorio. Pendiente en todas: revisar las fichas
+técnicas (la web de SVP mezcla datos y traduce mal algunos términos) y los modelos que no están en la web.
 
 **C. Desarrollo**
 10. Fase 3: importador de Excel en el panel (ver arriba).
