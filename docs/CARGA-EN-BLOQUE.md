@@ -14,7 +14,7 @@ Al pulsarlo:
 | (aparte, en rojo) | **Eliminar…** | Borrar varias fichas a la vez, sin pasar por un Excel |
 
 **Secciones con engranaje:** Catálogo: fabricantes, tipos de producto, categorías, subcategorías y
-productos (18-11-2026). Irán llegando: blog y páginas (además, con Word).
+productos, y Blog (18-11-2026). Falta Páginas (Excel y, además, un Word por página).
 
 Todo pasa por un **informe** antes de guardar nada, y se guarda **en un único cambio** (commit) de
 la rama que edita el panel: en la web pública, `main`; en los entornos de pruebas, la suya. La web
@@ -50,6 +50,9 @@ otros navegadores va a la carpeta de descargas (en Firefox, según su ajuste «P
 | Poner o cambiar una imagen | Escribe el nombre del fichero (p. ej. `brother.png`) y súbelo junto al Excel o dentro del ZIP. Si la imagen ya está en la web, basta con el nombre |
 
 - Las filas vacías (solo con «Acción») se ignoran: están preparadas para las altas.
+- **Qué exportar en categorías y subcategorías:** al pulsar «Descargar…» se puede elegir «Todo» o filtrar:
+  categorías, por tipos de producto; subcategorías, por tipos y por categorías de esos tipos. Los mismos
+  filtros salen en «Cambiar en bloque» y «Eliminar».
 - **Categorías y subcategorías:** la columna «Tipo de producto» o «Categoría» es un desplegable con la
   ruta completa («Bordadoras › Industriales»), porque hay nombres que se repiten en varios tipos. Al dar
   de alta una o cambiarla de sitio, el informe recuerda ponerle su lugar en Ajustes del sitio → «Orden
@@ -85,6 +88,19 @@ otros navegadores va a la carpeta de descargas (en Firefox, según su ajuste «P
   la lista con todos los filtrados ya marcados, para desmarcar los que no. Al **quitar «Solo para pruebas»**,
   los que no tienen foto o precio salen desmarcados y con el aviso. Al **borrar** una máquina, se quita del
   «Compatible con» de sus accesorios (el informe dice de cuáles).
+
+## Blog
+
+- El **identificador** de una entrada es su fecha y su título (`2026-11-18-titulo`), como en el panel, y se
+  guarda en la carpeta de su año (`public/_posts/blog/2026/`). Cambiar después la fecha o el título no cambia
+  el identificador.
+- **Fecha de publicación:** sale como la guarda el panel (`2026-11-18T09:00:00.000Z`); para escribir una nueva
+  vale `18/11/2026 10:30` (hora de Madrid) o `18/11/2026`.
+- **Recuadro final:** una columna por cada dato («Recuadro final: Mostrar», «…: Tipo, categoría o
+  subcategoría del catálogo» —desplegable con la ruta—, «…: Texto», «…: Texto del botón»).
+- **Entradas de prueba** (18-11-2026): `public/_posts/blog/2026/2026-11-16…18-entrada-de-prueba-*.md`, todas
+  «Solo para pruebas» (se ven en los entornos de pruebas, nunca en la web pública). Se pueden borrar con
+  «Eliminar…» cuando terminen las pruebas.
 
 ## Importar
 

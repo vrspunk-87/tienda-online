@@ -119,6 +119,17 @@ export const PERFILES = {
     // Fotos: se reducen a 1600 px y se recomprimen al subirlas (como la carga del 18-11-2026)
     reducirImagenes: true,
   },
+  blog: {
+    hoja: 'Blog',
+    uno: 'entrada', varios: 'entradas', femenino: true,
+    nombre: d => d.title || '',
+    // Como el panel: «slug: {{year}}-{{month}}-{{day}}-{{slug}}» y «path: {{year}}/{{slug}}»
+    identificar: d => `${fechaMadrid(d.date)}-${slugificar(d.title)}`,
+    rutaNueva: (col, slug) => `${col.folder}/${slug.slice(0, 4)}/${slug}.md`,
+    // En el Excel, las más recientes primero
+    clave: a => String(9e15 - (Date.parse(a.datos.date) || 0)).padStart(16, '0'),
+    reducirImagenes: true,
+  },
   tipos: perfilCatalogo('tipo', 'Tipos de producto', 'tipo de producto', 'tipos de producto'),
   categorias: perfilCatalogo('categoria', 'Categorías', 'categoría', 'categorías'),
   subcategorias: perfilCatalogo('subcategoria', 'Subcategorías', 'subcategoría', 'subcategorías'),
@@ -130,7 +141,7 @@ export const PERFILES = {
 function perfilCatalogo(nivel, hoja, uno, varios) {
   const HIJOS = { tipo: 'categorías', categoria: 'subcategorías', subcategoria: '' };
   return {
-    hoja, uno, varios, nivel,
+    hoja, uno, varios, nivel, femenino: nivel !== 'tipo',
     nombre: d => d.title || '',
     identificar: d => slugificar(d.title),
     // En el Excel, en el orden del árbol (Tipo › Categoría › Subcategoría)
@@ -157,6 +168,8 @@ function perfilCatalogo(nivel, hoja, uno, varios) {
   };
 }
 export const coleccionesConExcel = () => Object.keys(PERFILES);
+// Fecha (AAAA-MM-DD) en hora de Madrid
+const fechaMadrid = v => { const t = Date.parse(v); return Number.isNaN(t) ? new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' }) : new Date(t).toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' }); };
 // Los accesorios: los del tipo «Accesorios» o los que tienen «Compatible con»
 export const esAccesorio = (a, ctx) => ctx?.catalogo?.tipoDe(a.datos?.categoria) === 'accesorios' || lista(a.datos?.compatible_con).length > 0;
 // Hojas de datos del Excel de una colección
@@ -292,6 +305,21 @@ export function opcionesCatalogo(c, ctx) {
   return [...cat.porSlug.values()].filter(x => x.nivel === nivelElegido(c)).map(x => ({ valor: x.slug, etiqueta: cat.etiqueta(x.slug) }))
     .sort((a, b) => a.etiqueta.localeCompare(b.etiqueta, 'es'));
 }
+// «18/11/2026 10:30» (hora de Madrid) → ISO en UTC, como lo guarda el panel. Si ya es ISO, igual
+function aIsoMadrid(t) {
+  const s = String(t).trim();
+  if (/^\d{4}-\d{2}-\d{2}T/.test(s) && !Number.isNaN(Date.parse(s))) return s;
+  const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2}))?$/) || s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return null;
+  const [y, mo, d] = m[0].includes('/') ? [m[3], m[2], m[1]] : [m[1], m[2], m[3]];
+  const h = Number(m[0].includes('/') ? m[4] || 9 : 9);
+  const mi = Number(m[0].includes('/') ? m[5] || 0 : 0);
+  const guess = Date.UTC(+y, +mo - 1, +d, h, mi);
+  // Diferencia de Madrid con UTC ese día (1 o 2 horas)
+  const local = new Date(new Date(guess).toLocaleString('en-US', { timeZone: 'Europe/Madrid' }));
+  const utc = new Date(new Date(guess).toLocaleString('en-US', { timeZone: 'UTC' }));
+  return new Date(guess - (local - utc)).toISOString();
+}
 const fechaCorta = t => {
   const s = String(t).trim();
   let m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
@@ -348,7 +376,10 @@ function leerSimple(w, f, texto, bruto, ctx) {
         if (!d) return { error: `«${texto}» no es una fecha (escríbela como 27/11/2026).` };
         return { valor: d };
       }
-      return { valor: texto.trim() };
+      // Fecha y hora: tal cual si ya es ISO (como la guarda el panel); «18/11/2026 10:30», hora de Madrid
+      const iso = aIsoMadrid(texto);
+      if (!iso) return { error: `«${texto}» no es una fecha (escríbela como 18/11/2026 o 18/11/2026 10:30).` };
+      return { valor: iso };
     }
     case 'categoria-catalogo': {
       const ops = opcionesCatalogo({ f }, ctx);
@@ -459,7 +490,8 @@ function grupoDe(cfg, col, perfil, f) {
     const cols = subs.map(s => columna(T[`${f.name}.${s.x.name}`] || `${f.label}: ${s.x.label}`, s.x, s.w, { padre: f }));
     return {
       ...base, cols, obligatorio: false,
-      aCeldas: (d, cuerpo, ctx) => Object.fromEntries(cols.map((c, i) => [c.titulo, aCeldaSimple(subs[i].w, subs[i].x, (d[f.name] || {})[subs[i].x.name], ctx)])),
+      // Sin el grupo en la ficha, columnas vacías (no los valores por defecto)
+      aCeldas: (d, cuerpo, ctx) => Object.fromEntries(cols.map((c, i) => [c.titulo, d[f.name] && typeof d[f.name] === 'object' && (d[f.name][subs[i].x.name] !== undefined || subs[i].w !== 'boolean') ? aCeldaSimple(subs[i].w, subs[i].x, d[f.name][subs[i].x.name], ctx) : ''])),
       leer: (celdas, { ctx, actual }) => {
         const nuevo = { ...(actual && typeof actual === 'object' ? actual : {}) };
         let tocado = false;
@@ -471,6 +503,8 @@ function grupoDe(cfg, col, perfil, f) {
           if (esVacio(texto)) { delete nuevo[subs[i].x.name]; continue; }
           const r = leerSimple(subs[i].w, subs[i].x, texto, bruto, ctx);
           if (r.error) return { error: `«${cols[i].titulo}»: ${r.error}` };
+          // Un sí/no igual a su valor por defecto en un grupo que no lo tenía no cuenta como cambio
+          if (subs[i].w === 'boolean' && actual?.[subs[i].x.name] === undefined && r.valor === (subs[i].x.default ?? false)) continue;
           nuevo[subs[i].x.name] = r.valor;
         }
         if (!tocado) return { nada: true };
@@ -647,6 +681,8 @@ export function crearContexto({ productos = [], textos = [], categorias = [], fa
     catalogo: crearCatalogo(categorias, productos),
     relaciones: {
       fabricantes: fabricantes.map(f => ({ valor: f.slug, etiqueta: String(f.datos.title || f.slug) })).sort((a, b) => a.etiqueta.localeCompare(b.etiqueta, 'es')),
+      // Colección oculta «catalogo» (tipos, categorías y subcategorías), con su ruta
+      catalogo: [],
     },
     nombreFabricante: s => nombreFab.get(s) || s || '',
     nuevosProductos: new Map(), // modelo/identificador → identificador de las altas del mismo Excel
@@ -665,6 +701,7 @@ export function crearContexto({ productos = [], textos = [], categorias = [], fa
       return { error: `«${t}» no es ningún producto (escribe su identificador, p. ej. «singer-4432»).` };
     },
   };
+  ctx.relaciones.catalogo = [...ctx.catalogo.porSlug.keys()].map(s => ({ valor: s, etiqueta: ctx.catalogo.etiqueta(s) })).sort((a, b) => a.etiqueta.localeCompare(b.etiqueta, 'es'));
   return ctx;
 }
 const lista = v => (Array.isArray(v) ? v : v ? [v] : []).map(x => String(x).trim()).filter(Boolean);
@@ -890,7 +927,7 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
       const cuerpo = 'body' in nuevos ? (nuevos.body ?? '') : '';
       plan.nuevos.push({ fila: fila.n, hoja: fila.hoja, slug, nombre: perfil.nombre(nuevos) || slug });
       if (perfil.quitarDelOrden) aviso(`«${perfil.nombre(nuevos) || slug}» es ${perfil.uno === 'tipo de producto' ? 'nuevo' : 'nueva'}: ponle su lugar en Ajustes del sitio → «Orden del catálogo en el menú» (si no, sale al final, en orden alfabético).`);
-      plan.escribir.push({ ruta: `${col.folder}/${slug}.md`, texto: componer(YAML, null, nuevos, cuerpo ? cuerpo + '\n' : '', ordenCampos) });
+      plan.escribir.push({ ruta: perfil.rutaNueva ? perfil.rutaNueva(col, slug, nuevos) : `${col.folder}/${slug}.md`, texto: componer(YAML, null, nuevos, cuerpo ? cuerpo + '\n' : '', ordenCampos) });
       continue;
     }
 

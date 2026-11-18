@@ -226,17 +226,17 @@ async function exportar(nombre) {
       const base = `${nombre}-${hoyIso()}`;
       let destino;
       // Con filtros (productos), la ventana «Guardar como» sale al pulsar «Descargar» en los filtros
-      if (!x.perfil.filtros) {
+      if (!hayFiltros(x.perfil)) {
         try { destino = await pedirDestino(`${base}.${zip ? 'zip' : 'xlsx'}`, zip ? ZIP : XLSX); } catch { return; } // cancelado: sigue la ventana
       }
       try {
         esperar(v, `Leyendo ${x.perfil.varios}…`);
         let [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x)]);
         let filtro = '';
-        if (x.perfil.filtros) {
+        if (hayFiltros(x.perfil)) {
           let r;
           for (;;) {
-            r = await elegirProductos(v, x, ctx, actuales, { titulo: `Exportar ${x.perfil.varios}: qué exportar`, boton: 'Descargar…', accesorios: true });
+            r = await elegir(v, x, ctx, actuales, { titulo: `Exportar ${x.perfil.varios}: qué exportar`, boton: 'Descargar…', accesorios: true });
             if (!r) return;
             try { destino = await pedirDestino(`${base}.${zip ? 'zip' : 'xlsx'}`, zip ? ZIP : XLSX); break; } catch { /* cancelado: vuelve a los filtros */ }
           }
@@ -424,6 +424,62 @@ async function reducirImagen(bytes, ruta) {
   } catch { return bytes; }
 }
 
+/* ---------- Filtros para elegir qué exportar o qué cambiar en bloque ---------- */
+const hayFiltros = perfil => Boolean(perfil.filtros || (perfil.nivel && perfil.nivel !== 'tipo'));
+const elegir = (v, x, ctx, actuales, op) => (x.perfil.filtros ? elegirProductos(v, x, ctx, actuales, op) : elegirPorCatalogo(v, x, ctx, actuales, op));
+
+/* Categorías: por tipos de producto. Subcategorías: por tipos y categorías (de los tipos elegidos).
+   Varios en cada lista; cada opción con su número y sin las que se quedan en 0. */
+function elegirPorCatalogo(v, x, ctx, actuales, { titulo, explica, boton, peligro = false }) {
+  return new Promise(resolver => {
+    const cat = ctx.catalogo;
+    const conCategorias = x.perfil.nivel === 'subcategoria';
+    const sel = { modo: 'todo', tipos: new Set(), cats: new Set() };
+    const ruta = a => cat.rutaSlugs(a.slug);
+    const ok = a => {
+      if (sel.modo === 'todo' || !sel.tipos.size) return true;
+      const r = ruta(a);
+      if (!sel.tipos.has(r[0])) return false;
+      if (!conCategorias) return true;
+      const cs = cat.hijas(r[0]).filter(c => sel.cats.has(c));
+      return !cs.length || cs.includes(r[1]);
+    };
+    const chips = (grupo, opciones) => opciones.filter(o => o.n > 0 || sel[grupo].has(o.valor)).sort((a, b) => a.etiqueta.localeCompare(b.etiqueta, 'es'))
+      .map(o => `<button type="button" class="xl-chip ${sel[grupo].has(o.valor) ? 'xl-on' : ''}" data-g="${grupo}" data-v="${esc(o.valor)}">${esc(o.etiqueta)} <small>${o.n}</small></button>`).join('') || '<span class="xl-gris">—</span>';
+    const pintar = () => {
+      const tipos = cat.deNivel('tipo').map(t => ({ valor: t.slug, etiqueta: t.titulo, n: actuales.filter(a => ruta(a)[0] === t.slug).length }));
+      const cats = [...sel.tipos].flatMap(t => cat.hijas(t)).map(c => ({ valor: c, etiqueta: cat.etiqueta(c), n: actuales.filter(a => ruta(a)[1] === c).length }));
+      const lista = actuales.filter(ok);
+      v.poner(`<h2 class="${peligro ? 'xl-err' : ''}">${esc(titulo)}</h2>${explica ? `<p class="xl-gris">${esc(explica)}</p>` : ''}
+        <div style="display:flex;gap:16px;margin:8px 0"><label><input type="radio" name="xl-m" value="todo" ${sel.modo === 'todo' ? 'checked' : ''}> Todo</label><label><input type="radio" name="xl-m" value="elegir" ${sel.modo === 'elegir' ? 'checked' : ''}> Elegir</label></div>
+        <div ${sel.modo === 'todo' ? 'style="opacity:.45;pointer-events:none"' : ''}>
+          <div class="xl-sec">Tipos de producto</div><div class="xl-chips">${chips('tipos', tipos)}</div>
+          ${conCategorias ? `<div class="xl-sec">Categorías <span class="xl-gris" style="font-weight:400">· de los tipos elegidos</span></div><div class="xl-chips">${sel.tipos.size ? chips('cats', cats) : '<span class="xl-gris">Elige antes un tipo</span>'}</div>` : ''}
+        </div>
+        <div class="xl-total"><b>${lista.length} ${esc(lista.length === 1 ? x.perfil.uno : x.perfil.varios)}</b>
+          <span><button class="xl-b" data-limpiar>Quitar filtros</button> <button class="xl-b" data-x>Cancelar</button> <button class="xl-b ${peligro ? 'xl-peligro' : 'xl-pri'}" data-ok>${esc(boton)}</button></span></div>
+        <p class="xl-err" data-err></p>`);
+      v.m.querySelectorAll('input[name="xl-m"]').forEach(r => { r.onchange = () => { sel.modo = r.value; pintar(); }; });
+      v.m.querySelectorAll('.xl-chip').forEach(b => {
+        b.onclick = () => {
+          const g = sel[b.dataset.g];
+          g.has(b.dataset.v) ? g.delete(b.dataset.v) : g.add(b.dataset.v);
+          for (const c of [...sel.cats]) if (!sel.tipos.has(cat.rutaSlugs(c)[0])) sel.cats.delete(c);
+          pintar();
+        };
+      });
+      v.q('[data-limpiar]').onclick = () => { sel.tipos.clear(); sel.cats.clear(); pintar(); };
+      v.q('[data-x]').onclick = () => { v.cerrar(); resolver(null); };
+      v.q('[data-ok]').onclick = () => {
+        if (!lista.length) { v.q('[data-err]').textContent = 'No hay ninguna con estos filtros.'; return; }
+        const ramas = sel.modo === 'todo' ? [] : [...[...sel.cats], ...[...sel.tipos].filter(t => !cat.hijas(t).some(c => sel.cats.has(c)))];
+        resolver({ lista, descripcion: ramas.map(cat.etiqueta).join('; ') });
+      };
+    };
+    pintar();
+  });
+}
+
 /* ---------- Filtros dependientes de productos (exportar y acciones en bloque) ----------
    Fabricantes, tipos, categorías (de los tipos elegidos) y subcategorías (de las categorías elegidas),
    varios en cada uno. Entre grupos, «y»; dentro de un grupo, «o»; en cada rama manda lo más concreto
@@ -537,8 +593,8 @@ async function enBloque(nombre, accion) {
     // Productos: primero los filtros; después, la lista con todos los filtrados ya marcados
     let base = actuales;
     let preMarcar = false;
-    if (x.perfil.filtros) {
-      const r = await elegirProductos(v, x, ctx, actuales, { titulo: `${A.titulo}: ${x.perfil.varios}`, explica: `${A.explica} Elige con los filtros; después verás la lista para desmarcar los que quieras.`, boton: 'Ver la lista', extras: true, peligro: accion === 'borrar' });
+    if (hayFiltros(x.perfil)) {
+      const r = await elegir(v, x, ctx, actuales, { titulo: `${A.titulo}: ${x.perfil.varios}`, explica: `${A.explica} Elige con los filtros; después verás la lista para desmarcar los que quieras.`, boton: 'Ver la lista', extras: true, peligro: accion === 'borrar' });
       if (!r) return;
       base = r.lista;
       preMarcar = true;
@@ -574,7 +630,7 @@ async function enBloque(nombre, accion) {
           return `<label class="${i.motivo ? 'xl-no' : ''}"><input type="checkbox" data-k="${k}" ${i.marcado ? 'checked' : ''} ${i.motivo ? 'disabled' : ''}><span style="flex:1">${esc(nombreV)} <span class="xl-gris">· ${esc(i.a.slug)}</span></span>${i.motivo ? `<span class="xl-gris" style="font-size:12px">${esc(i.motivo)}</span>` : i.avisos?.length ? `<span class="xl-av" style="font-size:12px">${esc(i.avisos.join(', '))}</span>` : ''}</label>`;
         }).join('')}</div>
         <p class="xl-err" data-err></p>
-        <div class="xl-pie"><span class="xl-izq" style="align-self:center"><b>${n}</b> ${esc(n === 1 ? x.perfil.uno : x.perfil.varios)} elegidos</span><button class="xl-b" data-x>Cancelar</button><button class="xl-b ${accion === 'borrar' ? 'xl-peligro' : 'xl-pri'}" data-ok>Revisar</button></div>`);
+        <div class="xl-pie"><span class="xl-izq" style="align-self:center"><b>${n}</b> ${esc(n === 1 ? x.perfil.uno : x.perfil.varios)} ${x.perfil.femenino ? 'elegida' : 'elegido'}${n === 1 ? '' : 's'}</span><button class="xl-b" data-x>Cancelar</button><button class="xl-b ${accion === 'borrar' ? 'xl-peligro' : 'xl-pri'}" data-ok>Revisar</button></div>`);
       const buscar = v.q('[data-buscar]');
       buscar.oninput = () => { const pos = buscar.selectionStart; pintar(buscar.value); const b = v.q('[data-buscar]'); b.focus(); b.setSelectionRange(pos, pos); };
       v.m.querySelectorAll('[data-k]').forEach(c => { c.onchange = () => { items[Number(c.dataset.k)].marcado = c.checked; pintar(buscar.value); }; });

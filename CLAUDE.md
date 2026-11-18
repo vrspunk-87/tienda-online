@@ -49,7 +49,7 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 ## Estado
 
-**Fase 3 (18-11-2026):** engranaje en la lista de Fabricantes, Tipos de producto, Categorías, Subcategorías y Productos del panel (exportar e importar Excel, «Solo para pruebas» en bloque, eliminar), en `public/admin/excel/` con pruebas en `lib/excel-panel.test.mjs`; guía docs/CARGA-EN-BLOQUE.md; para las demás colecciones, añadir su perfil en `PERFILES` (nucleo.js). Desde Linux no uses `sed -i` en la carpeta conectada (deja ficheros temporales que no se pueden borrar): edita con Python.
+**Fase 3 (18-11-2026):** engranaje en la lista de Fabricantes, Tipos de producto, Categorías, Subcategorías, Productos y Blog del panel (exportar e importar Excel, «Solo para pruebas» en bloque, eliminar), en `public/admin/excel/` con pruebas en `lib/excel-panel.test.mjs`; guía docs/CARGA-EN-BLOQUE.md; para las demás colecciones, añadir su perfil en `PERFILES` (nucleo.js). Desde Linux no uses `sed -i` en la carpeta conectada (deja ficheros temporales que no se pueden borrar): edita con Python.
 
 **Para retomar (18-11-2026, fin de sesión):** catálogo cargado (459 productos, 56 sin foto); estado y pendientes en docs/PLAN.md → «Estado y pendientes» (apartado «Para retomar» y tabla de las Excel de importación de `input/` y lo que falta en cada una). Siguiente paso propuesto: fase 3 (importador de Excel). Las fotos y textos de los fabricantes se sacan con `..\herramienta-consulta-fabricantes` (otro repositorio, con su propio CLAUDE.md). A Víctor se le dan siempre los comandos de PowerShell para lo que tenga que hacer él (git, npm…).
 
@@ -77,7 +77,7 @@ industriales y 67 accesorios (también «Solo para pruebas»; Excel input/TARIFA
 los 4 generadores de la pág. 35 ya venían de la doméstica). Máquinas industriales con dos precios
 (9-11-2026): campos `precio` (= completa) y `precio_cabezal` (también en `oferta`), widget
 `precio-producto` de public/admin/campos.js; el tipo sale de `tipo_dos_precios` en config.yml
-(lo lee también build.js); en la solicitud el cabezal es «<slug>~cabezal». Sin entradas del blog. Para probar con volumen: `node scripts/pruebas-carga.mjs
+(lo lee también build.js); en la solicitud el cabezal es «<slug>~cabezal». Blog: solo 3 entradas «Solo para pruebas» (18-11-2026, para probar el engranaje). Para probar con volumen: `node scripts/pruebas-carga.mjs
 pequena|media|grande|sin-blog|solo-blog|limpiar` (contenido `prueba-carga-*`, «Solo para pruebas»,
 ignorado por Git). Informe de la prueba de carga: [docs/PRUEBA-DE-CARGA.md](docs/PRUEBA-DE-CARGA.md).
 Base copiada y adaptada de la plataforma: generador, panel, blog, tema provisional «Tienda»,

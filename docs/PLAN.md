@@ -26,12 +26,17 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
 - Revisar en develop las fichas nuevas; resolver avisos de las Excel (permisos de fotos/textos de tiendas, precios 2022/04-2026,
   «Emparejado por nombre») antes de quitar «Solo para pruebas».
 - Fase 3 empezada (18-11-2026): engranaje hecho en Fabricantes, Tipos de producto, Categorías, Subcategorías y
-  Productos (exportar, importar, cambios en bloque y eliminar; `public/admin/excel/`, guía en
-  docs/CARGA-EN-BLOQUE.md). Siguientes: blog; páginas con Excel y Word.
+  Productos y Blog (exportar, importar, cambios en bloque y eliminar; `public/admin/excel/`, guía en
+  docs/CARGA-EN-BLOQUE.md). Siguiente: páginas con Excel y Word. Tres entradas del blog de prueba
+  («Solo para pruebas») para probarlo en dev-victor.
 - **Para corregir después de la fase 3** (pruebas de Víctor en dev-victor, 18-11-2026):
   - En la lista de «Catálogo: fabricantes» del panel no sale cuántos productos tiene cada uno (como sí sale en
     tipos, categorías y subcategorías).
-  - Pruebas hechas: exportar Fabricantes a Excel con ZIP en dev-victor, bien. El resto, cuando esté todo subido.
+  - Pruebas hechas: exportar Fabricantes a Excel con ZIP en dev-victor, bien; exportaciones completas de tipos,
+    categorías y subcategorías, bien. El resto, cuando esté todo subido.
+  - Corregido el 18-11-2026: categorías y subcategorías no dejaban elegir qué exportar. Ahora, al exportar (y en
+    las acciones en bloque), categorías se filtran por tipos de producto y subcategorías por tipos y categorías
+    (desplegables dependientes, como en productos).
 
 **Siguiente paso propuesto: fase 3** (decidida el 18-11-2026: botones «Exportar a Excel» e «Importar Excel» en cada
 colección del panel; ver la fase 3). Empezar por Fabricantes. Sirve también para quitar en bloque la marca «Solo para pruebas».
@@ -411,12 +416,16 @@ fuera: son una sola ficha y se editan mejor en el panel.
    botón (son reversibles) y un único commit por acción. Más adelante, en este grupo: precios y ofertas
    en bloque (punto 8).
 6. **Páginas a Word**: además del Excel, «Exportar a Word» descarga un ZIP con un `.docx` por página
-   (título, descripción y el texto con sus encabezados, listas, negritas y enlaces). Por decidir: si
-   también se podrán importar desde Word.
+   (título, descripción y el texto con sus encabezados, listas, negritas y enlaces). **Solo se exportan**
+   (decidido por Víctor, 18-11-2026): son para pasárselos a la asesoría; cuando los devuelva, se verá qué hacer.
 7. **Dependencias**: `exceljs` (ya en el proyecto), y para el ZIP y el Word, librerías servidas desde
    la propia web (sin CDN), con versión exacta publicada hace al menos dos semanas.
 8. **Más adelante**: subidas de precio y ofertas en bloque (de momento, en el propio Excel).
 9. **Documentación**: `docs/CARGA-EN-BLOQUE.md`, sin tecnicismos.
+
+**Hecho (18-11-2026): Blog** — identificador con la fecha (`2026-11-18-titulo`) y alta en la carpeta del año,
+como el panel; fecha de publicación tal cual o «18/11/2026 10:30» (hora de Madrid); «Recuadro final» en
+columnas (con desplegable del catálogo). Tres entradas de prueba en `public/_posts/blog/2026/`.
 
 **Hecho (18-11-2026): Productos** — dos hojas (Productos / Accesorios) con sus columnas de solo lectura,
 columnas iguales que las Excel de tarifas (que también se importan: sin «Identificador», se emparejan por
