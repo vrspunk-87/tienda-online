@@ -9,6 +9,13 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 279
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/janome-roja-1.jpg
+  alt: 'Máquina de coser Janome Roja'
+- imagen: /img/productos/janome-roja-2.jpg
+  alt: 'Caja de la Janome Roja'
+- imagen: /img/productos/janome-roja-3.jpg
+  alt: 'Puntadas de la Janome Roja'
 description: Máquina doméstica de brazo libre y lanzadera central oscilante equipada con 15 funciones diferentes.
 destacados:
 - texto: Edición limitada

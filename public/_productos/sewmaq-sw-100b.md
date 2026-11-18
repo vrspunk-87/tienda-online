@@ -9,6 +9,9 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 115
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/sewmaq-sw-100b-1.jpg
+  alt: 'Bobinadora Sewmaq SW-100B'
 description: Máquina de rellenar bobinas de hilo con canilla de tamaño normal.
 destacados:
 - texto: Sensor que para la máquina cuando la bobina está llena

@@ -5,6 +5,9 @@ fabricante: juki
 modelo: AJF
 referencia: AJF
 categoria: mesa-extraible
+imagenes:
+- imagen: /img/productos/juki-ajf-1.jpg
+  alt: 'Base de extensión de costura Juki'
 compatible_con:
 - juki-hzl-g220
 - juki-hzl-dx3-quilt-pro-special

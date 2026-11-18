@@ -9,6 +9,9 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 545
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/sewmaq-sw-400-1.jpg
+  alt: 'Enconadora Sewmaq'
 description: Enconadora de 2 conos.
 caracteristicas:
 - nombre: Conos

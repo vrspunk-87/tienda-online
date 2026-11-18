@@ -9,6 +9,9 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 9075
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/ricoma-sw-1010-1.jpg
+  alt: 'Máquina de bordar Ricoma SW-1010 (EM-1010) de 10 agujas'
 description: Máquina de bordar con tapas de plástico de 10 agujas equipada con cortahilos y cambio de aguja automáticos.
 destacados:
 - texto: 10 agujas

@@ -5,6 +5,13 @@ fabricante: jack
 modelo: JK-F17
 referencia: AFJK-F17
 categoria: accesorios-y-motores
+imagenes:
+- imagen: /img/productos/jack-jk-f17-1.jpg
+  alt: 'Purificador de aire xTool SafetyPro AP2'
+- imagen: /img/productos/jack-jk-f17-2.jpg
+  alt: 'xTool SafetyPro AP2: filtro y funciones'
+- imagen: /img/productos/jack-jk-f17-3.jpg
+  alt: 'xTool SafetyPro AP2: caudal de aire'
 compatible_con:
 - jack-jk-m5-plus-f11af13f25-x
 - jack-jk-m9-plus-95ssyx-f13-f11b

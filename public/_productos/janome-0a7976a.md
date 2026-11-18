@@ -5,6 +5,9 @@ fabricante: janome
 modelo: 0A7976A
 referencia: 0A7976A
 categoria: mesa-extraible
+imagenes:
+- imagen: /img/productos/janome-0a7976a-1.jpg
+  alt: 'Mesa de extensión Janome'
 compatible_con:
 - janome-skyline-s3
 - janome-skyline-s5

@@ -9,6 +9,17 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 3070
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/janome-mc9400qcp-1.jpg
+  alt: 'Janome Horizon Memory Craft 9400QCP'
+- imagen: /img/productos/janome-mc9400qcp-2.jpg
+  alt: 'Janome MC9400QCP de lado'
+- imagen: /img/productos/janome-mc9400qcp-3.jpg
+  alt: 'Janome MC9400QCP con la mesa de extensión'
+- imagen: /img/productos/janome-mc9400qcp-4.jpg
+  alt: 'Janome MC9400QCP con la tapa abierta'
+- imagen: /img/productos/janome-mc9400qcp-5.jpg
+  alt: 'Accesorios de la Janome MC9400QCP'
 description: Máquina doméstica de 28cm de puente para patchwork y Quilting equipada con cortahilos, garfio rotativo, rodillera para la elevación del prensatelas y pantalla táctil de 4.4"x2.5" en color.
 destacados:
 - texto: Puerto USB

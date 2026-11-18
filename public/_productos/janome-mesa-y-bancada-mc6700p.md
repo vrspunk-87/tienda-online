@@ -5,6 +5,9 @@ fabricante: janome
 modelo: Mesa y bancada MC6700P
 referencia: 0A9053A+0A8014+0A9003
 categoria: accesorios-especiales-costura
+imagenes:
+- imagen: /img/productos/janome-mesa-y-bancada-mc6700p-1.jpg
+  alt: 'Mesa y bancada para la Janome MC6700P'
 compatible_con:
 - janome-mc6700p
 date: '2026-11-18T10:00:00.000+01:00'

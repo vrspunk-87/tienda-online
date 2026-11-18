@@ -10,6 +10,9 @@ precio: 1482.25
 precio_cabezal: 1270.5
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/jack-jk-c7-3-32r-233-1.jpg
+  alt: 'Overlock Jack JK-C7 de 3 hilos (foto del modelo JK-C7-3-02/233)'
 description: Máquina overlock de 3 hilos para repulgo con cortahílos y motor Direc Drive. Ancho costura 1,5mm.
 destacados:
 - texto: Con A.I. (inteligencia artificial)

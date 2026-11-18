@@ -9,6 +9,9 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 310
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/janome-artistic-digitizer-jr-1.jpg
+  alt: 'Programa de bordado Janome Artistic Digitizer Jr'
 description: Programa de Software semi-Profesional de bordado, que permite crear diseños importando imágenes bmp y cliparts que simula las puntadas en 3D.
 destacados:
 - texto: Posibilidad de editar imágenes dando la opción de cambiar los colores, colocar puntadas y contornos en forma automática
