@@ -24,6 +24,21 @@ imágenes incluidas. No pasa por «Flujo editorial»: es como «Publicar ahora»
 Al **exportar** (y al descargar un informe), Chrome y Edge preguntan **dónde guardar** el fichero; en
 otros navegadores va a la carpeta de descargas (en Firefox, según su ajuste «Preguntar dónde guardar»).
 
+## Las listas del panel
+
+En productos, fabricantes, tipos de producto, categorías y subcategorías, la lista del panel es una tabla
+(en vez de la lista de Decap que carga más al bajar):
+
+- **Productos:** plegados por clasificación, en el orden del menú (pulsa una para abrirla), o «Tabla» con
+  todos. Pulsar un producto abre su ficha.
+- **Fabricantes y tipos de producto:** al pulsar una fila se despliega debajo la tabla de sus productos; el
+  **lápiz** abre la ficha del fabricante o del tipo. **Categorías** (plegadas por tipo) y **subcategorías**
+  (plegadas por «Tipo › Categoría»), igual.
+- En todas: **ordenar** pulsando una cabecera (otra vez, al revés), **filtrar** en la fila de debajo (texto,
+  desplegables o números como `>0` o `<500`), buscador arriba y **12, 24 o 48 por página**.
+- Empieza todo plegado cada vez. Las miniaturas salen de la web publicada: una foto recién subida puede
+  tardar unos minutos en verse.
+
 ## El Excel
 
 - **Instrucciones** (la primera hoja): lo esencial de esta guía.

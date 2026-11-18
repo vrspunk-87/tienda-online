@@ -30,8 +30,16 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
   docs/CARGA-EN-BLOQUE.md). Siguiente: páginas con Excel y Word. Tres entradas del blog de prueba
   («Solo para pruebas») para probarlo en dev-victor.
 - **Para corregir después de la fase 3** (pruebas de Víctor en dev-victor, 18-11-2026):
-  - En la lista de «Catálogo: fabricantes» del panel no sale cuántos productos tiene cada uno (como sí sale en
-    tipos, categorías y subcategorías).
+  - ~~En la lista de «Catálogo: fabricantes» del panel no sale cuántos productos tiene cada uno~~: resuelto con
+    las tablas del panel (abajo).
+  - **Listas del panel como tablas** (18-11-2026, prototipos aprobados por Víctor; `public/admin/excel/tablas.js`):
+    sustituyen a la lista de Decap (y a su «cargar más», «Ordenar por» y agrupaciones) en productos, fabricantes,
+    tipos, categorías y subcategorías. Productos: plegados por clasificación (orden del menú) o todos en una
+    tabla. Fabricantes y tipos: una tabla; al pulsar una fila se despliega la tabla de sus productos; el lápiz
+    abre su ficha. Categorías (plegadas por tipo) y subcategorías (por «Tipo › Categoría»): igual. Todas con
+    miniatura, ordenar por cabecera, fila de filtros (texto, desplegables, números «>0») y paginación con
+    selector 12/24/48. Empieza todo plegado y no se recuerda nada entre visitas (decidido por Víctor). Se quita
+    de public/admin/campos.js el agrupado por «Clasificación» que pulsaba el «Group by» de Decap.
   - Pruebas hechas: exportar Fabricantes a Excel con ZIP en dev-victor, bien; exportaciones completas de tipos,
     categorías y subcategorías, bien. El resto, cuando esté todo subido.
   - Corregido el 18-11-2026: categorías y subcategorías no dejaban elegir qué exportar. Ahora, al exportar (y en

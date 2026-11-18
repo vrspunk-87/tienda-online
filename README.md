@@ -68,7 +68,8 @@ public/                             ← LO QUE SE EDITA
   img/                              Imágenes; logo.png, compartir.jpg e iconos/ son PROVISIONALES
   admin/                            Panel de Decap (servido desde la propia web); campos.js: campos
                                     propios (categoría del producto con desplegables dependientes);
-                                    excel/: engranaje de cada sección (Excel y cambios en bloque)
+                                    excel/: engranaje de cada sección (Excel y cambios en bloque) y
+                                    tablas.js: listas del catálogo como tablas plegables y con filtros
 ```
 
 ## Trabajar en local

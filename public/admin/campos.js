@@ -18,7 +18,8 @@
   «precio-producto»: precio normal o «Precio Completa» + «Precio Cabezal» según el tipo de producto
   (máquinas industriales); ver más abajo.
 
-  Al final: el número de productos de cada tipo, categoría y subcategoría en sus listas.
+  Al final: el número de productos de cada tipo, categoría y subcategoría en sus listas (si se ve
+  la lista de Decap: normalmente la sustituyen las tablas de public/admin/excel/tablas.js).
 */
 (function () {
   if (!window.CMS) return;
@@ -290,59 +291,7 @@
     })
     .catch(() => {});
 
-  /* ---------- Productos agrupados por su clasificación ----------
-     La lista «Catálogo: productos» se abre agrupada por «Clasificación» (public/config.yml,
-     view_groups) y cada grupo se titula con su ruta en el catálogo («Máquinas domésticas ›
-     Electrónicas · 27 productos») en lugar del identificador, en el orden del menú de la web.
-     Los nombres y el orden salen de /admin/datos-panel.json (los del último despliegue). Si se
-     elige otra agrupación (Fabricante, Estado), se respeta mientras no se salga de la lista. */
-  const LISTA_PRODUCTOS = /#\/collections\/productos\/?(\?.*)?$/;
-  fetch('/admin/datos-panel.json', { cache: 'no-store' })
-    .then(r => (r.ok ? r.json() : null))
-    .then(datos => {
-      const cats = (datos && datos.categorias) || {};
-      let agrupadoAlEntrar = false;
-      const agruparPorClasificacion = () => {
-        if (!LISTA_PRODUCTOS.test(location.hash)) { agrupadoAlEntrar = false; return; }
-        if (agrupadoAlEntrar) return;
-        const boton = [...document.querySelectorAll('button, [role="button"]')].find(b => /^\s*(Agrupar por|Group by)\s*$/i.test(b.textContent || '')); // Decap no lo traduce
-        if (!boton) return;
-        agrupadoAlEntrar = true;
-        if ([...document.querySelectorAll('h2')].some(x => /^Clasificación\s/.test(x.textContent || ''))) return;
-        boton.click();
-        setTimeout(() => {
-          const opcion = [...document.querySelectorAll('[role="menuitem"]')].find(o => (o.textContent || '').trim() === 'Clasificación');
-          if (opcion) opcion.click();
-          // Cerrar el desplegable (Decap lo deja abierto tras elegir)
-          setTimeout(() => { if (document.querySelector('[role="menuitem"]')) boton.click(); }, 80);
-        }, 50);
-      };
-      const titular = () => {
-        if (!LISTA_PRODUCTOS.test(location.hash)) return;
-        for (const t of document.querySelectorAll('h2')) {
-          const m = (t.textContent || '').match(/^Clasificación\s+(\S*)$/);
-          if (!m) continue; // (si Decap vuelve a pintar el título original, se vuelve a cambiar)
-          const c = cats[m[1]];
-          const grupo = t.parentElement;
-          const n = grupo ? grupo.querySelectorAll('a[href*="/entries/"]').length : 0;
-          t.dataset.clasificacion = m[1];
-          t.textContent = (c ? c.ruta.join(' › ') : (m[1] ? m[1] + ' (no existe en el catálogo)' : 'Sin clasificación')) + (n ? ` · ${n} ${n === 1 ? 'producto' : 'productos'}` : '');
-          if (grupo && grupo.parentElement) {
-            grupo.parentElement.style.display = 'flex';
-            grupo.parentElement.style.flexDirection = 'column';
-            grupo.style.order = c ? String(c.orden) : '9999';
-          }
-        }
-      };
-      let pendiente = false;
-      const repasar = () => { agruparPorClasificacion(); titular(); };
-      new MutationObserver(() => {
-        if (pendiente) return;
-        pendiente = true;
-        requestAnimationFrame(() => { pendiente = false; repasar(); });
-      }).observe(document.body, { childList: true, subtree: true });
-      window.addEventListener('hashchange', repasar);
-      repasar();
-    })
-    .catch(() => {});
+  /* La lista de productos (y la de fabricantes, tipos, categorías y subcategorías) la pinta ahora
+     public/admin/excel/tablas.js como tablas plegables, ordenables y con filtros (fase 3).
+     Antes se agrupaba aquí por «Clasificación» pulsando el «Group by» de Decap. */
 })();

@@ -16,6 +16,7 @@ import {
 } from './nucleo.js';
 import { crearLibro, leerLibro, libroInforme } from './libro.js';
 import { crearAlmacen } from './almacen.js';
+import { crearTablas } from './tablas.js';
 
 /* ---------- Librerías (se cargan al usarlas por primera vez) ---------- */
 let libs = null;
@@ -696,11 +697,14 @@ function colocar() {
   if (!nuevo || nuevo.previousElementSibling?.classList?.contains('xl-eng')) return;
   nuevo.parentElement.insertBefore(crearEngranaje(nombre), nuevo);
 }
+// Listas como tablas (tablas.js): productos, fabricantes, tipos, categorías y subcategorías
+const revisarTablas = crearTablas({ preparar, leerActuales, leerContexto });
+const repasar = () => { colocar(); revisarTablas(); };
 let pendiente = false;
 new MutationObserver(() => {
   if (pendiente) return;
   pendiente = true;
-  requestAnimationFrame(() => { pendiente = false; colocar(); });
+  requestAnimationFrame(() => { pendiente = false; repasar(); });
 }).observe(document.body, { childList: true, subtree: true });
-window.addEventListener('hashchange', colocar);
-colocar();
+window.addEventListener('hashchange', repasar);
+repasar();
