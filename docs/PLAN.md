@@ -15,7 +15,17 @@ tienda en un solo sitio (Contacto). **Dominio conectado (17-11-2026):** producci
 https://www.maquinasdecoserzafra.es (DNS en Strato: CNAME `www` → `maquinas-de-coser-zafra.pages.dev`; el dominio sin
 www redirige con 301 desde Strato, con su SSL incluido); los entornos siguen en `<rama>.maquinas-de-coser-zafra.pages.dev`;
 login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planchas» (18-11-2026). Todo subido a main
-(último commit: `15e103c`).
+(último commit: `7a74770`, carga de 144 productos de Alfa, Janome, Husqvarna Viking, PFAFF y Singer).
+
+**Para retomar (18-11-2026, fin de sesión):**
+- Catálogo en la web (todo «Solo para pruebas»): 459 productos; **56 sin foto** (34 recambios Jack del autómata de bolsillos y
+  2 overlock Jack, 9 Janome —MC9400QCP, Roja, mesas, programas—, 3 Sewmaq, 7 Elna, Topaz 25, Ricoma SW-1010,
+  Pro-Stitcher Lite, Juki AJF, carros Comel/Trevil, kit J. Pujol, purificador xTool). Se propuso a Víctor buscarlas con la
+  herramienta (comandos dados) o **mejorar la herramienta** para buscar fotos en la web: pendiente de decidir entre añadir las
+  webs oficiales internacionales de cada marca como fuentes o un módulo con una API de búsqueda de imágenes (con clave).
+- Revisar en develop las fichas nuevas; resolver avisos de las Excel (permisos de fotos/textos de tiendas, precios 2022/04-2026,
+  «Emparejado por nombre») antes de quitar «Solo para pruebas».
+- Siguiente paso de desarrollo: fase 3 (importador de Excel en el panel); la carga del 18-11 fue con un script puntual.
 
 **Siguiente paso propuesto: fase 3** (importar las Excel desde el panel; el importador debe ignorar las
 columnas «Observaciones», «Revisar (avisos)» y «Modificaciones (desde la carga)» y tomar las fotos de la carpeta

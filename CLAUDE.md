@@ -49,7 +49,7 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 ## Estado
 
-**Para retomar (18-11-2026):** estado y pendientes en docs/PLAN.md → «Estado y pendientes» (con la tabla de las Excel de importación de `input/` y lo que falta en cada una). Siguiente paso propuesto: fase 3 (importador de Excel). Las fotos y textos de los fabricantes se sacan con `..\herramienta-consulta-fabricantes` (otro repositorio, con su propio CLAUDE.md). A Víctor se le dan siempre los comandos de PowerShell para lo que tenga que hacer él (git, npm…).
+**Para retomar (18-11-2026, fin de sesión):** catálogo cargado (459 productos, 56 sin foto); estado y pendientes en docs/PLAN.md → «Estado y pendientes» (apartado «Para retomar» y tabla de las Excel de importación de `input/` y lo que falta en cada una). Siguiente paso propuesto: fase 3 (importador de Excel). Las fotos y textos de los fabricantes se sacan con `..\herramienta-consulta-fabricantes` (otro repositorio, con su propio CLAUDE.md). A Víctor se le dan siempre los comandos de PowerShell para lo que tenga que hacer él (git, npm…).
 
 **Dominio (17-11-2026):** `maquinasdecoserzafra.es` (comprado en Strato y DNS en Strato: en los .es no deja delegarlos en Cloudflare); producción en `www` (Strato redirige el dominio sin www); los entornos siguen en `<rama>.maquinas-de-coser-zafra.pages.dev` (con DNS externos, Pages no asocia subdominios a ramas). `DOMINIO_PROPIO` en lib/origenes.js. Sigue `indexable: false` hasta la salida real. Pasos externos: docs/PLAN.md, fase 8, punto 2.
 
