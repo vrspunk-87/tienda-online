@@ -71,9 +71,26 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
       «Ordenar» y «Filtros», ficha a lo ancho con los botones abajo y la vista previa debajo). Tras actualizar
       Decap hay que repasarlo (docs/PRUEBAS-PANEL.md).
     - Plan de pruebas de todo el panel: [docs/PRUEBAS-PANEL.md](PRUEBAS-PANEL.md).
-    - **Pendiente de aprobar (prototipos enseñados el 18-11-2026):** vistas previas con el estilo de la web para
-      blog, tipos, categorías, subcategorías y fabricantes; «Ajustes del sitio» en tres pestañas (Web, Panel,
-      General) con opciones nuevas.
+    - **Segunda tanda (18-11-2026, aprobada por Víctor):** ⚠ parpadeante (suave, quieto con «reducir
+      movimiento») con cuántos productos tienen avisos en los grupos y en la columna Productos, y botón ⚠ para
+      filtrar en todas las tablas y el buscador; Medios: pestañas bien desde la primera vez, «General» como las
+      demás (con su número, «En uso» y lo que usa el propio código, que no se deja borrar) y barra fija;
+      vistas previas con el estilo de la web para blog, tipos, categorías, subcategorías y fabricantes;
+      «Ajustes del sitio» en pestañas Web / Panel / General con opciones nuevas (ver README → Ajustes del
+      sitio) y antispam (correo y teléfono ocultos a los robots, máximo de enlaces en las observaciones).
+    - **Burbujas ⓘ en «Ajustes del sitio»** (18-11-2026, aprobado por Víctor): en cada campo, desplegable y sección,
+      con «Para qué sirve, Qué implica, Cómo usarlo, Cuándo se nota, Dónde se ve, Si lo dejas vacío, Ejemplo,
+      Relación con otros campos, Cuidado y Para saber más» (solo los apartados que aportan). Textos en
+      public/admin/ayuda-ajustes.yml; el texto gris de debajo de cada campo se mantiene.
+    - **Pendiente (pedido por Víctor):** correos corporativos en HTML.
+    - **Documentación completa (al final de todo, pedido por Víctor el 18-11-2026):** funcionamiento completo de la
+      web y del panel, y manuales de usuario independientes para la web (quien compra) y para el panel (quien
+      edita). Las burbujas ⓘ de Ajustes del sitio enlazarán a esos documentos («Para saber más») cuando existan.
+    - **Para hacer con las plantillas HTML de los correos** (prototipo aprobado por Víctor el 18-11-2026, a revisar
+      cuando se apliquen las plantillas): sección «Correo a la tienda» en «Solicitud de presupuesto» (asunto, texto de
+      cabecera, recordatorio final, incluir o no el enlace a la hoja; la dirección sigue en el script de Google) y
+      vista previa de la Solicitud con los dos correos (a la tienda y al cliente) con datos de ejemplo. Requiere
+      actualizar docs/solicitudes/apps-script.gs y volver a implantar el script.
   - **Ajustes de las tablas** (18-11-2026, prototipo aprobado): columna «Pruebas» con Sí (ámbar) / No (verde) en
     todas; la miniatura solo si alguna ficha de la lista tiene imagen (hoy, ni tipos ni categorías ni
     subcategorías); en los grupos de categorías y subcategorías, también el número de productos; iconos (árbol y

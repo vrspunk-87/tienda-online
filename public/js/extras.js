@@ -10,6 +10,15 @@
   El build añade este script a todas las páginas.
 */
 (function () {
+  /* ---------- Correo, teléfono y WhatsApp de la tienda (antispam) ----------
+     El build los escribe al revés y en base64 (scripts/build.js, «ocultarContacto»); aquí se ponen bien */
+  const descifrar = s => { try { return [...new TextDecoder().decode(Uint8Array.from(atob(s), c => c.charCodeAt(0)))].reverse().join(''); } catch { return ''; } };
+  document.querySelectorAll('[data-cto]').forEach(a => { const h = descifrar(a.dataset.cto); if (h) a.setAttribute('href', h); a.removeAttribute('data-cto'); });
+  document.querySelectorAll('[data-cto-t]').forEach(s => { const t = descifrar(s.dataset.ctoT); if (t) s.replaceWith(document.createTextNode(t)); });
+
+  // Zona horaria de la tienda (Ajustes del sitio → General; el build la deja en <html data-zona>)
+  const ZONA_WEB = document.documentElement.dataset.zona || 'Europe/Madrid';
+
   /* ---------- Menú en móvil ---------- */
   const menu = document.getElementById('menu');
   if (menu && window.bootstrap) {
@@ -170,7 +179,7 @@
 
   /* ---------- Ofertas: días que quedan («Oferta hasta el 30 de noviembre · quedan 22 días») ---------- */
   document.querySelectorAll('[data-oferta-fin]').forEach(el => {
-    const hoy = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Madrid' });
+    const hoy = new Date().toLocaleDateString('en-CA', { timeZone: ZONA_WEB });
     const dias = Math.round((Date.parse(el.dataset.ofertaFin + 'T12:00:00Z') - Date.parse(hoy + 'T12:00:00Z')) / 864e5);
     const hueco = el.querySelector('[data-oferta-quedan]');
     if (!hueco || !Number.isFinite(dias) || dias < 0) return;
@@ -179,7 +188,7 @@
 
   /* ---------- Tienda: «Abierto ahora · cierra a las 13:30», el día de hoy en el horario y el mapa ---------- */
   const ahoraMadrid = () => {
-    const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit' })
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: ZONA_WEB, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit' })
       .formatToParts(new Date()).map(x => [x.type, x.value]));
     return { dia: { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7 }[p.weekday], hora: `${p.hour}:${p.minute}`, fecha: `${p.year}-${p.month}-${p.day}` };
   };

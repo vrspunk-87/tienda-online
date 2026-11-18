@@ -66,6 +66,9 @@ pruebas `dev-victor`, con GitHub), qué hacer y qué tiene que pasar. Marca ✅ 
 | 4.5 🧪 | E | Pulsar «Entendido» y recargar | Ya no sale en ese navegador; en otro navegador sí |
 | 4.6 🧪 | E | Cambiar la fecha «hasta» a otro día pasado | Vuelve a salir |
 | 4.7 🧪 | E | Producto de prueba «En oferta» sin fechas; otro con «Compatible con» de un producto borrado; otro con datos de segunda mano y «Nuevo» | Sale su aviso en cada uno |
+| 4.8 | L, E | Grupos de Productos, Categorías y Subcategorías; columna Productos de Fabricantes, Tipos, Categorías y Subcategorías | ⚠ con cuántos productos tienen avisos, parpadeando suave (quieto si el sistema tiene «reducir movimiento») |
+| 4.9 | L, E | Botón ⚠ junto a las vistas (en todas las listas y en el buscador) | Solo los productos con avisos; en fabricantes y categorías, solo las filas que los tienen y, al desplegar, solo esos productos. Otra vez: todo |
+| 4.10 | E | Ajustes → Panel: desmarcar «Sin foto» en los avisos y desplegar | Ya no sale ni cuenta |
 
 ## 5. Buscador de la cabecera
 
@@ -82,8 +85,8 @@ pruebas `dev-victor`, con GitHub), qué hacer y qué tiene que pasar. Marca ✅ 
 
 | # | Dónde | Qué hacer | Qué tiene que pasar |
 |---|---|---|---|
-| 6.1 | L, E | Cabecera → «Medios» | Pestañas General, Catálogo, Productos, Fichas PDF, Fabricantes con su número |
-| 6.2 | L, E | «General» | La ventana de Decap de siempre |
+| 6.1 | L, E | Cabecera → «Medios» (la primera vez tras cargar) | Pestañas del tamaño normal: General, Catálogo, Productos, Fichas PDF, Fabricantes, cada una con su número |
+| 6.2 | L, E | «General» | Igual que las demás: los archivos sueltos de /img/; logo, iconos e imagen al compartir «En uso» (no se dejan borrar) |
 | 6.3 | L, E | «Productos» | Miniaturas, nombre, tamaño, «En uso» / «Sin usar», paginado de 48 |
 | 6.4 | L, E | Pulsar una foto | Detalle con «Lo usa: <ficha>»; el enlace abre la ficha y cierra Medios |
 | 6.5 | L, E | Buscar por el nombre de una ficha; filtro «Sin usar» | Filtra |
@@ -92,6 +95,7 @@ pruebas `dev-victor`, con GitHub), qué hacer y qué tiene que pasar. Marca ✅ 
 | 6.8 🧪 | E | Subir otra con el mismo nombre | Pregunta si reemplazar |
 | 6.9 🧪 | E | Elegir una en uso y otra sin usar → «Eliminar…» | Dice que la usada no se borra (y quién la usa); borra solo la otra, en un commit |
 | 6.10 | — | Abrir «Medios» al elegir una imagen dentro de una ficha | Ventana de Decap normal, sin pestañas |
+| 6.11 | L, E | Bajar por las fotos de Productos | La barra de buscar y botones se queda fija arriba |
 
 ## 7. Engranaje de cada sección (Excel, en bloque, eliminar, Word)
 
@@ -119,6 +123,30 @@ Subcategorías, Productos, Blog y Páginas.
 | 8.3 🧪 | E | Crear un producto «Prueba…» con «Solo para pruebas», guardar y publicar (flujo editorial) | Pasa por Borrador → En revisión → Listo → Publicado |
 | 8.4 | L, E | Botón «Nuevo …» de cada lista | «Nueva entrada del blog», «Nuevo producto»… |
 | 8.5 | L, E | Campo Catálogo del producto | Tres desplegables dependientes en el orden del menú |
+| 8.6 | E | Vista previa de una entrada del blog | Migas, píldoras (tema, fecha, minutos), entradilla, compartir, foto con pespunte, texto y recuadro final |
+| 8.7 | E | Vista previa de un tipo, una categoría y una subcategoría | Como su página: título con la letra de la marca, recuadro con tijeras, tarjetas de sus hijas con su número |
+| 8.8 | E | Vista previa de un fabricante | Su logo en una tarjeta, en la ficha, en el filtro y en Sobre nosotros |
+
+## 8b. Ajustes del sitio
+
+| # | Dónde | Qué hacer | Qué tiene que pasar |
+|---|---|---|---|
+| 8b.1 | L, E | Abrir Ajustes del sitio | Pestañas Web / Panel / General con su explicación y títulos de sección; cada campo solo en su pestaña; «Guardar» guarda todo |
+| 8b.2 🧪 | E | Web → Franja de aviso: marcar, texto, «Hasta» = mañana; desplegar | Franja arriba en todas las páginas; pasado «Hasta» (tras la reconstrucción diaria) desaparece |
+| 8b.3 🧪 | E | Textos de los precios, «Más en…» = 2, «Novedad» = 30 días, texto final del pie | Se ven en el pie, en las categorías, en «Precio a consultar», en la ficha y en las tarjetas |
+| 8b.4 🧪 | E | Icono de la pestaña: subir un PNG cuadrado | Tras desplegar, el icono nuevo en la pestaña del navegador y al añadir al móvil |
+| 8b.5 🧪 | E | Panel → productos por página 24, vista inicial «Tabla» | Las listas empiezan así |
+| 8b.6 🧪 | E | Panel → desmarcar «Usar los colores y letras de la web» | El panel vuelve al aspecto de Decap (y al marcarlo, al de la web) |
+| 8b.7 🧪 | E | General → zona horaria «Canarias» | Las ofertas cambian de día a la medianoche de Canarias; «Abierto ahora» con la hora de Canarias. Volver a Madrid al terminar |
+| 8b.8 | L, E | Pasar el ratón por las ⓘ de Ajustes (también dentro de los desplegables) y pulsarlas en el móvil | Sale la explicación del campo; ningún campo sin ⓘ (en la consola del navegador no sale «Ayuda: el campo … no tiene texto») |
+
+## 8c. Antispam de la web
+
+| # | Dónde | Qué hacer | Qué tiene que pasar |
+|---|---|---|---|
+| 8c.1 | E | Contacto y horario, pie y textos legales | Se ven el correo, el teléfono y el WhatsApp; los botones llaman, abren WhatsApp y el correo |
+| 8c.2 | E | Ver el código de la página (Ctrl+U) y buscar el correo y el teléfono | No aparecen (salvo el teléfono en los datos para Google, dentro de `<script type="application/ld+json">`) |
+| 8c.3 🧪 | E | Enviar una solicitud con 3 enlaces en las observaciones | Pide quitarlos («no pueden llevar más de 2 enlaces») |
 
 ## 9. Estética
 

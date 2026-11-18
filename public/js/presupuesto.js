@@ -312,7 +312,7 @@
         const t = el('span', 'solicitud-sugerencia-texto');
         const a = el('a', null, p.nombre); a.href = p.url;
         const pu = precioUnidad(p);
-        t.append(a, el('small', null, pu == null ? 'Precio a consultar' : euros.format(pu)));
+        t.append(a, el('small', null, pu == null ? (document.body.dataset.sinPrecio || 'Precio a consultar') : euros.format(pu)));
         fila.appendChild(t);
         const b = boton('tarjeta-anadir', `Añadir ${p.nombre} a la solicitud`, 'bi-plus-lg');
         b.addEventListener('click', () => {

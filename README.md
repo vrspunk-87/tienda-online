@@ -241,6 +241,23 @@ marca (texto, fondo y acento; el build avisa si no se leen bien), menú, enlaces
 redes y dirección pública. El logo, los iconos y los colores son **provisionales** hasta tener
 los definitivos (el tema se llama «Tienda» internamente).
 
+Desde el 18-11-2026 la ficha se ve en tres pestañas (solo en el panel; `sitio.yml` no cambia de forma):
+**Web** (identidad, icono de la pestaña —`favicon`, el build genera los tamaños—, apariencia, **franja de
+aviso** arriba con fechas, menú, portada, páginas, catálogo y precios —textos de los precios, productos en
+«Más en…», días de la etiqueta «Novedad»—, pie y su texto final), **Panel** (quién ve Ajustes, productos
+por página y vista inicial de las tablas, qué avisos se muestran y cuándo vuelven, peso máximo de cada
+archivo —el build lo pone en `dist/config.yml`—, estética de la web en el panel, compresión de fotos) y
+**General** (dirección pública, indexar, comprobación diaria y **zona horaria**, que usan el build,
+`extras.js` —vía `<html data-zona>`—, la solicitud —`zona` en `lib/generado/solicitud-datos.js`— y el panel).
+
+Cada campo de Ajustes lleva una burbuja ⓘ con su explicación (`public/admin/ayuda-ajustes.yml`, por la ruta
+del campo, p. ej. `franja.color`; la pinta `public/admin/excel/panel.js`).
+
+**Antispam:** el correo, el teléfono y el WhatsApp no van escritos tal cual en el HTML (`ocultarContacto` en
+build.js: al revés y en base64; `public/js/extras.js` los vuelve a poner). El teléfono sigue en el JSON-LD
+para Google; el correo ya no. La solicitud tiene además campo trampa, tiempo mínimo, límite por conexión,
+ALTCHA y, ahora, un máximo de 2 enlaces en las observaciones (`lib/solicitud.js`).
+
 ## Seguridad
 
 - Login del panel: `state` en cookie `HttpOnly` y el token **solo** para las webs de la lista

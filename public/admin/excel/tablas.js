@@ -34,7 +34,8 @@ const css = `
 .xl-tablas .xl-seg button.xl-on{background:var(--xl-acento-claro,#e8effb);border-color:var(--xl-acento,#3a69c7);color:var(--xl-acento,#1f4e9c);position:relative}
 .xl-tablas .xl-grupo{background:#fff;border-radius:5px;box-shadow:0 2px 6px rgba(68,74,87,.05),0 1px 3px rgba(68,74,87,.1);margin:8px 0;overflow-x:auto}
 .xl-tablas .xl-grupo>button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;width:100%;align-items:center;gap:8px;padding:12px 14px;font-weight:600}
-.xl-tablas .xl-grupo>button small{margin-left:auto;font-weight:400;color:#798291}
+.xl-tablas .xl-grupo>button small{font-weight:400;color:#798291}
+.xl-tablas .xl-grupo>button .xl-dcha{margin-left:auto;display:inline-flex;align-items:center;gap:6px}
 .xl-tablas table{width:100%;border-collapse:collapse;font-size:13px}
 .xl-tablas th,.xl-tablas td{text-align:left;padding:6px 8px;border-top:1px solid #eff0f4;vertical-align:middle}
 .xl-tablas th{color:#798291;font-weight:600;white-space:nowrap;cursor:pointer;user-select:none}
@@ -62,6 +63,12 @@ const css = `
 /* Avisos: icono con su número; el globo es uno solo para toda la página (.xl-globo) */
 .xl-tablas .xl-av{all:unset;cursor:help;display:inline-flex;align-items:center;gap:3px;color:#b45309;font-weight:600;font-size:12px;padding:2px 4px;border-radius:5px}
 .xl-tablas .xl-av:hover,.xl-tablas .xl-av:focus-visible{background:#fdf1dc}
+.xl-av-n{display:inline-flex;align-items:center;gap:3px;margin-left:6px;color:#b45309;font-weight:700;font-size:12px;background:#fdf1dc;border-radius:10px;padding:1px 7px;vertical-align:middle;animation:xl-latido 1.6s ease-in-out infinite}
+.xl-av-n svg{width:13px;height:13px}
+@keyframes xl-latido{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.xl-av-n{animation:none}}
+.xl-tablas .xl-filtro-av{display:inline-flex;align-items:center;gap:5px;height:32px;padding:0 10px;border:1px solid #c9ced6;border-radius:8px;background:#fff;color:#b45309;font:inherit;font-weight:600;cursor:pointer}
+.xl-tablas .xl-filtro-av.xl-on{background:#fdf1dc;border-color:#b45309}
 .xl-globo{position:fixed;z-index:10001;max-width:300px;background:#fff;color:#1f2933;border:1px solid #e3e3df;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.14);padding:10px 12px;font-size:13px;line-height:1.45}
 .xl-globo b{display:block;margin-bottom:4px}
 .xl-globo ul{margin:0;padding-left:18px}.xl-globo li{margin:2px 0}
@@ -287,14 +294,26 @@ function botonesPagina(pag, total) {
    recuerda en este navegador para esa oferta (producto + fecha de fin); si cambian las fechas y vuelve a
    terminar, sale otra vez. */
 const CLAVE_VISTOS = 'xl-avisos-vistos';
-function leerVistos() { try { return JSON.parse(localStorage.getItem(CLAVE_VISTOS) || '{}') || {}; } catch { return {}; } }
+function leerVistos() {
+  let v = {};
+  try { v = JSON.parse(localStorage.getItem(CLAVE_VISTOS) || '{}') || {}; } catch { /* sin almacenamiento */ }
+  // «Vuelve a salir a los N días» (Ajustes del sitio → Panel; 0 o vacío: no vuelve)
+  const dias = Number(ajustesPanel().avisos_vuelven_dias) || 0;
+  if (dias > 0) {
+    const limite = new Date(Date.now() - dias * 864e5).toISOString().slice(0, 10);
+    for (const k of Object.keys(v)) if (v[k] < limite) delete v[k];
+  }
+  return v;
+}
 function marcarVisto(clave) {
   const v = leerVistos();
   v[clave] = new Date().toISOString().slice(0, 10);
   try { localStorage.setItem(CLAVE_VISTOS, JSON.stringify(v)); } catch { /* sin almacenamiento: vuelve a salir */ }
   document.dispatchEvent(new Event('xl-avisos-vistos'));
 }
-const hoyMadrid = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' });
+// Ajustes del sitio → Panel (los carga panel.js de /admin/datos-panel.json) y zona horaria de la tienda
+const ajustesPanel = () => globalThis.XL_PANEL || {};
+const hoyMadrid = () => new Date().toLocaleDateString('sv-SE', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid' });
 const diaIso = v => { if (!v) return ''; if (v instanceof Date) return v.toISOString().slice(0, 10); const m = String(v).match(/^(\d{4}-\d{2}-\d{2})/); return m ? m[1] : ''; };
 const fechaCorta = iso => iso.split('-').reverse().join('/');
 const vacio = v => v === undefined || v === null || v === '';
@@ -322,28 +341,31 @@ function crearAvisos(ctx) {
     if (cache.has(p.slug)) return cache.get(p.slug);
     const d = p.datos;
     const l = [];
-    if (!Array.isArray(d.imagenes) || !d.imagenes.some(i => i?.imagen)) l.push({ texto: 'Sin foto.' });
-    if (vacio(d.precio)) l.push({ texto: 'Sin precio: en la web sale «Precio a consultar».' });
+    if (!Array.isArray(d.imagenes) || !d.imagenes.some(i => i?.imagen)) l.push({ tipo: 'sin_foto', texto: 'Sin foto.' });
+    if (vacio(d.precio)) l.push({ tipo: 'sin_precio', texto: 'Sin precio: en la web sale «Precio a consultar».' });
     if (d.estado === 'oferta') {
       const fin = diaIso(d.oferta?.fin);
-      if (vacio(d.oferta?.precio) || !diaIso(d.oferta?.inicio) || !fin) l.push({ texto: 'Está «En oferta» pero le falta el precio de oferta o las fechas.' });
-      else if (fin < hoyMadrid()) l.push({ texto: `La oferta terminó el ${fechaCorta(fin)} y sigue marcado «En oferta» (en la web ya sale con su precio normal).`, clave: `oferta-terminada|${p.slug}|${fin}` });
+      if (vacio(d.oferta?.precio) || !diaIso(d.oferta?.inicio) || !fin) l.push({ tipo: 'oferta', texto: 'Está «En oferta» pero le falta el precio de oferta o las fechas.' });
+      else if (fin < hoyMadrid()) l.push({ tipo: 'oferta_terminada', texto: `La oferta terminó el ${fechaCorta(fin)} y sigue marcado «En oferta» (en la web ya sale con su precio normal).`, clave: `oferta-terminada|${p.slug}|${fin}` });
     }
     const tipo = cat.tipoDe(d.categoria);
     if (ctx.tipoDosPrecios && tipo !== ctx.tipoDosPrecios && (!vacio(d.precio_cabezal) || !vacio(d.oferta?.precio_cabezal))) {
-      l.push({ texto: `Tiene precio de cabezal pero no es del tipo «${cat.etiqueta(ctx.tipoDosPrecios) || ctx.tipoDosPrecios}»: no se mostrará.` });
+      l.push({ tipo: 'cabezal', texto: `Tiene precio de cabezal pero no es del tipo «${cat.etiqueta(ctx.tipoDosPrecios) || ctx.tipoDosPrecios}»: no se mostrará.` });
     }
-    if (d.condicion !== 'segunda_mano' && d.segunda_mano && Object.values(d.segunda_mano).some(v => !vacio(v))) l.push({ texto: 'Tiene datos de segunda mano pero su condición es «Nuevo».' });
-    if (vacio(d.categoria)) l.push({ texto: 'No tiene clasificación (tipo de producto).' });
-    else if (!cat.porSlug.has(String(d.categoria))) l.push({ texto: `Su clasificación («${d.categoria}») no existe en el catálogo.` });
-    if (vacio(d.fabricante)) l.push({ texto: 'No tiene fabricante.' });
-    else if (!fabricantes.has(String(d.fabricante))) l.push({ texto: `Su fabricante («${d.fabricante}») no existe.` });
+    if (d.condicion !== 'segunda_mano' && d.segunda_mano && Object.values(d.segunda_mano).some(v => !vacio(v))) l.push({ tipo: 'segunda_mano', texto: 'Tiene datos de segunda mano pero su condición es «Nuevo».' });
+    if (vacio(d.categoria)) l.push({ tipo: 'clasificacion', texto: 'No tiene clasificación (tipo de producto).' });
+    else if (!cat.porSlug.has(String(d.categoria))) l.push({ tipo: 'clasificacion', texto: `Su clasificación («${d.categoria}») no existe en el catálogo.` });
+    if (vacio(d.fabricante)) l.push({ tipo: 'fabricante', texto: 'No tiene fabricante.' });
+    else if (!fabricantes.has(String(d.fabricante))) l.push({ tipo: 'fabricante', texto: `Su fabricante («${d.fabricante}») no existe.` });
     const rotos = listaDe(d.compatible_con).filter(s => !ctx.porSlugProducto.has(s));
-    if (rotos.length) l.push({ texto: `«Compatible con» tiene productos que no existen: ${rotos.join(', ')}.` });
+    if (rotos.length) l.push({ tipo: 'compatible', texto: `«Compatible con» tiene productos que no existen: ${rotos.join(', ')}.` });
     const r = String(d.referencia ?? '').trim().toLowerCase();
     const otros = r ? (refs.get(`${d.fabricante || ''}|${r}`) || []).filter(o => o.slug !== p.slug) : [];
-    if (otros.length) l.push({ texto: `Misma referencia (${d.referencia}) que ${otros.map(o => `«${o.datos.title || o.slug}»`).join(', ')}, del mismo fabricante.` });
+    if (otros.length) l.push({ tipo: 'referencia', texto: `Misma referencia (${d.referencia}) que ${otros.map(o => `«${o.datos.title || o.slug}»`).join(', ')}, del mismo fabricante.` });
     const vistos = leerVistos();
+    // Solo los tipos de aviso marcados en Ajustes del sitio → Panel (sin ajuste: todos)
+    const activos = ajustesPanel().avisos;
+    if (Array.isArray(activos)) for (let i = l.length - 1; i >= 0; i--) if (!activos.includes(l[i].tipo)) l.splice(i, 1);
     const res = { pendientes: l.filter(a => !a.clave || !vistos[a.clave]), vistos: l.filter(a => a.clave && vistos[a.clave]) };
     cache.set(p.slug, res);
     return res;
@@ -394,10 +416,16 @@ const globo = (() => {
 })();
 const ICONO_AVISO = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>';
 
+// Insignia ⚠ con cuántos productos tienen avisos (parpadea suave; quieta con «reducir movimiento»)
+const insigniaAvisos = n => (n ? `<span class="xl-av-n" title="${n === 1 ? '1 producto con avisos' : `${n} productos con avisos`}" aria-label="${n === 1 ? '1 producto con avisos' : `${n} productos con avisos`}">${ICONO_AVISO}${n}</span>` : '');
+const avisosDe = ctx => (ctx.avisos ||= crearAvisos(ctx));
+const conAvisos = (ctx, p) => avisosDe(ctx)(p).pendientes.length > 0;
+// Botón ⚠ junto a las vistas: deja solo los productos con avisos (n: cuántos hay)
+const botonFiltroAvisos = (activo, n) => `<button type="button" class="xl-filtro-av ${activo ? 'xl-on' : ''}" data-solo-avisos aria-pressed="${activo}" title="${activo ? 'Ver todos' : 'Ver solo los productos con avisos'}">${ICONO_AVISO}${activo ? `Con avisos (${n})` : n}</button>`;
+
 /* ---------- Columnas de productos ---------- */
 function colsProductos(ctx, conClasificacion) {
-  if (!ctx.avisos) { ctx.avisos = crearAvisos(ctx); }
-  const avisos = ctx.avisos;
+  const avisos = avisosDe(ctx);
   const etiquetaPrecio = p => (p.datos.precio === undefined || p.datos.precio === null || p.datos.precio === '' ? null : Number(p.datos.precio));
   return [
     { k: 'foto', t: '', tipo: 'foto', val: () => '', html: p => miniatura(Array.isArray(p.datos.imagenes) ? p.datos.imagenes[0]?.imagen : '') , ancho: '44px' },
@@ -474,7 +502,7 @@ function piezas(nombre, actuales, ctx, porPag, extra = {}, carpeta = '') {
     ...(nombre === 'blog' ? [{ k: 'fecha', t: 'Fecha', tipo: 'txt', val: fechaDe, html: f => esc(fechaDe(f).split('-').reverse().join('/')) }, { k: 'tema', t: 'Tema', tipo: 'sel', val: f => f.datos.tema || '' }] : []),
     ...(nombre === 'tipos' ? [{ k: 'hijas', t: 'Categorías', tipo: 'num', val: f => f.hijas }] : []),
     ...(nombre === 'categorias' ? [{ k: 'hijas', t: 'Subcategorías', tipo: 'num', val: f => f.hijas }] : []),
-    ...(esTexto ? [] : [{ k: 'n', t: 'Productos', tipo: 'num', val: f => f.prods.length }]),
+    ...(esTexto ? [] : [{ k: 'n', t: 'Productos', tipo: 'num', val: f => f.prods.length, html: f => `${f.prods.length}${insigniaAvisos(f.prods.filter(p => conAvisos(ctx, p)).length)}` }]),
     { k: 'prueba', t: 'Pruebas', tipo: 'sino', val: f => Boolean(f.datos.prueba), html: f => pildoraPruebas(f.datos.prueba) },
   ];
   // En la vista «Tabla» de categorías y subcategorías, también de qué cuelgan (hay nombres repetidos)
@@ -508,7 +536,7 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
       const { YAML } = x;
       const posMenu = ordenCatalogo(YAML, ctx);
       const productos = ctx.productos;
-      let porPagina = 12;
+      let porPagina = [12, 24, 48].includes(Number(ajustesPanel().por_pagina)) ? Number(ajustesPanel().por_pagina) : 12;
       const porPag = () => porPagina;
       const cat = ctx.catalogo;
       const { tablaProd, filasSeccion, tablaSeccion } = piezas(nombre, actuales, ctx, porPag);
@@ -516,6 +544,7 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
       // Grupos plegados: productos por clasificación; categorías por tipo; subcategorías por «Tipo › Categoría»
       let vista = nombre === 'productos' || nombre === 'categorias' || nombre === 'subcategorias' ? 'grupos' : 'tabla';
       const conVistas = vista === 'grupos';
+      if (conVistas && ajustesPanel().vista_inicial === 'tabla') vista = 'tabla';
       const etiquetaGrupos = { productos: 'Por clasificación', categorias: 'Por tipo de producto', subcategorias: 'Por categoría' }[nombre];
       const abiertos = new Set();
       const tablas = new Map();
@@ -524,16 +553,23 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
       const pasaBusqueda = (texto) => !busqueda || sinTildes(texto).includes(sinTildes(busqueda));
       const textoProducto = p => [p.datos.title, p.datos.modelo, p.datos.referencia, ctx.nombreFabricante(p.datos.fabricante), p.slug].join(' ');
 
+      let soloAvisos = false;
       const pintar = () => {
-        const prodsFiltrados = productos.filter(p => pasaBusqueda(textoProducto(p)));
-        const seccionFiltrada = filasSeccion.filter(f => pasaBusqueda(`${f.nombre} ${f.slug}`));
+        const av = p => conAvisos(ctx, p);
+        const prodsFiltrados = productos.filter(p => pasaBusqueda(textoProducto(p)) && (!soloAvisos || av(p)));
+        // Con el filtro ⚠: solo las filas con algún producto con avisos y, dentro, solo esos productos
+        const seccionFiltrada = filasSeccion.filter(f => pasaBusqueda(`${f.nombre} ${f.slug}`))
+          .map(f => (soloAvisos ? { ...f, prods: f.prods.filter(av) } : f)).filter(f => !soloAvisos || f.prods.length);
+        const nAvisos = (nombre === 'productos' ? productos : [...new Set(filasSeccion.flatMap(f => f.prods))]).filter(av).length;
+        const sa = soloAvisos ? 'av' : '';
         raiz.innerHTML = `<div class="xl-barra">
             <input type="search" placeholder="${nombre === 'productos' ? 'Buscar por nombre, modelo, referencia o fabricante' : 'Buscar por nombre'}" value="${esc(busqueda)}" data-buscar>
             ${conVistas ? `<span class="xl-seg" role="group" aria-label="Forma de ver la lista"><button type="button" data-v="grupos" class="${vista === 'grupos' ? 'xl-on' : ''}" title="${esc(etiquetaGrupos)}" aria-label="${esc(etiquetaGrupos)}" aria-pressed="${vista === 'grupos'}">${ICONO_ARBOL}</button><button type="button" data-v="tabla" class="${vista === 'tabla' ? 'xl-on' : ''}" title="Tabla" aria-label="Tabla" aria-pressed="${vista === 'tabla'}">${ICONO_TABLA}</button></span>` : ''}
+            ${nAvisos || soloAvisos ? botonFiltroAvisos(soloAvisos, nAvisos) : ''}
             <label class="xl-gris">Por página <select data-por>${[12, 24, 48].map(n => `<option ${n === porPagina ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
           </div><div data-cont></div>`;
         const cont = raiz.querySelector('[data-cont]');
-        const conTabla = (clave, crear) => { if (!tablas.has(clave)) tablas.set(clave, crear()); const t = tablas.get(clave); t.pintar(); return t.el; };
+        const conTabla = (clave, crear) => { clave += `:${sa}`; if (!tablas.has(clave)) tablas.set(clave, crear()); const t = tablas.get(clave); t.pintar(); return t.el; };
 
         if (vista === 'tabla') {
           const caja = document.createElement('div');
@@ -561,7 +597,8 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
             // En categorías y subcategorías, también cuántos productos suman las del grupo
             const nProd = nombre === 'productos' ? 0 : grupos.get(k).reduce((t, f) => t + f.prods.length, 0);
             const resumen = nombre === 'productos' ? `${n} ${unidad}` : `${n} ${unidad} · ${nProd} ${nProd === 1 ? 'producto' : 'productos'}`;
-            caja.innerHTML = `<button type="button" aria-expanded="${abierto}">${flecha(abierto)}${esc(titulo)}<small>${resumen}</small></button>`;
+            const prodsGrupo = nombre === 'productos' ? grupos.get(k) : [...new Set(grupos.get(k).flatMap(f => f.prods))];
+            caja.innerHTML = `<button type="button" aria-expanded="${abierto}">${flecha(abierto)}${esc(titulo)}<span class="xl-dcha">${insigniaAvisos(prodsGrupo.filter(av).length)}<small>${resumen}</small></span></button>`;
             caja.firstElementChild.addEventListener('click', () => { abierto ? abiertos.delete(k) : abiertos.add(k); pintar(); });
             if (abierto) caja.appendChild(conTabla(`g:${k}:${busqueda}`, () => (nombre === 'productos' ? tablaProd(grupos.get(k), false) : tablaSeccion(grupos.get(k)))));
             cont.appendChild(caja);
@@ -571,7 +608,10 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
         b.addEventListener('input', () => { const pos = b.selectionStart; busqueda = b.value; pintar(); const n = raiz.querySelector('[data-buscar]'); n.focus(); n.setSelectionRange(pos, pos); });
         raiz.querySelector('[data-por]').addEventListener('change', e => { porPagina = Number(e.target.value); tablas.forEach(t => { t.pag = 1; }); pintar(); });
         raiz.querySelectorAll('[data-v]').forEach(btn => btn.addEventListener('click', () => { vista = btn.dataset.v; pintar(); }));
+        raiz.querySelector('[data-solo-avisos]')?.addEventListener('click', () => { soloAvisos = !soloAvisos; pintar(); });
       };
+      // Al marcar un aviso como visto cambian los números: se rehace la lista (las tablas se crean de nuevo)
+      document.addEventListener('xl-avisos-vistos', () => { if (document.body.contains(raiz)) { tablas.clear(); pintar(); } });
       pintar();
     } catch (e) {
       console.error(e);
@@ -609,34 +649,59 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
         if (n === 'blog' || n === 'paginas') return [d.title, d.description, d.tema, a.cuerpo, a.slug];
         return [d.title, d.description, d.texto, a.slug, ['categorias', 'subcategorias'].includes(n) ? cat.etiqueta(d.padre) : ''];
       };
-      let porPagina = 12;
+      let porPagina = [12, 24, 48].includes(Number(ajustesPanel().por_pagina)) ? Number(ajustesPanel().por_pagina) : 12;
       const porPag = () => porPagina;
-      const grupos = [];
-      for (const n of SECCIONES_BUSCAR) {
-        if (!xs[n]) continue;
-        const enc = actuales[n].filter(a => casa(textoDe(n, a)));
-        if (!enc.length) continue;
-        const { tablaProd, filasSeccion, tablaSeccion } = piezas(n, enc, ctx, porPag, { resaltar: q }, xs[n].col.folder);
-        const tabla = n === 'productos' ? tablaProd(enc, true) : tablaSeccion(filasSeccion, n === 'categorias' || n === 'subcategorias');
-        grupos.push({ n, titulo: xs[n].col.label, total: enc.length, tabla, abierto: true });
-      }
-      const total = grupos.reduce((s, g) => s + g.total, 0);
+      const av = p => conAvisos(ctx, p);
+      let soloAvisos = false;
+      let grupos = [];
+      let total = 0;
+      let nAvisos = 0;
+      // Grupos de resultados (con el filtro ⚠: solo productos con avisos y las fichas que los tienen)
+      const construir = () => {
+        const abiertos = new Map(grupos.map(g => [g.n, g.abierto]));
+        grupos = [];
+        const conAv = new Set();
+        for (const n of SECCIONES_BUSCAR) {
+          if (!xs[n]) continue;
+          const enc = actuales[n].filter(a => casa(textoDe(n, a)));
+          if (!enc.length) continue;
+          const { tablaProd, filasSeccion, tablaSeccion } = piezas(n, enc, ctx, porPag, { resaltar: q }, xs[n].col.folder);
+          const prods = n === 'productos' ? enc : [...new Set(filasSeccion.flatMap(f => f.prods))];
+          prods.filter(av).forEach(p => conAv.add(p.slug));
+          let filas = filasSeccion;
+          let lista = enc;
+          if (soloAvisos) {
+            if (n === 'blog' || n === 'paginas') continue;
+            lista = enc.filter(av);
+            filas = filasSeccion.map(f => ({ ...f, prods: f.prods.filter(av) })).filter(f => f.prods.length);
+            if (!(n === 'productos' ? lista : filas).length) continue;
+          }
+          const tabla = n === 'productos' ? tablaProd(lista, true) : tablaSeccion(filas, n === 'categorias' || n === 'subcategorias');
+          grupos.push({ n, titulo: xs[n].col.label, total: n === 'productos' ? lista.length : filas.length, tabla, abierto: abiertos.get(n) ?? true, avisos: (n === 'productos' ? lista : [...new Set(filas.flatMap(f => f.prods))]).filter(av).length });
+        }
+        total = grupos.reduce((s, g) => s + g.total, 0);
+        if (!soloAvisos) nAvisos = conAv.size;
+      };
+      construir();
       let solo = '';
+      document.addEventListener('xl-avisos-vistos', () => { if (document.body.contains(raiz)) { construir(); pintar(); } });
       const pintar = () => {
         raiz.innerHTML = `<div class="xl-barra"><span class="xl-gris">${total ? `${total} ${total === 1 ? 'resultado' : 'resultados'} en ${grupos.length} ${grupos.length === 1 ? 'sección' : 'secciones'}` : 'Ningún resultado. Prueba con menos palabras o sin abreviaturas.'}</span>
           ${grupos.length > 1 ? `<span class="xl-chips-b">${[['', `Todo (${total})`], ...grupos.map(g => [g.n, `${g.titulo} (${g.total})`])].map(([k, x]) => `<button type="button" class="${solo === k ? 'xl-on' : ''}" data-solo="${k}">${esc(x)}</button>`).join('')}</span>` : ''}
-          <label class="xl-gris" style="margin-left:auto">Por página <select data-por>${[12, 24, 48].map(n => `<option ${n === porPagina ? 'selected' : ''}>${n}</option>`).join('')}</select></label></div><div data-cont></div>`;
+          ${nAvisos || soloAvisos ? `<span style="margin-left:auto">${botonFiltroAvisos(soloAvisos, nAvisos)}</span>` : ''}
+          <label class="xl-gris" style="${nAvisos || soloAvisos ? '' : 'margin-left:auto'}">Por página <select data-por>${[12, 24, 48].map(n => `<option ${n === porPagina ? 'selected' : ''}>${n}</option>`).join('')}</select></label></div><div data-cont></div>`;
         const cont = raiz.querySelector('[data-cont]');
         for (const g of grupos.filter(x => !solo || x.n === solo)) {
           const caja = document.createElement('div');
           caja.className = 'xl-grupo';
-          caja.innerHTML = `<button type="button" aria-expanded="${g.abierto}">${flecha(g.abierto)}${esc(g.titulo)}<small>${g.total} ${g.total === 1 ? 'resultado' : 'resultados'}</small></button>`;
+          caja.innerHTML = `<button type="button" aria-expanded="${g.abierto}">${flecha(g.abierto)}${esc(g.titulo)}<span class="xl-dcha">${insigniaAvisos(g.avisos)}<small>${g.total} ${g.total === 1 ? 'resultado' : 'resultados'}</small></span></button>`;
           caja.firstElementChild.addEventListener('click', () => { g.abierto = !g.abierto; pintar(); });
           if (g.abierto) { g.tabla.pintar(); caja.appendChild(g.tabla.el); }
           cont.appendChild(caja);
         }
         raiz.querySelectorAll('[data-solo]').forEach(b => b.addEventListener('click', () => { solo = b.dataset.solo; pintar(); }));
         raiz.querySelector('[data-por]').addEventListener('change', e => { porPagina = Number(e.target.value); grupos.forEach(g => { g.tabla.pag = 1; }); pintar(); });
+        raiz.querySelector('[data-solo-avisos]')?.addEventListener('click', () => { soloAvisos = !soloAvisos; solo = ''; construir(); pintar(); });
       };
       pintar();
     } catch (e) {

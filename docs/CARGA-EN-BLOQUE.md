@@ -43,6 +43,9 @@ En productos, fabricantes, tipos de producto, categorías y subcategorías, la l
   precio, oferta sin fechas o ya terminada, referencia repetida…). Pasa el ratón (o púlsalo en el móvil) para
   ver la lista; el filtro «Con avisos» deja solo esos. «La oferta terminó» tiene **Entendido**: deja de salir
   en ese navegador hasta que cambien las fechas de la oferta.
+- En los grupos y en la columna «Productos» de fabricantes, tipos, categorías y subcategorías, **⚠ con un
+  número que parpadea**: cuántos de esos productos tienen avisos. El botón ⚠ junto a las vistas deja solo
+  los productos con avisos (y las filas que los tienen).
 - **Buscador** de la cabecera: los resultados salen con estas mismas tablas, agrupados por sección.
 - **Medios** (cabecera): pestañas por carpeta (Fabricantes, Catálogo, Productos, Fichas PDF) para ver qué
   archivos usa cada ficha, subir, descargar, reemplazar y eliminar los que no se usan.

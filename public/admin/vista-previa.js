@@ -2,7 +2,8 @@
   Vista previa del panel de Decap con el aspecto real de la web.
   Usa los mismos estilos que la web (tema, estilos.css y los colores de los Ajustes del sitio) y
   plantillas con la misma estructura que las páginas que genera scripts/build.js para:
-    - entradas del blog y páginas (con los marcadores {titular}, {correo}… ya rellenos);
+    - entradas del blog (con el recuadro final) y páginas (con los marcadores {titular}, {correo}… ya rellenos);
+    - tipos, categorías y subcategorías (como su página del catálogo) y fabricantes (dónde sale su logo);
     - productos (ficha: fotos, precio u oferta, características y ficha técnica);
     - Contacto y horario, Sobre nosotros y la Solicitud de presupuesto.
   Es una vista aproximada: la página real la genera el build al publicar (fotos optimizadas,
@@ -84,14 +85,113 @@
   };
 
   /* ---------- Blog ---------- */
-  const Entrada = createClass({
+  // Compartir: los mismos iconos redondos que la web (aquí no hacen nada)
+  const compartir = clase => h('div', { className: `compartir compartir-iconos ${clase || ''}` },
+    h('span', null, 'Compartir'),
+    ...['bi-whatsapp', 'bi-facebook', 'bi-telegram', 'bi-twitter-x', 'bi-link-45deg'].map(i => h('span', { key: i, className: 'compartir-icono' }, icono(i))));
+  // Recuadro con pespunte y tijeras; la primera frase (hasta «:», «.», «?» o «!») destacada, como en la web
+  const recuadro = (hijos, clase) => h('div', { className: `intro-pagina ${clase || ''}` }, icono('bi-scissors', 'intro-tijeras'), h('div', { className: 'intro-pagina-texto' }, hijos));
+  const destacarPrimera = texto => {
+    const m = String(texto || '').match(/^([^?.!:]{4,}[?.!:])([\s\S]*)$/);
+    return m ? [h('strong', { key: 'd', className: 'intro-destacado' }, m[1]), m[2]] : texto;
+  };
+
+  /* ---------- Entrada del blog (como /blog/<año>/<entrada>/) ---------- */
+  const Entrada = conDatos({
     render() {
-      const d = campo => dato(this.props, campo);
-      return h('main', { className: 'container seccion articulo' },
-        h('time', { className: 'text-body-secondary' }, fecha(d('date'))),
-        h('h1', { className: 'display-5 fw-bold mt-1' }, d('title')),
-        imagen(this.props, 'thumbnail', 'thumbnail_alt'),
-        h('div', { className: 'articulo-cuerpo mt-4' }, this.props.widgetFor('body')));
+      const p = this.props;
+      const d = campo => dato(p, campo);
+      const texto = String(d('body') || '');
+      const minutos = Math.max(1, Math.round(texto.replace(/[#*_>`\[\]()!-]/g, ' ').split(/\s+/).filter(Boolean).length / 200));
+      const cta = d('cta') || {};
+      const cat = cta.categoria ? (DATOS.categorias || {})[cta.categoria] : null;
+      const contacto = DATOS.contacto || {};
+      const fraseCta = String(cta.texto || '').trim() || (cat
+        ? `¿Buscas ${cat.titulo.toLowerCase()}? Mira lo que tenemos o pregúntanos cuál te conviene.`
+        : '¿Buscas máquina o accesorios? Mira el catálogo o pregúntanos: te asesoramos sin compromiso.');
+      return h('main', { className: 'container seccion' },
+        nota('El recuadro «Más sobre…» con otras entradas se añade al publicar.'),
+        h('article', { className: 'entrada' },
+          migas(['Blog', d('tema'), d('title')], d('tema') || 'Blog'),
+          h('div', { className: 'tarjeta-entrada-pildoras entrada-meta' },
+            d('tema') ? h('span', { className: 'pildora pildora-tema' }, d('tema')) : null,
+            d('date') ? h('span', { className: 'pildora' }, icono('bi-calendar3'), ' ', fecha(d('date'))) : null,
+            h('span', { className: 'pildora' }, icono('bi-clock'), ` ${minutos} min de lectura`)),
+          h('h1', { className: 'display-5 fw-bold entrada-titulo' }, d('title')),
+          d('description') ? h('p', { className: 'lead text-body-secondary entrada-entradilla' }, d('description')) : null,
+          compartir('compartir-arriba'),
+          d('thumbnail') ? h('figure', { className: 'entrada-foto' }, h('img', { src: asset(p, d('thumbnail')), alt: d('thumbnail_alt') || '' })) : null,
+          h('div', { className: 'articulo-cuerpo mt-4' }, p.widgetFor('body')),
+          compartir('compartir-pie')),
+        cta.mostrar === false ? null : h('aside', { className: 'intro-pagina entrada-cta' },
+          icono('bi-scissors', 'intro-tijeras'),
+          h('div', { className: 'intro-pagina-texto' },
+            h('p', null, destacarPrimera(fraseCta)),
+            h('p', { className: 'entrada-cta-botones' },
+              h('span', { className: 'btn btn-destacado' }, cta.boton || (cat ? `Ver ${cat.titulo.toLowerCase()}` : 'Ver el catálogo'), ' ', icono('bi-arrow-right')),
+              contacto.whatsapp ? h('span', { className: 'btn btn-outline-primary' }, icono('bi-whatsapp'), ' Preguntar por WhatsApp')
+                : contacto.telefono ? h('span', { className: 'btn btn-outline-primary' }, icono('bi-telephone'), ' Llamar') : null))));
+    },
+  });
+
+  /* ---------- Tipo, categoría o subcategoría (como /catalogo/…/) ---------- */
+  const Catalogo = conDatos({
+    render() {
+      const p = this.props;
+      const d = campo => dato(p, campo);
+      const cats = DATOS.categorias || {};
+      const slug = p.entry.get('slug');
+      const yo = cats[slug];
+      const padre = cats[d('padre')];
+      const ruta = padre ? padre.ruta : [];
+      const hijas = ((yo && yo.hijos) || []).map(s => [s, cats[s]]).filter(x => x[1]);
+      return h('main', { className: 'container seccion pb-0 cabecera-pagina' },
+        nota(yo && yo.n != null ? `Los números y las tarjetas son los del último despliegue (${yo.n === 1 ? '1 producto' : `${yo.n} productos`}).` : 'Todavía no se ha publicado: las tarjetas y los productos salen al publicar.'),
+        migas(['Catálogo', ...ruta, d('title')], ruta.length ? ruta[ruta.length - 1] : 'Catálogo'),
+        h('h1', { className: 'titulo-marca display-5 fw-bold' }, d('title')),
+        d('description') ? h('p', { className: 'lead text-body-secondary' }, d('description')) : null,
+        h('div', { className: 'intro-pagina mt-5' }, icono('bi-scissors', 'intro-tijeras'),
+          d('body') ? h('div', { className: 'intro-pagina-texto' }, p.widgetFor('body')) : null,
+          h('p', { className: 'intro-pagina-nota' }, icono('bi-info-circle'), ' Precios orientativos, IVA incluido.')),
+        compartir(),
+        hijas.length ? h('div', { className: 'row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mt-4' }, ...hijas.map(([s, c]) =>
+          h('div', { key: s, className: 'col' }, h('article', { className: 'tarjeta-categoria h-100' },
+            h('span', { className: 'tarjeta-categoria-n' + (c.n ? '' : ' vacia') }, c.n),
+            h('h3', { className: 'tarjeta-categoria-titulo' }, c.titulo),
+            c.resumen ? h('p', { className: 'tarjeta-categoria-texto' }, c.resumen) : null,
+            h('span', { className: 'tarjeta-categoria-ver' }, 'Ver productos ', icono('bi-arrow-right')))))) : null,
+        yo && yo.n != null ? h('div', { className: 'titulo-bloque mt-5' }, h('h2', null, `Productos de ${d('title')}`), h('span', { className: 'insignia-menu ms-2' }, yo.n)) : null);
+    },
+  });
+
+  /* ---------- Fabricante: no tiene página; dónde sale su logo en la web ---------- */
+  const Fabricante = conDatos({
+    render() {
+      const p = this.props;
+      const d = campo => dato(p, campo);
+      const img = d('imagen') ? asset(p, d('imagen')) : '';
+      const logo = (alto, clase) => (img ? h('img', { src: img, alt: '', className: `logo-fabricante ${clase || ''}`, height: alto }) : h('span', { className: 'ficha-marca-nombre' }, d('title')));
+      const titulo = t => h('p', { className: 'small text-body-secondary mt-4 mb-2' }, t);
+      return h('main', { className: 'container seccion' },
+        nota('Los fabricantes no tienen página: así se ven su nombre y su logo en la web.'),
+        h('h1', { className: 'h3 fw-bold' }, d('title')),
+        titulo('En las tarjetas de producto (sobre la foto)'),
+        h('div', { className: 'row row-cols-2 row-cols-md-4 g-3' }, h('div', { className: 'col' },
+          h('article', { className: 'card producto tarjeta-producto h-100' },
+            h('div', { className: 'producto-foto' }, h('div', { className: 'producto-sin-foto' }, icono('bi-image')),
+              h('span', { className: 'tarjeta-producto-marca' }, img ? h('img', { src: img, alt: d('title') || '' }) : d('title'))),
+            h('div', { className: 'card-body d-flex flex-column' },
+              h('h3', { className: 'card-title producto-nombre' }, 'Producto de ejemplo'),
+              h('div', { className: 'tarjeta-producto-pie mt-auto' }, h('p', { className: 'producto-precio mb-0' }, h('span', { className: 'precio' }, '499 €'))))))),
+        titulo('En la ficha del producto'),
+        h('div', { className: 'ficha-marca' }, logo(26), h('span', { className: 'pildora' }, 'Nuevo')),
+        titulo('En el filtro «Fabricante» de las listas (en gris; en color al marcarlo)'),
+        h('div', { className: 'filtros-panel', style: { display: 'flex' } },
+          h('span', { className: 'btn btn-filtro' }, img ? h('img', { src: img, alt: d('title') }) : d('title')),
+          h('span', { className: 'btn btn-filtro', 'aria-pressed': 'true' }, img ? h('img', { src: img, alt: d('title') }) : d('title'))),
+        titulo('En «Sobre nosotros» (logos de las marcas)'),
+        img ? h('ul', { className: 'sobre-marcas', style: { '--cols-pc': 6, '--cols-tab': 4, '--cols-mov': 3 } }, h('li', { title: d('title') }, h('img', { src: img, alt: d('title') || '' }))) : null,
+        img ? null : h('p', { className: 'text-body-secondary mt-3' }, 'Sin imagen: en la web sale el nombre.'));
     },
   });
 
@@ -400,6 +500,10 @@
   CMS.registerPreviewTemplate('blog', Entrada);
   CMS.registerPreviewTemplate('paginas', Pagina);
   CMS.registerPreviewTemplate('productos', Producto);
+  CMS.registerPreviewTemplate('tipos', Catalogo);
+  CMS.registerPreviewTemplate('categorias', Catalogo);
+  CMS.registerPreviewTemplate('subcategorias', Catalogo);
+  CMS.registerPreviewTemplate('fabricantes', Fabricante);
   // Colecciones de ficheros: la plantilla se elige por el nombre del fichero
   CMS.registerPreviewTemplate('contacto', Contacto);
   CMS.registerPreviewTemplate('sobre_nosotros', Sobre);

@@ -4,8 +4,8 @@
   La ventana «Medios» de Decap solo enseña la carpeta general (/img/). Las fotos de fabricantes, tipos,
   categorías y subcategorías, productos y las fichas en PDF están en sus propias carpetas
   (media_folder de cada sección o campo en public/config.yml) y no se podían ver ni gestionar.
-  Al abrir «Medios» desde la cabecera se añaden pestañas: «General» es la de Decap, sin cambios; el resto
-  las pinta este fichero:
+  Al abrir «Medios» desde la cabecera se añaden pestañas, todas pintadas por este fichero («General», la
+  carpeta /img/ con sus archivos sueltos, también desde el 18-11-2026; la vista de Decap queda escondida):
   - cada archivo con su miniatura, nombre, tamaño y si está «En uso» (qué ficha lo usa, con enlace) o
     «Sin usar»; buscar (por nombre o por la ficha), filtrar (Todas, En uso, Sin usar) y paginar;
   - Subir (las fotos se reducen a 1600 px, como al importar; si el nombre ya existe, pregunta),
@@ -23,12 +23,12 @@ const POR_PAGINA = 48;
 const NOMBRES = { 'public/img/catalogo': 'Catálogo', 'public/img/fichas': 'Fichas PDF', 'public/img/productos': 'Productos', 'public/img/fabricantes': 'Fabricantes' };
 
 const css = `
-.xl-med-tabs{display:flex;gap:6px;flex-wrap:wrap;padding:0 0 10px;margin-bottom:10px;border-bottom:2px dashed var(--xl-pespunte,#e3e3df)}
-.xl-med-tabs button{border:1px solid var(--xl-borde,#dfdfe3);background:#fff;border-radius:16px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer;color:inherit}
+.xl-med-tabs{display:flex;gap:6px;flex-wrap:wrap;align-items:center;align-self:stretch;flex:none;width:100%;box-sizing:border-box;padding:0 0 10px;margin-bottom:10px;border-bottom:2px dashed var(--xl-pespunte,#e3e3df)}
+.xl-med-tabs button{flex:none;height:auto;line-height:1.4;border:1px solid var(--xl-borde,#dfdfe3);background:#fff;border-radius:16px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer;color:inherit}
 .xl-med-tabs button small{opacity:.7;margin-left:4px}
 .xl-med-tabs button.xl-on{background:var(--xl-acento,#3a69c7);border-color:var(--xl-acento,#3a69c7);color:#fff}
 .xl-med{font-size:13px;min-height:0;flex:1;overflow:auto;text-align:left;padding-right:4px}
-.xl-med-barra{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.xl-med-barra{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px;position:sticky;top:0;z-index:2;background:#fff;padding:6px 0}
 .xl-med-barra input[type=search]{flex:1;min-width:160px;height:34px;border:1px solid #c9ced6;border-radius:8px;padding:0 10px;font:inherit}
 .xl-med-barra select{height:34px;border:1px solid #c9ced6;border-radius:8px;padding:0 6px;font:inherit;background:#fff}
 .xl-med-barra button,.xl-med-det button,.xl-med-conf button{height:34px;padding:0 12px;border:1px solid #c9ced6;border-radius:8px;background:#fff;cursor:pointer;font:inherit;font-size:13px;color:inherit}
@@ -83,9 +83,10 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
         }
       })(col.fields);
     }
-    // Ruta pública (/img/…): la de la sección o el campo; si no, la carpeta sin «public»
+    // Ruta pública (/img/…): la carpeta sin «public»
     for (const m of mapa.values()) m.publica = `/${m.carpeta.replace(/^public\//, '')}`;
-    return [...mapa.values()];
+    // «General» (la carpeta de medios de todo el panel): solo sus archivos sueltos, no las subcarpetas
+    return [{ carpeta: general, publica: `/${general.replace(/^public\//, '')}`, nombre: 'General' }, ...mapa.values()];
   }
 
   // Qué ficha usa cada archivo: se buscan las rutas /img/… en el texto de todas las fichas
@@ -119,6 +120,11 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
       const x = ficheros.find(y => y.f.file === l.ruta);
       anotar(l.raw, { titulo: x.f.label || x.f.name, seccion: x.c.label, href: `#/collections/${x.c.name}/entries/${x.f.name}` });
     }
+    // Los que usa el propio código de la web (iconos, imagen al compartir por defecto…), según el último build
+    try {
+      const m = await (await fetch('/admin/medios.json', { cache: 'no-store' })).json();
+      for (const r of m._codigo || []) anotar(r, { titulo: 'La propia web (iconos, imagen al compartir…)', seccion: 'código', href: '' });
+    } catch { /* sin lista del build */ }
     return enlaces;
   }
 
@@ -129,17 +135,20 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
       if (!ventana) { desdeCabecera = false; estado = null; }
       return;
     }
-    if (!desdeCabecera || ventana.querySelector('.xl-med-tabs')) return;
+    if (ventana.querySelector('.xl-med-tabs')) { if (estado?.ventana === ventana && estado.carpeta !== null) ocultarDecap(); return; }
+    if (!desdeCabecera) return;
     const tabs = document.createElement('div');
     tabs.className = 'xl-med-tabs';
     tabs.setAttribute('role', 'tablist');
     tabs.innerHTML = '<span class="xl-gris">Cargando carpetas…</span>';
     ventana.insertBefore(tabs, ventana.firstChild);
-    estado = { ventana, tabs, carpeta: '', cache: new Map() };
+    ventana.style.display = 'flex';
+    ventana.style.flexDirection = 'column';
+    estado = { ventana, tabs, carpeta: null, cache: new Map() };
     carpetasDe().then(lista => {
       if (estado?.tabs !== tabs) return;
       estado.lista = lista;
-      pintarTabs();
+      elegir(lista[0].carpeta);
       // Número de archivos de cada carpeta
       cargarLibrerias().then(L => Promise.all(lista.map(async c => {
         try { c.n = (await L.almacen.listarDetalle(c.carpeta)).length; } catch { c.n = null; }
@@ -148,27 +157,30 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
   }
   function pintarTabs() {
     const { tabs, lista, carpeta } = estado;
-    tabs.innerHTML = [{ carpeta: '', nombre: 'General', n: undefined }, ...lista].map(c => `<button type="button" role="tab" aria-selected="${c.carpeta === carpeta}" class="${c.carpeta === carpeta ? 'xl-on' : ''}" data-c="${esc(c.carpeta)}">${esc(c.nombre)}${typeof c.n === 'number' ? `<small>${c.n}</small>` : ''}</button>`).join('');
+    tabs.innerHTML = lista.map(c => `<button type="button" role="tab" aria-selected="${c.carpeta === carpeta}" class="${c.carpeta === carpeta ? 'xl-on' : ''}" data-c="${esc(c.carpeta)}">${esc(c.nombre)}${typeof c.n === 'number' ? `<small>${c.n}</small>` : ''}</button>`).join('');
     tabs.querySelectorAll('[data-c]').forEach(b => b.addEventListener('click', () => elegir(b.dataset.c)));
   }
-  // Muestra la carpeta elegida: «General» es la propia ventana de Decap
+  // Muestra la carpeta elegida (todas con esta vista; la de Decap queda escondida)
   function elegir(carpeta) {
     estado.carpeta = carpeta;
     pintarTabs();
     const { ventana } = estado;
-    const top = ventana.querySelector('[class*="-LibraryTop"]');
-    const filas = top ? [...top.querySelectorAll(':scope > [class*="-RowContainer"]')] : [];
-    const decap = [filas[1], filas[0]?.querySelector('[class*="-ButtonsContainer"]'), ventana.querySelector('[class*="-CardGridContainer"]')].filter(Boolean);
     ventana.querySelector('.xl-med')?.remove();
-    decap.forEach(el => el.classList.toggle('xl-oculto-med', Boolean(carpeta)));
-    if (!carpeta) return;
+    ocultarDecap();
     const info = estado.lista.find(c => c.carpeta === carpeta);
     const panel = document.createElement('div');
     panel.className = 'xl-med';
     ventana.appendChild(panel);
-    ventana.style.display = 'flex';
-    ventana.style.flexDirection = 'column';
     montarCarpeta(panel, info).catch(e => { panel.innerHTML = `<div class="xl-med-msj xl-mal">No se ha podido leer la carpeta: ${esc(e.message || e)}</div>`; });
+  }
+
+  // Lo de Decap (buscar, botones y fotos) queda escondido; Decap puede pintarlo más tarde, por eso se repite
+  function ocultarDecap() {
+    const { ventana } = estado;
+    const top = ventana.querySelector('[class*="-LibraryTop"]');
+    const filas = top ? [...top.querySelectorAll(':scope > [class*="-RowContainer"]')] : [];
+    [filas[1], filas[0]?.querySelector('[class*="-ButtonsContainer"]'), ventana.querySelector('[class*="-CardGridContainer"]')]
+      .filter(el => el && !el.classList.contains('xl-oculto-med')).forEach(el => el.classList.add('xl-oculto-med'));
   }
 
   async function montarCarpeta(panel, info) {
@@ -215,7 +227,7 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
             <span class="xl-med-p ${f.usos.length ? 'xl-uso' : 'xl-libre'}">${f.usos.length ? 'En uso' : 'Sin usar'}</span> <small class="xl-gris">${tam(f.bytes)}</small>
           </div>`).join('') || '<p class="xl-gris">No hay archivos. «Subir…» los guarda en esta carpeta.</p>'}</div>
         ${det ? `<div class="xl-med-det"><b>${esc(det.nombre)}</b> · ${esc(tam(det.bytes))} · <code>${esc(det.ruta)}</code><br>
-          ${det.usos.length ? `Lo usa: ${det.usos.map(u => `<a href="${esc(u.href)}" data-ir>${esc(u.titulo)}</a> <span class="xl-gris">(${esc(u.seccion)})</span>`).join(', ')}` : 'No lo usa ninguna ficha publicada: se puede eliminar.'}
+          ${det.usos.length ? `Lo usa: ${det.usos.map(u => `${u.href ? `<a href="${esc(u.href)}" data-ir>${esc(u.titulo)}</a>` : esc(u.titulo)} <span class="xl-gris">(${esc(u.seccion)})</span>`).join(', ')}` : 'No lo usa ninguna ficha publicada: se puede eliminar.'}
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><button type="button" data-uno-bajar>Descargar</button><button type="button" data-reemplazar>Reemplazar…</button><button type="button" data-copiar>Copiar ruta</button><input type="file" hidden data-fichero-uno></div></div>` : ''}
         <div class="xl-med-pie"><span>Mostrando ${l.length ? ini + 1 : 0}–${Math.min(ini + POR_PAGINA, l.length)} de ${l.length} · ${v.elegidos.size} elegidos${l.length ? ` · <a href="#" data-todos>${l.every(f => v.elegidos.has(f.nombre)) ? 'Quitar la selección' : 'Elegir todos los de la lista'}</a>` : ''}</span><span>${paginas(v.pag, total)}</span></div>`;
       enlazar(l);
@@ -295,6 +307,10 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
           if (/\.(jpe?g|png|webp)$/i.test(x.nombre)) bytes = await reducirImagen(bytes, x.nombre);
           escribir.push({ ruta: repo(x.nombre), bytes });
         }
+        // Peso máximo de cada archivo (Ajustes del sitio → Panel; por defecto 8 MB)
+        const maxMb = Number(globalThis.XL_PANEL?.peso_maximo_mb) || 8;
+        const grandes = escribir.filter(e => e.bytes.length > maxMb * 1000 * 1000);
+        if (grandes.length) throw new Error(`pesan más de ${maxMb} MB: ${grandes.map(e => e.ruta.split('/').pop()).join(', ')}. Redúcelos antes de subirlos`);
         const res = await L.almacen.guardar({ escribir, mensaje: `Medios: ${reemplazar ? `reemplazar ${reemplazar}` : `subir ${escribir.length} ${escribir.length === 1 ? 'archivo' : 'archivos'}`} en ${info.publica}` }, t => trabajando(t));
         for (const e of escribir) {
           const nombre = e.ruta.split('/').pop();

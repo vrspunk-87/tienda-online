@@ -1,0 +1,424 @@
+# Ayuda de «Ajustes del sitio»: la burbuja ⓘ de cada campo (aprobado por Víctor el 18-11-2026).
+#
+# La pinta public/admin/excel/panel.js («Burbujas de ayuda»). Una entrada por campo, con la ruta de
+# sus nombres en public/config.yml (p. ej. «franja.color», «menu.hijos.texto»). Apartados (solo los
+# que aporten algo; salen en este orden):
+#   para      Para qué sirve
+#   implica   Qué implica
+#   uso       Cómo usarlo
+#   cuando    Cuándo se nota
+#   donde     Dónde se ve: texto y, si se quiere, «enlace» con la dirección de la web
+#   vacio     Si lo dejas vacío
+#   ejemplo   Valor recomendado o ejemplo
+#   relacion  Relación con otros campos
+#   cuidado   Cuidado (sale con ⚠)
+#   mas       Para saber más: documento de docs/ (se rellenará con la documentación final)
+# Si se añade un campo a Ajustes, añade aquí su ayuda (el panel avisa en la consola de los que no tienen).
+
+_cuando_publicar: &publicar "Al publicar: la web se actualiza en 1-2 minutos."
+_cuando_panel: &panel_despliegue "En el panel, tras el siguiente despliegue (1-2 minutos después de publicar). Recarga el panel para verlo."
+
+nombre:
+  para: "Nombre de la tienda en toda la web."
+  donde: { texto: "Cabecera, pie, título de cada página en el navegador y en Google, correos de la solicitud y textos legales ({nombre_comercial})." }
+  cuando: *publicar
+  ejemplo: "Máquinas de Coser Zafra"
+  cuidado: "Cambiarlo cambia cómo aparece la tienda en Google; hazlo solo si cambia el nombre comercial."
+nombre_corto:
+  para: "Nombre que se ve bajo el icono cuando alguien añade la web a la pantalla de inicio del móvil."
+  implica: "Si es largo, el móvil lo corta. No cambia el nombre de la web."
+  uso: "Pon unas 12-15 letras como mucho."
+  vacio: "Se usa el nombre de la web."
+  ejemplo: "Coser Zafra"
+descripcion:
+  para: "Presentación de la tienda en una o dos frases."
+  donde: { texto: "Google (resultado de la portada), al compartir la portada por WhatsApp o redes, el RSS y el pie." }
+  uso: "Di qué vendéis y dónde, con palabras que buscaría la gente. Unos 150 caracteres."
+  ejemplo: "Máquinas de coser y accesorios en Zafra. Consulta el catálogo y pide presupuesto sin compromiso."
+  cuando: *publicar
+localidad:
+  para: "Pueblo o ciudad de la tienda."
+  donde: { texto: "Pie («© … · Zafra»), datos para Google y textos donde se presenta la tienda." }
+  relacion: "La dirección completa está en «Contacto y horario»; si allí hay localidad, manda esa."
+provincia:
+  para: "Provincia de la tienda, para los datos que lee Google."
+  relacion: "La de «Contacto y horario», si está, manda."
+logo:
+  para: "Logo de la cabecera de la web."
+  implica: "Se muestra a 40 px de alto: con detalles finos no se lee."
+  uso: "SVG o PNG con fondo transparente, sin márgenes alrededor."
+  vacio: "Sale el nombre de la tienda en la letra del logo."
+  donde: { texto: "Cabecera de todas las páginas.", enlace: "/" }
+  cuando: *publicar
+imagen_compartir:
+  para: "Imagen que sale al compartir una página que no tiene foto propia (WhatsApp, Facebook…)."
+  uso: "1200×630 px, JPG. Que se entienda en pequeño."
+  vacio: "Se usa /img/compartir.jpg."
+  relacion: "Las fichas, categorías y entradas del blog usan su propia foto si la tienen."
+  cuidado: "Medios no deja borrar esta imagen mientras esté elegida aquí."
+favicon:
+  para: "Icono de la pestaña del navegador y de la pantalla de inicio del móvil."
+  implica: "El build genera solo los tamaños (32, 180, 192 y 512 px)."
+  uso: "PNG cuadrado de al menos 512×512 px, sin texto pequeño, con fondo transparente o de color."
+  vacio: "Se usan los iconos de public/img/iconos/."
+  cuando: "Al publicar; el navegador puede tardar en cambiarlo (guarda el icono): recarga con Ctrl+F5."
+apariencia:
+  para: "Diseño de la web y colores de la marca."
+  cuidado: "Afecta a toda la web. Prueba los cambios en un entorno de pruebas (dev-victor) antes de llevarlos a producción."
+apariencia.tema:
+  para: "Diseño base de la web."
+  implica: "«Tienda» es el diseño propio. Otros temas cambian letras, botones y espacios."
+  ejemplo: "Tienda"
+apariencia.marca:
+  para: "Los tres colores con los que se pinta la web."
+  relacion: "El panel también los usa (si en Panel está marcado «Usar los colores y letras de la web»)."
+  vacio: "Se usan los de por defecto."
+apariencia.marca.texto:
+  para: "Color del texto y de los fondos oscuros (menú oscuro, pie)."
+  uso: "Un color muy oscuro para que se lea bien."
+  ejemplo: "#1f2933"
+apariencia.marca.fondo:
+  para: "Color de fondo de las páginas."
+  ejemplo: "#ffffff"
+  cuidado: "El build avisa si el texto no se lee bien sobre este fondo."
+apariencia.marca.acento:
+  para: "Color de los botones, enlaces destacados, pespuntes y detalles de la marca."
+  ejemplo: "#c1121f (el rojo del logo)"
+  donde: { texto: "Botones «Añadir a la solicitud», precios, títulos de la marca, franja «Color de la marca» y el panel." }
+apariencia.color_barra_movil:
+  para: "Color de la barra del navegador en algunos móviles (Android)."
+  ejemplo: "#ffffff"
+apariencia.css_adicional:
+  para: "Retoques de diseño con CSS."
+  implica: "Se añade al final de los estilos y manda sobre ellos."
+  cuidado: "Solo si sabes CSS. Un error puede descolocar toda la web. Si algo se rompe, vacía este campo y publica."
+franja:
+  para: "Una línea de aviso encima del menú en todas las páginas."
+  uso: "Marca «Mostrar», escribe una frase corta y, si quieres, las fechas y un enlace."
+  cuando: "Al publicar. Se quita sola al día siguiente de «Hasta» con la reconstrucción diaria de la web (de madrugada)."
+  ejemplo: "Cerrado por vacaciones del 24 al 26 de diciembre"
+  relacion: "Para cerrar el horario de «Abierto ahora», usa también el aviso de cierre de «Contacto y horario»."
+franja.mostrar:
+  para: "Enciende o apaga la franja sin perder el texto."
+franja.texto:
+  para: "La frase de la franja."
+  uso: "Una sola línea; en el móvil, cuanto más corta mejor."
+  vacio: "No sale la franja aunque esté marcada."
+franja.enlace:
+  para: "Adónde lleva el enlace de la franja."
+  uso: "Dirección de la web (/ofertas/, /paginas/contacto-y-horario/) o completa (https://…)."
+  vacio: "La franja sale sin enlace."
+franja.enlace_texto:
+  para: "Texto del enlace de la franja."
+  ejemplo: "Ver ofertas"
+  vacio: "«Ver más»."
+franja.desde:
+  para: "Primer día en que sale la franja."
+  vacio: "Sale desde ya."
+  cuidado: "Se aplica con la publicación o con la reconstrucción diaria: si publicas antes, sale ese día de madrugada."
+franja.hasta:
+  para: "Último día en que sale la franja."
+  vacio: "Sale hasta que la desmarques."
+franja.color:
+  para: "Color de la franja."
+  uso: "«Marca» para promociones; «Aviso» (ámbar) para cierres; «Neutro» para avisos discretos."
+navbar:
+  para: "Cómo es el menú de arriba."
+  donde: { texto: "Cabecera de todas las páginas.", enlace: "/" }
+navbar.diseno:
+  para: "Distribución del menú (logo y opciones)."
+  cuidado: "Cambia la cabecera de toda la web: pruébalo antes en un entorno de pruebas."
+navbar.color:
+  para: "Color de fondo del menú."
+navbar.fijo:
+  para: "Si el menú se queda arriba al bajar por la página."
+  implica: "Más cómodo para navegar; ocupa algo de pantalla en el móvil."
+navbar.boton:
+  para: "Un botón destacado al final del menú."
+  vacio: "No sale."
+  ejemplo: "Contacto → /paginas/contacto-y-horario/"
+navbar.boton.texto:
+  para: "Texto del botón destacado."
+navbar.boton.enlace:
+  para: "Adónde lleva el botón destacado."
+navbar.buscador:
+  para: "Caja de búsqueda en el menú (en el móvil, «Buscar» dentro del menú)."
+  relacion: "La página /buscar/ existe siempre; esto solo quita la caja del menú."
+navbar.barra_catalogo:
+  para: "Segunda fila del menú con «Todo el catálogo», cada tipo de producto con su panel y «Ofertas»."
+  relacion: "Sale si en «Menú superior: opciones» hay una opción con «Desplegable del catálogo»."
+navbar.barra_catalogo.color:
+  para: "Color de la barra del catálogo."
+  implica: "El texto se pone blanco u oscuro solo; el build avisa si no se lee."
+navbar.barra_catalogo.color_personalizado:
+  para: "Color de la barra cuando en «Color» eliges «Personalizado»."
+menu:
+  para: "Las opciones del menú de arriba, en orden."
+  uso: "Arrastra para ordenar. Cada opción lleva a una página o a una dirección; con subopciones es un desplegable."
+  relacion: "El pie usa estas mismas opciones (sin el catálogo) en «La tienda»."
+  cuidado: "Una dirección mal escrita deja un enlace roto; el build lo avisa."
+menu.texto:
+  para: "Lo que se lee en el menú."
+menu.pagina:
+  para: "Página de «Páginas» a la que lleva la opción."
+  relacion: "Si rellenas también la dirección, manda la dirección."
+menu.enlace:
+  para: "Dirección a la que lleva la opción, si no es una página de «Páginas»."
+  ejemplo: "/blog/, /paginas/sobre-nosotros/, https://…"
+menu.tambien:
+  para: "Otras direcciones en las que esta opción sale resaltada."
+  ejemplo: "/blog para que «Blog» se resalte también dentro de cada entrada."
+menu.catalogo:
+  para: "Convierte esta opción en la barra del catálogo (segunda fila en el ordenador, caja arriba en el móvil)."
+  uso: "Márcalo solo en la opción «Catálogo»."
+menu.hijos:
+  para: "Subopciones: la opción se convierte en un desplegable."
+  uso: "Escribe --- como texto para poner una línea separadora."
+menu.hijos.texto:
+  para: "Lo que se lee en el desplegable."
+menu.hijos.pagina:
+  para: "Página a la que lleva la subopción."
+menu.hijos.enlace:
+  para: "Dirección a la que lleva la subopción (manda sobre la página)."
+menu.hijos.tambien:
+  para: "Otras direcciones en las que esta subopción sale resaltada."
+catalogo_orden:
+  para: "Orden de los tipos de producto, categorías y subcategorías en el menú y en toda la web."
+  uso: "Arrastra para ordenar. Las que no estén aquí salen al final, por orden alfabético (el build avisa)."
+  donde: { texto: "Barra y desplegables del catálogo, portada, /catalogo/, pie, tarjetas y desplegables del panel.", enlace: "/catalogo/" }
+catalogo_orden.categoria:
+  para: "Tipo de producto en esta posición."
+catalogo_orden.hijos:
+  para: "Categorías de ese tipo, en orden."
+catalogo_orden.hijos.categoria:
+  para: "Categoría en esta posición."
+catalogo_orden.hijos.hijos:
+  para: "Subcategorías de esa categoría, en orden."
+catalogo_orden.hijos.hijos.categoria:
+  para: "Subcategoría en esta posición."
+portada:
+  para: "Textos y bloques de la página de inicio."
+  donde: { texto: "Página de inicio.", enlace: "/" }
+portada.hero:
+  para: "El bloque de arriba de la portada: textos, ventajas, tipos de producto y último artículo."
+portada.hero.antetitulo:
+  para: "Texto pequeño encima del titular."
+  ejemplo: "Desde 1985 en Zafra"
+portada.hero.titulo:
+  para: "Titular principal de la web."
+  implica: "Es también el título principal para Google."
+  uso: "Una o dos frases cortas."
+portada.hero.texto:
+  para: "Párrafo bajo el titular."
+portada.hero.ventajas:
+  para: "Frases cortas con icono bajo el texto."
+  uso: "Mejor 3 o 4."
+  ejemplo: "Presupuesto sin compromiso · Taller propio · Garantía"
+  vacio: "No sale nada."
+portada.hero.ventajas.texto:
+  para: "Frase de la ventaja."
+portada.hero.ventajas.icono:
+  para: "Icono que la acompaña."
+portada.hero.ultimo_articulo:
+  para: "Tarjeta con la entrada más reciente del blog bajo el texto."
+  implica: "Se actualiza sola al publicar entradas."
+_bloque_mostrar: &bloque_mostrar
+  para: "Enciende o apaga este bloque."
+  implica: "Apagado, no sale (ni ocupa espacio)."
+_bloque_productos: &bloque_productos
+  para: "Cuántos productos se ven antes de pasar de página."
+  uso: "De 12 en 12, para que las filas queden completas (4 por fila en el ordenador, 3 en la tableta, 2 en el móvil)."
+  ejemplo: "12"
+_bloque_blog: &bloque_blog
+  para: "Cuántas entradas del blog se ven (las más recientes)."
+  uso: "De 3 en 3 (3 por fila en el ordenador)."
+  ejemplo: "3"
+portada.catalogo:
+  para: "Productos al azar del catálogo con filtros (cambian en cada visita)."
+portada.catalogo.mostrar: *bloque_mostrar
+portada.catalogo.por_pagina: *bloque_productos
+portada.ofertas:
+  para: "Ofertas vigentes en la portada."
+  implica: "Sin ofertas no sale."
+portada.ofertas.mostrar: *bloque_mostrar
+portada.ofertas.por_pagina: *bloque_productos
+portada.blog:
+  para: "Últimas entradas del blog en la portada."
+  implica: "Sin entradas no sale."
+portada.blog.mostrar: *bloque_mostrar
+portada.blog.por_pagina: *bloque_blog
+pagina_catalogo:
+  para: "Textos de /catalogo/ y bloques de /catalogo/ y de cada tipo, categoría y subcategoría."
+  donde: { texto: "Catálogo y páginas de cada tipo, categoría y subcategoría.", enlace: "/catalogo/" }
+pagina_catalogo.descripcion:
+  para: "Una o dos frases bajo el título de /catalogo/."
+  implica: "Es también la descripción para Google."
+pagina_catalogo.texto:
+  para: "Introducción de /catalogo/ en el recuadro con tijeras."
+  implica: "La primera frase sale destacada."
+  vacio: "No sale el recuadro."
+pagina_catalogo.productos:
+  para: "Listado «Nuestros productos» con filtros."
+  implica: "En /catalogo/ salen todos al azar; en un tipo o categoría, los suyos y los de lo que cuelga de él."
+pagina_catalogo.productos.mostrar: *bloque_mostrar
+pagina_catalogo.productos.por_pagina: *bloque_productos
+pagina_catalogo.ofertas:
+  para: "Bloque «Productos en oferta» (de esa selección)."
+  implica: "Sin ofertas no sale."
+pagina_catalogo.ofertas.mostrar: *bloque_mostrar
+pagina_catalogo.ofertas.por_pagina: *bloque_productos
+pagina_catalogo.blog:
+  para: "Últimas entradas del blog al final de las páginas del catálogo."
+pagina_catalogo.blog.mostrar: *bloque_mostrar
+pagina_catalogo.blog.por_pagina: *bloque_blog
+pagina_ofertas:
+  para: "Textos y bloques de /ofertas/ (y de las ofertas de cada tipo, categoría y subcategoría)."
+  donde: { texto: "Página de ofertas (solo existe si hay ofertas).", enlace: "/ofertas/" }
+pagina_ofertas.descripcion:
+  para: "Una o dos frases bajo el título de /ofertas/ y en Google."
+pagina_ofertas.texto:
+  para: "Introducción de /ofertas/ en el recuadro con tijeras."
+pagina_ofertas.productos:
+  para: "Listado de todas las ofertas vigentes."
+pagina_ofertas.productos.por_pagina: *bloque_productos
+pagina_ofertas.blog:
+  para: "Últimas entradas del blog al final de /ofertas/."
+pagina_ofertas.blog.mostrar: *bloque_mostrar
+pagina_ofertas.blog.por_pagina: *bloque_blog
+pagina_blog:
+  para: "Textos y forma del listado del blog."
+  donde: { texto: "Blog y páginas de cada tema.", enlace: "/blog/" }
+pagina_blog.titulo:
+  para: "Título de /blog/."
+  ejemplo: "Blog"
+pagina_blog.descripcion:
+  para: "Frase bajo el título y en Google."
+pagina_blog.texto:
+  para: "Introducción en el recuadro con tijeras (solo en la primera página)."
+  vacio: "No sale el recuadro."
+pagina_blog.destacada:
+  para: "La entrada más reciente sale en grande encima de las demás."
+pagina_blog.por_pagina:
+  para: "Entradas por página del blog."
+  implica: "Si hay más, se crean /blog/pagina/2/, 3…"
+  uso: "De 3 en 3."
+catalogo_vacias:
+  para: "Qué hacer con los tipos, categorías y secciones (ofertas, solicitud, blog) que no tienen contenido."
+  implica: "Con «Ocultar», desaparecen de menús, portada, pie, tarjetas y buscador, y no se publica su página. Vuelven a salir solos cuando tienen contenido."
+  ejemplo: "Ocultarlos (mientras se carga el catálogo)"
+insignias_productos:
+  para: "Las bolitas con el número de productos u ofertas junto a cada tipo, categoría y subcategoría."
+  donde: { texto: "Barra del catálogo, menú del móvil, tarjetas de categoría, pie y portada." }
+  relacion: "No afecta a los números de los filtros ni de las pestañas de la ficha."
+precios:
+  para: "Textos que acompañan a los precios en toda la web."
+precios.texto:
+  para: "Aviso junto a los precios."
+  donde: { texto: "Pie, páginas del catálogo y resumen de la solicitud." }
+  vacio: "«Precios orientativos, IVA incluido»."
+  cuidado: "Es un texto con consecuencias legales: si cambias el IVA o lo orientativo, revísalo con la asesoría."
+precios.sin_precio:
+  para: "Lo que sale en lugar del precio en los productos que no lo tienen."
+  vacio: "«Precio a consultar»."
+  ejemplo: "Consúltanos el precio"
+relacionados:
+  para: "Cuántos productos de la misma categoría salen en «Más en…» al final de cada ficha."
+  ejemplo: "4"
+  vacio: "4. Con 0 no sale el bloque."
+novedad_dias:
+  para: "Días que un producto lleva la etiqueta «Novedad» desde su fecha de alta."
+  donde: { texto: "Sobre la foto de la tarjeta y en la galería de la ficha (si no está en oferta ni es de segunda mano)." }
+  implica: "La fecha es la de alta del producto: si cargaste muchos el mismo día, todos serán «Novedad» a la vez."
+  vacio: "0: sin etiqueta."
+  ejemplo: "30"
+  cuando: "Al publicar y cada día con la reconstrucción diaria (la etiqueta se quita sola)."
+legales:
+  para: "Enlaces legales de la última línea del pie (aviso legal, privacidad, cookies…)."
+  cuidado: "Son obligatorios por ley; no quites ninguno sin consultarlo."
+legales.texto:
+  para: "Texto del enlace."
+legales.pagina:
+  para: "Página legal a la que lleva."
+legales.enlace:
+  para: "Dirección, si no es una página de «Páginas» (manda sobre la página)."
+redes:
+  para: "Redes sociales del pie."
+  relacion: "El correo, el teléfono y el WhatsApp se ponen en «Contacto y horario»."
+  vacio: "Lo que esté vacío no sale."
+redes.facebook:
+  para: "Página de Facebook de la tienda."
+  uso: "Dirección completa, empezando por https://"
+redes.instagram:
+  para: "Perfil de Instagram de la tienda."
+  uso: "Dirección completa, empezando por https://"
+redes.rss:
+  para: "Icono del RSS del blog en el pie (para quien sigue el blog con un lector de noticias)."
+pie_texto:
+  para: "Texto de la última línea del pie, antes del texto de los precios."
+  uso: "{año} y {nombre} se rellenan solos."
+  vacio: "«© año nombre · localidad»."
+  ejemplo: "© {año} {nombre} · Zafra (Badajoz)"
+panel:
+  para: "Ajustes de cómo funciona el panel para quien edita."
+  implica: "No cambian la web."
+  cuando: *panel_despliegue
+panel.administradores:
+  para: "Usuarios de GitHub que ven el engranaje de «Ajustes del sitio» y pueden abrir esta ficha."
+  uso: "Uno por línea, sin @."
+  vacio: "Solo vrspunk-87."
+  cuidado: "Es para que no se toque sin querer, no una protección: quien tiene permiso en el repositorio puede cambiar cualquier fichero. No te quites a ti mismo."
+panel.por_pagina:
+  para: "Cuántos productos se ven por página en las tablas del panel al entrar."
+  relacion: "Se puede cambiar en cada tabla; esto es solo el valor inicial."
+panel.vista_inicial:
+  para: "Cómo se abren Productos, Categorías y Subcategorías."
+  implica: "«Agrupada» enseña los grupos plegados; «Tabla», todo en una tabla."
+panel.avisos:
+  para: "Qué avisos salen en la columna «Avisos» y en los números ⚠."
+  uso: "Desmarca los que no te interesen (p. ej. «Sin foto» mientras se buscan las fotos)."
+  vacio: "Si no marcas ninguno, no sale ningún aviso."
+panel.avisos_vuelven_dias:
+  para: "Cuándo vuelve a salir una «Oferta terminada» marcada como «Entendido»."
+  vacio: "0: no vuelve a salir (hasta que cambien las fechas de la oferta)."
+  relacion: "«Entendido» se guarda en cada navegador: en otro equipo sale de nuevo."
+panel.peso_maximo_mb:
+  para: "Lo más que puede pesar cada foto o PDF al subirlo."
+  implica: "Más grande = despliegues más lentos y más espacio en el repositorio. Las fotos se reducen solas a 1600 px."
+  ejemplo: "8"
+panel.estetica_web:
+  para: "El panel con los colores y letras de la web."
+  implica: "Desmarcado, el panel se ve como Decap original (útil si algo se ve mal tras actualizar Decap)."
+imagenes:
+  para: "Cómo se comprimen las fotos subidas para que el repositorio no crezca demasiado."
+  relacion: "El panel ya reduce a 1600 px las fotos que importa o sube por Medios."
+imagenes.ancho_maximo:
+  para: "Ancho máximo de las fotos."
+  ejemplo: "1600"
+imagenes.calidad:
+  para: "Calidad de compresión (1-100)."
+  ejemplo: "82"
+  implica: "Menos = pesa menos pero se ve peor."
+imagenes.peso_maximo_kb:
+  para: "Solo se comprimen las fotos que pesan más que esto."
+  ejemplo: "400"
+avanzado:
+  para: "Ajustes técnicos de la web."
+  cuidado: "Cámbialos solo si sabes lo que haces."
+avanzado.url:
+  para: "Dirección pública de la web."
+  implica: "Se usa en los enlaces para Google, al compartir, en el sitemap y en «Ir a la web pública»."
+  ejemplo: "https://www.maquinasdecoserzafra.es"
+  cuidado: "Si cambia, hay que cambiarla también en config.yml (base_url) y en la app OAuth de GitHub, o el login del panel deja de funcionar."
+avanzado.indexable:
+  para: "Deja que Google guarde la web y la muestre en sus resultados."
+  implica: "Solo tiene efecto en producción. Los entornos de pruebas nunca se indexan."
+  cuidado: "Márcalo solo en la salida real (docs/PLAN.md, fase 8). Una vez indexada, quitarla de Google tarda semanas."
+avanzado.avisos_github:
+  para: "Usuarios de GitHub a los que avisa la comprobación diaria si la web falla."
+  uso: "Usuarios sin @, separados por comas."
+  relacion: "La comprobación diaria es un flujo de GitHub Actions (.github/workflows/comprobacion-diaria.yml)."
+zona_horaria:
+  para: "Zona horaria de la tienda."
+  implica: "Decide cuándo empieza y acaba cada oferta, «Abierto ahora» del horario, la fecha de las solicitudes y las fechas del panel."
+  ejemplo: "Península y Baleares (Madrid)"
+  cuidado: "Cámbiala solo si la tienda cambia de zona."

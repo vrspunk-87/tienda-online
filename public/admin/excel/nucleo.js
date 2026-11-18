@@ -186,7 +186,7 @@ function perfilCatalogo(nivel, hoja, uno, varios) {
 }
 export const coleccionesConExcel = () => Object.keys(PERFILES);
 // Fecha (AAAA-MM-DD) en hora de Madrid
-const fechaMadrid = v => { const t = Date.parse(v); return Number.isNaN(t) ? new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' }) : new Date(t).toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' }); };
+const fechaMadrid = v => { const t = Date.parse(v); return Number.isNaN(t) ? new Date().toLocaleDateString('sv-SE', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid' }) : new Date(t).toLocaleDateString('sv-SE', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid' }); };
 // Los accesorios: los del tipo «Accesorios» o los que tienen «Compatible con»
 export const esAccesorio = (a, ctx) => ctx?.catalogo?.tipoDe(a.datos?.categoria) === 'accesorios' || lista(a.datos?.compatible_con).length > 0;
 // Hojas de datos del Excel de una colección
@@ -333,7 +333,7 @@ function aIsoMadrid(t) {
   const mi = Number(m[0].includes('/') ? m[5] || 0 : 0);
   const guess = Date.UTC(+y, +mo - 1, +d, h, mi);
   // Diferencia de Madrid con UTC ese día (1 o 2 horas)
-  const local = new Date(new Date(guess).toLocaleString('en-US', { timeZone: 'Europe/Madrid' }));
+  const local = new Date(new Date(guess).toLocaleString('en-US', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid' }));
   const utc = new Date(new Date(guess).toLocaleString('en-US', { timeZone: 'UTC' }));
   return new Date(guess - (local - utc)).toISOString();
 }

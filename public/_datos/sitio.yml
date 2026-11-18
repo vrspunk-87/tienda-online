@@ -210,3 +210,28 @@ avanzado:
   indexable: false
   avisos_github:
     - "@vrspunk-87"
+precios:
+  texto: Precios orientativos, IVA incluido
+  sin_precio: Precio a consultar
+relacionados: 4
+novedad_dias: 0
+panel:
+  administradores:
+    - vrspunk-87
+  por_pagina: "12"
+  vista_inicial: grupos
+  avisos:
+    - sin_foto
+    - sin_precio
+    - oferta
+    - oferta_terminada
+    - cabezal
+    - segunda_mano
+    - clasificacion
+    - fabricante
+    - compatible
+    - referencia
+  avisos_vuelven_dias: 0
+  peso_maximo_mb: 8
+  estetica_web: true
+zona_horaria: Europe/Madrid

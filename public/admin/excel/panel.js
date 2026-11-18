@@ -104,9 +104,9 @@ const svg = {
   flecha: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
 };
 const ico = d => `<svg class="xl-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
-const hoy = () => new Date().toLocaleDateString('es-ES', { timeZone: 'Europe/Madrid' }).split('/').map(x => x.padStart(2, '0')).join('-');
-const hoyIso = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' });
-const ahora = () => new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid', dateStyle: 'short', timeStyle: 'short' });
+const hoy = () => new Date().toLocaleDateString('es-ES', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid' }).split('/').map(x => x.padStart(2, '0')).join('-');
+const hoyIso = () => new Date().toLocaleDateString('sv-SE', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid' });
+const ahora = () => new Date().toLocaleString('es-ES', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid', dateStyle: 'short', timeStyle: 'short' });
 function descargar(bytes, nombre, tipo) {
   const url = URL.createObjectURL(new Blob([bytes], { type: tipo }));
   const a = document.createElement('a');
@@ -808,7 +808,12 @@ function usuarioPanel() {
   return null;
 }
 const esLocal = () => ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
-const esAdministrador = () => esLocal() || ADMINISTRADORES.includes(usuarioPanel());
+// La lista de Ajustes del sitio → Panel → «Quién ve Ajustes del sitio» manda (del último despliegue)
+const administradores = () => {
+  const l = globalThis.XL_PANEL?.administradores;
+  return (Array.isArray(l) && l.length ? l : ADMINISTRADORES).map(x => String(x).trim().replace(/^@/, '').toLowerCase()).filter(Boolean);
+};
+const esAdministrador = () => esLocal() || administradores().includes(usuarioPanel());
 
 /* ---------- Colecciones de una sola ficha: abren la ficha directamente ----------
    Solicitud de presupuesto, Contacto y horario y Sobre nosotros. Al pulsarlas en «Colecciones» se abre su
@@ -838,6 +843,9 @@ function cabecera() {
           plural: new Map(cols.filter(c => c.folder && c.create && !c.hide).map(c => [String(c.label_singular || c.label), String(c.label)])),
           editar: cols.filter(c => c.files && !c.hide).flatMap(c => c.files.map(f => ({ texto: f.label || f.name, href: `#/collections/${c.name}/entries/${f.name}` }))),
           ajustes: cols.filter(c => c.files && c.hide && c.name === 'ajustes').flatMap(c => c.files.map(f => ({ texto: c.label, href: `#/collections/${c.name}/entries/${f.name}` })))[0] || null,
+          // Campos de «Ajustes del sitio», en orden (para las pestañas Web / Panel / General)
+          camposAjustes: (cols.find(c => c.name === 'ajustes')?.files?.[0]?.fields || []).filter(f => f.widget !== 'hidden').map(f => f.name),
+          camposAjustesDef: cols.find(c => c.name === 'ajustes')?.files?.[0]?.fields || [],
           // Secciones de una sola ficha (nombre de la sección → nombre de la ficha)
           unicas: new Map(cols.filter(c => c.files?.length === 1 && !c.hide).map(c => [c.name, c.files[0].name])),
         };
@@ -848,6 +856,12 @@ function cabecera() {
       .catch(() => { pidiendoCabecera = false; });
     fetch('/admin/datos-panel.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then(d => {
       datosPanel = d || {};
+      // Ajustes del sitio → Panel y zona horaria, para tablas.js, medios.js y nucleo.js
+      globalThis.XL_PANEL = datosPanel.panel || {};
+      if (datosPanel.zona) globalThis.XL_ZONA = datosPanel.zona;
+      // «Usar los colores y letras de la web en el panel»: desmarcado, el aspecto original de Decap
+      if (globalThis.XL_PANEL.estetica_web === false) document.querySelector('link[href="/admin/tema-panel.css"]')?.setAttribute('disabled', '');
+      repasar();
       // Colores de la marca (Ajustes del sitio → Apariencia), los mismos que la web: public/admin/tema-panel.css
       const m = datosPanel.marca || {};
       if (m.acento) document.documentElement.style.setProperty('--xl-acento', m.acento);
@@ -939,6 +953,179 @@ function cabecera() {
   }
 }
 
+/* ---------- «Ajustes del sitio» en pestañas: Web, Panel y General (aprobado por Víctor el 18-11-2026) ----------
+   No cambia el fichero (public/_datos/sitio.yml): solo cómo se ven los campos. Decap pinta cada campo en
+   un <div> dentro del panel de campos; se esconden con CSS por su posición (nth-of-type) según la pestaña
+   elegida, y los títulos de cada sección son <h3> propios (no cuentan como <div>). */
+const PESTANAS_AJUSTES = [
+  ['web', 'Web', 'Todo lo que ve el cliente en la web.', [
+    ['Identidad de la tienda', ['nombre', 'nombre_corto', 'descripcion', 'localidad', 'provincia', 'logo', 'imagen_compartir', 'favicon']],
+    ['Apariencia y franja de aviso', ['apariencia', 'franja']],
+    ['Menú superior', ['navbar', 'menu', 'catalogo_orden']],
+    ['Portada', ['portada']],
+    ['Páginas Catálogo, Ofertas y Blog', ['pagina_catalogo', 'pagina_ofertas', 'pagina_blog']],
+    ['Catálogo y precios', ['catalogo_vacias', 'insignias_productos', 'precios', 'relacionados', 'novedad_dias']],
+    ['Pie', ['legales', 'redes', 'pie_texto']],
+  ]],
+  ['panel', 'Panel', 'Cómo funciona el panel para quien edita. No cambia la web.', [
+    ['Panel', ['panel']],
+    ['Fotos al subirlas', ['imagenes']],
+  ]],
+  ['general', 'General', 'Lo que afecta a la web y al panel a la vez, o al alojamiento.', [
+    ['Dirección, buscadores y comprobación diaria', ['avanzado']],
+    ['Fechas', ['zona_horaria']],
+  ]],
+];
+let pestanaAjustes = 'web';
+document.head.insertAdjacentHTML('beforeend', `<style>
+.xl-aj-tabs{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 6px;padding:4px 0 10px;border-bottom:2px dashed var(--xl-pespunte,#dfdfe3)}
+.xl-aj-tabs button{border:1px solid var(--xl-borde,#dfdfe3);background:#fff;border-radius:16px;padding:4px 14px;font:inherit;font-size:14px;cursor:pointer;color:inherit}
+.xl-aj-tabs button.xl-on{background:var(--xl-acento,#3a69c7);border-color:var(--xl-acento,#3a69c7);color:#fff}
+.xl-aj-intro{color:#6b7280;margin:6px 0 12px;font-size:13px}
+h3.xl-aj-h{font-size:15px;font-weight:700;margin:22px 0 8px;padding-bottom:4px;border-bottom:1px dashed var(--xl-borde,#dfdfe3)}
+aside.xl-aj-enlaces{background:#fff;border:1px solid var(--xl-borde,#dfdfe3);border-radius:10px;padding:10px 12px;margin:18px 0;font-size:13px}
+aside.xl-aj-enlaces a{color:var(--xl-acento,#3a69c7)}
+</style><style id="xl-aj-css"></style>`);
+function pestanasAjustes() {
+  const enAjustes = cfgCabecera && /^#\/collections\/ajustes\/entries\//.test(location.hash);
+  // El panel de campos de dentro (hay otro con «PreviewPaneContainer» en el nombre que lo envuelve)
+  const panelCampos = enAjustes && [...document.querySelectorAll('[class*="-ControlPaneContainer"]')].find(e => !/PreviewPaneContainer/.test(e.className));
+  if (!panelCampos) { delete document.body.dataset.xlAjustes; return; }
+  document.body.dataset.xlAjustes = pestanaAjustes;
+  const divs = [...panelCampos.children].filter(e => e.tagName === 'DIV');
+  const nombres = cfgCabecera.camposAjustes;
+  if (divs.length < nombres.length) return; // Decap aún está pintando
+  if (!panelCampos.querySelector(':scope > nav.xl-aj-tabs')) {
+    panelCampos.insertAdjacentHTML('afterbegin', `<nav class="xl-aj-tabs" aria-label="Partes de los ajustes">${PESTANAS_AJUSTES.map(([k, t]) => `<button type="button" data-aj="${k}">${t}</button>`).join('')}</nav><p class="xl-aj-intro"></p>`);
+    panelCampos.querySelectorAll('[data-aj]').forEach(b => b.addEventListener('click', () => { pestanaAjustes = b.dataset.aj; pestanasAjustes(); }));
+    // Títulos de las secciones, delante de su primer campo
+    for (const [k, , , secciones] of PESTANAS_AJUSTES) {
+      for (const [titulo, campos] of secciones) {
+        const i = nombres.indexOf(campos.find(c => nombres.includes(c)));
+        if (i >= 0) divs[i].insertAdjacentHTML('beforebegin', `<h3 class="xl-aj-h" data-tab="${k}">${esc(titulo)}</h3>`);
+      }
+    }
+    const unicas = [...cfgCabecera.unicas.entries()];
+    const enlace = (col, texto) => (unicas.some(([c]) => c === col) ? `<a href="#/collections/${col}/entries/${cfgCabecera.unicas.get(col)}">${esc(texto)}</a>` : esc(texto));
+    panelCampos.insertAdjacentHTML('beforeend', `<aside class="xl-aj-enlaces" data-tab="general">Los datos de la tienda (titular, NIF, dirección, teléfono, horario…) están en ${enlace('contacto', '«Contacto y horario»')}, y los textos y límites de la solicitud en ${enlace('solicitud', '«Solicitud de presupuesto»')}.</aside>`);
+  }
+  panelCampos.querySelectorAll('[data-aj]').forEach(b => b.classList.toggle('xl-on', b.dataset.aj === pestanaAjustes));
+  const p = PESTANAS_AJUSTES.find(x => x[0] === pestanaAjustes);
+  panelCampos.querySelector('.xl-aj-intro').textContent = p[2];
+  // CSS: se esconden los campos de las otras pestañas (por su posición entre los <div>)
+  const visibles = new Set(p[3].flatMap(s => s[1]));
+  const reglas = nombres.map((n, i) => (visibles.has(n) ? '' : `body[data-xl-ajustes] [class*="-ControlPaneContainer"]:not([class*="PreviewPaneContainer"])>div:nth-of-type(${i + 1}){display:none!important}`)).join('')
+    + `body[data-xl-ajustes] [class*="-ControlPaneContainer"]:not([class*="PreviewPaneContainer"])>[data-tab]:not([data-tab="${pestanaAjustes}"]){display:none!important}`;
+  const estilo = document.getElementById('xl-aj-css');
+  if (estilo.textContent !== reglas) estilo.textContent = reglas;
+  burbujasAyuda(panelCampos);
+}
+
+/* ---------- Burbujas de ayuda ⓘ en «Ajustes del sitio» (aprobado por Víctor el 18-11-2026) ----------
+   Junto al título de cada campo, desplegable y sección, una ⓘ que al pasar el ratón (o pulsarla en el
+   móvil) explica para qué sirve, qué implica, cómo usarlo, cuándo se nota, dónde se ve… Los textos están
+   en public/admin/ayuda-ajustes.yml, por la ruta del campo (p. ej. «franja.color»). El campo de cada
+   título se averigua por la cadena de títulos de los campos que lo contienen (Decap no pone el nombre). */
+const APARTADOS_AYUDA = [['para', 'Para qué sirve'], ['implica', 'Qué implica'], ['uso', 'Cómo usarlo'], ['cuando', 'Cuándo se nota'],
+  ['donde', 'Dónde se ve'], ['vacio', 'Si lo dejas vacío'], ['ejemplo', 'Ejemplo'], ['relacion', 'Relación con otros campos'],
+  ['cuidado', '⚠ Cuidado'], ['mas', 'Para saber más']];
+let ayudaAjustes = null;
+let pidiendoAyuda = false;
+const sinAvisados = new Set();
+document.head.insertAdjacentHTML('beforeend', `<style>
+.xl-info{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;margin-left:6px;border-radius:50%;background:var(--xl-acento,#3a69c7);color:#fff!important;font:700 11px/1 Georgia,serif;font-style:italic;text-transform:none;cursor:help;vertical-align:middle;flex:none}
+[class*="-ControlContainer"]:focus-within>label .xl-info{background:#fff;color:var(--xl-acento,#3a69c7)!important}
+.xl-info:focus-visible{outline:2px solid var(--xl-acento,#3a69c7);outline-offset:2px}
+.xl-ayuda{position:fixed;z-index:10002;width:min(340px,calc(100vw - 16px));background:#fff;color:#1f2933;border:1px solid #e3e3df;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.16);padding:10px 12px;font:13px/1.45 var(--xl-letra,system-ui,sans-serif);text-transform:none;letter-spacing:normal}
+.xl-ayuda h4{margin:0 0 6px;font-size:14px}
+.xl-ayuda b{display:block;margin-top:6px;font-size:12px;color:#4b5563}
+.xl-ayuda b.xl-cuidado{color:#b45309}
+.xl-ayuda a{color:var(--xl-acento,#3a69c7)}
+</style>`);
+const normEtiqueta = t => String(t || '').replace(/\(opcional\)/i, '').replace(/\s+/g, ' ').trim().toLowerCase();
+function burbujasAyuda(panelCampos) {
+  if (!ayudaAjustes) {
+    if (!pidiendoAyuda) {
+      pidiendoAyuda = true;
+      Promise.all([import('/admin/vendor/yaml/index.js'), fetch('/admin/ayuda-ajustes.yml', { cache: 'no-store' }).then(r => (r.ok ? r.text() : ''))])
+        .then(([YAML, texto]) => { ayudaAjustes = (texto && YAML.parse(texto)) || {}; repasar(); })
+        .catch(() => { ayudaAjustes = {}; });
+    }
+    return;
+  }
+  const raiz = cfgCabecera.camposAjustesDef;
+  const resolver = cadena => {
+    let campos = raiz;
+    const ruta = [];
+    for (const t of cadena) {
+      const f = campos.find(x => normEtiqueta(x.label) === normEtiqueta(t));
+      if (!f) return null;
+      ruta.push(f.name);
+      campos = f.fields || (f.field ? [f.field] : []);
+    }
+    return ruta.join('.');
+  };
+  const textoDe = l => normEtiqueta([...l.childNodes].filter(n => !(n.classList && n.classList.contains('xl-info'))).map(n => n.textContent).join(''));
+  for (const cont of panelCampos.querySelectorAll('[class*="-ControlContainer"]')) {
+    const lab = [...cont.children].find(e => e.tagName === 'LABEL');
+    if (!lab || lab.querySelector('.xl-info')) continue;
+    const cadena = [];
+    for (let c = cont; c && panelCampos.contains(c); c = c.parentElement.closest('[class*="-ControlContainer"]')) {
+      const l = [...c.children].find(e => e.tagName === 'LABEL');
+      if (l) cadena.unshift(textoDe(l));
+    }
+    const ruta = resolver(cadena);
+    if (!ruta) continue;
+    if (!ayudaAjustes[ruta]) { if (!sinAvisados.has(ruta)) { sinAvisados.add(ruta); console.warn(`Ayuda: el campo «${ruta}» de Ajustes no tiene texto en public/admin/ayuda-ajustes.yml.`); } continue; }
+    lab.insertAdjacentHTML('beforeend', `<button type="button" class="xl-info" data-ayuda="${esc(ruta)}" aria-label="Ayuda sobre este campo" aria-expanded="false">i</button>`);
+  }
+}
+const ayudaBurbuja = (() => {
+  let el = null; let actual = null; let t = null; let abiertaEn = 0;
+  const cerrar = () => { el?.remove(); el = null; actual?.setAttribute('aria-expanded', 'false'); actual = null; };
+  const abrir = b => {
+    clearTimeout(t);
+    if (actual === b && el) return;
+    cerrar();
+    const a = ayudaAjustes?.[b.dataset.ayuda];
+    if (!a) return;
+    actual = b;
+    abiertaEn = Date.now();
+    b.setAttribute('aria-expanded', 'true');
+    const titulo = [...b.parentElement.childNodes].filter(n => n !== b).map(n => n.textContent).join('').replace(/\(opcional\)/i, '').replace(/\s+/g, ' ').trim();
+    el = document.createElement('div');
+    el.className = 'xl-ayuda';
+    el.setAttribute('role', 'tooltip');
+    el.innerHTML = `<h4>${esc(titulo)}</h4>` + APARTADOS_AYUDA.filter(([k]) => a[k]).map(([k, n]) => {
+      const v = a[k];
+      const cuerpo = k === 'donde' && typeof v === 'object'
+        ? `${esc(v.texto || '')}${v.enlace ? ` <a href="${esc(v.enlace)}" target="_blank" rel="noopener">Abrir</a>` : ''}`
+        : esc(v);
+      return `<b class="${k === 'cuidado' ? 'xl-cuidado' : ''}">${esc(n)}</b>${cuerpo}`;
+    }).join('');
+    document.body.appendChild(el);
+    const r = b.getBoundingClientRect();
+    const w = el.offsetWidth; const h = el.offsetHeight;
+    const izq = Math.max(8, Math.min(r.right + 8, innerWidth - w - 8));
+    const arriba = Math.max(8, Math.min(r.top - 8, innerHeight - h - 8));
+    Object.assign(el.style, { left: `${izq}px`, top: `${arriba}px` });
+    el.addEventListener('mouseenter', () => clearTimeout(t));
+    el.addEventListener('mouseleave', () => { t = setTimeout(cerrar, 250); });
+  };
+  document.addEventListener('mouseover', e => { const b = e.target.closest?.('.xl-info'); if (b) abrir(b); });
+  document.addEventListener('mouseout', e => { const b = e.target.closest?.('.xl-info'); if (b && !b.contains(e.relatedTarget)) t = setTimeout(cerrar, 250); });
+  // Pulsar: abre o cierra (en el móvil no hay ratón) sin enfocar el campo de la etiqueta
+  document.addEventListener('click', e => {
+    const b = e.target.closest?.('.xl-info');
+    // (si se acaba de abrir al pasar el ratón, el clic no la cierra)
+    if (b) { e.preventDefault(); e.stopPropagation(); (actual === b && el && Date.now() - abiertaEn > 600) ? cerrar() : abrir(b); return; }
+    if (el && !el.contains(e.target)) cerrar();
+  }, true);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+  window.addEventListener('hashchange', cerrar);
+  return { cerrar };
+})();
+
 // Menú «Colecciones»: separador antes de las secciones de una sola ficha
 function menuLateral() {
   const enlaces = [...document.querySelectorAll('aside a[href^="#/collections/"]')];
@@ -959,7 +1146,7 @@ const ICONO_LUPA = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" 
 const revisarTablas = crearTablas({ preparar, leerActuales, leerContexto });
 // «Medios» con pestañas por carpeta (medios.js)
 const revisarMedios = crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreImagen });
-const repasar = () => { colocar(); revisarTablas(); cabecera(); revisarMedios(); };
+const repasar = () => { colocar(); revisarTablas(); cabecera(); revisarMedios(); pestanasAjustes(); };
 let pendiente = false;
 new MutationObserver(() => {
   if (pendiente) return;

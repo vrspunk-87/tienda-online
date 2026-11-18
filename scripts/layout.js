@@ -345,7 +345,7 @@ export function construir(sitio, ruta) {
             </div>` : ''}
           </div>
           <div class="pie-legal">
-            <span>© ${new Date().getFullYear()} ${esc(sitio.nombre)}${sitio.localidad ? ` · ${esc(sitio.localidad)}` : ''} · Precios orientativos, IVA incluido</span>
+            <span>${sitio.pieTexto ? esc(sitio.pieTexto.replace(/\{año\}/g, String(new Date().getFullYear())).replace(/\{nombre\}/g, sitio.nombre)) : `© ${new Date().getFullYear()} ${esc(sitio.nombre)}${sitio.localidad ? ` · ${esc(sitio.localidad)}` : ''}`} · ${esc(sitio.textoPrecios || 'Precios orientativos, IVA incluido')}</span>
             ${legales.length ? `<nav aria-label="Información legal" class="enlaces-legales">
               ${legales.map(l => `<a href="${esc(hrefDe(l))}">${esc(l.texto)}</a>`).join('')}
             </nav>` : ''}

@@ -81,6 +81,12 @@ const SITIO = {
   legales: AJUSTES.legales || [],
   redes: AJUSTES.redes || {},
   buscador: (AJUSTES.navbar || {}).buscador !== false,
+  // Textos de los precios y del pie (Ajustes del sitio → Web → Catálogo y precios / Pie)
+  textoPrecios: String(AJUSTES.precios?.texto || '').trim() || 'Precios orientativos, IVA incluido',
+  sinPrecio: String(AJUSTES.precios?.sin_precio || '').trim() || 'Precio a consultar',
+  pieTexto: String(AJUSTES.pie_texto || '').trim(),
+  relacionados: Number.isFinite(Number(AJUSTES.relacionados)) && AJUSTES.relacionados !== null && AJUSTES.relacionados !== '' ? Math.max(0, Math.min(12, Number(AJUSTES.relacionados))) : 4,
+  novedadDias: Math.max(0, Number(AJUSTES.novedad_dias) || 0),
 };
 // Solo direcciones seguras en los Ajustes (nada de javascript:, data:...)
 const urlSegura = u => (typeof u === 'string' && /^(\/(?!\/)|#|https:\/\/|http:\/\/|mailto:|tel:)/i.test(u.trim()) ? u.trim() : '');
@@ -294,7 +300,11 @@ const slugify = s => String(s ?? '')
   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
   .slice(0, 80).replace(/-+$/, '');
 
-const ZONA = 'Europe/Madrid';
+// Zona horaria (Ajustes del sitio → General): ofertas, «Abierto ahora», fechas. Por defecto, Madrid
+const ZONA = (() => {
+  const z = String(AJUSTES.zona_horaria || 'Europe/Madrid');
+  try { new Intl.DateTimeFormat('es-ES', { timeZone: z }); return z; } catch { console.warn(`Aviso: la zona horaria «${z}» no existe; se usa Europe/Madrid.`); return 'Europe/Madrid'; }
+})();
 const fmt = (d, op) => new Date(d).toLocaleString('es-ES', { timeZone: ZONA, ...op });
 const fechaLarga = d => fmt(d, { day: 'numeric', month: 'long', year: 'numeric' });
 const fechaValida = d => d && !Number.isNaN(new Date(d).getTime());
@@ -425,7 +435,7 @@ const ORGANIZACION = {
   name: SITIO.nombre,
   url: `${URL_BASE}/`,
   logo: abs(SITIO.logo),
-  email: SITIO.redes.email,
+  // Sin el correo: va oculto a los robots en toda la web (ver «ocultarContacto»)
   description: SITIO.descripcion,
   areaServed: CONTACTO.localidad || SITIO.localidad,
   address: { '@type': 'PostalAddress', ...(CONTACTO.direccion && !/\[/.test(CONTACTO.direccion) ? { streetAddress: CONTACTO.direccion } : {}), ...(CONTACTO.cp ? { postalCode: CONTACTO.cp } : {}), addressLocality: CONTACTO.localidad || SITIO.localidad, addressRegion: CONTACTO.provincia || SITIO.provincia, addressCountry: 'ES' },
@@ -786,8 +796,9 @@ SITIO.insignias = AJUSTES.insignias_productos !== false;
 // Categoría de cada ficha, para que el menú se abra por la rama del producto que se está viendo
 SITIO.categoriaDeRuta = Object.fromEntries(productos.filter(p => p.categoria).map(p => [p.url.replace(/\/+$/, ''), p.categoria.url]));
 
-// Las imágenes renombradas no se publican también con su nombre original (menos ficheros)
-for (const [orig, nuevo] of mapaImagenes) if (orig !== nuevo) fs.rmSync(path.join(DIST, decodeURIComponent(orig)), { force: true });
+// Las imágenes renombradas no se publican también con su nombre original (menos ficheros): lo hace «13b»,
+// que solo quita el original si ninguna página lo usa (18-11-2026: antes se borraba siempre y una foto de
+// «Sobre nosotros» usada también en una entrada del blog se quedaba rota)
 
 // Relacionados: las entradas más recientes del blog, sin la propia
 const relacionados = (item, lista, max = 3) => lista.filter(x => x !== item).slice(0, max);
@@ -1114,7 +1125,7 @@ function precioHtml(p, { ficha = false } = {}) {
   if (p.dosPrecios) {
     const completa = p.ofertaCompleta
       ? `<span class="precio precio-oferta">${euros(p.oferta.precio)}</span>` + (p.precio != null ? ` <del class="precio-anterior">${euros(p.precio)}</del> <span class="badge descuento">-${Math.round((1 - p.oferta.precio / p.precio) * 100)} %</span>` : '')
-      : p.precio != null ? `<span class="precio">${euros(p.precio)}</span>` : '<span class="precio precio-consultar">Precio a consultar</span>';
+      : p.precio != null ? `<span class="precio">${euros(p.precio)}</span>` : `<span class="precio precio-consultar">${esc(SITIO.sinPrecio)}</span>`;
     const cabezal = p.ofertaCabezal
       ? `<b class="precio-oferta">${euros(p.oferta.precioCabezal)}</b> <del class="precio-anterior">${euros(p.precioCabezal)}</del>`
       : `<b>${euros(p.precioCabezal)}</b>`;
@@ -1125,9 +1136,11 @@ function precioHtml(p, { ficha = false } = {}) {
       + (p.precio != null ? ` <del class="precio-anterior">${euros(p.precio)}</del> <span class="badge descuento">-${p.descuento} %</span>` : '')
       + (ficha ? `<span class="d-block small text-body-secondary mt-1">Oferta hasta el ${fechaCorta(p.oferta.fin)}</span>` : '');
   }
-  return p.precio != null ? `<span class="precio">${euros(p.precio)}</span>` : '<span class="precio precio-consultar">Precio a consultar</span>';
+  return p.precio != null ? `<span class="precio">${euros(p.precio)}</span>` : `<span class="precio precio-consultar">${esc(SITIO.sinPrecio)}</span>`;
 }
 
+// «Novedad» (Ajustes del sitio → Catálogo y precios): productos dados de alta hace menos de N días
+const esNovedad = p => SITIO.novedadDias > 0 && p.fecha && (new Date(`${HOY}T12:00:00Z`) - new Date(`${diaMadrid(p.fecha)}T12:00:00Z`)) / 864e5 < SITIO.novedadDias;
 const logoFabricante = (f, alto = 20) => (f?.imagen
   ? `<img src="${esc(f.imagen)}" alt="" class="logo-fabricante" height="${alto}" loading="lazy" decoding="async">` : '');
 
@@ -1143,6 +1156,7 @@ const tarjetaProducto = (p, { oculta = false } = {}) => `
         ${p.imagenes[0] ? imgHtml(p.imagenes[0].src, p.imagenes[0].alt || p.nombre, { clase: 'card-img-top', tam: TAM_PRODUCTO }) : '<div class="producto-sin-foto" aria-hidden="true"><i class="bi bi-image"></i></div>'}
         ${p.enOferta ? `<span class="badge etiqueta-oferta">Oferta${p.descuento ? ` -${p.descuento} %` : ''}</span>` : ''}
         ${p.segundaMano ? '<span class="badge etiqueta-segunda">Segunda mano</span>' : ''}
+        ${esNovedad(p) && !p.enOferta && !p.segundaMano ? '<span class="badge etiqueta-novedad">Novedad</span>' : ''}
         ${fabricanteDe(p) ? `<span class="tarjeta-producto-marca">${p.fabricante?.imagen
           ? `<img src="${esc(p.fabricante.imagen)}" alt="${esc(fabricanteDe(p))}" loading="lazy" decoding="async">`
           : esc(fabricanteDe(p))}</span>` : ''}
@@ -1280,7 +1294,7 @@ function rejillaProductos(lista, { porPagina = 8, aleatorio = false, filtro = fa
             </div>
             ${rangos.length ? `<div class="precio-rapidos">${rangos.map(r => `<button type="button" class="precio-rapido" aria-pressed="false" data-desde="${r[0] ?? ''}" data-hasta="${r[1] ?? ''}">${textoRango(r)}</button>`).join('')}</div>` : ''}
           </div>
-          ${hayConsultar ? '<label class="precio-consultar"><input type="checkbox" checked data-precio-consultar> Incluir «Precio a consultar»</label>' : ''}
+          ${hayConsultar ? `<label class="precio-consultar"><input type="checkbox" checked data-precio-consultar> Incluir «${esc(SITIO.sinPrecio)}»</label>` : ''}
           <div class="precio-acciones">
             <button type="button" class="btn btn-link btn-sm px-0" data-precio-borrar>Borrar</button>
             <button type="button" class="btn btn-destacado btn-sm" data-precio-aplicar>Aplicar</button>
@@ -1839,6 +1853,18 @@ function completar(html, ruta, seo = {}) {
   </div>`);
   }
 
+  // Franja de aviso (Ajustes del sitio → Web → Franja de aviso arriba): entre «Desde» y «Hasta»
+  const fr = AJUSTES.franja || {};
+  if (fr.mostrar && String(fr.texto || '').trim() && (!textoDia(fr.desde) || textoDia(fr.desde) <= HOY) && (!textoDia(fr.hasta) || HOY <= textoDia(fr.hasta))) {
+    const enlace = urlSegura(fr.enlace || '');
+    const color = ['marca', 'aviso', 'neutro'].includes(fr.color) ? fr.color : 'marca';
+    body.insertAdjacentHTML('afterbegin', `
+  <div class="franja-aviso franja-color-${color}" role="note">${esc(fr.texto)}${enlace ? ` <a href="${esc(enlace)}">${esc(fr.enlace_texto || 'Ver más')}</a>` : ''}</div>`);
+  }
+  // Zona horaria y texto «sin precio» para los scripts de la web (extras.js y presupuesto.js)
+  raiz.querySelector('html')?.setAttribute('data-zona', ZONA);
+  body.setAttribute('data-sin-precio', SITIO.sinPrecio);
+
   // Accesibilidad: enlace "Saltar al contenido" al principio
   const main = raiz.querySelector('main');
   if (main) {
@@ -1859,7 +1885,36 @@ function completar(html, ruta, seo = {}) {
   // Solicitud de presupuesto: contador del menú, botón de las fichas y página /presupuesto/
   if (SOLICITUD.activa) body.insertAdjacentHTML('beforeend', '  <script src="/js/presupuesto.js" defer></script>\n');
 
-  return raiz.toString().replace(/\n[ \t]*\n(?=[ \t]*\n)/g, '\n');
+  return ocultarContacto(raiz.toString().replace(/\n[ \t]*\n(?=[ \t]*\n)/g, '\n'));
+}
+
+// Antispam (18-11-2026): el correo, el teléfono y el WhatsApp de la tienda no van escritos tal cual en el
+// código de las páginas, para que no los recojan los robots que buscan direcciones. Los enlaces (mailto:,
+// tel:, wa.me/<número>) y los textos llevan el dato al revés y en base64; public/js/extras.js lo vuelve a
+// poner al cargar la página (la persona lo ve y lo pulsa igual). El teléfono sigue en los datos para Google
+// (JSON-LD, dentro de <script>, que no se toca).
+const codificarContacto = s => Buffer.from([...String(s)].reverse().join(''), 'utf8').toString('base64');
+const TEXTOS_CONTACTO = [...new Set([
+  CONTACTO.correo, CONTACTO.telefono, CONTACTO.whatsapp,
+  CONTACTO.whatsapp && CONTACTO.whatsapp.replace(/^34(?=\d{9}$)/, '').replace(/(\d{3})(\d{2})(\d{2})(\d{2})$/, '$1 $2 $3 $4'),
+  DATOS_LEGALES?.correo, DATOS_LEGALES?.telefono,
+].map(x => String(x || '').trim()).filter(x => x.length >= 6))].sort((a, b) => b.length - a.length);
+function ocultarContacto(html) {
+  return html.split(/(<script\b[^>]*>[\s\S]*?<\/script>|<style\b[^>]*>[\s\S]*?<\/style>|<title>[\s\S]*?<\/title>)/i).map((trozo, i) => {
+    if (i % 2) return trozo;
+    let r = trozo.replace(/href="((?:mailto:|tel:|https:\/\/wa\.me\/\d)[^"]*)"/g, (m, h) => `href="#" data-cto="${codificarContacto(h.replace(/&amp;/g, '&'))}"`);
+    if (TEXTOS_CONTACTO.length) {
+      r = r.replace(/>([^<]+)</g, (m, texto) => {
+        let t = texto;
+        for (const s of TEXTOS_CONTACTO) {
+          const se = esc(s);
+          if (t.includes(se)) t = t.split(se).join(`<span class="cto" data-cto-t="${codificarContacto(s)}">${s.includes('@') ? '[correo]' : '[teléfono]'}</span>`);
+        }
+        return `>${t}<`;
+      });
+    }
+    return r;
+  }).join('');
 }
 
 const plantilla = fs.readFileSync('plantillas/articulo.html', 'utf8');
@@ -2278,7 +2333,7 @@ const filtrosProducto = p => [
   p.segundaMano ? '<span hidden data-pagefind-filter="condición">Segunda mano</span>' : '',
   p.imagenes[0] ? `<span hidden data-pagefind-meta="image:${esc(optimizadas.get(p.imagenes[0].src)?.fuentes[0]?.url || p.imagenes[0].src)}"></span>` : '',
   // Para las sugerencias del buscador de la cabecera: precio y fabricante
-  `<span hidden data-pagefind-meta="precio:${esc(precioEfectivo(p) != null ? euros(precioEfectivo(p)) : 'Precio a consultar')}"></span>`,
+  `<span hidden data-pagefind-meta="precio:${esc(precioEfectivo(p) != null ? euros(precioEfectivo(p)) : SITIO.sinPrecio)}"></span>`,
   p.fabricante ? `<span hidden data-pagefind-meta="fabricante:${esc(p.fabricante.nombre)}"></span>` : '',
 ].join('');
 
@@ -2291,7 +2346,8 @@ for (const p of productos) {
   // completa» (ventana con las fotos grandes). La mueve public/js/extras.js
   const nFotos = p.imagenes.length;
   const etiquetaFoto = p.enOferta && p.descuento ? `<span class="ficha-etiqueta oferta">Oferta −${p.descuento} %</span>`
-    : p.segundaMano ? '<span class="ficha-etiqueta segunda">Segunda mano</span>' : '';
+    : p.segundaMano ? '<span class="ficha-etiqueta segunda">Segunda mano</span>'
+      : esNovedad(p) ? '<span class="ficha-etiqueta novedad">Novedad</span>' : '';
   const idGaleria = `galeria-${p.slug}`;
   const fotos = nFotos ? `
       <div class="ficha-galeria${nFotos > 1 ? ' con-miniaturas' : ''}" data-galeria>
@@ -2332,7 +2388,7 @@ for (const p of productos) {
     cat && ['Categoría', `<a href="${cat.url}">${esc(cat.titulo)}</a>`],
     ...p.caracteristicas.map(c => [c.nombre ? esc(c.nombre) : '', esc(c.valor)]),
   ].filter(Boolean);
-  const relacionadosCat = cat ? productos.filter(x => x !== p && x.categoria === cat && !p.accesorios.includes(x)).slice(0, 4) : [];
+  const relacionadosCat = cat ? productos.filter(x => x !== p && x.categoria === cat && !p.accesorios.includes(x)).slice(0, SITIO.relacionados) : [];
   // Contacto directo (Ajustes → Redes sociales y contacto): WhatsApp con el producto ya escrito y llamar
   const wa = String(SITIO.redes?.whatsapp || '').replace(/\D/g, '');
   const tel = String(SITIO.redes?.telefono || '').replace(/[^\d+]/g, '');
@@ -2476,7 +2532,7 @@ for (const c of categorias) {
     ${migas(migasDe(c))}
     <h1 class="titulo-marca display-5 fw-bold">${esc(c.titulo)}</h1>
     ${c.meta.description ? `<p class="lead text-body-secondary">${esc(c.meta.description)}</p>` : ''}
-    ${introPagina(c.cuerpo, c.url, 'Precios orientativos, IVA incluido.')}
+    ${introPagina(c.cuerpo, c.url, `${SITIO.textoPrecios}.`)}
     ${botonesCompartir(c.titulo, c.url)}
     ${metaBuscadorCategoria(c)}
     ${c.hijos.length ? `<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mt-4" data-pagefind-ignore="all">${c.hijos.map(tarjetaCatalogo).join('')}</div>` : ''}`)
@@ -2525,6 +2581,7 @@ const bloqueBlog = porPagina => rejillaNoticias(noticias.slice(0, porPagina), { 
     entorno: ENTORNO,
     activa: SOLICITUD.activa,
     tienda: SITIO.nombre,
+    zona: ZONA,
     web: URL_BASE,
     preferencias: SOLICITUD.preferencia.mostrar ? SOLICITUD.preferencia.opciones : [],
     notas: SOLICITUD.notas,
@@ -2661,9 +2718,9 @@ if (SOLICITUD.activa) {
           <div class="caja-pespunte solicitud-resumen">
             <h2 class="caja-pespunte-titulo" id="solicitud-resumen"><i class="bi bi-clipboard-check" aria-hidden="true"></i>Resumen</h2>
             <div class="solicitud-resumen-fila"><span data-resumen-productos></span><span data-resumen-suma></span></div>
-            <div class="solicitud-resumen-fila" data-resumen-consultar-fila hidden><span>Precio a consultar</span><span data-resumen-consultar></span></div>
+            <div class="solicitud-resumen-fila" data-resumen-consultar-fila hidden><span>${esc(SITIO.sinPrecio)}</span><span data-resumen-consultar></span></div>
             <div class="solicitud-resumen-total"><span>Total orientativo</span><b data-solicitud-total></b></div>
-            <p class="solicitud-resumen-nota">Precios orientativos, IVA incluido. La tienda te confirma la disponibilidad y el precio final.</p>
+            <p class="solicitud-resumen-nota">${esc(SITIO.textoPrecios)}. La tienda te confirma la disponibilidad y el precio final.</p>
             <a class="btn btn-destacado btn-lg w-100" href="#tus-datos" data-ir-datos>Continuar con mis datos <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             ${SOLICITUD.ventajas.length ? `<ul class="solicitud-ventajas">${SOLICITUD.ventajas.map(v => `<li><i class="bi ${ICONOS_VENTAJA[v.icono] || ICONOS_VENTAJA.check}" aria-hidden="true"></i>${esc(String(v.texto).trim())}</li>`).join('')}</ul>` : ''}
           </div>
@@ -2756,7 +2813,7 @@ if (!SIN_CATALOGO) {
     ${migas([{ texto: 'Catálogo' }])}
     <h1 class="titulo-marca display-5 fw-bold">Catálogo</h1>
     <p class="lead text-body-secondary">${cfgCatalogo.descripcion ? esc(cfgCatalogo.descripcion) : `Elige un tipo de producto${verProductos ? ' o mira nuestros productos' : ''}.`}</p>
-    ${introPagina(cfgCatalogo.texto, '/catalogo/', 'Precios orientativos, IVA incluido.')}
+    ${introPagina(cfgCatalogo.texto, '/catalogo/', `${SITIO.textoPrecios}.`)}
     ${botonesCompartir('Catálogo', '/catalogo/')}
     ${categoriasPrincipales.length ? `<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mt-4">${categoriasPrincipales.map(tarjetaCatalogo).join('')}</div>` : `<p class="text-body-secondary mt-4 mb-0">Todavía no hay productos en el catálogo. Vuelve pronto o <a href="/paginas/contacto-y-horario/">pregúntanos</a> por lo que buscas.</p>`}
 `)
@@ -3003,7 +3060,28 @@ Disallow: /
       })(categoriasPrincipales),
     ];
     doc.setIn(['collections', idx, 'view_filters'], doc.createNode([...fijos, ...nuevos]));
-    fs.writeFileSync(rutaConfig, doc.toString());
+  }
+  // Peso máximo de cada foto o PDF al subirlo (Ajustes del sitio → Panel): en todos los campos de imagen o fichero
+  const pesoMb = Number(AJUSTES.panel?.peso_maximo_mb);
+  if (pesoMb > 0) {
+    const bytes = Math.round(Math.min(25, pesoMb) * 1000 * 1000);
+    (function recorrer(nodo) {
+      if (!nodo || typeof nodo !== 'object') return;
+      if (Array.isArray(nodo.items)) nodo.items.forEach(it => recorrer(it.value ?? it));
+      if (typeof nodo.get === 'function' && nodo.get('media_library')?.getIn?.(['config', 'max_file_size']) !== undefined) nodo.setIn(['media_library', 'config', 'max_file_size'], bytes);
+    })(doc.contents);
+  }
+  fs.writeFileSync(rutaConfig, doc.toString());
+}
+// Icono de la pestaña (Ajustes del sitio → Web → Identidad): los tamaños de public/img/iconos/ a partir de una sola imagen
+if (AJUSTES.favicon && sharp) {
+  const origen = path.join(PUB, String(AJUSTES.favicon).replace(/^\/+/, ''));
+  if (!fs.existsSync(origen)) console.warn(`Aviso: el icono de la pestaña (${AJUSTES.favicon}) no existe; se usan los de public/img/iconos/.`);
+  else {
+    fs.mkdirSync(path.join(DIST, 'img/iconos'), { recursive: true });
+    for (const [nombre, lado] of [['favicon-32.png', 32], ['icono-180.png', 180], ['icono-192.png', 192], ['icono-512.png', 512]]) {
+      await sharp(origen).resize(lado, lado, { fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 0 } }).png().toFile(path.join(DIST, 'img/iconos', nombre));
+    }
   }
 }
 // Números del panel, con todos los ficheros tal como los ve el panel (también los «no disponibles»
@@ -3053,9 +3131,14 @@ Disallow: /
     tienda: SITIO.nombre,
     // Colores de la marca: el panel los usa para tener la estética de la web (public/admin/tema-panel.css)
     marca: MARCA,
+    // Ajustes del sitio → Panel (public/admin/excel/panel.js y tablas.js) y zona horaria
+    panel: AJUSTES.panel || {},
+    zona: ZONA,
     tipoDosPrecios: TIPO_DOS_PRECIOS,
     categorias: Object.fromEntries(enOrden.map((c, orden) => [c.slug, {
       titulo: c.titulo, ruta: [...c.ancestros, c].map(x => x.titulo), url: c.url, tipo: (c.ancestros[0] || c).slug, orden,
+      // Para la vista previa de tipos, categorías y subcategorías: productos (con los de sus descendientes) e hijas
+      n: enCategoria(c).length, hijos: c.hijos.map(x => x.slug), resumen: c.resumen || '',
     }])),
     fabricantes: Object.fromEntries(fabricantes.map(f => [f.slug, { nombre: f.nombre, imagen: f.imagen }])),
     marcas: fabricantes.length,
@@ -3085,6 +3168,21 @@ Disallow: /
     medios[c] = fs.existsSync(dir) ? fs.readdirSync(dir, { withFileTypes: true }).filter(d => d.isFile() && !d.name.startsWith('.'))
       .map(d => ({ nombre: d.name, bytes: fs.statSync(path.join(dir, d.name)).size })) : [];
   }
+  // Carpeta general del panel (Medios → «General»)
+  if (cfgMedios.media_folder) { const g = String(cfgMedios.media_folder).replace(/^\/+|\/+$/g, ''); if (!medios[g] && fs.existsSync(g)) medios[g] = fs.readdirSync(g, { withFileTypes: true }).filter(d => d.isFile() && !d.name.startsWith('.')).map(d => ({ nombre: d.name, bytes: fs.statSync(path.join(g, d.name)).size })); }
+  // Archivos que usa el propio código (favicon, imagen al compartir por defecto…): Medios no deja borrarlos
+  const codigo = new Set();
+  const leerCodigo = dir => {
+    if (!fs.existsSync(dir)) return;
+    for (const d of fs.readdirSync(dir, { withFileTypes: true })) {
+      const r = path.join(dir, d.name);
+      if (d.isDirectory()) { if (!['vendor', 'img', 'node_modules', 'generado'].includes(d.name) && !d.name.startsWith('_')) leerCodigo(r); continue; }
+      if (!/\.(m?js|html|css|json|webmanifest)$/.test(d.name) || /\.test\./.test(d.name)) continue;
+      for (const m of fs.readFileSync(r, 'utf8').matchAll(/\/img\/[A-Za-z0-9._\/-]+\.[a-z0-9]{2,5}/g)) codigo.add(m[0]);
+    }
+  };
+  ['scripts', 'lib', 'functions', PUB].forEach(leerCodigo);
+  medios._codigo = [...codigo].sort();
   fs.writeFileSync(path.join(DIST, 'admin/medios.json'), JSON.stringify(medios));
 }
 
@@ -3230,7 +3328,7 @@ const referenciasImg = new Set();
   }
 })(DIST);
 let originalesQuitados = 0, bytesQuitados = 0;
-for (const ruta of new Set([...optimizadas.keys(), ...[...mapaImagenes].filter(([a, b]) => a !== b && optimizadas.has(b)).map(([a]) => a)])) {
+for (const ruta of new Set([...optimizadas.keys(), ...[...mapaImagenes].filter(([a, b]) => a !== b).map(([a]) => a)])) {
   if (RESERVADAS.has(ruta) || referenciasImg.has(ruta) || referenciasImg.has(encodeURI(ruta))) continue;
   const f = path.join(DIST, decodeURIComponent(ruta));
   if (!fs.existsSync(f)) continue;

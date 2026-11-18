@@ -394,7 +394,7 @@ collections:
           - { label: "Titular (nombre y apellidos o razón social)", name: "titular", widget: "string", required: false, hint: "Quien es responsable de la web y de los datos: la persona autónoma o la sociedad. Sale en el aviso legal, la política de privacidad, las condiciones de la solicitud y el texto de protección de datos del formulario (marcador {titular})." }
           - { label: "NIF", name: "nif", widget: "string", required: false, hint: "Sale en los textos legales (marcador {nif})." }
           - { label: "Teléfono", name: "telefono", widget: "string", required: false, hint: "p. ej. 924 55 55 55. Sale como «Llámanos» y en el botón «Llamar» de las fichas." }
-          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Con prefijo de país, sin + ni espacios, p. ej. 34610114417. Sale como «WhatsApp», en el pie y en «Preguntar por WhatsApp» de las fichas." }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Con prefijo de país, sin + ni espacios, p. ej. 34600123456. Sale como «WhatsApp», en el pie y en «Preguntar por WhatsApp» de las fichas." }
           - { label: "Correo electrónico", name: "correo", widget: "string", required: false }
           - { label: "Dirección (calle y número)", name: "direccion", widget: "string", required: false }
           - { label: "Código postal", name: "codigo_postal", widget: "string", required: false }
@@ -546,6 +546,151 @@ collections:
           - { label: "Logo", name: "logo", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "Se muestra a la izquierda del menú (40 px de alto). Mejor PNG con fondo transparente." }
           - { label: "Imagen por defecto al compartir", name: "imagen_compartir", widget: "image", media_library: { config: { max_file_size: 8000000 } }, hint: "La que sale en WhatsApp/Facebook cuando una página no tiene imagen propia. Tamaño ideal: 1200×630 px." }
 
+          - { label: "Icono de la pestaña del navegador (favicon)", name: "favicon", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false, hint: "PNG cuadrado de al menos 512×512 px, sin texto pequeño. Se generan solos los tamaños para el navegador, el móvil y la pantalla de inicio. Vacío: los iconos de public/img/iconos/." }
+          - label: "Apariencia"
+            name: "apariencia"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Tema"
+                name: "tema"
+                widget: "select"
+                default: "tienda"
+                hint: "«Tienda» es el diseño propio, provisional y neutro. Sus colores se cambian abajo, en «Colores de la marca»."
+                options:
+                  - { label: "Tienda (diseño propio)", value: "tienda" }
+              - label: "Colores de la marca"
+                name: "marca"
+                widget: "object"
+                collapsed: true
+                required: false
+                hint: "Déjalos vacíos para usar los de por defecto. El build avisa si un color no se lee bien sobre el fondo."
+                fields:
+                  - { label: "Texto (y fondos oscuros: menú, pie)", name: "texto", widget: "color", required: false, default: "#1f2933" }
+                  - { label: "Fondo de la web", name: "fondo", widget: "color", required: false, default: "#ffffff" }
+                  - { label: "Acento (botones y enlaces destacados)", name: "acento", widget: "color", required: false, default: "#2f6f8f" }
+              # Opciones antiguas: ocultas en el panel (el build las sigue admitiendo)
+              - { label: "Fuentes de Google (oculto)", name: "fuentes_google", widget: "hidden", default: false, required: false }
+              - { label: "Color principal (oculto)", name: "color_principal", widget: "hidden", default: "", required: false }
+              - { label: "Color de los enlaces (oculto)", name: "color_enlaces", widget: "hidden", default: "", required: false }
+              - { label: "Color de la barra del navegador en el móvil", name: "color_barra_movil", widget: "color", required: false, default: "#ffffff" }
+              - { label: "CSS adicional (avanzado)", name: "css_adicional", widget: "text", required: false, hint: "Solo para retoques puntuales y si sabes CSS: se añade al final de los estilos y puede descolocar el diseño. Si algo se rompe, vacía este campo. Para cambiar colores usa «Colores de la marca»." }
+
+          - label: "Franja de aviso arriba"
+            name: "franja"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Una línea encima del menú en todas las páginas, p. ej. «Cerrado del 24 al 26 de diciembre» o una promoción. Sale entre «Desde» y «Hasta» (vacías: siempre) y se quita sola al día siguiente de «Hasta»."
+            fields:
+              - { label: "Mostrar", name: "mostrar", widget: "boolean", default: false, required: false }
+              - { label: "Texto", name: "texto", widget: "string", required: false }
+              - { label: "Enlace (opcional)", name: "enlace", widget: "string", required: false, hint: "Dirección de la web (p. ej. /ofertas/) o completa (https://…)." }
+              - { label: "Texto del enlace", name: "enlace_texto", widget: "string", required: false, default: "Ver más" }
+              - { label: "Desde", name: "desde", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
+              - { label: "Hasta", name: "hasta", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD", required: false }
+              - { label: "Color", name: "color", widget: "select", default: "marca", required: false, options: [{ label: "Color de la marca", value: "marca" }, { label: "Aviso (ámbar)", value: "aviso" }, { label: "Neutro (gris)", value: "neutro" }] }
+          - label: "Menú superior: diseño"
+            name: "navbar"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Diseño"
+                name: "diseno"
+                widget: "select"
+                default: "clasico"
+                options:
+                  - { label: "Clásico: logo a la izquierda, enlaces a la derecha", value: "clasico" }
+                  - { label: "Centrado: logo arriba y enlaces debajo, centrados", value: "centrado" }
+                  - { label: "Lateral: en el móvil el menú sale como panel lateral", value: "lateral" }
+                  - { label: "Pantalla completa: en el móvil el menú ocupa toda la pantalla", value: "pantalla" }
+              - label: "Color"
+                name: "color"
+                widget: "select"
+                default: "blanco"
+                options:
+                  - { label: "Blanco", value: "blanco" }
+                  - { label: "Gris claro", value: "claro" }
+                  - { label: "Color principal", value: "primario" }
+                  - { label: "Oscuro", value: "oscuro" }
+              - { label: "Fijo arriba al hacer scroll", name: "fijo", widget: "boolean", default: true }
+              - label: "Botón destacado (al final del menú)"
+                name: "boton"
+                widget: "object"
+                collapsed: true
+                required: false
+                hint: "Por ejemplo «Contacto». Déjalo vacío para no mostrarlo."
+                fields:
+                  - { label: "Texto", name: "texto", widget: "string", required: false }
+                  - { label: "Dirección", name: "enlace", widget: "string", required: false, hint: "p. ej. /paginas/contacto/" }
+              - { label: "Mostrar el buscador en el menú", name: "buscador", widget: "boolean", default: true, required: false, hint: "En el ordenador, una caja de búsqueda junto al logo; en el móvil, «Buscar» dentro del menú." }
+              - label: "Barra del catálogo (ordenador)"
+                name: "barra_catalogo"
+                widget: "object"
+                collapsed: true
+                required: false
+                hint: "Segunda fila del menú con «Todo el catálogo», los tipos de producto (cada uno con su panel de categorías) y «Ofertas». Sale si en «Menú» hay una opción con «Desplegable del catálogo». En el móvil, el catálogo va arriba dentro del menú."
+                fields:
+                  - label: "Color"
+                    name: "color"
+                    widget: "select"
+                    default: "gris"
+                    options:
+                      - { label: "Gris suave (recomendado)", value: "gris" }
+                      - { label: "Blanco", value: "blanco" }
+                      - { label: "Color de la marca (acento)", value: "marca" }
+                      - { label: "Oscuro", value: "oscuro" }
+                      - { label: "Personalizado (el de abajo)", value: "personalizado" }
+                  - { label: "Color personalizado", name: "color_personalizado", widget: "color", required: false, hint: "Solo si en «Color» eliges «Personalizado». El texto se pone blanco u oscuro según lo que mejor se lea." }
+
+          - label: "Menú superior: opciones"
+            name: "menu"
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.texto}}"
+            hint: "Arrastra para cambiar el orden. Si una opción tiene subopciones, se muestra como desplegable; si además tiene página o dirección, al pulsar el texto se va a esa página y la flecha abre el desplegable."
+            fields:
+              - { label: "Texto", name: "texto", widget: "string" }
+              - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false, hint: "Elige una página creada en Páginas… " }
+              - { label: "…o dirección", name: "enlace", widget: "string", required: false, hint: "…o escribe una dirección: / (inicio), /blog/, /buscar/ o una web externa. Si rellenas las dos, manda la dirección." }
+              - { label: "Marcar también como activa en (avanzado)", name: "tambien", widget: "list", required: false, hint: "Rutas en las que esta opción debe aparecer resaltada, p. ej. /blog para «Blog»." }
+              - { label: "Desplegable del catálogo", name: "catalogo", widget: "boolean", default: false, required: false, hint: "Actívalo en la opción «Catálogo»: en vez de salir en la primera fila, se crea la barra del catálogo (segunda fila en el ordenador, caja arriba del menú en el móvil) con «Todo el catálogo», los tipos de producto con sus categorías y subcategorías (en el orden de «Orden del catálogo en el menú») y «Ofertas». El texto de la opción se usa como título de esa barra." }
+              - label: "Subopciones (desplegable)"
+                name: "hijos"
+                widget: "list"
+                required: false
+                collapsed: true
+                summary: "{{fields.texto}}"
+                hint: "Escribe --- como texto para poner una línea separadora."
+                fields:
+                  - { label: "Texto", name: "texto", widget: "string" }
+                  - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false }
+                  - { label: "…o dirección", name: "enlace", widget: "string", required: false }
+                  - { label: "Marcar también como activa en (avanzado)", name: "tambien", widget: "list", required: false }
+
+          - label: "Orden del catálogo en el menú"
+            name: "catalogo_orden"
+            widget: "list"
+            collapsed: true
+            required: false
+            summary: "{{fields.categoria}}"
+            hint: "Orden del desplegable «Catálogo»: tipos de producto, dentro de cada uno sus categorías y dentro de cada categoría sus subcategorías. Arrastra para ordenar. Lo que no esté aquí sale al final, por orden alfabético (y el despliegue avisa)."
+            fields:
+              - { label: "Tipo de producto", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["tipo"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
+              - label: "Categorías"
+                name: "hijos"
+                widget: "list"
+                collapsed: true
+                required: false
+                summary: "{{fields.categoria}}"
+                fields:
+                  - { label: "Categoría", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["categoria"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
+                  - label: "Subcategorías"
+                    name: "hijos"
+                    widget: "list"
+                    required: false
+                    field: { label: "Subcategoría", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["subcategoria"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
+
           - label: "Portada"
             name: "portada"
             widget: "object"
@@ -677,88 +822,6 @@ collections:
               - { label: "Destacar la última entrada", name: "destacada", widget: "boolean", default: true, required: false, hint: "La más reciente sale en grande encima de las demás (en la primera página)." }
               - { label: "Entradas por página", name: "por_pagina", widget: "number", value_type: "int", min: 3, max: 60, step: 3, default: 12, hint: "De 3 en 3 (3 por fila en el ordenador). Si hay más, se crean /blog/pagina/2/, 3…" }
 
-          - label: "Apariencia"
-            name: "apariencia"
-            widget: "object"
-            collapsed: true
-            fields:
-              - label: "Tema"
-                name: "tema"
-                widget: "select"
-                default: "tienda"
-                hint: "«Tienda» es el diseño propio, provisional y neutro. Sus colores se cambian abajo, en «Colores de la marca»."
-                options:
-                  - { label: "Tienda (diseño propio)", value: "tienda" }
-              - label: "Colores de la marca"
-                name: "marca"
-                widget: "object"
-                collapsed: true
-                required: false
-                hint: "Déjalos vacíos para usar los de por defecto. El build avisa si un color no se lee bien sobre el fondo."
-                fields:
-                  - { label: "Texto (y fondos oscuros: menú, pie)", name: "texto", widget: "color", required: false, default: "#1f2933" }
-                  - { label: "Fondo de la web", name: "fondo", widget: "color", required: false, default: "#ffffff" }
-                  - { label: "Acento (botones y enlaces destacados)", name: "acento", widget: "color", required: false, default: "#2f6f8f" }
-              # Opciones antiguas: ocultas en el panel (el build las sigue admitiendo)
-              - { label: "Fuentes de Google (oculto)", name: "fuentes_google", widget: "hidden", default: false, required: false }
-              - { label: "Color principal (oculto)", name: "color_principal", widget: "hidden", default: "", required: false }
-              - { label: "Color de los enlaces (oculto)", name: "color_enlaces", widget: "hidden", default: "", required: false }
-              - { label: "Color de la barra del navegador en el móvil", name: "color_barra_movil", widget: "color", required: false, default: "#ffffff" }
-              - { label: "CSS adicional (avanzado)", name: "css_adicional", widget: "text", required: false, hint: "Solo para retoques puntuales y si sabes CSS: se añade al final de los estilos y puede descolocar el diseño. Si algo se rompe, vacía este campo. Para cambiar colores usa «Colores de la marca»." }
-
-          - label: "Menú superior: diseño"
-            name: "navbar"
-            widget: "object"
-            collapsed: true
-            fields:
-              - label: "Diseño"
-                name: "diseno"
-                widget: "select"
-                default: "clasico"
-                options:
-                  - { label: "Clásico: logo a la izquierda, enlaces a la derecha", value: "clasico" }
-                  - { label: "Centrado: logo arriba y enlaces debajo, centrados", value: "centrado" }
-                  - { label: "Lateral: en el móvil el menú sale como panel lateral", value: "lateral" }
-                  - { label: "Pantalla completa: en el móvil el menú ocupa toda la pantalla", value: "pantalla" }
-              - label: "Color"
-                name: "color"
-                widget: "select"
-                default: "blanco"
-                options:
-                  - { label: "Blanco", value: "blanco" }
-                  - { label: "Gris claro", value: "claro" }
-                  - { label: "Color principal", value: "primario" }
-                  - { label: "Oscuro", value: "oscuro" }
-              - { label: "Fijo arriba al hacer scroll", name: "fijo", widget: "boolean", default: true }
-              - label: "Botón destacado (al final del menú)"
-                name: "boton"
-                widget: "object"
-                collapsed: true
-                required: false
-                hint: "Por ejemplo «Contacto». Déjalo vacío para no mostrarlo."
-                fields:
-                  - { label: "Texto", name: "texto", widget: "string", required: false }
-                  - { label: "Dirección", name: "enlace", widget: "string", required: false, hint: "p. ej. /paginas/contacto/" }
-              - { label: "Mostrar el buscador en el menú", name: "buscador", widget: "boolean", default: true, required: false, hint: "En el ordenador, una caja de búsqueda junto al logo; en el móvil, «Buscar» dentro del menú." }
-              - label: "Barra del catálogo (ordenador)"
-                name: "barra_catalogo"
-                widget: "object"
-                collapsed: true
-                required: false
-                hint: "Segunda fila del menú con «Todo el catálogo», los tipos de producto (cada uno con su panel de categorías) y «Ofertas». Sale si en «Menú» hay una opción con «Desplegable del catálogo». En el móvil, el catálogo va arriba dentro del menú."
-                fields:
-                  - label: "Color"
-                    name: "color"
-                    widget: "select"
-                    default: "gris"
-                    options:
-                      - { label: "Gris suave (recomendado)", value: "gris" }
-                      - { label: "Blanco", value: "blanco" }
-                      - { label: "Color de la marca (acento)", value: "marca" }
-                      - { label: "Oscuro", value: "oscuro" }
-                      - { label: "Personalizado (el de abajo)", value: "personalizado" }
-                  - { label: "Color personalizado", name: "color_personalizado", widget: "color", required: false, hint: "Solo si en «Color» eliges «Personalizado». El texto se pone blanco u oscuro según lo que mejor se lea." }
-
           - label: "Secciones sin contenido (catálogo, ofertas, solicitud y blog)"
             name: "catalogo_vacias"
             widget: "select"
@@ -768,54 +831,16 @@ collections:
               - { label: "Mostrarlos (con «Todavía no hay productos»)", value: "mostrar" }
               - { label: "Ocultarlos de toda la web", value: "ocultar" }
           - { label: "Número de productos en insignias", name: "insignias_productos", widget: "boolean", default: true, required: false, hint: "Las bolitas con el número de productos (o de ofertas) junto a cada tipo, categoría y subcategoría: en la barra y los desplegables del catálogo, el menú del móvil, el inicio, las tarjetas, el pie y el buscador. Desmárcalo para ocultarlas en toda la web." }
-          - label: "Orden del catálogo en el menú"
-            name: "catalogo_orden"
-            widget: "list"
+          - label: "Textos de los precios"
+            name: "precios"
+            widget: "object"
             collapsed: true
             required: false
-            summary: "{{fields.categoria}}"
-            hint: "Orden del desplegable «Catálogo»: tipos de producto, dentro de cada uno sus categorías y dentro de cada categoría sus subcategorías. Arrastra para ordenar. Lo que no esté aquí sale al final, por orden alfabético (y el despliegue avisa)."
             fields:
-              - { label: "Tipo de producto", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["tipo"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
-              - label: "Categorías"
-                name: "hijos"
-                widget: "list"
-                collapsed: true
-                required: false
-                summary: "{{fields.categoria}}"
-                fields:
-                  - { label: "Categoría", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["categoria"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
-                  - label: "Subcategorías"
-                    name: "hijos"
-                    widget: "list"
-                    required: false
-                    field: { label: "Subcategoría", name: "categoria", widget: "relation", collection: "catalogo", filters: [{ field: "nivel", values: ["subcategoria"] }], search_fields: ["title", "padre"], value_field: "{{slug}}", display_fields: ["title", "padre"], options_length: 100 }
-
-          - label: "Menú superior: opciones"
-            name: "menu"
-            widget: "list"
-            collapsed: true
-            summary: "{{fields.texto}}"
-            hint: "Arrastra para cambiar el orden. Si una opción tiene subopciones, se muestra como desplegable; si además tiene página o dirección, al pulsar el texto se va a esa página y la flecha abre el desplegable."
-            fields:
-              - { label: "Texto", name: "texto", widget: "string" }
-              - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false, hint: "Elige una página creada en Páginas… " }
-              - { label: "…o dirección", name: "enlace", widget: "string", required: false, hint: "…o escribe una dirección: / (inicio), /blog/, /buscar/ o una web externa. Si rellenas las dos, manda la dirección." }
-              - { label: "Marcar también como activa en (avanzado)", name: "tambien", widget: "list", required: false, hint: "Rutas en las que esta opción debe aparecer resaltada, p. ej. /blog para «Blog»." }
-              - { label: "Desplegable del catálogo", name: "catalogo", widget: "boolean", default: false, required: false, hint: "Actívalo en la opción «Catálogo»: en vez de salir en la primera fila, se crea la barra del catálogo (segunda fila en el ordenador, caja arriba del menú en el móvil) con «Todo el catálogo», los tipos de producto con sus categorías y subcategorías (en el orden de «Orden del catálogo en el menú») y «Ofertas». El texto de la opción se usa como título de esa barra." }
-              - label: "Subopciones (desplegable)"
-                name: "hijos"
-                widget: "list"
-                required: false
-                collapsed: true
-                summary: "{{fields.texto}}"
-                hint: "Escribe --- como texto para poner una línea separadora."
-                fields:
-                  - { label: "Texto", name: "texto", widget: "string" }
-                  - { label: "Página de la web", name: "pagina", widget: "relation", collection: "paginas", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], required: false }
-                  - { label: "…o dirección", name: "enlace", widget: "string", required: false }
-                  - { label: "Marcar también como activa en (avanzado)", name: "tambien", widget: "list", required: false }
-
+              - { label: "Texto junto a los precios", name: "texto", widget: "string", required: false, default: "Precios orientativos, IVA incluido", hint: "Sale en el pie, en las páginas del catálogo y en el resumen de la solicitud." }
+              - { label: "Texto cuando no hay precio", name: "sin_precio", widget: "string", required: false, default: "Precio a consultar" }
+          - { label: "Productos en «Más en…» de la ficha", name: "relacionados", widget: "number", value_type: "int", min: 0, max: 12, default: 4, required: false, hint: "Productos de la misma categoría al final de cada ficha. 0: no sale el bloque." }
+          - { label: "Días que un producto lleva la etiqueta «Novedad»", name: "novedad_dias", widget: "number", value_type: "int", min: 0, max: 365, default: 0, required: false, hint: "Desde su fecha de alta, sobre la foto de la tarjeta y en la ficha. 0: sin etiqueta." }
           - label: "Enlaces legales del pie"
             name: "legales"
             widget: "list"
@@ -839,6 +864,37 @@ collections:
               - { label: "Teléfono (oculto: va en Contacto y horario)", name: "telefono", widget: "hidden", required: false }
               - { label: "Mostrar el icono RSS", name: "rss", widget: "boolean", default: true, required: false }
 
+          - { label: "Texto final del pie", name: "pie_texto", widget: "string", required: false, hint: "Vacío: «© <año> <nombre> · <localidad>». {año} y {nombre} se rellenan solos." }
+          - label: "Panel"
+            name: "panel"
+            widget: "object"
+            required: false
+            hint: "Cómo funciona el panel para quien edita. No cambia la web. Se aplica tras el siguiente despliegue."
+            fields:
+              - { label: "Quién ve «Ajustes del sitio» (usuarios de GitHub)", name: "administradores", widget: "list", required: false, default: ["vrspunk-87"], hint: "Los demás no ven el engranaje ni pueden abrir esta ficha. Es para que no se toque sin querer: quien tiene permiso en el repositorio puede cambiar cualquier fichero." }
+              - { label: "Productos por página en las tablas", name: "por_pagina", widget: "select", default: "12", required: false, options: ["12", "24", "48"] }
+              - { label: "Vista inicial de Productos, Categorías y Subcategorías", name: "vista_inicial", widget: "select", default: "grupos", required: false, options: [{ label: "Agrupada (plegada)", value: "grupos" }, { label: "Tabla", value: "tabla" }] }
+              - label: "Avisos de los productos que se muestran"
+                name: "avisos"
+                widget: "select"
+                multiple: true
+                required: false
+                default: ["sin_foto", "sin_precio", "oferta", "oferta_terminada", "cabezal", "segunda_mano", "clasificacion", "fabricante", "compatible", "referencia"]
+                hint: "Los que no marques no salen en la columna «Avisos» ni cuentan en los números."
+                options:
+                  - { label: "Sin foto", value: "sin_foto" }
+                  - { label: "Sin precio", value: "sin_precio" }
+                  - { label: "«En oferta» sin precio o fechas", value: "oferta" }
+                  - { label: "Oferta terminada", value: "oferta_terminada" }
+                  - { label: "Precio de cabezal fuera de su tipo", value: "cabezal" }
+                  - { label: "Datos de segunda mano en un producto nuevo", value: "segunda_mano" }
+                  - { label: "Clasificación que falta o no existe", value: "clasificacion" }
+                  - { label: "Fabricante que falta o no existe", value: "fabricante" }
+                  - { label: "«Compatible con» con productos que no existen", value: "compatible" }
+                  - { label: "Referencia repetida en el mismo fabricante", value: "referencia" }
+              - { label: "«Oferta terminada» marcada como «Entendido»: vuelve a salir a los … días", name: "avisos_vuelven_dias", widget: "number", value_type: "int", min: 0, max: 365, default: 0, required: false, hint: "0: no vuelve a salir (hasta que cambien las fechas de la oferta)." }
+              - { label: "Peso máximo de cada archivo al subirlo (MB)", name: "peso_maximo_mb", widget: "number", value_type: "int", min: 1, max: 25, default: 8, required: false, hint: "Lo comprueba el panel al subir fotos y PDF en las fichas." }
+              - { label: "Usar los colores y letras de la web en el panel", name: "estetica_web", widget: "boolean", default: true, required: false, hint: "Desmárcalo para ver el panel con el aspecto original de Decap." }
           - label: "Compresión de imágenes al subirlas"
             name: "imagenes"
             widget: "object"
@@ -858,3 +914,4 @@ collections:
               - { label: "Dirección pública de la web", name: "url", widget: "string", hint: "Sin barra al final: https://www.maquinasdecoserzafra.es. Si cambia, cámbiala también en base_url de config.yml y en la app OAuth de GitHub (ver docs/PLAN.md, fase 8)." }
               - { label: "Permitir que Google indexe la web", name: "indexable", widget: "boolean", default: false, required: false, hint: "Desactivado hasta la salida real: así Google no guarda la web a medio hacer. Solo tiene efecto en producción." }
               - { label: "Avisos de la comprobación diaria (usuarios de GitHub)", name: "avisos_github", widget: "list", required: false, hint: "Usuarios de GitHub (sin @) separados por comas, p. ej. usuaria-uno, usuario-dos. Si la comprobación diaria encuentra un fallo (web caída o formulario roto), los menciona en la incidencia y GitHub les manda un correo. Tienen que tener acceso al repositorio. No se publica en la web." }
+          - { label: "Zona horaria", name: "zona_horaria", widget: "select", default: "Europe/Madrid", required: false, options: [{ label: "Península y Baleares (Madrid)", value: "Europe/Madrid" }, { label: "Canarias", value: "Atlantic/Canary" }], hint: "Para las fechas de las ofertas, «Abierto ahora» del horario, la fecha de las solicitudes y el panel." }

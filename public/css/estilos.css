@@ -1314,3 +1314,15 @@ altcha-widget { display: block; max-width: 22rem; --altcha-border-radius: .6rem;
 @media (max-width: 767.98px) { .sobre-galeria { grid-template-columns: 1fr; } }
 /* Botones de compartir en el bloque principal de la portada (fondo gris): círculos blancos */
 .hero-texto .compartir-icono { background: var(--bs-body-bg); box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .06); }
+
+/* ---------- Franja de aviso arriba (Ajustes del sitio → Web → Franja de aviso) ---------- */
+.franja-aviso { padding: .45rem 1rem; text-align: center; font-size: .9rem; font-weight: 600; line-height: 1.4; }
+.franja-aviso a { color: inherit; text-decoration: underline; margin-left: .35rem; }
+.franja-color-marca { background: var(--tienda-acento, #c1121f); color: #fff; }
+.franja-color-marca a { color: #fff; }
+.franja-color-aviso { background: #fdf1dc; color: #6b4300; }
+.franja-color-neutro { background: #ececea; color: var(--tienda-texto, #1f2933); }
+
+/* ---------- Etiqueta «Novedad» (Ajustes del sitio → Catálogo y precios) ---------- */
+.etiqueta-novedad { position: absolute; top: .5rem; left: .5rem; font-size: .75rem; background: #1e7a3a; color: #fff; }
+.ficha-etiqueta.novedad { background: #1e7a3a; }

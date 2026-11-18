@@ -43,6 +43,9 @@ invitación al repositorio). Los cambios se ven en la web 1-2 minutos después d
   También: las frases bajo el resumen (pon solo lo que la tienda pueda cumplir, p. ej. el plazo de
   respuesta), si se pregunta cómo prefiere el cliente que le contestéis (llamada, WhatsApp, correo),
   si se sugieren accesorios compatibles y si se puede añadir una nota a cada producto.
+- **Ajustes del sitio** (solo administradores): tres pestañas, **Web**, **Panel** y **General**. En Web está
+  la **franja de aviso** (una línea arriba de todas las páginas, entre dos fechas: vacaciones, promociones…),
+  los textos de los precios, la etiqueta «Novedad» y el texto final del pie.
 - **Tipos y categorías sin productos** (Ajustes del sitio): «Ocultarlos de toda la web» quita de
   menús, inicio, pie, tarjetas y ofertas los tipos, categorías y subcategorías que aún no tienen
   productos; vuelven a salir solos en cuanto les asignas uno.
