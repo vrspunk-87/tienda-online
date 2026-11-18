@@ -160,7 +160,7 @@ function perfilCatalogo(nivel, hoja, uno, varios) {
       if (hijas.length) partes.push(plural(hijas.length, HIJOS[nivel].replace(/s$/, ''), HIJOS[nivel]));
       if (prods.length) partes.push(plural(prods.length, 'producto', 'productos'));
       if (!partes.length) return '';
-      const seccion = { tipo: '«Catálogo: categorías»', categoria: '«Catálogo: subcategorías»' }[nivel];
+      const seccion = { tipo: '«Categorías»', categoria: '«Subcategorías»' }[nivel];
       return `Tiene ${partes.join(' y ')}: ${hijas.length ? `bórra${hijas.length === 1 ? 'la' : 'las'} antes en ${seccion}` : ''}${hijas.length && prods.length ? ' y ' : ''}${prods.length ? 'cambia sus productos de categoría o bórralos antes' : ''}.`;
     },
     quitarDelOrden: true,

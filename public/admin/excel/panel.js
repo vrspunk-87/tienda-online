@@ -697,9 +697,108 @@ function colocar() {
   if (!nuevo || nuevo.previousElementSibling?.classList?.contains('xl-eng')) return;
   nuevo.parentElement.insertBefore(crearEngranaje(nombre), nuevo);
 }
+/* ---------- Cabecera del panel (aprobado por Víctor el 18-11-2026) ----------
+   - «Añadir rápido» pasa a «Acceso rápido», con dos grupos: «Añadir» (las secciones que crean fichas, con el
+     mismo nombre que en el menú «Colecciones») y «Editar» (las fichas únicas: Solicitud de presupuesto,
+     Contacto y horario, Sobre nosotros).
+   - Engranaje al lado: abre «Ajustes del sitio» (que no sale en «Colecciones»: hide en config.yml).
+   - El buscador de Decap sale del menú de la izquierda y se pone en el centro de la cabecera (busca en todo).
+   Decap no tiene un sitio oficial para esto: se retoca su cabecera (comprobarlo al actualizar Decap). */
+document.head.insertAdjacentHTML('beforeend', `<style>
+aside [class*="SearchContainer"]{display:none!important}
+.xl-buscador{flex:1;display:flex;justify-content:center;padding:0 16px}
+.xl-buscador input{width:100%;max-width:420px;height:36px;border:1px solid #dfdfe3;border-radius:5px;padding:0 12px 0 34px;font:inherit;font-size:14px;background:#f4f4f6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23798291' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 11px center}
+.xl-buscador input:focus{outline:none;border-color:#3a69c7;background-color:#fff}
+.xl-ajustes{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-left:8px;border:1px solid #dfdfe3;border-radius:5px;background:#fff;color:#313d3e}
+.xl-ajustes:hover{background:#f4f4f6}
+.xl-menu-gr{font-size:12px;color:#798291;padding:8px 14px 2px;cursor:default}
+.xl-menu-sep{border-top:1px solid #eff0f4;margin:4px 0}
+</style>`);
+let cfgCabecera = null;
+let pidiendoCabecera = false;
+function cabecera() {
+  if (!cfgCabecera) {
+    if (pidiendoCabecera) return;
+    pidiendoCabecera = true;
+    Promise.all([import('/admin/vendor/yaml/index.js'), fetch('/config.yml', { cache: 'no-store' }).then(r => r.text())])
+      .then(([YAML, texto]) => {
+        const cfg = YAML.parse(texto);
+        const cols = cfg.collections || [];
+        cfgCabecera = {
+          // Nombre de cada sección en «Añadir»: el mismo que en «Colecciones»
+          plural: new Map(cols.filter(c => c.folder && c.create && !c.hide).map(c => [String(c.label_singular || c.label), String(c.label)])),
+          editar: cols.filter(c => c.files && !c.hide).flatMap(c => c.files.map(f => ({ texto: f.label || f.name, href: `#/collections/${c.name}/entries/${f.name}` }))),
+          ajustes: cols.filter(c => c.files && c.hide && c.name === 'ajustes').flatMap(c => c.files.map(f => ({ texto: c.label, href: `#/collections/${c.name}/entries/${f.name}` })))[0] || null,
+        };
+        cabecera();
+      })
+      .catch(() => { pidiendoCabecera = false; });
+    return;
+  }
+  const boton = document.querySelector('header [class*="AppHeaderQuickNewButton"]');
+  if (!boton) return;
+  if (boton.textContent.trim() !== 'Acceso rápido') boton.textContent = 'Acceso rápido';
+  const envoltorio = boton.closest('[class*="StyledWrapper"]') || boton.parentElement;
+  // Menú abierto: nombres como en «Colecciones» y el grupo «Editar»
+  const lista = envoltorio.querySelector('[role="menu"] ul');
+  if (lista && !lista.dataset.xl) {
+    lista.dataset.xl = '1';
+    lista.style.width = 'auto';
+    lista.style.minWidth = '240px';
+    const modelo = lista.querySelector('[role="menuitem"]');
+    for (const it of lista.querySelectorAll('[role="menuitem"] span')) {
+      const p = cfgCabecera.plural.get(it.textContent.trim());
+      if (p) it.textContent = p;
+    }
+    lista.insertAdjacentHTML('afterbegin', '<div class="xl-menu-gr">Añadir</div>');
+    if (cfgCabecera.editar.length && modelo) {
+      lista.insertAdjacentHTML('beforeend', '<div class="xl-menu-sep"></div><div class="xl-menu-gr">Editar</div>');
+      for (const e of cfgCabecera.editar) {
+        const it = document.createElement('div');
+        it.setAttribute('role', 'menuitem');
+        it.tabIndex = -1;
+        it.className = modelo.className;
+        it.innerHTML = `<span>${esc(e.texto)}</span>`;
+        it.addEventListener('click', () => { location.hash = e.href; document.body.click(); boton.click(); });
+        lista.appendChild(it);
+      }
+    }
+  }
+  // Engranaje de «Ajustes del sitio»
+  if (cfgCabecera.ajustes && !envoltorio.parentElement.querySelector('.xl-ajustes')) {
+    envoltorio.insertAdjacentHTML('afterend', `<a class="xl-ajustes" href="${esc(cfgCabecera.ajustes.href)}" title="${esc(cfgCabecera.ajustes.texto)}" aria-label="${esc(cfgCabecera.ajustes.texto)}">${svg.eng}</a>`);
+  }
+  // Botón «Nuevo …» de cada lista: Decap pone siempre «Nuevo» + el nombre de la ficha («Nuevo Entrada
+  // del blog»). Se corrige el género y la mayúscula: «Nueva entrada del blog», «Nuevo producto».
+  for (const a of document.querySelectorAll('a[href^="#/collections/"][href$="/new"]')) {
+    const m = a.textContent.trim().match(/^Nuev[oa] (.+)$/);
+    if (!m) continue;
+    const nombre = m[1].charAt(0).toLowerCase() + m[1].slice(1);
+    const texto = `${/a$/i.test(nombre.split(' ')[0]) ? 'Nueva' : 'Nuevo'} ${nombre}`;
+    if (a.textContent !== texto) a.textContent = texto;
+  }
+  // Título de los resultados (Decap no lo traduce)
+  if (location.hash.startsWith('#/search/')) {
+    for (const h of document.querySelectorAll('main h1, h1')) {
+      const m = h.textContent.match(/^Search Results for "(.*)"$/);
+      if (m) h.textContent = `Resultados de «${m[1]}»`;
+    }
+  }
+  // Buscador en el centro de la cabecera
+  const acciones = boton.closest('[class*="AppHeaderActions"]');
+  if (acciones && !acciones.parentElement.querySelector('.xl-buscador')) {
+    acciones.insertAdjacentHTML('beforebegin', '<div class="xl-buscador"><input type="search" placeholder="Buscar en todo el panel" aria-label="Buscar en todo el panel"></div>');
+    const input = acciones.parentElement.querySelector('.xl-buscador input');
+    input.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' || !input.value.trim()) return;
+      location.hash = `#/search/${encodeURIComponent(input.value.trim())}`;
+    });
+  }
+}
+
 // Listas como tablas (tablas.js): productos, fabricantes, tipos, categorías y subcategorías
 const revisarTablas = crearTablas({ preparar, leerActuales, leerContexto });
-const repasar = () => { colocar(); revisarTablas(); };
+const repasar = () => { colocar(); revisarTablas(); cabecera(); };
 let pendiente = false;
 new MutationObserver(() => {
   if (pendiente) return;

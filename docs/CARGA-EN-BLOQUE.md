@@ -13,8 +13,8 @@ Al pulsarlo:
 | Cambiar en bloque (solo productos) | **Marcar como no disponible…** / **Marcar como disponible…** | Retirar de la web (sin borrar) o volver a mostrar varios productos |
 | (aparte, en rojo) | **Eliminar…** | Borrar varias fichas a la vez, sin pasar por un Excel |
 
-**Secciones con engranaje:** Catálogo: fabricantes, tipos de producto, categorías, subcategorías y
-productos, y Blog (18-11-2026). Falta Páginas (Excel y, además, un Word por página).
+**Secciones con engranaje:** Fabricantes, Tipos de producto, Categorías, Subcategorías, Productos y
+Entradas del blog (18-11-2026). Falta Páginas (Excel y, además, un Word por página).
 
 Todo pasa por un **informe** antes de guardar nada, y se guarda **en un único cambio** (commit) de
 la rama que edita el panel: en la web pública, `main`; en los entornos de pruebas, la suya. La web

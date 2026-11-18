@@ -256,7 +256,7 @@
   /* ---------- Productos de cada tipo, categoría y subcategoría en sus listas ----------
      El build deja en /admin/conteos.json cuántos productos tiene cada una (contando los de las
      que cuelgan de ella), con los datos del último despliegue. Aquí se añaden al final de cada
-     fila de las listas «Catálogo: tipos de producto / categorías / subcategorías». */
+     fila de las listas «Tipos de producto», «Categorías» y «Subcategorías». */
   const LISTAS = /#\/collections\/(tipos|categorias|subcategorias)\/entries\/([^/?#]+)$/;
   fetch('/admin/conteos.json', { cache: 'no-store' })
     .then(r => (r.ok ? r.json() : null))

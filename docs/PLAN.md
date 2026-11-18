@@ -40,6 +40,14 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
     miniatura, ordenar por cabecera, fila de filtros (texto, desplegables, números «>0») y paginación con
     selector 12/24/48. Empieza todo plegado y no se recuerda nada entre visitas (decidido por Víctor). Se quita
     de public/admin/campos.js el agrupado por «Clasificación» que pulsaba el «Group by» de Decap.
+  - **Cabecera y menú del panel** (18-11-2026, prototipo aprobado por Víctor; `public/admin/excel/panel.js`,
+    «Cabecera del panel»): «Añadir rápido» → «Acceso rápido» con los grupos «Añadir» y «Editar» (Solicitud de
+    presupuesto, Contacto y horario, Sobre nosotros); engranaje al lado que abre «Ajustes del sitio» (oculto en
+    «Colecciones» con `hide: true`); buscador en el centro de la cabecera (busca en todo; se quita el del menú
+    de la izquierda). Mismos nombres, en plural, en «Colecciones» y en «Acceso rápido»: Entradas del blog,
+    Páginas, Tipos de producto, Categorías, Subcategorías, Productos y Fabricantes (sin «Catálogo:»). El build
+    pone el número de fichas a todas las secciones con carpeta (antes, solo a las «Catálogo: …»).
+    Botón de cada lista con su género: «Nueva entrada del blog», «Nuevo producto» (Decap ponía «Nuevo Entrada del blog»).
   - Pruebas hechas: exportar Fabricantes a Excel con ZIP en dev-victor, bien; exportaciones completas de tipos,
     categorías y subcategorías, bien. El resto, cuando esté todo subido.
   - Corregido el 18-11-2026: categorías y subcategorías no dejaban elegir qué exportar. Ahora, al exportar (y en

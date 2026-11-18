@@ -3005,22 +3005,23 @@ Disallow: /
 }
 // Números del panel, con todos los ficheros tal como los ve el panel (también los «no disponibles»
 // y los «solo para pruebas»), calculados en este despliegue:
-//  - en el menú de la izquierda, cuántos elementos tiene cada sección «Catálogo: …»;
+//  - en el menú de la izquierda, cuántos elementos tiene cada sección con carpeta (blog, páginas, catálogo…);
 //  - en las listas de tipos, categorías y subcategorías, cuántos productos tiene cada una, contando
 //    los de las que cuelgan de ella (dist/admin/conteos.json; lo pinta public/admin/campos.js).
 {
-  const metasDe = dir => (fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith('.md')) : []).map(f => {
+  // (con subcarpetas: las entradas del blog van por año)
+  const metasDe = dir => (fs.existsSync(dir) ? fs.readdirSync(dir, { recursive: true }).map(String).filter(f => f.endsWith('.md')) : []).map(f => {
     const m = fs.readFileSync(path.join(dir, f), 'utf8').match(/^---\r?\n([\s\S]*?)\r?\n---/);
     let meta = {};
     try { meta = m ? (leerYaml(m[1]) || {}) : {}; } catch { /* ya avisado al leer la colección */ }
-    return { slug: f.replace(/\.md$/, ''), meta };
+    return { slug: path.basename(f).replace(/\.md$/, ''), meta };
   });
   const rutaConfig = path.join(DIST, 'config.yml');
   const doc = parseDocument(fs.readFileSync(rutaConfig, 'utf8'));
   for (const col of doc.get('collections')?.items || []) {
     const etiqueta = String(col.get('label') || '');
     const carpeta = col.get('folder');
-    if (!etiqueta.startsWith('Catálogo:') || !carpeta || col.get('hide') === true) continue;
+    if (!carpeta || col.get('hide') === true) continue;
     const filtro = col.get('filter')?.toJSON?.();
     const n = metasDe(carpeta).filter(x => !filtro || String(x.meta[filtro.field] ?? '') === String(filtro.value)).length;
     col.set('label', `${etiqueta} (${n})`);

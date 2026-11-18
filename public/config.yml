@@ -33,7 +33,7 @@ public_folder: "/img"
 
 collections:
   - name: "blog"
-    label: "Blog"
+    label: "Entradas del blog"
     label_singular: "Entrada del blog"
     folder: "public/_posts/blog"
     create: true
@@ -93,7 +93,7 @@ collections:
   # CATÁLOGO: categorías, productos y fabricantes (docs/PLAN.md, fase 2)
   # ------------------------------------------------------------------
   - name: "tipos"
-    label: "Catálogo: tipos de producto"
+    label: "Tipos de producto"
     label_singular: "Tipo de producto"
     description: "Primer nivel del catálogo (p. ej. Máquinas domésticas, Bordadoras, Accesorios). Cada uno tiene su página (/catalogo/tipo/). El orden del menú se decide en Ajustes del sitio → «Orden del catálogo en el menú»."
     folder: "public/_categorias"
@@ -114,7 +114,7 @@ collections:
       - { label: "Texto", name: "body", widget: "markdown", required: false, hint: "Introducción de su página, antes de los productos." }
 
   - name: "categorias"
-    label: "Catálogo: categorías"
+    label: "Categorías"
     label_singular: "Categoría"
     description: "Segundo nivel: cuelgan de un tipo de producto (p. ej. Bordadoras › Industriales). Su página es /catalogo/tipo/categoria/. El orden del menú se decide en Ajustes del sitio → «Orden del catálogo en el menú»."
     folder: "public/_categorias"
@@ -138,7 +138,7 @@ collections:
       - { label: "Texto", name: "body", widget: "markdown", required: false, hint: "Introducción de su página, antes de los productos." }
 
   - name: "subcategorias"
-    label: "Catálogo: subcategorías"
+    label: "Subcategorías"
     label_singular: "Subcategoría"
     description: "Tercer y último nivel: cuelgan de una categoría (p. ej. Bordadoras › Industriales › 1 Cabezal). Su página es /catalogo/tipo/categoria/subcategoria/. El orden del menú se decide en Ajustes del sitio → «Orden del catálogo en el menú»."
     folder: "public/_categorias"
@@ -184,7 +184,7 @@ collections:
       - { label: "Texto", name: "body", widget: "markdown", required: false, hint: "Introducción de su página, antes de los productos." }
 
   - name: "productos"
-    label: "Catálogo: productos"
+    label: "Productos"
     label_singular: "Producto"
     description: "Máquinas, accesorios y demás productos. Cada producto visible tiene su ficha en /productos/identificador/. Los accesorios son productos: en «Compatible con» se eligen las máquinas para las que sirven."
     folder: "public/_productos"
@@ -289,7 +289,7 @@ collections:
       - { label: "Descripción", name: "body", widget: "markdown", required: false }
 
   - name: "fabricantes"
-    label: "Catálogo: fabricantes"
+    label: "Fabricantes"
     label_singular: "Fabricante"
     description: "Fabricantes de los productos. No tienen página propia: sirven para asociar y filtrar los productos, y su nombre e imagen salen en las fichas."
     folder: "public/_fabricantes"
@@ -522,6 +522,8 @@ collections:
   # ------------------------------------------------------------------
   - name: "ajustes"
     label: "Ajustes del sitio"
+    # Fuera del menú «Colecciones»: se abre con el engranaje de la cabecera (public/admin/excel/panel.js)
+    hide: true
     description: "Nombre, logo, portada, tema, colores, menú, pie y redes. Los cambios se aplican a toda la web en el siguiente despliegue (1-2 minutos)."
     editor:
       preview: false

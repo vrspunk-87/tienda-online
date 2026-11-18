@@ -8,7 +8,7 @@ invitación al repositorio). Los cambios se ven en la web 1-2 minutos después d
 
 ## Secciones del panel
 
-- **Catálogo: tipos de producto, categorías y subcategorías**: son los tres niveles del catálogo,
+- **Tipos de producto, Categorías y Subcategorías**: son los tres niveles del catálogo,
   cada uno en su sección del panel (p. ej. Bordadoras › Industriales › 1 Cabezal). Una categoría
   elige su «Tipo de producto» y una subcategoría su «Categoría» (primero su tipo y luego la
   categoría). Los desplegables del panel salen en el orden de Ajustes y se actualizan solos: lo
@@ -19,7 +19,7 @@ invitación al repositorio). Los cambios se ven en la web 1-2 minutos después d
   allí en su sitio (si no, sale al final de su nivel). Cada una tiene su página con su texto. El nombre del fichero (y la dirección) se crea con el primer nombre y no
   cambia si luego lo renombras: si cambia mucho, mejor crear una nueva y pasar a ella
   los productos.
-- **Catálogo: productos**: rellena fabricante, **modelo** (obligatorio), referencia (si la hay),
+- **Productos**: rellena fabricante, **modelo** (obligatorio), referencia (si la hay),
   su sitio en el catálogo con tres desplegables: tipo de producto (obligatorio) y, si quieres,
   categoría y subcategoría (cada uno solo ofrece lo que cuelga del anterior; el producto sale en
   la página de lo que elijas y en las de arriba), precio, estado y de 1 a 5 fotos (la primera es la de las
@@ -37,7 +37,7 @@ invitación al repositorio). Los cambios se ven en la web 1-2 minutos después d
   con» las máquinas para las que sirve (escribe el nombre, el modelo, la referencia, el fabricante
   o la categoría para encontrarlas). En «Características», si dejas vacía la característica, el
   valor sale en una fila entera (p. ej. «Incluye maleta de transporte»).
-- **Catálogo: fabricantes**: nombre e imagen (logotipo). No tienen página.
+- **Fabricantes**: nombre e imagen (logotipo). No tienen página.
 - **Solicitud de presupuesto**: activar o desactivar que los clientes preparen y envíen solicitudes
   desde la web, y sus textos. Desactivada, en las fichas sale «Pedir información» (a Contacto).
   También: las frases bajo el resumen (pon solo lo que la tienda pueda cumplir, p. ej. el plazo de

@@ -1,7 +1,7 @@
 /*
   Listas del panel como tablas (docs/PLAN.md, fase 3; prototipos aprobados por Víctor el 18-11-2026).
 
-  En «Catálogo: productos, fabricantes, tipos de producto, categorías y subcategorías» se sustituye la
+  En «Productos», «Fabricantes», «Tipos de producto», «Categorías» y «Subcategorías» se sustituye la
   lista de Decap (con su «cargar más» al bajar) por tablas propias:
   - Productos: plegados por clasificación (en el orden del menú) o todos en una tabla.
   - Fabricantes y tipos: una tabla; al pulsar una fila se despliega debajo la tabla de sus productos.

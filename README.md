@@ -144,9 +144,9 @@ en producción. Los productos y la entrada del blog de prueba se borraron el 8-1
 
 | Qué | Dónde se edita | Dirección |
 |---|---|---|
-| Catálogo en tres niveles: tipos de producto › categorías › subcategorías (campo oculto `nivel`; el orden, en Ajustes del sitio) | Catálogo: tipos de producto, Catálogo: categorías y Catálogo: subcategorías | `/catalogo/<categoria>/`, `/catalogo/<categoria>/<subcategoria>/` y `/catalogo/<categoria>/<subcategoria>/<sub-subcategoria>/` |
-| Productos (fabricante, modelo, referencia opcional, categoría, precio, estado, oferta, condición, hasta 5 fotos, características, «Compatible con») | Catálogo: productos | `/productos/<identificador>/` |
-| Fabricantes (nombre e imagen) | Catálogo: fabricantes | sin página: filtro y fichas |
+| Catálogo en tres niveles: tipos de producto › categorías › subcategorías (campo oculto `nivel`; el orden, en Ajustes del sitio) | Tipos de producto, Categorías y Subcategorías | `/catalogo/<categoria>/`, `/catalogo/<categoria>/<subcategoria>/` y `/catalogo/<categoria>/<subcategoria>/<sub-subcategoria>/` |
+| Productos (fabricante, modelo, referencia opcional, categoría, precio, estado, oferta, condición, hasta 5 fotos, características, «Compatible con») | Productos | `/productos/<identificador>/` |
+| Fabricantes (nombre e imagen) | Fabricantes | sin página: filtro y fichas |
 | Todo el catálogo: categorías y ofertas (o productos al azar) | — | `/catalogo/` |
 | Todas las ofertas vigentes, con filtros (enlace «Ver todas las ofertas» en la portada y en `/catalogo/`) | — | `/ofertas/` |
 
