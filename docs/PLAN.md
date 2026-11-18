@@ -18,6 +18,13 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
 (último commit: `7a74770`, carga de 144 productos de Alfa, Janome, Husqvarna Viking, PFAFF y Singer).
 
 **Para retomar (18-11-2026, fin de sesión):**
+- **Pruebas automáticas en local (18-11-2026, noche)**: Claude pasó los cuatro planes de `docs/pruebas/` en una copia
+  local (Playwright; web y panel, ordenador y móvil emulado). Resultados, fallos y matices en
+  `docs/pruebas/RESULTADOS-2026-11-18.md`. Corregidos 5 de los 7 fallos (paginación bajo la cabecera, buscador
+  sin coincidencias falsas, nombre de la cabecera del móvil con letra grande, menú «+» y ✕ de Medios del panel
+  en el móvil); otro no era fallo y el de los textos legales espera los datos de la tienda. Correcciones subidas
+  en `e868ec1`. **Siguiente:** que Víctor pruebe en dev-victor lo que no se pudo en local (login de GitHub, flujo
+  editorial, solicitud real, móvil de verdad) y decidir qué matices (⚠️) de la lista se corrigen.
 - Catálogo en la web (todo «Solo para pruebas»): **477 productos** (18 Bernina cargados el 18-11-2026). **29 sin foto** (27 recambios y accesorios Jack del autómata de bolsillos, la T1900G y la JK-2808, el apilador y la caldera Trevil EX001: no están en ninguna web, pedirlas al proveedor). El 18-11 se pusieron fotos a 16 (ver «Fotos añadidas el 18-11-2026» en el apartado B). Otros avisos del panel: **5 parejas con la misma referencia** (Comel Futura RA, Janome 5060QDC y su mesa, tres parejas Jack) y **3 sin precio** (Elna 790PRO y 850, autómata Jack): decidir con el proveedor. Herramienta: no lee las páginas antiguas de bernina.com («Título de ficha no reconocido»; se leyeron a mano desde el navegador); queda pendiente decidir si mejorarla (páginas antiguas, webs oficiales internacionales o API de imágenes).
 - Revisar en develop las fichas nuevas; resolver avisos de las Excel (permisos de fotos/textos de tiendas, precios 2022/04-2026,
   «Emparejado por nombre») antes de quitar «Solo para pruebas».
