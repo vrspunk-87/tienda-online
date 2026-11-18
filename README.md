@@ -71,7 +71,7 @@ public/                             ← LO QUE SE EDITA
                                     excel/: engranaje de cada sección (Excel y cambios en bloque),
                                     tablas.js: listas del catálogo y buscador como tablas, con avisos;
                                     medios.js: «Medios» con pestañas por carpeta; tema-panel.css:
-                                    estética de la web y panel en el móvil (docs/PRUEBAS-PANEL.md)
+                                    estética de la web y panel en el móvil (docs/pruebas/)
 ```
 
 ## Trabajar en local

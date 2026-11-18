@@ -37,7 +37,10 @@ En productos, fabricantes, tipos de producto, categorías y subcategorías, la l
 - Columna **Pruebas**: «Sí» (solo en los entornos de pruebas) o «No» (se publica).
 - En todas: **ordenar** pulsando una cabecera (otra vez, al revés), **filtrar** en la fila de debajo (texto,
   desplegables o números como `>0` o `<500`), buscador arriba y **12, 24 o 48 por página**.
-- Empieza todo plegado cada vez. Las miniaturas salen de la web publicada: una foto recién subida puede
+- Al entrar en una sección empieza todo plegado. Al volver de una ficha (con «←» o el botón «Atrás» del
+  navegador), la lista queda como estaba: grupos y filas abiertos, página, orden, filtros, búsqueda y la
+  posición en la página; si guardaste cambios en la ficha, la lista se pone al día sola. Al cambiar de
+  sección se empieza de cero. Las miniaturas salen de la web publicada: una foto recién subida puede
   tardar unos minutos en verse.
 - Columna **Avisos** (productos): el icono ⚠ con un número indica algo que revisar en la ficha (sin foto, sin
   precio, oferta sin fechas o ya terminada, referencia repetida…). Pasa el ratón (o púlsalo en el móvil) para

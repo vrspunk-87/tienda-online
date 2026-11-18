@@ -11,7 +11,7 @@
 
   Decap no tiene un sistema de temas: se retocan sus piezas por el nombre que llevan en la clase
   (p. ej. «css-1abc-AppHeader»). Tras actualizar Decap (scripts/actualizar-decap.js) hay que repasar el
-  panel en el ordenador y en el móvil (docs/PRUEBAS-PANEL.md, apartado «Estética y móvil»).
+  panel en el ordenador y en el móvil (docs/pruebas/PANEL-ORDENADOR.md y PANEL-MOVIL.md).
 */
 
 /* ---------- Letras (las mismas de la web, servidas desde la propia web) ---------- */

@@ -8,7 +8,9 @@
   - Categorías (plegadas por tipo) y subcategorías (plegadas por «Tipo › Categoría»): igual.
   Todas las tablas: miniatura, ordenar pulsando la cabecera, fila de filtros, paginación con selector
   de 12, 24 o 48 por página. El lápiz abre la ficha; pulsar un producto abre la suya. Empieza todo
-  plegado cada vez (no se recuerda nada entre visitas).
+  plegado al entrar en la sección; al volver de una ficha (con «←» o «Atrás») queda todo como estaba: vista,
+  búsqueda, grupos y filas desplegados, página, orden, filtros y posición, y se vuelve a leer en segundo plano
+  por si la ficha cambió (Víctor, 18-11-2026). Al cambiar de sección se empieza de cero.
   Los datos se leen igual que el engranaje (almacen.js): lo que hay en la rama, también lo no publicado.
 */
 import { PERFILES } from './nucleo.js';
@@ -130,6 +132,20 @@ class Tabla {
     this.el.className = 'xl-tabla';
     document.addEventListener('xl-avisos-vistos', () => { if (document.body.contains(this.el)) this.pintar(); });
   }
+  // Estado de la tabla (página, orden, filtros, filas desplegadas y el de sus tablas de dentro), para
+  // dejarla igual al volver de una ficha
+  estado() {
+    return {
+      pag: this.pag, orden: this.orden, filtros: { ...this.filtros }, verFiltros: Boolean(this.verFiltros), abiertas: [...this.abiertas],
+      hijas: Object.fromEntries([...this.hijas].filter(([id]) => this.abiertas.has(id)).map(([id, h]) => [id, h.estado()])),
+    };
+  }
+  aplicarEstado(e) {
+    if (!e) return this;
+    this.pag = e.pag || 1; this.orden = e.orden || null; this.filtros = { ...(e.filtros || {}) }; this.verFiltros = e.verFiltros;
+    this.abiertas = new Set(e.abiertas || []); this.estadoHijas = e.hijas || {};
+    return this;
+  }
   pasa(f) {
     return this.cols.every(c => {
       const q = this.filtros[c.k];
@@ -235,7 +251,7 @@ class Tabla {
     this.el.querySelectorAll('[data-hija]').forEach(td => {
       const id = td.dataset.hija;
       const f = this.filas.find(x => String(x.id) === id);
-      if (!this.hijas.has(id)) this.hijas.set(id, this.desplegar(f));
+      if (!this.hijas.has(id)) this.hijas.set(id, this.desplegar(f).aplicarEstado(this.estadoHijas?.[id]));
       const h = this.hijas.get(id);
       h.pintar();
       td.appendChild(h.el);
@@ -522,21 +538,62 @@ function piezas(nombre, actuales, ctx, porPag, extra = {}, carpeta = '') {
 export function crearTablas({ preparar, leerActuales, leerContexto }) {
   document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
   let montada = null; // { nombre, raiz }
+  // Lo que había al ir a una ficha desde la lista, para dejarlo igual al volver (solo en la misma sección;
+  // al cambiar de sección o la primera vez, se carga de nuevo)
+  let memoria = null;
+  const hash32 = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return h; };
+  const firmaDatos = (actuales, ctx) => hash32([...actuales, ...ctx.productos].map(a => `${a.ruta}:${hash32(a.raw || '')}`).join('|'));
+  // Posición de la página mientras se ve la lista (al cambiar de página, Decap ya la ha movido)
+  window.addEventListener('scroll', () => { if (montada && !montada.error && document.body.contains(montada.raiz)) montada.scroll = window.scrollY; }, { passive: true });
 
   async function montar(nombre, main) {
+    // Al volver de una ficha de esta misma sección: los datos y el estado de antes (memoria)
+    const previo = memoria && memoria.nombre === nombre ? memoria : null;
+    memoria = null;
     const raiz = document.createElement('div');
     raiz.className = 'xl-tablas';
     raiz.innerHTML = '<p class="xl-nota">Cargando…</p>';
     main.appendChild(raiz);
-    montada = { nombre, raiz, main };
+    montada = { nombre, raiz, main, scroll: 0 };
     try {
-      const x = await preparar(nombre);
-      const [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x)]);
+      const x = previo ? previo.datos.x : await preparar(nombre);
+      const [actuales, ctx] = previo ? [previo.datos.actuales, previo.datos.ctx] : await Promise.all([leerActuales(x), leerContexto(x)]);
       if (montada?.raiz !== raiz) return;
+      dibujar(nombre, raiz, x, actuales, ctx, previo?.estado);
+      if (previo?.estado?.scroll) {
+        // Decap pinta la lista a la vez: se espera un poco para devolver la página a donde estaba
+        const y = previo.estado.scroll;
+        setTimeout(() => requestAnimationFrame(() => { if (montada?.raiz === raiz) window.scrollTo(0, y); }), 60);
+      }
+      if (previo) {
+        // Mientras, se vuelve a leer lo guardado: si algo cambió (p. ej. la ficha que se acaba de editar), se
+        // repinta con los datos nuevos sin perder lo que se estaba viendo
+        Promise.all([leerActuales(x), leerContexto(x)]).then(([a2, c2]) => {
+          if (montada?.raiz !== raiz || firmaDatos(a2, c2) === firmaDatos(actuales, ctx)) return;
+          const e = { ...montada.guardar(), scroll: window.scrollY };
+          dibujar(nombre, raiz, x, a2, c2, e);
+          window.scrollTo(0, e.scroll);
+        }).catch(() => { /* se queda con lo que había */ });
+      }
+    } catch (e) {
+      console.error(e);
+      raiz.innerHTML = `<p style="color:#c92a2a">No se ha podido cargar la lista: ${esc(e.message || e)}. Se muestra la lista normal del panel.</p>`;
+      main.querySelectorAll('.xl-oculto').forEach(el => el.classList.remove('xl-oculto'));
+      montada = { nombre, raiz, main, error: true };
+    }
+  }
+
+  // Pinta la lista con unos datos y, si lo hay, el estado anterior (vista, búsqueda, grupos abiertos, página,
+  // filtros y orden de cada tabla). Deja en «montada» los datos y cómo guardar el estado
+  function dibujar(nombre, raiz, x, actuales, ctx, e = null) {
+    {
+      const version = (montada.version || 0) + 1;
+      montada.version = version;
+      montada.datos = { x, actuales, ctx };
       const { YAML } = x;
       const posMenu = ordenCatalogo(YAML, ctx);
       const productos = ctx.productos;
-      let porPagina = [12, 24, 48].includes(Number(ajustesPanel().por_pagina)) ? Number(ajustesPanel().por_pagina) : 12;
+      let porPagina = e?.porPagina || ([12, 24, 48].includes(Number(ajustesPanel().por_pagina)) ? Number(ajustesPanel().por_pagina) : 12);
       const porPag = () => porPagina;
       const cat = ctx.catalogo;
       const { tablaProd, filasSeccion, tablaSeccion } = piezas(nombre, actuales, ctx, porPag);
@@ -545,15 +602,21 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
       let vista = nombre === 'productos' || nombre === 'categorias' || nombre === 'subcategorias' ? 'grupos' : 'tabla';
       const conVistas = vista === 'grupos';
       if (conVistas && ajustesPanel().vista_inicial === 'tabla') vista = 'tabla';
+      if (conVistas && e?.vista) vista = e.vista;
       const etiquetaGrupos = { productos: 'Por clasificación', categorias: 'Por tipo de producto', subcategorias: 'Por categoría' }[nombre];
-      const abiertos = new Set();
+      const abiertos = new Set(e?.abiertos || []);
       const tablas = new Map();
-      let busqueda = '';
+      const estadosTablas = { ...(e?.tablas || {}) }; // de antes de ir a la ficha; se aplican al crear cada tabla
+      let busqueda = e?.busqueda || '';
 
       const pasaBusqueda = (texto) => !busqueda || sinTildes(texto).includes(sinTildes(busqueda));
       const textoProducto = p => [p.datos.title, p.datos.modelo, p.datos.referencia, ctx.nombreFabricante(p.datos.fabricante), p.slug].join(' ');
 
-      let soloAvisos = false;
+      let soloAvisos = Boolean(e?.soloAvisos);
+      montada.guardar = () => ({
+        vista, busqueda, porPagina, soloAvisos, abiertos: [...abiertos],
+        tablas: { ...estadosTablas, ...Object.fromEntries([...tablas].map(([k, t]) => [k, t.estado()])) },
+      });
       const pintar = () => {
         const av = p => conAvisos(ctx, p);
         const prodsFiltrados = productos.filter(p => pasaBusqueda(textoProducto(p)) && (!soloAvisos || av(p)));
@@ -569,7 +632,11 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
             <label class="xl-gris">Por página <select data-por>${[12, 24, 48].map(n => `<option ${n === porPagina ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
           </div><div data-cont></div>`;
         const cont = raiz.querySelector('[data-cont]');
-        const conTabla = (clave, crear) => { clave += `:${sa}`; if (!tablas.has(clave)) tablas.set(clave, crear()); const t = tablas.get(clave); t.pintar(); return t.el; };
+        const conTabla = (clave, crear) => {
+          clave += `:${sa}`;
+          if (!tablas.has(clave)) { tablas.set(clave, crear().aplicarEstado(estadosTablas[clave])); delete estadosTablas[clave]; }
+          const t = tablas.get(clave); t.pintar(); return t.el;
+        };
 
         if (vista === 'tabla') {
           const caja = document.createElement('div');
@@ -610,14 +677,14 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
         raiz.querySelectorAll('[data-v]').forEach(btn => btn.addEventListener('click', () => { vista = btn.dataset.v; pintar(); }));
         raiz.querySelector('[data-solo-avisos]')?.addEventListener('click', () => { soloAvisos = !soloAvisos; pintar(); });
       };
-      // Al marcar un aviso como visto cambian los números: se rehace la lista (las tablas se crean de nuevo)
-      document.addEventListener('xl-avisos-vistos', () => { if (document.body.contains(raiz)) { tablas.clear(); pintar(); } });
+      // Al marcar un aviso como visto cambian los números: se rehace la lista (las tablas se crean de nuevo,
+      // con el estado que tenían)
+      document.addEventListener('xl-avisos-vistos', () => {
+        if (!document.body.contains(raiz) || montada?.version !== version) return;
+        Object.assign(estadosTablas, Object.fromEntries([...tablas].map(([k, t]) => [k, t.estado()])));
+        tablas.clear(); pintar();
+      });
       pintar();
-    } catch (e) {
-      console.error(e);
-      raiz.innerHTML = `<p style="color:#c92a2a">No se ha podido cargar la lista: ${esc(e.message || e)}. Se muestra la lista normal del panel.</p>`;
-      main.querySelectorAll('.xl-oculto').forEach(el => el.classList.remove('xl-oculto'));
-      montada = { nombre, raiz, main, error: true };
     }
   }
 
@@ -718,6 +785,11 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
     const m = location.hash.match(/^#\/collections\/([^/?]+)\/?(\?.*)?$/);
     const nombre = q ? `buscar:${q}` : m && LISTAS.includes(m[1]) && PERFILES[m[1]] ? m[1] : null;
     if (montada && (montada.nombre !== nombre || !document.body.contains(montada.raiz))) {
+      // Se guarda lo que había si se va a una ficha (de esta sección o, desde las tablas desplegadas, la de un
+      // producto) o a crear una, o si Decap ha vuelto a pintar la misma lista; si se va a otra lista, se olvida
+      const aSuFicha = /^#\/collections\/[^/]+\/(entries\/|new)/.test(location.hash);
+      memoria = montada.guardar && (aSuFicha || montada.nombre === nombre)
+        ? { nombre: montada.nombre, datos: montada.datos, estado: { ...montada.guardar(), scroll: montada.scroll } } : null;
       montada.raiz.remove();
       montada.main?.querySelectorAll('.xl-oculto').forEach(el => el.classList.remove('xl-oculto'));
       montada = null;

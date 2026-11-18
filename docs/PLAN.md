@@ -38,7 +38,8 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
     tabla. Fabricantes y tipos: una tabla; al pulsar una fila se despliega la tabla de sus productos; el lápiz
     abre su ficha. Categorías (plegadas por tipo) y subcategorías (por «Tipo › Categoría»): igual. Todas con
     miniatura, ordenar por cabecera, fila de filtros (texto, desplegables, números «>0») y paginación con
-    selector 12/24/48. Empieza todo plegado y no se recuerda nada entre visitas (decidido por Víctor). Se quita
+    selector 12/24/48. Empieza todo plegado; desde el 18-11-2026 (pedido por Víctor), al volver de una ficha queda
+    todo como estaba (y se pone al día en segundo plano); al cambiar de sección se empieza de cero. Se quita
     de public/admin/campos.js el agrupado por «Clasificación» que pulsaba el «Group by» de Decap.
   - **Cabecera y menú del panel** (18-11-2026, prototipo aprobado por Víctor; `public/admin/excel/panel.js`,
     «Cabecera del panel»): «Añadir rápido» → «Acceso rápido» con los grupos «Añadir» y «Editar» (Solicitud de
@@ -69,8 +70,9 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
     - **Estética de la web** (public/admin/tema-panel.css + colores de la marca en dist/admin/datos-panel.json) y
       **panel adaptado al móvil** (menos de 800 px: tres rayas para «Colecciones», tablas como tarjetas con
       «Ordenar» y «Filtros», ficha a lo ancho con los botones abajo y la vista previa debajo). Tras actualizar
-      Decap hay que repasarlo (docs/PRUEBAS-PANEL.md).
-    - Plan de pruebas de todo el panel: [docs/PRUEBAS-PANEL.md](PRUEBAS-PANEL.md).
+      Decap hay que repasarlo (docs/pruebas/).
+    - Planes de prueba (18-11-2026): [docs/pruebas/](pruebas/README.md), con cuatro planes: web en el ordenador, web en
+      el móvil, panel en el ordenador y panel en el móvil (sustituyen a docs/PRUEBAS-PANEL.md).
     - **Segunda tanda (18-11-2026, aprobada por Víctor):** ⚠ parpadeante (suave, quieto con «reducir
       movimiento») con cuántos productos tienen avisos en los grupos y en la columna Productos, y botón ⚠ para
       filtrar en todas las tablas y el buscador; Medios: pestañas bien desde la primera vez, «General» como las
