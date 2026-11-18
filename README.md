@@ -67,7 +67,8 @@ public/                             ← LO QUE SE EDITA
   css/estilos.css, js/              Estilos y scripts propios (sin scripts en línea: CSP)
   img/                              Imágenes; logo.png, compartir.jpg e iconos/ son PROVISIONALES
   admin/                            Panel de Decap (servido desde la propia web); campos.js: campos
-                                    propios (categoría del producto con desplegables dependientes)
+                                    propios (categoría del producto con desplegables dependientes);
+                                    excel/: engranaje de cada sección (Excel y cambios en bloque)
 ```
 
 ## Trabajar en local
@@ -147,6 +148,10 @@ en producción. Los productos y la entrada del blog de prueba se borraron el 8-1
 | Fabricantes (nombre e imagen) | Catálogo: fabricantes | sin página: filtro y fichas |
 | Todo el catálogo: categorías y ofertas (o productos al azar) | — | `/catalogo/` |
 | Todas las ofertas vigentes, con filtros (enlace «Ver todas las ofertas» en la portada y en `/catalogo/`) | — | `/ofertas/` |
+
+**Carga y cambios en bloque** (fase 3): engranaje en la lista de cada sección del panel (de momento,
+Fabricantes) con «Exportar a Excel», «Importar Excel», «Solo para pruebas» en bloque y «Eliminar»; todo
+con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/CARGA-EN-BLOQUE.md).
 
 - **Identificador** de un producto: lo crea el panel a partir del fabricante y el modelo y no cambia.
 - **Estados**: «Disponible»; «En oferta» (precio de oferta entre dos fechas, ambas incluidas, hora de
@@ -241,6 +246,9 @@ los definitivos (el tema se llama «Tienda» internamente).
 - Todo el HTML del contenido pasa por `sanitize-html`; política de seguridad de contenidos (CSP)
   en todas las páginas: solo scripts de la propia web y sin scripts en línea.
 - Nada se sirve desde CDN externos. Las claves van en Cloudflare: **nunca en el código**.
+- Engranaje del panel (Excel y cambios en bloque): usa la sesión del panel (el token de GitHub que
+  guarda Decap) para leer y hacer un commit en la rama del panel; no añade funciones ni claves. Solo
+  puede hacerlo quien ya puede editar con el panel.
 - Nunca un formulario que pida datos de tarjeta (lo prohíbe el plan gratuito de Cloudflare y la
   tienda no cobra en la web).
 

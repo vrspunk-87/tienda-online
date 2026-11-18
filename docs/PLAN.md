@@ -25,11 +25,12 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
   webs oficiales internacionales de cada marca como fuentes o un módulo con una API de búsqueda de imágenes (con clave).
 - Revisar en develop las fichas nuevas; resolver avisos de las Excel (permisos de fotos/textos de tiendas, precios 2022/04-2026,
   «Emparejado por nombre») antes de quitar «Solo para pruebas».
-- Siguiente paso de desarrollo: fase 3 (importador de Excel en el panel); la carga del 18-11 fue con un script puntual.
+- Fase 3 empezada (18-11-2026): engranaje en Fabricantes hecho (exportar, importar, «Solo para pruebas» en bloque y
+  eliminar; `public/admin/excel/`, guía en docs/CARGA-EN-BLOQUE.md). Siguientes: tipos, categorías, subcategorías,
+  productos (con filtros y «no disponible») y blog; páginas con Word.
 
-**Siguiente paso propuesto: fase 3** (importar las Excel desde el panel; el importador debe ignorar las
-columnas «Observaciones», «Revisar (avisos)» y «Modificaciones (desde la carga)» y tomar las fotos de la carpeta
-`fotos-tarifa-…` que hay junto a cada Excel). Sirve también para quitar en bloque la marca «Solo para pruebas».
+**Siguiente paso propuesto: fase 3** (decidida el 18-11-2026: botones «Exportar a Excel» e «Importar Excel» en cada
+colección del panel; ver la fase 3). Empezar por Fabricantes. Sirve también para quitar en bloque la marca «Solo para pruebas».
 
 **A. Lo decide o completa la tienda (no es código)**
 1. NIF en Contacto (sale como «[NIF]» en el aviso legal).
@@ -75,7 +76,7 @@ Scripts usados: emparejan por modelo y no se guardan en el repositorio. Pendient
 técnicas (la web de SVP mezcla datos y traduce mal algunos términos) y los modelos que no están en la web.
 
 **C. Desarrollo**
-10. Fase 3: importador de Excel en el panel (ver arriba).
+10. Fase 3: exportar e importar con Excel desde cada colección del panel (ver la fase 3).
 11. Fase 6: guías (panel, carga en bloque, gestión de solicitudes: estados, conservación, borrar también
     los correos) y prueba completa.
 12. Fase 8: conservar la caché de imágenes entre despliegues.
@@ -296,68 +297,129 @@ Colecciones de Decap (`public/config.yml`) y lectura en el build:
    lento con una carpeta tan grande, repartir los productos en subcarpetas (como las noticias por
    año en la plataforma).
 
-## Fase 3 — Carga y modificación en bloque
+## Fase 3 — Exportar e importar con Excel desde el panel
 
-**Decidido (6-11-2026):** la **exportación** a Excel se hará **desde el panel** (descargar el Excel
-con todo el catálogo para trabajarlo) y la **importación**, también desde el panel, después del
-despliegue (fase 1b). Las órdenes `npm run exportar` / `npm run importar` siguen siendo la base
-técnica (las ejecutará una acción de GitHub).
+**Decidido (18-11-2026, sustituye al planteamiento anterior con `npm run exportar` / `npm run importar`):**
+cada colección del panel tiene sus propios botones **«Exportar a Excel»** e **«Importar Excel»**, junto a
+«Nuevo…», dentro de un botón con icono de engranaje que los despliega (decidido por Víctor,
+18-11-2026). Todo se hace en el navegador, con el login de GitHub del panel: no hay funciones nuevas en
+Cloudflare (10 ms de CPU por petición no bastan para un Excel con fotos) ni claves nuevas.
 
-El panel sirve para el día a día (un producto, un precio, una oferta, retirar un producto). Para altas y
-cambios masivos, un circuito con Excel que **no necesita saber de Git ni de Markdown**:
+**Orden (decidido por Víctor):** Fabricantes → Tipos de producto → Categorías → Subcategorías →
+Productos → Blog. Además, **Páginas**: Excel y, aparte, **un documento de Word por página** con su
+contenido. Las colecciones de un solo fichero (Ajustes, Contacto y Sobre nosotros, Solicitud) quedan
+fuera: son una sola ficha y se editan mejor en el panel.
 
-```
-npm run exportar  → catalogo/productos.xlsx (estado actual del catálogo)
-                    editar en Excel: altas, precios, estados, textos
-                    fotos nuevas en catalogo/imagenes/
-npm run importar -- --prueba   → informe de lo que cambiaría, sin tocar nada
-npm run importar               → escribe public/_productos/ y public/img/productos/
-                    revisar en Sourcetree, commit y push
-```
+1. **Botones en el panel** (`public/admin/`, script propio como `campos.js`): Decap no tiene un punto de
+   extensión oficial para la lista de una colección, así que se añaden al detectar la vista
+   `#/collections/<nombre>`. Comprobar que siguen apareciendo al actualizar Decap
+   (`scripts/actualizar-decap.js`).
+2. **Columnas = campos del alta/edición**, sacadas de `config.yml` (si se añade un campo, el Excel lo
+   incluye solo). Primera columna «Identificador» (nombre del fichero; vacía en las filas nuevas: se
+   crea como en el panel). **Reglas del identificador** (en todas las colecciones):
+   - con identificador que existe → se **modifica** esa ficha;
+   - vacío → ficha **nueva**; el identificador se genera con la misma regla del panel en esa
+     colección (fabricantes: nombre; productos: fabricante + modelo; blog: título…) y, si ya existe,
+     se añade «-2», «-3»… (con aviso);
+   - escrito pero no existe → ficha **nueva** con ese identificador; si otra ficha tiene el mismo
+     nombre (o fabricante + modelo), aviso «¿querías decir…?» por si es una errata;
+   - **no se puede cambiar**: otras fichas lo usan (productos → fabricante y categoría, accesorios →
+     «compatible con»…) y se rompería la relación; cambiarlo en el Excel crea otra ficha y el informe
+     lo avisa.
+   **Columna «Acción»** (segunda columna, desplegable): «Crear/Editar» (ya puesto en todas las filas
+   exportadas y en las filas vacías preparadas para altas; si se deja vacía, cuenta igual) o «Borrar».
+   Las filas sin ningún dato (aparte de «Acción») se ignoran: solo están preparadas para altas. Una fila
+   con algún dato pero sin los obligatorios da error en el informe.
+   Que una fila falte en el Excel nunca borra nada. Borrados: el informe los muestra aparte, en rojo,
+   y hay que marcar «Entiendo que se borrarán N fichas»; se borran también las fotos que no use otra
+   ficha. No se borra un fabricante con productos, ni un tipo/categoría/subcategoría con hijas o
+   productos (al borrarlos, se quitan de «Orden del catálogo en el menú»), ni una página que esté en
+   el menú o el pie. En productos, la hoja «Instrucciones» recomienda Estado «no disponible» en vez de
+   borrar. Al borrar una máquina que está en «Compatible con» de algún accesorio, se quita de esos
+   accesorios en el mismo commit y el informe los lista (decidido por Víctor, 18-11-2026).
+   **Columnas informativas (solo lectura)** (decidido por Víctor, 18-11-2026): en Fabricantes, Tipos,
+   Categorías y Subcategorías, «Productos (solo lectura)» con el número de productos enlazados al
+   exportar (en tipos y categorías, con los de sus descendientes, como en el panel; cuenta todos, también
+   los «Solo para pruebas»). Celdas en gris, bloqueadas con la protección de la hoja (que deja editar el
+   resto, añadir filas y filtrar) y la importación las ignora.
+   **Productos**: dos hojas, como las Excel de `input/`: «Productos» (máquinas y demás) y «Accesorios»
+   (los del tipo «Accesorios»), con las mismas columnas; la hoja no decide nada al importar (manda la
+   categoría) y se leen las dos. En «Productos», «Accesorios asociados (solo lectura)»: cuántos
+   accesorios la tienen en «Compatible con». En «Accesorios», «Productos compatibles (solo lectura)»:
+   cuántos productos tiene en «Compatible con» (solo los que existen) (decidido por Víctor, 18-11-2026).
+   **Filtros al exportar productos** (decidido por Víctor, 18-11-2026): ventana con «Todo» o una selección
+   por fabricantes, tipos, categorías y subcategorías (varios en cada uno; desplegables dependientes:
+   categorías de los tipos elegidos, subcategorías de las categorías elegidas; cada opción con su número
+   de productos según lo ya elegido y sin las que se quedan en 0). Entre grupos, «y»; dentro de un grupo,
+   «o»; en cada rama manda lo más concreto (tipo A con su categoría A1 y tipo B sin categoría → A1 y
+   todo B). Casilla «Incluir los accesorios compatibles con estos productos». Siempre visible: «Se
+   exportarán N productos y M accesorios». El ZIP de fotos sigue el mismo filtro. Exportar una parte no
+   es peligroso: lo que no está en el Excel no se borra al importar.
+   Traducción por tipo de campo:
+   - texto, número, fecha, sí/no → una columna;
+   - desplegables y relaciones (fabricante, «compatible con»…) → columna con desplegable (hoja oculta
+     «Listas»);
+   - lista de imágenes → «Foto 1», «Foto 1: descripción»… hasta el máximo del campo;
+   - lista de textos (p. ej. características) → una celda, un punto por línea;
+   - grupos (oferta, segunda mano) → una columna por subcampo («Oferta: desde»…);
+   - cuerpo (descripción, texto de la entrada) → una celda (límite de Excel: unos 32.000 caracteres;
+     el exportador avisa si alguno no cabe);
+   - campos propios (`precio-producto`, `categoria-catalogo`) → columnas concretas, como en las Excel
+     de `input/`.
+3. **Hoja «Instrucciones»** en todos los Excel exportados (decidido por Víctor): cómo dar de alta,
+   modificar, borrar un dato con `(vacío)`, poner las fotos, qué columnas se ignoran y qué hace la
+   importación. Además, la hoja «Notas» con la explicación de cada columna y una hoja oculta con la
+   versión de cada ficha al exportar.
+4. **Exportar**: lee la rama que edita el panel (incluye lo no desplegado). Dos opciones: **solo
+   Excel** o **Excel + fotos en un ZIP**.
+5. **Importar**: admite el Excel solo, un ZIP con el Excel y las fotos, o el Excel y las fotos
+   arrastradas a la vez (se enlazan por el nombre escrito en «Foto N»).
+   - **Primero, informe** en una ventana: nuevos, modificados (campo, antes → después), sin cambios,
+     avisos y errores (cada uno con su fila). Con un error no se escribe nada.
+   - Al confirmar: el navegador reduce las fotos (1600 px; las que no han cambiado no se tocan) y
+     **guarda todo en un único commit directamente en la rama del panel**, como «Publicar ahora»
+     (decidido por Víctor; el flujo editorial de Decap va ficha a ficha y no sirve para cargas en
+     bloque). En productos, «Solo para pruebas» sirve de red de seguridad.
+   - **Celda vacía = no tocar el campo**; para borrar un dato se escribe `(vacío)` (decidido por Víctor).
+   - No borra fichas: las que no están en el Excel solo se listan.
+   - Se ignoran «Observaciones», «Revisar (avisos)» y «Modificaciones (desde la carga)», así que sirven
+     las Excel de tarifas de `input/` (sin «Identificador», se emparejan por fabricante + modelo, con
+     aviso).
+   - Si una ficha se cambió en el panel después de exportar, no se pisa: sale en el informe.
+   - Categorías nuevas escritas en el Excel: se dan de alta (decidido el 9-11-2026) y se listan para
+     revisarlas.
+   - Informe descargable en Excel.
+5b. **«Eliminar…» en el menú del engranaje** (decidido por Víctor, 18-11-2026), separado y en rojo, sin
+   pasar por un Excel: 1) elegir: en Productos, los filtros de la exportación más «Solo para pruebas» y
+   «Estado»; en las demás colecciones, lista con casillas y buscador; 2) revisar la lista exacta (se
+   pueden desmarcar) con lo que arrastra cada una; las que no se pueden borrar (fabricante con productos,
+   categoría con hijas o productos, página en el menú o el pie) salen sin casilla y con el motivo;
+   3) confirmar escribiendo el número de fichas. Mismas reglas que los borrados del Excel (fotos que no
+   usa otra ficha, «Compatible con» de los accesorios, «Orden del catálogo en el menú») y un único commit.
+   En Productos recuerda que, para quitarlos solo de la web, es mejor «Estado: no disponible».
+5c. **«Cambiar en bloque» en el menú del engranaje** (decidido por Víctor, 18-11-2026). El menú queda en
+   tres grupos: «Excel» (Exportar, Importar), «Cambiar en bloque» y, aparte y en rojo, «Eliminar…».
+   Acciones por parejas, para deshacer una con la otra: «Marcar como no disponible» / «Marcar como
+   disponible» (solo Productos) y «Quitar "Solo para pruebas"» / «Marcar "Solo para pruebas"» (todas las
+   colecciones). Misma ventana de filtros que al exportar (más el filtro «Sin avisos») y lista exacta con el
+   cambio («Solo para pruebas: sí → no»); las que ya están así no se tocan. Al quitar «Solo para pruebas»,
+   los productos sin foto o sin precio salen con aviso y desmarcados de entrada. Confirmación con un
+   botón (son reversibles) y un único commit por acción. Más adelante, en este grupo: precios y ofertas
+   en bloque (punto 8).
+6. **Páginas a Word**: además del Excel, «Exportar a Word» descarga un ZIP con un `.docx` por página
+   (título, descripción y el texto con sus encabezados, listas, negritas y enlaces). Por decidir: si
+   también se podrán importar desde Word.
+7. **Dependencias**: `exceljs` (ya en el proyecto), y para el ZIP y el Word, librerías servidas desde
+   la propia web (sin CDN), con versión exacta publicada hace al menos dos semanas.
+8. **Más adelante**: subidas de precio y ofertas en bloque (de momento, en el propio Excel).
+9. **Documentación**: `docs/CARGA-EN-BLOQUE.md`, sin tecnicismos.
 
-1. **Plantilla Excel** `catalogo/productos.xlsx` (fuera de `public/`): una fila por producto y una
-   columna por campo (identificador, nombre, fabricante, modelo, referencia, categoría,
-   subcategoría, compatible con (identificadores separados por comas), precio orientativo
-   (en las máquinas industriales, el de la completa), **precio cabezal**, estado, precio de oferta,
-   **precio de oferta cabezal**, inicio y fin de la oferta, condición (nuevo / segunda mano), estado del
-   producto y garantía, destacado, descripción, características, **imágenes**). Pestañas de ayuda con las
-   listas válidas de fabricantes, categorías y estados (desplegables en las celdas).
-   En las filas nuevas el identificador puede ir vacío: el importador lo crea a partir del
-   fabricante y el modelo (y lo escribe en el Excel en la siguiente exportación).
-2. **Imágenes por convención de nombre**: `catalogo/imagenes/<identificador>-1.jpg`,
-   `<identificador>-2.jpg`… (el número fija el orden; la 1 es la principal). La columna «imágenes» es
-   opcional: si está vacía, se usan las que sigan la convención. Texto alternativo: columna propia
-   o, si falta, el nombre del producto (con aviso).
-3. **`scripts/importar-catalogo.js`** (`exceljs` y `sharp`, ya usados en la plataforma):
-   - valida todo antes de escribir nada (identificadores únicos, «compatible con» válido, fabricantes existentes,
-     precios, imágenes que existen, **5 como máximo**, formato) y para con un informe claro si hay errores;
-   - **tipos, categorías y subcategorías nuevos** (decidido 9-11-2026): en el Excel son desplegables
-     con los de la web, pero se puede escribir uno nuevo (Excel solo avisa). El importador los da de
-     alta (el tipo; la categoría dentro del tipo de su fila; la subcategoría dentro de su categoría),
-     con su identificador a partir del nombre, y los lista en el informe para revisarlos (descripción,
-     foto y lugar en «Orden del catálogo en el menú»);
-   - **crea o actualiza** solo los campos que vienen en el Excel; no borra productos que no estén
-     en él (los lista como aviso; para retirar uno, estado «no disponible» o borrarlo en el panel);
-   - **reduce y comprime** las imágenes al importarlas (ancho y calidad máximos de Ajustes) y las
-     guarda en `public/img/productos/<identificador>/`; si una imagen no ha cambiado, no la reescribe;
-   - informe final: nuevos, modificados (con el campo y el valor anterior), sin cambios, avisos.
-4. **`scripts/exportar-catalogo.js`**: genera el Excel desde los ficheros actuales, para que los
-   cambios hechos en el panel no se pierdan. **Regla: exportar siempre antes de editar el Excel.**
-   El importador avisa si un producto se cambió en el panel después de la última exportación.
-5. **Cambio de precios y ofertas en bloque**: además de editar las columnas, opciones para
-   subidas o bajadas porcentuales (`--subir 5% --categoria muebles`, o por fabricante) y para
-   poner en oferta un grupo de productos (`--oferta 20% --desde 2026-11-27 --hasta 2026-11-30
-   --fabricante X`), con el mismo informe previo de `--prueba`.
-6. Si algún día se sacan las imágenes del repositorio (aviso del build a partir de 700 MB), el
-   importador las sube al servicio elegido en lugar de copiarlas a `public/img/`.
-7. **Para más adelante (si las cargas las hace la tienda)**: el importador no depende del equipo de
-   Víctor y puede ejecutarlo una acción de GitHub cuando se suben el Excel y las fotos a una carpeta
-   del repositorio (desde la web de GitHub o el panel), dejando el informe y los cambios en una rama
-   para revisarlos antes de publicar. No se construye ahora.
-8. Documentación: `docs/CARGA-EN-BLOQUE.md`, sin tecnicismos y con capturas del Excel.
+**Hecho (18-11-2026): Fabricantes** — `public/admin/excel/` (nucleo.js, libro.js, almacen.js, panel.js),
+pruebas en `lib/excel-panel.test.mjs`, guía en [CARGA-EN-BLOQUE.md](CARGA-EN-BLOQUE.md). `exceljs` pasa a
+`dependencies` y se añade `jszip` 3.10.2 (ya venía con exceljs); el build los copia a `/admin/vendor/` con `yaml`.
 
-Prueba: importar el catálogo ficticio de la fase 2, cambiar precios y estados, volver a importar y
-comprobar el informe y el `git diff`.
+Prueba en cada colección: exportar y volver a importar sin cambios da 0 cambios; cambiar varias filas,
+añadir una y comprobar el informe y el commit.
 
 **Adelantado de la fase 4 (5-11-2026), a petición de Víctor:**
 - **Menú**: «Catálogo» primera opción, con desplegable automático de categorías y subcategorías; «Sobre

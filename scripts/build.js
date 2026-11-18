@@ -1576,6 +1576,18 @@ fs.copyFileSync(path.join(NM, 'altcha/dist/main/altcha.i18n.min.js'), path.join(
 fs.copyFileSync(path.join(NM, 'altcha/LICENSE.txt'), path.join(VENDOR, 'altcha/LICENSE.txt'));
 fs.copyFileSync(path.join(NM, 'bootstrap-icons/font/bootstrap-icons.min.css'), path.join(VENDOR, 'bootstrap-icons/bootstrap-icons.min.css'));
 fs.cpSync(path.join(NM, 'bootstrap-icons/font/fonts'), path.join(VENDOR, 'bootstrap-icons/fonts'), { recursive: true });
+// Panel: librerías del engranaje de cada colección (Excel, ZIP y YAML; public/admin/excel/), servidas
+// desde la propia web en /admin/vendor/ (sin CDN). Se cargan solo al usar el engranaje.
+{
+  const VENDOR_PANEL = path.join(DIST, 'admin/vendor');
+  fs.mkdirSync(path.join(VENDOR_PANEL, 'yaml'), { recursive: true });
+  fs.copyFileSync(path.join(NM, 'exceljs/dist/exceljs.min.js'), path.join(VENDOR_PANEL, 'exceljs.min.js'));
+  fs.copyFileSync(path.join(NM, 'exceljs/LICENSE'), path.join(VENDOR_PANEL, 'exceljs-LICENSE.txt'));
+  fs.copyFileSync(path.join(NM, 'jszip/dist/jszip.min.js'), path.join(VENDOR_PANEL, 'jszip.min.js'));
+  fs.copyFileSync(path.join(NM, 'jszip/LICENSE.markdown'), path.join(VENDOR_PANEL, 'jszip-LICENSE.txt'));
+  fs.cpSync(path.join(NM, 'yaml/browser/dist'), path.join(VENDOR_PANEL, 'yaml'), { recursive: true });
+  fs.copyFileSync(path.join(NM, 'yaml/LICENSE'), path.join(VENDOR_PANEL, 'yaml/LICENSE.txt'));
+}
 
 // Color principal propio (opcional) y CSS adicional de los Ajustes
 function hexARgb(hex) {
