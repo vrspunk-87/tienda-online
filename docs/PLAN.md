@@ -4,18 +4,23 @@ Plan de trabajo acordado a partir de las respuestas de Víctor (5 de noviembre d
 termina con algo que se puede probar en local y con su documentación en `README.md` o en `docs/`.
 Las fases se hacen en orden; dentro de cada una, los pasos también.
 
-## Estado y pendientes (17-11-2026) — para retomar en otra sesión
+## Estado y pendientes (18-11-2026) — para retomar en otra sesión
 
 **Hecho:** fases 0, 1 (1a local y 1b Cloudflare Pages), 2, 4, 5 (envío real; producción configurada con
 la cuenta de Google de la tienda, pero la web pública sin productos hasta la salida real) e identidad
 visual (logo, colores, imágenes al compartir, Sobre nosotros con fotos). GitHub Actions: reconstrucción
 diaria, sincronizar ramas, Dependabot y comprobación diaria. Panel: vistas previas con el aspecto de la
 web y productos agrupados por clasificación. Textos legales para un autónomo, con los datos de la
-tienda en un solo sitio (Contacto). Último commit: `2fa3b12` en main.
+tienda en un solo sitio (Contacto). **Dominio conectado (17-11-2026):** producción en
+https://www.maquinasdecoserzafra.es (DNS en Strato: CNAME `www` → `maquinas-de-coser-zafra.pages.dev`; el dominio sin
+www redirige con 301 desde Strato, con su SSL incluido); los entornos siguen en `<rama>.maquinas-de-coser-zafra.pages.dev`;
+login del panel probado; **sin indexar**. Último commit: `75c4989` en main.
+**Sin subir todavía** (comandos más abajo): categoría «Planchado › Planchas» (`public/_categorias/planchas.md` y su
+orden en `public/_datos/sitio.yml`) y este PLAN.
 
 **Siguiente paso propuesto: fase 3** (importar las Excel desde el panel; el importador debe ignorar las
-columnas «Revisar (avisos)» y «Modificaciones (desde la carga)»). Sirve también para quitar en bloque la
-marca «Solo para pruebas».
+columnas «Observaciones», «Revisar (avisos)» y «Modificaciones (desde la carga)» y tomar las fotos de la carpeta
+`fotos-tarifa-…` que hay junto a cada Excel). Sirve también para quitar en bloque la marca «Solo para pruebas».
 
 **A. Lo decide o completa la tienda (no es código)**
 1. NIF en Contacto (sale como «[NIF]» en el aviso legal).
@@ -27,29 +32,48 @@ marca «Solo para pruebas».
    ejemplo»; permiso de las dos personas de la foto.
 5. Color de las ofertas: dejarlas en rojo o darles uno propio.
 
-**B. Catálogo**
-6. Pendientes de las Excel (precios y referencias por confirmar: FEL970, Juki F17, apilador, Creator
-   Expres…; consultas a Jack y J. Pujol; repetir la búsqueda de Elna 782/770/780/920).
-7. Referencias repetidas que avisa el build (FFUTURA RA, FEL970, varias de Jack).
-8. 43 productos sin foto; fotos tomadas de otras tiendas (permiso o sustituir).
-9. Textos alternativos de las fotos (fase 6, punto 4).
+**B. Catálogo: Excel de importación en `input/` (carpeta ignorada por Git; las tarifas llevan precios netos)**
+
+Todas con las mismas columnas que el alta del panel, desplegables de catálogo (hoja oculta «Listas», ya con
+«Planchas»), hoja «Notas» y columnas «Observaciones», «Revisar (avisos)» y «Modificaciones (desde la carga)».
+Todo «Solo para pruebas». Las categorías dudosas ya las ha revisado Víctor (regla: lo que no corrige, está bien).
+
+| Excel | Contenido | Fotos | Pendiente («Revisar») |
+|---|---|---|---|
+| `Tarifa_Domestico_03_2026_importacion.xlsx` (J. Pujol) | cargada en la web el 9-11 | `fotos-tarifa-03-2026` | precios/referencias por confirmar (FEL970, Juki F17, apilador, Creator Expres…; consultas a Jack y J. Pujol), repetir la búsqueda de Elna 782/770/780/920 |
+| `TARIFA_JACK_11_25_importacion.xlsx` | cargada en la web el 9-11 | `fotos-tarifa-jack-11-25` | fotos de tiendas (permiso), sin foto |
+| `TARIFA_ALFA_PROFESIONALES_2026_importacion.xlsx` | 28 productos + 5 accesorios, **completada con la web oficial de Alfa** (18-11) | `fotos-tarifa-alfa-2026` (156, 1200×1200, la 1.ª limpia) | «Foto con icono» (8709 Style, Style 8708 Plus), «Emparejado por nombre» (Essence), «Compatibilidad (universal)» (Funda Max) |
+| `Tarifa_Janome_2022_importacion.xlsx` (RMT, PDF escaneado, págs. 5-27) | 26 máquinas + 11 accesorios; 22 completadas con janome.es (18-11) | `fotos-tarifa-janome-2022` (1 por máquina, con logotipo) | «Precio 2022» en todas; sin foto: Roja, 3612, MC9400QCP, Ricoma SW-1010 y accesorios; «Web incoherente» (72922S, 1030MX, Skyline S3); «Emparejado por nombre» (MC550E ↔ 550E LE); «Datos» (erratas de la tarifa) |
+| `TARIFA_HV_09_2026_importacion.xlsx` (Husqvarna Viking) | 17 máquinas | — | «Sin foto», «Sin textos»; Plan EVOLUCIÓN en Observaciones |
+| `TARIFA_PFAFF_09_2026_importacion.xlsx` | 26 productos (Elevate 680 completa y máquina sola) + unidad de bordado | — | «Sin foto», «Sin textos», «Precio 04-2026» (págs. 2-4) |
+| `TARIFA_SINGER_09_2026_importacion.xlsx` | 29 máquinas + unidad de bordado 905E (solo HD9125) | — | «Sin foto», «Sin textos»; sin códigos; no se copió el precio de distribuidor |
+
+Además, de antes: referencias repetidas que avisa el build (FFUTURA RA, FEL970, varias de Jack); 43 productos
+cargados sin foto; fotos tomadas de otras tiendas (permiso o sustituir); textos alternativos (fase 6, punto 4).
+
+**Completar con la web de los fabricantes** (herramienta `..\herramienta-consulta-fabricantes`, otro repositorio, con
+su propio CLAUDE.md): consultas lanzadas el 18-11 y sin terminar: Husqvarna Viking, PFAFF y Singer (europe.singer.com,
+con el arreglo del 429) y las tiendas con Janome (`Janome-tiendas`: fotos de tiendas, solo de referencia). Cuando
+acaben, completar sus Excel igual que la de Alfa (fotos elegidas, 1.ª limpia, 1200×1200; descripción, características
+y ficha técnica de la web oficial; Observaciones con la URL de cada foto). Scripts usados para Alfa y Janome:
+emparejan por referencia (o por modelo si la web no la publica) y no se guardan en el repositorio.
 
 **C. Desarrollo**
-10. Fase 3: importador de Excel en el panel.
+10. Fase 3: importador de Excel en el panel (ver arriba).
 11. Fase 6: guías (panel, carga en bloque, gestión de solicitudes: estados, conservación, borrar también
     los correos) y prueba completa.
 12. Fase 8: conservar la caché de imágenes entre despliegues.
 
 **D. Salida a producción**
-13. Dominio `maquinasdecoserzafra.es` (comprado en Strato el 17-11-2026): código cambiado (Ajustes →
-    Avanzado, `base_url`, `lib/origenes.js`, entornos en subdominios, comprobación diaria). Falta lo de
-    fuera del código (fase 8, punto 2) y revisar la cookie `__cf_bm`. Sigue sin indexar.
-14. Quitar «Solo para pruebas» a lo revisado, activar «indexable», Google Search Console, quitar los
-    avisos de borrador, solicitud real de prueba (y borrar después la fila y la propiedad `contador-2026`),
-    volver a generar `public/img/compartir.jpg` si cambia el nombre o el logo.
+13. Dominio hecho (fase 8, punto 2). Queda: revisar la cookie `__cf_bm`; quitar de la app OAuth de GitHub la URL
+    de vuelta de `pages.dev` cuando ya no haga falta; SPF si se usa el correo de Strato con el dominio.
+14. Quitar «Solo para pruebas» a lo revisado, activar «indexable», redirigir la `pages.dev` de producción al
+    dominio, Google Search Console, quitar los avisos de borrador, solicitud real de prueba (y borrar después la fila
+    y la propiedad `contador-2026`), volver a generar `public/img/compartir.jpg` si cambia el nombre o el logo.
 
 **Forma de trabajar:** Víctor hace los commits; se le dan los comandos de PowerShell listos para copiar
-(carpeta `C:\Users\victor.ruanosantana\Downloads\tienda-online`, rama main salvo que se diga otra).
+(carpeta `C:\Users\victor.ruanosantana\Downloads\tienda-online`, rama main salvo que se diga otra). No inventar
+datos: lo dudoso, en Observaciones y en «Revisar (avisos)». Mostrar opciones antes de cambios visuales.
 
 ## Qué cambia respecto a lo previsto
 
