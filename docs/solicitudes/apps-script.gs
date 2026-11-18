@@ -12,10 +12,13 @@
  *  - les da un número correlativo (S-2026-0001), sin repetirse aunque lleguen dos a la vez;
  *  - guarda una fila por solicitud en la pestaña «Solicitudes» (con un desplegable de estado)
  *    y una fila por producto en «Líneas»;
- *  - avisa a la tienda por correo con la solicitud completa (datos de contacto, productos,
- *    observaciones y notas; «Responder» contesta al cliente);
  *  - manda el acuse de recibo al cliente (texto fijo de la web y productos del catálogo; NUNCA
- *    nada escrito por el cliente, para que nadie use el formulario para mandar correos a terceros).
+ *    nada escrito por el cliente, para que nadie use el formulario para mandar correos a terceros);
+ *  - avisa a la tienda por correo con la solicitud completa (datos de contacto, productos,
+ *    observaciones y notas; «Responder» contesta al cliente).
+ *  Versión 2 (18-11-2026): los dos correos llegan ya montados desde la web, en HTML y en texto
+ *  (lib/correos.js); el script solo rellena el número, la hoja, si salió el acuse y los correos que
+ *  quedan, y los manda. Si la web es antigua y no los manda, se usan los de texto de siempre.
  * Instrucciones: docs/solicitudes/CONFIGURAR.md
  *
  * Propiedades del script (Configuración del proyecto → Propiedades del script):
@@ -55,7 +58,7 @@ function doPost(e) {
 
     // Comprobación desde /api/estado-solicitudes: la clave es correcta; no se escribe nada
     if (datos.accion === 'comprobar') {
-      return responder({ ok: true, version: 1, aviso: Boolean(props.getProperty('AVISO_PARA')), cuota: MailApp.getRemainingDailyQuota() });
+      return responder({ ok: true, version: 2, aviso: Boolean(props.getProperty('AVISO_PARA')), cuota: MailApp.getRemainingDailyQuota() });
     }
     if (datos.accion !== 'guardar' || !datos.cliente || !Array.isArray(datos.lineas) || !datos.lineas.length) {
       return responder({ ok: false, error: 'datos no válidos' });
@@ -101,9 +104,10 @@ function doPost(e) {
     });
 
     var pruebas = datos.entorno && datos.entorno !== 'produccion';
-    enviarAviso(props, datos, numero, Math.min(Number(limites.avisosDia) || 40, MAX_AVISOS_DIA), pruebas);
+    // Primero el acuse al cliente y después el aviso a la tienda (que dice si el acuse salió)
     var acuse = enviarAcuse(props, datos, numero, Math.min(Number(limites.acusesDia) || 45, MAX_ACUSES_DIA), pruebas);
     hoja.getRange(filaNueva, CABECERAS.indexOf('Acuse enviado') + 1).setValue(acuse ? 'Sí' : 'No (tope diario)');
+    enviarAviso(props, datos, numero, Math.min(Number(limites.avisosDia) || 40, MAX_AVISOS_DIA), pruebas, acuse);
 
     return responder({ ok: true, numero: numero, acuse: acuse });
   } catch (error) {
@@ -188,7 +192,13 @@ function contar(props, tipo, maximo) {
 // Solo va a AVISO_PARA (el correo de la tienda), en texto plano (nada de lo escrito por el cliente
 // puede convertirse en enlaces o formato engañoso), y «Responder» contesta al cliente.
 // Al llegar al tope diario manda un único aviso de que se ha alcanzado.
-function enviarAviso(props, datos, numero, maximo, pruebas) {
+// Correos ya montados por la web (lib/correos.js, versión 2): solo se rellenan los huecos que conoce el script
+function rellenarCorreo(correo, valores) {
+  var cambiar = function (t) { return String(t || '').replace(/\{\{(NUMERO|HOJA|ACUSE|CUOTA)\}\}/g, function (m, k) { return valores[k] == null ? '' : String(valores[k]); }); };
+  return { asunto: cambiar(correo.asunto).replace(/[\r\n]+/g, ' ').slice(0, 200), html: cambiar(correo.html), texto: cambiar(correo.texto) };
+}
+
+function enviarAviso(props, datos, numero, maximo, pruebas, acuse) {
   var para = props.getProperty('AVISO_PARA');
   if (!para || !maximo) return;
   var cuenta = contar(props, 'avisos', maximo);
@@ -202,6 +212,13 @@ function enviarAviso(props, datos, numero, maximo, pruebas) {
     return;
   }
   var c = datos.cliente || {};
+  if (datos.correos && datos.correos.tienda) {
+    var listo = rellenarCorreo(datos.correos.tienda, { NUMERO: numero, HOJA: url, ACUSE: acuse ? 'enviado' : 'no enviado (tope diario o sin correo)', CUOTA: MailApp.getRemainingDailyQuota() - 1 });
+    var opc = { to: para, subject: prefijo + listo.asunto, body: listo.texto, htmlBody: listo.html, name: (datos.tienda || 'Tienda') + ' (web)' };
+    if (c.correo) opc.replyTo = c.correo;
+    MailApp.sendEmail(opc);
+    return;
+  }
   var productos = datos.lineas.map(function (l) {
     var t = '- ' + l.unidades + ' × ' + nombreLinea(l) + '\n    ' + precioLinea(l) +
       (l.subtotal != null && l.unidades > 1 ? ' · subtotal ' + euros(l.subtotal) : '');
@@ -219,7 +236,7 @@ function enviarAviso(props, datos, numero, maximo, pruebas) {
     '\nPRODUCTOS (' + datos.lineas.length + ')\n' + productos + '\n\n' +
     'Total orientativo: ' + (euros(datos.total) || '—') + (datos.aConsultar ? ' (+ ' + datos.aConsultar + ' con precio a consultar)' : '') + '\n\n' +
     'OBSERVACIONES\n' + (c.observaciones ? c.observaciones : '(ninguna)') + '\n\n' +
-    'Acuse de recibo al cliente: se envía a continuación (salvo tope diario).\n' +
+    'Acuse de recibo al cliente: ' + (acuse ? 'enviado' : 'no enviado (tope diario o sin correo)') + '.\n' +
     'Hoja de solicitudes (estado, notas y precio final):\n' + url + '\n\n' +
     'Para contestar al cliente basta con «Responder». Ojo: el correo y el teléfono los ha escrito el cliente y no están comprobados; no abras enlaces que vengan en las observaciones si no te fías.';
   var opciones = { to: para, subject: prefijo + 'Nueva solicitud de presupuesto ' + numero, body: cuerpo, name: (datos.tienda || 'Tienda') + ' (web)' };
@@ -234,6 +251,14 @@ function enviarAcuse(props, datos, numero, maximo, pruebas) {
   if (MailApp.getRemainingDailyQuota() < 2) return false;
   var cuenta = contar(props, 'acuses', maximo);
   if (!cuenta.queda) return false;
+  var avisoPara = props.getProperty('AVISO_PARA');
+  if (datos.correos && datos.correos.cliente) {
+    var listo = rellenarCorreo(datos.correos.cliente, { NUMERO: numero });
+    var opc = { to: correo, subject: (pruebas ? '[Pruebas] ' : '') + listo.asunto, body: listo.texto, htmlBody: listo.html, name: datos.tienda || 'Tienda' };
+    if (avisoPara) opc.replyTo = avisoPara;
+    MailApp.sendEmail(opc);
+    return true;
+  }
   var acuse = datos.acuse || {};
   var lista = datos.lineas.map(function (l) { return '- ' + l.unidades + ' × ' + nombreLinea(l) + ': ' + precioLinea(l); }).join('\n');
   var oferta = datos.lineas.some(function (l) { return l.oferta; });
@@ -245,7 +270,6 @@ function enviarAcuse(props, datos, numero, maximo, pruebas) {
     (oferta ? ' Los precios de oferta se respetan en las solicitudes recibidas dentro de sus fechas.' : '') + '\n\n' +
     (datos.tienda || '') + (datos.web ? '\n' + datos.web : '');
   var opciones = { to: correo, subject: (pruebas ? '[Pruebas] ' : '') + String(acuse.asunto || 'Hemos recibido tu solicitud de presupuesto').slice(0, 120) + ' (' + numero + ')', body: cuerpo, name: datos.tienda || 'Tienda' };
-  var avisoPara = props.getProperty('AVISO_PARA');
   if (avisoPara) opciones.replyTo = avisoPara;
   MailApp.sendEmail(opciones);
   return true;

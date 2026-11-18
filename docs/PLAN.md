@@ -78,19 +78,28 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
       vistas previas con el estilo de la web para blog, tipos, categorías, subcategorías y fabricantes;
       «Ajustes del sitio» en pestañas Web / Panel / General con opciones nuevas (ver README → Ajustes del
       sitio) y antispam (correo y teléfono ocultos a los robots, máximo de enlaces en las observaciones).
+    - **Ajustes del sitio como el prototipo** (18-11-2026, corrección pedida por Víctor): cada pestaña con sus
+      secciones plegables («Identidad de la tienda · 8 opciones»…), empiezan plegadas; Panel en cinco secciones
+      (los ajustes del panel pasan a campos sueltos `panel_…`) y General con «Datos de la tienda» y «Solicitud de
+      presupuesto» como enlaces. Medios: la lista se lee con la API de árboles de GitHub (con las 1145 fotos de
+      productos fallaba) y, en carpetas de más de 150 archivos, se elige antes qué ver (fabricante, buscar, «Sin
+      usar» o «ver todos»).
     - **Burbujas ⓘ en «Ajustes del sitio»** (18-11-2026, aprobado por Víctor): en cada campo, desplegable y sección,
       con «Para qué sirve, Qué implica, Cómo usarlo, Cuándo se nota, Dónde se ve, Si lo dejas vacío, Ejemplo,
       Relación con otros campos, Cuidado y Para saber más» (solo los apartados que aportan). Textos en
       public/admin/ayuda-ajustes.yml; el texto gris de debajo de cada campo se mantiene.
-    - **Pendiente (pedido por Víctor):** correos corporativos en HTML.
     - **Documentación completa (al final de todo, pedido por Víctor el 18-11-2026):** funcionamiento completo de la
       web y del panel, y manuales de usuario independientes para la web (quien compra) y para el panel (quien
       edita). Las burbujas ⓘ de Ajustes del sitio enlazarán a esos documentos («Para saber más») cuando existan.
-    - **Para hacer con las plantillas HTML de los correos** (prototipo aprobado por Víctor el 18-11-2026, a revisar
-      cuando se apliquen las plantillas): sección «Correo a la tienda» en «Solicitud de presupuesto» (asunto, texto de
-      cabecera, recordatorio final, incluir o no el enlace a la hoja; la dirección sigue en el script de Google) y
-      vista previa de la Solicitud con los dos correos (a la tienda y al cliente) con datos de ejemplo. Requiere
-      actualizar docs/solicitudes/apps-script.gs y volver a implantar el script.
+    - **Correos de la solicitud en HTML corporativo** (18-11-2026, prototipos aprobados por Víctor): `lib/correos.js`
+      monta el acuse al cliente y el aviso a la tienda en HTML (cabecera PNG con logo y nombre que genera el build en
+      /img/correo/cabecera.png, miniaturas JPG de 160 px en /img/opt/<base>-correo.jpg, pie con dirección, horario
+      y contacto) y en texto (estilo «marcos ligeros», líneas de 50 caracteres). La función de Cloudflare los manda
+      ya hechos al script (versión 2), que solo rellena {{NUMERO}}, {{HOJA}}, {{ACUSE}} y {{CUOTA}}. El acuse no
+      lleva nada escrito por el cliente (tampoco su nombre). Nueva sección «Correo a la tienda» en «Solicitud de
+      presupuesto» (asunto, cabecera, recordatorio, enlace a la hoja) y vista previa con los dos correos.
+      **Pendiente de Víctor:** pegar el script nuevo en las dos hojas y crear «Nueva versión»
+      (docs/solicitudes/CONFIGURAR.md, «Versión 2»).
   - **Ajustes de las tablas** (18-11-2026, prototipo aprobado): columna «Pruebas» con Sí (ámbar) / No (verde) en
     todas; la miniatura solo si alguna ficha de la lista tiene imagen (hoy, ni tipos ni categorías ni
     subcategorías); en los grupos de categorías y subcategorías, también el número de productos; iconos (árbol y

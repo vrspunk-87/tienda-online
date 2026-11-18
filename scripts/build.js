@@ -88,6 +88,9 @@ const SITIO = {
   relacionados: Number.isFinite(Number(AJUSTES.relacionados)) && AJUSTES.relacionados !== null && AJUSTES.relacionados !== '' ? Math.max(0, Math.min(12, Number(AJUSTES.relacionados))) : 4,
   novedadDias: Math.max(0, Number(AJUSTES.novedad_dias) || 0),
 };
+// Ajustes del sitio → Panel: campos «panel_…» (hasta el 18-11-2026 iban dentro de un objeto «panel»)
+const PANEL_AJUSTES = Object.fromEntries(['administradores', 'por_pagina', 'vista_inicial', 'avisos', 'avisos_vuelven_dias', 'peso_maximo_mb', 'estetica_web']
+  .map(k => [k, AJUSTES[`panel_${k}`] ?? AJUSTES.panel?.[k]]).filter(([, v]) => v !== undefined && v !== null));
 // Solo direcciones seguras en los Ajustes (nada de javascript:, data:...)
 const urlSegura = u => (typeof u === 'string' && /^(\/(?!\/)|#|https:\/\/|http:\/\/|mailto:|tel:)/i.test(u.trim()) ? u.trim() : '');
 for (const r of ['facebook', 'instagram']) {
@@ -129,6 +132,13 @@ const SOLICITUD = {
   acuse: {
     asunto: (DATOS_SOLICITUD.acuse || {}).asunto || 'Hemos recibido tu solicitud de presupuesto',
     texto: (DATOS_SOLICITUD.acuse || {}).texto || 'Gracias por tu solicitud de presupuesto. La tienda la revisará y se pondrá en contacto contigo en breve para confirmarte la disponibilidad y el precio final.',
+  },
+  // Correo a la tienda (aviso de cada solicitud): Decap → Solicitud de presupuesto → Correo a la tienda
+  aviso: {
+    asunto: (DATOS_SOLICITUD.aviso_tienda || {}).asunto || 'Nueva solicitud de presupuesto',
+    cabecera: (DATOS_SOLICITUD.aviso_tienda || {}).cabecera || 'Ha llegado una solicitud desde la web',
+    recordatorio: (DATOS_SOLICITUD.aviso_tienda || {}).recordatorio || '',
+    hoja: (DATOS_SOLICITUD.aviso_tienda || {}).hoja !== false,
   },
   limites: (() => {
     const l = DATOS_SOLICITUD.limites || {};
@@ -874,8 +884,29 @@ async function prepararCompartir(src) {
   }
 }
 const compartible = src => (src && paraCompartir.get(src)) || src;
+// Miniatura JPG de 160 px de la foto principal de cada producto para los correos de la solicitud
+// (Gmail y Outlook no muestran WebP): /img/opt/<base>-correo.jpg
+const paraCorreo = new Map();
+async function prepararCorreo(src) {
+  const o = optimizadas.get(src);
+  if (!sharp || !o || paraCorreo.has(src)) return;
+  const url = `/img/opt/${o.base}-correo.jpg`;
+  const enCache = path.join(CACHE, `${o.h}-correo.jpg`);
+  try {
+    if (fs.existsSync(enCache)) usosCache++;
+    else {
+      await sharp(path.join(DIST, decodeURIComponent(src))).rotate().resize(160, 160, { fit: 'contain', background: '#ffffff' }).flatten({ background: '#ffffff' }).jpeg({ quality: 80 }).toFile(enCache);
+      generadasNuevas++;
+    }
+    fs.copyFileSync(enCache, path.join(DIST, url));
+    paraCorreo.set(src, url);
+  } catch (e) {
+    console.warn(`Aviso: no se pudo preparar ${src} para los correos: ${e.message}`);
+  }
+}
 for (const x of [...noticias, ...paginas, ...categorias, ...fabricantes]) if (x.imagen) await prepararCompartir(x.imagen);
 for (const p of productos) if (p.imagenes[0]) await prepararCompartir(p.imagenes[0].src);
+if (SOLICITUD.activa) for (const p of productos) if (p.imagenes[0]) await prepararCorreo(p.imagenes[0].src);
 
 const TAM_TARJETA = '(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw';
 const TAM_ARTICULO = '(min-width: 800px) 760px, 100vw';
@@ -2560,6 +2591,53 @@ const bloqueBlog = porPagina => rejillaNoticias(noticias.slice(0, porPagina), { 
        datos de /presupuesto/productos.json. El envío lo recibe functions/api/solicitud.js
        (lib/solicitud-api.js) y lo guarda en la hoja de Google (docs/solicitudes/).
    ========================================================= */
+// Correos de la solicitud (lib/correos.js): cabecera en PNG (logo y nombre en la letra de la marca, que
+// los programas de correo no tienen), colores, datos de contacto del pie y textos del panel
+let cabeceraCorreo = '';
+if (sharp && SOLICITUD.activa) {
+  try {
+    const alto = 120; const tam = 54;
+    const nombre = SITIO.nombre;
+    const fuente = fuenteMarca || fuenteTitulos;
+    const anchoTexto = fuente ? fuente.getAdvanceWidth(nombre, tam) : 0;
+    const logo = logoSvgInterior ? 96 : 0;
+    const ancho = Math.ceil(logo + (logo ? 18 : 0) + anchoTexto + 40);
+    const x0 = 20;
+    const trazo = fuente ? datosTrazado(fuente.getPath(nombre, x0 + logo + (logo ? 18 : 0), 80, tam)) : '';
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${ancho}" height="${alto}" viewBox="0 0 ${ancho} ${alto}">
+      <rect width="100%" height="100%" fill="#ffffff"/>
+      ${logo ? `<svg x="${x0}" y="12" width="${logo}" height="${logo}" viewBox="${logoSvgInterior.vb.join(' ')}">${logoSvgInterior.cuerpo}</svg>` : ''}
+      ${trazo ? `<path d="${trazo}" fill="${MARCA.acento}"/>` : ''}
+    </svg>`;
+    fs.mkdirSync(path.join(DIST, 'img/correo'), { recursive: true });
+    await sharp(Buffer.from(svg)).png().toFile(path.join(DIST, 'img/correo/cabecera.png'));
+    cabeceraCorreo = abs('/img/correo/cabecera.png');
+  } catch (e) { console.warn(`Aviso: no se pudo generar la cabecera de los correos: ${e.message}`); }
+}
+function datosCorreo() {
+  const tramos = f => (f.tramos.length ? f.tramos.map(([a, b]) => `${a}–${b}`).join(' y ') : 'Cerrado');
+  return {
+    tienda: SITIO.nombre,
+    // Lema bajo la cabecera: la primera frase de la descripción, si es corta
+    lema: (() => { const f = (String(SITIO.descripcion || '').match(/^[^.!?]+/) || [''])[0].trim(); return f.length <= 60 ? f : ''; })(),
+    acento: MARCA.acento,
+    tinta: MARCA.texto,
+    cabecera: cabeceraCorreo,
+    web: URL_BASE,
+    catalogo: SIN_CATALOGO ? '' : abs('/catalogo/'),
+    privacidad: (() => { const pr = paginas.find(x => x.slug === 'politica-de-privacidad'); return pr ? abs(pr.url) : ''; })(),
+    direccion: sinCorchetes(CONTACTO.direccion) ? CONTACTO.direccionCompleta : '',
+    horario: CONTACTO.horario.map(f => `${nombreDias(f.dias)}: ${tramos(f)}`),
+    telefono: CONTACTO.telefono,
+    whatsapp: CONTACTO.whatsapp,
+    whatsappTexto: CONTACTO.whatsapp ? CONTACTO.whatsapp.replace(/^34(?=\d{9}$)/, '').replace(/(\d{3})(\d{2})(\d{2})(\d{2})$/, '$1 $2 $3 $4') : '',
+    textoPrecios: SITIO.textoPrecios,
+    sinPrecio: SITIO.sinPrecio,
+    acuse: SOLICITUD.acuse,
+    aviso: SOLICITUD.aviso,
+  };
+}
+
 // Catálogo para la función del servidor (functions/api/solicitud.js): con él se recalculan nombres,
 // precios y total de cada solicitud (nunca con lo que manda el navegador). Lleva las ofertas con
 // sus fechas, también las que aún no han empezado, para aplicarlas según el día del envío aunque
@@ -2569,7 +2647,7 @@ const bloqueBlog = porPagina => rejillaNoticias(noticias.slice(0, porPagina), { 
     ? { oferta: { precio, inicio: p.oferta.inicio, fin: p.oferta.fin } } : {});
   const prodServidor = {};
   for (const p of productos) {
-    const comun = { nombre: p.nombre, modelo: p.modelo, referencia: p.referencia, fabricante: fabricanteDe(p), url: abs(p.url) };
+    const comun = { nombre: p.nombre, modelo: p.modelo, referencia: p.referencia, fabricante: fabricanteDe(p), url: abs(p.url), ...(p.imagenes[0] && paraCorreo.get(p.imagenes[0].src) ? { foto: abs(paraCorreo.get(p.imagenes[0].src)) } : {}) };
     if (p.dosPrecios) {
       prodServidor[p.slug] = { ...comun, version: 'Completa', precio: p.precio ?? null, ...ofertaDe(p, p.oferta.precio) };
       prodServidor[`${p.slug}~cabezal`] = { ...comun, version: 'Cabezal', precio: p.precioCabezal ?? null, ...ofertaDe(p, p.oferta.precioCabezal) };
@@ -2589,6 +2667,8 @@ const bloqueBlog = porPagina => rejillaNoticias(noticias.slice(0, porPagina), { 
     mensajeExito: SOLICITUD.mensajeExito,
     acuse: SOLICITUD.acuse,
     limites: SOLICITUD.limites,
+    // Diseño y textos de los correos (lib/correos.js)
+    correo: datosCorreo(),
     productos: prodServidor,
   };
   fs.mkdirSync('lib/generado', { recursive: true });
@@ -3062,7 +3142,7 @@ Disallow: /
     doc.setIn(['collections', idx, 'view_filters'], doc.createNode([...fijos, ...nuevos]));
   }
   // Peso máximo de cada foto o PDF al subirlo (Ajustes del sitio → Panel): en todos los campos de imagen o fichero
-  const pesoMb = Number(AJUSTES.panel?.peso_maximo_mb);
+  const pesoMb = Number(PANEL_AJUSTES.peso_maximo_mb);
   if (pesoMb > 0) {
     const bytes = Math.round(Math.min(25, pesoMb) * 1000 * 1000);
     (function recorrer(nodo) {
@@ -3132,7 +3212,7 @@ if (AJUSTES.favicon && sharp) {
     // Colores de la marca: el panel los usa para tener la estética de la web (public/admin/tema-panel.css)
     marca: MARCA,
     // Ajustes del sitio → Panel (public/admin/excel/panel.js y tablas.js) y zona horaria
-    panel: AJUSTES.panel || {},
+    panel: PANEL_AJUSTES,
     zona: ZONA,
     tipoDosPrecios: TIPO_DOS_PRECIOS,
     categorias: Object.fromEntries(enOrden.map((c, orden) => [c.slug, {
@@ -3148,6 +3228,10 @@ if (AJUSTES.favicon && sharp) {
     contacto: { telefono: CONTACTO.telefono, whatsapp: CONTACTO.whatsapp },
   };
   fs.mkdirSync(path.join(DIST, 'admin'), { recursive: true });
+  fs.writeFileSync(path.join(DIST, 'admin/datos-panel.json'), JSON.stringify(datosPanel));
+  // Plantillas de los correos de la solicitud, para la vista previa del panel (las mismas que usa la función)
+  fs.copyFileSync('lib/correos.js', path.join(DIST, 'admin/correos.js'));
+  datosPanel.correo = datosCorreo();
   fs.writeFileSync(path.join(DIST, 'admin/datos-panel.json'), JSON.stringify(datosPanel));
 }
 // Archivos de las carpetas de medios de las secciones (fabricantes, catálogo, productos, fichas…) para

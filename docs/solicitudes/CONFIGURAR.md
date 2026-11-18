@@ -49,6 +49,15 @@ Tiempo: unos 20 minutos.
 > Si más adelante cambias el código del script: **Implementar → Gestionar implementaciones** → lápiz →
 > Versión: **Nueva versión** → Implementar. Así la URL no cambia y no hay que tocar Cloudflare.
 
+> **Versión 2 (18-11-2026): correos en HTML.** Los dos correos (acuse al cliente y aviso a la tienda) los
+> monta ahora la web con el diseño de la tienda (`lib/correos.js`) y el script solo los envía. Para
+> activarlo, en **cada** hoja (pruebas y tienda): Extensiones → Apps Script → borra todo y pega el
+> `apps-script.gs` nuevo → Guardar → **Implementar → Gestionar implementaciones → lápiz → Nueva versión →
+> Implementar**. No hay que tocar Cloudflare ni las propiedades. El diagnóstico (`/api/estado-solicitudes`)
+> dice `version_del_script: 2` cuando está hecho. Mientras tanto, los correos siguen saliendo en texto como
+> antes. Los textos se cambian en el panel: **Solicitud de presupuesto → Correo al cliente / Correo a la
+> tienda** (la vista previa enseña los dos).
+
 ## 4. Variables en Cloudflare
 
 Cloudflare → **Workers y Pages** → `maquinas-de-coser-zafra` → **Configuración** → **Variables y secretos**.

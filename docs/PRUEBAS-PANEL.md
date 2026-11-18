@@ -147,6 +147,8 @@ Subcategorías, Productos, Blog y Páginas.
 | 8c.1 | E | Contacto y horario, pie y textos legales | Se ven el correo, el teléfono y el WhatsApp; los botones llaman, abren WhatsApp y el correo |
 | 8c.2 | E | Ver el código de la página (Ctrl+U) y buscar el correo y el teléfono | No aparecen (salvo el teléfono en los datos para Google, dentro de `<script type="application/ld+json">`) |
 | 8c.3 🧪 | E | Enviar una solicitud con 3 enlaces en las observaciones | Pide quitarlos («no pueden llevar más de 2 enlaces») |
+| 8c.4 | E | Solicitud de presupuesto → vista previa | Debajo, los dos correos (al cliente y a la tienda) con los textos que escribes, y su versión de texto |
+| 8c.5 🧪 | E | Con el script nuevo (versión 2), enviar una solicitud de prueba | Llegan los dos correos con diseño: cabecera con el logo, fotos, total, botones (Llamar, WhatsApp, Responder en el de la tienda) y pie con dirección y horario; el del cliente no lleva su nombre ni sus observaciones. En el móvil y con el correo en modo texto también se leen bien |
 
 ## 9. Estética
 

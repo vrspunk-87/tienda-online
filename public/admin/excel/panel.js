@@ -960,32 +960,52 @@ function cabecera() {
 const PESTANAS_AJUSTES = [
   ['web', 'Web', 'Todo lo que ve el cliente en la web.', [
     ['Identidad de la tienda', ['nombre', 'nombre_corto', 'descripcion', 'localidad', 'provincia', 'logo', 'imagen_compartir', 'favicon']],
-    ['Apariencia y franja de aviso', ['apariencia', 'franja']],
+    ['Apariencia', ['apariencia']],
+    ['Franja de aviso arriba', ['franja']],
     ['Menú superior', ['navbar', 'menu', 'catalogo_orden']],
     ['Portada', ['portada']],
     ['Páginas Catálogo, Ofertas y Blog', ['pagina_catalogo', 'pagina_ofertas', 'pagina_blog']],
     ['Catálogo y precios', ['catalogo_vacias', 'insignias_productos', 'precios', 'relacionados', 'novedad_dias']],
     ['Pie', ['legales', 'redes', 'pie_texto']],
   ]],
-  ['panel', 'Panel', 'Cómo funciona el panel para quien edita. No cambia la web.', [
-    ['Panel', ['panel']],
-    ['Fotos al subirlas', ['imagenes']],
+  ['panel', 'Panel', 'Cómo funciona el panel para quien edita. No cambia la web. Se aplica tras el siguiente despliegue.', [
+    ['Quién ve «Ajustes del sitio»', ['panel_administradores']],
+    ['Listas y tablas', ['panel_por_pagina', 'panel_vista_inicial']],
+    ['Avisos de los productos', ['panel_avisos', 'panel_avisos_vuelven_dias']],
+    ['Fotos al subirlas', ['imagenes', 'panel_peso_maximo_mb']],
+    ['Estética del panel', ['panel_estetica_web']],
   ]],
   ['general', 'General', 'Lo que afecta a la web y al panel a la vez, o al alojamiento.', [
     ['Dirección, buscadores y comprobación diaria', ['avanzado']],
-    ['Fechas', ['zona_horaria']],
+    ['Fechas y zona horaria', ['zona_horaria']],
+    ['Datos de la tienda', [], 'contacto'],
+    ['Solicitud de presupuesto', [], 'solicitud'],
   ]],
 ];
 let pestanaAjustes = 'web';
+const seccionesAbiertas = new Set(); // empiezan todas plegadas (como el prototipo)
 document.head.insertAdjacentHTML('beforeend', `<style>
 .xl-aj-tabs{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 6px;padding:4px 0 10px;border-bottom:2px dashed var(--xl-pespunte,#dfdfe3)}
 .xl-aj-tabs button{border:1px solid var(--xl-borde,#dfdfe3);background:#fff;border-radius:16px;padding:4px 14px;font:inherit;font-size:14px;cursor:pointer;color:inherit}
 .xl-aj-tabs button.xl-on{background:var(--xl-acento,#3a69c7);border-color:var(--xl-acento,#3a69c7);color:#fff}
 .xl-aj-intro{color:#6b7280;margin:6px 0 12px;font-size:13px}
-h3.xl-aj-h{font-size:15px;font-weight:700;margin:22px 0 8px;padding-bottom:4px;border-bottom:1px dashed var(--xl-borde,#dfdfe3)}
-aside.xl-aj-enlaces{background:#fff;border:1px solid var(--xl-borde,#dfdfe3);border-radius:10px;padding:10px 12px;margin:18px 0;font-size:13px}
+button.xl-aj-sec{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:8px;width:100%;margin:10px 0 0;padding:11px 14px;background:#fff;border:1px solid var(--xl-borde,#dfdfe3);border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;color:inherit}
+button.xl-aj-sec:hover{background:var(--xl-hover,#f4f6fb)}
+button.xl-aj-sec[aria-expanded="true"]{border-color:var(--xl-acento,#3a69c7);border-bottom-left-radius:0;border-bottom-right-radius:0}
+button.xl-aj-sec small{margin-left:auto;font-weight:400;font-size:12px;color:#4b5563;background:var(--xl-insignia,#ececea);border-radius:10px;padding:1px 8px}
+button.xl-aj-sec .xl-aj-flecha{display:inline-block;width:12px;transition:transform .15s}
+button.xl-aj-sec[aria-expanded="true"] .xl-aj-flecha{transform:rotate(90deg)}
+aside.xl-aj-enlaces{background:#fff;border:1px solid var(--xl-acento,#3a69c7);border-top:0;border-radius:0 0 10px 10px;padding:10px 14px;margin:0 0 6px;font-size:13px}
 aside.xl-aj-enlaces a{color:var(--xl-acento,#3a69c7)}
 </style><style id="xl-aj-css"></style>`);
+const SVG_FLECHA = '<svg class="xl-aj-flecha" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+// Número de opciones de una sección: los campos y, si es un solo grupo (p. ej. «Portada»), lo que tiene dentro
+function opcionesDe(campos) {
+  const defs = cfgCabecera.camposAjustesDef;
+  const contar = f => (f.fields ? f.fields.filter(x => x.widget !== 'hidden').length : 1);
+  const lista = campos.map(n => defs.find(f => f.name === n)).filter(Boolean);
+  return lista.length === 1 ? contar(lista[0]) : lista.length;
+}
 function pestanasAjustes() {
   const enAjustes = cfgCabecera && /^#\/collections\/ajustes\/entries\//.test(location.hash);
   // El panel de campos de dentro (hay otro con «PreviewPaneContainer» en el nombre que lo envuelve)
@@ -998,24 +1018,40 @@ function pestanasAjustes() {
   if (!panelCampos.querySelector(':scope > nav.xl-aj-tabs')) {
     panelCampos.insertAdjacentHTML('afterbegin', `<nav class="xl-aj-tabs" aria-label="Partes de los ajustes">${PESTANAS_AJUSTES.map(([k, t]) => `<button type="button" data-aj="${k}">${t}</button>`).join('')}</nav><p class="xl-aj-intro"></p>`);
     panelCampos.querySelectorAll('[data-aj]').forEach(b => b.addEventListener('click', () => { pestanaAjustes = b.dataset.aj; pestanasAjustes(); }));
-    // Títulos de las secciones, delante de su primer campo
+    // Cabecera plegable de cada sección, delante de su primer campo (las de solo enlaces, al final)
+    const enlace = (col, texto) => (cfgCabecera.unicas.has(col) ? `<a href="#/collections/${col}/entries/${cfgCabecera.unicas.get(col)}">${esc(texto)}</a>` : esc(texto));
+    const ENLACES = {
+      contacto: `Titular, NIF, dirección, teléfono, WhatsApp, correo y horario están en ${enlace('contacto', '«Contacto y horario»')} (salen en la web, en los textos legales y en los correos).`,
+      solicitud: `Textos, correos y límites de la solicitud están en ${enlace('solicitud', '«Solicitud de presupuesto»')}.`,
+    };
     for (const [k, , , secciones] of PESTANAS_AJUSTES) {
-      for (const [titulo, campos] of secciones) {
+      secciones.forEach(([titulo, campos, enl], s) => {
+        const id = `${k}-${s}`;
+        const html = `<button type="button" class="xl-aj-sec" data-tab="${k}" data-sec="${id}" aria-expanded="false">${SVG_FLECHA}${esc(titulo)}<small>${enl ? 'enlace' : `${opcionesDe(campos)} ${opcionesDe(campos) === 1 ? 'opción' : 'opciones'}`}</small></button>`
+          + (enl ? `<aside class="xl-aj-enlaces" data-tab="${k}" data-sec-cont="${id}">${ENLACES[enl]}</aside>` : '');
         const i = nombres.indexOf(campos.find(c => nombres.includes(c)));
-        if (i >= 0) divs[i].insertAdjacentHTML('beforebegin', `<h3 class="xl-aj-h" data-tab="${k}">${esc(titulo)}</h3>`);
-      }
+        if (i >= 0) divs[i].insertAdjacentHTML('beforebegin', html);
+        else panelCampos.insertAdjacentHTML('beforeend', html);
+      });
     }
-    const unicas = [...cfgCabecera.unicas.entries()];
-    const enlace = (col, texto) => (unicas.some(([c]) => c === col) ? `<a href="#/collections/${col}/entries/${cfgCabecera.unicas.get(col)}">${esc(texto)}</a>` : esc(texto));
-    panelCampos.insertAdjacentHTML('beforeend', `<aside class="xl-aj-enlaces" data-tab="general">Los datos de la tienda (titular, NIF, dirección, teléfono, horario…) están en ${enlace('contacto', '«Contacto y horario»')}, y los textos y límites de la solicitud en ${enlace('solicitud', '«Solicitud de presupuesto»')}.</aside>`);
+    panelCampos.querySelectorAll('[data-sec]').forEach(b => b.addEventListener('click', () => {
+      const id = b.dataset.sec;
+      seccionesAbiertas.has(id) ? seccionesAbiertas.delete(id) : seccionesAbiertas.add(id);
+      pestanasAjustes();
+    }));
   }
   panelCampos.querySelectorAll('[data-aj]').forEach(b => b.classList.toggle('xl-on', b.dataset.aj === pestanaAjustes));
+  panelCampos.querySelectorAll('[data-sec]').forEach(b => b.setAttribute('aria-expanded', String(seccionesAbiertas.has(b.dataset.sec))));
   const p = PESTANAS_AJUSTES.find(x => x[0] === pestanaAjustes);
   panelCampos.querySelector('.xl-aj-intro').textContent = p[2];
-  // CSS: se esconden los campos de las otras pestañas (por su posición entre los <div>)
-  const visibles = new Set(p[3].flatMap(s => s[1]));
-  const reglas = nombres.map((n, i) => (visibles.has(n) ? '' : `body[data-xl-ajustes] [class*="-ControlPaneContainer"]:not([class*="PreviewPaneContainer"])>div:nth-of-type(${i + 1}){display:none!important}`)).join('')
-    + `body[data-xl-ajustes] [class*="-ControlPaneContainer"]:not([class*="PreviewPaneContainer"])>[data-tab]:not([data-tab="${pestanaAjustes}"]){display:none!important}`;
+  // CSS: se ven los campos de las secciones abiertas de la pestaña elegida (por su posición entre los <div>)
+  const visibles = new Set(p[3].flatMap((s, i) => (seccionesAbiertas.has(`${pestanaAjustes}-${i}`) ? s[1] : [])));
+  const sel = 'body[data-xl-ajustes] [class*="-ControlPaneContainer"]:not([class*="PreviewPaneContainer"])';
+  const reglas = nombres.map((n, i) => (visibles.has(n)
+    ? `${sel}>div:nth-of-type(${i + 1}){margin:0;padding:12px 14px 2px;background:#fff;border:1px solid var(--xl-acento,#3a69c7);border-top:0}`
+    : `${sel}>div:nth-of-type(${i + 1}){display:none!important}`)).join('')
+    + `${sel}>[data-tab]:not([data-tab="${pestanaAjustes}"]){display:none!important}`
+    + [...panelCampos.querySelectorAll('[data-sec-cont]')].map(a => (seccionesAbiertas.has(a.dataset.secCont) ? '' : `${sel}>[data-sec-cont="${a.dataset.secCont}"]{display:none!important}`)).join('');
   const estilo = document.getElementById('xl-aj-css');
   if (estilo.textContent !== reglas) estilo.textContent = reglas;
   burbujasAyuda(panelCampos);

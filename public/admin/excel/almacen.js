@@ -116,7 +116,7 @@ function almacenGitHub(cfg) {
     return j.data;
   };
   const ARBOL = `query($o:String!,$n:String!,$e:String!){repository(owner:$o,name:$n){object(expression:$e){... on Tree{entries{name type oid object{... on Blob{text isBinary} ... on Tree{entries{name type oid object{... on Blob{text isBinary}}}}}}}}}}`;
-  const DETALLE = `query($o:String!,$n:String!,$e:String!){repository(owner:$o,name:$n){object(expression:$e){... on Tree{entries{name type oid object{... on Blob{byteSize}}}}}}}`;
+  const OID = `query($o:String!,$n:String!,$e:String!){repository(owner:$o,name:$n){object(expression:$e){oid}}}`;
   const huella = async bytes => {
     const cab = new TextEncoder().encode(`blob ${bytes.length}\0`);
     const todo = new Uint8Array(cab.length + bytes.length);
@@ -152,9 +152,14 @@ function almacenGitHub(cfg) {
       const d = await graphql(ARBOL, { o: duenno, n: repo, e: `${rama}:${carpeta.replace(/\/+$/, '')}` });
       return new Map((d.repository?.object?.entries || []).filter(x => x.type === 'blob').map(x => [x.name, x.oid]));
     },
+    // Con la API de árboles (una llamada ligera aunque haya miles de fotos; la de GraphQL con el tamaño de
+    // cada una fallaba con las 1145 fotos de productos)
     async listarDetalle(carpeta) {
-      const d = await graphql(DETALLE, { o: duenno, n: repo, e: `${rama}:${carpeta.replace(/^\/+|\/+$/g, '')}` });
-      return (d.repository?.object?.entries || []).filter(x => x.type === 'blob' && !x.name.startsWith('.')).map(x => ({ nombre: x.name, bytes: x.object?.byteSize ?? null, oid: x.oid }));
+      const d = await graphql(OID, { o: duenno, n: repo, e: `${rama}:${carpeta.replace(/^\/+|\/+$/g, '')}` });
+      const oid = d.repository?.object?.oid;
+      if (!oid) return [];
+      const j = await (await rest('GET', `/repos/${duenno}/${repo}/git/trees/${oid}`)).json();
+      return (j.tree || []).filter(x => x.type === 'blob' && !x.path.startsWith('.')).map(x => ({ nombre: x.path, bytes: x.size ?? null, oid: x.sha }));
     },
     listaAlDia: true,
     async leerBinario(p) {

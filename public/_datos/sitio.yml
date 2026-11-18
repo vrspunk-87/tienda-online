@@ -215,23 +215,22 @@ precios:
   sin_precio: Precio a consultar
 relacionados: 4
 novedad_dias: 0
-panel:
-  administradores:
-    - vrspunk-87
-  por_pagina: "12"
-  vista_inicial: grupos
-  avisos:
-    - sin_foto
-    - sin_precio
-    - oferta
-    - oferta_terminada
-    - cabezal
-    - segunda_mano
-    - clasificacion
-    - fabricante
-    - compatible
-    - referencia
-  avisos_vuelven_dias: 0
-  peso_maximo_mb: 8
-  estetica_web: true
+panel_administradores:
+  - vrspunk-87
+panel_por_pagina: "12"
+panel_vista_inicial: grupos
+panel_avisos:
+  - sin_foto
+  - sin_precio
+  - oferta
+  - oferta_terminada
+  - cabezal
+  - segunda_mano
+  - clasificacion
+  - fabricante
+  - compatible
+  - referencia
+panel_avisos_vuelven_dias: 0
+panel_peso_maximo_mb: 8
+panel_estetica_web: true
 zona_horaria: Europe/Madrid

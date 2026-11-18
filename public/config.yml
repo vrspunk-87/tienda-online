@@ -363,6 +363,17 @@ collections:
             fields:
               - { label: "Asunto", name: "asunto", widget: "string", default: "Hemos recibido tu solicitud de presupuesto", required: false }
               - { label: "Texto", name: "texto", widget: "text", default: "Gracias por tu solicitud de presupuesto. La tienda la revisará y se pondrá en contacto contigo en breve para confirmarte la disponibilidad y el precio final.", required: false }
+          - label: "Correo a la tienda (aviso de cada solicitud)"
+            name: "aviso_tienda"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Correo que recibe la tienda con cada solicitud: datos del cliente con botones para llamar, WhatsApp y responder, productos, observaciones y enlace a la hoja. La dirección donde llega está en el script de Google (propiedad AVISO_PARA), no aquí. La vista previa enseña los dos correos."
+            fields:
+              - { label: "Asunto", name: "asunto", widget: "string", default: "Nueva solicitud de presupuesto", required: false, hint: "Detrás se añaden solos el número, el nombre del cliente y el total, p. ej. «… S-2026-0004 · Ana · 800 €»." }
+              - { label: "Texto de cabecera", name: "cabecera", widget: "string", default: "Ha llegado una solicitud desde la web", required: false }
+              - { label: "Recordatorio al final (opcional)", name: "recordatorio", widget: "text", required: false, hint: "Una nota para quien atiende las solicitudes. Vacío: no sale nada." }
+              - { label: "Incluir el enlace a la hoja de solicitudes", name: "hoja", widget: "boolean", default: true, required: false }
           - label: "Límites contra abusos"
             name: "limites"
             widget: "object"
@@ -550,7 +561,7 @@ collections:
           - label: "Apariencia"
             name: "apariencia"
             widget: "object"
-            collapsed: true
+            collapsed: false # ya va dentro de su sección plegable de Ajustes
             fields:
               - label: "Tema"
                 name: "tema"
@@ -579,7 +590,7 @@ collections:
           - label: "Franja de aviso arriba"
             name: "franja"
             widget: "object"
-            collapsed: true
+            collapsed: false # ya va dentro de su sección plegable de Ajustes
             required: false
             hint: "Una línea encima del menú en todas las páginas, p. ej. «Cerrado del 24 al 26 de diciembre» o una promoción. Sale entre «Desde» y «Hasta» (vacías: siempre) y se quita sola al día siguiente de «Hasta»."
             fields:
@@ -694,7 +705,7 @@ collections:
           - label: "Portada"
             name: "portada"
             widget: "object"
-            collapsed: true
+            collapsed: false # ya va dentro de su sección plegable de Ajustes
             hint: "Bloque principal (textos, ventajas, tipos de producto y último artículo del blog) y, debajo, los bloques Catálogo, Ofertas y Blog: si se muestran y cuántos elementos por página."
             fields:
               - label: "Bloque principal (arriba)"
@@ -865,36 +876,28 @@ collections:
               - { label: "Mostrar el icono RSS", name: "rss", widget: "boolean", default: true, required: false }
 
           - { label: "Texto final del pie", name: "pie_texto", widget: "string", required: false, hint: "Vacío: «© <año> <nombre> · <localidad>». {año} y {nombre} se rellenan solos." }
-          - label: "Panel"
-            name: "panel"
-            widget: "object"
+          - { label: "Quién ve «Ajustes del sitio» (usuarios de GitHub)", name: "panel_administradores", widget: "list", required: false, default: ["vrspunk-87"], hint: "Los demás no ven el engranaje ni pueden abrir esta ficha. Es para que no se toque sin querer: quien tiene permiso en el repositorio puede cambiar cualquier fichero." }
+          - { label: "Productos por página en las tablas", name: "panel_por_pagina", widget: "select", default: "12", required: false, options: ["12", "24", "48"] }
+          - { label: "Vista inicial de Productos, Categorías y Subcategorías", name: "panel_vista_inicial", widget: "select", default: "grupos", required: false, options: [{ label: "Agrupada (plegada)", value: "grupos" }, { label: "Tabla", value: "tabla" }] }
+          - label: "Avisos de los productos que se muestran"
+            name: "panel_avisos"
+            widget: "select"
+            multiple: true
             required: false
-            hint: "Cómo funciona el panel para quien edita. No cambia la web. Se aplica tras el siguiente despliegue."
-            fields:
-              - { label: "Quién ve «Ajustes del sitio» (usuarios de GitHub)", name: "administradores", widget: "list", required: false, default: ["vrspunk-87"], hint: "Los demás no ven el engranaje ni pueden abrir esta ficha. Es para que no se toque sin querer: quien tiene permiso en el repositorio puede cambiar cualquier fichero." }
-              - { label: "Productos por página en las tablas", name: "por_pagina", widget: "select", default: "12", required: false, options: ["12", "24", "48"] }
-              - { label: "Vista inicial de Productos, Categorías y Subcategorías", name: "vista_inicial", widget: "select", default: "grupos", required: false, options: [{ label: "Agrupada (plegada)", value: "grupos" }, { label: "Tabla", value: "tabla" }] }
-              - label: "Avisos de los productos que se muestran"
-                name: "avisos"
-                widget: "select"
-                multiple: true
-                required: false
-                default: ["sin_foto", "sin_precio", "oferta", "oferta_terminada", "cabezal", "segunda_mano", "clasificacion", "fabricante", "compatible", "referencia"]
-                hint: "Los que no marques no salen en la columna «Avisos» ni cuentan en los números."
-                options:
-                  - { label: "Sin foto", value: "sin_foto" }
-                  - { label: "Sin precio", value: "sin_precio" }
-                  - { label: "«En oferta» sin precio o fechas", value: "oferta" }
-                  - { label: "Oferta terminada", value: "oferta_terminada" }
-                  - { label: "Precio de cabezal fuera de su tipo", value: "cabezal" }
-                  - { label: "Datos de segunda mano en un producto nuevo", value: "segunda_mano" }
-                  - { label: "Clasificación que falta o no existe", value: "clasificacion" }
-                  - { label: "Fabricante que falta o no existe", value: "fabricante" }
-                  - { label: "«Compatible con» con productos que no existen", value: "compatible" }
-                  - { label: "Referencia repetida en el mismo fabricante", value: "referencia" }
-              - { label: "«Oferta terminada» marcada como «Entendido»: vuelve a salir a los … días", name: "avisos_vuelven_dias", widget: "number", value_type: "int", min: 0, max: 365, default: 0, required: false, hint: "0: no vuelve a salir (hasta que cambien las fechas de la oferta)." }
-              - { label: "Peso máximo de cada archivo al subirlo (MB)", name: "peso_maximo_mb", widget: "number", value_type: "int", min: 1, max: 25, default: 8, required: false, hint: "Lo comprueba el panel al subir fotos y PDF en las fichas." }
-              - { label: "Usar los colores y letras de la web en el panel", name: "estetica_web", widget: "boolean", default: true, required: false, hint: "Desmárcalo para ver el panel con el aspecto original de Decap." }
+            default: ["sin_foto", "sin_precio", "oferta", "oferta_terminada", "cabezal", "segunda_mano", "clasificacion", "fabricante", "compatible", "referencia"]
+            hint: "Los que no marques no salen en la columna «Avisos» ni cuentan en los números."
+            options:
+              - { label: "Sin foto", value: "sin_foto" }
+              - { label: "Sin precio", value: "sin_precio" }
+              - { label: "«En oferta» sin precio o fechas", value: "oferta" }
+              - { label: "Oferta terminada", value: "oferta_terminada" }
+              - { label: "Precio de cabezal fuera de su tipo", value: "cabezal" }
+              - { label: "Datos de segunda mano en un producto nuevo", value: "segunda_mano" }
+              - { label: "Clasificación que falta o no existe", value: "clasificacion" }
+              - { label: "Fabricante que falta o no existe", value: "fabricante" }
+              - { label: "«Compatible con» con productos que no existen", value: "compatible" }
+              - { label: "Referencia repetida en el mismo fabricante", value: "referencia" }
+          - { label: "«Oferta terminada» marcada como «Entendido»: vuelve a salir a los … días", name: "panel_avisos_vuelven_dias", widget: "number", value_type: "int", min: 0, max: 365, default: 0, required: false, hint: "0: no vuelve a salir (hasta que cambien las fechas de la oferta)." }
           - label: "Compresión de imágenes al subirlas"
             name: "imagenes"
             widget: "object"
@@ -905,10 +908,12 @@ collections:
               - { label: "Calidad JPEG/WebP (1-100)", name: "calidad", widget: "number", value_type: "int", min: 50, max: 95, default: 82 }
               - { label: "Solo comprimir si pesan más de (KB)", name: "peso_maximo_kb", widget: "number", value_type: "int", min: 100, max: 5000, default: 400 }
 
+          - { label: "Peso máximo de cada archivo al subirlo (MB)", name: "panel_peso_maximo_mb", widget: "number", value_type: "int", min: 1, max: 25, default: 8, required: false, hint: "Lo comprueba el panel al subir fotos y PDF en las fichas." }
+          - { label: "Usar los colores y letras de la web en el panel", name: "panel_estetica_web", widget: "boolean", default: true, required: false, hint: "Desmárcalo para ver el panel con el aspecto original de Decap." }
           - label: "Avanzado"
             name: "avanzado"
             widget: "object"
-            collapsed: true
+            collapsed: false # ya va dentro de su sección plegable de Ajustes
             hint: "Cambia esto solo si sabes lo que haces."
             fields:
               - { label: "Dirección pública de la web", name: "url", widget: "string", hint: "Sin barra al final: https://www.maquinasdecoserzafra.es. Si cambia, cámbiala también en base_url de config.yml y en la app OAuth de GitHub (ver docs/PLAN.md, fase 8)." }

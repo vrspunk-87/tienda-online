@@ -429,7 +429,7 @@
       ].join('\n');
       return h('main', null,
         h('section', { className: 'solicitud-cabecera' }, h('div', { className: 'container' },
-          nota('Con la lista de productos vacía. Abajo, el mensaje tras enviar y el correo que recibe el cliente.'),
+          nota('Con la lista de productos vacía. Abajo, el mensaje tras enviar y los dos correos (al cliente y a la tienda).'),
           migas([d('titulo') || 'Mi solicitud de presupuesto'], 'Inicio'),
           h('h1', { className: 'titulo-marca solicitud-titulo' }, d('titulo') || 'Mi solicitud de presupuesto'),
           d('introduccion') ? h('p', { className: 'solicitud-intro' }, d('introduccion')) : null,
@@ -462,12 +462,53 @@
           h('h2', { className: 'h5 fw-bold' }, 'Tras enviar'),
           h('div', { className: 'alert alert-success solicitud-exito' },
             h('h3', { className: 'h5 fw-bold' }, 'Solicitud S-2026-0001 enviada'), h('p', { className: 'mb-0' }, d('mensaje_exito') || '')),
-          h('h2', { className: 'h5 fw-bold mt-4' }, 'Correo al cliente'),
-          h('div', { className: 'caja-pespunte', style: { whiteSpace: 'pre-line' } },
-            h('p', { className: 'mb-2' }, h('b', null, 'Asunto: '), `${acuse.asunto || 'Hemos recibido tu solicitud de presupuesto'} (S-2026-0001)`),
-            h('p', { className: 'mb-0' }, correo))));
+          ...vistaCorreos(this, acuse, d('aviso_tienda') || {}, correo)));
     },
   });
+
+  /* ---------- Los dos correos de la solicitud (lib/correos.js, copiado por el build a /admin/correos.js) ----------
+     Con dos productos de ejemplo y los textos que se están editando. Si el panel aún no tiene la plantilla
+     (antes del primer despliegue con ella), sale el texto de siempre. */
+  let CORREOS = null;
+  let pidiendoCorreos = false;
+  const EJEMPLO = {
+    lineas: [
+      { nombre: 'Máquina de coser de ejemplo', fabricante: 'Fabricante', modelo: 'M-100', referencia: 'REF-100', unidades: 1, precio: 300, url: '#', foto: '' },
+      { nombre: 'Accesorio de ejemplo', fabricante: 'Fabricante', modelo: 'A-20', referencia: 'REF-20', unidades: 2, precio: 25, oferta: true, ofertaHasta: '2026-12-31', url: '#', foto: '' },
+    ],
+    total: 350, aConsultar: 0, fecha: '10/11/2026, 12:22:08',
+    cliente: { nombre: 'Nombre del cliente', telefono: '600 000 000', correo: 'cliente@ejemplo.es', preferencia: ['llamada', 'whatsapp'], observaciones: '¿Tenéis la máquina en la tienda para verla?' },
+  };
+  const HUECOS = { NUMERO: 'S-2026-0001', HOJA: '#', ACUSE: 'enviado', CUOTA: '92' };
+  const rellenarHuecos = t => String(t || '').replace(/\{\{(NUMERO|HOJA|ACUSE|CUOTA)\}\}/g, (m, k) => HUECOS[k]);
+  function vistaCorreos(comp, acuse, aviso, textoAntiguo) {
+    if (!CORREOS && !pidiendoCorreos) {
+      pidiendoCorreos = true;
+      import('/admin/correos.js').then(m => { CORREOS = m; comp.forceUpdate(); }).catch(() => { CORREOS = false; comp.forceUpdate(); });
+    }
+    const base = DATOS.correo;
+    if (!CORREOS || !base) {
+      return [h('h2', { key: 't', className: 'h5 fw-bold mt-4' }, 'Correo al cliente'),
+        h('div', { key: 'c', className: 'caja-pespunte', style: { whiteSpace: 'pre-line' } },
+          h('p', { className: 'mb-2' }, h('b', null, 'Asunto: '), `${acuse.asunto || 'Hemos recibido tu solicitud de presupuesto'} (S-2026-0001)`),
+          h('p', { className: 'mb-0' }, textoAntiguo))];
+    }
+    const c = Object.assign({}, base, {
+      acuse: { asunto: acuse.asunto || base.acuse.asunto, texto: acuse.texto || base.acuse.texto },
+      aviso: Object.assign({}, base.aviso, aviso.asunto ? { asunto: aviso.asunto } : {}, aviso.cabecera ? { cabecera: aviso.cabecera } : {}, { recordatorio: aviso.recordatorio || '', hoja: aviso.hoja !== false }),
+    });
+    const uno = (clave, titulo, correo) => [
+      h('h2', { key: `${clave}-t`, className: 'h5 fw-bold mt-4' }, titulo),
+      h('p', { key: `${clave}-a`, className: 'mb-2' }, h('b', null, 'Asunto: '), rellenarHuecos(correo.asunto)),
+      h('iframe', { key: `${clave}-f`, title: titulo, srcDoc: rellenarHuecos(correo.html), sandbox: '', style: { width: '100%', height: '760px', border: '1px solid #e3e3df', borderRadius: '10px', background: '#f1efeb' } }),
+      h('details', { key: `${clave}-d`, className: 'mt-2' }, h('summary', null, 'Versión de solo texto'), h('pre', { style: { whiteSpace: 'pre-wrap', fontSize: '13px', background: '#fff', padding: '12px', borderRadius: '8px' } }, rellenarHuecos(correo.texto))),
+    ];
+    return [
+      h('p', { key: 'n', className: 'vp-nota mt-4' }, h('b', null, 'Correos con dos productos de ejemplo. '), 'Los datos de la tienda y el diseño son los del último despliegue; los textos, los que estás escribiendo.'),
+      ...uno('cli', 'Correo al cliente (acuse de recibo)', CORREOS.correoCliente(EJEMPLO, c)),
+      ...uno('tie', 'Correo a la tienda (aviso)', CORREOS.correoTienda(EJEMPLO, c)),
+    ];
+  }
 
   /* ---------- Componente «Botón» del editor (menú «+») ----------
      Se guarda como un enlace Markdown con título «boton», «boton-negro» o «boton-borde»;

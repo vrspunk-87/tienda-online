@@ -358,34 +358,30 @@ pie_texto:
   uso: "{año} y {nombre} se rellenan solos."
   vacio: "«© año nombre · localidad»."
   ejemplo: "© {año} {nombre} · Zafra (Badajoz)"
-panel:
-  para: "Ajustes de cómo funciona el panel para quien edita."
-  implica: "No cambian la web."
-  cuando: *panel_despliegue
-panel.administradores:
+panel_administradores:
   para: "Usuarios de GitHub que ven el engranaje de «Ajustes del sitio» y pueden abrir esta ficha."
   uso: "Uno por línea, sin @."
   vacio: "Solo vrspunk-87."
   cuidado: "Es para que no se toque sin querer, no una protección: quien tiene permiso en el repositorio puede cambiar cualquier fichero. No te quites a ti mismo."
-panel.por_pagina:
+panel_por_pagina:
   para: "Cuántos productos se ven por página en las tablas del panel al entrar."
   relacion: "Se puede cambiar en cada tabla; esto es solo el valor inicial."
-panel.vista_inicial:
+panel_vista_inicial:
   para: "Cómo se abren Productos, Categorías y Subcategorías."
   implica: "«Agrupada» enseña los grupos plegados; «Tabla», todo en una tabla."
-panel.avisos:
+panel_avisos:
   para: "Qué avisos salen en la columna «Avisos» y en los números ⚠."
   uso: "Desmarca los que no te interesen (p. ej. «Sin foto» mientras se buscan las fotos)."
   vacio: "Si no marcas ninguno, no sale ningún aviso."
-panel.avisos_vuelven_dias:
+panel_avisos_vuelven_dias:
   para: "Cuándo vuelve a salir una «Oferta terminada» marcada como «Entendido»."
   vacio: "0: no vuelve a salir (hasta que cambien las fechas de la oferta)."
   relacion: "«Entendido» se guarda en cada navegador: en otro equipo sale de nuevo."
-panel.peso_maximo_mb:
+panel_peso_maximo_mb:
   para: "Lo más que puede pesar cada foto o PDF al subirlo."
   implica: "Más grande = despliegues más lentos y más espacio en el repositorio. Las fotos se reducen solas a 1600 px."
   ejemplo: "8"
-panel.estetica_web:
+panel_estetica_web:
   para: "El panel con los colores y letras de la web."
   implica: "Desmarcado, el panel se ve como Decap original (útil si algo se ve mal tras actualizar Decap)."
 imagenes:
