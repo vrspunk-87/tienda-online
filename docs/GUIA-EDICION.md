@@ -46,7 +46,7 @@ invitación al repositorio). Los cambios se ven en la web 1-2 minutos después d
 - **Tipos y categorías sin productos** (Ajustes del sitio): «Ocultarlos de toda la web» quita de
   menús, inicio, pie, tarjetas y ofertas los tipos, categorías y subcategorías que aún no tienen
   productos; vuelven a salir solos en cuanto les asignas uno.
-- **Contacto y Sobre nosotros**: dirección, teléfono, WhatsApp, correo, horario por días (con él
+- **Contacto y horario** y **Sobre nosotros** (dos secciones del menú, cada una abre su ficha): dirección, teléfono, WhatsApp, correo, horario por días (con él
   se calcula «Abierto ahora»), aviso de cierre con fechas y «Cómo llegar»; y la presentación de la
   tienda (texto, foto, año de apertura, cifras, servicios, razones, historia y marcas). Los textos
   de ejemplo llevan un aviso en la página: desmarca «Textos de ejemplo» cuando estén revisados.
@@ -58,16 +58,16 @@ invitación al repositorio). Los cambios se ven en la web 1-2 minutos después d
 
 ### Encontrar productos en el panel
 
-- **Filtrar** (botón «Filter by» encima de la lista de productos): por fabricante, por categoría
-  (una categoría principal incluye sus subcategorías), «En oferta», «No disponibles» y «Segunda
-  mano». Se pueden marcar varios a la vez: salen los productos que cumplen **todos** (p. ej. un
-  fabricante y una categoría). Un fabricante o una categoría nuevos aparecen en los filtros
-  1-2 minutos después de publicarlos.
-- **Agrupar** («Group by»): por fabricante, categoría o estado.
-- **Ordenar** («Ordenar por»): por fecha de alta, nombre o modelo.
-- **Buscar** (cuadro «Buscar todas», arriba a la izquierda): por **modelo**, referencia, fabricante
-  o nombre, p. ej. «HD 100» o «MP1-HD100». La búsqueda es aproximada: lo que coincide sale primero,
-  y pueden aparecer debajo otros parecidos.
+- La lista de **Productos** es una tabla: plegada por clasificación (o toda junta con el icono de
+  tabla), con **filtros** en la fila de debajo de los títulos (fabricante, estado, precio como `>500`,
+  «Pruebas», «Avisos»…), **ordenar** pulsando un título y 12, 24 o 48 por página.
+- **Avisos** (⚠ con un número): algo que revisar en la ficha, p. ej. sin foto o una oferta ya
+  terminada. Pasa el ratón por encima para verlos; en una oferta terminada, «Entendido» lo quita.
+- **Buscar** (cuadro del centro de la cabecera): por nombre, **modelo**, referencia, fabricante o
+  clasificación, p. ej. «HD 100». Salen todas las secciones, cada una en su tabla.
+- **Medios** (cabecera): las fotos de cada sección en su pestaña; dice qué ficha usa cada una y deja
+  borrar las que no se usan.
+- Desde el **móvil** también se puede editar: el menú «Colecciones» se abre con las tres rayas.
 
 («Filter by» y «Group by» salen en inglés: la traducción al español del panel no los incluye.)
 

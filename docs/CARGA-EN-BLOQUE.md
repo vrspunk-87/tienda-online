@@ -13,8 +13,8 @@ Al pulsarlo:
 | Cambiar en bloque (solo productos) | **Marcar como no disponible…** / **Marcar como disponible…** | Retirar de la web (sin borrar) o volver a mostrar varios productos |
 | (aparte, en rojo) | **Eliminar…** | Borrar varias fichas a la vez, sin pasar por un Excel |
 
-**Secciones con engranaje:** Fabricantes, Tipos de producto, Categorías, Subcategorías, Productos y
-Entradas del blog (18-11-2026). Falta Páginas (Excel y, además, un Word por página).
+**Secciones con engranaje:** Fabricantes, Tipos de producto, Categorías, Subcategorías, Productos,
+Entradas del blog y Páginas (18-11-2026); en Páginas, además, «Exportar a Word».
 
 Todo pasa por un **informe** antes de guardar nada, y se guarda **en un único cambio** (commit) de
 la rama que edita el panel: en la web pública, `main`; en los entornos de pruebas, la suya. La web
@@ -29,15 +29,24 @@ otros navegadores va a la carpeta de descargas (en Firefox, según su ajuste «P
 En productos, fabricantes, tipos de producto, categorías y subcategorías, la lista del panel es una tabla
 (en vez de la lista de Decap que carga más al bajar):
 
-- **Productos:** plegados por clasificación, en el orden del menú (pulsa una para abrirla), o «Tabla» con
+- **Productos:** plegados por clasificación, en el orden del menú (pulsa una para abrirla), o el icono de tabla con
   todos. Pulsar un producto abre su ficha.
 - **Fabricantes y tipos de producto:** al pulsar una fila se despliega debajo la tabla de sus productos; el
   **lápiz** abre la ficha del fabricante o del tipo. **Categorías** (plegadas por tipo) y **subcategorías**
   (plegadas por «Tipo › Categoría»), igual.
+- Columna **Pruebas**: «Sí» (solo en los entornos de pruebas) o «No» (se publica).
 - En todas: **ordenar** pulsando una cabecera (otra vez, al revés), **filtrar** en la fila de debajo (texto,
   desplegables o números como `>0` o `<500`), buscador arriba y **12, 24 o 48 por página**.
 - Empieza todo plegado cada vez. Las miniaturas salen de la web publicada: una foto recién subida puede
   tardar unos minutos en verse.
+- Columna **Avisos** (productos): el icono ⚠ con un número indica algo que revisar en la ficha (sin foto, sin
+  precio, oferta sin fechas o ya terminada, referencia repetida…). Pasa el ratón (o púlsalo en el móvil) para
+  ver la lista; el filtro «Con avisos» deja solo esos. «La oferta terminó» tiene **Entendido**: deja de salir
+  en ese navegador hasta que cambien las fechas de la oferta.
+- **Buscador** de la cabecera: los resultados salen con estas mismas tablas, agrupados por sección.
+- **Medios** (cabecera): pestañas por carpeta (Fabricantes, Catálogo, Productos, Fichas PDF) para ver qué
+  archivos usa cada ficha, subir, descargar, reemplazar y eliminar los que no se usan.
+- En el **móvil**, las filas son tarjetas: «Ordenar» y «Filtros» están encima de cada tabla.
 
 ## El Excel
 
@@ -116,6 +125,17 @@ En productos, fabricantes, tipos de producto, categorías y subcategorías, la l
 - **Entradas de prueba** (18-11-2026): `public/_posts/blog/2026/2026-11-16…18-entrada-de-prueba-*.md`, todas
   «Solo para pruebas» (se ven en los entornos de pruebas, nunca en la web pública). Se pueden borrar con
   «Eliminar…» cuando terminen las pruebas.
+
+## Páginas y Word
+
+- Excel como en las demás secciones. No se borra una página que enlaza la web: las del menú o el pie
+  (Ajustes del sitio) y la política de privacidad y las condiciones (las enlaza la solicitud de presupuesto).
+- **Exportar a Word…** (engranaje → grupo «Excel y Word»): eliges las páginas y se descarga un `.docx` (o un
+  ZIP con uno por página). Llevan el título, la descripción breve y el texto con sus apartados, listas,
+  negritas, enlaces y tablas, con los **datos de la tienda puestos** en los textos legales, como en la web
+  (los del último despliegue). Lo que falta sale entre corchetes y **resaltado en amarillo** (p. ej. «[NIF]»).
+  Al final, una nota con la fecha y la dirección de la página.
+- **Solo se exportan** (decidido por Víctor, 18-11-2026): son para la asesoría. No se importan desde Word.
 
 ## Importar
 

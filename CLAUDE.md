@@ -49,9 +49,11 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 ## Estado
 
-**Fase 3 (18-11-2026):** engranaje en la lista de Fabricantes, Tipos de producto, Categorías, Subcategorías, Productos y Blog del panel (exportar e importar Excel, «Solo para pruebas» en bloque, eliminar), en `public/admin/excel/` con pruebas en `lib/excel-panel.test.mjs`; guía docs/CARGA-EN-BLOQUE.md; para las demás colecciones, añadir su perfil en `PERFILES` (nucleo.js). Desde Linux no uses `sed -i` en la carpeta conectada (deja ficheros temporales que no se pueden borrar): edita con Python.
+**Fase 3 (18-11-2026):** engranaje en la lista de Fabricantes, Tipos de producto, Categorías, Subcategorías, Productos, Blog y Páginas del panel (Páginas, además, «Exportar a Word»: public/admin/excel/word.js) (exportar e importar Excel, «Solo para pruebas» en bloque, eliminar), en `public/admin/excel/` con pruebas en `lib/excel-panel.test.mjs`; guía docs/CARGA-EN-BLOQUE.md; para las demás colecciones, añadir su perfil en `PERFILES` (nucleo.js). Desde Linux no uses `sed -i` en la carpeta conectada (deja ficheros temporales que no se pueden borrar): edita con Python.
 
 **Panel (18-11-2026, tarde):** nombres de las secciones sin «Catálogo:» (Entradas del blog, Páginas, Tipos de producto, Categorías, Subcategorías, Productos, Fabricantes); «Ajustes del sitio» oculto en el menú y abierto con el engranaje de la cabecera; «Acceso rápido» con «Añadir» y «Editar»; buscador en la cabecera; listas del catálogo como tablas (public/admin/excel/tablas.js).
+
+**Panel (18-11-2026, noche):** «Contacto y horario» y «Sobre nosotros» son dos secciones (antes «Contacto y Sobre nosotros», colección `tienda`) y las secciones de una sola ficha abren la ficha; el engranaje de «Ajustes del sitio» solo para `vrspunk-87` (`ADMINISTRADORES` en panel.js; no es una protección real); columna «Avisos» en las tablas de productos (con «Entendido» en ofertas terminadas, guardado en el navegador); «Medios» con pestañas por carpeta (public/admin/excel/medios.js; en local lee dist/admin/medios.json); buscador con tablas; estética de la web y móvil en public/admin/tema-panel.css (colores de `marca` en datos-panel.json). Plan de pruebas: docs/PRUEBAS-PANEL.md. Pendientes de aprobar: vistas previas de blog/catálogo/fabricantes con el estilo de la web y «Ajustes del sitio» en pestañas Web/Panel/General.
 
 **Para retomar (18-11-2026, fin de sesión):** catálogo cargado (459 productos, 56 sin foto); estado y pendientes en docs/PLAN.md → «Estado y pendientes» (apartado «Para retomar» y tabla de las Excel de importación de `input/` y lo que falta en cada una). Siguiente paso propuesto: fase 3 (importador de Excel). Las fotos y textos de los fabricantes se sacan con `..\herramienta-consulta-fabricantes` (otro repositorio, con su propio CLAUDE.md). A Víctor se le dan siempre los comandos de PowerShell para lo que tenga que hacer él (git, npm…).
 
@@ -144,7 +146,7 @@ si cambia.
   build.js añade `n`, `nOfertas`, `resumen`, `ofertas`; `SITIO.nOfertas`.
 - **Contacto y horario, y Sobre nosotros** (8-11-2026, opciones «C1» y «N1»): ya no son páginas
   de texto libre (se borraron public/_paginas/sobre-nosotros.md, contacto-y-horario.md y
-  donde-estamos.md, que nunca se publicaron); salen de Decap → «Contacto y Sobre nosotros»
+  donde-estamos.md, que nunca se publicaron); salen de Decap → «Contacto y horario» y «Sobre nosotros» (dos secciones desde el 18-11-2026)
   (public/_datos/contacto.yml y sobre-nosotros.yml) en las mismas direcciones /paginas/…/.
   Contacto: cabecera con «Abierto ahora · cierra a las…» / «Cerrado · abre…» (calculado en el
   navegador con el horario por días y el aviso de cierre con fechas; public/js/extras.js),

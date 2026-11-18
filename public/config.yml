@@ -86,7 +86,7 @@ collections:
       - { label: "Descripción para Google", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
       - { label: "Imagen de cabecera", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false }
       - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false, hint: "Qué se ve en la imagen." }
-      - { label: "Contenido", name: "body", widget: "markdown", required: false, hint: "En los textos legales, los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y Sobre nosotros → Contacto»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}." }
+      - { label: "Contenido", name: "body", widget: "markdown", required: false, hint: "En los textos legales, los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y horario»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}." }
       - { label: "Ocultar en buscadores", name: "noindex", widget: "boolean", default: false, required: false, hint: "Para páginas como el aviso legal: no aparecen en Google ni en el sitemap." }
 
   # ------------------------------------------------------------------
@@ -317,7 +317,7 @@ collections:
           - { label: "Título de la página", name: "titulo", widget: "string", default: "Mi solicitud de presupuesto" }
           - { label: "Introducción", name: "introduccion", widget: "text", required: false }
           - { label: "Texto de la casilla de aceptación", name: "aceptacion", widget: "text", hint: "Casilla obligatoria. Se añaden solos los enlaces a las condiciones y a la política de privacidad, que se abren en una ventana con dos pestañas: hay que abrir las dos para poder aceptar. Pendiente de revisión legal (docs/BORRADORES-LEGALES.md)." }
-          - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y Sobre nosotros → Contacto»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}. Pendiente de revisión legal." }
+          - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y horario»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}. Pendiente de revisión legal." }
           - { label: "Texto del botón", name: "boton", widget: "string", default: "Enviar solicitud" }
           - label: "Frases bajo el resumen"
             name: "ventajas"
@@ -376,11 +376,13 @@ collections:
               - { label: "Productos distintos por solicitud", name: "max_productos", widget: "number", value_type: "int", min: 1, max: 100, default: 30, required: false }
 
   # ------------------------------------------------------------------
-  # CONTACTO Y SOBRE NOSOTROS: páginas con datos (no texto libre)
+  # CONTACTO Y HORARIO, Y SOBRE NOSOTROS: páginas con datos (no texto libre). Son dos secciones de
+  # una sola ficha cada una, con el mismo nombre que en «Acceso rápido → Editar» (18-11-2026; antes,
+  # una sección «Contacto y Sobre nosotros» con las dos fichas). El panel abre la ficha directamente.
   # ------------------------------------------------------------------
-  - name: "tienda"
-    label: "Contacto y Sobre nosotros"
-    description: "Los datos de la tienda (dirección, teléfono, horario…) y la presentación. Salen en /paginas/contacto-y-horario/ y /paginas/sobre-nosotros/, en el pie, en los botones de WhatsApp y Llamar de las fichas y en los datos que lee Google."
+  - name: "contacto"
+    label: "Contacto y horario"
+    description: "Los datos de la tienda (dirección, teléfono, horario…). Salen en /paginas/contacto-y-horario/, en el pie, en los textos legales, en los botones de WhatsApp y Llamar de las fichas y en los datos que lee Google."
     files:
       - name: "contacto"
         label: "Contacto y horario"
@@ -430,6 +432,10 @@ collections:
             fields:
               - { label: "Texto", name: "texto", widget: "string" }
               - { label: "Icono", name: "icono", widget: "select", default: "referencia", options: [{ label: "Aparcamiento", value: "aparcamiento" }, { label: "Referencia (señal)", value: "referencia" }, { label: "Accesible", value: "accesible" }, { label: "Autobús", value: "autobus" }, { label: "Tren", value: "tren" }, { label: "Coche", value: "coche" }] }
+  - name: "sobre_nosotros"
+    label: "Sobre nosotros"
+    description: "La presentación de la tienda. Sale en /paginas/sobre-nosotros/."
+    files:
       - name: "sobre_nosotros"
         label: "Sobre nosotros"
         file: "public/_datos/sobre-nosotros.yml"
@@ -824,7 +830,7 @@ collections:
             name: "redes"
             widget: "object"
             collapsed: true
-            hint: "Los que dejes vacíos no se muestran. El correo y el WhatsApp del pie se rellenan en «Contacto y Sobre nosotros» → «Contacto y horario»."
+            hint: "Los que dejes vacíos no se muestran. El correo y el WhatsApp del pie se rellenan en «Contacto y horario»."
             fields:
               - { label: "Facebook (dirección completa)", name: "facebook", widget: "string", required: false }
               - { label: "Instagram (dirección completa)", name: "instagram", widget: "string", required: false }

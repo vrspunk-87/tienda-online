@@ -26,9 +26,9 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
 - Revisar en develop las fichas nuevas; resolver avisos de las Excel (permisos de fotos/textos de tiendas, precios 2022/04-2026,
   «Emparejado por nombre») antes de quitar «Solo para pruebas».
 - Fase 3 empezada (18-11-2026): engranaje hecho en Fabricantes, Tipos de producto, Categorías, Subcategorías y
-  Productos y Blog (exportar, importar, cambios en bloque y eliminar; `public/admin/excel/`, guía en
-  docs/CARGA-EN-BLOQUE.md). Siguiente: páginas con Excel y Word. Tres entradas del blog de prueba
-  («Solo para pruebas») para probarlo en dev-victor.
+  Productos, Blog y Páginas (exportar, importar, cambios en bloque y eliminar; en Páginas, también «Exportar a
+  Word»; `public/admin/excel/`, guía en docs/CARGA-EN-BLOQUE.md). **Fase 3 terminada** a falta de las pruebas de
+  Víctor en dev-victor. Tres entradas del blog de prueba («Solo para pruebas») para probarlo.
 - **Para corregir después de la fase 3** (pruebas de Víctor en dev-victor, 18-11-2026):
   - ~~En la lista de «Catálogo: fabricantes» del panel no sale cuántos productos tiene cada uno~~: resuelto con
     las tablas del panel (abajo).
@@ -48,6 +48,37 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
     Páginas, Tipos de producto, Categorías, Subcategorías, Productos y Fabricantes (sin «Catálogo:»). El build
     pone el número de fichas a todas las secciones con carpeta (antes, solo a las «Catálogo: …»).
     Botón de cada lista con su género: «Nueva entrada del blog», «Nuevo producto» (Decap ponía «Nuevo Entrada del blog»).
+  - **Panel: menú, avisos, Medios, buscador, estética y móvil** (18-11-2026, prototipos aprobados por Víctor):
+    - «Colecciones» con las mismas opciones que «Acceso rápido»: la sección «Contacto y Sobre nosotros» se
+      divide en «Contacto y horario» y «Sobre nosotros» (config.yml; los ficheros no cambian), con un separador
+      antes de las secciones de una sola ficha, que abren su ficha directamente (panel.js).
+    - El engranaje de «Ajustes del sitio» solo lo ve `vrspunk-87` (ADMINISTRADORES en panel.js; en local,
+      siempre). Los demás tampoco pueden abrir esa ficha por su dirección. **No es una protección**: quien tiene
+      permiso de escritura en el repositorio puede cambiar cualquier fichero.
+    - Columna **Avisos** en todas las tablas de productos (tablas.js): sin foto, sin precio, oferta sin precio o
+      fechas, oferta terminada, cabezal fuera de industriales, segunda mano en «Nuevo», clasificación,
+      fabricante o «Compatible con» inexistentes y referencia repetida en el mismo fabricante. Icono con número,
+      globo con la lista, filtro Con/Sin avisos y orden. «La oferta terminó» tiene «Entendido»: se recuerda en
+      ese navegador para esa oferta (producto + fecha de fin).
+    - **Medios** con pestañas por carpeta (medios.js): General (la de Decap), Fabricantes, Catálogo, Productos y
+      Fichas PDF; «En uso» (qué ficha) o «Sin usar», buscar, filtrar, subir (fotos a 1600 px), descargar,
+      reemplazar, copiar ruta y eliminar solo las que no usa ninguna ficha (un único cambio). En local la lista
+      sale del último build (dist/admin/medios.json).
+    - **Buscador** de la cabecera con tablas (tablas.js, «Buscador de la cabecera»): resultados por sección, con
+      la tabla de cada una, píldoras para ver una sola y la palabra resaltada; sin la colección oculta «catalogo».
+    - **Estética de la web** (public/admin/tema-panel.css + colores de la marca en dist/admin/datos-panel.json) y
+      **panel adaptado al móvil** (menos de 800 px: tres rayas para «Colecciones», tablas como tarjetas con
+      «Ordenar» y «Filtros», ficha a lo ancho con los botones abajo y la vista previa debajo). Tras actualizar
+      Decap hay que repasarlo (docs/PRUEBAS-PANEL.md).
+    - Plan de pruebas de todo el panel: [docs/PRUEBAS-PANEL.md](PRUEBAS-PANEL.md).
+    - **Pendiente de aprobar (prototipos enseñados el 18-11-2026):** vistas previas con el estilo de la web para
+      blog, tipos, categorías, subcategorías y fabricantes; «Ajustes del sitio» en tres pestañas (Web, Panel,
+      General) con opciones nuevas.
+  - **Ajustes de las tablas** (18-11-2026, prototipo aprobado): columna «Pruebas» con Sí (ámbar) / No (verde) en
+    todas; la miniatura solo si alguna ficha de la lista tiene imagen (hoy, ni tipos ni categorías ni
+    subcategorías); en los grupos de categorías y subcategorías, también el número de productos; iconos (árbol y
+    tabla) en lugar de los botones de vista; en la vista tabla de categorías y subcategorías, la columna de qué
+    cuelgan.
   - Pruebas hechas: exportar Fabricantes a Excel con ZIP en dev-victor, bien; exportaciones completas de tipos,
     categorías y subcategorías, bien. El resto, cuando esté todo subido.
   - Corregido el 18-11-2026: categorías y subcategorías no dejaban elegir qué exportar. Ahora, al exportar (y en
@@ -438,6 +469,11 @@ fuera: son una sola ficha y se editan mejor en el panel.
    la propia web (sin CDN), con versión exacta publicada hace al menos dos semanas.
 8. **Más adelante**: subidas de precio y ofertas en bloque (de momento, en el propio Excel).
 9. **Documentación**: `docs/CARGA-EN-BLOQUE.md`, sin tecnicismos.
+
+**Hecho (18-11-2026): Páginas y Word** — Excel como el resto; no se borran las que enlaza la web (menú, pie,
+privacidad y condiciones). «Exportar a Word…»: un .docx por página (o un ZIP), escrito a mano con JSZip y
+`marked` (el build copia `marked.esm.js` a /admin/vendor/), con los marcadores legales rellenos con los datos de
+/admin/datos-panel.json (último despliegue) y los huecos «[…]» resaltados en amarillo (public/admin/excel/word.js).
 
 **Hecho (18-11-2026): Blog** — identificador con la fecha (`2026-11-18-titulo`) y alta en la carpeta del año,
 como el panel; fecha de publicación tal cual o «18/11/2026 10:30» (hora de Madrid); «Recuadro final» en

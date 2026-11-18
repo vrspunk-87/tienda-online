@@ -132,7 +132,7 @@ const SOLICITUD = {
   })(),
 };
 if (SOLICITUD.limites.avisosDia + SOLICITUD.limites.acusesDia > 95) console.warn(`Aviso (Solicitud de presupuesto): los topes diarios de avisos (${SOLICITUD.limites.avisosDia}) y acuses (${SOLICITUD.limites.acusesDia}) suman más de 95; con una cuenta gratuita de Google se pueden mandar unos 100 correos al día.`);
-// Contacto y horario y Sobre nosotros (Decap → Contacto y Sobre nosotros): páginas con datos
+// Contacto y horario y Sobre nosotros (Decap → «Contacto y horario» y «Sobre nosotros»): páginas con datos
 const leerDatos = f => (fs.existsSync(`${PUB}/_datos/${f}`) ? leerYaml(fs.readFileSync(`${PUB}/_datos/${f}`, 'utf8')) || {} : {});
 const DATOS_CONTACTO = leerDatos('contacto.yml');
 const DATOS_SOBRE = leerDatos('sobre-nosotros.yml');
@@ -176,7 +176,7 @@ const CONTACTO = {
 CONTACTO.direccionCompleta = [CONTACTO.direccion, [CONTACTO.cp, CONTACTO.localidad].filter(Boolean).join(' '), CONTACTO.provincia && CONTACTO.provincia !== CONTACTO.localidad ? `(${CONTACTO.provincia})` : ''].filter(Boolean).join(', ').replace(', (', ' (');
 // Datos de la tienda en los textos legales y en los de la solicitud: se escriben con marcadores
 // ({titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono}) y se rellenan con los de
-// «Contacto y Sobre nosotros → Contacto». Así se cambian en un solo sitio. Si falta un dato, queda
+// «Contacto y horario». Así se cambian en un solo sitio. Si falta un dato, queda
 // un hueco visible ([NIF]…) y el build avisa de dónde.
 const sinCorchetes = v => (/\[[^\]]*\]/.test(v) ? '' : v);
 const DATOS_LEGALES = {
@@ -1576,7 +1576,7 @@ fs.copyFileSync(path.join(NM, 'altcha/dist/main/altcha.i18n.min.js'), path.join(
 fs.copyFileSync(path.join(NM, 'altcha/LICENSE.txt'), path.join(VENDOR, 'altcha/LICENSE.txt'));
 fs.copyFileSync(path.join(NM, 'bootstrap-icons/font/bootstrap-icons.min.css'), path.join(VENDOR, 'bootstrap-icons/bootstrap-icons.min.css'));
 fs.cpSync(path.join(NM, 'bootstrap-icons/font/fonts'), path.join(VENDOR, 'bootstrap-icons/fonts'), { recursive: true });
-// Panel: librerías del engranaje de cada colección (Excel, ZIP y YAML; public/admin/excel/), servidas
+// Panel: librerías del engranaje de cada colección (Excel, ZIP, YAML y Markdown; public/admin/excel/), servidas
 // desde la propia web en /admin/vendor/ (sin CDN). Se cargan solo al usar el engranaje.
 {
   const VENDOR_PANEL = path.join(DIST, 'admin/vendor');
@@ -1587,6 +1587,9 @@ fs.cpSync(path.join(NM, 'bootstrap-icons/font/fonts'), path.join(VENDOR, 'bootst
   fs.copyFileSync(path.join(NM, 'jszip/LICENSE.markdown'), path.join(VENDOR_PANEL, 'jszip-LICENSE.txt'));
   fs.cpSync(path.join(NM, 'yaml/browser/dist'), path.join(VENDOR_PANEL, 'yaml'), { recursive: true });
   fs.copyFileSync(path.join(NM, 'yaml/LICENSE'), path.join(VENDOR_PANEL, 'yaml/LICENSE.txt'));
+  // Markdown → Word al exportar las páginas (public/admin/excel/word.js)
+  fs.copyFileSync(path.join(NM, 'marked/lib/marked.esm.js'), path.join(VENDOR_PANEL, 'marked.esm.js'));
+  fs.copyFileSync(path.join(NM, 'marked/LICENSE'), path.join(VENDOR_PANEL, 'marked-LICENSE.txt'));
 }
 
 // Color principal propio (opcional) y CSS adicional de los Ajustes
@@ -2063,7 +2066,7 @@ if (!SIN_BLOG) {
    8. Páginas
    ========================================================= */
 const PAGINAS_CON_DATOS = ['contacto-y-horario', 'sobre-nosotros'];
-for (const p of paginas.filter(x => PAGINAS_CON_DATOS.includes(x.slug))) console.warn(`Aviso: public/_paginas/${p.slug}.md ya no se usa (la página sale de «Contacto y Sobre nosotros»); bórrala.`);
+for (const p of paginas.filter(x => PAGINAS_CON_DATOS.includes(x.slug))) console.warn(`Aviso: public/_paginas/${p.slug}.md ya no se usa (la página sale de «Contacto y horario» o «Sobre nosotros» del panel); bórrala.`);
 for (const p of paginas.filter(x => !PAGINAS_CON_DATOS.includes(x.slug))) {
   const cuerpo = `
     <article>
@@ -2089,14 +2092,14 @@ for (const p of paginas.filter(x => !PAGINAS_CON_DATOS.includes(x.slug))) {
 }
 
 /* =========================================================
-   8b. Contacto y horario, y Sobre nosotros (Decap → Contacto y Sobre nosotros)
+   8b. Contacto y horario, y Sobre nosotros (Decap → «Contacto y horario» y «Sobre nosotros»)
    ========================================================= */
 // Horario para el navegador: «Abierto ahora · cierra a las 13:30» (public/js/extras.js)
 const horarioJson = JSON.stringify(CONTACTO.horario.map(f => ({ d: f.dias.map(d => DIAS.indexOf(d) + 1), t: f.tramos })));
 const avisoJson = CONTACTO.aviso.texto && CONTACTO.aviso.desde && CONTACTO.aviso.hasta ? JSON.stringify(CONTACTO.aviso) : '';
 const hayHorario = CONTACTO.horario.some(f => f.tramos.length);
 const insigniaAbierto = () => (hayHorario ? `<p class="estado-tienda" data-abierto data-horario="${esc(horarioJson)}"${avisoJson ? ` data-aviso="${esc(avisoJson)}"` : ''} aria-live="polite" hidden></p>` : '');
-const avisoProvisional = (que) => `<div class="aviso-provisional" data-pagefind-ignore="all"><i class="bi bi-pencil-square" aria-hidden="true"></i>${que} de ejemplo: cámbialos en el panel (Contacto y Sobre nosotros) y desmarca «Textos de ejemplo».</div>`;
+const avisoProvisional = (que) => `<div class="aviso-provisional" data-pagefind-ignore="all"><i class="bi bi-pencil-square" aria-hidden="true"></i>${que} de ejemplo: cámbialos en el panel («Contacto y horario» o «Sobre nosotros») y desmarca «Textos de ejemplo».</div>`;
 const ICONOS_LLEGAR = { aparcamiento: 'bi-p-square-fill', referencia: 'bi-signpost-2-fill', accesible: 'bi-universal-access', autobus: 'bi-bus-front-fill', tren: 'bi-train-front-fill', coche: 'bi-car-front-fill' };
 const URL_CONTACTO = '/paginas/contacto-y-horario/';
 const URL_SOBRE = '/paginas/sobre-nosotros/';
@@ -3048,6 +3051,8 @@ Disallow: /
   (function recorrer(lista) { for (const c of lista) { enOrden.push(c); recorrer(c.hijos || []); } })(categoriasPrincipales);
   const datosPanel = {
     tienda: SITIO.nombre,
+    // Colores de la marca: el panel los usa para tener la estética de la web (public/admin/tema-panel.css)
+    marca: MARCA,
     tipoDosPrecios: TIPO_DOS_PRECIOS,
     categorias: Object.fromEntries(enOrden.map((c, orden) => [c.slug, {
       titulo: c.titulo, ruta: [...c.ancestros, c].map(x => x.titulo), url: c.url, tipo: (c.ancestros[0] || c).slug, orden,
@@ -3061,6 +3066,26 @@ Disallow: /
   };
   fs.mkdirSync(path.join(DIST, 'admin'), { recursive: true });
   fs.writeFileSync(path.join(DIST, 'admin/datos-panel.json'), JSON.stringify(datosPanel));
+}
+// Archivos de las carpetas de medios de las secciones (fabricantes, catálogo, productos, fichas…) para
+// «Medios» del panel en local (npm run panel no sabe listar una carpeta sin leer todas las fotos). En la web
+// el panel los lee de GitHub, al momento (public/admin/excel/medios.js).
+{
+  const cfgMedios = leerYaml(fs.readFileSync(`${PUB}/config.yml`, 'utf8'));
+  const carpetas = new Set();
+  (function recorrer(x) {
+    if (Array.isArray(x)) { x.forEach(recorrer); return; }
+    if (!x || typeof x !== 'object') return;
+    if (typeof x.media_folder === 'string') carpetas.add(x.media_folder.replace(/^\/+|\/+$/g, ''));
+    Object.values(x).forEach(recorrer);
+  })(cfgMedios.collections);
+  const medios = {};
+  for (const c of carpetas) {
+    const dir = c;
+    medios[c] = fs.existsSync(dir) ? fs.readdirSync(dir, { withFileTypes: true }).filter(d => d.isFile() && !d.name.startsWith('.'))
+      .map(d => ({ nombre: d.name, bytes: fs.statSync(path.join(dir, d.name)).size })) : [];
+  }
+  fs.writeFileSync(path.join(DIST, 'admin/medios.json'), JSON.stringify(medios));
 }
 
 if (!ES_PRODUCCION && !ES_LOCAL) {
@@ -3300,7 +3325,7 @@ if (rotos.length) {
    ========================================================= */
 if (descripcionesAcortadas.length) nota(`${descripcionesAcortadas.length} página${descripcionesAcortadas.length === 1 ? '' : 's'} con la descripción para Google acortada automáticamente (más de ${MAX_DESCRIPCION} caracteres); en la web se sigue viendo el texto completo.`);
 if (excluidosPrueba) console.log(`Contenido «Solo para pruebas» no publicado: ${excluidosPrueba}.`);
-if (datosSinRellenar.size) console.warn(`Aviso: faltan datos de la tienda en «Contacto y Sobre nosotros → Contacto»; salen como huecos en los textos legales: ${[...datosSinRellenar].map(([k, d]) => `${HUECOS_LEGALES[k]} (${[...d].join(', ')})`).join('; ')}.`);
+if (datosSinRellenar.size) console.warn(`Aviso: faltan datos de la tienda en «Contacto y horario»; salen como huecos en los textos legales: ${[...datosSinRellenar].map(([k, d]) => `${HUECOS_LEGALES[k]} (${[...d].join(', ')})`).join('; ')}.`);
 console.log(`Web generada en ${DIST}/ para «${ENTORNO}»: ${productos.length} productos (${ofertas.length} en oferta, ${productosTodos.length - productos.length} no disponibles), ${categorias.length} categorías, ${fabricantes.length} fabricantes, ${noticias.length} entradas del blog, `
   + `${paginas.length} páginas, ${sitemap.length} URLs en el sitemap, `
   + `${optimizadas.size} imágenes optimizadas, ${paginasIndexadas} páginas en el buscador, ${new Set(rotos.map(r => r.ref)).size} enlaces rotos.`);

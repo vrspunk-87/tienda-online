@@ -58,6 +58,14 @@ async function almacenLocal(cfg) {
       const lista = await pedir('getMedia', { mediaFolder: carpeta });
       return new Map(lista.map(m => [m.name, m.id]));
     },
+    // Medios del panel: nombre y tamaño de cada archivo. En local, la lista del último «npm run build»
+    // (dist/admin/medios.json): getMedia leería todas las fotos de la carpeta
+    async listarDetalle(carpeta) {
+      const r = await fetch('/admin/medios.json', { cache: 'no-store' });
+      if (!r.ok) throw new Error('Falta la lista de archivos del último build (dist/admin/medios.json): ejecuta «npm run build».');
+      return ((await r.json())[carpeta.replace(/^\/+|\/+$/g, '')] || []).map(f => ({ nombre: f.nombre, bytes: f.bytes }));
+    },
+    listaAlDia: false,
     async leerBinario(ruta) {
       const m = await pedir('getMediaFile', { path: ruta });
       return deBase64(m.content);
@@ -108,6 +116,7 @@ function almacenGitHub(cfg) {
     return j.data;
   };
   const ARBOL = `query($o:String!,$n:String!,$e:String!){repository(owner:$o,name:$n){object(expression:$e){... on Tree{entries{name type oid object{... on Blob{text isBinary} ... on Tree{entries{name type oid object{... on Blob{text isBinary}}}}}}}}}}`;
+  const DETALLE = `query($o:String!,$n:String!,$e:String!){repository(owner:$o,name:$n){object(expression:$e){... on Tree{entries{name type oid object{... on Blob{byteSize}}}}}}}`;
   const huella = async bytes => {
     const cab = new TextEncoder().encode(`blob ${bytes.length}\0`);
     const todo = new Uint8Array(cab.length + bytes.length);
@@ -143,6 +152,11 @@ function almacenGitHub(cfg) {
       const d = await graphql(ARBOL, { o: duenno, n: repo, e: `${rama}:${carpeta.replace(/\/+$/, '')}` });
       return new Map((d.repository?.object?.entries || []).filter(x => x.type === 'blob').map(x => [x.name, x.oid]));
     },
+    async listarDetalle(carpeta) {
+      const d = await graphql(DETALLE, { o: duenno, n: repo, e: `${rama}:${carpeta.replace(/^\/+|\/+$/g, '')}` });
+      return (d.repository?.object?.entries || []).filter(x => x.type === 'blob' && !x.name.startsWith('.')).map(x => ({ nombre: x.name, bytes: x.object?.byteSize ?? null, oid: x.oid }));
+    },
+    listaAlDia: true,
     async leerBinario(p) {
       const r = await rest('GET', `/repos/${duenno}/${repo}/contents/${ruta(p)}?ref=${encodeURIComponent(rama)}`, null, { Accept: 'application/vnd.github.raw' });
       return new Uint8Array(await r.arrayBuffer());

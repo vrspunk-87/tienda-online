@@ -130,6 +130,23 @@ export const PERFILES = {
     clave: a => String(9e15 - (Date.parse(a.datos.date) || 0)).padStart(16, '0'),
     reducirImagenes: true,
   },
+  paginas: {
+    hoja: 'Páginas',
+    uno: 'página', varios: 'páginas', femenino: true,
+    nombre: d => d.title || '',
+    identificar: d => slugificar(d.title),
+    // No se borra una página que enlaza la web: menú, pie (Ajustes del sitio) o la solicitud de presupuesto
+    motivoNoBorrar: (slug, ctx) => {
+      if (['politica-de-privacidad', 'condiciones-solicitud-presupuesto'].includes(slug)) return 'la enlaza la solicitud de presupuesto.';
+      const raw = String(ctx.sitio?.raw || '');
+      const esc = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      if (new RegExp(`(pagina:\\s*['"]?${esc}['"]?\\s*$|/paginas/${esc}/)`, 'm').test(raw)) return 'está en el menú o en el pie (Ajustes del sitio): quítala de ahí antes.';
+      return '';
+    },
+    // Además del Excel, «Exportar a Word» (un .docx por página, para la asesoría)
+    word: true,
+    reducirImagenes: true,
+  },
   tipos: perfilCatalogo('tipo', 'Tipos de producto', 'tipo de producto', 'tipos de producto'),
   categorias: perfilCatalogo('categoria', 'Categorías', 'categoría', 'categorías'),
   subcategorias: perfilCatalogo('subcategoria', 'Subcategorías', 'subcategoría', 'subcategorías'),

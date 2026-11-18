@@ -1,0 +1,165 @@
+/*
+  Estética de la web en el panel y panel adaptado al móvil (aprobado por Víctor el 18-11-2026).
+
+  - Letras de la web (Nunito Sans para el texto, Nunito para los títulos, Courgette en el nombre de la
+    tienda), color de la marca en botones, enlaces activos y foco, pespuntes discontinuos y números en
+    insignias gris claro, como en la web. Los colores vienen de Ajustes del sitio → Apariencia → Colores de
+    la marca (el build los deja en /admin/datos-panel.json y public/admin/excel/panel.js los aplica).
+  - Móvil (menos de 800 px): cabecera en una línea con iconos, «Colecciones» como un cajón (botón de tres
+    rayas), tablas como tarjetas (public/admin/excel/tablas.js) y, al editar, campos a lo ancho, la vista
+    previa debajo y los botones de guardar y publicar fijos abajo.
+
+  Decap no tiene un sistema de temas: se retocan sus piezas por el nombre que llevan en la clase
+  (p. ej. «css-1abc-AppHeader»). Tras actualizar Decap (scripts/actualizar-decap.js) hay que repasar el
+  panel en el ordenador y en el móvil (docs/PRUEBAS-PANEL.md, apartado «Estética y móvil»).
+*/
+
+/* ---------- Letras (las mismas de la web, servidas desde la propia web) ---------- */
+@font-face { font-family: "Courgette"; font-style: normal; font-display: swap; font-weight: 400; src: url("/vendor/fonts/courgette-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Nunito"; font-style: normal; font-display: swap; font-weight: 200 1000; src: url("/vendor/fonts/nunito-latin-wght-normal.woff2") format("woff2-variations"); }
+@font-face { font-family: "Nunito Sans"; font-style: normal; font-display: swap; font-weight: 200 1000; src: url("/vendor/fonts/nunito-sans-latin-wght-normal.woff2") format("woff2-variations"); }
+
+:root {
+  --xl-acento: #c1121f;
+  --xl-tinta: #1f2933;
+  --xl-acento-claro: color-mix(in srgb, var(--xl-acento) 9%, #fff);
+  --xl-hover: color-mix(in srgb, var(--xl-acento) 4%, #fff);
+  --xl-fondo: #faf9f7;
+  --xl-borde: #e3e3df;
+  --xl-insignia: #ececea;
+  --xl-pespunte: color-mix(in srgb, var(--xl-acento) 35%, transparent);
+  --xl-letra: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --xl-titulos: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- Base ---------- */
+html body { background: var(--xl-fondo); font-family: var(--xl-letra); color: var(--xl-tinta); }
+body input, body textarea, body select, body button { font-family: var(--xl-letra); }
+body h1, body h2, body h3,
+body [class*="-SidebarHeading"], body [class*="-CollectionTopHeading"], body [class*="-ListCardTitle"] { font-family: var(--xl-titulos); font-weight: 700; color: var(--xl-tinta); }
+
+/* ---------- Cabecera ---------- */
+body [class*="-AppHeader"]:is(header) { border-bottom: 2px dashed var(--xl-pespunte); box-shadow: none; }
+body [class*="-AppHeaderContent"] { align-items: center; }
+.xl-marca { display: inline-flex; align-items: center; gap: 6px; margin-right: 18px; text-decoration: none; white-space: nowrap; }
+.xl-marca-nombre { font-family: "Courgette", cursive; font-size: 20px; color: var(--xl-acento); }
+.xl-hamb, .xl-lupa { display: none; }
+body a.header-link-active, body a.header-link-active span { color: var(--xl-acento) !important; }
+body [class*="-AppHeaderButton"]:hover, body [class*="-AppHeaderButton"]:hover span { color: var(--xl-acento) !important; }
+body [class*="-AppHeaderQuickNewButton"] { background-color: var(--xl-acento) !important; color: #fff !important; border-radius: 8px; font-weight: 600; }
+body [class*="-AppHeaderQuickNewButton"]::after { border-top-color: #fff !important; }
+.xl-buscador input { border-radius: 20px !important; background-color: #f4f4f2 !important; border-color: var(--xl-borde) !important; }
+.xl-buscador input:focus { background-color: #fff !important; border-color: var(--xl-acento) !important; }
+.xl-ajustes { border-radius: 8px !important; }
+.xl-ajustes[hidden] { display: none !important; }
+
+/* ---------- Menú «Colecciones» y tarjetas ---------- */
+body [class*="-SidebarContainer"], body [class*="-CollectionTopContainer"] {
+  border-radius: 12px; border: 1px solid var(--xl-borde); box-shadow: none;
+  outline: 2px dashed var(--xl-pespunte); outline-offset: -7px;
+}
+body [class*="-SidebarNavLink"] { border-radius: 8px; margin: 1px 8px; border-left: 0 !important; }
+body [class*="-SidebarNavLink"].sidebar-active, body [class*="-SidebarNavLink"]:hover { color: var(--xl-acento) !important; background: var(--xl-acento-claro) !important; }
+body [class*="-SidebarNavLink"].sidebar-active { font-weight: 700; }
+body aside li:has(> a.xl-primera-unica) { border-top: 1px dashed var(--xl-borde); margin-top: 8px; padding-top: 8px; }
+/* Número de elementos de cada sección (lo añade el build): insignia gris claro, como en la web */
+body [class*="-SidebarNavLink"] .xl-insignia, body aside a small { background: var(--xl-insignia); color: #4b5563; border-radius: 10px; padding: 0 7px; font-size: 11px; }
+body [class*="-CollectionTopNewButton"] { background-color: var(--xl-acento) !important; color: #fff !important; border-radius: 8px; font-weight: 600; }
+.xl-eng > button { border-radius: 8px !important; }
+.xl-tablas .xl-grupo { border-radius: 10px !important; border: 1px solid var(--xl-borde); box-shadow: none !important; }
+.xl-tablas .xl-grupo > button { font-family: var(--xl-titulos); }
+.xl-tablas .xl-grupo > button small { background: var(--xl-insignia); color: #4b5563 !important; border-radius: 10px; padding: 1px 8px; font-size: 12px; }
+.xl-tablas input[type=search], .xl-tablas select { border-radius: 8px !important; }
+.xl-modal { border-radius: 12px !important; font-family: var(--xl-letra); color: var(--xl-tinta) !important; }
+.xl-modal h2 { font-family: var(--xl-titulos); }
+.xl-b { border-radius: 8px !important; }
+
+/* ---------- Ficha (editor) ---------- */
+body [class*="-ToolbarContainer"] { border-bottom: 2px dashed var(--xl-pespunte); box-shadow: none; }
+body [class*="-ControlContainer"] > label { border-radius: 6px 6px 0 0; }
+body [class*="-ControlContainer"]:focus-within > label { background-color: var(--xl-acento) !important; color: #fff !important; }
+body [class*="-ControlContainer"]:focus-within > input,
+body [class*="-ControlContainer"]:focus-within > textarea,
+body [class*="-ControlContainer"]:focus-within > div:not([class*="-ControlHint"]) { border-color: var(--xl-acento) !important; }
+body [class*="-ControlContainer"] > input, body [class*="-ControlContainer"] > textarea { border-radius: 0 8px 8px 8px; }
+body [class*="-ControlContainer"]:focus-within > [class*="-ControlHint"] { color: var(--xl-acento) !important; }
+body [class*="-PublishedToolbarButton"], body [class*="-PublishButton"] { border-radius: 8px; }
+body [class*="-EditorToggle"] { color: var(--xl-acento) !important; }
+body .Resizer { background: var(--xl-pespunte) !important; }
+
+/* ====================================================================
+   MÓVIL Y TABLETA ESTRECHA (menos de 800 px)
+   ==================================================================== */
+@media (max-width: 799px) {
+  /* Decap fija un ancho mínimo de ordenador: se quita */
+  body [class*="-AppMainContainer"], body [class*="-AppHeaderContent"], body [class*="-EditorContainer"],
+  body [class*="-ToolbarContainer"], body [class*="-CollectionContainer"], body [class*="-CollectionMain"] { min-width: 0 !important; max-width: 100% !important; }
+
+  /* Cabecera: tres rayas, logo, y a la derecha buscar, acceso rápido y ajustes */
+  body [class*="-AppHeaderContent"] { padding: 0 8px !important; gap: 4px; }
+  .xl-hamb, .xl-lupa { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--xl-borde); border-radius: 8px; background: #fff; color: var(--xl-tinta); padding: 0; cursor: pointer; flex: none; }
+  .xl-marca { margin-right: auto; }
+  .xl-marca-nombre { display: none; }
+  body [class*="-AppHeaderNavList"] { display: none; }
+  body.xl-menu-abierto [class*="-AppHeaderNavList"] { display: flex; position: fixed; top: 56px; left: 0; right: 0; z-index: 101; background: #fff; padding: 4px 8px; border-bottom: 1px solid var(--xl-borde); }
+  .xl-buscador { display: none !important; }
+  body.xl-buscando .xl-buscador { display: flex !important; position: fixed; top: 56px; left: 0; right: 0; z-index: 102; background: #fff; padding: 8px !important; border-bottom: 1px solid var(--xl-borde); }
+  body.xl-buscando .xl-buscador input { max-width: none !important; }
+  body [class*="-AppHeaderActions"] { gap: 4px; flex: none; }
+  body [class*="-AppHeaderQuickNewButton"] { font-size: 0 !important; width: 36px; height: 36px; padding: 0 !important; display: inline-flex !important; align-items: center; justify-content: center; }
+  body [class*="-AppHeaderQuickNewButton"]::before { content: "+"; font-size: 24px; line-height: 1; font-weight: 400; }
+  body [class*="-AppHeaderQuickNewButton"]::after { display: none !important; }
+  .xl-ajustes { margin-left: 0 !important; }
+  body [class*="-AppHeaderActions"] [role="menu"] { right: 0 !important; left: auto !important; max-width: calc(100vw - 16px); }
+
+  /* «Colecciones»: cajón que se abre con las tres rayas */
+  body [class*="-CollectionContainer"] { margin: 12px 8px !important; }
+  body aside[class*="-SidebarContainer"] { display: none !important; }
+  body.xl-menu-abierto aside[class*="-SidebarContainer"] { display: block !important; position: fixed !important; top: 124px !important; left: 8px; right: 8px; width: auto !important; max-height: calc(100vh - 140px); overflow: auto; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+  body [class*="-CollectionMain"] { padding-left: 0 !important; margin-left: 0 !important; width: 100% !important; }
+  body [class*="-CollectionTopContainer"] { padding: 14px !important; }
+  body [class*="-CollectionTopRow"] { flex-wrap: wrap; gap: 8px; }
+  body [class*="-CollectionTopHeading"] { font-size: 20px !important; flex: 1 1 100%; }
+  .xl-eng { margin-left: 0 !important; }
+  body [class*="-CollectionTopNewButton"] { flex: 1; text-align: center; padding: 0 10px !important; }
+  .xl-tablas .xl-barra input[type=search] { min-width: 0 !important; flex: 1 1 100% !important; }
+  .xl-tablas .xl-barra { gap: 6px; }
+  .xl-velo { padding: 8px !important; }
+  .xl-modal { padding: 14px !important; }
+  .xl-pie .xl-b { flex: 1; }
+
+  /* Lista de Decap (secciones que no son tablas: blog y páginas) */
+  body [class*="-CardsGrid"] { margin-left: 0 !important; }
+  body [class*="-ListCardLink"] { padding: 12px !important; }
+
+  /* Ficha: barra de arriba compacta, botones abajo y campos a lo ancho con la vista previa debajo */
+  body [class*="-ToolbarContainer"] { height: auto !important; min-height: 56px; padding: 6px 8px !important; flex-wrap: wrap; }
+  body [class*="-ToolbarSectionBackLink"] { flex: 1 1 auto; min-width: 0; padding: 0 6px !important; border-right: 0 !important; }
+  body [class*="-BackCollection"] { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  body [class*="-ToolbarSectionMain"] {
+    position: fixed !important; left: 0; right: 0; bottom: 0; top: auto !important; height: auto !important; width: auto !important; z-index: 300; background: #fff;
+    border-top: 2px dashed var(--xl-pespunte); padding: 8px !important; margin: 0 !important;
+    display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+  }
+  body [class*="-ToolbarSectionMain"] > div { flex-wrap: wrap; gap: 6px; justify-content: center; margin: 0 !important; }
+  body [class*="-ToolbarSectionMain"] button, body [class*="-ToolbarSectionMain"] [role="button"] { margin: 0 !important; }
+  body [class*="-ToolbarSectionMeta"] { display: none !important; }
+  body [class*="-Editor"]:not([class*="-EditorContainer"]):not([class*="-EditorToggle"]) { position: static !important; padding-bottom: 120px; }
+  body [class*="-EditorContainer"] { overflow-y: auto !important; padding-top: 0 !important; z-index: 400 !important; }
+  body [class*="-EditorContainer"] > [class*="-ToolbarContainer"] { position: sticky !important; top: 0; z-index: 250; background: #fff; }
+  body .SplitPane { position: static !important; display: block !important; height: auto !important; }
+  body .SplitPane .Pane { width: 100% !important; height: auto !important; overflow: visible !important; }
+  body .SplitPane .Resizer { display: none !important; }
+  body [class*="-ControlPaneContainer"], body [class*="-PreviewPaneContainer"] { height: auto !important; overflow: visible !important; padding: 12px !important; max-width: 100% !important; }
+  body .Pane2 [class*="-PreviewPaneContainer"] { border-top: 2px dashed var(--xl-pespunte); }
+  body [class*="-PreviewPaneFrame"] { height: 70vh !important; }
+  body [class*="-ViewControls"] { top: auto !important; bottom: 76px !important; right: 8px !important; position: fixed !important; z-index: 299; }
+  /* Ventanas de Decap (medios, avisos) a lo ancho */
+  body [class*="-StyledModal"] { position: fixed !important; inset: 0 !important; width: 100vw !important; max-width: 100vw !important; height: 100dvh !important; max-height: 100dvh !important; transform: none !important; margin: 0 !important; border-radius: 0 !important; padding: 12px !important; overflow: auto !important; }
+  body [class*="-StyledModal"] [class*="-CloseButton"] { position: fixed !important; top: 8px !important; right: 8px !important; left: auto !important; z-index: 5; }
+  body [class*="-StyledModal"] [class*="-RowContainer"] { flex-wrap: wrap; gap: 6px; height: auto !important; }
+  body [class*="-StyledModal"] [class*="-LibraryTitle"] { font-size: 20px !important; }
+  body [class*="-StyledModal"] [class*="-SearchContainer"] { width: 100% !important; }
+  .xl-med-tabs { padding-right: 44px; }
+  .xl-med-rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}

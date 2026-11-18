@@ -68,8 +68,10 @@ public/                             ← LO QUE SE EDITA
   img/                              Imágenes; logo.png, compartir.jpg e iconos/ son PROVISIONALES
   admin/                            Panel de Decap (servido desde la propia web); campos.js: campos
                                     propios (categoría del producto con desplegables dependientes);
-                                    excel/: engranaje de cada sección (Excel y cambios en bloque) y
-                                    tablas.js: listas del catálogo como tablas plegables y con filtros
+                                    excel/: engranaje de cada sección (Excel y cambios en bloque),
+                                    tablas.js: listas del catálogo y buscador como tablas, con avisos;
+                                    medios.js: «Medios» con pestañas por carpeta; tema-panel.css:
+                                    estética de la web y panel en el móvil (docs/PRUEBAS-PANEL.md)
 ```
 
 ## Trabajar en local
@@ -151,7 +153,7 @@ en producción. Los productos y la entrada del blog de prueba se borraron el 8-1
 | Todas las ofertas vigentes, con filtros (enlace «Ver todas las ofertas» en la portada y en `/catalogo/`) | — | `/ofertas/` |
 
 **Carga y cambios en bloque** (fase 3): engranaje en la lista de cada sección del panel (de momento,
-Fabricantes, tipos de producto, categorías, subcategorías, productos y blog) con «Exportar a Excel», «Importar Excel», «Solo para pruebas» en bloque y «Eliminar»; todo
+Fabricantes, tipos de producto, categorías, subcategorías, productos, blog y páginas; en páginas, también a Word) con «Exportar a Excel», «Importar Excel», «Solo para pruebas» en bloque y «Eliminar»; todo
 con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/CARGA-EN-BLOQUE.md).
 
 - **Identificador** de un producto: lo crea el panel a partir del fabricante y el modelo y no cambia.

@@ -17,6 +17,8 @@ import {
 import { crearLibro, leerLibro, libroInforme } from './libro.js';
 import { crearAlmacen } from './almacen.js';
 import { crearTablas } from './tablas.js';
+import { crearDocx, rellenarDatos } from './word.js';
+import { crearMedios } from './medios.js';
 
 /* ---------- Librerías (se cargan al usarlas por primera vez) ---------- */
 let libs = null;
@@ -59,10 +61,10 @@ const css = `
 .xl-pie .xl-izq{margin-right:auto}
 .xl-b{height:36px;padding:0 14px;border:1px solid #c9ced6;border-radius:5px;background:#fff;color:#313d3e;cursor:pointer;font:inherit}
 .xl-b:hover{background:#f4f4f6}
-.xl-b.xl-pri{background:#3a69c7;border-color:#3a69c7;color:#fff}
+.xl-b.xl-pri{background:var(--xl-acento,#3a69c7);border-color:var(--xl-acento,#3a69c7);color:#fff}
 .xl-b.xl-peligro{background:#c92a2a;border-color:#c92a2a;color:#fff}
 .xl-zona{border:2px dashed #b9c0cb;border-radius:8px;padding:24px;text-align:center;margin:12px 0;cursor:pointer}
-.xl-zona.xl-sobre{background:#eef3fc;border-color:#3a69c7}
+.xl-zona.xl-sobre{background:var(--xl-acento-claro,#eef3fc);border-color:var(--xl-acento,#3a69c7)}
 .xl-fich{display:flex;justify-content:space-between;border:1px solid #eff0f4;border-radius:6px;padding:6px 10px;margin:4px 0}
 .xl-cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:12px 0}
 .xl-cifras div{border-radius:6px;padding:8px 10px;background:#f4f4f6}
@@ -78,11 +80,11 @@ const css = `
 .xl-chips{display:flex;flex-wrap:wrap;gap:6px}
 .xl-chip{border:1px solid #c9ced6;border-radius:5px;background:#fff;padding:3px 9px;cursor:pointer;font:inherit;font-size:13px;color:#313d3e}
 .xl-chip small{color:#798291;margin-left:3px}
-.xl-chip.xl-on{background:#e8effb;border-color:#3a69c7;color:#1f4e9c}
+.xl-chip.xl-on{background:var(--xl-acento-claro,#e8effb);border-color:var(--xl-acento,#3a69c7);color:var(--xl-acento,#1f4e9c)}
 .xl-total{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#f4f4f6;border-radius:6px;padding:10px 12px;margin-top:16px}
 .xl-modal select{height:32px;border:1px solid #c9ced6;border-radius:5px;padding:0 6px;font:inherit;margin-left:6px}
 .xl-espera{display:flex;align-items:center;gap:10px;margin:14px 0}
-.xl-espera::before{content:"";width:18px;height:18px;border:3px solid #dfe5f2;border-top-color:#3a69c7;border-radius:50%;animation:xl-gira 1s linear infinite}
+.xl-espera::before{content:"";width:18px;height:18px;border:3px solid var(--xl-acento-claro,#dfe5f2);border-top-color:var(--xl-acento,#3a69c7);border-radius:50%;animation:xl-gira 1s linear infinite}
 @keyframes xl-gira{to{transform:rotate(360deg)}}
 `;
 document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
@@ -95,6 +97,7 @@ const svg = {
   subir: '<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="m7 9 5-5 5 5"/><path d="M12 4v12"/>',
   ver: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
   matraz: '<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 14h9"/>',
+  word: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m8.5 12 1.2 5 1.8-4 1.8 4 1.2-5"/>',
   oculto: '<path d="M3 3l18 18"/><path d="M10.6 6.1A9.9 9.9 0 0 1 12 6c6.5 0 10 6 10 6a17.6 17.6 0 0 1-3.2 3.9M6.6 6.6C3.8 8.4 2 12 2 12s3.5 6 10 6c1.6 0 3-.3 4.3-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',
   check: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
   papelera: '<path d="M4 7h16"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="m5 7 1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/><path d="M9 7V4h6v3"/>',
@@ -113,7 +116,8 @@ function descargar(bytes, nombre, tipo) {
 }
 const XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 const ZIP = 'application/zip';
-const TIPOS_FICHERO = { [XLSX]: { description: 'Libro de Excel', accept: { [XLSX]: ['.xlsx'] } }, [ZIP]: { description: 'Carpeta comprimida (ZIP)', accept: { [ZIP]: ['.zip'] } } };
+const DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+const TIPOS_FICHERO = { [XLSX]: { description: 'Libro de Excel', accept: { [XLSX]: ['.xlsx'] } }, [ZIP]: { description: 'Carpeta comprimida (ZIP)', accept: { [ZIP]: ['.zip'] } }, [DOCX]: { description: 'Documento de Word', accept: { [DOCX]: ['.docx'] } } };
 /* Preguntar dónde guardar (Chrome y Edge: ventana «Guardar como»). Hay que pedirlo nada más pulsar el
    botón, antes de preparar el fichero, porque el navegador solo deja abrir esa ventana justo tras un clic.
    Devuelve el destino, null si el navegador no lo permite (se descargará como siempre: en Firefox,
@@ -267,6 +271,67 @@ async function exportar(nombre) {
         v.q('[data-x]').onclick = v.cerrar;
       } catch (e) { mostrarError(v, e, 'No se ha podido exportar'); }
     };
+  } catch (e) { mostrarError(v, e); }
+}
+
+/* ---------- Páginas a Word (solo exportar: para la asesoría) ---------- */
+async function exportarWord(nombre) {
+  const v = modal('');
+  try {
+    esperar(v, 'Preparando…');
+    const x = await preparar(nombre);
+    const [actuales, marked, datos] = await Promise.all([
+      leerActuales(x),
+      import('/admin/vendor/marked.esm.js'),
+      fetch('/admin/datos-panel.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : {})).catch(() => ({})),
+    ]);
+    const items = [...actuales].sort((a, b) => String(a.datos.title || a.slug).localeCompare(String(b.datos.title || b.slug), 'es')).map(a => ({ a, marcado: true }));
+    const pintar = () => {
+      const n = items.filter(i => i.marcado).length;
+      v.poner(`<h2>Exportar ${esc(x.perfil.varios)} a Word</h2>
+        <p class="xl-gris">Un documento de Word por página (en un ZIP si son varias), con los datos de la tienda puestos en los textos legales, como en la web. Lo que falta sale entre corchetes y resaltado en amarillo (p. ej. «[NIF]»).</p>
+        <div style="margin-top:8px"><a href="#" data-todos>Marcar todas</a> · <a href="#" data-ninguno>Desmarcar todas</a></div>
+        <div class="xl-lista">${items.map((i, k) => `<label><input type="checkbox" data-k="${k}" ${i.marcado ? 'checked' : ''}><span style="flex:1">${esc(i.a.datos.title || i.a.slug)} <span class="xl-gris">· ${esc(i.a.slug)}</span></span>${i.a.datos.prueba ? '<span class="xl-gris" style="font-size:12px">solo pruebas</span>' : ''}</label>`).join('')}</div>
+        <p class="xl-err" data-err></p>
+        <div class="xl-pie"><span class="xl-izq" style="align-self:center"><b>${n}</b> ${n === 1 ? 'página elegida' : 'páginas elegidas'}</span><button class="xl-b" data-x>Cancelar</button><button class="xl-b xl-pri" data-ok>Descargar…</button></div>`);
+      v.m.querySelectorAll('[data-k]').forEach(c => { c.onchange = () => { items[Number(c.dataset.k)].marcado = c.checked; pintar(); }; });
+      v.q('[data-todos]').onclick = e => { e.preventDefault(); items.forEach(i => { i.marcado = true; }); pintar(); };
+      v.q('[data-ninguno]').onclick = e => { e.preventDefault(); items.forEach(i => { i.marcado = false; }); pintar(); };
+      v.q('[data-x]').onclick = v.cerrar;
+      v.q('[data-ok]').onclick = async () => {
+        const elegidas = items.filter(i => i.marcado).map(i => i.a);
+        if (!elegidas.length) { v.q('[data-err]').textContent = 'Elige al menos una.'; return; }
+        const una = elegidas.length === 1;
+        const nombreFich = una ? `${elegidas[0].slug}.docx` : `${nombre}-word-${hoyIso()}.zip`;
+        let destino;
+        try { destino = await pedirDestino(nombreFich, una ? DOCX : ZIP); } catch { return; }
+        try {
+          const web = location.origin;
+          const docs = [];
+          for (const [i, a] of elegidas.entries()) {
+            esperar(v, `Creando ${i + 1}/${elegidas.length}…`);
+            docs.push({
+              nombre: `${a.slug}.docx`,
+              bytes: await crearDocx({
+                JSZip: x.JSZip, marked: marked.marked || marked, web,
+                titulo: a.datos.title || a.slug,
+                descripcion: a.datos.description || '',
+                cuerpo: rellenarDatos(a.cuerpo, datos.legales || {}, datos.huecos || {}),
+                nota: `Exportado del panel el ${ahora()} · ${web}/paginas/${a.slug}/${a.datos.prueba ? ' · Solo para pruebas (no se publica)' : ''}`,
+              }),
+            });
+          }
+          let bytes = docs[0].bytes;
+          if (!una) { const z = new x.JSZip(); for (const d of docs) z.file(d.nombre, d.bytes); bytes = await z.generateAsync({ type: 'uint8array' }); }
+          const g = await guardarFichero(destino, bytes, nombreFich, una ? DOCX : ZIP);
+          v.poner(`<h2 class="xl-ok">${g.preguntado ? 'Guardado' : 'Descargado'}</h2><p>${esc(g.nombre)}: ${docs.length} ${docs.length === 1 ? 'página' : 'páginas'} en Word.</p>
+            ${datos.legales ? '<p class="xl-gris">Los datos de la tienda son los del último despliegue («Contacto y horario»).</p>' : '<p class="xl-av">No se han podido leer los datos de la tienda: los marcadores salen entre corchetes.</p>'}
+            <div class="xl-pie"><button class="xl-b xl-pri" data-x>Cerrar</button></div>`);
+          v.q('[data-x]').onclick = v.cerrar;
+        } catch (e) { mostrarError(v, e, 'No se ha podido exportar a Word'); }
+      };
+    };
+    pintar();
   } catch (e) { mostrarError(v, e); }
 }
 
@@ -661,9 +726,10 @@ function crearEngranaje(nombre) {
   caja.dataset.xlColeccion = nombre;
   caja.innerHTML = `<button type="button" title="Exportar, importar o cambiar en bloque" aria-label="Exportar, importar o cambiar en bloque" aria-haspopup="true" aria-expanded="false">${svg.eng}${svg.flecha}</button>
     <div class="xl-menu" role="menu" hidden>
-      <div class="xl-gr">Excel</div>
+      <div class="xl-gr">${PERFILES[nombre].word ? 'Excel y Word' : 'Excel'}</div>
       <button role="menuitem" data-a="exportar">${ico(svg.descargar)}Exportar a Excel…</button>
       <button role="menuitem" data-a="importar">${ico(svg.subir)}Importar Excel…</button>
+      ${PERFILES[nombre].word ? `<button role="menuitem" data-a="word">${ico(svg.word)}Exportar a Word…</button>` : ''}
       <div class="xl-sep"></div><div class="xl-gr">Cambiar en bloque</div>
       <button role="menuitem" data-a="prueba-quitar">${ico(svg.ver)}Quitar «Solo para pruebas»…</button>
       <button role="menuitem" data-a="prueba-poner">${ico(svg.matraz)}Marcar «Solo para pruebas»…</button>
@@ -683,6 +749,7 @@ function crearEngranaje(nombre) {
       const a = b.dataset.a;
       if (a === 'exportar') exportar(nombre);
       else if (a === 'importar') importar(nombre);
+      else if (a === 'word') exportarWord(nombre);
       else enBloque(nombre, a);
     };
   });
@@ -708,14 +775,56 @@ document.head.insertAdjacentHTML('beforeend', `<style>
 aside [class*="SearchContainer"]{display:none!important}
 .xl-buscador{flex:1;display:flex;justify-content:center;padding:0 16px}
 .xl-buscador input{width:100%;max-width:420px;height:36px;border:1px solid #dfdfe3;border-radius:5px;padding:0 12px 0 34px;font:inherit;font-size:14px;background:#f4f4f6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23798291' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 11px center}
-.xl-buscador input:focus{outline:none;border-color:#3a69c7;background-color:#fff}
+.xl-buscador input:focus{outline:none;border-color:var(--xl-acento,#3a69c7);background-color:#fff}
 .xl-ajustes{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-left:8px;border:1px solid #dfdfe3;border-radius:5px;background:#fff;color:#313d3e}
 .xl-ajustes:hover{background:#f4f4f6}
 .xl-menu-gr{font-size:12px;color:#798291;padding:8px 14px 2px;cursor:default}
 .xl-menu-sep{border-top:1px solid #eff0f4;margin:4px 0}
 </style>`);
+/* ---------- Quién ve «Ajustes del sitio» (Víctor, 18-11-2026) ----------
+   El engranaje de «Ajustes del sitio» solo sale a estos usuarios de GitHub; a los demás tampoco se les abre
+   esa ficha si escriben su dirección. OJO: es solo para que no se toque sin querer, no una protección: quien
+   tiene permiso de escritura en el repositorio puede cambiar cualquier fichero. En el panel local
+   (npm run panel, en el equipo de Víctor) sale siempre. */
+const ADMINISTRADORES = ['vrspunk-87'];
+let pidiendoUsuario = false;
+function usuarioPanel() {
+  let u = null;
+  try { u = JSON.parse(localStorage.getItem('decap-cms-user') || 'null'); } catch { /* sin sesión */ }
+  if (!u) return null;
+  if (u.login) return String(u.login).toLowerCase();
+  // Sesiones guardadas sin el nombre: se pregunta una vez a GitHub
+  if (u.token && !pidiendoUsuario && u.backendName === 'github') {
+    pidiendoUsuario = true;
+    fetch('https://api.github.com/user', { headers: { Authorization: `token ${u.token}` } })
+      .then(r => (r.ok ? r.json() : null))
+      .then(j => {
+        if (!j?.login) return;
+        try { localStorage.setItem('decap-cms-user', JSON.stringify({ ...JSON.parse(localStorage.getItem('decap-cms-user')), login: j.login })); } catch { /* sin almacenamiento */ }
+        repasar();
+      })
+      .catch(() => {});
+  }
+  return null;
+}
+const esLocal = () => ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+const esAdministrador = () => esLocal() || ADMINISTRADORES.includes(usuarioPanel());
+
+/* ---------- Colecciones de una sola ficha: abren la ficha directamente ----------
+   Solicitud de presupuesto, Contacto y horario y Sobre nosotros. Al pulsarlas en «Colecciones» se abre su
+   ficha; al volver de la ficha («←») se va al inicio del panel (si no, se volvería a abrir la ficha). */
+window.addEventListener('hashchange', e => {
+  if (!cfgCabecera) return;
+  const m = location.hash.match(/^#\/collections\/([^/?]+)\/?$/);
+  const fichero = m && cfgCabecera.unicas.get(m[1]);
+  if (!fichero) return;
+  const vieneDeLaFicha = String(e.oldURL || '').includes(`#/collections/${m[1]}/entries/`);
+  location.replace(vieneDeLaFicha ? '#/' : `#/collections/${m[1]}/entries/${fichero}`);
+});
+
 let cfgCabecera = null;
 let pidiendoCabecera = false;
+let datosPanel = null;
 function cabecera() {
   if (!cfgCabecera) {
     if (pidiendoCabecera) return;
@@ -729,12 +838,29 @@ function cabecera() {
           plural: new Map(cols.filter(c => c.folder && c.create && !c.hide).map(c => [String(c.label_singular || c.label), String(c.label)])),
           editar: cols.filter(c => c.files && !c.hide).flatMap(c => c.files.map(f => ({ texto: f.label || f.name, href: `#/collections/${c.name}/entries/${f.name}` }))),
           ajustes: cols.filter(c => c.files && c.hide && c.name === 'ajustes').flatMap(c => c.files.map(f => ({ texto: c.label, href: `#/collections/${c.name}/entries/${f.name}` })))[0] || null,
+          // Secciones de una sola ficha (nombre de la sección → nombre de la ficha)
+          unicas: new Map(cols.filter(c => c.files?.length === 1 && !c.hide).map(c => [c.name, c.files[0].name])),
         };
+        // Por si se entró directamente a la lista de una de ellas
+        if (/^#\/collections\/[^/?]+\/?$/.test(location.hash)) window.dispatchEvent(new HashChangeEvent('hashchange', { oldURL: '', newURL: location.href }));
         cabecera();
       })
       .catch(() => { pidiendoCabecera = false; });
+    fetch('/admin/datos-panel.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then(d => {
+      datosPanel = d || {};
+      // Colores de la marca (Ajustes del sitio → Apariencia), los mismos que la web: public/admin/tema-panel.css
+      const m = datosPanel.marca || {};
+      if (m.acento) document.documentElement.style.setProperty('--xl-acento', m.acento);
+      if (m.texto) document.documentElement.style.setProperty('--xl-tinta', m.texto);
+      document.querySelector('.xl-marca-nombre')?.replaceChildren(datosPanel.tienda || 'Panel');
+    }).catch(() => { datosPanel = {}; });
     return;
   }
+  // «Ajustes del sitio»: solo para los administradores (ver ADMINISTRADORES)
+  const admin = esAdministrador();
+  if (!admin && location.hash.startsWith('#/collections/ajustes')) location.replace('#/');
+  document.querySelectorAll('.xl-ajustes').forEach(a => { a.hidden = !admin; });
+  menuLateral();
   const boton = document.querySelector('header [class*="AppHeaderQuickNewButton"]');
   if (!boton) return;
   if (boton.textContent.trim() !== 'Acceso rápido') boton.textContent = 'Acceso rápido';
@@ -764,9 +890,26 @@ function cabecera() {
       }
     }
   }
-  // Engranaje de «Ajustes del sitio»
+  // Engranaje de «Ajustes del sitio» (solo administradores)
   if (cfgCabecera.ajustes && !envoltorio.parentElement.querySelector('.xl-ajustes')) {
-    envoltorio.insertAdjacentHTML('afterend', `<a class="xl-ajustes" href="${esc(cfgCabecera.ajustes.href)}" title="${esc(cfgCabecera.ajustes.texto)}" aria-label="${esc(cfgCabecera.ajustes.texto)}">${svg.eng}</a>`);
+    envoltorio.insertAdjacentHTML('afterend', `<a class="xl-ajustes" href="${esc(cfgCabecera.ajustes.href)}" title="${esc(cfgCabecera.ajustes.texto)}" aria-label="${esc(cfgCabecera.ajustes.texto)}"${admin ? '' : ' hidden'}>${svg.eng}</a>`);
+  }
+  // Marca (logo y nombre de la tienda) y, en el móvil, botones del menú «Colecciones» y del buscador
+  const contenido = boton.closest('[class*="-AppHeaderContent"]');
+  if (contenido && !contenido.querySelector('.xl-marca')) {
+    contenido.insertAdjacentHTML('afterbegin', `<button type="button" class="xl-hamb" aria-label="Colecciones" aria-expanded="false">${ICONO_MENU}</button><a class="xl-marca" href="#/" title="Inicio del panel">${LOGO}<span class="xl-marca-nombre">${esc(datosPanel?.tienda || 'Panel')}</span></a>`);
+    contenido.querySelector('.xl-hamb').addEventListener('click', e => {
+      const abierto = document.body.classList.toggle('xl-menu-abierto');
+      e.currentTarget.setAttribute('aria-expanded', String(abierto));
+    });
+  }
+  if (!envoltorio.parentElement.querySelector('.xl-lupa')) {
+    envoltorio.insertAdjacentHTML('beforebegin', `<button type="button" class="xl-lupa" aria-label="Buscar" aria-expanded="false">${ICONO_LUPA}</button>`);
+    envoltorio.parentElement.querySelector('.xl-lupa').addEventListener('click', e => {
+      const abierto = document.body.classList.toggle('xl-buscando');
+      e.currentTarget.setAttribute('aria-expanded', String(abierto));
+      if (abierto) document.querySelector('.xl-buscador input')?.focus();
+    });
   }
   // Botón «Nuevo …» de cada lista: Decap pone siempre «Nuevo» + el nombre de la ficha («Nuevo Entrada
   // del blog»). Se corrige el género y la mayúscula: «Nueva entrada del blog», «Nuevo producto».
@@ -796,9 +939,27 @@ function cabecera() {
   }
 }
 
+// Menú «Colecciones»: separador antes de las secciones de una sola ficha
+function menuLateral() {
+  const enlaces = [...document.querySelectorAll('aside a[href^="#/collections/"]')];
+  if (!enlaces.length || !cfgCabecera) return;
+  const primera = enlaces.find(a => cfgCabecera.unicas.has(a.getAttribute('href').split('/')[2]));
+  for (const a of enlaces) a.classList.toggle('xl-primera-unica', a === primera);
+}
+// En el móvil, el menú «Colecciones» y el buscador se cierran al cambiar de página
+window.addEventListener('hashchange', () => {
+  document.body.classList.remove('xl-menu-abierto', 'xl-buscando');
+  document.querySelectorAll('.xl-hamb,.xl-lupa').forEach(b => b.setAttribute('aria-expanded', 'false'));
+});
+const LOGO = '<svg class="xl-logo" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><path d="M8 52h48" fill="none" stroke="var(--xl-acento,#c1121f)" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round" opacity=".55"/><path d="M44 6l3 2.5L26.5 47 23 49.5l.6-4.2z" fill="var(--xl-tinta,#1f2933)"/><ellipse cx="42.6" cy="12.6" rx="1.3" ry="3.4" transform="rotate(28 42.6 12.6)" fill="#fff"/><path d="M42.6 12.6C58 16 58 30 44 33S20 34 18 44s6 8 12 8" fill="none" stroke="var(--xl-acento,#c1121f)" stroke-width="3.2" stroke-linecap="round"/></svg>';
+const ICONO_MENU = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+const ICONO_LUPA = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+
 // Listas como tablas (tablas.js): productos, fabricantes, tipos, categorías y subcategorías
 const revisarTablas = crearTablas({ preparar, leerActuales, leerContexto });
-const repasar = () => { colocar(); revisarTablas(); cabecera(); };
+// «Medios» con pestañas por carpeta (medios.js)
+const revisarMedios = crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreImagen });
+const repasar = () => { colocar(); revisarTablas(); cabecera(); revisarMedios(); };
 let pendiente = false;
 new MutationObserver(() => {
   if (pendiente) return;
