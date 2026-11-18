@@ -12,7 +12,7 @@
 */
 import {
   PERFILES, columnasDe, leerEntrada, crearContexto, planificarImportacion, planificarAccion,
-  hayCambios, resumenPlan, esImagen,
+  hayCambios, resumenPlan, esSubible, esAccesorio, ficherosDe, nombreImagen,
 } from './nucleo.js';
 import { crearLibro, leerLibro, libroInforme } from './libro.js';
 import { crearAlmacen } from './almacen.js';
@@ -74,6 +74,12 @@ const css = `
 .xl-lista label{display:flex;gap:8px;align-items:center;padding:6px 10px;border-bottom:1px solid #f4f4f6;cursor:pointer}
 .xl-lista label.xl-no{cursor:default;color:#98a0ab}
 .xl-modal input[type=text],.xl-modal input[type=search]{width:100%;height:36px;border:1px solid #c9ced6;border-radius:5px;padding:0 10px;font:inherit;box-sizing:border-box}
+.xl-chips{display:flex;flex-wrap:wrap;gap:6px}
+.xl-chip{border:1px solid #c9ced6;border-radius:5px;background:#fff;padding:3px 9px;cursor:pointer;font:inherit;font-size:13px;color:#313d3e}
+.xl-chip small{color:#798291;margin-left:3px}
+.xl-chip.xl-on{background:#e8effb;border-color:#3a69c7;color:#1f4e9c}
+.xl-total{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#f4f4f6;border-radius:6px;padding:10px 12px;margin-top:16px}
+.xl-modal select{height:32px;border:1px solid #c9ced6;border-radius:5px;padding:0 6px;font:inherit;margin-left:6px}
 .xl-espera{display:flex;align-items:center;gap:10px;margin:14px 0}
 .xl-espera::before{content:"";width:18px;height:18px;border:3px solid #dfe5f2;border-top-color:#3a69c7;border-radius:50%;animation:xl-gira 1s linear infinite}
 @keyframes xl-gira{to{transform:rotate(360deg)}}
@@ -88,6 +94,8 @@ const svg = {
   subir: '<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="m7 9 5-5 5 5"/><path d="M12 4v12"/>',
   ver: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
   matraz: '<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 14h9"/>',
+  oculto: '<path d="M3 3l18 18"/><path d="M10.6 6.1A9.9 9.9 0 0 1 12 6c6.5 0 10 6 10 6a17.6 17.6 0 0 1-3.2 3.9M6.6 6.6C3.8 8.4 2 12 2 12s3.5 6 10 6c1.6 0 3-.3 4.3-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
   papelera: '<path d="M4 7h16"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="m5 7 1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/><path d="M9 7V4h6v3"/>',
   flecha: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
 };
@@ -171,9 +179,10 @@ async function leerContexto(x, { textos = false } = {}) {
     return c?.folder ? (await x.almacen.leerCarpeta(c.folder, prof)).map(f => leerEntrada(x.YAML, f.ruta, f.raw)) : [];
   };
   const rutaSitio = x.cfg.collections.flatMap(c => c.files || []).find(f => /(^|\/)sitio\.ya?ml$/.test(f.file || ''))?.file;
-  const [productos, categorias, sitio] = await Promise.all([
+  const [productos, categorias, fabricantes, sitio] = await Promise.all([
     leer('productos'),
     leer('catalogo'),
+    leer('fabricantes'),
     rutaSitio ? x.almacen.leerFicheros([rutaSitio]).then(l => l[0] || null) : null,
   ]);
   let todos = [];
@@ -183,12 +192,17 @@ async function leerContexto(x, { textos = false } = {}) {
     const ficheros = x.cfg.collections.flatMap(c => (c.files || []).map(f => f.file)).filter(Boolean);
     todos.push(...await x.almacen.leerFicheros(ficheros));
   }
-  return crearContexto({ productos, textos: todos, categorias, sitio });
+  // Tipo de producto con dos precios (Completa y Cabezal), de la configuración del campo «precio»
+  const tipoDosPrecios = x.cfg.collections.find(c => c.name === 'productos')?.fields?.find(f => f.name === 'precio')?.tipo_dos_precios || '';
+  return crearContexto({ productos, textos: todos, categorias, fabricantes, sitio, tipoDosPrecios });
 }
-async function leerMedios(x) {
+// Fotos y ficheros que ya hay en cada carpeta. En local, solo los nombres que hacen falta (el servidor
+// local no sabe listar sin leer cada fichero)
+async function leerMedios(x, nombres = null) {
   const medios = new Map();
-  for (const c of x.columnas.campos.filter(c => c.widget === 'image')) {
-    if (!medios.has(c.imagen.repo)) medios.set(c.imagen.repo, await x.almacen.listarMedios(c.imagen.repo).catch(() => new Map()));
+  for (const g of x.columnas.grupos.filter(g => g.imagen)) {
+    const repo = g.imagen.repo;
+    if (!medios.has(repo)) medios.set(repo, await x.almacen.listarMedios(repo, nombres).catch(() => new Map()));
   }
   return medios;
 }
@@ -211,26 +225,36 @@ async function exportar(nombre) {
       const zip = v.q('input[name="xl-modo"]:checked').value === 'zip';
       const base = `${nombre}-${hoyIso()}`;
       let destino;
-      try { destino = await pedirDestino(`${base}.${zip ? 'zip' : 'xlsx'}`, zip ? ZIP : XLSX); } catch { return; } // cancelado: sigue la ventana
+      // Con filtros (productos), la ventana «Guardar como» sale al pulsar «Descargar» en los filtros
+      if (!x.perfil.filtros) {
+        try { destino = await pedirDestino(`${base}.${zip ? 'zip' : 'xlsx'}`, zip ? ZIP : XLSX); } catch { return; } // cancelado: sigue la ventana
+      }
       try {
         esperar(v, `Leyendo ${x.perfil.varios}…`);
-        const [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x)]);
+        let [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x)]);
+        let filtro = '';
+        if (x.perfil.filtros) {
+          let r;
+          for (;;) {
+            r = await elegirProductos(v, x, ctx, actuales, { titulo: `Exportar ${x.perfil.varios}: qué exportar`, boton: 'Descargar…', accesorios: true });
+            if (!r) return;
+            try { destino = await pedirDestino(`${base}.${zip ? 'zip' : 'xlsx'}`, zip ? ZIP : XLSX); break; } catch { /* cancelado: vuelve a los filtros */ }
+          }
+          actuales = r.lista;
+          filtro = r.descripcion;
+        }
         esperar(v, 'Creando el Excel…');
-        const wb = await crearLibro(x.ExcelJS, { cfg: x.cfg, col: x.col, perfil: x.perfil, columnas: x.columnas, actuales, ctx, meta: { fecha: ahora(), rama: x.almacen.rama, total: actuales.length } });
+        const wb = await crearLibro(x.ExcelJS, { cfg: x.cfg, col: x.col, perfil: x.perfil, columnas: x.columnas, actuales, ctx, meta: { fecha: ahora(), rama: x.almacen.rama, total: actuales.length, filtro } });
         const buf = await wb.xlsx.writeBuffer();
         let fallidas = [];
         let guardado;
         if (zip) {
           const z = new x.JSZip();
           z.file(`${base}.xlsx`, buf);
-          const rutas = new Set();
-          for (const a of actuales) for (const c of x.columnas.campos.filter(c => c.widget === 'image')) {
-            const r = a.datos[c.campo];
-            if (r && !/^https?:/i.test(r)) rutas.add(r.startsWith(c.imagen.publica + '/') ? c.imagen.repo + r.slice(c.imagen.publica.length) : 'public' + r);
-          }
+          const rutas = new Set(actuales.flatMap(a => ficherosDe(x.columnas, a.datos).map(f => f.repo)));
           let i = 0;
           for (const r of rutas) {
-            esperar(v, `Añadiendo imágenes ${++i}/${rutas.size}…`);
+            esperar(v, `Añadiendo fotos y ficheros ${++i}/${rutas.size}…`);
             try { z.file(`imagenes/${r.split('/').pop()}`, await x.almacen.leerBinario(r)); } catch { fallidas.push(r.split('/').pop()); }
           }
           guardado = await guardarFichero(destino, await z.generateAsync({ type: 'uint8array' }), `${base}.zip`, ZIP);
@@ -253,8 +277,8 @@ async function importar(nombre) {
   const elegidos = [];
   const pintar = () => {
     v.poner(`<h2>Importar ${esc(x.perfil.varios)}</h2>
-      <div class="xl-zona" tabindex="0"><b>Arrastra aquí el Excel, un ZIP o el Excel con sus imágenes</b><br><span class="xl-gris">o pulsa para elegir ficheros</span>
-        <input type="file" multiple accept=".xlsx,.zip,image/*" hidden></div>
+      <div class="xl-zona" tabindex="0"><b>Arrastra aquí el Excel, un ZIP o el Excel con sus fotos</b><br><span class="xl-gris">o pulsa para elegir ficheros</span>
+        <input type="file" multiple accept=".xlsx,.zip,image/*,.pdf" hidden></div>
       ${elegidos.map((f, i) => `<div class="xl-fich"><span>${esc(f.name)}</span><span class="xl-gris">${Math.max(1, Math.round(f.size / 1024))} KB · <a href="#" data-quitar="${i}">quitar</a></span></div>`).join('')}
       <p class="xl-gris">Aún no se cambia nada: primero verás el informe. Se guardará en ${esc(x.almacen.descripcion)}.</p>
       <p class="xl-err" data-err></p>
@@ -293,16 +317,24 @@ async function importar(nombre) {
             const base = e.name.split('/').pop();
             if (e.dir || e.name.startsWith('__MACOSX/') || base.startsWith('~$') || base.startsWith('.')) continue;
             if (/\.xlsx$/i.test(base)) { if (excel) throw new Error('Hay más de un Excel (en el ZIP o fuera): deja solo uno.'); excel = { nombre: base, bytes: await e.async('uint8array') }; }
-            else if (esImagen(base)) await guardarImagen(base, await e.async('uint8array'));
+            else if (esSubible(base)) await guardarImagen(base, await e.async('uint8array'));
           }
-        } else if (esImagen(f.name)) await guardarImagen(f.name, bytes);
+        } else if (esSubible(f.name)) await guardarImagen(f.name, bytes);
       }
       if (!excel) throw new Error('No hay ningún Excel (.xlsx) entre los ficheros.');
       const wb = new x.ExcelJS.Workbook();
       try { await wb.xlsx.load(excel.bytes); } catch { throw new Error(`«${excel.nombre}» no se puede abrir como Excel (.xlsx).`); }
       const leido = leerLibro(wb, { col: x.col, perfil: x.perfil, columnas: x.columnas });
       esperar(v, `Comparando con ${x.perfil.varios} actuales…`);
-      const [actuales, ctx, medios] = await Promise.all([leerActuales(x), leerContexto(x, { textos: true }), leerMedios(x)]);
+      const [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x, { textos: true })]);
+      // Nombres de fichero que salen en el Excel y no son los de antes (en local solo se miran esos)
+      const deAntes = new Set(actuales.flatMap(a => ficherosDe(x.columnas, a.datos).map(f => f.ruta.split('/').pop())));
+      const nombres = new Set([...subidos.keys()].flatMap(n => [n, nombreImagen(n)]));
+      for (const f of leido.filas) for (const c of x.columnas.campos.filter(c => c.widget === 'image' || c.widget === 'file')) {
+        const t = String(f.celdas[c.titulo] ?? '').trim().split(/[\\/]/).pop();
+        if (t && !deAntes.has(t)) { nombres.add(t); nombres.add(nombreImagen(t)); }
+      }
+      const medios = await leerMedios(x, nombres);
       const plan = leido.errores.length
         ? { nuevos: [], modificados: [], sinCambios: 0, borrados: [], avisos: [], errores: [], escribir: [], borrar: [], ignoradas: 0, imagenesUsadas: new Set() }
         : await planificarImportacion({ YAML: x.YAML, cfg: x.cfg, col: x.col, perfil: x.perfil, columnas: x.columnas, filas: leido.filas, actuales, ocupados: x.ocupados, huellas: leido.huellas, medios, subidos, ctx });
@@ -355,6 +387,11 @@ function informe(v, x, plan, { titulo, confirmar, boton, mensaje, medios, volver
       // Solo se borran imágenes que existen de verdad
       const existe = r => [...(medios || new Map())].some(([carpeta, m]) => r.startsWith(carpeta + '/') && m.has(r.slice(carpeta.length + 1)));
       const borrar = plan.borrar.filter(r => r.endsWith('.md') || existe(r));
+      if (plan.escribir.some(e => e.reducir)) {
+        let i = 0;
+        const n = plan.escribir.filter(e => e.reducir).length;
+        for (const e of plan.escribir.filter(e => e.reducir)) { esperar(v, `Reduciendo fotos ${++i}/${n}…`); e.bytes = await reducirImagen(e.bytes, e.ruta); }
+      }
       esperar(v, 'Guardando…');
       const r = await x.almacen.guardar({ escribir: plan.escribir, borrar, mensaje }, t => esperar(v, t + '…'));
       v.poner(`<h2 class="xl-ok">Guardado</h2>
@@ -368,11 +405,126 @@ function informe(v, x, plan, { titulo, confirmar, boton, mensaje, medios, volver
   };
 }
 
+/* Reduce una foto a 1600 px como mucho y la recomprime (calidad 0,82) si así pesa menos; mismo formato */
+async function reducirImagen(bytes, ruta) {
+  const tipo = /\.png$/i.test(ruta) ? 'image/png' : /\.webp$/i.test(ruta) ? 'image/webp' : /\.jpe?g$/i.test(ruta) ? 'image/jpeg' : null;
+  if (!tipo || typeof createImageBitmap !== 'function') return bytes;
+  try {
+    const bmp = await createImageBitmap(new Blob([bytes]));
+    const escala = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+    if (escala === 1 && bytes.length <= 400 * 1024) return bytes;
+    const w = Math.round(bmp.width * escala);
+    const h = Math.round(bmp.height * escala);
+    const lienzo = document.createElement('canvas');
+    lienzo.width = w; lienzo.height = h;
+    lienzo.getContext('2d').drawImage(bmp, 0, 0, w, h);
+    const blob = await new Promise(ok => lienzo.toBlob(ok, tipo, 0.82));
+    const salida = blob ? new Uint8Array(await blob.arrayBuffer()) : bytes;
+    return escala < 1 || salida.length < bytes.length ? salida : bytes;
+  } catch { return bytes; }
+}
+
+/* ---------- Filtros dependientes de productos (exportar y acciones en bloque) ----------
+   Fabricantes, tipos, categorías (de los tipos elegidos) y subcategorías (de las categorías elegidas),
+   varios en cada uno. Entre grupos, «y»; dentro de un grupo, «o»; en cada rama manda lo más concreto
+   (tipo A con su categoría A1 y tipo B sin categoría → A1 y todo B). Cada opción lleva su número según
+   lo ya elegido y desaparecen las que se quedan en 0. */
+function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesorios = false, extras = false, peligro = false }) {
+  return new Promise(resolver => {
+    const cat = ctx.catalogo;
+    const sel = { modo: 'todo', fab: new Set(), tipos: new Set(), cats: new Set(), subs: new Set(), prueba: 'todos', estado: 'todos', acc: accesorios };
+    const okCat = (p, s = sel) => {
+      if (!s.tipos.size) return true;
+      const r = cat.rutaSlugs(p.datos.categoria);
+      if (!s.tipos.has(r[0])) return false;
+      const cs = cat.hijas(r[0]).filter(c => s.cats.has(c));
+      if (!cs.length) return true;
+      if (!cs.includes(r[1])) return false;
+      const ss = cat.hijas(r[1]).filter(c => s.subs.has(c));
+      return !ss.length || ss.includes(r[2]);
+    };
+    const okResto = p => (sel.prueba === 'todos' || Boolean(p.datos.prueba) === (sel.prueba === 'si'))
+      && (sel.estado === 'todos' || (p.datos.estado || 'disponible') === sel.estado);
+    const okFab = p => !sel.fab.size || sel.fab.has(p.datos.fabricante);
+    const elegidos = () => {
+      if (sel.modo === 'todo') return actuales.filter(okResto);
+      const base = actuales.filter(p => okFab(p) && okCat(p) && okResto(p));
+      if (!sel.acc) return base;
+      const ids = new Set(base.map(p => p.slug));
+      const extra = actuales.filter(p => !ids.has(p.slug) && okResto(p) && (Array.isArray(p.datos.compatible_con) ? p.datos.compatible_con : []).some(s => ids.has(s)));
+      return [...base, ...extra];
+    };
+    const ordenar = (a, b) => a.etiqueta.localeCompare(b.etiqueta, 'es');
+    const chips = (grupo, opciones) => opciones.filter(o => o.n > 0 || sel[grupo].has(o.valor)).sort(ordenar)
+      .map(o => `<button type="button" class="xl-chip ${sel[grupo].has(o.valor) ? 'xl-on' : ''}" data-g="${grupo}" data-v="${esc(o.valor)}">${esc(o.etiqueta)} <small>${o.n}</small></button>`).join('') || '<span class="xl-gris">—</span>';
+    const pintar = () => {
+      const base = actuales.filter(okResto);
+      const conFab = base.filter(okFab);
+      const fabs = (ctx.relaciones.fabricantes || []).map(f => ({ valor: f.valor, etiqueta: f.etiqueta, n: base.filter(p => p.datos.fabricante === f.valor && okCat(p)).length }));
+      const tipos = cat.deNivel('tipo').map(t => ({ valor: t.slug, etiqueta: t.titulo, n: conFab.filter(p => cat.rutaSlugs(p.datos.categoria)[0] === t.slug).length }));
+      const cats = [...sel.tipos].flatMap(t => cat.hijas(t)).map(c => ({ valor: c, etiqueta: cat.etiqueta(c), n: conFab.filter(p => cat.rutaSlugs(p.datos.categoria)[1] === c).length }));
+      const subs = [...sel.cats].flatMap(c => cat.hijas(c)).map(s => ({ valor: s, etiqueta: cat.etiqueta(s), n: conFab.filter(p => cat.rutaSlugs(p.datos.categoria)[2] === s).length }));
+      const lista = elegidos();
+      const nAcc = lista.filter(p => esAccesorio(p, ctx)).length;
+      v.poner(`<h2 class="${peligro ? 'xl-err' : ''}">${esc(titulo)}</h2>${explica ? `<p class="xl-gris">${esc(explica)}</p>` : ''}
+        <div style="display:flex;gap:16px;margin:8px 0"><label><input type="radio" name="xl-m" value="todo" ${sel.modo === 'todo' ? 'checked' : ''}> Todo</label><label><input type="radio" name="xl-m" value="elegir" ${sel.modo === 'elegir' ? 'checked' : ''}> Elegir</label></div>
+        <div ${sel.modo === 'todo' ? 'style="opacity:.45;pointer-events:none"' : ''}>
+          <div class="xl-sec">Fabricantes</div><div class="xl-chips">${chips('fab', fabs)}</div>
+          <div class="xl-sec">Tipos de producto</div><div class="xl-chips">${chips('tipos', tipos)}</div>
+          <div class="xl-sec">Categorías <span class="xl-gris" style="font-weight:400">· de los tipos elegidos</span></div><div class="xl-chips">${sel.tipos.size ? chips('cats', cats) : '<span class="xl-gris">Elige antes un tipo</span>'}</div>
+          <div class="xl-sec">Subcategorías <span class="xl-gris" style="font-weight:400">· de las categorías elegidas</span></div><div class="xl-chips">${sel.cats.size ? chips('subs', subs) : '<span class="xl-gris">Elige antes una categoría</span>'}</div>
+          ${accesorios ? `<label style="display:flex;gap:8px;margin-top:12px"><input type="checkbox" data-acc ${sel.acc ? 'checked' : ''}> Incluir los accesorios compatibles con estos productos</label>` : ''}
+        </div>
+        ${extras ? `<div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px">
+          <label>Solo para pruebas <select data-prueba><option value="todos">Todos</option><option value="si" ${sel.prueba === 'si' ? 'selected' : ''}>Sí</option><option value="no" ${sel.prueba === 'no' ? 'selected' : ''}>No</option></select></label>
+          <label>Estado <select data-estado><option value="todos">Todos</option>${[['disponible', 'Disponible'], ['oferta', 'En oferta'], ['no_disponible', 'No disponible']].map(([k, t]) => `<option value="${k}" ${sel.estado === k ? 'selected' : ''}>${t}</option>`).join('')}</select></label></div>` : ''}
+        <div class="xl-total"><b>${lista.length - nAcc} ${lista.length - nAcc === 1 ? 'producto' : 'productos'}${nAcc ? ` y ${nAcc} ${nAcc === 1 ? 'accesorio' : 'accesorios'}` : ''}</b>
+          <span><button class="xl-b" data-limpiar>Quitar filtros</button> <button class="xl-b" data-x>Cancelar</button> <button class="xl-b ${peligro ? 'xl-peligro' : 'xl-pri'}" data-ok>${esc(boton)}</button></span></div>
+        <p class="xl-err" data-err></p>`);
+      v.m.querySelectorAll('input[name="xl-m"]').forEach(r => { r.onchange = () => { sel.modo = r.value; pintar(); }; });
+      v.m.querySelectorAll('.xl-chip').forEach(b => {
+        b.onclick = () => {
+          const g = sel[b.dataset.g];
+          g.has(b.dataset.v) ? g.delete(b.dataset.v) : g.add(b.dataset.v);
+          // Lo que ya no cuelga de lo elegido se suelta
+          for (const c of [...sel.cats]) if (!sel.tipos.has(cat.rutaSlugs(c)[0])) sel.cats.delete(c);
+          for (const s of [...sel.subs]) if (!sel.cats.has(cat.rutaSlugs(s)[1])) sel.subs.delete(s);
+          pintar();
+        };
+      });
+      const acc = v.q('[data-acc]');
+      if (acc) acc.onchange = () => { sel.acc = acc.checked; pintar(); };
+      const pr = v.q('[data-prueba]');
+      if (pr) pr.onchange = () => { sel.prueba = pr.value; pintar(); };
+      const es = v.q('[data-estado]');
+      if (es) es.onchange = () => { sel.estado = es.value; pintar(); };
+      v.q('[data-limpiar]').onclick = () => { for (const k of ['fab', 'tipos', 'cats', 'subs']) sel[k].clear(); sel.prueba = 'todos'; sel.estado = 'todos'; pintar(); };
+      v.q('[data-x]').onclick = () => { v.cerrar(); resolver(null); };
+      v.q('[data-ok]').onclick = () => {
+        if (!lista.length) { v.q('[data-err]').textContent = 'No hay ninguno con estos filtros.'; return; }
+        const partes = [];
+        if (sel.modo === 'elegir') {
+          if (sel.fab.size) partes.push([...sel.fab].map(ctx.nombreFabricante).join(', '));
+          const ramas = [...sel.subs, ...[...sel.cats].filter(c => !cat.hijas(c).some(s => sel.subs.has(s))), ...[...sel.tipos].filter(t => !cat.hijas(t).some(c => sel.cats.has(c)))];
+          if (ramas.length) partes.push(ramas.map(cat.etiqueta).join('; '));
+          if (sel.acc) partes.push('con sus accesorios');
+        }
+        if (sel.prueba !== 'todos') partes.push(sel.prueba === 'si' ? 'solo de pruebas' : 'sin los de pruebas');
+        if (sel.estado !== 'todos') partes.push(`estado ${({ disponible: 'disponible', oferta: 'en oferta', no_disponible: 'no disponible' })[sel.estado]}`);
+        resolver({ lista, descripcion: partes.join(' · ') });
+      };
+    };
+    pintar();
+  });
+}
+
 /* ---------- Acciones en bloque sin Excel ---------- */
 const ACCIONES = {
   'prueba-quitar': { titulo: 'Quitar «Solo para pruebas»', boton: 'Aplicar', ya: a => !a.datos.prueba, yaTexto: 'ya se publica', explica: 'Pasarán a verse en la web pública.', confirmar: 'boton' },
   'prueba-poner': { titulo: 'Marcar «Solo para pruebas»', boton: 'Aplicar', ya: a => Boolean(a.datos.prueba), yaTexto: 'ya es de pruebas', explica: 'Dejarán de verse en la web pública (seguirán en los entornos de pruebas).', confirmar: 'boton' },
-  borrar: { titulo: 'Eliminar', boton: 'Revisar', explica: 'Se borran la ficha y sus imágenes que no use otra.', confirmar: 'numero' },
+  'no-disponible': { titulo: 'Marcar como no disponible', boton: 'Aplicar', ya: a => a.datos.estado === 'no_disponible', yaTexto: 'ya no está disponible', explica: 'Se retiran de la web pública y siguen en el panel.', confirmar: 'boton' },
+  disponible: { titulo: 'Marcar como disponible', boton: 'Aplicar', ya: a => (a.datos.estado || 'disponible') === 'disponible', yaTexto: 'ya está disponible', explica: 'Vuelven a la web con el próximo despliegue (las que estén «En oferta» pasan a «Disponible»).', confirmar: 'boton' },
+  borrar: { titulo: 'Eliminar', boton: 'Revisar', explica: 'Se borran la ficha y sus fotos y ficheros que no use otra.', confirmar: 'numero' },
 };
 async function enBloque(nombre, accion) {
   const A = ACCIONES[accion];
@@ -382,7 +534,20 @@ async function enBloque(nombre, accion) {
     const x = await preparar(nombre);
     const [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x, { textos: accion === 'borrar' })]);
     const clave = a => (x.perfil.clave ? x.perfil.clave(a, ctx) : x.perfil.nombre(a.datos)) || a.slug;
-    const items = [...actuales].sort((a, b) => clave(a).localeCompare(clave(b), 'es')).map(a => ({ a, motivo: '', marcado: false }));
+    // Productos: primero los filtros; después, la lista con todos los filtrados ya marcados
+    let base = actuales;
+    let preMarcar = false;
+    if (x.perfil.filtros) {
+      const r = await elegirProductos(v, x, ctx, actuales, { titulo: `${A.titulo}: ${x.perfil.varios}`, explica: `${A.explica} Elige con los filtros; después verás la lista para desmarcar los que quieras.`, boton: 'Ver la lista', extras: true, peligro: accion === 'borrar' });
+      if (!r) return;
+      base = r.lista;
+      preMarcar = true;
+    }
+    // Al publicar («Quitar Solo para pruebas»), los que no tienen foto o precio salen desmarcados y con aviso
+    const items = [...base].sort((a, b) => clave(a).localeCompare(clave(b), 'es')).map(a => {
+      const avisos = accion === 'prueba-quitar' && x.perfil.sinAvisos ? x.perfil.sinAvisos(a.datos, ctx) : [];
+      return { a, motivo: '', avisos, marcado: preMarcar && !avisos.length };
+    });
     // Lo que no se puede tocar, según lo ya marcado (un tipo se puede borrar si se borran a la vez sus categorías)
     const repasar = () => {
       for (let vuelta = 0; vuelta < 4; vuelta++) {
@@ -406,7 +571,7 @@ async function enBloque(nombre, accion) {
         <div class="xl-lista">${items.map((i, k) => {
           const nombreV = clave(i.a);
           if (f && !nombreV.toLowerCase().includes(f) && !i.a.slug.includes(f)) return '';
-          return `<label class="${i.motivo ? 'xl-no' : ''}"><input type="checkbox" data-k="${k}" ${i.marcado ? 'checked' : ''} ${i.motivo ? 'disabled' : ''}><span style="flex:1">${esc(nombreV)} <span class="xl-gris">· ${esc(i.a.slug)}</span></span>${i.motivo ? `<span class="xl-gris" style="font-size:12px">${esc(i.motivo)}</span>` : ''}</label>`;
+          return `<label class="${i.motivo ? 'xl-no' : ''}"><input type="checkbox" data-k="${k}" ${i.marcado ? 'checked' : ''} ${i.motivo ? 'disabled' : ''}><span style="flex:1">${esc(nombreV)} <span class="xl-gris">· ${esc(i.a.slug)}</span></span>${i.motivo ? `<span class="xl-gris" style="font-size:12px">${esc(i.motivo)}</span>` : i.avisos?.length ? `<span class="xl-av" style="font-size:12px">${esc(i.avisos.join(', '))}</span>` : ''}</label>`;
         }).join('')}</div>
         <p class="xl-err" data-err></p>
         <div class="xl-pie"><span class="xl-izq" style="align-self:center"><b>${n}</b> ${esc(n === 1 ? x.perfil.uno : x.perfil.varios)} elegidos</span><button class="xl-b" data-x>Cancelar</button><button class="xl-b ${accion === 'borrar' ? 'xl-peligro' : 'xl-pri'}" data-ok>Revisar</button></div>`);
@@ -421,7 +586,7 @@ async function enBloque(nombre, accion) {
         if (!slugs.length) { v.q('[data-err]').textContent = 'Elige al menos uno.'; return; }
         try {
           esperar(v, 'Preparando la lista…');
-          const medios = accion === 'borrar' ? await leerMedios(x) : new Map();
+          const medios = accion === 'borrar' ? await leerMedios(x, new Set(actuales.filter(a => slugs.includes(a.slug)).flatMap(a => ficherosDe(x.columnas, a.datos).map(f => f.ruta.split('/').pop())))) : new Map();
           const plan = await planificarAccion({ YAML: x.YAML, col: x.col, perfil: x.perfil, columnas: x.columnas, actuales, slugs, accion, ctx });
           const resumen = resumenPlan(plan, x.perfil).replace(/^[^:]*: /, '');
           informe(v, x, plan, { titulo: `${A.titulo}: ${x.perfil.varios}`, confirmar: A.confirmar, boton: accion === 'borrar' ? `Eliminar ${plan.borrados.length}` : `${A.boton} a ${plan.modificados.length}`, mensaje: `Panel: ${A.titulo.toLowerCase()} en ${x.perfil.varios} — ${resumen}`, medios, volver: () => pintar(buscar.value) });
@@ -445,6 +610,8 @@ function crearEngranaje(nombre) {
       <div class="xl-sep"></div><div class="xl-gr">Cambiar en bloque</div>
       <button role="menuitem" data-a="prueba-quitar">${ico(svg.ver)}Quitar «Solo para pruebas»…</button>
       <button role="menuitem" data-a="prueba-poner">${ico(svg.matraz)}Marcar «Solo para pruebas»…</button>
+      ${PERFILES[nombre].estados ? `<button role="menuitem" data-a="no-disponible">${ico(svg.oculto)}Marcar como no disponible…</button>
+      <button role="menuitem" data-a="disponible">${ico(svg.check)}Marcar como disponible…</button>` : ''}
       <div class="xl-sep"></div>
       <button role="menuitem" data-a="borrar" class="xl-rojo">${ico(svg.papelera)}Eliminar…</button>
     </div>`;

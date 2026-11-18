@@ -25,9 +25,13 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
   webs oficiales internacionales de cada marca como fuentes o un módulo con una API de búsqueda de imágenes (con clave).
 - Revisar en develop las fichas nuevas; resolver avisos de las Excel (permisos de fotos/textos de tiendas, precios 2022/04-2026,
   «Emparejado por nombre») antes de quitar «Solo para pruebas».
-- Fase 3 empezada (18-11-2026): engranaje hecho en Fabricantes, Tipos de producto, Categorías y Subcategorías
-  (exportar, importar, «Solo para pruebas» en bloque y eliminar; `public/admin/excel/`, guía en
-  docs/CARGA-EN-BLOQUE.md). Siguientes: productos (con filtros y «no disponible») y blog; páginas con Word.
+- Fase 3 empezada (18-11-2026): engranaje hecho en Fabricantes, Tipos de producto, Categorías, Subcategorías y
+  Productos (exportar, importar, cambios en bloque y eliminar; `public/admin/excel/`, guía en
+  docs/CARGA-EN-BLOQUE.md). Siguientes: blog; páginas con Excel y Word.
+- **Para corregir después de la fase 3** (pruebas de Víctor en dev-victor, 18-11-2026):
+  - En la lista de «Catálogo: fabricantes» del panel no sale cuántos productos tiene cada uno (como sí sale en
+    tipos, categorías y subcategorías).
+  - Pruebas hechas: exportar Fabricantes a Excel con ZIP en dev-victor, bien. El resto, cuando esté todo subido.
 
 **Siguiente paso propuesto: fase 3** (decidida el 18-11-2026: botones «Exportar a Excel» e «Importar Excel» en cada
 colección del panel; ver la fase 3). Empezar por Fabricantes. Sirve también para quitar en bloque la marca «Solo para pruebas».
@@ -413,6 +417,15 @@ fuera: son una sola ficha y se editan mejor en el panel.
    la propia web (sin CDN), con versión exacta publicada hace al menos dos semanas.
 8. **Más adelante**: subidas de precio y ofertas en bloque (de momento, en el propio Excel).
 9. **Documentación**: `docs/CARGA-EN-BLOQUE.md`, sin tecnicismos.
+
+**Hecho (18-11-2026): Productos** — dos hojas (Productos / Accesorios) con sus columnas de solo lectura,
+columnas iguales que las Excel de tarifas (que también se importan: sin «Identificador», se emparejan por
+fabricante y modelo), catálogo en tres columnas con desplegables dependientes (nombres de rango e INDIRECT),
+filtros dependientes al exportar y en las acciones en bloque, «Marcar como no disponible / disponible»,
+fotos reducidas a 1600 px al subirlas y, al borrar una máquina, se quita de «Compatible con» de sus accesorios.
+Cada campo del panel es un «grupo» de una o varias columnas (nucleo.js: `grupoDe`). Al reescribir una ficha se
+conserva su formato (listas con o sin sangría, líneas partidas o no). Prueba: los 459 productos reales salen y
+vuelven sin cambios.
 
 **Hecho (18-11-2026): Tipos de producto, Categorías y Subcategorías** — perfiles en `PERFILES` (nucleo.js):
 filtro por «nivel», identificadores únicos en toda la carpeta, padre por su ruta («Tipo › Categoría»), «nivel»

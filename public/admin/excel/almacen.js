@@ -46,7 +46,15 @@ async function almacenLocal(cfg) {
       const lista = await pedir('entriesByFiles', { files: rutas.map(path => ({ path })) });
       return lista.filter(e => e.data !== null).map(e => ({ ruta: e.file.path, raw: e.data }));
     },
-    async listarMedios(carpeta) {
+    // Con «nombres», solo esos (getMedia lee el contenido de toda la carpeta: con cientos de fotos, pesa)
+    async listarMedios(carpeta, nombres = null) {
+      if (nombres) {
+        const mapa = new Map();
+        for (const n of nombres) {
+          try { const m = await pedir('getMediaFile', { path: `${carpeta}/${n}` }); if (m?.id) mapa.set(n, m.id); } catch { /* no existe */ }
+        }
+        return mapa;
+      }
       const lista = await pedir('getMedia', { mediaFolder: carpeta });
       return new Map(lista.map(m => [m.name, m.id]));
     },

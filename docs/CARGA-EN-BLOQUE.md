@@ -10,10 +10,11 @@ Al pulsarlo:
 | Excel | **Exportar a Excel…** | Descargar todas las fichas en un Excel (o un ZIP con el Excel y las imágenes) |
 | Excel | **Importar Excel…** | Subir el Excel cambiado (y las imágenes nuevas) |
 | Cambiar en bloque | **Quitar «Solo para pruebas»…** / **Marcar «Solo para pruebas»…** | Publicar o esconder de la web pública varias fichas a la vez |
+| Cambiar en bloque (solo productos) | **Marcar como no disponible…** / **Marcar como disponible…** | Retirar de la web (sin borrar) o volver a mostrar varios productos |
 | (aparte, en rojo) | **Eliminar…** | Borrar varias fichas a la vez, sin pasar por un Excel |
 
-**Secciones con engranaje:** Catálogo: fabricantes, tipos de producto, categorías y subcategorías
-(18-11-2026). Irán llegando: productos y blog; páginas, además, con Word.
+**Secciones con engranaje:** Catálogo: fabricantes, tipos de producto, categorías, subcategorías y
+productos (18-11-2026). Irán llegando: blog y páginas (además, con Word).
 
 Todo pasa por un **informe** antes de guardar nada, y se guarda **en un único cambio** (commit) de
 la rama que edita el panel: en la web pública, `main`; en los entornos de pruebas, la suya. La web
@@ -59,6 +60,31 @@ otros navegadores va a la carpeta de descargas (en Firefox, según su ajuste «P
   (desde la carga)») se ignoran.
 - **Exporta siempre antes de trabajar.** Si alguien cambia una ficha en el panel después de exportar,
   la importación no la toca y lo avisa.
+
+## Productos
+
+- **Qué exportar:** al pulsar «Descargar…» se eligen **fabricantes, tipos, categorías y subcategorías**
+  (varios en cada uno; cada lista solo ofrece lo que cuelga de lo elegido y cada opción lleva su número
+  de productos). Entre listas, «y»; dentro de una lista, «o»; en cada tipo manda lo más concreto. Con
+  «Incluir los accesorios compatibles» van también los accesorios de esas máquinas. Abajo, siempre, cuántos
+  productos y accesorios saldrán. Exportar una parte no tiene riesgo: lo que no está en el Excel no se toca.
+- **Dos hojas:** «Productos» (con «Accesorios asociados (solo lectura)») y «Accesorios» (los del tipo
+  Accesorios o con «Compatible con», con «Productos compatibles (solo lectura)»). La hoja no decide nada
+  al importar: manda la categoría.
+- **Las columnas son las de las Excel de tarifas** (`input/`): catálogo en tres columnas con
+  desplegables dependientes, dos precios (Completa y Cabezal), oferta, segunda mano, «Foto 1» a «Foto 5»
+  con su descripción, «Características (puntos clave)» una por línea, «Ficha técnica» un dato por línea
+  («Característica: valor») y «Ficha técnica en PDF». Por eso **también se pueden importar esas Excel**:
+  sin «Identificador», cada fila se empareja por fabricante y modelo (el informe lo avisa) o se da de alta.
+- **«Compatible con»:** identificadores separados por comas (p. ej. `singer-4432, singer-hd9125`); también
+  vale «Fabricante Modelo» o el modelo si no hay otro igual, y los productos que se dan de alta en el mismo Excel.
+- **Fotos:** se reducen a 1600 píxeles y se recomprimen al subirlas. «(vacío)» en «Foto 2» quita esa foto.
+- **Avisos que no impiden guardar:** «En oferta» sin precio o fechas de oferta, precio de cabezal en algo
+  que no es máquina industrial, datos de segunda mano en un producto nuevo.
+- **Cambiar en bloque y Eliminar:** primero los mismos filtros (más «Solo para pruebas» y «Estado») y después
+  la lista con todos los filtrados ya marcados, para desmarcar los que no. Al **quitar «Solo para pruebas»**,
+  los que no tienen foto o precio salen desmarcados y con el aviso. Al **borrar** una máquina, se quita del
+  «Compatible con» de sus accesorios (el informe dice de cuáles).
 
 ## Importar
 
