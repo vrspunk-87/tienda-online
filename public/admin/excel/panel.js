@@ -19,6 +19,7 @@ import { crearAlmacen } from './almacen.js';
 import { crearTablas } from './tablas.js';
 import { crearDocx, rellenarDatos } from './word.js';
 import { crearMedios } from './medios.js';
+import { crearEliminar } from './eliminar.js';
 
 /* ---------- Librerías (se cargan al usarlas por primera vez) ---------- */
 let libs = null;
@@ -1182,6 +1183,8 @@ const ICONO_LUPA = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" 
 const revisarTablas = crearTablas({ preparar, leerActuales, leerContexto });
 // «Medios» con pestañas por carpeta (medios.js)
 const revisarMedios = crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreImagen });
+// «Eliminar entrada» dentro de una ficha: antes mira qué depende de ella (eliminar.js)
+crearEliminar({ preparar, leerActuales, leerContexto, leerMedios, modal, esperar, mostrarError, abrirEnLista: revisarTablas.abrirEnLista });
 const repasar = () => { colocar(); revisarTablas(); cabecera(); revisarMedios(); pestanasAjustes(); };
 let pendiente = false;
 new MutationObserver(() => {

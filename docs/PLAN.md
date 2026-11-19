@@ -24,11 +24,29 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
   sin coincidencias falsas, nombre de la cabecera del móvil con letra grande, menú «+» y ✕ de Medios del panel
   en el móvil); otro no era fallo y el de los textos legales espera los datos de la tienda. Correcciones subidas
   en `e868ec1`. Los **15 matices (⚠️)** de la lista siguen todos
-  pendientes (`e868ec1` solo corrigió fallos ❌): **siguiente, decidir cuáles se corrigen**. Las pruebas en dev-victor de lo que no
+  pendientes (`e868ec1` solo corrigió fallos ❌): **se revisarán todos al final, cuando esté todo terminado** (19-11-2026). Las pruebas en dev-victor de lo que no
   se pudo en local (login de GitHub, flujo editorial, solicitud real, móvil de verdad) las hará Víctor **al final, cuando
   esté todo cerrado** (19-11-2026). Foto del carro Trevil EX001 sacada del catálogo de planchas 2025 (input/, solo 184 × 294 px):
-  `input/fotos-tarifa-03-2026/trevil-ex001-1.jpg`, sin cargar aún.
-- Catálogo en la web (todo «Solo para pruebas»): **477 productos** (18 Bernina cargados el 18-11-2026). **29 sin foto** (27 recambios y accesorios Jack del autómata de bolsillos, la T1900G y la JK-2808, el apilador y la caldera Trevil EX001: no están en ninguna web, pedirlas al proveedor). El 18-11 se pusieron fotos a 16 (ver «Fotos añadidas el 18-11-2026» en el apartado B). Otros avisos del panel: **5 parejas con la misma referencia** (Comel Futura RA, Janome 5060QDC y su mesa, tres parejas Jack) y **3 sin precio** (Elna 790PRO y 850, autómata Jack): decidir con el proveedor. Herramienta: no lee las páginas antiguas de bernina.com («Título de ficha no reconocido»; se leyeron a mano desde el navegador); queda pendiente decidir si mejorarla (páginas antiguas, webs oficiales internacionales o API de imágenes).
+  **puesta en su ficha** (`public/img/productos/trevil-ex001-1.jpg`; quedan 28 sin foto).
+- **Fotos de productos normalizadas (19-11-2026)**, tras revisar el Excel exportado (`Exports/productos-2026-11-19`): las 1.425 fotos se llaman
+  `identificador-N.jpg` (N = posición en la ficha), todas JPG cuadradas de 1200 px como máximo con fondo blanco (las pequeñas no se amplían);
+  quitadas las franjas de 5 fotos (Elna AEL494710003 foto 2, Necchi ANU2N20021, Jack JK-E4S-6-03-233, Donna SP-1000, Jack AJK1903GAK).
+  Para revisar: fotos de Elna 1000 («Sew Fun» y «Sew Green»), carro Comel ACAR00002 (sin ruedas), Jack JK-C7-02X250 (dibujo del motor),
+  casquillo JK-2808 (borroso) y la foto de detalle compartida entre PFAFF Ambition 610 y Passport 2.0.
+- **Referencias repetidas corregidas (19-11-2026)**: Comel Futura-RC5 (con caldera; modelo y referencia cambiados por Víctor), mesa Janome 5060QDC
+  → 808401003 (número de pieza de Janome, janome.ca), y Jack con referencia deducida (la tarifa 11/2025 la repite; aviso «Referencia deducida»):
+  JK-C5C-5 → FJK-C5C-5-03-333 / FJK-C5C-5-03-233, JK-E4S-5-516-4 3X4 → FJK-E4S-5-516-4 y la recubridora con cuchilla y aspiración
+  (`jack-jk-k7-ut-01x356-2`) → modelo JK-K7-UT-35X356, referencia FJK-K7-UT-35X356 (la más dudosa). **Confirmar las cuatro con J. Pujol.**
+- **Fotos de productos sin foto buscadas por Claude (19-11-2026)** con el navegador (imágenes de Bing y catálogo de jack.bg): descargas en
+  `input/_web-sinfoto-2` (lista `descargas.tsv` con la fuente de cada una). Puestas en la web: 13 productos Jack de la presilladora
+  (bases y prensatelas de jack.bg; 140315005, 140315006 y 140316003/004 con referencia parecida o distinta: confirmar con J. Pujol), dientes con goma
+  (foto de la pieza 20714007 sin goma, **quitada**: lleva la marca de agua de Grasso), 5 pedales bernette, DesignWorks Suite y las 2 tarjetas CutWork (la de actualización con la foto de la normal).
+  Todas «Fotos de tiendas». 40316008/009 de suprasewing.com. Siguen sin foto: galgas T5878 (6), casquillos JK-2808 (2), apilador,
+  bases 40315008, 40315024 y 40315027, prensatelas 40316037/038 y funda rígida b37. Las fotos de Jack no se han pasado a su Excel de importación.
+- **Tarifa bernette «Ene/25» (19-11-2026)**: `input/TARIFA_BERNETTE_01_2025_importacion.xlsx` (24 máquinas y 28 accesorios/programas), completada con
+  bernette.com/es-ES (y la alemana para las Sew&Go) y bernina.com (software V9). Fotos: Víctor las descarga con PowerShell (`input/_web-bernette/descargas.tsv`)
+  y Claude las pasa a `input/fotos-tarifa-bernette`. Sin cargar en la web. Ver la tabla del apartado B.
+- Catálogo en la web (todo «Solo para pruebas»): **477 productos** (18 Bernina cargados el 18-11-2026). **28 sin foto** (27 recambios y accesorios Jack del autómata de bolsillos, la T1900G y la JK-2808, y el apilador: no están en ninguna web, pedirlas al proveedor; el carro Trevil EX001 ya tiene la foto del catálogo de planchas, 19-11). El 18-11 se pusieron fotos a 16 (ver «Fotos añadidas el 18-11-2026» en el apartado B). Otros avisos del panel: **5 parejas con la misma referencia** (Comel Futura RA, Janome 5060QDC y su mesa, tres parejas Jack) y **3 sin precio** (Elna 790PRO y 850, autómata Jack): decidir con el proveedor. Herramienta: no lee las páginas antiguas de bernina.com («Título de ficha no reconocido»; se leyeron a mano desde el navegador); queda pendiente decidir si mejorarla (páginas antiguas, webs oficiales internacionales o API de imágenes).
 - Revisar en develop las fichas nuevas; resolver avisos de las Excel (permisos de fotos/textos de tiendas, precios 2022/04-2026,
   «Emparejado por nombre») antes de quitar «Solo para pruebas».
 - Fase 3 empezada (18-11-2026): engranaje hecho en Fabricantes, Tipos de producto, Categorías, Subcategorías y
@@ -71,6 +89,11 @@ login del panel probado; **sin indexar**. Categoría nueva «Planchado › Planc
       Fichas PDF; «En uso» (qué ficha) o «Sin usar», buscar, filtrar, subir (fotos a 1600 px), descargar,
       reemplazar, copiar ruta y eliminar solo las que no usa ninguna ficha (un único cambio). En local la lista
       sale del último build (dist/admin/medios.json).
+    - **«Eliminar entrada» dentro de una ficha** (19-11-2026, eliminar.js; prototipo aprobado): antes de borrar
+      mira qué depende de ella (accesorios con «Compatible con», productos de un fabricante o categoría,
+      subcategorías, orden del menú, fotos) y lo hace todo en un único cambio, o explica por qué no se puede.
+      Detalle en docs/CARGA-EN-BLOQUE.md → Borrar. Motivo: al borrar la eXpressive 850 desde su ficha, la mesa
+      Elna se quedó apuntando a un producto que no existía.
     - **Buscador** de la cabecera con tablas (tablas.js, «Buscador de la cabecera»): resultados por sección, con
       la tabla de cada una, píldoras para ver una sola y la palabra resaltada; sin la colección oculta «catalogo».
     - **Estética de la web** (public/admin/tema-panel.css + colores de la marca en dist/admin/datos-panel.json) y
@@ -130,7 +153,7 @@ colección del panel; ver la fase 3). Empezar por Fabricantes. Sirve también pa
 3. Contacto → «Cómo llegar»: «[calle cercana]» y «[referencia conocida del centro de Zafra]».
 4. Sobre nosotros: textos de ejemplo (año 1992, historia, servicios) por revisar; desmarcar «Textos de
    ejemplo»; permiso de las dos personas de la foto.
-5. Color de las ofertas: dejarlas en rojo o darles uno propio.
+5. ~~Color de las ofertas~~: **decidido (19-11-2026): se quedan en rojo, como están.**
 
 **B. Catálogo: Excel de importación en `input/` (carpeta ignorada por Git; las tarifas llevan precios netos)**
 
@@ -148,6 +171,7 @@ Todo «Solo para pruebas». Las categorías dudosas ya las ha revisado Víctor (
 | `TARIFA_PFAFF_09_2026_importacion.xlsx` | 26 productos (Elevate 680 completa y máquina sola) + unidad de bordado; 22 completados con europe.singer.com (18-11) y la unidad con 2 fotos | `fotos-tarifa-pfaff-09-2026` (hasta 5, 1200×1200, la 1.ª limpia) | «Precio 04-2026» (págs. 2-4); «Emparejado por nombre» (Quilt expression 710 SP Edit ↔ expression 710 Edición Especial, Ambition 610 ↔ 610 Azul); no están en la web: Creative Expression 750, Performance Icon, Admire Air 5000 y Admire 1000 |
 | `TARIFA_SINGER_09_2026_importacion.xlsx` | 29 máquinas + unidad de bordado 905E (solo HD9125); 20 completadas con europe.singer.com (18-11: textos, ficha técnica, accesorios incluidos y referencia si la web la da) | `fotos-tarifa-singer-09-2026` (hasta 5, 1200×1200, la 1.ª limpia) | «Emparejado por nombre» (6335 DENIM ↔ 6335M, 4432 BK ↔ Negra Edición Especial, S0105L ↔ S0105); no están en la web: EM9305, SE 9155, HD9125, Featherweight C240, HD500, M3305, 14T968DC, S060X, HD0465 y la 905E (siguen «Sin foto», «Sin textos»); no se copió el precio de distribuidor |
 | `CATALOGO_BERNINA_importacion.xlsx` (catálogo sin fecha, PDF de 2017) | 18 máquinas (1 mecánica, 13 electrónicas, 3 remalladoras, 1 recubridora), **cargada en la web el 18-11** (`public/_productos/bernina-*.md`, 58 fotos, «Solo para pruebas»); 14 completadas con bernina.com (18-11): B720, B770 QE, L450 y L460 con la herramienta (`Bernina/`) y B330, B350, B380, B530, B560, B570 QE, B580, B790, B880 y L220 leyendo sus páginas antiguas desde el navegador | `fotos-tarifa-bernina` (de la web, hasta 5; las descargas originales en `input/_web-bernina`); solo 1008, B215, B820 y 1300 MDC con la foto del catálogo | «Tarifa sin fecha» (confirmar modelos y precios con el proveedor); «Descatalogado (página antigua)» en 12 y «(no está en la web)» en 4 (la página de la «820 QE» no coincide con la B820); «Datos distintos» (enhebrador, BSR en la B530, módulo de bordado en la B790, ojales/espacio en la B880); «Edición especial» (B350); «Sin descripción» (B720, B770 QE); «Sin textos» (1008, B215, B820, 1300 MDC) |
+| `TARIFA_BERNETTE_01_2025_importacion.xlsx` (BERNINA máquinas de coser, S.L., «Ene/25», 2 págs.) | 24 máquinas (7 mecánicas, 6 electrónicas + b08 Straight Stitch, 4 de coser y bordar/bordar, 6 remalladoras/recubridoras) y 28 accesorios (canillas, prensatelas de doble arrastre, mesas, bolsos, pedales, software V9 y DesignWorks/CutWork de BERNINA); precio = «PVP sin Imp.» + 21 % (redondeado al euro si la cuenta queda a 2 céntimos); textos, ficha técnica y fotos de bernette.com/es-ES (19-11), Sew&Go traducidas de la web alemana, software de bernina.com | `fotos-tarifa-bernette` (hasta 5; originales en `input/_web-bernette`, descarga con PowerShell) | «Precio 01-2025» en todas; «Textos traducidos (web alemana)» (Sew&Go); «Descatalogado (máquinas archivadas)» (Chicago 7, b79 Yaya Han Edition); «Datos distintos» (b62: «2/3/4 hilos» en la tarifa; Sew&Go 8: ojales; canillas b37/b38 «DECO»); «Categoría (semiindustrial)» (b08); «Categoría (software)»; «Foto genérica»; «Sin foto/Sin textos» (pedales, bolso de remalladoras, funda b37, DesignWorks Suite, tarjetas CutWork); «Fotos de tiendas» (19-11, herramienta `Bernette-tiendas`: foto 1 de las Sew&Go de Máquinas de Coser Lady's; Chicago 5, Chicago 7, b70 DECO y mesa b05 de Electro365) |
 
 **Cargadas en la web el 18-11-2026** (todas «Solo para pruebas»): Alfa Profesionales 2026, Janome 2022, Husqvarna Viking,
 PFAFF y Singer 09/2026: 144 productos y 602 fotos (`public/_productos/<fabricante>-<modelo>.md`, fotos en

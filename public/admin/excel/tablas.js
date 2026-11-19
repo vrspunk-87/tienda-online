@@ -541,6 +541,9 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
   // Lo que había al ir a una ficha desde la lista, para dejarlo igual al volver (solo en la misma sección;
   // al cambiar de sección o la primera vez, se carga de nuevo)
   let memoria = null;
+  // «Ver los N productos en la lista» desde la ventana de eliminar (eliminar.js): se abre la lista en tabla,
+  // buscando esa ficha y con su fila desplegada
+  let peticion = null;
   const hash32 = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return h; };
   const firmaDatos = (actuales, ctx) => hash32([...actuales, ...ctx.productos].map(a => `${a.ruta}:${hash32(a.raw || '')}`).join('|'));
   // Posición de la página mientras se ve la lista (al cambiar de página, Decap ya la ha movido)
@@ -550,6 +553,9 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
     // Al volver de una ficha de esta misma sección: los datos y el estado de antes (memoria)
     const previo = memoria && memoria.nombre === nombre ? memoria : null;
     memoria = null;
+    const pet = peticion?.nombre === nombre ? peticion : null;
+    peticion = null;
+    const estado = pet ? { vista: 'tabla', busqueda: pet.busqueda, tablas: { [`todo:${pet.busqueda}:`]: { abiertas: [pet.slug] } } } : previo?.estado;
     const raiz = document.createElement('div');
     raiz.className = 'xl-tablas';
     raiz.innerHTML = '<p class="xl-nota">Cargando…</p>';
@@ -559,8 +565,8 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
       const x = previo ? previo.datos.x : await preparar(nombre);
       const [actuales, ctx] = previo ? [previo.datos.actuales, previo.datos.ctx] : await Promise.all([leerActuales(x), leerContexto(x)]);
       if (montada?.raiz !== raiz) return;
-      dibujar(nombre, raiz, x, actuales, ctx, previo?.estado);
-      if (previo?.estado?.scroll) {
+      dibujar(nombre, raiz, x, actuales, ctx, estado);
+      if (!pet && previo?.estado?.scroll) {
         // Decap pinta la lista a la vez: se espera un poco para devolver la página a donde estaba
         const y = previo.estado.scroll;
         setTimeout(() => requestAnimationFrame(() => { if (montada?.raiz === raiz) window.scrollTo(0, y); }), 60);
@@ -779,7 +785,7 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
     }
   }
 
-  return function revisar() {
+  function revisar() {
     const b = location.hash.match(/^#\/search\/([^?]*)/);
     const q = b ? decodeURIComponent(b[1]).trim() : '';
     const m = location.hash.match(/^#\/collections\/([^/?]+)\/?(\?.*)?$/);
@@ -812,5 +818,10 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
     // Todo lo que pinta Decap debajo de la cabecera (ordenar, agrupar y la lista) queda escondido
     const cabecera = [...main.children].find(c => c.contains(nuevo));
     for (const c of main.children) if (c !== cabecera && c !== montada.raiz && !c.classList.contains('xl-oculto')) c.classList.add('xl-oculto');
+  }
+  revisar.abrirEnLista = (nombre, slug, busqueda) => {
+    peticion = { nombre, slug: String(slug), busqueda: String(busqueda || '') };
+    location.hash = `#/collections/${nombre}`;
   };
+  return revisar;
 }

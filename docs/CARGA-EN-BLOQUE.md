@@ -167,6 +167,29 @@ Tanto con el Excel como con **Eliminar…**:
 - Para quitar un producto de la web sin perderlo, es mejor «Estado: no disponible» (cuando llegue
   Productos) o «Marcar "Solo para pruebas"».
 
+### «Eliminar entrada» dentro de una ficha (19-11-2026)
+
+El botón rojo de Decap dentro de una ficha («Eliminar entrada publicada» o, en local, «Eliminar entrada»)
+ya no borra directamente en Productos, Fabricantes, Tipos de producto, Categorías, Subcategorías, Blog y
+Páginas (`public/admin/excel/eliminar.js`, prototipo aprobado por Víctor). Antes mira qué depende de la ficha,
+con las mismas reglas que **Eliminar…**:
+
+- **No se puede eliminar** un fabricante con productos, un tipo o categoría con productos (también los de lo
+  que cuelga de él) o con categorías/subcategorías debajo, ni una página enlazada desde el menú, el pie o la
+  solicitud. La ventana dice qué hay que mover antes, lista los productos (cada uno abre su ficha) y
+  «Ver los N productos en la lista» abre la lista de la sección con esa fila desplegada.
+- **Un producto que está en «Compatible con» de accesorios**: se lista cada accesorio con las máquinas que le
+  quedan; si alguno se queda sin ninguna, sale un aviso en naranja (el accesorio no se borra: se decide
+  después). Hay que marcar la casilla «Entiendo que…» y el botón es «Eliminar y quitar de los accesorios».
+- Se dice qué fotos y ficheros se borran y cuáles se quedan porque los usa otra ficha, y, en tipos y
+  categorías, si se quita de «Orden del catálogo en el menú».
+- Todo se guarda en **un único cambio** (en local, en los ficheros; en GitHub, un commit) y «Volver a la lista»
+  recarga el panel.
+- «Eliminar cambios no publicados» y «Eliminar entrada no publicada» (flujo editorial) siguen siendo los de
+  Decap: no borran nada publicado.
+- Al actualizar Decap, comprobar que los botones siguen llamándose así (si no, el panel volvería a borrar sin
+  avisar). El build ya avisa si un «Compatible con» apunta a un producto que no existe.
+
 ## Para quien mantiene la web
 
 - Código: `public/admin/excel/` — `nucleo.js` (reglas: columnas, informe, qué se escribe y borra),

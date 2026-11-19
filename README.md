@@ -70,7 +70,9 @@ public/                             ← LO QUE SE EDITA
                                     propios (categoría del producto con desplegables dependientes);
                                     excel/: engranaje de cada sección (Excel y cambios en bloque),
                                     tablas.js: listas del catálogo y buscador como tablas, con avisos;
-                                    medios.js: «Medios» con pestañas por carpeta; tema-panel.css:
+                                    medios.js: «Medios» con pestañas por carpeta; eliminar.js:
+                                    «Eliminar entrada» de una ficha, mirando antes qué depende
+                                    de ella (docs/CARGA-EN-BLOQUE.md → Borrar); tema-panel.css:
                                     estética de la web y panel en el móvil (docs/pruebas/)
 ```
 
