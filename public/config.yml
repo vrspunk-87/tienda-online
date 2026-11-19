@@ -884,7 +884,7 @@ collections:
             widget: "select"
             multiple: true
             required: false
-            default: ["sin_foto", "sin_precio", "oferta", "oferta_terminada", "cabezal", "segunda_mano", "clasificacion", "fabricante", "compatible", "referencia"]
+            default: ["sin_foto", "sin_precio", "oferta", "oferta_terminada", "cabezal", "segunda_mano", "clasificacion", "fabricante", "compatible", "referencia", "fabricante_pruebas", "clasificacion_pruebas"]
             hint: "Los que no marques no salen en la columna «Avisos» ni cuentan en los números."
             options:
               - { label: "Sin foto", value: "sin_foto" }
@@ -897,6 +897,8 @@ collections:
               - { label: "Fabricante que falta o no existe", value: "fabricante" }
               - { label: "«Compatible con» con productos que no existen", value: "compatible" }
               - { label: "Referencia repetida en el mismo fabricante", value: "referencia" }
+              - { label: "Fabricante «Solo para pruebas» (el producto tampoco se publica)", value: "fabricante_pruebas" }
+              - { label: "Clasificación «Solo para pruebas» (el producto tampoco se publica)", value: "clasificacion_pruebas" }
           - { label: "«Oferta terminada» marcada como «Entendido»: vuelve a salir a los … días", name: "panel_avisos_vuelven_dias", widget: "number", value_type: "int", min: 0, max: 365, default: 0, required: false, hint: "0: no vuelve a salir (hasta que cambien las fechas de la oferta)." }
           - label: "Compresión de imágenes al subirlas"
             name: "imagenes"

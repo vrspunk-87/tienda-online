@@ -326,7 +326,7 @@ export function libroInforme(ExcelJS, plan, titulo) {
   ws.addRow({ t: titulo });
   for (const e of plan.errores) ws.addRow({ t: 'Error', h: e.hoja || '', f: e.fila || '', d: e.texto });
   for (const x of plan.nuevos) ws.addRow({ t: 'Nuevo', h: x.hoja || '', f: x.fila || '', i: x.slug, n: x.nombre });
-  for (const x of plan.modificados) for (const c of x.cambios) ws.addRow({ t: 'Modificado', h: x.hoja || '', f: x.fila || '', i: x.slug, n: x.nombre, c: c.campo, a: c.antes, d: c.despues });
+  for (const x of plan.modificados) for (const c of x.cambios) ws.addRow({ t: 'Modificado', h: x.hoja || '', f: x.fila || '', i: x.slug, n: x.nombre, c: c.campo, a: c.antesTodo ?? c.antes, d: c.despuesTodo ?? c.despues });
   for (const x of plan.borrados) ws.addRow({ t: 'Borrado', h: x.hoja || '', f: x.fila || '', i: x.slug, n: x.nombre, d: x.arrastra.join('; ') });
   for (const a of plan.avisos) ws.addRow({ t: 'Aviso', h: a.hoja || '', f: a.fila || '', d: a.texto });
   ws.addRow({ t: 'Sin cambios', d: String(plan.sinCambios) });

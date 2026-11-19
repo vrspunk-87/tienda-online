@@ -313,6 +313,23 @@ const ordenar = v => (Array.isArray(v) ? v.map(ordenar) : v && typeof v === 'obj
 const igual = (a, b) => JSON.stringify(ordenar(a ?? null)) === JSON.stringify(ordenar(b ?? null));
 const recortar = t => (t.length > 80 ? t.slice(0, 77) + '…' : t);
 
+/* Valor de un campo tal como sale en las celdas del Excel, sin recortar (para el informe). Si el campo
+   tiene varias columnas, una línea «Columna: valor» por cada una. Vacío → '' */
+function celdaATexto(v) {
+  if (v === undefined || v === null) return '';
+  if (v instanceof Date) return v.toLocaleString('es-ES', { timeZone: globalThis.XL_ZONA || 'Europe/Madrid', dateStyle: 'short', timeStyle: 'short' });
+  if (typeof v === 'object' && Array.isArray(v.richText)) return v.richText.map(r => r.text).join('');
+  if (typeof v === 'object' && 'text' in v) return String(v.text ?? '');
+  return String(v);
+}
+function textoCompleto(g, datos, cuerpo, ctx) {
+  try {
+    const ent = Object.entries(g.aCeldas(datos || {}, cuerpo ?? '', ctx) || {}).map(([t, v]) => [t, celdaATexto(v).trim()]).filter(([, v]) => v);
+    if (ent.length > 1) return ent.map(([t, v]) => `${t}: ${v}`).join('\n');
+    return ent[0]?.[1] ?? '';
+  } catch { return undefined; }
+}
+
 /* ---------- Campos sencillos: una columna ---------- */
 // Nivel que se elige en un campo «categoria-catalogo» de 1 o 2 niveles (el padre de una categoría o subcategoría)
 export const nivelElegido = c => ['tipo', 'categoria', 'subcategoria'][Math.min(3, Math.max(1, Number(c.f.niveles) || 3)) - 1];
@@ -693,6 +710,8 @@ export function crearContexto({ productos = [], textos = [], categorias = [], fa
   }
   const porSlugProducto = new Map(productos.map(p => [p.slug, p]));
   const nombreFab = new Map(fabricantes.map(f => [f.slug, String(f.datos.title || f.slug)]));
+  // Fabricantes «Solo para pruebas»: en producción no se publican y sus productos salen sin fabricante
+  const fabEnPruebas = new Set(fabricantes.filter(f => f.datos.prueba === true || f.datos.prueba === 'true').map(f => f.slug));
   const ctx = {
     productos, textos, productosPorFabricante, accesoriosDe, porSlugProducto, sitio, tipoDosPrecios,
     catalogo: crearCatalogo(categorias, productos),
@@ -702,6 +721,7 @@ export function crearContexto({ productos = [], textos = [], categorias = [], fa
       catalogo: [],
     },
     nombreFabricante: s => nombreFab.get(s) || s || '',
+    fabEnPruebas,
     nuevosProductos: new Map(), // modelo/identificador → identificador de las altas del mismo Excel
     // «Compatible con»: por identificador, por «Fabricante Modelo» o por modelo (si solo hay uno)
     resolverRelacion(coleccion, texto) {
@@ -725,7 +745,7 @@ const lista = v => (Array.isArray(v) ? v : v ? [v] : []).map(x => String(x).trim
 
 // El árbol del catálogo: niveles, hijas, rutas y productos de cada categoría
 export function crearCatalogo(categorias, productos = []) {
-  const porSlug = new Map(categorias.map(c => [c.slug, { slug: c.slug, titulo: String(c.datos.title || c.slug), nivel: c.datos.nivel || '', padre: String(c.datos.padre || '').trim() }]));
+  const porSlug = new Map(categorias.map(c => [c.slug, { slug: c.slug, titulo: String(c.datos.title || c.slug), nivel: c.datos.nivel || '', padre: String(c.datos.padre || '').trim(), prueba: c.datos.prueba === true || c.datos.prueba === 'true' }]));
   const hijas = new Map();
   for (const c of porSlug.values()) {
     if (!c.padre) continue;
@@ -757,6 +777,8 @@ export function crearCatalogo(categorias, productos = []) {
     hijas: slug => hijas.get(slug) || [],
     productosDirectos: slug => directos.get(slug) || [],
     etiqueta: slug => ruta(slug).join(' › '),
+    // La primera de la rama (ella misma o la que está por encima) marcada «Solo para pruebas», o null
+    enPruebas: slug => rutaSlugs(slug).map(s => porSlug.get(s)).reverse().find(c => c?.prueba) || null,
   };
 }
 
@@ -942,7 +964,7 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
       }
       usados.add(slug);
       const cuerpo = 'body' in nuevos ? (nuevos.body ?? '') : '';
-      plan.nuevos.push({ fila: fila.n, hoja: fila.hoja, slug, nombre: perfil.nombre(nuevos) || slug });
+      plan.nuevos.push({ fila: fila.n, hoja: fila.hoja, slug, nombre: perfil.nombre(nuevos) || slug, datos: nuevos }); // datos: para los avisos al publicar (panel.js)
       if (perfil.quitarDelOrden) aviso(`«${perfil.nombre(nuevos) || slug}» es ${perfil.uno === 'tipo de producto' ? 'nuevo' : 'nueva'}: ponle su lugar en Ajustes del sitio → «Orden del catálogo en el menú» (si no, sale al final, en orden alfabético).`);
       plan.escribir.push({ ruta: perfil.rutaNueva ? perfil.rutaNueva(col, slug, nuevos) : `${col.folder}/${slug}.md`, texto: componer(YAML, null, nuevos, cuerpo ? cuerpo + '\n' : '', ordenCampos) });
       continue;
@@ -958,12 +980,17 @@ export async function planificarImportacion({ YAML, cfg, col, perfil, columnas, 
       if (g.f.widget === 'boolean' && (antes ?? false) === (despues ?? false)) continue;
       if (igual(antes, despues) || (vacia(antes) && despues === undefined) || (Array.isArray(antes) && !antes.length && despues === undefined)) continue;
       cambios[g.campo] = despues;
-      lista.push({ campo: g.etiqueta, antes: g.mostrar(antes, ctx), despues: g.mostrar(despues, ctx) });
+      lista.push({
+        campo: g.etiqueta, antes: g.mostrar(antes, ctx), despues: g.mostrar(despues, ctx),
+        // Texto completo, para el desplegable del informe y el informe descargable
+        antesTodo: textoCompleto(g, actual.datos, actual.cuerpo, ctx),
+        despuesTodo: textoCompleto(g, { ...actual.datos, [g.campo]: despues }, g.campo === 'body' ? (despues ?? '') : actual.cuerpo, ctx),
+      });
       if (g.f.widget === 'categoria-catalogo' && perfil.quitarDelOrden) aviso(`«${perfil.nombre(actual.datos) || actual.slug}» cambia de sitio en el catálogo: revisa su lugar en Ajustes del sitio → «Orden del catálogo en el menú».`);
     }
     if (!lista.length) { plan.sinCambios++; continue; }
     const cuerpo = 'body' in cambios ? (cambios.body ? cambios.body + '\n' : '') : actual.cuerpo;
-    plan.modificados.push({ fila: fila.n, hoja: fila.hoja, slug: actual.slug, nombre: perfil.nombre({ ...actual.datos, ...cambios }) || actual.slug, cambios: lista });
+    plan.modificados.push({ fila: fila.n, hoja: fila.hoja, slug: actual.slug, nombre: perfil.nombre({ ...actual.datos, ...cambios }) || actual.slug, cambios: lista, datosAntes: actual.datos, datos: { ...actual.datos, ...cambios } });
     plan.escribir.push({ ruta: actual.ruta, texto: componer(YAML, actual, cambios, cuerpo, ordenCampos) });
   }
 
@@ -1050,7 +1077,7 @@ export async function planificarAccion({ YAML, col, perfil, columnas, actuales, 
     } else if (ACCIONES_CAMPO[accion]) {
       const A = ACCIONES_CAMPO[accion];
       if (A.igual(a.datos[A.campo], A.valor)) { plan.sinCambios++; continue; }
-      plan.modificados.push({ fila: 0, slug, nombre, cambios: [{ campo: A.etiqueta, antes: A.ver(a.datos[A.campo]), despues: A.ver(A.valor) }] });
+      plan.modificados.push({ fila: 0, slug, nombre, cambios: [{ campo: A.etiqueta, antes: A.ver(a.datos[A.campo]), despues: A.ver(A.valor) }], datosAntes: a.datos, datos: { ...a.datos, [A.campo]: A.valor } });
       plan.escribir.push({ ruta: a.ruta, texto: componer(YAML, a, { [A.campo]: A.valor }, a.cuerpo, ordenCampos) });
     } else throw new Error(`Acción desconocida: ${accion}`);
   }

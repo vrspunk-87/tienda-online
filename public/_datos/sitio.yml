@@ -230,6 +230,8 @@ panel_avisos:
   - fabricante
   - compatible
   - referencia
+  - fabricante_pruebas
+  - clasificacion_pruebas
 panel_avisos_vuelven_dias: 0
 panel_peso_maximo_mb: 8
 panel_estetica_web: true

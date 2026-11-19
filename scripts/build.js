@@ -348,6 +348,8 @@ const esVerdadero = v => v === true || v === 'true';
 // Lee los .md de una carpeta y de sus subcarpetas (las noticias van en subcarpetas
 // por año: _posts/blog/2026/...). La URL sale solo del nombre del fichero.
 let excluidosPrueba = 0;
+// Lo que no se publica por «Solo para pruebas», por carpeta (para saber qué fabricantes y categorías lo son)
+const excluidosPorPrueba = new Map();
 function leerColeccion(dir) {
   if (!fs.existsSync(dir)) return [];
   const ficheros = fs.readdirSync(dir, { recursive: true }).map(String).filter(f => f.endsWith('.md'));
@@ -366,6 +368,8 @@ function leerColeccion(dir) {
     .filter(x => {
       if (ES_PRODUCCION && (x.meta.prueba === true || x.meta.prueba === 'true')) {
         excluidosPrueba++;
+        if (!excluidosPorPrueba.has(dir)) excluidosPorPrueba.set(dir, []);
+        excluidosPorPrueba.get(dir).push(x);
         nota(`Sin publicar (solo para pruebas): ${path.basename(dir)}/${x.slug}`);
         return false;
       }
@@ -594,7 +598,29 @@ const TIPO_DOS_PRECIOS = (() => {
 const TIPO_DOS_PRECIOS_TITULO = categoriaPorSlug.get(TIPO_DOS_PRECIOS)?.titulo || TIPO_DOS_PRECIOS;
 if (TIPO_DOS_PRECIOS && !categoriaPorSlug.has(TIPO_DOS_PRECIOS)) console.warn(`Aviso: el tipo con dos precios «${TIPO_DOS_PRECIOS}» (public/config.yml) no existe.`);
 
-const productosTodos = leerColeccion(`${PUB}/_productos`).map(p => {
+// Un producto tampoco se publica en producción si su fabricante o su clasificación (o una de más arriba) es
+// «Solo para pruebas», aunque él no lo sea (decidido por Víctor el 19-11-2026). En los entornos de pruebas se ve.
+const fabricantesEnPruebas = new Set((excluidosPorPrueba.get(`${PUB}/_fabricantes`) || []).map(f => f.slug));
+const categoriasEnPruebas = new Map((excluidosPorPrueba.get(`${PUB}/_categorias`) || []).map(c => [c.slug, c]));
+function ramaEnPruebas(slug) {
+  for (let s = slug, vistos = new Set(); s && !vistos.has(s);) {
+    vistos.add(s);
+    if (categoriasEnPruebas.has(s)) return categoriasEnPruebas.get(s);
+    const c = categoriaPorSlug.get(s);
+    s = String(c?.meta?.padre || '').trim();
+  }
+  return null;
+}
+const ocultosPorPadre = new Set();
+const productosTodos = leerColeccion(`${PUB}/_productos`).filter(p => {
+  const fab = String(p.meta.fabricante || '').trim();
+  const cat = ramaEnPruebas(String(p.meta.categoria || '').trim());
+  if (!fabricantesEnPruebas.has(fab) && !cat) return true;
+  ocultosPorPadre.add(p.slug);
+  excluidosPrueba++;
+  nota(`Sin publicar (${fabricantesEnPruebas.has(fab) ? `su fabricante «${fab}» es` : `su clasificación «${cat.meta.title || cat.slug}» es`} «Solo para pruebas»): _productos/${p.slug}`);
+  return false;
+}).map(p => {
   const m = p.meta;
   revisarImagenes({ ...p, meta: { ...m, _img: '' } }, '_img');
   const imagenes = (Array.isArray(m.imagenes) ? m.imagenes : [])
@@ -645,6 +671,8 @@ const refsVistas = new Map();
 let productosFotosSinAlt = 0; // se avisa en una sola línea al final (si no, una por producto)
 const productosSinFotos = []; // ídem
 for (const p of productosTodos) {
+  // «No disponible»: no se publica en ningún sitio, así que no avisa de nada (19-11-2026)
+  if (p.estado === 'no_disponible') continue;
   const donde = `el producto «${p.nombre}» (${p.fichero})`;
   const del = `del producto «${p.nombre}» (${p.fichero})`;
   if (!p.modelo) console.warn(`Aviso: falta el modelo en ${donde}.`);
@@ -696,7 +724,7 @@ const productos = productosTodos.filter(p => p.estado !== 'no_disponible')
   .sort((a, b) => (b.fecha || 0) - (a.fecha || 0) || a.nombre.localeCompare(b.nombre, 'es'));
 const productoPorSlug = new Map(productos.map(p => [p.slug, p]));
 for (const p of productosTodos) {
-  for (const s of p.compatibleCon) if (s !== p.slug && !productosTodos.some(x => x.slug === s)) console.warn(`Aviso: el producto «${p.nombre}» es «compatible con» «${s}», que no existe.`);
+  for (const s of p.compatibleCon) if (p.estado !== 'no_disponible' && s !== p.slug && !ocultosPorPadre.has(s) && !productosTodos.some(x => x.slug === s)) console.warn(`Aviso: el producto «${p.nombre}» es «compatible con» «${s}», que no existe.`);
 }
 // Accesorios en los dos sentidos (solo entre productos visibles)
 for (const p of productos) {
@@ -3506,7 +3534,7 @@ if (rotos.length) {
    Resumen
    ========================================================= */
 if (descripcionesAcortadas.length) nota(`${descripcionesAcortadas.length} página${descripcionesAcortadas.length === 1 ? '' : 's'} con la descripción para Google acortada automáticamente (más de ${MAX_DESCRIPCION} caracteres); en la web se sigue viendo el texto completo.`);
-if (excluidosPrueba) console.log(`Contenido «Solo para pruebas» no publicado: ${excluidosPrueba}.`);
+if (excluidosPrueba) console.log(`Contenido «Solo para pruebas» no publicado: ${excluidosPrueba}${ocultosPorPadre.size ? ` (${ocultosPorPadre.size} ${ocultosPorPadre.size === 1 ? 'producto' : 'productos'} por tener su fabricante o su clasificación de pruebas)` : ''}.`);
 if (datosSinRellenar.size) console.warn(`Aviso: faltan datos de la tienda en «Contacto y horario»; salen como huecos en los textos legales: ${[...datosSinRellenar].map(([k, d]) => `${HUECOS_LEGALES[k]} (${[...d].join(', ')})`).join('; ')}.`);
 console.log(`Web generada en ${DIST}/ para «${ENTORNO}»: ${productos.length} productos (${ofertas.length} en oferta, ${productosTodos.length - productos.length} no disponibles), ${categorias.length} categorías, ${fabricantes.length} fabricantes, ${noticias.length} entradas del blog, `
   + `${paginas.length} páginas, ${sitemap.length} URLs en el sitemap, `

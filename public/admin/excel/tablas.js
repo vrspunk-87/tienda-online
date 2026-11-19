@@ -339,12 +339,13 @@ const listaDe = v => (Array.isArray(v) ? v : vacio(v) ? [] : [v]).map(String);
 const avisosCaches = new Set();
 document.addEventListener('xl-avisos-vistos', () => { avisosCaches.forEach(c => c.clear()); });
 
-function crearAvisos(ctx) {
+export function crearAvisos(ctx) {
   const cat = ctx.catalogo;
   const fabricantes = new Set((ctx.relaciones?.fabricantes || []).map(f => f.valor));
   // Referencias repetidas dentro del mismo fabricante
   const refs = new Map();
   for (const p of ctx.productos) {
+    if (p.datos.estado === 'no_disponible') continue; // no se ve en la web: no cuenta
     const r = String(p.datos.referencia ?? '').trim().toLowerCase();
     if (!r) continue;
     const k = `${p.datos.fabricante || ''}|${r}`;
@@ -357,6 +358,8 @@ function crearAvisos(ctx) {
     if (cache.has(p.slug)) return cache.get(p.slug);
     const d = p.datos;
     const l = [];
+    // «No disponible»: no se ve en ningún sitio de la web, así que no avisa de nada (19-11-2026)
+    if (d.estado === 'no_disponible') { const nada = { pendientes: [], vistos: [] }; cache.set(p.slug, nada); return nada; }
     if (!Array.isArray(d.imagenes) || !d.imagenes.some(i => i?.imagen)) l.push({ tipo: 'sin_foto', texto: 'Sin foto.' });
     if (vacio(d.precio)) l.push({ tipo: 'sin_precio', texto: 'Sin precio: en la web sale «Precio a consultar».' });
     if (d.estado === 'oferta') {
@@ -373,6 +376,13 @@ function crearAvisos(ctx) {
     else if (!cat.porSlug.has(String(d.categoria))) l.push({ tipo: 'clasificacion', texto: `Su clasificación («${d.categoria}») no existe en el catálogo.` });
     if (vacio(d.fabricante)) l.push({ tipo: 'fabricante', texto: 'No tiene fabricante.' });
     else if (!fabricantes.has(String(d.fabricante))) l.push({ tipo: 'fabricante', texto: `Su fabricante («${d.fabricante}») no existe.` });
+    // Fabricante o clasificación «Solo para pruebas» en un producto que no lo es: en producción el build tampoco
+    // publica el producto (19-11-2026)
+    if (!(d.prueba === true || d.prueba === 'true')) {
+      if (ctx.fabEnPruebas?.has(String(d.fabricante))) l.push({ tipo: 'fabricante_pruebas', texto: `Su fabricante («${ctx.nombreFabricante(d.fabricante)}») es «Solo para pruebas»: el producto no se publica en la web aunque él no lo sea.` });
+      const cp = d.categoria ? cat.enPruebas?.(String(d.categoria)) : null;
+      if (cp) l.push({ tipo: 'clasificacion_pruebas', texto: `${cp.slug === String(d.categoria) ? `Su clasificación («${cp.titulo}») es` : `Su clasificación cuelga de «${cp.titulo}», que es`} «Solo para pruebas»: el producto no se publica en la web aunque él no lo sea.` });
+    }
     const rotos = listaDe(d.compatible_con).filter(s => !ctx.porSlugProducto.has(s));
     if (rotos.length) l.push({ tipo: 'compatible', texto: `«Compatible con» tiene productos que no existen: ${rotos.join(', ')}.` });
     const r = String(d.referencia ?? '').trim().toLowerCase();
@@ -434,7 +444,14 @@ const ICONO_AVISO = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"
 
 // Insignia ⚠ con cuántos productos tienen avisos (parpadea suave; quieta con «reducir movimiento»)
 const insigniaAvisos = n => (n ? `<span class="xl-av-n" title="${n === 1 ? '1 producto con avisos' : `${n} productos con avisos`}" aria-label="${n === 1 ? '1 producto con avisos' : `${n} productos con avisos`}">${ICONO_AVISO}${n}</span>` : '');
-const avisosDe = ctx => (ctx.avisos ||= crearAvisos(ctx));
+// También los usan las acciones en bloque (panel.js): filtro «Avisos» y columna «Avisos» de la lista
+export const avisosDe = ctx => (ctx.avisos ||= crearAvisos(ctx));
+export const ETIQUETAS_AVISO = {
+  sin_foto: 'Sin foto', sin_precio: 'Sin precio', oferta: 'Oferta incompleta', oferta_terminada: 'Oferta terminada',
+  cabezal: 'Precio de cabezal', segunda_mano: 'Datos de segunda mano', clasificacion: 'Clasificación', fabricante: 'Fabricante',
+  compatible: '«Compatible con»', referencia: 'Misma referencia',
+  fabricante_pruebas: 'Fabricante de pruebas', clasificacion_pruebas: 'Clasificación de pruebas',
+};
 const conAvisos = (ctx, p) => avisosDe(ctx)(p).pendientes.length > 0;
 // Botón ⚠ junto a las vistas: deja solo los productos con avisos (n: cuántos hay)
 const botonFiltroAvisos = (activo, n) => `<button type="button" class="xl-filtro-av ${activo ? 'xl-on' : ''}" data-solo-avisos aria-pressed="${activo}" title="${activo ? 'Ver todos' : 'Ver solo los productos con avisos'}">${ICONO_AVISO}${activo ? `Con avisos (${n})` : n}</button>`;
@@ -592,6 +609,8 @@ export function crearTablas({ preparar, leerActuales, leerContexto }) {
   // Pinta la lista con unos datos y, si lo hay, el estado anterior (vista, búsqueda, grupos abiertos, página,
   // filtros y orden de cada tabla). Deja en «montada» los datos y cómo guardar el estado
   function dibujar(nombre, raiz, x, actuales, ctx, e = null) {
+    // Las fichas que se ven, para el engranaje (panel.js): oculta las acciones en bloque que no cambiarían nada
+    (globalThis.XL_ACTUALES ||= {})[nombre] = actuales;
     {
       const version = (montada.version || 0) + 1;
       montada.version = version;

@@ -114,9 +114,29 @@ En productos, fabricantes, tipos de producto, categorías y subcategorías, la l
 - **Fotos:** se reducen a 1600 píxeles y se recomprimen al subirlas. «(vacío)» en «Foto 2» quita esa foto.
 - **Avisos que no impiden guardar:** «En oferta» sin precio o fechas de oferta, precio de cabezal en algo
   que no es máquina industrial, datos de segunda mano en un producto nuevo.
-- **Cambiar en bloque y Eliminar:** primero los mismos filtros (más «Solo para pruebas» y «Estado») y después
-  la lista con todos los filtrados ya marcados, para desmarcar los que no. Al **quitar «Solo para pruebas»**,
-  los que no tienen foto o precio salen desmarcados y con el aviso. Al **borrar** una máquina, se quita del
+- **Cambiar en bloque y Eliminar:** primero los mismos filtros (más «Solo para pruebas», «Estado» y
+  «Avisos»: sin avisos, con avisos o un aviso concreto, con su número) y después la lista con todos los
+  filtrados ya marcados, para desmarcar los que no. La lista es una tabla como la del informe (19-11-2026):
+  casilla, producto, fabricante, clasificación y avisos; buscador, filtro por avisos (varios a la vez),
+  paginación, casilla de la cabecera para la página y «Marcar/Desmarcar los que se ven» cuando hay filtro o
+  búsqueda. Pulsar una fila la marca o desmarca.
+- **Productos con avisos que pasan a verse** (19-11-2026): en «Quitar «Solo para pruebas»», «Marcar como
+  disponible» y al **importar** (productos nuevos que se publican y los que no se veían y pasan a verse), si
+  alguno tiene avisos (los del ⚠: sin foto, sin precio, oferta, referencia repetida…, calculados con los
+  datos ya cambiados), el informe lo dice arriba con el desglose por tipo, abre la pestaña «Con avisos»
+  (cada producto con sus avisos) y pide marcar «Sé que N productos tienen avisos y quiero … igualmente»
+  antes de aplicar. Todos los filtrados salen marcados, también los que tienen avisos.
+- **Fabricantes y clasificaciones «Solo para pruebas»** (19-11-2026): en producción no se publican y **sus
+  productos tampoco**, aunque el producto no sea de pruebas (un tipo de pruebas oculta todo lo que cuelga de él;
+  en los entornos de pruebas se ve todo). Al marcar «Solo para pruebas» un fabricante, tipo, categoría o
+  subcategoría (en bloque o al importar), si tiene productos publicados, el informe lo dice arriba, los enseña
+  en la pestaña «Productos afectados» («dejarán de verse en la web») y pide confirmarlo. Los productos en esa
+  situación llevan el aviso ⚠ «Fabricante de pruebas» o «Clasificación de pruebas» (también al publicarlos:
+  no se verán hasta que se publique su fabricante o su clasificación). Se pueden desmarcar en Ajustes del
+  sitio → Panel → avisos. Los accesorios «Compatible con» de una máquina oculta siguen su propia ficha.
+- Cada acción solo enseña (en los filtros y en la lista) los que cambia: «Marcar «Solo para pruebas»» no
+  muestra los que ya lo son, «Marcar como no disponible» los que ya lo están, etc. Si una acción no cambiaría
+  ninguno (p. ej. todos son ya de pruebas), no aparece en el engranaje. Al **borrar** una máquina, se quita del
   «Compatible con» de sus accesorios (el informe dice de cuáles).
 
 ## Blog
@@ -147,9 +167,16 @@ En productos, fabricantes, tipos de producto, categorías y subcategorías, la l
 
 1. Engranaje → **Importar Excel…**
 2. Arrastra el Excel (y las imágenes nuevas), o un ZIP con todo, o elígelos con el botón.
-3. **Revisar cambios**: el informe dice qué es nuevo, qué cambia (campo, antes → después), qué se
-   borra (en rojo) y los avisos. Con un solo **error** no se guarda nada: corrígelo en el Excel (el
-   informe dice la fila) y vuelve a importarlo. El informe se puede descargar en Excel.
+3. **Revisar cambios**: el informe dice qué es nuevo, qué cambia, qué se borra (en rojo) y los
+   avisos. Las cifras de arriba son pestañas (Errores, Se borran, Nuevos, Modificados, Avisos): cada
+   una abre su lista, **una fila por ficha**, con buscador y paginación (12, 24 o 48) como las tablas
+   del panel. En «Modificados», cada fila lleva los campos que cambian y, al pulsarla, se despliega el
+   **antes y el después completos** de cada campo (19-11-2026); con «Filtrar por campo» (una etiqueta
+   por campo, con cuántas fichas lo cambian; se pueden elegir varias) se ven solo las fichas en las que
+   cambia alguno de esos campos y, al desplegarlas, solo esos campos. Con un solo **error** no se guarda
+   nada: corrígelo en el Excel (el informe dice la fila) y vuelve a importarlo. El informe se puede
+   descargar en Excel (también con los textos completos). El mismo informe sale en las acciones en
+   bloque («Solo para pruebas», eliminar).
 4. Si se borra algo, marca «Entiendo que se borrarán N fichas».
 5. **Importar** y, al terminar, **Recargar el panel** para ver la lista al día.
 

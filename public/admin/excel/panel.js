@@ -16,7 +16,7 @@ import {
 } from './nucleo.js';
 import { crearLibro, leerLibro, libroInforme } from './libro.js';
 import { crearAlmacen } from './almacen.js';
-import { crearTablas } from './tablas.js';
+import { crearTablas, avisosDe, crearAvisos, ETIQUETAS_AVISO } from './tablas.js';
 import { crearDocx, rellenarDatos } from './word.js';
 import { crearMedios } from './medios.js';
 import { crearEliminar } from './eliminar.js';
@@ -49,6 +49,7 @@ const css = `
 .xl-menu .xl-gr{font-size:12px;color:#798291;padding:8px 10px 2px}
 .xl-menu button{display:flex;gap:8px;align-items:center;width:100%;padding:7px 10px;border:0;background:none;border-radius:4px;cursor:pointer;font:inherit;color:#313d3e;text-align:left}
 .xl-menu button:hover{background:#eff0f4}
+.xl-menu [hidden]{display:none!important}
 .xl-menu .xl-ico{flex:none;color:#798291}
 .xl-menu .xl-rojo .xl-ico{color:inherit}
 .xl-menu .xl-sep{border-top:1px solid #eff0f4;margin:4px 0}
@@ -70,6 +71,56 @@ const css = `
 .xl-cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:12px 0}
 .xl-cifras div{border-radius:6px;padding:8px 10px;background:#f4f4f6}
 .xl-cifras b{display:block;font-size:20px}
+.xl-modal.xl-ancho{max-width:1100px}
+.xl-cifras .xl-pest{border:2px solid transparent;border-radius:6px;padding:8px 10px;background:#f4f4f6;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.xl-cifras .xl-pest:hover{background:var(--xl-hover,#eef0f3)}
+.xl-cifras .xl-pest.xl-on{border-color:var(--xl-acento,#3a69c7);background:var(--xl-acento-claro,#e8effb)}
+.xl-inf-barra{display:flex;gap:10px;align-items:center;margin:4px 0 8px}
+.xl-inf-barra input{flex:1}
+.xl-inf-barra label{white-space:nowrap}
+.xl-inf{width:100%;border-collapse:collapse;font-size:13px}
+.xl-inf th{text-align:left;font-weight:600;color:#6c757d;border-bottom:2px solid #eff0f4;padding:6px 8px}
+.xl-inf td{padding:7px 8px;border-bottom:1px solid #eff0f4;vertical-align:top}
+.xl-inf td:first-child,.xl-inf th:first-child{width:1%;white-space:nowrap}
+.xl-inf tr.xl-desp{cursor:pointer}
+.xl-inf tr.xl-desp:hover td{background:var(--xl-hover,#f7f8fa)}
+.xl-inf .xl-flecha{color:#6c757d}
+.xl-peq{font-size:12px}
+.xl-filtro-campos{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 8px;font-size:13px}
+.xl-fch{border:1px solid #c9ced6;border-radius:999px;background:#fff;padding:2px 10px;cursor:pointer;font:inherit;font-size:12px;color:#313d3e}
+.xl-fch small{color:#798291;margin-left:4px}
+.xl-fch.xl-on{background:var(--xl-acento,#3a69c7);border-color:var(--xl-acento,#3a69c7);color:#fff}
+.xl-fch.xl-on small{color:rgba(255,255,255,.8)}
+.xl-limpiar{border:0;background:none;color:var(--xl-acento,#3a69c7);cursor:pointer;font:inherit;font-size:12px;text-decoration:underline}
+.xl-fch.xl-fch-av{border-color:#e6c38a}
+.xl-fch.xl-fch-av.xl-on{background:#a35f00;border-color:#a35f00}
+.xl-sel{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 6px}
+.xl-inf.xl-elegir tr.xl-fila-el{cursor:pointer}
+.xl-inf.xl-elegir tr.xl-fila-el:hover td{background:var(--xl-hover,#f7f8fa)}
+.xl-inf.xl-elegir tr.xl-desm td{color:#98a0ab}
+.xl-inf.xl-elegir tr.xl-bloq{cursor:default}
+.xl-inf.xl-elegir input[type=checkbox]{accent-color:var(--xl-acento,#3a69c7);width:16px;height:16px}
+.xl-aviso{display:inline-block;background:#fdf1dc;color:#a35f00;border-radius:999px;padding:1px 9px;margin:2px 4px 2px 0;font-size:12px;white-space:nowrap}
+.xl-alerta-av{border:1px solid #e6c38a;background:#fdf6e9;border-radius:8px;padding:10px 14px;margin:8px 0}
+.xl-alerta-av b{color:#a35f00}
+.xl-alerta-av ul{margin:6px 0 4px 18px;padding:0}
+.xl-av-txt{color:#5f5a4a;font-size:12px;margin:1px 0 4px}
+.xl-conf-av{display:flex;gap:8px;align-items:flex-start;margin:12px 0 0;padding:10px 12px;border:1px dashed #e0b84c;border-radius:8px;background:#fff8e1}
+.xl-conf-av input{accent-color:#a35f00;width:16px;height:16px;margin-top:2px}
+.xl-cifras .xl-pest.xl-av.xl-on{border-color:#a35f00;background:#fdf1dc}
+.xl-et.xl-et-sel{background:var(--xl-acento,#3a69c7);color:#fff}
+.xl-modal .xl-nota-inf{margin:6px 0 4px;padding:8px 12px;border-radius:8px;background:#fff8e1;border:1px dashed #e0b84c;color:#5f5a4a;font-size:13px}
+.xl-et{display:inline-block;background:var(--xl-acento-claro,#e8effb);color:var(--xl-acento,#1f4e9c);border-radius:999px;padding:1px 9px;margin:2px 4px 2px 0;font-size:12px;white-space:nowrap}
+.xl-inf tr.xl-det>td{background:#fcfcfd;padding:2px 8px 12px 28px}
+.xl-cmp{display:grid;grid-template-columns:150px 1fr 1fr;border:1px solid #eff0f4;border-radius:6px;overflow:hidden}
+.xl-cmp>div{padding:8px 10px;border-top:1px solid #eff0f4;white-space:pre-wrap;word-break:break-word;max-height:220px;overflow:auto}
+.xl-cmp>.xl-cmp-h{background:#f4f4f6;font-weight:600;border-top:0}
+.xl-cmp .xl-antes{color:#6c757d}
+.xl-cmp .xl-despues{background:#f0fdf4}
+.xl-modal .xl-pie-t{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 0;color:#798291;font-size:12px}
+.xl-modal .xl-pie-t button{min-width:28px;height:28px;padding:0 7px;border-radius:14px;border:1px solid #c9ced6;background:#fff;cursor:pointer;font:inherit;font-size:12px}
+.xl-modal .xl-pie-t button.xl-on{background:var(--xl-acento,#3a69c7);border-color:var(--xl-acento,#3a69c7);color:#fff}
+@media (max-width:700px){.xl-cmp{grid-template-columns:1fr}.xl-cmp>.xl-cmp-h:not(:first-child){display:none}.xl-inf-barra{flex-wrap:wrap}}
 .xl-sec{font-weight:600;margin:14px 0 4px}
 .xl-fila{display:flex;gap:10px;justify-content:space-between;padding:6px 4px;border-bottom:1px solid #eff0f4}
 .xl-fila span:last-child{text-align:right;color:#6c757d}
@@ -409,34 +460,163 @@ async function importar(nombre) {
       plan.avisos.unshift(...leido.avisos);
       const sinUso = [...subidos.keys()].filter(n => !plan.imagenesUsadas?.has(n));
       if (sinUso.length) plan.avisos.push({ fila: 0, texto: `Imágenes que no usa ninguna fila (no se suben): ${sinUso.join(', ')}.` });
-      informe(v, x, plan, { titulo: `Importar ${x.perfil.varios}`, confirmar: plan.borrados.length ? 'casilla' : 'boton', boton: 'Importar', mensaje: `Panel (Excel): importación de ${x.perfil.varios} — ${resumenPlan(plan, x.perfil).replace(/^[^:]*: /, '')}`, medios, volver: pintar });
+      const publicar = x.col.name === 'productos' ? { ctx, todos: false, verbo: 'se publicarán con esta importación', quiere: 'importarlos', evitar: 'Si no quieres publicarlos todavía, pulsa «Atrás», pon «Sí» en su «Solo para pruebas» en el Excel y vuelve a importarlo.' } : null;
+      informe(v, x, plan, { titulo: `Importar ${x.perfil.varios}`, confirmar: plan.borrados.length ? 'casilla' : 'boton', boton: 'Importar', mensaje: `Panel (Excel): importación de ${x.perfil.varios} — ${resumenPlan(plan, x.perfil).replace(/^[^:]*: /, '')}`, medios, volver: pintar, publicar, afectados: { ctx } });
     } catch (e) { mostrarError(v, e, 'No se ha podido revisar'); }
   };
   pintar();
 }
 
 /* ---------- Informe y guardado ---------- */
-function informe(v, x, plan, { titulo, confirmar, boton, mensaje, medios, volver }) {
+/* Productos con avisos que pasan a verse en la web (aprobado por Víctor el 19-11-2026, a partir del prototipo).
+   En «Quitar Solo para pruebas» y «Marcar como disponible», todos los modificados; al importar, los nuevos que
+   se publican y los modificados que no se veían y pasan a verse. Los avisos se calculan con los datos ya
+   cambiados (si la misma importación pone la foto, ya no avisa «Sin foto»). */
+const seVe = d => Boolean(d) && !d.prueba && d.estado !== 'no_disponible';
+function avisosAlPublicar(plan, ctx, todos) {
+  if (!ctx?.productos) return [];
+  const cand = todos ? plan.modificados : [...plan.nuevos.filter(n => seVe(n.datos)), ...plan.modificados.filter(m => !seVe(m.datosAntes) && seVe(m.datos))];
+  if (!cand.length) return [];
+  const nuevosDatos = new Map([...plan.nuevos, ...plan.modificados].filter(e => e.datos).map(e => [e.slug, e.datos]));
+  const productos = ctx.productos.map(p => (nuevosDatos.has(p.slug) ? { ...p, datos: nuevosDatos.get(p.slug) } : p));
+  for (const n of plan.nuevos) if (n.datos && !ctx.porSlugProducto?.has(n.slug)) productos.push({ slug: n.slug, datos: n.datos });
+  const avisos = crearAvisos({ ...ctx, productos, porSlugProducto: new Map(productos.map(p => [p.slug, p])), avisos: undefined });
+  return cand.filter(e => e.datos).map(e => ({ ...e, av: avisos({ slug: e.slug, datos: e.datos }).pendientes })).filter(e => e.av.length);
+}
+
+/* Productos publicados que dejan de verse en la web pública porque su fabricante, tipo, categoría o
+   subcategoría pasa a «Solo para pruebas» (en bloque o al importar): el build tampoco los publica. 19-11-2026 */
+const esPrueba = d => Boolean(d) && (d.prueba === true || d.prueba === 'true');
+const COLECCIONES_CATALOGO = ['tipos', 'categorias', 'subcategorias'];
+function productosAfectadosPorPruebas(plan, ctx, coleccion) {
+  const esCat = COLECCIONES_CATALOGO.includes(coleccion);
+  if (!ctx?.productos || (coleccion !== 'fabricantes' && !esCat)) return [];
+  const pasan = plan.modificados.filter(m => m.datos && esPrueba(m.datos) && !esPrueba(m.datosAntes));
+  if (!pasan.length) return [];
+  const out = [];
+  for (const p of ctx.productos) {
+    if (esPrueba(p.datos)) continue;
+    const ruta = esCat ? ctx.catalogo.rutaSlugs(String(p.datos.categoria || '')) : [];
+    const m = coleccion === 'fabricantes' ? pasan.find(e => e.slug === String(p.datos.fabricante)) : pasan.find(e => ruta.includes(e.slug));
+    if (m) out.push({ slug: p.slug, nombre: p.datos.title || p.slug, fila: m.fila, causa: m.nombre, datos: p.datos });
+  }
+  return out;
+}
+
+// Botones de página, como los de las tablas del panel (tablas.js)
+function botonesPaginaInf(pag, total) {
+  if (total <= 1) return '';
+  const nums = [];
+  for (let i = 1; i <= total; i++) if (i === 1 || i === total || Math.abs(i - pag) <= 2) nums.push(i); else if (nums.at(-1) !== '…') nums.push('…');
+  return nums.map(n => (n === '…' ? '<span>…</span>' : `<button type="button" class="${n === pag ? 'xl-on' : ''}" data-p="${n}">${n}</button>`)).join(' ');
+}
+const VACIO_TXT = '(vacío)';
+
+function informe(v, x, plan, { titulo, confirmar, boton, mensaje, medios, volver, publicar = null, afectados = null }) {
   // Solo las cifras que no son cero
   const cifra = (t, n, cl = '') => (n ? `<div><span class="${cl}">${t}</span><b class="${cl}">${n}</b></div>` : '');
   const filaTxt = f => (f ? `fila ${f}` : '');
   const errores = plan.errores.length;
   const nb = plan.borrados.length;
+  // Pestañas (las cifras de arriba) con su lista: una fila por ficha, buscador y paginación como en las
+  // tablas del panel. En «Modificados», cada fila se despliega con el antes y el después de cada campo.
+  // (Aprobado por Víctor el 19-11-2026, a partir del prototipo.)
+  const campoCorto = c => String(c).replace(/\s*\(puntos clave\)$/, '').replace(/\s*\*$/, '');
+  const completo = (t, corto) => (t === undefined ? corto : t) || VACIO_TXT;
+  // publicar: { ctx, todos, verbo, quiere } → productos con avisos que pasan a verse en la web
+  const conAv = publicar && !errores && hayCambios(plan) ? avisosAlPublicar(plan, publicar.ctx, publicar.todos) : [];
+  const cuentaAv = new Map();
+  for (const e of conAv) for (const a of e.av) cuentaAv.set(a.tipo, (cuentaAv.get(a.tipo) || 0) + 1);
+  // afectados: { ctx } → productos publicados que dependen de lo que pasa a «Solo para pruebas»
+  const afe = afectados && !errores && hayCambios(plan) ? productosAfectadosPorPruebas(plan, afectados.ctx, x.col.name) : [];
+  const esFab = x.col.name === 'fabricantes';
+  const cuentaAfe = new Map();
+  for (const a of afe) cuentaAfe.set(a.causa, (cuentaAfe.get(a.causa) || 0) + 1);
+  const totalElegidos = publicar?.todos ? plan.modificados.length : plan.nuevos.length + plan.modificados.length;
+  const secciones = [
+    { id: 'avp', titulo: 'Con avisos', cl: 'xl-av', cols: ['Fila', 'Producto', 'Fabricante', 'Avisos'],
+      filas: conAv.map((e, i) => ({ id: 'p' + i, fila: e.fila, buscar: `${e.nombre} ${e.slug} ${e.av.map(a => ETIQUETAS_AVISO[a.tipo] || a.tipo).join(' ')}`,
+        celdas: [`${esc(e.nombre)}<div class="xl-gris xl-peq">${esc(e.slug)}</div>`, esc(publicar.ctx.nombreFabricante?.(e.datos.fabricante) || ''),
+          e.av.map(a => `<span class="xl-aviso">⚠ ${esc(ETIQUETAS_AVISO[a.tipo] || a.tipo)}</span><div class="xl-av-txt">${esc(a.texto)}</div>`).join('')] })) },
+    { id: 'afe', titulo: 'Productos afectados', cl: 'xl-av', cols: ['Fila', 'Producto', esFab ? 'Fabricante' : 'Clasificación'],
+      filas: afe.map((a, i) => ({ id: 'f' + i, fila: a.fila, buscar: `${a.nombre} ${a.slug} ${a.causa}`,
+        celdas: [`${esc(a.nombre)}<div class="xl-gris xl-peq">${esc(a.slug)}</div>`, `${esc(esFab ? a.causa : afectados.ctx.catalogo.etiqueta(a.datos.categoria))}<div class="xl-av-txt">${esc(`${esFab ? 'pasa' : `«${a.causa}» pasa`} a «Solo para pruebas»: el producto dejará de verse en la web pública`)}</div>`] })) },
+    { id: 'err', titulo: 'Errores', cl: 'xl-err', cols: ['Fila', 'Error'],
+      filas: plan.errores.map((e, i) => ({ id: 'e' + i, fila: e.fila, celdas: [esc(e.texto)], buscar: e.texto })) },
+    { id: 'bor', titulo: 'Se borran', cl: 'xl-err', cols: ['Fila', 'Ficha', 'Qué más se borra'],
+      filas: plan.borrados.map((b, i) => ({ id: 'b' + i, fila: b.fila, celdas: [`${esc(b.nombre)}<div class="xl-gris xl-peq">${esc(b.slug)}</div>`, esc(b.arrastra.join(' · '))], buscar: `${b.nombre} ${b.slug}` })) },
+    { id: 'nue', titulo: 'Nuevos', cl: 'xl-ok', cols: ['Fila', 'Ficha'],
+      filas: plan.nuevos.map((n, i) => ({ id: 'n' + i, fila: n.fila, celdas: [`${esc(n.nombre)}<div class="xl-gris xl-peq">${esc(n.slug)}</div>`], buscar: `${n.nombre} ${n.slug}` })) },
+    { id: 'mod', titulo: 'Modificados', cl: '', cols: ['Fila', 'Ficha', 'Campos que cambian'], desplegable: true,
+      filas: plan.modificados.map((m, i) => ({
+        id: 'm' + i, fila: m.fila, buscar: `${m.nombre} ${m.slug} ${m.cambios.map(c => c.campo).join(' ')}`,
+        campos: m.cambios.map(c => campoCorto(c.campo)),
+        celdas: sel => [`${esc(m.nombre)}<div class="xl-gris xl-peq">${esc(m.slug)}</div>`, m.cambios.map(c => `<span class="xl-et${sel.has(campoCorto(c.campo)) ? ' xl-et-sel' : ''}">${esc(campoCorto(c.campo))}</span>`).join('')],
+        detalle: sel => `<div class="xl-cmp"><div class="xl-cmp-h">Campo</div><div class="xl-cmp-h">Antes</div><div class="xl-cmp-h">Después</div>${m.cambios.filter(c => !sel.size || sel.has(campoCorto(c.campo))).map(c => `<div><b>${esc(c.campo)}</b></div><div class="xl-antes">${esc(completo(c.antesTodo, c.antes))}</div><div class="xl-despues">${esc(completo(c.despuesTodo, c.despues))}</div>`).join('')}</div>`,
+      })) },
+    { id: 'av', titulo: 'Avisos', cl: 'xl-av', cols: ['Fila', 'Aviso'],
+      filas: plan.avisos.map((a, i) => ({ id: 'a' + i, fila: a.fila, celdas: [esc(a.texto)], buscar: a.texto })) },
+  ].filter(x => x.filas.length);
+  const por0 = Number((globalThis.XL_PANEL || {}).por_pagina);
+  const est = { sec: secciones[0]?.id, pag: 1, por: [12, 24, 48].includes(por0) ? por0 : 12, q: '', abiertos: new Set(), campos: new Set() };
+  // Filtro por campo (solo en «Modificados»): cuántas fichas cambian cada campo, en el orden en que salen
+  const cuentaCampos = new Map();
+  for (const f of secciones.find(x => x.id === 'mod')?.filas || []) for (const c of f.campos) cuentaCampos.set(c, (cuentaCampos.get(c) || 0) + 1);
+  v.m.classList.add('xl-ancho');
   v.poner(`<h2>${esc(titulo)}: informe</h2>
-    <div class="xl-cifras">${cifra('Nuevos', plan.nuevos.length, 'xl-ok')}${cifra('Modificados', plan.modificados.length)}${cifra('Sin cambios', plan.sinCambios, 'xl-gris')}${cifra('Se borran', nb, 'xl-err')}${errores ? cifra('Errores', errores, 'xl-err') : ''}</div>
-    ${errores ? `<div class="xl-sec xl-err">Errores: corrígelos en el Excel y vuelve a importarlo (no se guarda nada mientras haya alguno)</div>${plan.errores.map(e => `<div class="xl-fila xl-err"><span>${esc(e.texto)}</span><span>${filaTxt(e.fila)}</span></div>`).join('')}` : ''}
-    ${plan.nuevos.length ? `<div class="xl-sec">Nuevos</div>${plan.nuevos.map(n => `<div class="xl-fila"><span>${esc(n.nombre)} <span class="xl-gris">· ${esc(n.slug)}</span></span><span>${filaTxt(n.fila)}</span></div>`).join('')}` : ''}
-    ${plan.modificados.length ? `<div class="xl-sec">Modificados</div>${plan.modificados.map(m => m.cambios.map(c => `<div class="xl-fila"><span>${esc(m.nombre)} <span class="xl-gris">· ${esc(c.campo)}</span></span><span>${esc(c.antes)} → ${esc(c.despues)}</span></div>`).join('')).join('')}` : ''}
-    ${nb ? `<div class="xl-sec xl-err">Se borrarán</div>${plan.borrados.map(b => `<div class="xl-fila xl-err"><span>${esc(b.nombre)} <span class="xl-gris">· ${esc(b.slug)}</span></span><span>${esc([filaTxt(b.fila), ...b.arrastra].filter(Boolean).join(' · '))}</span></div>`).join('')}` : ''}
-    ${plan.avisos.length ? `<div class="xl-sec xl-av">Avisos</div>${plan.avisos.map(a => `<div class="xl-fila"><span>${esc(a.texto)}</span><span>${filaTxt(a.fila)}</span></div>`).join('')}` : ''}
+    ${plan.modificados.length ? '<div class="xl-nota-inf" role="note">En «Modificados», pulsa una fila para ver el antes y el después de cada campo.</div>' : ''}
+    <div class="xl-cifras">${secciones.map(x => `<button type="button" class="xl-pest ${x.cl}" data-sec="${x.id}"><span>${x.titulo}</span><b>${x.filas.length}</b></button>`).join('')}${plan.sinCambios ? `<div class="xl-gris"><span>Sin cambios</span><b>${plan.sinCambios}</b></div>` : ''}</div>
+    ${conAv.length ? `<div class="xl-alerta-av">⚠ <b>${conAv.length} de ${publicar.todos ? `los ${totalElegidos} productos elegidos` : 'los productos de esta importación'} ${conAv.length === 1 ? 'tiene' : 'tienen'} avisos</b> y ${esc(publicar.verbo)} igualmente:<ul>${[...cuentaAv].map(([t, n]) => `<li><b>${esc(ETIQUETAS_AVISO[t] || t)}</b>: ${n} ${n === 1 ? 'producto' : 'productos'}</li>`).join('')}</ul><div class="xl-gris xl-peq">Los tienes en la pestaña «Con avisos». ${esc(publicar.evitar)}</div></div>` : ''}
+    ${afe.length ? `<div class="xl-alerta-av">⚠ <b>${afe.length} ${afe.length === 1 ? 'producto publicado' : 'productos publicados'}</b> ${afe.length === 1 ? 'depende' : 'dependen'} de ${esFab ? 'fabricantes' : 'clasificaciones'} que pasan a «Solo para pruebas» y ${afe.length === 1 ? 'dejará' : 'dejarán'} de verse en la web pública.<ul>${[...cuentaAfe].map(([c, n]) => `<li><b>${esc(c)}</b>: ${n} ${n === 1 ? 'producto' : 'productos'}</li>`).join('')}</ul><div class="xl-gris xl-peq">Los tienes en la pestaña «Productos afectados». Si no quieres que pase, pulsa «Atrás» y desmarca ${esFab ? 'esos fabricantes' : 'esas clasificaciones'}${esFab ? '' : ' (o cambia antes de sitio esos productos)'}.</div></div>` : ''}
+    ${errores ? '<p class="xl-err">Hay errores: corrígelos en el Excel y vuelve a importarlo (no se guarda nada mientras haya alguno).</p>' : ''}
+    ${secciones.length ? `<div class="xl-inf-barra"><input type="search" data-q placeholder="Buscar por nombre, identificador o campo" autocomplete="off"><label class="xl-gris">Por página <select data-por>${[12, 24, 48].map(n => `<option ${n === est.por ? 'selected' : ''}>${n}</option>`).join('')}</select></label></div><div data-lista></div>` : ''}
     ${!errores && hayCambios(plan) && nb && confirmar === 'casilla' ? `<label style="display:flex;gap:8px;margin-top:14px"><input type="checkbox" data-conf> Entiendo que se ${nb === 1 ? 'borrará 1 ficha' : `borrarán ${nb} fichas`}</label>` : ''}
     ${!errores && hayCambios(plan) && confirmar === 'numero' ? `<p style="margin-top:14px">Escribe <b>${nb}</b> para confirmar el borrado:</p><input type="text" inputmode="numeric" data-conf autocomplete="off">` : ''}
+    ${conAv.length ? `<label class="xl-conf-av"><input type="checkbox" data-confav> Sé que ${conAv.length} ${conAv.length === 1 ? 'producto tiene' : 'productos tienen'} avisos y quiero ${esc(publicar.quiere)} igualmente.</label>` : ''}
+    ${afe.length ? `<label class="xl-conf-av"><input type="checkbox" data-confafe> Sé que ${afe.length} ${afe.length === 1 ? 'producto publicado dejará' : 'productos publicados dejarán'} de verse en la web y quiero aplicarlo igualmente.</label>` : ''}
     <p class="xl-err" data-err></p>
     <div class="xl-pie"><button class="xl-b xl-izq" data-inf>Descargar informe</button>${volver ? '<button class="xl-b" data-atras>Atrás</button>' : ''}<button class="xl-b" data-x>${errores || !hayCambios(plan) ? 'Cerrar' : 'Cancelar'}</button>
       ${!errores && hayCambios(plan) ? `<button class="xl-b ${nb ? 'xl-peligro' : 'xl-pri'}" data-ok>${esc(boton)}</button>` : ''}</div>
     ${!errores && !hayCambios(plan) ? '<p class="xl-gris">No hay nada que guardar.</p>' : ''}`);
+  const lista = v.q('[data-lista]');
+  const pintarLista = () => {
+    if (!lista) return;
+    const sec = secciones.find(x => x.id === est.sec);
+    v.m.querySelectorAll('[data-sec]').forEach(b => b.classList.toggle('xl-on', b.dataset.sec === est.sec));
+    const q = est.q.trim().toLowerCase();
+    const conFiltro = sec.id === 'mod' && cuentaCampos.size > 1;
+    const sel = conFiltro ? est.campos : new Set();
+    const l = sec.filas.filter(f => (!q || f.buscar.toLowerCase().includes(q)) && (!sel.size || f.campos.some(c => sel.has(c))));
+    const total = Math.max(1, Math.ceil(l.length / est.por));
+    est.pag = Math.min(est.pag, total);
+    const ini = (est.pag - 1) * est.por;
+    const ncol = sec.cols.length + (sec.desplegable ? 1 : 0);
+    lista.innerHTML = `${conFiltro ? `<div class="xl-filtro-campos"><span class="xl-gris">Filtrar por campo:</span>${[...cuentaCampos].map(([c, n]) => `<button type="button" class="xl-fch${sel.has(c) ? ' xl-on' : ''}" data-campo="${esc(c)}" aria-pressed="${sel.has(c)}">${esc(c)}<small>${n}</small></button>`).join('')}${sel.size ? '<button type="button" class="xl-limpiar" data-limpiar>Quitar filtro</button>' : ''}</div>` : ''}<table class="xl-inf"><thead><tr>${sec.desplegable ? '<th></th>' : ''}${sec.cols.map(c => `<th>${c}</th>`).join('')}</tr></thead><tbody>
+      ${l.slice(ini, ini + est.por).map(f => {
+        const ab = est.abiertos.has(f.id);
+        return `<tr${sec.desplegable ? ` class="xl-desp" data-abrir="${f.id}" tabindex="0" aria-expanded="${ab}"` : ''}>${sec.desplegable ? `<td class="xl-flecha">${ab ? '▾' : '▸'}</td>` : ''}<td class="xl-gris">${f.fila || ''}</td>${(typeof f.celdas === 'function' ? f.celdas(sel) : f.celdas).map(c => `<td>${c}</td>`).join('')}</tr>${ab ? `<tr class="xl-det"><td colspan="${ncol}">${f.detalle(sel)}</td></tr>` : ''}`;
+      }).join('') || `<tr><td colspan="${ncol}" class="xl-gris">Nada coincide con la búsqueda.</td></tr>`}</tbody></table>
+      <div class="xl-pie-t"><span>Mostrando ${l.length ? ini + 1 : 0}–${Math.min(ini + est.por, l.length)} de ${l.length}</span><span>${botonesPaginaInf(est.pag, total)}</span></div>`;
+  };
+  if (lista) {
+    pintarLista();
+    v.m.querySelectorAll('[data-sec]').forEach(b => { b.onclick = () => { est.sec = b.dataset.sec; est.pag = 1; pintarLista(); }; });
+    v.q('[data-q]').oninput = e => { est.q = e.target.value; est.pag = 1; pintarLista(); };
+    v.q('[data-por]').onchange = e => { est.por = Number(e.target.value); est.pag = 1; pintarLista(); };
+    const alternar = id => { if (est.abiertos.has(id)) est.abiertos.delete(id); else est.abiertos.add(id); pintarLista(); };
+    lista.addEventListener('click', e => {
+      const p = e.target.closest('[data-p]');
+      if (p) { est.pag = Number(p.dataset.p); pintarLista(); return; }
+      const fc = e.target.closest('[data-campo]');
+      if (fc) { const c = fc.dataset.campo; if (est.campos.has(c)) est.campos.delete(c); else est.campos.add(c); est.pag = 1; pintarLista(); return; }
+      if (e.target.closest('[data-limpiar]')) { est.campos.clear(); est.pag = 1; pintarLista(); return; }
+      const t = e.target.closest('[data-abrir]');
+      if (t) alternar(t.dataset.abrir);
+    });
+    lista.addEventListener('keydown', e => { const t = e.target.closest('[data-abrir]'); if (t && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); alternar(t.dataset.abrir); } });
+  }
   v.q('[data-x]').onclick = v.cerrar;
-  if (volver) v.q('[data-atras]').onclick = volver;
+  if (volver) v.q('[data-atras]').onclick = () => { v.m.classList.remove('xl-ancho'); volver(); };
   v.q('[data-inf]').onclick = async () => {
     const nombreInf = `informe-${x.col.name}-${hoyIso()}.xlsx`;
     let destino;
@@ -447,7 +627,13 @@ function informe(v, x, plan, { titulo, confirmar, boton, mensaje, medios, volver
   if (!ok) return;
   const conf = v.q('[data-conf]');
   if (conf) conf.oninput = conf.onchange = () => { v.q('[data-err]').textContent = ''; };
+  const confAv = v.q('[data-confav]');
+  if (confAv) confAv.onchange = () => { v.q('[data-err]').textContent = ''; };
+  const confAfe = v.q('[data-confafe]');
+  if (confAfe) confAfe.onchange = () => { v.q('[data-err]').textContent = ''; };
   ok.onclick = async () => {
+    if (confAfe && !confAfe.checked) { v.q('[data-err]').textContent = 'Marca la casilla para confirmar que quieres aplicarlo aunque haya productos publicados que dejarán de verse.'; return; }
+    if (confAv && !confAv.checked) { v.q('[data-err]').textContent = `Marca la casilla para confirmar que quieres ${publicar.quiere} aunque tengan avisos.`; return; }
     if (confirmar === 'casilla' && conf && !conf.checked) { v.q('[data-err]').textContent = 'Marca la casilla para confirmar el borrado.'; return; }
     if (confirmar === 'numero' && conf.value.trim() !== String(nb)) { v.q('[data-err]').textContent = `Escribe ${nb} para confirmar.`; return; }
     try {
@@ -459,6 +645,7 @@ function informe(v, x, plan, { titulo, confirmar, boton, mensaje, medios, volver
         const n = plan.escribir.filter(e => e.reducir).length;
         for (const e of plan.escribir.filter(e => e.reducir)) { esperar(v, `Reduciendo fotos ${++i}/${n}…`); e.bytes = await reducirImagen(e.bytes, e.ruta); }
       }
+      v.m.classList.remove('xl-ancho');
       esperar(v, 'Guardando…');
       const r = await x.almacen.guardar({ escribir: plan.escribir, borrar, mensaje }, t => esperar(v, t + '…'));
       v.poner(`<h2 class="xl-ok">Guardado</h2>
@@ -555,7 +742,14 @@ function elegirPorCatalogo(v, x, ctx, actuales, { titulo, explica, boton, peligr
 function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesorios = false, extras = false, peligro = false }) {
   return new Promise(resolver => {
     const cat = ctx.catalogo;
-    const sel = { modo: 'todo', fab: new Set(), tipos: new Set(), cats: new Set(), subs: new Set(), prueba: 'todos', estado: 'todos', acc: accesorios };
+    const sel = { modo: 'todo', fab: new Set(), tipos: new Set(), cats: new Set(), subs: new Set(), prueba: 'todos', estado: 'todos', aviso: 'todos', acc: accesorios };
+    // Avisos de cada producto (los del ⚠ de las tablas): «Sin avisos», «Con avisos» o un tipo concreto
+    const tiposAviso = p => avisosDe(ctx)(p).pendientes.map(a => a.tipo);
+    const okAviso = p => {
+      if (sel.aviso === 'todos') return true;
+      const t = tiposAviso(p);
+      return sel.aviso === 'sin' ? !t.length : sel.aviso === 'con' ? t.length > 0 : t.includes(sel.aviso);
+    };
     const okCat = (p, s = sel) => {
       if (!s.tipos.size) return true;
       const r = cat.rutaSlugs(p.datos.categoria);
@@ -567,7 +761,7 @@ function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesori
       return !ss.length || ss.includes(r[2]);
     };
     const okResto = p => (sel.prueba === 'todos' || Boolean(p.datos.prueba) === (sel.prueba === 'si'))
-      && (sel.estado === 'todos' || (p.datos.estado || 'disponible') === sel.estado);
+      && (sel.estado === 'todos' || (p.datos.estado || 'disponible') === sel.estado) && okAviso(p);
     const okFab = p => !sel.fab.size || sel.fab.has(p.datos.fabricante);
     const elegidos = () => {
       if (sel.modo === 'todo') return actuales.filter(okResto);
@@ -580,6 +774,17 @@ function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesori
     const ordenar = (a, b) => a.etiqueta.localeCompare(b.etiqueta, 'es');
     const chips = (grupo, opciones) => opciones.filter(o => o.n > 0 || sel[grupo].has(o.valor)).sort(ordenar)
       .map(o => `<button type="button" class="xl-chip ${sel[grupo].has(o.valor) ? 'xl-on' : ''}" data-g="${grupo}" data-v="${esc(o.valor)}">${esc(o.etiqueta)} <small>${o.n}</small></button>`).join('') || '<span class="xl-gris">—</span>';
+    const opcionesAviso = () => {
+      const previo = sel.aviso; sel.aviso = 'todos';
+      const pool = actuales.filter(okResto);
+      sel.aviso = previo;
+      const cuenta = new Map();
+      for (const p of pool) for (const t of new Set(tiposAviso(p))) cuenta.set(t, (cuenta.get(t) || 0) + 1);
+      const con = pool.filter(p => tiposAviso(p).length).length;
+      const ops = [['todos', 'Todos', null], ['sin', 'Sin avisos', pool.length - con], ['con', 'Con avisos', con],
+        ...Object.entries(ETIQUETAS_AVISO).filter(([t]) => cuenta.get(t) || sel.aviso === t).map(([t, e]) => [t, `⚠ ${e}`, cuenta.get(t) || 0])];
+      return ops.map(([k, t, n]) => `<option value="${k}" ${sel.aviso === k ? 'selected' : ''}>${esc(t)}${n === null ? '' : ` (${n})`}</option>`).join('');
+    };
     const pintar = () => {
       const base = actuales.filter(okResto);
       const conFab = base.filter(okFab);
@@ -600,7 +805,8 @@ function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesori
         </div>
         ${extras ? `<div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:12px">
           <label>Solo para pruebas <select data-prueba><option value="todos">Todos</option><option value="si" ${sel.prueba === 'si' ? 'selected' : ''}>Sí</option><option value="no" ${sel.prueba === 'no' ? 'selected' : ''}>No</option></select></label>
-          <label>Estado <select data-estado><option value="todos">Todos</option>${[['disponible', 'Disponible'], ['oferta', 'En oferta'], ['no_disponible', 'No disponible']].map(([k, t]) => `<option value="${k}" ${sel.estado === k ? 'selected' : ''}>${t}</option>`).join('')}</select></label></div>` : ''}
+          <label>Estado <select data-estado><option value="todos">Todos</option>${[['disponible', 'Disponible'], ['oferta', 'En oferta'], ['no_disponible', 'No disponible']].map(([k, t]) => `<option value="${k}" ${sel.estado === k ? 'selected' : ''}>${t}</option>`).join('')}</select></label>
+          <label>Avisos <select data-aviso>${opcionesAviso()}</select></label></div>` : ''}
         <div class="xl-total"><b>${lista.length - nAcc} ${lista.length - nAcc === 1 ? 'producto' : 'productos'}${nAcc ? ` y ${nAcc} ${nAcc === 1 ? 'accesorio' : 'accesorios'}` : ''}</b>
           <span><button class="xl-b" data-limpiar>Quitar filtros</button> <button class="xl-b" data-x>Cancelar</button> <button class="xl-b ${peligro ? 'xl-peligro' : 'xl-pri'}" data-ok>${esc(boton)}</button></span></div>
         <p class="xl-err" data-err></p>`);
@@ -621,7 +827,9 @@ function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesori
       if (pr) pr.onchange = () => { sel.prueba = pr.value; pintar(); };
       const es = v.q('[data-estado]');
       if (es) es.onchange = () => { sel.estado = es.value; pintar(); };
-      v.q('[data-limpiar]').onclick = () => { for (const k of ['fab', 'tipos', 'cats', 'subs']) sel[k].clear(); sel.prueba = 'todos'; sel.estado = 'todos'; pintar(); };
+      const av = v.q('[data-aviso]');
+      if (av) av.onchange = () => { sel.aviso = av.value; pintar(); };
+      v.q('[data-limpiar]').onclick = () => { for (const k of ['fab', 'tipos', 'cats', 'subs']) sel[k].clear(); sel.prueba = 'todos'; sel.estado = 'todos'; sel.aviso = 'todos'; pintar(); };
       v.q('[data-x]').onclick = () => { v.cerrar(); resolver(null); };
       v.q('[data-ok]').onclick = () => {
         if (!lista.length) { v.q('[data-err]').textContent = 'No hay ninguno con estos filtros.'; return; }
@@ -634,6 +842,7 @@ function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesori
         }
         if (sel.prueba !== 'todos') partes.push(sel.prueba === 'si' ? 'solo de pruebas' : 'sin los de pruebas');
         if (sel.estado !== 'todos') partes.push(`estado ${({ disponible: 'disponible', oferta: 'en oferta', no_disponible: 'no disponible' })[sel.estado]}`);
+        if (sel.aviso !== 'todos') partes.push(sel.aviso === 'sin' ? 'sin avisos' : sel.aviso === 'con' ? 'con avisos' : `con el aviso «${ETIQUETAS_AVISO[sel.aviso]}»`);
         resolver({ lista, descripcion: partes.join(' · ') });
       };
     };
@@ -643,10 +852,10 @@ function elegirProductos(v, x, ctx, actuales, { titulo, explica, boton, accesori
 
 /* ---------- Acciones en bloque sin Excel ---------- */
 const ACCIONES = {
-  'prueba-quitar': { titulo: 'Quitar «Solo para pruebas»', boton: 'Aplicar', ya: a => !a.datos.prueba, yaTexto: 'ya se publica', explica: 'Pasarán a verse en la web pública.', confirmar: 'boton' },
-  'prueba-poner': { titulo: 'Marcar «Solo para pruebas»', boton: 'Aplicar', ya: a => Boolean(a.datos.prueba), yaTexto: 'ya es de pruebas', explica: 'Dejarán de verse en la web pública (seguirán en los entornos de pruebas).', confirmar: 'boton' },
-  'no-disponible': { titulo: 'Marcar como no disponible', boton: 'Aplicar', ya: a => a.datos.estado === 'no_disponible', yaTexto: 'ya no está disponible', explica: 'Se retiran de la web pública y siguen en el panel.', confirmar: 'boton' },
-  disponible: { titulo: 'Marcar como disponible', boton: 'Aplicar', ya: a => (a.datos.estado || 'disponible') === 'disponible', yaTexto: 'ya está disponible', explica: 'Vuelven a la web con el próximo despliegue (las que estén «En oferta» pasan a «Disponible»).', confirmar: 'boton' },
+  'prueba-quitar': { titulo: 'Quitar «Solo para pruebas»', boton: 'Aplicar', ya: a => !a.datos.prueba, yaTexto: 'ya se publica', yaTodos: 'ya se publican', explica: 'Pasarán a verse en la web pública.', confirmar: 'boton' },
+  'prueba-poner': { titulo: 'Marcar «Solo para pruebas»', boton: 'Aplicar', ya: a => Boolean(a.datos.prueba), yaTexto: 'ya es de pruebas', yaTodos: 'ya son de pruebas', explica: 'Dejarán de verse en la web pública (seguirán en los entornos de pruebas).', confirmar: 'boton' },
+  'no-disponible': { titulo: 'Marcar como no disponible', boton: 'Aplicar', ya: a => a.datos.estado === 'no_disponible', yaTexto: 'ya no está disponible', yaTodos: 'ya están como no disponibles', explica: 'Se retiran de la web pública y siguen en el panel.', confirmar: 'boton' },
+  disponible: { titulo: 'Marcar como disponible', boton: 'Aplicar', ya: a => (a.datos.estado || 'disponible') === 'disponible', yaTexto: 'ya está disponible', yaTodos: 'ya están disponibles', explica: 'Vuelven a la web con el próximo despliegue (las que estén «En oferta» pasan a «Disponible»).', confirmar: 'boton' },
   borrar: { titulo: 'Eliminar', boton: 'Revisar', explica: 'Se borran la ficha y sus fotos y ficheros que no use otra.', confirmar: 'numero' },
 };
 async function enBloque(nombre, accion) {
@@ -657,20 +866,24 @@ async function enBloque(nombre, accion) {
     const x = await preparar(nombre);
     const [actuales, ctx] = await Promise.all([leerActuales(x), leerContexto(x, { textos: accion === 'borrar' })]);
     const clave = a => (x.perfil.clave ? x.perfil.clave(a, ctx) : x.perfil.nombre(a.datos)) || a.slug;
-    // Productos: primero los filtros; después, la lista con todos los filtrados ya marcados
-    let base = actuales;
+    // Solo los que la acción cambia: «Marcar Solo para pruebas» no enseña los que ya lo son, etc. (19-11-2026)
+    const aplicables = A.ya ? actuales.filter(a => !A.ya(a)) : actuales;
+    if (!aplicables.length) {
+      v.poner(`<h2>${esc(A.titulo)}: ${esc(x.perfil.varios)}</h2><p>No hay nada que cambiar: ${x.perfil.femenino ? 'todas las' : 'todos los'} ${esc(x.perfil.varios)} ${esc(A.yaTodos)}.</p><div class="xl-pie"><button class="xl-b" data-x>Cerrar</button></div>`);
+      v.q('[data-x]').onclick = v.cerrar;
+      return;
+    }
+    // Productos: primero los filtros; después, la lista con todos los filtrados ya marcados (también los que
+    // tienen avisos: al aplicar, el informe los enseña y pide confirmarlo)
+    let base = aplicables;
     let preMarcar = false;
     if (hayFiltros(x.perfil)) {
-      const r = await elegir(v, x, ctx, actuales, { titulo: `${A.titulo}: ${x.perfil.varios}`, explica: `${A.explica} Elige con los filtros; después verás la lista para desmarcar los que quieras.`, boton: 'Ver la lista', extras: true, peligro: accion === 'borrar' });
+      const r = await elegir(v, x, ctx, aplicables, { titulo: `${A.titulo}: ${x.perfil.varios}`, explica: `${A.explica} Elige con los filtros; después verás la lista para desmarcar los que quieras.`, boton: 'Ver la lista', extras: true, peligro: accion === 'borrar' });
       if (!r) return;
       base = r.lista;
       preMarcar = true;
     }
-    // Al publicar («Quitar Solo para pruebas»), los que no tienen foto o precio salen desmarcados y con aviso
-    const items = [...base].sort((a, b) => clave(a).localeCompare(clave(b), 'es')).map(a => {
-      const avisos = accion === 'prueba-quitar' && x.perfil.sinAvisos ? x.perfil.sinAvisos(a.datos, ctx) : [];
-      return { a, motivo: '', avisos, marcado: preMarcar && !avisos.length };
-    });
+    const items = [...base].sort((a, b) => clave(a).localeCompare(clave(b), 'es')).map(a => ({ a, motivo: '', marcado: preMarcar }));
     // Lo que no se puede tocar, según lo ya marcado (un tipo se puede borrar si se borran a la vez sus categorías)
     const repasar = () => {
       for (let vuelta = 0; vuelta < 4; vuelta++) {
@@ -683,26 +896,87 @@ async function enBloque(nombre, accion) {
         if (!cambio) break;
       }
     };
-    const pintar = (filtro = '') => {
-      repasar();
-      const f = filtro.trim().toLowerCase();
-      const n = items.filter(i => i.marcado).length;
+    const pintar = () => {
+      // Lista como el informe (aprobado por Víctor el 19-11-2026, a partir del prototipo): tabla con casillas,
+      // buscador, filtro por avisos (productos), paginación y «Marcar/Desmarcar los que se ven»
+      const conAvisos = x.perfil.filtros && x.col.name === 'productos';
+      const avisosP = conAvisos ? avisosDe(ctx) : null;
+      for (const i of items) {
+        i.av = conAvisos ? avisosP(i.a).pendientes : [];
+        i.nombreV = conAvisos ? (i.a.datos.title || i.a.slug) : clave(i.a);
+        i.buscar = [i.nombreV, i.a.slug, conAvisos ? ctx.nombreFabricante(i.a.datos.fabricante) : '', conAvisos ? ctx.catalogo.etiqueta(i.a.datos.categoria) || '' : ''].join(' ').toLowerCase();
+      }
+      const por0 = Number((globalThis.XL_PANEL || {}).por_pagina);
+      const est = { q: '', pag: 1, por: [12, 24, 48].includes(por0) ? por0 : 12, fil: new Set() };
+      const cuentaAv = new Map();
+      if (conAvisos) {
+        cuentaAv.set('con', items.filter(i => i.av.length).length);
+        cuentaAv.set('sin', items.filter(i => !i.av.length).length);
+        for (const t of Object.keys(ETIQUETAS_AVISO)) { const n = items.filter(i => i.av.some(a => a.tipo === t)).length; if (n) cuentaAv.set(t, n); }
+      }
+      const pasaFiltro = i => !est.fil.size || [...est.fil].some(f => (f === 'con' ? i.av.length > 0 : f === 'sin' ? !i.av.length : i.av.some(a => a.tipo === f)));
+      const visibles = () => items.filter(i => (!est.q || i.buscar.includes(est.q)) && pasaFiltro(i));
+      const elegible = i => !i.motivo;
+      const ncol = conAvisos ? 5 : 3;
+      v.m.classList.add('xl-ancho');
       v.poner(`<h2 class="${accion === 'borrar' ? 'xl-err' : ''}">${esc(A.titulo)}: ${esc(x.perfil.varios)}</h2>
         <p class="xl-gris">${esc(A.explica)} Elige cuáles; después verás la lista exacta antes de guardar.</p>
-        <input type="search" placeholder="Buscar por nombre" value="${esc(filtro)}" data-buscar>
-        <div style="margin-top:8px"><a href="#" data-todos>Marcar los que se ven</a> · <a href="#" data-ninguno>Desmarcar todos</a></div>
-        <div class="xl-lista">${items.map((i, k) => {
-          const nombreV = clave(i.a);
-          if (f && !nombreV.toLowerCase().includes(f) && !i.a.slug.includes(f)) return '';
-          return `<label class="${i.motivo ? 'xl-no' : ''}"><input type="checkbox" data-k="${k}" ${i.marcado ? 'checked' : ''} ${i.motivo ? 'disabled' : ''}><span style="flex:1">${esc(nombreV)} <span class="xl-gris">· ${esc(i.a.slug)}</span></span>${i.motivo ? `<span class="xl-gris" style="font-size:12px">${esc(i.motivo)}</span>` : i.avisos?.length ? `<span class="xl-av" style="font-size:12px">${esc(i.avisos.join(', '))}</span>` : ''}</label>`;
-        }).join('')}</div>
+        <div class="xl-nota-inf" role="note">Pulsa una fila (o su casilla) para marcarla o desmarcarla. La casilla de la cabecera marca o desmarca los de esta página.</div>
+        <div class="xl-inf-barra"><input type="search" data-buscar placeholder="Buscar por nombre o identificador${conAvisos ? ', fabricante o clasificación' : ''}" autocomplete="off"><label class="xl-gris">Por página <select data-por>${[12, 24, 48].map(n => `<option ${n === est.por ? 'selected' : ''}>${n}</option>`).join('')}</select></label></div>
+        <div data-lista></div>
         <p class="xl-err" data-err></p>
-        <div class="xl-pie"><span class="xl-izq" style="align-self:center"><b>${n}</b> ${esc(n === 1 ? x.perfil.uno : x.perfil.varios)} ${x.perfil.femenino ? 'elegida' : 'elegido'}${n === 1 ? '' : 's'}</span><button class="xl-b" data-x>Cancelar</button><button class="xl-b ${accion === 'borrar' ? 'xl-peligro' : 'xl-pri'}" data-ok>Revisar</button></div>`);
-      const buscar = v.q('[data-buscar]');
-      buscar.oninput = () => { const pos = buscar.selectionStart; pintar(buscar.value); const b = v.q('[data-buscar]'); b.focus(); b.setSelectionRange(pos, pos); };
-      v.m.querySelectorAll('[data-k]').forEach(c => { c.onchange = () => { items[Number(c.dataset.k)].marcado = c.checked; pintar(buscar.value); }; });
-      v.q('[data-todos]').onclick = e => { e.preventDefault(); v.m.querySelectorAll('[data-k]:not(:disabled)').forEach(c => { items[Number(c.dataset.k)].marcado = true; }); pintar(buscar.value); };
-      v.q('[data-ninguno]').onclick = e => { e.preventDefault(); items.forEach(i => { i.marcado = false; }); pintar(buscar.value); };
+        <div class="xl-total"><b data-total></b><span><button class="xl-b" data-x>Cancelar</button> <button class="xl-b ${accion === 'borrar' ? 'xl-peligro' : 'xl-pri'}" data-ok>Revisar</button></span></div>`);
+      const lista = v.q('[data-lista]');
+      const pintarLista = () => {
+        repasar();
+        const l = visibles();
+        const total = Math.max(1, Math.ceil(l.length / est.por));
+        est.pag = Math.min(est.pag, total);
+        const ini = (est.pag - 1) * est.por;
+        const pg = l.slice(ini, ini + est.por);
+        const pgEleg = pg.filter(elegible);
+        const pm = pgEleg.filter(i => i.marcado).length;
+        const filtrado = est.q || est.fil.size;
+        const etiquetaAv = t => ETIQUETAS_AVISO[t] || t;
+        lista.innerHTML = `${conAvisos && cuentaAv.size ? `<div class="xl-filtro-campos"><span class="xl-gris">Filtrar:</span>${[...cuentaAv].filter(([, n]) => n).map(([t, n]) => `<button type="button" class="xl-fch${t === 'sin' ? '' : ' xl-fch-av'}${est.fil.has(t) ? ' xl-on' : ''}" data-fil="${t}" aria-pressed="${est.fil.has(t)}">${t === 'con' ? 'Con avisos' : t === 'sin' ? 'Sin avisos' : `⚠ ${esc(etiquetaAv(t))}`}<small>${n}</small></button>`).join('')}${est.fil.size ? '<button type="button" class="xl-limpiar" data-limpiar>Quitar filtro</button>' : ''}</div>` : ''}
+          <div class="xl-sel">${filtrado ? `<button type="button" class="xl-limpiar" data-vis="1">Marcar los que se ven (${l.filter(elegible).length})</button><button type="button" class="xl-limpiar" data-vis="0">Desmarcar los que se ven (${l.filter(elegible).length})</button>` : ''}<button type="button" class="xl-limpiar" data-todos="1">Marcar todos</button><button type="button" class="xl-limpiar" data-todos="0">Desmarcar todos</button></div>
+          <table class="xl-inf xl-elegir"><thead><tr><th><input type="checkbox" data-pagina title="Marcar o desmarcar los de esta página" ${pgEleg.length && pm === pgEleg.length ? 'checked' : ''} ${pgEleg.length ? '' : 'disabled'}></th><th>${conAvisos ? 'Producto' : 'Nombre'}</th>${conAvisos ? '<th>Fabricante</th><th>Clasificación</th><th>Avisos</th>' : '<th></th>'}</tr></thead><tbody>
+          ${pg.map(i => {
+            const k = items.indexOf(i);
+            const situacion = i.motivo ? `<span class="xl-gris xl-peq">${esc(i.motivo)}</span>` : '';
+            return `<tr class="xl-fila-el${i.marcado ? '' : ' xl-desm'}${i.motivo ? ' xl-bloq' : ''}" data-k="${k}"><td><input type="checkbox" tabindex="-1" ${i.marcado ? 'checked' : ''} ${i.motivo ? 'disabled' : ''}></td><td>${esc(i.nombreV)}<div class="xl-gris xl-peq">${esc(i.a.slug)}</div></td>${conAvisos
+              ? `<td>${esc(ctx.nombreFabricante(i.a.datos.fabricante))}</td><td>${esc(ctx.catalogo.etiqueta(i.a.datos.categoria) || '')}</td><td>${situacion}${i.av.map(a => `<span class="xl-aviso" title="${esc(a.texto)}">⚠ ${esc(etiquetaAv(a.tipo))}</span>`).join('')}</td>`
+              : `<td>${situacion}</td>`}</tr>`;
+          }).join('') || `<tr><td colspan="${ncol}" class="xl-gris">Nada coincide.</td></tr>`}</tbody></table>
+          <div class="xl-pie-t"><span>Mostrando ${l.length ? ini + 1 : 0}–${Math.min(ini + est.por, l.length)} de ${l.length}</span><span>${botonesPaginaInf(est.pag, total)}</span></div>`;
+        const cb = lista.querySelector('[data-pagina]');
+        cb.indeterminate = pm > 0 && pm < pgEleg.length;
+        const n = items.filter(i => i.marcado).length;
+        v.q('[data-total]').textContent = `${n} de ${items.length} ${n === 1 ? x.perfil.uno : x.perfil.varios} ${x.perfil.femenino ? 'elegida' : 'elegido'}${n === 1 ? '' : 's'}`;
+      };
+      lista.addEventListener('click', e => {
+        const t = e.target;
+        const p = t.closest('[data-p]');
+        if (p) { est.pag = Number(p.dataset.p); pintarLista(); return; }
+        const f = t.closest('[data-fil]');
+        if (f) { const c = f.dataset.fil; if (est.fil.has(c)) est.fil.delete(c); else est.fil.add(c); est.pag = 1; pintarLista(); return; }
+        if (t.closest('[data-limpiar]')) { est.fil.clear(); est.pag = 1; pintarLista(); return; }
+        const vis = t.closest('[data-vis]');
+        if (vis) { visibles().filter(elegible).forEach(i => { i.marcado = vis.dataset.vis === '1'; }); pintarLista(); return; }
+        const td = t.closest('[data-todos]');
+        if (td) { items.filter(elegible).forEach(i => { i.marcado = td.dataset.todos === '1'; }); pintarLista(); return; }
+        if (t.closest('[data-pagina]')) {
+          const l = visibles();
+          const pg = l.slice((est.pag - 1) * est.por, est.pag * est.por).filter(elegible);
+          const todos = pg.every(i => i.marcado);
+          pg.forEach(i => { i.marcado = !todos; });
+          pintarLista(); return;
+        }
+        const fila = t.closest('tr[data-k]');
+        if (fila) { const i = items[Number(fila.dataset.k)]; if (!i.motivo) { i.marcado = !i.marcado; pintarLista(); } }
+      });
+      v.q('[data-buscar]').oninput = e => { est.q = e.target.value.trim().toLowerCase(); est.pag = 1; pintarLista(); };
+      v.q('[data-por]').onchange = e => { est.por = Number(e.target.value); est.pag = 1; pintarLista(); };
       v.q('[data-x]').onclick = v.cerrar;
       v.q('[data-ok]').onclick = async () => {
         const slugs = items.filter(i => i.marcado).map(i => i.a.slug);
@@ -712,9 +986,12 @@ async function enBloque(nombre, accion) {
           const medios = accion === 'borrar' ? await leerMedios(x, new Set(actuales.filter(a => slugs.includes(a.slug)).flatMap(a => ficherosDe(x.columnas, a.datos).map(f => f.ruta.split('/').pop())))) : new Map();
           const plan = await planificarAccion({ YAML: x.YAML, col: x.col, perfil: x.perfil, columnas: x.columnas, actuales, slugs, accion, ctx });
           const resumen = resumenPlan(plan, x.perfil).replace(/^[^:]*: /, '');
-          informe(v, x, plan, { titulo: `${A.titulo}: ${x.perfil.varios}`, confirmar: A.confirmar, boton: accion === 'borrar' ? `Eliminar ${plan.borrados.length}` : `${A.boton} a ${plan.modificados.length}`, mensaje: `Panel: ${A.titulo.toLowerCase()} en ${x.perfil.varios} — ${resumen}`, medios, volver: () => pintar(buscar.value) });
+          const publicar = conAvisos && accion === 'prueba-quitar' ? { ctx, todos: true, verbo: 'se publicarán', quiere: 'publicarlos', evitar: 'Si no quieres publicarlos todavía, pulsa «Atrás» y desmárcalos (o usa el filtro ⚠ de la lista).' }
+          : conAvisos && accion === 'disponible' ? { ctx, todos: true, verbo: 'pasarán a «Disponible»', quiere: 'marcarlos como disponibles', evitar: 'Si no quieres cambiarlos todavía, pulsa «Atrás» y desmárcalos (o usa el filtro ⚠ de la lista).' } : null;
+        informe(v, x, plan, { titulo: `${A.titulo}: ${x.perfil.varios}`, confirmar: A.confirmar, boton: accion === 'borrar' ? `Eliminar ${plan.borrados.length}` : `${A.boton} a ${plan.modificados.length}`, mensaje: `Panel: ${A.titulo.toLowerCase()} en ${x.perfil.varios} — ${resumen}`, medios, volver: pintar, publicar, afectados: { ctx } });
         } catch (e) { mostrarError(v, e); }
       };
+      pintarLista();
     };
     pintar();
   } catch (e) { mostrarError(v, e); }
@@ -731,17 +1008,34 @@ function crearEngranaje(nombre) {
       <button role="menuitem" data-a="exportar">${ico(svg.descargar)}Exportar a Excel…</button>
       <button role="menuitem" data-a="importar">${ico(svg.subir)}Importar Excel…</button>
       ${PERFILES[nombre].word ? `<button role="menuitem" data-a="word">${ico(svg.word)}Exportar a Word…</button>` : ''}
-      <div class="xl-sep"></div><div class="xl-gr">Cambiar en bloque</div>
+      <div class="xl-sep" data-bloque></div><div class="xl-gr" data-bloque>Cambiar en bloque</div>
       <button role="menuitem" data-a="prueba-quitar">${ico(svg.ver)}Quitar «Solo para pruebas»…</button>
       <button role="menuitem" data-a="prueba-poner">${ico(svg.matraz)}Marcar «Solo para pruebas»…</button>
       ${PERFILES[nombre].estados ? `<button role="menuitem" data-a="no-disponible">${ico(svg.oculto)}Marcar como no disponible…</button>
       <button role="menuitem" data-a="disponible">${ico(svg.check)}Marcar como disponible…</button>` : ''}
-      <div class="xl-sep"></div>
+      <div class="xl-sep" data-sep-borrar></div>
       <button role="menuitem" data-a="borrar" class="xl-rojo">${ico(svg.papelera)}Eliminar…</button>
     </div>`;
   const boton = caja.firstElementChild;
   const menu = caja.querySelector('.xl-menu');
-  const abrir = si => { menu.hidden = !si; boton.setAttribute('aria-expanded', String(si)); };
+  // Solo las acciones en bloque que cambiarían algo (19-11-2026): sin productos de pruebas no sale «Quitar
+  // Solo para pruebas», etc. Con los datos de la lista ya cargada (tablas.js) o, si no están, leyéndolos.
+  const ajustarMenu = actuales => {
+    for (const [a, A] of Object.entries(ACCIONES)) {
+      const b = menu.querySelector(`[data-a="${a}"]`);
+      if (b) b.hidden = !actuales.length || (A.ya ? actuales.every(x => A.ya(x)) : false);
+    }
+    const hayBloque = [...menu.querySelectorAll('[data-a]')].some(b => b.dataset.a in ACCIONES && b.dataset.a !== 'borrar' && !b.hidden);
+    menu.querySelectorAll('[data-bloque]').forEach(el => { el.hidden = !hayBloque; });
+    const sep = menu.querySelector('[data-sep-borrar]');
+    if (sep) sep.hidden = menu.querySelector('[data-a="borrar"]').hidden;
+  };
+  const revisarMenu = async () => {
+    const ya = globalThis.XL_ACTUALES?.[nombre];
+    if (ya) { ajustarMenu(ya); return; }
+    try { const x = await preparar(nombre); const a = await leerActuales(x); (globalThis.XL_ACTUALES ||= {})[nombre] = a; ajustarMenu(a); } catch { /* se quedan todas */ }
+  };
+  const abrir = si => { menu.hidden = !si; boton.setAttribute('aria-expanded', String(si)); if (si) revisarMenu(); };
   boton.onclick = e => { e.preventDefault(); e.stopPropagation(); abrir(menu.hidden); };
   document.addEventListener('click', e => { if (!caja.contains(e.target)) abrir(false); });
   menu.querySelectorAll('[data-a]').forEach(b => {
@@ -828,6 +1122,29 @@ window.addEventListener('hashchange', e => {
   location.replace(vieneDeLaFicha ? '#/' : `#/collections/${m[1]}/entries/${fichero}`);
 });
 
+/* ---------- Saltar de una ficha abierta a otra (19-11-2026) ----------
+   Decap 3.3 solo carga la ficha al montar el editor: si desde una ficha abierta se va directamente a otra
+   (p. ej. Ajustes → «Contacto y horario»), el editor no se vuelve a montar y sale vacío, como un alta. Se pasa
+   antes por el inicio del panel para que se monte de nuevo. Vale para todos los enlaces y para irAFicha(). */
+const EN_FICHA = /^#\/collections\/[^/?]+\/(entries\/|new)/;
+function irAFicha(href) {
+  const destino = String(href || '');
+  if (!EN_FICHA.test(location.hash) || location.hash === destino) { location.hash = destino; return; }
+  location.hash = '#/';
+  // Si Decap pidió confirmar por cambios sin guardar y se canceló, se queda donde estaba
+  setTimeout(() => { if (!EN_FICHA.test(location.hash)) location.hash = destino; }, 60);
+}
+document.addEventListener('click', e => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = e.target.closest('a[href^="#/collections/"]');
+  if (!a || a.target === '_blank') return;
+  const href = a.getAttribute('href');
+  if (!/\/entries\/|\/new(\?|$)/.test(href) || !EN_FICHA.test(location.hash) || href === location.hash) return;
+  e.preventDefault();
+  e.stopPropagation();
+  irAFicha(href);
+}, true);
+
 let cfgCabecera = null;
 let pidiendoCabecera = false;
 let datosPanel = null;
@@ -900,7 +1217,7 @@ function cabecera() {
         it.tabIndex = -1;
         it.className = modelo.className;
         it.innerHTML = `<span>${esc(e.texto)}</span>`;
-        it.addEventListener('click', () => { location.hash = e.href; document.body.click(); boton.click(); });
+        it.addEventListener('click', () => { irAFicha(e.href); document.body.click(); boton.click(); });
         lista.appendChild(it);
       }
     }

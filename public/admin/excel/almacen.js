@@ -50,6 +50,17 @@ async function almacenLocal(cfg) {
     async listarMedios(carpeta, nombres = null) {
       if (nombres) {
         const mapa = new Map();
+        // Solo se piden los que existen según la lista del último build (dist/admin/medios.json): pedir uno
+        // que no está llena la consola de «npm run panel» de errores ENOENT y, con cientos de fotos y varias
+        // carpetas, tarda. Si la lista no está, se piden todos, como antes.
+        try {
+          const r = await fetch('/admin/medios.json', { cache: 'no-store' });
+          const lista = r.ok ? (await r.json())[carpeta.replace(/^\/+|\/+$/g, '')] : null;
+          if (Array.isArray(lista)) {
+            const hay = new Set(lista.map(f => String(f.nombre).toLowerCase()));
+            nombres = [...nombres].filter(n => hay.has(String(n).toLowerCase()));
+          }
+        } catch { /* sin lista: se piden todos */ }
         for (const n of nombres) {
           try { const m = await pedir('getMediaFile', { path: `${carpeta}/${n}` }); if (m?.id) mapa.set(n, m.id); } catch { /* no existe */ }
         }
