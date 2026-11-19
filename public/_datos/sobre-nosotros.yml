@@ -1,8 +1,11 @@
-provisional: true
+provisional: false
 antetitulo: Sobre nosotros
 titulo: Toda una vida cosiendo en Zafra
-texto: |-
-  Somos una tienda familiar especializada en máquinas de coser. Empezamos vendiendo y arreglando máquinas a las costureras del pueblo y hoy atendemos también a talleres, tapiceros y escuelas de costura de toda la comarca.
+texto: >-
+  Somos una tienda familiar especializada en máquinas de coser. Empezamos
+  vendiendo y arreglando máquinas a las costureras del pueblo y hoy atendemos
+  también a talleres, tapiceros y escuelas de costura de toda la comarca.
+
 
   Nos gusta que te lleves la máquina que de verdad necesitas: te escuchamos, te enseñamos varias, la probamos contigo y, cuando ya la tienes en casa, seguimos aquí para lo que haga falta.
 foto: /img/sobre-nosotros-duenos.jpg
@@ -20,7 +23,7 @@ galeria:
     - imagen: /img/sobre-nosotros-tienda-3.jpg
       alt: Estanterías de cristal con máquinas de coser expuestas
       pie: ""
-desde: 1992
+desde: 1982
 cifras:
   - numero: "{años}"
     texto: años de experiencia
@@ -53,10 +56,12 @@ porque:
   titulo: Por qué comprar con nosotros
   lista:
     - titulo: La pruebas antes de llevártela
-      texto: En la tienda tienes las máquinas montadas para que cosas con ellas y compares.
+      texto: En la tienda tienes las máquinas montadas para que cosas con ellas y
+        compares.
       icono: check
     - titulo: Te enseñamos a usarla
-      texto: Al recogerla te explicamos el enhebrado, las puntadas y el mantenimiento básico.
+      texto: Al recogerla te explicamos el enhebrado, las puntadas y el mantenimiento
+        básico.
       icono: asesoria
     - titulo: Servicio técnico propio
       texto: Si algo falla, la arreglamos aquí mismo, sin envíos ni esperas largas.
@@ -65,7 +70,7 @@ porque:
       texto: Agujas, prensatelas, bobinas y más para que no te quedes a medias.
       icono: precio
 historia:
-  - año: "1992"
+  - año: "1982"
     texto: Abrimos la primera tienda en el centro de Zafra.
   - año: "2005"
     texto: Empezamos a trabajar con máquinas industriales para talleres.
