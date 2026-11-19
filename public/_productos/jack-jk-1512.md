@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Fresa de corte para la realización de plantillas
 fabricante: jack
 modelo: JK-1512
@@ -11,6 +11,30 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-1512-1.jpg
-description: Fresa de corte para la realización de plantillas.
+description: "Fresa de corte Jack para fabricar plantillas de costura: área de 1.500 × 1.200 mm, motores paso a paso, aspiración y corte de hasta 10 mm en cartón prensado, PVC, PET o metacrilato."
+destacados:
+- texto: Área de corte de 1.500 × 1.200 mm
+- texto: Motores paso a paso para cortes precisos
+- texto: Sistema de aspiración que fija el material
+- texto: Corta cartón prensado, PVC, PET, metacrilato…
+- texto: Grosor de corte de hasta 10 mm
+- texto: Compatible con los programas de CAD
+caracteristicas:
+- nombre: Tipo
+  valor: fresa de corte para plantillas
+- nombre: Área de corte
+  valor: 1.500 × 1.200 mm
+- nombre: Motores
+  valor: paso a paso
+- nombre: Fijación del material
+  valor: por aspiración
+- nombre: Materiales
+  valor: cartón prensado, PVC, PET, metacrilato…
+- nombre: Grosor máximo
+  valor: 10 mm
+- nombre: Software
+  valor: compatible con los programas de CAD
 ---
-Fresa de corte para la realización de plantillas. Con un área de corte de 1500x1200mm. Equipada con motores paso a paso para realizar los cortes de material de forma precisa, sistema de aspiración para fijar el material. Permite cortar Cartón Prensado, PVC, PET, Metacrilato… hasta un grosor de 10mm. Compatible con los software CAD.
+**Jack JK-1512: fabrica tus propias plantillas de costura en el taller.** Esta fresa de corte trabaja sobre un área de 1.500 × 1.200 mm y corta con precisión gracias a sus motores paso a paso.
+
+El sistema de aspiración fija el material mientras se corta. Admite cartón prensado, PVC, PET, metacrilato y otros materiales de hasta 10 mm de grosor, y es compatible con los programas de CAD.

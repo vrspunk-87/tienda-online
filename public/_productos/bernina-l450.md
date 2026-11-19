@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Bernina L450
 fabricante: bernina
 modelo: L450
@@ -11,18 +11,15 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernina-l450-1.jpg
   alt: Remalladora Bernina L450
-description: Cose, corta y remata de una vez con precisión y eficacia.
+description: "Remalladora BERNINA L 450: cose, corta y remata de una vez, con control de microenhebrado (mtc) para puntadas de calidad profesional, fácil incluso para principiantes."
 destacados:
-- texto: Cose, corta y remata de una vez con precisión y eficacia
-- texto: Fácil y cómoda de manejar incluso para principiantes, con puntadas de 2, 3 o 4 hilos
-- texto: Puntadas de calidad profesional
+- texto: Cose, corta y remata en una sola operación
+- texto: 16 puntadas de 2, 3 o 4 hilos
+- texto: "Control de microenhebrado (mtc): ajustas la tensión una sola vez"
 - texto: Excelente dobladillo enrollado
-- texto: Perfecta para telas elásticas y tejidas
-- texto: Frunce y plisa automáticamente con transporte diferencial
-- texto: Control de microenhebrado (mtc)
-- texto: Dos luces LED de gran intensidad
-- texto: Vías de enhebrado marcadas con colores
-- texto: Enhebrador de áncora inferior
+- texto: Transporte diferencial para fruncir o coser sin ondas
+- texto: Vías de enhebrado por colores y enhebrador del áncora inferior
+- texto: 2 luces LED de gran intensidad
 caracteristicas:
 - nombre: Número total de puntadas
   valor: '16'
@@ -101,7 +98,7 @@ caracteristicas:
 - nombre: Cuchilla activada/desactivada
   valor: Sí
 ---
-Trabajar con una máquina de overlock implica ahorrar tiempo y realizar puntadas más rápidas. Sus características novedosas hacen que las máquinas de overlock de BERNINA resulten fascinantemente fáciles de usar y garanticen una calidad profesional hasta la última puntada.
+**Trabajar con una máquina de overlock implica ahorrar tiempo y realizar puntadas más rápidas.** Sus características novedosas hacen que las máquinas de overlock de BERNINA resulten fascinantemente fáciles de usar y garanticen una calidad profesional hasta la última puntada.
 
 El control de microenhebrado patentado mtc ahorra tiempo y esfuerzo y garantiza puntadas uniformes de alta calidad, ya que solo hay que ajustar la tensión del hilo una vez, aunque se modifiquen la anchura de corte y el grosor del tejido.
 

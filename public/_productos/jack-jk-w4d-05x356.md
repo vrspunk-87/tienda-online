@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina recubridora de 3 aguas 5.6mm base plana Direc Drive
 fabricante: jack
 modelo: JK-W4D-05X356
@@ -12,6 +12,35 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-w4d-05x356-1.jpg
-description: Máquina recubridora de 3 aguas 5.6mm base plana Direc Drive, con recubrimiento superior e inferior, para la colocación de puntilla, con cuchillas recortadoras del sobrante de tejido y alimentador con regulación electrónica de la puntilla.
+description: Recubridora industrial Jack de base plana con 3 agujas (5,6 mm) para colocar puntilla, con cuchillas que recortan el sobrante y alimentador de puntilla con regulación electrónica.
+destacados:
+- texto: Recubridora de base plana con 3 agujas
+- texto: Recubrimiento superior e inferior
+- texto: Motor Direct Drive
+- texto: Para colocar puntilla
+- texto: Cuchillas que recortan el sobrante del tejido
+- texto: Alimentador de puntilla con regulación electrónica
+- texto: Luz LED
+caracteristicas:
+- nombre: Tipo
+  valor: recubridora de base plana
+- nombre: Agujas
+  valor: "3"
+- nombre: Recubrimiento
+  valor: superior e inferior
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Ancho entre agujas
+  valor: 5,6 mm
+- nombre: Uso
+  valor: colocación de puntilla
+- nombre: Cuchillas
+  valor: recortan el sobrante del tejido
+- nombre: Alimentador de puntilla
+  valor: regulación electrónica
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina recubridora de 3 aguas 5.6mm base plana Direc Drive, con recubrimiento superior e inferior, para la colocación de puntilla, con cuchillas recortadoras del sobrante de tejido y alimentador con regulación electrónica de la puntilla. Con luz LED.
+**Jack JK-W4D-05X356: pon puntilla con acabado limpio.** Esta recubridora de base plana con 3 agujas (5,6 mm) y recubrimiento superior e inferior coloca la puntilla mientras sus cuchillas recortan el sobrante del tejido.
+
+Su alimentador de puntilla tiene regulación electrónica. Con motor Direct Drive y luz LED.

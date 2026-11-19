@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B720
 fabricante: bernina
 modelo: B720
@@ -19,17 +19,16 @@ imagenes:
   alt: Bernina B720 con el módulo de bordado opcional
 - imagen: /img/productos/bernina-b720-5.jpg
   alt: Bernina B720 de frente
-description: Máquina de coser electrónica Bernina B720 con 681 puntadas y 11 ojales, ancho de puntada de 5,5 mm y garfio rotativo.
+description: "BERNINA 720: 681 puntadas, lanzadera BERNINA, tensión de hilo adaptable y BSR incluido, con brazo libre de 254 mm para tus proyectos más grandes."
 destacados:
-- texto: Lanzadera BERNINA con un ancho de puntada de 5,5 mm
-- texto: Brazo libre extensible para grandes proyectos
-- texto: Control total de las puntadas
-- texto: Funcionalidad Regulador de puntada de BERNINA (BSR) incluida
-- texto: Máxima calidad de puntadas gracias a la tensión de hilo adaptable
-- texto: Palanca rodillera
-- texto: Cortahilos automático
-- texto: Luz de costura LED
-- texto: Módulo de bordado opcional
+- texto: 681 puntadas, con 4 alfabetos, 200 decorativas y 11 ojales
+- texto: Lanzadera BERNINA, hasta 1.000 puntadas por minuto
+- texto: Control de tensión exclusivo para la máxima calidad de puntada
+- texto: Regulador de puntadas BERNINA (BSR) incluido
+- texto: 254 mm de espacio a la derecha de la aguja
+- texto: Cortahílos y alzaprensatelas automáticos
+- texto: Pantalla táctil a color de 4,3" y USB
+- texto: Preparada para bordar con el módulo opcional (hasta 400 × 210 mm)
 caracteristicas:
 - nombre: Sistema de lanzadera
   valor: Lanzadera BERNINA
@@ -50,11 +49,11 @@ caracteristicas:
 - nombre: Módulo de bordado
   valor: Opcional
 - nombre: Velocidad máxima de costura
-  valor: 1000 puntadas/min
+  valor: 1.000 puntadas/min
 - nombre: Longitud máxima de puntada
   valor: 6 mm
 - nombre: Posiciones de aguja
-  valor: '11'
+  valor: "11"
 - nombre: Ojal automático/ Ojales automáticos de longitud determinada
   valor: Sí
 - nombre: Costura manual de ojales en varias etapas
@@ -88,27 +87,27 @@ caracteristicas:
 - nombre: Función giratoria/suspensión
   valor: Sí
 - nombre: Número total de puntadas (alfabetos inclusive)
-  valor: '681'
+  valor: "681"
 - nombre: Alfabetos de costura
-  valor: '4'
+  valor: "4"
 - nombre: Puntadas decorativas en total
-  valor: '200'
+  valor: "200"
 - nombre: Programa de coser botones
   valor: Sí
 - nombre: Ojales (ojetes inclusive) en total
-  valor: '11'
+  valor: "11"
 - nombre: Puntadas de utilidad en total
-  valor: '29'
+  valor: "29"
 - nombre: Puntadas de acolchado
-  valor: '32'
+  valor: "32"
 - nombre: Programas de zurcido
-  valor: '2'
+  valor: "2"
 - nombre: Velocidad máxima de bordado (puntadas por minuto)
-  valor: 1000 puntadas/min
+  valor: 1.000 puntadas/min
 - nombre: Patrones de bordado integrados
-  valor: '80'
+  valor: "80"
 - nombre: Alfabetos de bordado
-  valor: '4'
+  valor: "4"
 - nombre: Hilvanar
   valor: Sí
 - nombre: Reducir número de cambios de color
@@ -150,11 +149,11 @@ caracteristicas:
 - nombre: Cabezales giratorios multifunción
   valor: Sí
 - nombre: Luz de costura
-  valor: '30'
+  valor: "30"
 - nombre: Enhebrador de agujas automático
   valor: Sí
 - nombre: Cortahilos manual
-  valor: '3'
+  valor: "3"
 - nombre: Modificación de puntada durante la costura
   valor: Sí
 - nombre: Control de tensión exclusivo
@@ -184,3 +183,8 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
+**La BERNINA 720 te da el control total de cada puntada.** Su lanzadera BERNINA cose a 1.000 puntadas por minuto, y el control de tensión exclusivo, que adapta la tensión del hilo, asegura la máxima calidad de puntada.
+
+Dispones de 681 puntadas, con 200 decorativas, 32 de acolchado, 4 alfabetos y 11 ojales, y de 11 posiciones de aguja. Su brazo libre ofrece 254 mm de espacio a la derecha de la aguja y 127 mm de altura para tus proyectos más grandes, y el regulador de puntadas BERNINA (BSR) incluido te permite acolchar en movimiento libre con puntadas siempre iguales.
+
+Coser es más cómodo con el sistema manos libres, el cortahílos y el alzaprensatelas automáticos, el pedal con función back-kick y la pantalla táctil a color de 4,3". Y con el módulo de bordado opcional, borda hasta 400 × 210 mm, con 80 diseños integrados y lectura de los formatos más habituales.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking DESIGNER Quartz 29
 fabricante: husqvarna
 modelo: DESIGNER Quartz 29
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-quartz-29-3.jpg
 - imagen: /img/productos/husqvarna-designer-quartz-29-4.jpg
 - imagen: /img/productos/husqvarna-designer-quartz-29-5.jpg
-description: La máquina de coser y bordar HUSQVARNA VIKING DESIGNER QUARTZ 29 ofrece funciones como una gran pantalla táctil en color de 7" (17,8 cm) y conectividad WiFi, lo que facilita que incluso un…
+description: 'Máquina de coser y bordar con pantalla táctil de 7", WiFi mySewnet, 180 diseños de bordado, 250 puntadas y enhebrador automático: fácil incluso para principiantes.'
 caracteristicas:
 - nombre: Conectividad mySewnet
   valor: Sí, incluida la biblioteca mySewnet, la aplicación y la nube
@@ -97,5 +97,20 @@ caracteristicas:
   valor: 48 cm largo x 19 cm ancho x 29 cm alto (18,9" x 7,5" x 11,4")
 - nombre: Peso
   valor: 9,7 kg (21,4 lb)
+destacados:
+- texto: Gran pantalla táctil en color de 7" (17,8 cm)
+- texto: "Conectividad WiFi mySewnet: biblioteca, aplicación y nube"
+- texto: 180 diseños de bordado y 10 fuentes de bordado
+- texto: 250 puntadas de hasta 7 mm de ancho
+- texto: "Dos bastidores incluidos: 170 × 100 mm y 100 × 100 mm"
+- texto: Enhebrador automático y cortahilos incorporado
+- texto: Botón de inicio/parada para coser sin pedal
+- texto: Bobina superior y sensor de bobina baja
 ---
-La máquina de coser y bordar HUSQVARNA VIKING DESIGNER QUARTZ 29 ofrece funciones como una gran pantalla táctil en color de 7" (17,8 cm) y conectividad WiFi, lo que facilita que incluso un principiante pueda coser y bordar con confianza. Cosa diseños de bordado, monogramas y secuencias de puntadas únicas para personalizar cualquier proyecto.
+**La DESIGNER QUARTZ 29 hace que coser y bordar sea fácil desde el primer día.** Su gran pantalla táctil en color de 7" y la conexión WiFi permiten que incluso quien empieza trabaje con confianza.
+
+### Personaliza cualquier proyecto
+Borda diseños, monogramas y secuencias de puntadas únicas. Tienes 180 diseños y 10 fuentes de bordado, y en la pantalla puedes mover, combinar, girar, reflejar y escalar los diseños. Incluye dos bastidores (170 × 100 mm y 100 × 100 mm).
+
+### Costura sin complicaciones
+250 puntadas, ojal de un paso con 7 estilos, enhebrador automático, cortahilos, remate automático, función aguja arriba/abajo y botón de inicio/parada para coser sin pedal. Iluminación LED y 165 mm de espacio de costura.

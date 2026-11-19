@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B880
 fabricante: bernina
 modelo: B880
@@ -19,23 +19,25 @@ imagenes:
   alt: Bernina B880 bordando
 - imagen: /img/productos/bernina-b880-5.jpg
   alt: 'Bernina B880: diseñador de formas'
-description: 'BERNINA 880: el modelo más avanzado, con funciones totalmente automáticas.'
+description: 'BERNINA 880: el modelo más avanzado, con funciones totalmente automáticas, 1.764 puntadas, más de 400 diseños de bordado y pantalla táctil de 7".'
 destacados:
-- texto: Diseñador de puntadas
-- texto: Diseñador de formas
-- texto: Rueda de colores
-- texto: Distorsión de puntadas
-- texto: Brazo libre extra largo
-- texto: Funciones totalmente automáticas
+- texto: "Funciones totalmente automáticas: prensatelas, corte, dientes y enhebrado"
+- texto: 1.764 puntadas y 20 ojales
+- texto: Más de 400 diseños de bordado y 12 alfabetos de bordado
+- texto: Área de bordado de hasta 400 × 260 mm
+- texto: Diseñador de puntadas, diseñador de formas y rueda de colores
+- texto: Distorsión de puntadas en pasos de 0,01 mm
+- texto: "Brazo libre extralargo: 305 mm a la derecha de la aguja"
+- texto: Pantalla táctil a color de 7"
 caracteristicas:
 - nombre: Velocidad máxima de costura
-  valor: 1200 puntadas/min
+  valor: 1.200 puntadas/min
 - nombre: Ancho máximo de puntada
   valor: 9 mm
 - nombre: Longitud máxima de puntada
   valor: 6 mm
 - nombre: Posiciones de aguja
-  valor: '11'
+  valor: "11"
 - nombre: Transporte transversal
   valor: Sí
 - nombre: Ojal automático/ Ojales automáticos de longitud determinada
@@ -77,31 +79,31 @@ caracteristicas:
 - nombre: Monogramas (sólo para transporte transversal)
   valor: Sí
 - nombre: Número total de puntadas (alfabetos inclusive)
-  valor: '1764'
+  valor: "1764"
 - nombre: Alfabetos de costura
-  valor: '11'
+  valor: "11"
 - nombre: Puntadas decorativas en total
-  valor: '632'
+  valor: "632"
 - nombre: Programa de coser botones
   valor: Sí
 - nombre: Ojales (ojetes inclusive) en total
-  valor: '20'
+  valor: "20"
 - nombre: Puntadas de utilidad en total
-  valor: '40'
+  valor: "40"
 - nombre: Programas de zurcido
-  valor: '3'
+  valor: "3"
 - nombre: Costura a 360 grados
   valor: Sí
 - nombre: Velocidad máxima de bordado (puntadas por minuto)
-  valor: '1000'
+  valor: "1000"
 - nombre: Superficie máxima de bordado
   valor: 400x260 mm
 - nombre: Bordado con soporte independiente
   valor: Sí
 - nombre: Patrones de bordado integrados
-  valor: '400'
+  valor: "400"
 - nombre: Alfabetos de bordado
-  valor: '12'
+  valor: "12"
 - nombre: Procesamiento de patrones en la pantalla
   valor: reflejar, rotar, escalar
 - nombre: Bordado de orlas
@@ -151,7 +153,7 @@ caracteristicas:
 - nombre: Enhebrador de agujas automático
   valor: Sí
 - nombre: Cortahilos manual
-  valor: '3'
+  valor: "3"
 - nombre: Modificación de puntada durante la costura
   valor: Sí
 - nombre: Transporte Dual BERNINA
@@ -185,6 +187,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-La B 880 responde sola a lo que necesitas: baja el prensatelas al empezar y lo sube al terminar, corta el hilo al final de la costura o al cambiar de color en el bordado, sube y baja los dientes de arrastre para coser y bordar a mano libre y enhebra la aguja con solo pulsar un botón. Su brazo libre extra largo da un amplio espacio a la derecha de la aguja y 120 mm de altura, con un campo de bordado mayor.
+**La B 880 responde sola a lo que necesitas: baja el prensatelas al empezar y lo sube al terminar, corta el hilo al final de la costura o al cambiar de color en el bordado, sube y baja los dientes de arrastre para coser y bordar a mano libre y enhebra la aguja con solo pulsar un botón. Su brazo libre extra largo da un amplio espacio a la derecha de la aguja y 120 mm de altura, con un campo de bordado mayor.**
 
-Incluye una biblioteca de 1764 puntadas ordenadas por categorías, más de 400 diseños de bordado y doce tipos de letra. En su pantalla táctil de 7 pulgadas se puede arrastrar, soltar y deslizar; con el diseñador de puntadas se dibujan puntadas propias, el diseñador de formas duplica bordados en círculo, cuadrado o corazón, la rueda de colores cambia los colores de los diseños antes de bordar y la función de distorsión desplaza las puntadas en pasos de 0,01 mm.
+Incluye una biblioteca de 1.764 puntadas ordenadas por categorías, más de 400 diseños de bordado y doce tipos de letra. En su pantalla táctil de 7 pulgadas se puede arrastrar, soltar y deslizar; con el diseñador de puntadas se dibujan puntadas propias, el diseñador de formas duplica bordados en círculo, cuadrado o corazón, la rueda de colores cambia los colores de los diseños antes de bordar y la función de distorsión desplaza las puntadas en pasos de 0,01 mm.

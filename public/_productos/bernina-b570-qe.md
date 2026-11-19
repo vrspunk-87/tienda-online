@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B570 QE
 fabricante: bernina
 modelo: B570 QE
@@ -17,13 +17,15 @@ imagenes:
   alt: 'Bernina B570 QE: prensatelas'
 - imagen: /img/productos/bernina-b570-qe-4.jpg
   alt: Bernina B570 QE cosiendo tela fina
-description: 'BERNINA 570 QE: la máquina multifunción para coser, bordar y realizar acolchados.'
+description: 'BERNINA 570 QE: máquina multifunción para coser, bordar y acolchar, con 642 puntadas, regulador BSR incluido y sistema manos libres.'
 destacados:
-- texto: 'Mayor comodidad para coser: sistema de manos libres (FHS) y mesa extensible'
-- texto: Más opciones de memoria
-- texto: Extensa biblioteca de puntadas
-- texto: Regulador de puntada BERNINA (BSR) incluido
+- texto: 642 puntadas, con 5 alfabetos y 11 ojales
 - texto: Coser, bordar (módulo opcional) y acolchar
+- texto: Regulador de puntadas BERNINA (BSR) incluido
+- texto: Sistema manos libres (FHS) y mesa extensible
+- texto: Pantalla táctil a color
+- texto: 50 diseños de bordado y carga por USB
+- texto: 11 posiciones de aguja y memoria de combinaciones
 caracteristicas:
 - nombre: Velocidad máxima de costura
   valor: 900 puntadas/min
@@ -118,6 +120,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-La B 570 QE ofrece un control exclusivo de la puntada: largo hasta 5 mm, ancho hasta 5,5 mm y 11 posiciones de aguja, y recuerda las combinaciones personalizadas. Es una auténtica multifunción para coser, bordar y acolchar: con la pantalla táctil se pasa del modo de costura al de bordado; trae 50 diseños de bordado y se pueden cargar otros por USB y editarlos en pantalla (rotar, reflejar, escalar, cambiar colores).
+**La B 570 QE ofrece un control exclusivo de la puntada: largo hasta 5 mm, ancho hasta 5,5 mm y 11 posiciones de aguja, y recuerda las combinaciones personalizadas.** Es una auténtica multifunción para coser, bordar y acolchar: con la pantalla táctil se pasa del modo de costura al de bordado; trae 50 diseños de bordado y se pueden cargar otros por USB y editarlos en pantalla (rotar, reflejar, escalar, cambiar colores).
 
 El sistema de manos libres (FHS) sube y baja el prensatelas, afloja la tensión y baja el arrastre, para guiar la labor con las dos manos. Incluye mesa extensible, varios prensatelas y el regulador de puntada BERNINA (BSR).

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer ELITE CE677
 fabricante: singer
 modelo: ELITE CE677
@@ -14,36 +14,58 @@ imagenes:
 - imagen: /img/productos/singer-elite-ce677-3.jpg
 - imagen: /img/productos/singer-elite-ce677-4.jpg
 - imagen: /img/productos/singer-elite-ce677-5.jpg
-description: La Elite CE677 ofrece costura digital con botones táctiles, adaptada a sus necesidades.
+description: "Singer Elite CE677: costura digital con botones táctiles, marco totalmente metálico, 200 puntadas y más potencia de perforación y velocidad."
 destacados:
-- texto: 200 puntadas incorporadas y 6 estilos de ojal de un solo paso
-- texto: La pantalla LCD muestra el número de puntada, los ajustes, el prensatelas y mucho más
-- texto: Aguja programable arriba/abajo para mayor comodidad y transiciones fáciles
-- texto: Alimentación por caída para botones, costura de movimiento libre y mucho más
-- texto: Bobina superior para enhebrar y ver fácilmente
-- texto: 163 mm de espacio de costura (de la aguja a la torre) y 110 mm de altura
-- texto: Puntadas incorporadas (200)
-- texto: Remate de puntadas
-- texto: Posiciones de aguja ajustables (15)
-- texto: Ojal de un solo paso (6)
-- texto: Enhebrador de aguja incorporado
-- texto: Botón Start / Stop
-- texto: Bobina Top Drop In
-- texto: Alimentación descendente
-- texto: Aguja arriba/abajo
-- texto: Marco metálico completo
-- texto: Pantalla LCD
+- texto: 200 puntadas y 6 ojales en un solo paso
+- texto: Pantalla LCD con la puntada, los ajustes y el prensatelas recomendado
+- texto: Marco totalmente metálico, extraordinariamente duradero
+- texto: Mayor potencia de perforación y velocidad
+- texto: Aguja arriba/abajo programable
+- texto: 15 posiciones de aguja
+- texto: Bajada de dientes para botones y movimiento libre
 - texto: Iluminación LED
-- texto: Prensatelas extra alto
-- texto: Brazo libre
 caracteristicas:
-- nombre: Espacio de costura (mm)
-  valor: 163 de aguja a torre y 110 de altura
-- nombre: Tamaño de la máquina
-  valor: 56,9 largo, 20,1 ancho, 28,0 alto
-- nombre: Peso de la máquina
+- nombre: Tipo
+  valor: electrónica
+- nombre: Puntadas
+  valor: "200"
+- nombre: Ojales
+  valor: 6 estilos, en un solo paso
+- nombre: Remate
+  valor: Sí
+- nombre: Posiciones de aguja
+  valor: "15"
+- nombre: Enhebrador de aguja
+  valor: incorporado
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Canilla
+  valor: Top Drop-In
+- nombre: Bajada de dientes
+  valor: Sí
+- nombre: Aguja arriba/abajo
+  valor: programable
+- nombre: Marco
+  valor: totalmente metálico
+- nombre: Pantalla
+  valor: LCD
+- nombre: Iluminación
+  valor: LED
+- nombre: Prensatelas
+  valor: elevación extra alta
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Espacio de costura
+  valor: 163 mm (aguja a torre) y 110 mm de altura
+- nombre: Tamaño
+  valor: 56,9 × 20,1 × 28,0 cm (largo × ancho × alto)
+- nombre: Peso
   valor: 6,5 kg
 - nombre: Accesorios incluidos
-  valor: Pie universal, Pie para cremallera, Pie para ojales, Pie para dobladillo ciego, Pie para puntada de satén, Pie para coser botones, SINGER Agujas
+  valor: pie universal, para cremallera, para ojales, para dobladillo ciego, para puntada de satén y para coser botones; agujas Singer
 ---
-La Elite CE677 ofrece costura digital con botones táctiles, adaptada a sus necesidades. Con un diseño elegante y extraordinariamente duradero, ofrece mayor potencia de perforación, mayor velocidad y versatilidad.
+**La Singer Elite CE677 te ofrece costura digital con botones táctiles, adaptada a lo que necesitas.** Con un diseño elegante y un marco totalmente metálico extraordinariamente duradero, tiene más potencia de perforación, más velocidad y más versatilidad.
+
+Elige entre 200 puntadas y 6 estilos de ojal en un solo paso, y consulta en su pantalla LCD el número de puntada, los ajustes y el prensatelas que necesitas. La aguja arriba/abajo programable facilita las transiciones, y bajando los dientes podrás coser botones o hacer costura en movimiento libre.
+
+Con 15 posiciones de aguja, canilla de carga superior para enhebrar y ver el hilo fácilmente, iluminación LED y 163 mm de espacio de costura.

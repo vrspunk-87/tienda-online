@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Janome MC6700P
 fabricante: janome
 modelo: MC6700P
@@ -15,27 +15,60 @@ imagenes:
 - imagen: /img/productos/janome-mc6700p-3.jpg
 - imagen: /img/productos/janome-mc6700p-4.jpg
 - imagen: /img/productos/janome-mc6700p-5.jpg
-description: Nuevo modelo de máquina de coser doméstica Janome semi industrial profesional y electrónica de base plana (no convertible en máquina de brazo libre) equipada con garfio rotativo.
+description: "Máquina semiindustrial profesional de base plana con estructura de aluminio, garfio rotativo, 1.200 ppm y doble arrastre: cose cualquier tejido, incluso piel."
 destacados:
-- texto: Velocidad máxima 1.200 PPM
-- texto: Ancho máximo del zig zag 9 mm
-- texto: Control de velocidad
-- texto: Pantalla LCD de mayor tamaño con 13 idiomas
-- texto: Enhebrador automático
-- texto: Cortahilos automático
-- texto: Botón para cortahilos
-- texto: 200 tipos de puntada incluyendo 8 tipos de ojales
-- texto: 5 tipos de alfabetos, puntadas de patchwork, aplicación, acolchados, etc
-- texto: Remate automático mediante botón
-- texto: Botón star/stop
-- texto: Botón de posicionamiento arriba/abajo
+- texto: Semiindustrial profesional, con estructura de aluminio
+- texto: Cose cualquier tipo de tejido, incluso piel
+- texto: Hasta 1.200 puntadas por minuto
+- texto: 200 puntadas de hasta 9 mm, con 8 ojales y 5 alfabetos
+- texto: Doble arrastre incorporado (AcuFeed Flex)
+- texto: Cortahílos automático y remate con botón
+- texto: Alzaprensatelas electrónico y por rodillera
 - texto: Incluye mesa de extensión
-- texto: Palanca de elevación de prensatelas por rodillera
-- texto: Alzaprensatelas electrónico
-- texto: Doble arrastre incorporado
-- texto: 3 luces LEDs
-- texto: DVD con manual de instrucciones
-- texto: Prensatelas de ojales para géneros gruesos
-- texto: Sistema Acu Feed Flex™
+caracteristicas:
+- nombre: Tipo
+  valor: electrónica semiindustrial
+- nombre: Base
+  valor: plana (no convertible en brazo libre)
+- nombre: Estructura
+  valor: de aluminio
+- nombre: Longitud de brazo
+  valor: 25,5 cm
+- nombre: Garfio
+  valor: rotativo
+- nombre: Velocidad máxima
+  valor: 1.200 puntadas por minuto
+- nombre: Puntadas
+  valor: 200 (incluye 8 ojales)
+- nombre: Alfabetos
+  valor: "5"
+- nombre: Anchura máxima de zigzag
+  valor: 9 mm
+- nombre: Pantalla
+  valor: LCD grande, 13 idiomas
+- nombre: Doble arrastre
+  valor: incorporado (AcuFeed Flex)
+- nombre: Enhebrador
+  valor: automático
+- nombre: Cortahílos
+  valor: automático, con botón
+- nombre: Remate
+  valor: automático, con botón
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Aguja arriba/abajo
+  valor: con botón
+- nombre: Control de velocidad
+  valor: Sí
+- nombre: Alzaprensatelas
+  valor: electrónico y por rodillera
+- nombre: Iluminación
+  valor: 3 LED
+- nombre: Incluye
+  valor: mesa de extensión, prensatelas de ojales para géneros gruesos y DVD con el manual
 ---
-Nuevo modelo de máquina de coser doméstica Janome semi industrial profesional y electrónica de base plana (no convertible en máquina de brazo libre) equipada con garfio rotativo. Estructura de aluminio con 25,5 mm de longitud de brazo. Aconsejada para sastres y modistas ya que puede coser cualquier tipo de tejido, piel, etc...
+**La Janome MC6700P es una máquina semiindustrial profesional de base plana, con estructura de aluminio y garfio rotativo.** Es la recomendada para sastres y modistas, porque cose cualquier tipo de tejido, incluso piel, a hasta 1.200 puntadas por minuto.
+
+Cuenta con 200 puntadas, entre ellas 8 ojales, 5 alfabetos y puntadas de patchwork, aplicación y acolchado, con un zigzag de hasta 9 mm. Su doble arrastre incorporado AcuFeed Flex hace avanzar las capas de forma uniforme, y su brazo de 25,5 cm te da espacio para trabajar.
+
+Cortahílos y remate automáticos con botón, alzaprensatelas electrónico y por rodillera, enhebrador automático y una pantalla LCD grande en 13 idiomas completan una máquina hecha para trabajar. Incluye mesa de extensión.

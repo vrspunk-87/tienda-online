@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B350
 fabricante: bernina
 modelo: B350
@@ -17,13 +17,14 @@ imagenes:
   alt: 'Bernina B350: prensatelas para ojales'
 - imagen: /img/productos/bernina-b350-4.jpg
   alt: 'Bernina B350: pantalla'
-description: 'BERNINA 350 Special Edition: imaginación floreciente, creatividad cautivadora.'
+description: 'BERNINA 350 Special Edition: diseño único, 191 puntadas y un equipo de serie pensado para el patchwork, con mesa móvil, alzaprensatelas de rodilla y doble arrastre.'
 destacados:
-- texto: Diseño especial (edición especial)
-- texto: Función automática para ojales
+- texto: "Diseño especial: Special Edition"
+- texto: 191 puntadas, con 2 alfabetos, 63 decorativas y 11 de acolchado
+- texto: Ojal automático de longitud memorizada
+- texto: Memoria permanente de 30 posiciones
+- texto: Sistema manos libres (FHS) con alzaprensatelas de rodilla
 - texto: Mesa móvil incluida
-- texto: Función de memoria permanente (30 posiciones)
-- texto: Sistema de manos libres (FHS) con alzaprensatelas de rodilla
 - texto: Prensatelas de doble arrastre, de acolchado y de patchwork incluidos
 caracteristicas:
 - nombre: Velocidad máxima de costura
@@ -85,6 +86,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-Una BERNINA siempre ha sido algo especial y la 350 Special Edition, además, es única por su diseño. Entre sus accesorios de serie se incluyen una gran mesa de costura para el brazo libre, el sistema de manos libres (FHS) con alzaprensatelas de rodilla, el prensatelas de doble arrastre y prensatelas para acolchado y para patchwork.
+**Una BERNINA siempre ha sido algo especial y la 350 Special Edition, además, es única por su diseño.** Entre sus accesorios de serie se incluyen una gran mesa de costura para el brazo libre, el sistema de manos libres (FHS) con alzaprensatelas de rodilla, el prensatelas de doble arrastre y prensatelas para acolchado y para patchwork.
 
 Con la función automática de ojales, la longitud ajustada se guarda en la memoria para coser tantos ojales iguales como quieras. La selección directa de puntadas y su pantalla luminosa permiten cambiar de puntada en segundos, y la memoria permanente guarda hasta 30 puntadas en combinación. La mesa móvil amplía la superficie de trabajo con un solo gesto.

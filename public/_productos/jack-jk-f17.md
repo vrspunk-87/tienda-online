@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Purificador de aire para el láser xTool SafetyPro AP2
 fabricante: jack
 modelo: JK-F17
@@ -19,6 +19,17 @@ date: '2026-11-09T12:00:00.000+01:00'
 precio: 1064.8
 estado: disponible
 condicion: nuevo
-description: xTool SafetyPro AP2. Purificador de aire para el láser.
+description: Purificador de aire xTool SafetyPro AP2 para los sistemas de corte láser de las máquinas programables Jack.
+destacados:
+- texto: Purificador de aire para el láser
+- texto: Modelo xTool SafetyPro AP2
+- texto: Opcional para las máquinas programables Jack con corte láser
+caracteristicas:
+- nombre: Tipo
+  valor: purificador de aire para láser
+- nombre: Modelo
+  valor: xTool SafetyPro AP2
+- nombre: Compatible con
+  valor: máquinas programables Jack con corte láser
 ---
-xTool SafetyPro AP2. Purificador de aire para el láser.
+**Trabaja con el láser en un ambiente más limpio.** El purificador de aire xTool SafetyPro AP2 es la opción que ofrece Jack para las máquinas de costura programable con corte láser.

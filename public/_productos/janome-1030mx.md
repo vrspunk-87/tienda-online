@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser electrónica Janome 1030MX
 fabricante: janome
 modelo: 1030MX
@@ -15,28 +15,60 @@ imagenes:
 - imagen: /img/productos/janome-1030mx-3.jpg
 - imagen: /img/productos/janome-1030mx-4.jpg
 - imagen: /img/productos/janome-1030mx-5.jpg
-description: Nuevo modelo de máquina de coser electrónica con interior totalmente metálico.
+description: "Máquina de coser electrónica con interior totalmente metálico, 30 puntadas, ojal en un paso y start/stop: robusta y fácil de usar."
 destacados:
-- texto: Devanador de hilo automático
-- texto: Tensor de hilo metálico
-- texto: Pasador de hilo metálico
-- texto: Asa transportadora
+- texto: Interior totalmente metálico
+- texto: 30 puntadas, con puntadas de patchwork y quilting
+- texto: Ojal en un solo paso
+- texto: Enhebrador automático
+- texto: Botón start/stop y deslizador de velocidad
+- texto: Aguja arriba/abajo
+- texto: Dientes retráctiles para pegar botones y acolchado libre
 - texto: Doble altura del prensatelas
-- texto: Dientes retráctiles para pegar botón y acolchado libre (Quilting)
-- texto: Deslizador de velocidad
-- texto: Botón de aguja arriba/abajo
-- texto: Remate fino
-- texto: Remate tradicional
-- texto: Botón Start/Stop para coser con y sin pedal
-- texto: Selector de puntada
 caracteristicas:
-- nombre: Tipos de costura
-  valor: '30'
-- nombre: Largo de puntada
+- nombre: Tipo
+  valor: electrónica
+- nombre: Interior
+  valor: totalmente metálico
+- nombre: Puntadas
+  valor: "30"
+- nombre: Ojal
+  valor: 1, en un solo paso
+- nombre: Longitud de puntada
   valor: 4 mm
-- nombre: Ancho de puntada
+- nombre: Anchura de puntada
   valor: 5 mm
 - nombre: Velocidad máxima
-  valor: 820 ppm
+  valor: 820 puntadas por minuto
+- nombre: Pantalla
+  valor: LCD con teclas de selección
+- nombre: Enhebrador
+  valor: automático
+- nombre: Devanador
+  valor: automático
+- nombre: Tensor y pasador de hilo
+  valor: metálicos
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Control de velocidad
+  valor: deslizante
+- nombre: Aguja arriba/abajo
+  valor: Sí
+- nombre: Remate
+  valor: fino y tradicional
+- nombre: Dientes de arrastre
+  valor: retráctiles
+- nombre: Altura del prensatelas
+  valor: doble
+- nombre: Iluminación
+  valor: LED
+- nombre: Asa de transporte
+  valor: Sí
+- nombre: Funda
+  valor: de plástico blanda
 ---
-Nuevo modelo de máquina de coser electrónica con interior totalmente metálico. Incluye 30 tipos de costuras diferentes con puntadas de patchwork y quilting, 1 ojal en un sólo tiempo. Pantalla LCD con teclas de fácil selección, enhebrador automático, largo puntada 4mm, ancho de puntada 5mm. Posicionamiento aguja arriba/abajo, doble altura prensatelas, botón start/stop, luz de LEDs, funda de plástico blanda, velocidad máxima 820 ppm.
+**La Janome 1030MX es una máquina de coser electrónica con el interior totalmente metálico: robusta, precisa y muy fácil de usar.** Incluye 30 puntadas, entre ellas de patchwork y quilting, y ojal en un solo paso, que eliges con las teclas de su pantalla LCD.
+
+Coser es cómodo con su enhebrador automático, el botón start/stop para coser con o sin pedal, el deslizador de velocidad y la aguja arriba/abajo. La doble altura del prensatelas te ayuda con los tejidos gruesos, y bajando los dientes podrás pegar botones o acolchar en movimiento libre.
+
+Con luz LED, asa de transporte y funda blanda.

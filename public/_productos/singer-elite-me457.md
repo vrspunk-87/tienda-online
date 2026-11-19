@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer ELITE ME457
 fabricante: singer
 modelo: ELITE ME457
@@ -14,25 +14,36 @@ imagenes:
 - imagen: /img/productos/singer-elite-me457-3.jpg
 - imagen: /img/productos/singer-elite-me457-4.jpg
 - imagen: /img/productos/singer-elite-me457-5.jpg
-description: Costura mecánica ingeniosa y fácil de usar.
+description: "Singer Elite ME457: costura mecánica ingeniosa y fácil de usar, con 32 puntadas, ojal en un paso y enhebrador de aguja incorporado."
 destacados:
-- texto: '32 puntadas incorporadas: básicas, decorativas y más'
-- texto: Enhebrador de aguja incorporado
-- texto: Ojal de un solo paso
-- texto: Bobina Top Drop-In
-- texto: Puntadas incorporadas (32)
+- texto: "32 puntadas: básicas, decorativas y más"
+- texto: 110 aplicaciones de puntada
 - texto: Ojal en un solo paso
-- texto: Bobina Top Drop In
+- texto: Enhebrador de aguja incorporado
+- texto: Canilla Top Drop-In
+- texto: 160 mm de espacio de costura
 caracteristicas:
-- nombre: Espacio de costura (mm)
-  valor: 160 de aguja a torre y 109 de altura
-- nombre: Tamaño de la máquina (cm)
-  valor: 45,1 largo, 19,7 ancho, 28,1 alto
+- nombre: Tipo
+  valor: mecánica
+- nombre: Puntadas
+  valor: 32 (110 aplicaciones)
+- nombre: Ojal
+  valor: en un solo paso
+- nombre: Enhebrador de aguja
+  valor: incorporado
+- nombre: Canilla
+  valor: Top Drop-In
+- nombre: Espacio de costura
+  valor: 160 mm (aguja a torre) y 109 mm de altura
+- nombre: Tamaño
+  valor: 45,1 × 19,7 × 28,1 cm (largo × ancho × alto)
 - nombre: Peso
   valor: 6,2 kg
 - nombre: Garantía
   valor: 25/2/90
 - nombre: Accesorios incluidos
-  valor: Pie universal, Pie para cremallera, Pie para ojales, Pie para dobladillo ciego, Pie para puntada de satén, Paquete de 3 agujas SINGER
+  valor: pie universal, para cremallera, para ojales, para dobladillo ciego y para puntada de satén; 3 agujas Singer
 ---
-Costura mecánica ingeniosa y fácil de usar. 110 aplicaciones de puntada le permiten crear proyectos tal y como se pretende, moviéndolos con gracia.
+**La Singer Elite ME457 es una máquina mecánica ingeniosa y fácil de usar.** Sus 32 puntadas, con 110 aplicaciones, te permiten crear tus proyectos tal y como los imaginas.
+
+El enhebrador de aguja incorporado, el ojal en un solo paso y la canilla de carga superior te facilitan el trabajo, y sus 160 mm de espacio de costura te dan sitio para maniobrar.

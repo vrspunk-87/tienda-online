@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Mesa de planchar «Hurricane» rectangular de 150x80cm
 fabricante: jack
 modelo: JK-L5-15F-F82
@@ -11,6 +11,31 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-l5-15f-f82-1.jpg
-description: Mesa rectangular de 150x80cm.
+description: Mesa de planchar rectangular Jack «Hurricane» de 150 × 80 cm con brazo y chimenea, aspiración ultrapotente de 4 velocidades y motor ciclónico que ahorra un 40 % de energía.
+destacados:
+- texto: Mesa rectangular de 150 × 80 cm
+- texto: Sistema de aspiración ultrapotente con 4 velocidades
+- texto: "Motor ciclónico: un 40 % de ahorro de energía frente a los motores convencionales"
+- texto: Plato siempre seco, sin condensación, aunque la mesa no lleva resistencias
+- texto: Equipada con brazo y chimenea
+caracteristicas:
+- nombre: Tipo
+  valor: mesa de planchar rectangular
+- nombre: Medidas
+  valor: 150 × 80 cm
+- nombre: Aspiración
+  valor: ultrapotente, 4 velocidades
+- nombre: Motor
+  valor: ciclónico (ahorro de energía del 40 % frente a motores convencionales)
+- nombre: Resistencias
+  valor: no lleva
+- nombre: Plato
+  valor: se mantiene seco (sin condensación)
+- nombre: Equipamiento
+  valor: brazo y chimenea
 ---
-Mesa rectangular de 150x80cm. Equipada con brazo y chimenea. Sistema de aspiración ultra potente con 4 velocidades. Incorpora con motor ciclónico (ahorro energético del 40% respecto a los motores convencionales). La mesa no lleva resistencias, pero el plato se mantiene siempre seco (no crea condensación) .
+**Jack «Hurricane»: aspiración ultrapotente en una mesa de 150 × 80 cm.** Equipada con brazo y chimenea, está pensada para talleres que planchan mucho y quieren hacerlo rápido.
+
+Su sistema de aspiración tiene 4 velocidades para adaptarse a cada prenda, y el motor ciclónico consume un 40 % menos de energía que un motor convencional.
+
+Aunque la mesa no lleva resistencias, el plato se mantiene siempre seco: no se forma condensación.

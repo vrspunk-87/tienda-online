@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: eXpressive 850
 fabricante: elna
 modelo: 850 eXpressive
@@ -13,25 +13,16 @@ imagenes:
   - imagen: /img/productos/elna-850-expressive-3.jpg
   - imagen: /img/productos/elna-850-expressive-4.jpg
   - imagen: /img/productos/elna-850-expressive-5.jpg
-description: Combinando una gran cantidad de impresionantes funciones, tanto de
-  costura como de bordado, la elna eXpressive 850 te proporcionará una
-  inspiración infinita para tus proyectos.
+description: "Máquina de coser y bordar con 200 puntadas de 9 mm, 172 diseños y pantalla táctil HD: pasa de coser a bordar sin retirar la unidad de bordado."
 destacados:
-  - texto: 200 puntadas, incluyendo 6 ojales automáticos y alfabeto
-  - texto: 9 mm ancho de puntada
+  - texto: Coser y bordar sin retirar la unidad de bordado
+  - texto: 200 puntadas de hasta 9 mm, con 6 ojales automáticos y alfabeto
   - texto: 172 diseños de bordado integrados
-  - texto: Espacio de trabajo grande de 210 x 120 mm
-  - texto: Cortahilos automático y programable
-  - texto: Enhebrador de aguja integrado
-  - texto: Sensor de hilo superior y canilla
-  - texto: Control de tensión de hilo automático
-  - texto: Fácil intercambio de prensatelas tipo clip
-  - texto: Cortahilos programable después de salto o cambio de color
-  - texto: Extensas funciones de edición de diseño accesibles directamente desde la
-      pantalla táctil LCD HD
-  - texto: Almacenaje de accesorios exclusivo Elna
-  - texto: Memoria integrada de 3 MB y puerto USB para transferir diseños
-  - texto: Unidad de bordado desmontable
+  - texto: Gran espacio de trabajo de 210 × 120 mm
+  - texto: Pantalla táctil LCD HD con edición de diseños
+  - texto: Cortahílos automático y programable
+  - texto: Enhebrador integrado, sensores de hilo y tensión automática
+  - texto: Memoria de 3 MB y puerto USB
   - texto: 11 prensatelas especiales incluidos
 caracteristicas:
   - nombre: Tamaño máquina
@@ -105,7 +96,7 @@ caracteristicas:
   - nombre: Longitud máxima de puntada (mm)
     valor: 5 mm
   - nombre: Velocidad máxima de costura
-    valor: 1000 spm
+    valor: 1.000 spm
   - nombre: Ojales en un solo paso
     valor: 6 (automático)
   - nombre: Alfabeto
@@ -137,4 +128,8 @@ caracteristicas:
   - nombre: Aro de brazo libre opcional
     valor: Sí
 ---
-Combinando una gran cantidad de impresionantes funciones, tanto de costura como de bordado, la elna eXpressive 850 te proporcionará una inspiración infinita para tus proyectos. El hecho de que la unidad de bordado de este modelo no necesita retirarse para coser, es muy fácil cambiar de un modo a otro.
+**Con una gran cantidad de funciones de costura y bordado, la Elna eXpressive 850 te dará inspiración infinita para tus proyectos.** Como su unidad de bordado no necesita retirarse para coser, cambiar de un modo a otro es muy fácil.
+
+Para coser, tienes 200 puntadas con hasta 9 mm de anchura, 6 ojales automáticos y alfabeto, sobre un gran espacio de trabajo de 210 × 120 mm. Para bordar, 172 diseños integrados, 3 fuentes y monogramas de 2 y 3 letras, que puedes editar directamente en su pantalla táctil LCD HD.
+
+El cortahílos automático y programable, el enhebrador integrado, los sensores de hilo superior y de canilla, la tensión automática del hilo y los prensatelas con sistema de clip hacen el trabajo muy cómodo. Con memoria de 3 MB, puerto USB y 11 prensatelas especiales incluidos.

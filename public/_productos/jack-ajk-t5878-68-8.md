@@ -11,6 +11,17 @@ date: '2026-11-09T12:00:00.000+01:00'
 precio: 454.96
 estado: disponible
 condicion: nuevo
-description: Galga 8mm para los autómatas de bolsillos de vivo JK-T5878-68B y JK-T5878-78B.
+description: Galga de 8 mm para los autómatas de bolsillos de vivo Jack JK-T5878-68B y JK-T5878-78B.
+destacados:
+- texto: Galga de 8 mm
+- texto: Para los autómatas de bolsillos de vivo JK-T5878-68B y JK-T5878-78B
+- texto: Accesorio opcional
+caracteristicas:
+- nombre: Tipo
+  valor: galga para autómata de bolsillos
+- nombre: Medida
+  valor: 8 mm
+- nombre: Compatible con
+  valor: Jack JK-T5878-68B y JK-T5878-78B
 ---
-Galga 8mm para los autómatas de bolsillos de vivo JK-T5878-68B y JK-T5878-78B.
+**Galga de 8 mm para tu autómata de bolsillos Jack.** Accesorio opcional para los autómatas de bolsillos de vivo JK-T5878-68B y JK-T5878-78B.

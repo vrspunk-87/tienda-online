@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Canillas bernette b70/b77/b79/Chicago 5/7 (blíster de 10)
 fabricante: bernette
 modelo: Canillas b70/b77/b79/Chicago
@@ -19,6 +19,17 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernette-canillas-b70-b77-b79-chicago-1.jpg
   alt: Canillas bernette b70/b77/b79/Chicago 5/7 (blíster de 10)
-description: Las bobinas bernette mantienen siempre constante la tensión del hilo.
+description: "Blíster de 10 canillas bernette para b70 DECO, b77, b79 (también Yaya Han Edition), Chicago 5 y Chicago 7: mantienen siempre constante la tensión del hilo."
+destacados:
+- texto: Mantienen constante la tensión del hilo
+- texto: Para costura y bordado precisos
+- texto: Blíster de 10 canillas
+caracteristicas:
+- nombre: Tipo
+  valor: canillas
+- nombre: Unidades
+  valor: 10 (blíster)
+- nombre: Compatible con
+  valor: bernette b70 DECO, b77, b79 (también Yaya Han Edition), Chicago 5 y Chicago 7
 ---
-Las bobinas bernette mantienen siempre constante la tensión del hilo. Le permiten realizar proyectos de costura y bordado precisos. Las bobinas están disponibles en paquetes de diez.
+**Las canillas bernette mantienen siempre constante la tensión del hilo**, para que tus proyectos de costura y bordado salgan precisos. Se venden en blíster de 10 unidades y son las adecuadas para tu bernette b70 DECO, b77, b79 (también Yaya Han Edition), Chicago 5 y Chicago 7.

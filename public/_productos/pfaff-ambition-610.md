@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Ambition 610
 fabricante: pfaff
 modelo: Ambition 610
@@ -15,12 +15,15 @@ imagenes:
 - imagen: /img/productos/pfaff-ambition-610-3.jpg
 - imagen: /img/productos/pfaff-ambition-610-4.jpg
 - imagen: /img/productos/pfaff-ambition-610-5.jpg
-description: Dirija su creatividad con la máquina de coser ambition 610.
+description: "Máquina de coser PFAFF ambition 610 con sistema IDT de doble arrastre, 110 puntadas y gran espacio de costura de 200 mm: tecnología duradera y manejo ingenioso."
 destacados:
-- texto: IDT Alimentación doble integrada
+- texto: Sistema Original IDT de doble arrastre integrado
+- texto: 110 puntadas
+- texto: Gran espacio de costura de 200 mm
 - texto: Pantalla LCD
-- texto: Gran espacio de costura de 200 mm (casi 8")
-- texto: 110 puntos
+- texto: Enhebrador de agujas incorporado
+- texto: Botón start/stop y deslizador de velocidad
+- texto: Aguja arriba/abajo
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '110'
@@ -55,4 +58,6 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '7'
 ---
-Dirija su creatividad con la máquina de coser ambition 610. Su tecnología duradera y su funcionamiento ingenioso hacen que esta máquina destaque. Póngase en marcha con los 21 accesorios gratuitos que se incluyen a continuación.
+**Dirige tu creatividad con la PFAFF ambition 610.** Su tecnología duradera y su funcionamiento ingenioso hacen que esta máquina destaque.
+
+Su sistema Original IDT, el doble arrastre integrado de PFAFF, hace avanzar el tejido por arriba y por abajo a la vez, para costuras perfectas en cualquier tela. Tienes 110 puntadas, 200 mm de espacio a la derecha de la aguja, pantalla LCD, enhebrador de agujas incorporado, botón start/stop, deslizador de velocidad y aguja arriba/abajo.

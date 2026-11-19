@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser 393 TDL
 fabricante: alfa
 modelo: 393 TDL
@@ -14,22 +14,43 @@ imagenes:
 - imagen: /img/productos/alfa-393-tdl-2.jpg
 - imagen: /img/productos/alfa-393-tdl-3.jpg
 - imagen: /img/productos/alfa-393-tdl-4.jpg
-description: Máquina de coser zig-zag doméstica de base plana.
+description: "Máquina de coser zig-zag de base plana, robusta y estable: armazón y piezas interiores metálicas para un uso intensivo en talleres, lavanderías u hoteles."
 destacados:
-- texto: Base plana
+- texto: "Armazón y piezas interiores metálicas: fuerte y muy estable"
+- texto: "23 puntadas: 11 automáticas y 11 superautomáticas"
+- texto: Gran potencia de arrastre para tejidos gruesos
+- texto: Doble altura del prensatelas
 - texto: Ojal automático en 4 tiempos
-- texto: Doble altura de prensatelas para géneros gruesos
-- texto: Dispositivo de seguridad para colocación de aguja
-- texto: Motor 60 W – Lámpara 15 W con volante para trabajar con correa de cuero
-- texto: '23 Diseños: 11 diseños automáticos. 11 diseños súper automáticos'
-- texto: Posibilidad de instalar en mueble
-- texto: Mando selector de longitud de puntada
+- texto: Posibilidad de instalarla en mueble
 - texto: Incluye juego de accesorios
 caracteristicas:
 - nombre: Tipo
   valor: zig-zag doméstica
-- valor: Base plana
+- nombre: Base
+  valor: plana
+- nombre: Puntadas
+  valor: 23 (11 automáticas y 11 superautomáticas)
+- nombre: Ojal
+  valor: automático en 4 tiempos
+- nombre: Altura del prensatelas
+  valor: doble, para géneros gruesos
+- nombre: Selector de longitud de puntada
+  valor: mando
+- nombre: Seguridad
+  valor: dispositivo para la colocación de la aguja
+- nombre: Motor
+  valor: 60 W
+- nombre: Lámpara
+  valor: 15 W
+- nombre: Volante
+  valor: para trabajar con correa de cuero
+- nombre: Instalación en mueble
+  valor: posible
+- nombre: Accesorios incluidos
+  valor: juego de accesorios
 ---
-Máquina de coser zig-zag doméstica de base plana.
+**La Alfa 393 TDL es una máquina muy dura, ideal para lavanderías, hoteles, hospitales o talleres.** Su armazón y sus piezas interiores son metálicas, lo que la convierte en una máquina fuerte y súper estable.
 
-La Alfa 393 TDL es una máquina muy dura ideal para lavanderías, hoteles, hospitales, talleres, etc. El armazón y las piezas interiores son metálicas, lo que la convierten en una máquina fuerte y super estable. Podrás coser de todo con sus 23 tipos de puntadas y tejidos gruesos gracias a su gran potencia de arrastre y a su doble altura de prensatelas. Además, y si te resulta más cómodo, tiene la posibilidad de instalarla en mueble.
+Podrás coser de todo con sus 23 tipos de puntadas, y también tejidos gruesos, gracias a su gran potencia de arrastre y a la doble altura del prensatelas. Hace los ojales automáticamente en 4 tiempos.
+
+Además, si te resulta más cómodo, puedes instalarla en un mueble.

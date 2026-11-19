@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Smarter 140S
 fabricante: pfaff
 modelo: Smarter 140S
@@ -15,11 +15,15 @@ imagenes:
 - imagen: /img/productos/pfaff-smarter-140s-3.jpg
 - imagen: /img/productos/pfaff-smarter-140s-4.jpg
 - imagen: /img/productos/pfaff-smarter-140s-5.jpg
-description: Desarrolle sus habilidades de costura con funciones inteligentes que incluyen un enhebrador de agujas y 21 puntadas con una anchura ajustable de 6 mm.
+description: "PFAFF smarter 140S: 21 puntadas con anchura ajustable de 6 mm y enhebrador de agujas, para desarrollar tus habilidades de costura."
 destacados:
-- texto: Ancho de puntada ajustable de 6 mm
+- texto: 21 puntadas
+- texto: Anchura de puntada ajustable hasta 6 mm
+- texto: Enhebrador de agujas incorporado
 - texto: Luz LED
+- texto: 160 mm de espacio de costura
 - texto: Tapa dura incluida
+- texto: 16 accesorios incluidos
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '21'
@@ -44,4 +48,6 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '16'
 ---
-Desarrolle sus habilidades de costura con funciones inteligentes que incluyen un enhebrador de agujas y 21 puntadas con una anchura ajustable de 6 mm. Empiece a coser con los 16 accesorios gratuitos que se incluyen a continuación.
+**Desarrolla tus habilidades de costura con la PFAFF smarter 140S.** Sus funciones inteligentes te lo ponen fácil: 21 puntadas con anchura ajustable hasta 6 mm y un enhebrador de agujas fácil de usar.
+
+Con luz LED, 160 mm de espacio de costura y una velocidad de hasta 750 puntadas por minuto. Incluye tapa dura y 16 accesorios para empezar a coser enseguida.

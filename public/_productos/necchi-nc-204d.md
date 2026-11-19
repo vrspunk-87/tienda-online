@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de brazo libre, con 439 funciones
 fabricante: necchi
 modelo: NC-204D
@@ -14,32 +14,65 @@ imagenes:
 - imagen: /img/productos/necchi-nc-204d-2.jpg
 - imagen: /img/productos/necchi-nc-204d-3.jpg
 - imagen: /img/productos/necchi-nc-204d-4.jpg
-description: De brazo libre, con 439 funciones. Con cortahílos, 13 ojales en un sólo paso y enhebrador automático.
+description: Máquina de coser electrónica Necchi NC-204D de brazo libre con 439 puntadas, 13 ojales en un solo paso con prensatelas electrónico y enhebrador automático.
 destacados:
-- texto: Con cortahílos, 13 ojales en un sólo paso y enhebrador automático.
-- texto: Motor DC arranque y aceleración más eficiente. Menor consumo.
+- texto: 439 puntadas
+- texto: 13 ojales en un solo paso con prensatelas electrónico
+- texto: Enhebrador automático
+- texto: Cortahílos automático
+- texto: 3 alfabetos y 2 memorias
+- texto: Prensatelas de doble arrastre incluido
+- texto: Canilla horizontal
+- texto: Botón start/stop y selector de velocidad
+- texto: "Motor DC: arranque y aceleración más eficientes, menor consumo"
 caracteristicas:
-- valor: Longitud máxima de puntada a 4,5mm.
-- valor: Ancho de costura máximo de 7mm.
-- valor: 3 Alfabetos con letras mayúsculas, minúsculas, números y símbolos
-- valor: 2 Memorias alfanuméricas de hasta 40 caracteres
-- valor: Botón Start/Stop.
-- valor: Botón posicionador de aguja.
-- valor: Botón de remate.
-- valor: Selector de velocidad.
-- valor: Con 14 posiciones de aguja.
-- valor: Presión del prensatelas graduable.
-- valor: Garfio rotativo.
-- valor: Equipada con prensatelas electrónico de ojales.
-- valor: Equipada con prensatelas de doble arrastre.
-- valor: Velocidad máxima de 800ppm.
-- valor: Motor DC arranque y aceleración más eficiente. Menor consumo.
-- valor: Consumo de 70w
-- valor: Base de extensión.
-- valor: Funda blanda.
+- nombre: Tipo
+  valor: electrónica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: "439"
+- nombre: Ojales
+  valor: 13 ojales en un solo paso con prensatelas electrónico
+- nombre: Longitud máxima de puntada
+  valor: 4,5 mm
+- nombre: Anchura máxima de puntada
+  valor: 7 mm
+- nombre: Alfabetos
+  valor: 3, con mayúsculas, minúsculas, números y símbolos
+- nombre: Memoria
+  valor: 2, de hasta 40 caracteres
+- nombre: Posiciones de aguja
+  valor: "14"
+- nombre: Presión del prensatelas
+  valor: graduable
+- nombre: Canilla
+  valor: horizontal
+- nombre: Cortahílos
+  valor: automático
+- nombre: Prensatelas incluidos
+  valor: electrónico para ojales y de doble arrastre
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Botón de remate
+  valor: Sí
+- nombre: Selector de velocidad
+  valor: Sí
+- nombre: Garfio
+  valor: rotativo
+- nombre: Velocidad máxima
+  valor: 800 puntadas por minuto
+- nombre: Motor
+  valor: DC, arranque y aceleración eficientes
+- nombre: Consumo
+  valor: 70 W
+- nombre: Incluye
+  valor: base de extensión y funda blanda
 - nombre: Garantía
   valor: 3 años
 ---
-De brazo libre, con 439 funciones. Con cortahílos, 13 ojales en un sólo paso y enhebrador automático.
+**La Necchi NC-204D es la más completa de su serie, con 439 puntadas y cortahílos automático.** Tiene 439 puntadas, 13 ojales en un solo paso con prensatelas electrónico y enhebrador automático, con una longitud de puntada de hasta 4,5 mm y una anchura de hasta 7 mm. Incluye 3 alfabetos, 2 memorias, canilla horizontal, 14 posiciones de aguja y prensatelas de doble arrastre.
 
-439 Puntadas Sistema de colocación de canilla horizntal Cortahilos automático
+El botón start/stop te deja coser sin pedal, el selector de velocidad adapta el ritmo a cada labor y el botón de remate asegura tus costuras. Alcanza 800 puntadas por minuto, y su motor DC arranca y acelera de forma más eficiente y consume menos.
+
+Incluye base de extensión y funda blanda. Garantía de 3 años.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina overlock de 2 agujas cadeneta con cortahílos y motor Direc Drive
 fabricante: jack
 modelo: JK-C7-02X250
@@ -12,17 +12,55 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-c7-02x250-1.jpg
-description: Máquina overlock de 2 agujas cadeneta con cortahílos y motor Direc Drive. Equipada con embudo de 30mm doblando x4 para realizar el viveado de los bolsillos. Separación entre agujas 5mm.
+description: Overlock industrial Jack de 2 agujas de cadeneta con embudo de 30 mm para vivear bolsillos, inteligencia artificial, motor Direct Drive, cortahílos y hasta 7.000 ppm.
 destacados:
-- texto: Con A.I. (inteligencia artificial)
+- texto: Overlock de 2 agujas de cadeneta con cortahílos
+- texto: Embudo de 30 mm que dobla en 4 para vivear bolsillos
+- texto: Separación entre agujas de 5 mm
+- texto: "Inteligencia artificial: chip Octopus con arrastre SRF"
+- texto: Se adapta automáticamente al tejido y pasa los cruces de costura a toda velocidad
+- texto: Presión del prensatelas ajustada automáticamente al coser
+- texto: Cortacintas automático por células o por pulsador
+- texto: Alzaprensatelas electrónico con 10 posiciones
+- texto: Ajustes predefinidos para tejidos finos, medios o gruesos con un botón
+- texto: Instrucciones habladas en 16 idiomas
+- texto: Hasta 7.000 puntadas por minuto, luz LED
 caracteristicas:
-- valor: Con chip de A.I. Octopus, que combinado con su potente motor + el Su sistema de arrastre SRF, se adapta de forma automática en milésimas de segundo al tejido a trabajar y permite pasar los cruces de las costuras con suma facilidad a toda velocidad.
-- valor: Presión del prensatelas ajustable automáticamente durante la costura
-- valor: Cortacintas automático por células o por pulsador.
-- valor: Alza prensatelas electrónico con 10 posiciones.
-- valor: Incorpora ajustes predefinidos para tejidos Finos, Medios o Gruesos, simplemente pulsando un botón, facilitando al máximo el trabajo.
-- valor: Instrucciones habladas en 16 idiomas...Español, Portugués, Inglés...,
+- nombre: Tipo
+  valor: máquina overlock
+- nombre: Agujas
+  valor: 2 (cadeneta)
+- nombre: Separación entre agujas
+  valor: 5 mm
+- nombre: Embudo
+  valor: 30 mm, dobla en 4 (viveado de bolsillos)
+- nombre: Cortahílos
+  valor: Sí
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Inteligencia artificial
+  valor: chip Octopus con sistema de arrastre SRF
+- nombre: Presión del prensatelas
+  valor: ajuste automático durante la costura
+- nombre: Cortacintas
+  valor: automático, por células o por pulsador
+- nombre: Alzaprensatelas
+  valor: electrónico, 10 posiciones
+- nombre: Inclinación de los dientes
+  valor: ajustable con palanca
+- nombre: Velocidad máxima
+  valor: 7.000 puntadas por minuto
+- nombre: Ajustes predefinidos
+  valor: tejidos finos, medios o gruesos (con un botón)
+- nombre: Instrucciones habladas
+  valor: 16 idiomas (español, portugués, inglés…)
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina overlock de 2 agujas cadeneta con cortahílos y motor Direc Drive. Equipada con embudo de 30mm doblando x4 para realizar el viveado de los bolsillos. Separación entre agujas 5mm.
+**Jack JK-C7-02X250: overlock de cadeneta para el viveado de bolsillos.** Con 2 agujas de cadeneta separadas 5 mm y un embudo de 30 mm que dobla la tira en 4, está pensada para vivear bolsillos.
 
-Gama JK-C7: Máquinas overlocks Direc Drive. Equipadas con palanca de ajuste de inclinación de los dientes, velocidad máxima de 7000ppm y luz LED incorporada.
+### Inteligencia artificial
+Su chip Octopus, junto con el potente motor Direct Drive y el sistema de arrastre SRF, se adapta automáticamente al tejido en milésimas de segundo y pasa los cruces de costura con suma facilidad, a toda velocidad. La presión del prensatelas se ajusta sola mientras coses.
+
+### Equipamiento
+Cortacintas automático por células o por pulsador, alzaprensatelas electrónico con 10 posiciones, palanca de ajuste de la inclinación de los dientes, hasta 7.000 puntadas por minuto y luz LED. Además, con un botón eliges los ajustes predefinidos para tejidos finos, medios o gruesos, y te guía con instrucciones habladas en 16 idiomas.

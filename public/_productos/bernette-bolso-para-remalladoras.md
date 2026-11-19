@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bolso para remalladoras bernette
 fabricante: bernette
 modelo: Bolso para remalladoras
@@ -12,4 +12,12 @@ condicion: nuevo
 imagenes:
   - imagen: /img/productos/bernette-bolso-para-remalladoras-1.jpg
   - imagen: /img/productos/bernette-bolso-para-remalladoras-2.jpg
+description: Bolso bernette para transportar y guardar tu remalladora.
+destacados:
+  - texto: Bolso de la marca bernette
+  - texto: Para remalladoras
+caracteristicas:
+  - nombre: Tipo
+    valor: bolso para remalladora
 ---
+Bolso bernette para transportar y guardar tu remalladora con comodidad.

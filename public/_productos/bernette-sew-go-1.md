@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernette Sew&Go 1
 fabricante: bernette
 modelo: Sew&Go 1
@@ -15,11 +15,13 @@ imagenes:
 - imagen: /img/productos/bernette-sew-go-1-3.jpg
 - imagen: /img/productos/bernette-sew-go-1-4.jpg
 - imagen: /img/productos/bernette-sew-go-1-5.jpg
-description: La bernette sew&go 1 es una máquina de coser mecánica y el modelo de iniciación de la familia sew&go.
+description: "El modelo de iniciación de la familia sew&go: máquina mecánica sencilla y clara, con 10 puntadas, a un precio muy económico."
 destacados:
+- texto: 10 puntadas
+- texto: Anchura de puntada de hasta 5 mm
 - texto: Selección de puntada sencilla
+- texto: Presión del prensatelas ajustable
 - texto: Alzaprensatelas de dos niveles
-- texto: Presión del prensatelas
 - texto: Diseño joven
 caracteristicas:
 - nombre: Número total de puntadas
@@ -35,4 +37,4 @@ caracteristicas:
 - nombre: Presión del prensatelas ajustable
   valor: Sí
 ---
-La bernette sew&go 1 es una máquina de coser mecánica y el modelo de iniciación de la familia sew&go. Con 10 puntadas y una anchura máxima de puntada de 5 mm, ofrece unas funciones básicas excelentes a un precio muy económico. Es clara, fácil de usar y, por eso, perfecta para quienes empiezan a coser. Los accesorios de serie ya incluyen cuatro prensatelas (suelas), entre ellos el prensatelas para ojales y un prensatelas para cremalleras.
+**La bernette sew&go 1 es una máquina de coser mecánica y el modelo de iniciación de la familia sew&go.** Con 10 puntadas y una anchura máxima de puntada de 5 mm, ofrece unas funciones básicas excelentes a un precio muy económico. Es clara, fácil de usar y, por eso, perfecta para quienes empiezan a coser. Los accesorios de serie ya incluyen cuatro prensatelas (suelas), entre ellos el prensatelas para ojales y un prensatelas para cremalleras.

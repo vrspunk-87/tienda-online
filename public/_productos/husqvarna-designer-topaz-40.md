@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking DESIGNER TOPAZ 40
 fabricante: husqvarna
 modelo: DESIGNER TOPAZ 40
@@ -13,49 +13,17 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-topaz-40-1.jpg
 - imagen: /img/productos/husqvarna-designer-topaz-40-2.jpg
 - imagen: /img/productos/husqvarna-designer-topaz-40-3.jpg
-description: Diseñada con un espacio fantástico y funciones de asistencia exclusivas e integradas, la máquina DESIGNER TOPAZ 40 proporciona lo último en creatividad.
+description: Máquina de coser y bordar con bastidor de hasta 240 × 150 mm, 208 puntadas, 150 diseños de bordado, pantalla táctil a color y cortahilos automático.
 destacados:
-- texto: Cortador de hilo selectivo / automático con recorte automático de puntadas de salto
-- texto: Hilvanar en bastidor
-- texto: Bordado paso a paso por colores y puntada a puntada
-- texto: Seleccionar diseños a partir de imágenes en miniatura
-- texto: Carga y visualización de diseños multiformato
-- texto: Diseño a escala
-- texto: Rotar diseños
-- texto: Incrementos de un grado
-- texto: Edición de color
-- texto: Seleccione si desea bordar en color o monocromo
-- texto: Zoom y panorámica
-- texto: Marca del cursor en pantalla mientras se borda
-- texto: Mis bastidores
-- texto: Tensión de hilo electrónica autoajustable
-- texto: Sistema exclusivo de sensores
-- texto: EXCLUSIVO SEWING ADVISOR
-- texto: Costura a mano alzada
-- texto: 2 Modos
-- texto: Posicionamiento de la puntada
-- texto: La luz indica la parada de la aguja arriba/abajo
-- texto: Función STOP
-- texto: Función FIX Tie-Off
-- texto: Reinicio del patrón de puntadas
-- texto: Puntadas mostradas en pantalla
-- texto: Ajuste de agujas gemelas
-- texto: Tipo de pantalla
-- texto: Pantalla táctil a todo color de 3,5" (70 x 53 mm)
-- texto: Sensor de hilo superior y de bobina
-- texto: Coser y Bordar Con o Sin Pedal
-- texto: Inversión instantánea y permanente
-- texto: Placa de doble puntada extendida
-- texto: Directrices de hasta 40 mm a ambos lados de la aguja
-- texto: Sistema de ayuda rápida directamente en pantalla
-- texto: Actualizaciones por Internet
-- texto: Mediante memoria USB para bordar
-- texto: Funciones de memoria en pantalla
-- texto: Mis archivos y la memoria USB de bordado
-- texto: Conectividad USB
-- texto: Memoria USB
-- texto: Almacenamiento de máquinas incluido
-- texto: Tapa dura
+- texto: Bastidor de bordado de hasta 240 × 150 mm
+- texto: 150 diseños de bordado y 208 puntadas incorporados
+- texto: Pantalla táctil a todo color de 3,5"
+- texto: EXCLUSIVE SEWING ADVISOR y EXCLUSIVE SENSOR SYSTEM
+- texto: Tensión del hilo electrónica autoajustable
+- texto: Cortahilos automático con recorte de puntadas de salto
+- texto: Combina hasta 5 diseños en la pantalla
+- texto: 200 mm de espacio a la derecha de la aguja
+- texto: Tapa dura incluida
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 957156096
@@ -103,4 +71,10 @@ caracteristicas:
 - nombre: Varios idiomas
   valor: '12'
 ---
-Diseñada con un espacio fantástico y funciones de asistencia exclusivas e integradas, la máquina DESIGNER TOPAZ 40 proporciona lo último en creatividad. Empiece a trabajar con los 32 accesorios gratuitos que se enumeran a continuación.
+**La DESIGNER TOPAZ 40 te da espacio y ayudas integradas para crear sin complicaciones.** Cose y borda en la misma máquina con un bastidor de hasta 240 × 150 mm, 150 diseños de bordado y 208 puntadas.
+
+### Bordar es sencillo
+Elige los diseños por miniaturas, combínalos (hasta 5), gíralos grado a grado y cámbialos de tamaño en la pantalla táctil a color. El bordado paso a paso por colores, el hilvanado en el bastidor y el cortahilos automático con recorte de saltos te ahorran trabajo.
+
+### Y coser, también
+El EXCLUSIVE SEWING ADVISOR propone los ajustes según el tejido, la tensión electrónica se regula sola y tienes 29 posiciones de aguja, 7 ojales con el prensatelas Sensor One-Step y 2 modos de costura a mano alzada. Incluye tapa dura.

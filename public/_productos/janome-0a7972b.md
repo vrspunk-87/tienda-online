@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Mesa de extensión para 3612, Pink 12, Green 12, 3622S, Black 22S y Roja
 fabricante: janome
 modelo: 0A7972B
@@ -19,11 +19,19 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/janome-0a7972b-1.jpg
 - imagen: /img/productos/janome-0a7972b-2.jpg
-description: Mesa de extensión para la máquina 3622S de 40x28 cm y color blanco.
+description: Mesa de extensión blanca de 40 × 28 cm para las Janome 3612, Pink 12, Green 12, 3622S, Black 22S y Roja.
 caracteristicas:
+- nombre: Tipo
+  valor: mesa de extensión
 - nombre: Medidas
-  valor: 40x28 cm
+  valor: 40 × 28 cm
 - nombre: Color
   valor: blanco
+- nombre: Compatible con
+  valor: Janome 3612, Pink 12, Green 12, 3622S, Black 22S y Roja
+destacados:
+- texto: Amplía la superficie de trabajo
+- texto: "Medidas: 40 × 28 cm"
+- texto: Color blanco
 ---
-Mesa de extensión para la máquina 3622S de 40x28 cm y color blanco.
+Mesa de extensión blanca de 40 × 28 cm para tu Janome 3612, Pink 12, Green 12, 3622S, Black 22S o Roja: amplía la superficie de trabajo para coser con más comodidad.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Mesa de extensión 423S
 fabricante: janome
 modelo: 0A7974A
@@ -15,11 +15,19 @@ imagenes:
 - imagen: /img/productos/janome-0a7974a-1.jpg
 - imagen: /img/productos/janome-0a7974a-2.jpg
 - imagen: /img/productos/janome-0a7974a-3.jpg
-description: Mesa de extensión para la máquina 423S de 41x22,5 cm y color blanco.
+description: Mesa de extensión blanca de 41 × 22,5 cm para la Janome 423S.
 caracteristicas:
+- nombre: Tipo
+  valor: mesa de extensión
 - nombre: Medidas
-  valor: 41x22,5 cm
+  valor: 41 × 22,5 cm
 - nombre: Color
   valor: blanco
+- nombre: Compatible con
+  valor: Janome 423S
+destacados:
+- texto: Amplía la superficie de trabajo
+- texto: "Medidas: 41 × 22,5 cm"
+- texto: Color blanco
 ---
-Mesa de extensión para la máquina 423S de 41x22,5 cm y color blanco.
+Mesa de extensión blanca de 41 × 22,5 cm para tu Janome 423S: amplía la superficie de trabajo para coser con más comodidad.

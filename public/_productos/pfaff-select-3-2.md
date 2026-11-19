@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Select 3.2
 fabricante: pfaff
 modelo: Select 3.2
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-select-3-2-3.jpg
 - imagen: /img/productos/pfaff-select-3-2-4.jpg
 - imagen: /img/productos/pfaff-select-3-2-5.jpg
-description: Disfrute de toda la comodidad de la tecnología moderna más algunos extras que harán que su costura sea aún más divertida y creativa.
+description: "PFAFF select 3.2: la comodidad de la tecnología moderna con el sistema Original IDT, 27 puntadas y enhebrador de agujas integrado."
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '27'
@@ -41,5 +41,15 @@ caracteristicas:
   valor: 11,5 kg (25,4 lb.)
 - nombre: Nº de Accesorios incluidos
   valor: '15'
+destacados:
+- texto: Sistema Original IDT de doble arrastre integrado
+- texto: 27 puntadas
+- texto: Sistema Easy Select
+- texto: Poder de perforación constante de la aguja
+- texto: Enhebrador de agujas incorporado
+- texto: Hasta 900 puntadas por minuto
+- texto: 173 mm de espacio de costura
 ---
-Disfrute de toda la comodidad de la tecnología moderna más algunos extras que harán que su costura sea aún más divertida y creativa. Explore la versatilidad y facilidad inquebrantables con la máquina de coser PFAFF select 3.2.
+**La PFAFF select 3.2 te ofrece toda la comodidad de la tecnología moderna, con extras que hacen que coser sea aún más divertido y creativo.** Descubre una versatilidad y una facilidad inigualables con los sistemas Original IDT y Easy Select.
+
+El sistema IDT, el doble arrastre integrado de PFAFF, hace avanzar el tejido de forma uniforme por arriba y por abajo, y la aguja mantiene un poder de perforación constante. Tienes 27 puntadas, enhebrador de agujas incorporado, 173 mm de espacio de costura y una velocidad de hasta 900 puntadas por minuto.

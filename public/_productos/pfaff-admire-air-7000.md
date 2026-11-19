@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora PFAFF Admire Air 7000
 fabricante: pfaff
 modelo: Admire Air 7000
@@ -15,9 +15,16 @@ imagenes:
 - imagen: /img/productos/pfaff-admire-air-7000-3.jpg
 - imagen: /img/productos/pfaff-admire-air-7000-4.jpg
 - imagen: /img/productos/pfaff-admire-air-7000-5.jpg
-description: Disfrute de funciones de primera línea (¡fáciles de usar!) y resultados superiores, con 26 puntadas, enhebrado neumático de 1 toque, mesa extensible, pantalla táctil en color y mucho más.
+description: "PFAFF admire air 7000: funciones de primera línea y fáciles de usar, con 26 puntadas, enhebrado neumático de un toque, pantalla táctil a color y mesa extensible."
 destacados:
-- texto: Tensión del hilo
+- texto: 26 puntadas
+- texto: Enhebrado neumático de un toque
+- texto: Pantalla táctil a color
+- texto: Enhebrador de agujas automático
+- texto: Rodillera electrónica
+- texto: Mesa extensible
+- texto: Hasta 1.300 puntadas por minuto
+- texto: 25 accesorios incluidos
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '26'
@@ -42,4 +49,6 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '25'
 ---
-Disfrute de funciones de primera línea (¡fáciles de usar!) y resultados superiores, con 26 puntadas, enhebrado neumático de 1 toque, mesa extensible, pantalla táctil en color y mucho más.
+**La PFAFF admire air 7000 te ofrece funciones de primera línea, fáciles de usar, y resultados superiores.** Tiene 26 puntadas y enhebrado neumático de un toque para las áncoras, y se maneja desde una pantalla táctil a color.
+
+Con enhebrador de agujas automático, rodillera electrónica, mesa extensible, 123 mm de espacio de costura y hasta 1.300 puntadas por minuto. Incluye 25 accesorios.

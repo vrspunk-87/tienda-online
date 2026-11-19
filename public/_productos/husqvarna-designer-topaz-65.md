@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking DESIGNER TOPAZ 65
 fabricante: husqvarna
 modelo: DESIGNER TOPAZ 65
@@ -15,39 +15,17 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-topaz-65-3.jpg
 - imagen: /img/productos/husqvarna-designer-topaz-65-4.jpg
 - imagen: /img/productos/husqvarna-designer-topaz-65-5.jpg
-description: La máquina de coser y bordar DESIGNER TOPAZ 65 llevará el bordado a tu mundo, con una gran área de bordado, posición exacta y diseños de técnicas especiales
+description: Máquina de coser y bordar con gran área de bordado, posición exacta, 340 diseños, 472 puntadas, enhebrador automático y conectividad creativate.
 destacados:
-- texto: CREATIVATE Conectividad habilitada
-- texto: JoyOS ADVISOR
-- texto: Gran pantalla táctil en color
-- texto: EXCLUSIVE SENSOR SYSTEM
-- texto: Enhebrador automático de agujas
-- texto: Posición exacta
-- texto: Fuerte poder de perforación
-- texto: Cortador de hilo automático
-- texto: Diseños de Técnicas Especiales
-- texto: Personalización de diseños de bordado
-- texto: Opciones de hilvanado
-- texto: Recorte automático de puntadas de salto
-- texto: Crear secuencia
-- texto: Ojal Sensor de un paso
-- texto: Posicionamiento de puntada
-- texto: Balance de puntada
-- texto: Conicidad en puntadas decorativas
-- texto: Costura de movimiento libre con puntadas decorativas
-- texto: Seguridad para agujas gemelas
-- texto: Seguridad de ancho de puntada
+- texto: 340 diseños de bordado con 8 fuentes y diseños de técnicas especiales
+- texto: Posición exacta para colocar los bordados con precisión
+- texto: 472 puntadas de hasta 7 mm de ancho
+- texto: Gran pantalla táctil en color con JoyOS ADVISOR
+- texto: EXCLUSIVE SENSOR SYSTEM y tensión automática del hilo
+- texto: Enhebrador automático y cortahilos automático
 - texto: Elevación automática del prensatelas
-- texto: Ayuda rápida
-- texto: Sensores de hilo superior y de bobina
-- texto: Tensión automática del hilo
-- texto: Guardado inteligente
-- texto: Iluminación LED
-- texto: Bobinado a través de la aguja
-- texto: Gancho rotativo a prueba de atascos
-- texto: Puerto USB
-- texto: Bandeja para accesorios
-- texto: Regla en pulgadas/cm en la placa base
+- texto: Conectividad creativate
+- texto: 51 accesorios incluidos
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 957409096
@@ -68,4 +46,10 @@ caracteristicas:
 - nombre: Dimensiones de la máquina
   valor: 535 x 251 x 310 mm
 ---
-La máquina de coser y bordar DESIGNER TOPAZ 65 llevará el bordado a tu mundo, con una gran área de bordado, posición exacta y diseños de técnicas especiales
+**La DESIGNER TOPAZ 65 lleva el bordado a tu mundo.** Su gran área de bordado, la función de posición exacta y los diseños de técnicas especiales te permiten personalizar prendas y proyectos con resultados muy cuidados.
+
+### Bordado a tu medida
+Elige entre 340 diseños con 8 fuentes de bordado, personalízalos en la pantalla táctil en color y deja que el cortahilos automático recorte las puntadas de salto. Incluye opciones de hilvanado para que la tela no se mueva.
+
+### Costura con ayudas inteligentes
+472 puntadas de hasta 7 mm, 29 posiciones de aguja, ojal Sensor de un paso, tensión automática, elevación automática del prensatelas y enhebrador automático. El JoyOS ADVISOR y el EXCLUSIVE SENSOR SYSTEM te guían y adaptan la máquina al tejido. Cose hasta 1.000 puntadas por minuto y viene con 51 accesorios.

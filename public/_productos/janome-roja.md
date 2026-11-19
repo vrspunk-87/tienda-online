@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Janome Roja
 fabricante: janome
 modelo: Roja
@@ -16,17 +16,37 @@ imagenes:
   alt: 'Caja de la Janome Roja'
 - imagen: /img/productos/janome-roja-3.jpg
   alt: 'Puntadas de la Janome Roja'
-description: Máquina doméstica de brazo libre y lanzadera central oscilante equipada con 15 funciones diferentes.
+description: "Máquina de coser mecánica Janome Roja de brazo libre con 15 puntadas y ojal en 4 pasos, edición limitada: robusta, sencilla y con portaconos y prensatelas metálicos."
 destacados:
 - texto: Edición limitada
-- texto: 15 funciones diferentes
+- texto: 15 puntadas
 - texto: Ojal en 4 pasos
-- texto: Portaconos metálico
-- texto: Prensatelas metálico
+- texto: Portaconos y prensatelas metálicos
+- texto: Hasta 860 puntadas por minuto
 caracteristicas:
-- nombre: Velocidad máxima
-  valor: 860 PPM
+- nombre: Tipo
+  valor: mecánica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Lanzadera
+  valor: central oscilante
 - nombre: Puntadas
-  valor: A a G
+  valor: 15 (A a G)
+- nombre: Ojal
+  valor: en 4 pasos
+- nombre: Edición
+  valor: limitada
+- nombre: Color
+  valor: rojo
+- nombre: Funda
+  valor: de plástico
+- nombre: Portaconos
+  valor: metálico
+- nombre: Prensatelas
+  valor: metálico
+- nombre: Velocidad máxima
+  valor: 860 puntadas por minuto
 ---
-Máquina doméstica de brazo libre y lanzadera central oscilante equipada con 15 funciones diferentes. Ojal en 4 pasos, velocidad máxima 860 PPM, funda de plástico y soportes para poner los conos de hilo en metal (no plástico).
+**La Janome Roja es una máquina de coser mecánica de brazo libre, robusta y sencilla, en edición limitada en color rojo.** Con sus 15 puntadas y el ojal en 4 pasos tendrás todo lo necesario para la costura del día a día.
+
+Su lanzadera central oscilante, el prensatelas metálico y los soportes de conos de hilo en metal, no de plástico, le dan solidez. Alcanza hasta 860 puntadas por minuto e incluye funda de plástico.

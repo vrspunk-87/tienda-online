@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Recubridora de 3 agujas con brazo libre
 fabricante: elna
 modelo: EASYCOVER
@@ -15,28 +15,47 @@ imagenes:
 - imagen: /img/productos/elna-easycover-3.jpg
 - imagen: /img/productos/elna-easycover-4.jpg
 - imagen: /img/productos/elna-easycover-5.jpg
-description: Recubridora de 3 agujas con brazo libre.
+description: "La recubridora más sencilla de Elna: 3 agujas, brazo libre y motor de última generación para dobladillos y cadenetas perfectos, del jersey fino al tejido grueso."
 destacados:
-- texto: Sistema de enhebrado semi automático del ancora.
+- texto: La recubridora más sencilla de utilizar
+- texto: Recubre con 2 agujas (3 o 6 mm) o 3 agujas (6 mm), y cose cadeneta
+- texto: Se adapta a todo tipo de telas, del jersey fino al tejido grueso
+- texto: Enhebrado semiautomático del áncora
+- texto: Brazo libre
+- texto: Transporte diferencial regulable
+- texto: Sistema TLC para tejidos finos y medios
 caracteristicas:
-- valor: Funciones de Costura
-- valor: Realiza costuras de recubierto con 2 agujas a un acho de 3mm o con un ancho de 6mm, según las agujas escogidas.
-- valor: Realiza costuras de recubierto con 3 agujas a un ancho de 6mm.
-- valor: Realiza costuras de cadeneta a 1 aguja.
-- valor: Características de la Máquina
-- valor: Longitud de puntada regulable de 1- 4mm.
-- valor: Transporte diferencial regulable de 0,5 - 2.25mm.
-- valor: Sistema de enhebrado semi automático del ancora.
-- valor: Control TLC-System ajuste tensión tejidos finos y medios.
-- valor: Presión del prensatelas graduable.
-- valor: Palanca para subir o bajar el prensatelas.
-- valor: Velocidad máxima de 1000ppm.
-- valor: Motor de 120w de 7600rpm con una potencia de 0.150Nm
-- valor: Consumo de 90w.
-- valor: Con funda de plástico.
+- nombre: Tipo
+  valor: recubridora
+- nombre: Agujas
+  valor: "3"
+- nombre: Recubierto con 2 agujas
+  valor: 3 o 6 mm de ancho
+- nombre: Recubierto con 3 agujas
+  valor: 6 mm de ancho
+- nombre: Cadeneta
+  valor: 1 aguja
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Enhebrado del áncora
+  valor: semiautomático
+- nombre: Longitud de puntada
+  valor: de 1 a 4 mm
+- nombre: Transporte diferencial
+  valor: de 0,5 a 2,25 mm
+- nombre: Control de tensión
+  valor: sistema TLC para tejidos finos y medios
+- nombre: Presión del prensatelas
+  valor: graduable
+- nombre: Velocidad máxima
+  valor: 1.000 puntadas por minuto
+- nombre: Motor
+  valor: 120 W, 7.600 rpm, 0,150 Nm
+- nombre: Consumo
+  valor: 90 W
+- nombre: Funda
+  valor: de plástico
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-Recubridora de 3 agujas con brazo libre.
-
-La eXtend easycover es la recubridora más sencilla de utilizar. Esta recubridora es la perfecta compañera de tu remalladora para crear dobladillos y cadenetas. Su motor de última generación ofrece una potencia y calidad de costura excepcionales, además de una comodidad de uso inigualable. ¡La easycover se adaptará a todo tipo de telas, manejando sin problemas la transición desde un fino jersey elástico hasta un tejido más grueso!
+**La eXtend easycover es la recubridora más sencilla de utilizar.** Esta recubridora es la perfecta compañera de tu remalladora para crear dobladillos y cadenetas. Su motor de última generación ofrece una potencia y calidad de costura excepcionales, además de una comodidad de uso inigualable. ¡La easycover se adaptará a todo tipo de telas, manejando sin problemas la transición desde un fino jersey elástico hasta un tejido más grueso!

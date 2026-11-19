@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer M2405
 fabricante: singer
 modelo: M2405
@@ -14,33 +14,46 @@ imagenes:
 - imagen: /img/productos/singer-m2405-3.jpg
 - imagen: /img/productos/singer-m2405-4.jpg
 - imagen: /img/productos/singer-m2405-5.jpg
-description: La máquina de coser M2405 tiene 8 puntadas con 66 aplicaciones, ideal para prendas, parches, reparaciones, manualidades y decoración.
+description: "Máquina mecánica Singer M2405, ligera y portátil, con bastidor de metal: ideal para prendas, parches, arreglos, manualidades y decoración."
 destacados:
-- texto: 11 puntadas incorporadas
-- texto: Ojal de 4 pasos
-- texto: Selector de puntadas
-- texto: Ligero y portátil
-- texto: Longitud de puntada ajustable
+- texto: 11 puntadas (66 aplicaciones)
+- texto: Ojal en 4 pasos
+- texto: Selector de puntadas sencillo
+- texto: Ligera y portátil
+- texto: Bastidor completo de metal
 - texto: Presión del prensatelas ajustable
 - texto: Iluminación LED
 - texto: Brazo libre
-- texto: Bastidor completo de metal
 caracteristicas:
-- nombre: Puntadas incorporadas
-  valor: '11'
-- nombre: Bobina
-  valor: carga frontal
+- nombre: Tipo
+  valor: mecánica
+- nombre: Puntadas
+  valor: "11"
 - nombre: Ojal
-  valor: 4 pasos
-- nombre: Espacio de costura
-  valor: 147 mm de aguja a torre y 111 mm de altura
-- nombre: Velocidad máxima de costura
+  valor: en 4 pasos
+- nombre: Canilla
+  valor: de carga frontal
+- nombre: Longitud de puntada
+  valor: ajustable
+- nombre: Presión del prensatelas
+  valor: ajustable
+- nombre: Bastidor
+  valor: completo de metal
+- nombre: Iluminación
+  valor: LED
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Velocidad máxima
   valor: 750 puntadas por minuto
+- nombre: Espacio de costura
+  valor: 147 mm (aguja a torre) y 111 mm de altura
 - nombre: Dimensiones
-  valor: 38,4 cm largo, 18,6 cm ancho, 27,7 cm alto
+  valor: 38,4 × 18,6 × 27,7 cm (largo × ancho × alto)
 - nombre: Peso
   valor: 5,4 kg
 - nombre: Accesorios incluidos
-  valor: Pie universal, Pie para cremallera, Pie para ojales, Pie para coser botones, Destornillador en L, Cortacosturas / Cepillo, Agujas, Bobinas (4 Clase 15), Borde / Guía de acolchado, Plato de zurcir, Portabobinas, Tapa blanda
+  valor: pie universal, para cremallera, para ojales y para coser botones; destornillador en L; cortacosturas/cepillo; agujas; 4 canillas clase 15; guía de bordes; placa de zurcir; portabobinas y funda blanda
 ---
-La máquina de coser M2405 tiene 8 puntadas con 66 aplicaciones, ideal para prendas, parches, reparaciones, manualidades y decoración. Con un simple giro del selector de puntadas pre-ajustables y longitudes de puntada puede producir hermosas piezas.
+**La Singer M2405 es una máquina mecánica ligera y portátil, ideal para coser prendas, poner parches, hacer arreglos, manualidades y decoración.** Con un simple giro del selector eliges la puntada, y creas piezas preciosas sin complicaciones.
+
+Su bastidor completo de metal le da solidez, y la presión del prensatelas ajustable, la iluminación LED y el brazo libre te ayudan a coser con comodidad.

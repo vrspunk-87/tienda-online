@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de brazo libre, con 170 funciones
 fabricante: elna
 modelo: 710eX
@@ -15,48 +15,82 @@ imagenes:
 - imagen: /img/productos/elna-710ex-3.jpg
 - imagen: /img/productos/elna-710ex-4.jpg
 - imagen: /img/productos/elna-710ex-5.jpg
-description: De brazo libre, con 170 funciones. Con cortahílos, 10 ojales …
+description: "Máquina electrónica con doble arrastre integrado, 170 puntadas de 9 mm y gran espacio de trabajo de 280 × 120 mm: preparada para quilting y aplicación."
 destacados:
-- texto: Con cortahílos, 10 ojales …
-- texto: Doble arrastre integrado. (Dual Feed System)
-- texto: Motor DC arranque y aceleración más eficiente, menor consumo 50w.
+- texto: Doble arrastre integrado (Dual Feed System)
+- texto: 170 puntadas de hasta 9 mm, 40 de ellas para quilting y aplicación
+- texto: 10 ojales en un solo paso
+- texto: Gran espacio de trabajo de 280 × 120 mm
+- texto: Cortahílos automático avanzado y programable
+- texto: Elevación y presión automáticas del prensatelas
+- texto: 91 posiciones de aguja y rodillera ajustable
+- texto: 15 prensatelas incluidos
 caracteristicas:
-- valor: Funciones de Costura
-- valor: 170 Funciones de Costura.
-- valor: 40 funciones de las 170 especiales para Quilting y aplicación
-- valor: Longitud máxima de puntada 5mm.
-- valor: Ancho de costura máximo de 9mm.
-- valor: 10 Ojales en un solo paso.
-- valor: 1 Alfabeto con letras mayúsculas/minúsculas, números hasta 9mm.
-- valor: Combinación hasta 50 funciones y textos.
-- valor: Función de memoria temporal.
-- valor: Tecla de selección directa a 4 funciones.
-- valor: Características de la Máquina
-- valor: Gran espacio de trabajo 280x120mm.
-- valor: Doble arrastre integrado. (Dual Feed System)
-- valor: Sistema de cortahílos automático avanzado y programable.
-- valor: Sistema de tensión del hilo semi automático.
-- valor: Enhebrador automático.
-- valor: Botón Start/Stop, Botón de atacado.
-- valor: Botón posicionador de aguja con función de memoria.
-- valor: Botón de puntada remate
-- valor: Botón alzaprensatelas.
-- valor: Regulador de velocidad hasta 1000ppm.
-- valor: Con 91 posiciones de aguja.
-- valor: Sensor de los dientes de arrastre integrado.
-- valor: Elevación automática del prensatelas al detectar el tejido.
-- valor: Presión del prensatelas automático.
-- valor: Doble altura de prensatelas hasta un máximo de 9mm.
-- valor: Bobinador de canilla con cortahílos automático.
-- valor: Garfio rotativo horizontal de carga superior con tapa transparente.
-- valor: Placa aguja extra para coser pespunte recto.
-- valor: Rodillera ajustable.
-- valor: 15 Prensatelas variados incluidos… de ojales electrónico, acolchado, Quilting, puntada invisible, dobladillo, cremallera, puntadas realce...
-- valor: Luz LED en 3 zonas con un total de 5 leds.
-- valor: Motor DC arranque y aceleración más eficiente, menor consumo 50w.
-- valor: Conexión a PC y USB
-- valor: Funda de tejido semi rígida.
+- nombre: Tipo
+  valor: electrónica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: 170 (40 para quilting y aplicación)
+- nombre: Ojales
+  valor: 10, en un solo paso
+- nombre: Alfabeto
+  valor: 1, con mayúsculas, minúsculas y números de hasta 9 mm
+- nombre: Combinación de puntadas y textos
+  valor: hasta 50
+- nombre: Memoria
+  valor: temporal
+- nombre: Selección directa
+  valor: 4 funciones
+- nombre: Longitud de puntada
+  valor: hasta 5 mm
+- nombre: Anchura de puntada
+  valor: hasta 9 mm
+- nombre: Espacio de trabajo
+  valor: 280 × 120 mm
+- nombre: Doble arrastre
+  valor: integrado (Dual Feed System)
+- nombre: Cortahílos
+  valor: automático avanzado y programable
+- nombre: Tensión del hilo
+  valor: semiautomática
+- nombre: Enhebrador
+  valor: automático
+- nombre: Botones
+  valor: start/stop, atacado, posición de aguja con memoria, remate y alzaprensatelas
+- nombre: Velocidad
+  valor: regulable hasta 1.000 puntadas por minuto
+- nombre: Posiciones de aguja
+  valor: "91"
+- nombre: Sensor de dientes de arrastre
+  valor: integrado
+- nombre: Prensatelas
+  valor: elevación automática al detectar el tejido y presión automática
+- nombre: Altura del prensatelas
+  valor: doble, hasta 9 mm
+- nombre: Bobinador
+  valor: con cortahílos automático
+- nombre: Garfio
+  valor: rotativo horizontal de carga superior, con tapa transparente
+- nombre: Placa de aguja para pespunte recto
+  valor: incluida
+- nombre: Rodillera
+  valor: ajustable
+- nombre: Prensatelas incluidos
+  valor: 15 (ojales electrónico, acolchado, quilting, puntada invisible, dobladillo, cremallera, realce…)
+- nombre: Iluminación
+  valor: LED en 3 zonas, 5 LED
+- nombre: Motor
+  valor: DC, consumo de 50 W
+- nombre: Conexión
+  valor: PC y USB
+- nombre: Funda
+  valor: de tejido semirrígida
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-De brazo libre, con 170 funciones. Con cortahílos, 10 ojales …
+**La Elna eXcellence 710eX combina potencia y precisión con su doble arrastre integrado, ideal para quilting, aplicaciones y tejidos difíciles.** Tiene 170 puntadas de hasta 9 mm, 40 de ellas especiales para quilting y aplicación, 10 ojales en un solo paso y un alfabeto.
+
+Su gran espacio de trabajo de 280 × 120 mm te da sitio para proyectos grandes, y sus funciones automáticas te facilitan el trabajo: cortahílos avanzado y programable, enhebrador automático, elevación del prensatelas al detectar el tejido y presión automática. Con 91 posiciones de aguja, rodillera ajustable y hasta 1.000 puntadas por minuto.
+
+Incluye 15 prensatelas, placa de aguja para pespunte recto, conexión a PC y USB y funda semirrígida. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

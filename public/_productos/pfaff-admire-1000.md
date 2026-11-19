@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora PFAFF Admire 1000
 fabricante: pfaff
 modelo: Admire 1000
@@ -15,23 +15,50 @@ imagenes:
 - imagen: /img/productos/pfaff-admire-1000-3.jpg
 - imagen: /img/productos/pfaff-admire-1000-4.jpg
 - imagen: /img/productos/pfaff-admire-1000-5.jpg
-description: 'La Pfaff Admire 1000 es una remalladora de alta calidad: Diseñada para ofrecer acabados profesionales en una amplia gama de proyectos, destacando especialmente por su capacidad para realizar…'
+description: 'Remalladora PFAFF admire 1000 de 2, 3 y 4 hilos, con 16 puntadas y repulgos delicados, ideales para los volantes de los trajes de flamenca.'
 destacados:
-- texto: Cose con 2,3 y 4 hilos
-- texto: Posibilidad de coser con 1 o 2 agujas
-- texto: '16 tipos de puntadas incluyendo: overlock de 2, 3 y 4 hilos, enrollado de 2 y 3 hilos y otros'
-- texto: Regulador de presión del prensatelas, para poder coser todo tipos de tejidos
-- texto: Velocidad de 1.300 puntadas por minuto
-- texto: Luz LED, ilumina de manera uniforme
-- texto: 'Ajuste de ancho de puntada: 3,0-6,7 mm, punto de vainica hasta 1,5 mm'
-- texto: Ajuste de longitud de puntada 1-4mm
-- texto: Guía de costura integrada y ajustable
-- texto: Tapa de almacenamiento de herramientas
-- texto: Sistema automático de liberación de tensión, levantando el prensatelas
+- texto: Costuras de 2, 3 y 4 hilos, con 1 o 2 agujas
+- texto: "16 puntadas: overlock, enrollado de 2 y 3 hilos y más"
+- texto: Repulgos delicados, ideales para volantes de flamenca
+- texto: Presión del prensatelas regulable para todo tipo de tejidos
+- texto: Liberación automática de la tensión al levantar el prensatelas
 - texto: Apertura frontal para enhebrar fácilmente
-- texto: Posibilidad de desmontar la cuchilla
-- texto: 'Tipo de agujas que usa: ELx705'
-- texto: Posibilidad de ajustar el ancho de corte
-- texto: Ajuste de presión del prensatelas
+- texto: Hasta 1.300 puntadas por minuto
+- texto: Luz LED
+caracteristicas:
+- nombre: Tipo
+  valor: remalladora
+- nombre: Hilos
+  valor: 2, 3 y 4
+- nombre: Agujas
+  valor: 1 o 2 (sistema ELx705)
+- nombre: Puntadas
+  valor: 16 (overlock de 2, 3 y 4 hilos, enrollado de 2 y 3 hilos y otras)
+- nombre: Velocidad
+  valor: 1.300 puntadas por minuto
+- nombre: Anchura de puntada
+  valor: de 3,0 a 6,7 mm (vainica hasta 1,5 mm)
+- nombre: Longitud de puntada
+  valor: de 1 a 4 mm
+- nombre: Ancho de corte
+  valor: ajustable
+- nombre: Cuchilla
+  valor: desmontable
+- nombre: Presión del prensatelas
+  valor: regulable
+- nombre: Liberación de tensión
+  valor: automática al levantar el prensatelas
+- nombre: Guía de costura
+  valor: integrada y ajustable
+- nombre: Enhebrado
+  valor: apertura frontal
+- nombre: Almacenamiento de herramientas
+  valor: en la tapa
+- nombre: Iluminación
+  valor: LED
 ---
-La Pfaff Admire 1000 es una remalladora de alta calidad: Diseñada para ofrecer acabados profesionales en una amplia gama de proyectos, destacando especialmente por su capacidad para realizar repulgos delicados, ideales para los volantes de vestidos de flamenca. Además, con el prensatelas opcional adecuado, facilita la creación de fruncidos uniformes y decorativos. Caracteristicas principales: Cose con 2,3 y 4 hilos. Posibilidad de coser con 1 o 2 agujas 16 tipos de puntadas incluyendo: overlock de 2, 3 y 4 hilos, enrollado de 2 y 3 hilos y otros Regulador de presión del prensatelas, para poder coser todo tipos de tejidos. Velocidad de 1.300 puntadas por minuto. Luz LED, ilumina de manera uniforme. Ajuste de ancho de puntada: 3,0-6,7 mm, punto de vainica hasta 1,5 mm Ajuste de longitud de puntada 1-4mm Guía de costura integrada y ajustable. Tapa de almacenamiento de herramientas. Sistema automático de liberación de tensión, levantando el prensatelas. Apertura frontal para enhebrar fácilmente.
+**La PFAFF admire 1000 es una remalladora de alta calidad, diseñada para ofrecer acabados profesionales en todo tipo de proyectos.** Destaca por sus repulgos delicados, ideales para los volantes de los trajes de flamenca, y con el prensatelas opcional adecuado te facilita crear fruncidos uniformes y decorativos.
+
+Cose con 2, 3 o 4 hilos y con 1 o 2 agujas, y ofrece 16 puntadas, entre ellas overlock de 2, 3 y 4 hilos y enrollado de 2 y 3 hilos. La presión del prensatelas regulable te permite trabajar cualquier tejido, y la tensión se libera sola al levantar el prensatelas.
+
+Su apertura frontal facilita el enhebrado, la guía de costura es ajustable y la cuchilla, desmontable. Alcanza hasta 1.300 puntadas por minuto, con luz LED que ilumina de manera uniforme.

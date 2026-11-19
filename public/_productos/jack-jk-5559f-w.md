@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de pespunte de 1 aguja de coser y cortar de 1/8 con cortahílos Direc Drive
 fabricante: jack
 modelo: JK-5559F-W
@@ -12,8 +12,34 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-5559f-w-1.jpg
-description: Máquina de pespunte de 1 aguja de coser y cortar de 1/8 con cortahílos Direc Drive.
+description: Máquina industrial de pespunte de coser y cortar Jack de 1 aguja (1/8) con motor Direct Drive, cortahílos, cabezal semiseco y puntada de 5 mm regulable por pantalla.
 destacados:
-- texto: Súper silenciosa y semi-seca
+- texto: Coser y cortar, separación de 1/8
+- texto: "Súper silenciosa y semiseca: sin aceite en la zona de la barra de agujas"
+- texto: Cortahílos
+- texto: Longitud de puntada de 5 mm regulable por pantalla
+- texto: Motor Direct Drive
+- texto: Instrucciones habladas y luz LED
+caracteristicas:
+- nombre: Tipo
+  valor: máquina de pespunte de coser y cortar
+- nombre: Agujas
+  valor: "1"
+- nombre: Separación
+  valor: 1/8
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Cortahílos
+  valor: Sí
+- nombre: Lubricación
+  valor: semiseca (sin aceite en la zona de la barra de agujas)
+- nombre: Longitud de puntada
+  valor: 5 mm, regulable por pantalla
+- nombre: Instrucciones habladas
+  valor: Sí
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina de pespunte de 1 aguja de coser y cortar de 1/8 con cortahílos Direc Drive. Semi seca, sin aceite en la zona de la barra de agujas, longitud de puntada de 5mm graduable por pantalla. Con luz LED. Instrucciones habladas.
+**Jack JK-5559F-W: cose y corta a la vez.** Esta máquina de pespunte de una aguja recorta el borde mientras cose, con separación de 1/8.
+
+Es súper silenciosa y semiseca, sin aceite en la zona de la barra de agujas. Con cortahílos, longitud de puntada de 5 mm regulable por pantalla, motor Direct Drive, instrucciones habladas y luz LED.

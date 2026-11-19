@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer SE 9185
 fabricante: singer
 modelo: SE 9185
@@ -14,46 +14,74 @@ imagenes:
 - imagen: /img/productos/singer-se-9185-3.jpg
 - imagen: /img/productos/singer-se-9185-4.jpg
 - imagen: /img/productos/singer-se-9185-5.jpg
-description: La máquina de coser y bordar SE9185 está repleta de funciones para todos los niveles de costura.
+description: 'Máquina de coser y bordar Singer SE9185 con wifi mySewnet, pantalla táctil de 7", 250 puntadas y 150 diseños: repleta de funciones para todos los niveles.'
 destacados:
-- texto: 250 puntadas de costura más 150 diseños de bordado y 10 tipos de letra
-- texto: Obtenga toda la información que necesita directamente en una gran pantalla táctil en color de 7 pulgadas
-- texto: Borda una gran variedad de proyectos de hasta 170x100 mm de tamaño con el bastidor incluido
-- texto: Enhebre la aguja rápida y fácilmente con el enhebrador automático de agujas
-- texto: 165 mm de espacio de costura (de la aguja a la torre) y 108 mm de altura
-- texto: Conectividad WiFi mySewnet con 90 días de prueba gratuita del software de bordado y acceso a más de 8.000 diseños en pantalla
-- texto: Aplicaciones de puntada (401)
-- texto: Diseños de bordado incluidos (150)
-- texto: Fuentes de bordado incluidas (10)
-- texto: Conectividad Wifi
-- texto: Capacidad de bastidor sin fin
-- texto: Imagen en espejo
-- texto: Puntadas incorporadas (más de 250)
-- texto: Ojal de un solo paso
-- texto: Enhebrador de aguja incorporado (automático)
-- texto: Bobina Top Drop In
-- texto: Cortador de hilo incorporado
-- texto: Botón de anudado
-- texto: Alimentación descendente
-- texto: Reverso (Botón táctil)
-- texto: Costura de alta velocidad (costura 800/minuto - bordado 450/minuto)
-- texto: Control de velocidad (Speed Slider)
-- texto: Botón de Inicio/Parada
-- texto: Aguja arriba/abajo
-- texto: Pantalla táctil (7" Color)
-- texto: Brazo libre
-- texto: Posiciones variables de la aguja
-- texto: 165 mm de espacio de costura (de la aguja a la torre)
+- texto: Coser y bordar, con conectividad wifi mySewnet
+- texto: Pantalla táctil a color de 7"
+- texto: Más de 250 puntadas y 150 diseños de bordado
+- texto: 10 fuentes de bordado
+- texto: Bordado de hasta 170 × 100 mm, con bastidor sin fin
+- texto: Enhebrador automático de aguja
+- texto: 165 mm de espacio de costura
+- texto: 90 días de prueba gratis del software y más de 8.000 diseños
 caracteristicas:
-- nombre: Dimensiones (cm)
-  valor: 60,7 largo, 35,8 ancho, 30,8 alto
+- nombre: Tipo
+  valor: máquina de coser y bordar
+- nombre: Pantalla
+  valor: táctil a color de 7"
+- nombre: Puntadas
+  valor: más de 250 (401 aplicaciones de puntada)
+- nombre: Ojal
+  valor: en un solo paso
+- nombre: Diseños de bordado
+  valor: "150"
+- nombre: Fuentes de bordado
+  valor: "10"
+- nombre: Área de bordado
+  valor: 170 × 100 mm (bastidor incluido)
+- nombre: Bastidor sin fin
+  valor: Sí
+- nombre: Imagen en espejo
+  valor: Sí
+- nombre: Conectividad
+  valor: wifi mySewnet (90 días de prueba del software; más de 8.000 diseños)
+- nombre: Velocidad
+  valor: 800 puntadas por minuto cosiendo; 450 bordando
+- nombre: Enhebrador de aguja
+  valor: automático
+- nombre: Canilla
+  valor: Top Drop-In
+- nombre: Cortador de hilo
+  valor: incorporado
+- nombre: Botón de remate
+  valor: Sí
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Control de velocidad
+  valor: deslizante
+- nombre: Aguja arriba/abajo
+  valor: Sí
+- nombre: Posiciones de aguja
+  valor: variables
+- nombre: Bajada de dientes
+  valor: Sí
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Espacio de costura
+  valor: 165 mm (aguja a torre) y 108 mm de altura
+- nombre: Potencia
+  valor: 45 W
+- nombre: Dimensiones
+  valor: 60,7 × 35,8 × 30,8 cm (largo × ancho × alto)
 - nombre: Peso de la máquina
   valor: 9,5 kg
 - nombre: Peso de la unidad de bordado
   valor: 2,3 kg
-- nombre: Potencia
-  valor: 45 W
 - nombre: Accesorios incluidos
-  valor: Pie universal, Pie prensatelas decorativo, Pie para cremallera, Pie para ojales de un paso, Pie para dobladillo ciego, Prensatelas para bordar, Bastidor 170x100mm, 3 bobinas ( SINGER Clase 15 transparente), Tapones de carrete (3), Fieltro del portacarretes, Pasador de carrete auxiliar, Destornillador, Cepillo, Desgarrador de costuras, Paquete de agujas, Guía de bordes y acolchado, Red de hilos, Herramienta multiusos, Stylus
+  valor: pie universal, decorativo, para cremallera, para ojales en un paso y para dobladillo ciego; prensatelas para bordar; bastidor de 170 × 100 mm; 3 canillas clase 15; tapones de carrete; fieltro; pasador auxiliar; destornillador; cepillo; descosedor; agujas; guía de bordes; red de hilos; herramienta multiusos y stylus
 ---
-La máquina de coser y bordar SE9185 está repleta de funciones para todos los niveles de costura. La conectividad mySewnet da acceso a un mundo de posibilidades, desde notificaciones de la aplicación sobre el progreso del bordado hasta la creación de diseños desde cero y mucho más.
+**La Singer SE9185 es una máquina de coser y bordar repleta de funciones para todos los niveles.** Su conectividad wifi mySewnet te abre un mundo de posibilidades, desde avisos en la app sobre el progreso del bordado hasta la creación de diseños desde cero, con 90 días de prueba gratis del software y acceso a más de 8.000 diseños.
+
+En su gran pantalla táctil a color de 7" tienes toda la información que necesitas. Combina más de 250 puntadas con 150 diseños de bordado y 10 fuentes, y borda proyectos de hasta 170 × 100 mm, o más grandes con la función de bastidor sin fin.
+
+El enhebrador automático de aguja, la canilla de carga superior, el cortador de hilo y los 165 mm de espacio de costura hacen que trabajar sea rápido y cómodo.

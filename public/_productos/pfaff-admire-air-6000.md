@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora PFAFF Admire Air 6000
 fabricante: pfaff
 modelo: Admire Air 6000
@@ -15,27 +15,16 @@ imagenes:
 - imagen: /img/productos/pfaff-admire-air-6000-3.jpg
 - imagen: /img/productos/pfaff-admire-air-6000-4.jpg
 - imagen: /img/productos/pfaff-admire-air-6000-5.jpg
-description: Disfrute del enhebrado neumático de 1 toque con capacidad para puntadas de 5/4/3/2 hilos, 23 puntadas, mesa de extensión, enhebrador de agujas, alimentación diferencial y resultados superiores.
+description: Remalladora PFAFF admire air 6000 con enhebrado neumático de un toque, 23 puntadas de 5, 4, 3 y 2 hilos, recubrimiento, cadeneta y mesa de extensión.
 destacados:
-- texto: Iluminación excepcional
-- texto: 23 puntadas
-- texto: Puntada de recubrimiento
-- texto: Puntada de cadeneta
-- texto: Puntada de seguridad de 5 hilos (ancha y estrecha)
-- texto: Puntada de seguridad de 4 hilos (ancho y estrecho)
-- texto: Borde estrecho de 3 hilos
-- texto: Borde enrollado de 3 hilos
-- texto: Flatlock de 3 hilos (ancho y estrecho)
-- texto: Sobrehilado de 2 hilos (ancho y estrecho)
-- texto: Bordes enrollados de 2 hilos
-- texto: Flatlock de 2 hilos
-- texto: Dobladillos enrollados fáciles
+- texto: Enhebrado neumático de las áncoras con un toque
+- texto: 23 puntadas de 5, 4, 3 y 2 hilos
+- texto: Puntada de recubrimiento y cadeneta
+- texto: Puntadas de seguridad de 5 y 4 hilos
 - texto: Convertidor de 2 hilos incorporado
-- texto: Alimentación diferencial
-- texto: Bloqueo de seguridad de puntada
-- texto: Tension Release
-- texto: Guías de enhebrado para una amplia gama de tipos de hilo
-- texto: Cortador superior móvil
+- texto: Transporte diferencial
+- texto: Brazo libre y rodillera
+- texto: Iluminación excepcional
 caracteristicas:
 - nombre: Enhebrador electrónico One-Touch
   valor: Sí
@@ -72,4 +61,8 @@ caracteristicas:
 - nombre: Peso
   valor: 10,8 kg (23,8 lbs)
 ---
-Disfrute del enhebrado neumático de 1 toque con capacidad para puntadas de 5/4/3/2 hilos, 23 puntadas, mesa de extensión, enhebrador de agujas, alimentación diferencial y resultados superiores. Póngase en marcha con los 18 accesorios gratuitos que se enumeran a continuación.
+**Disfruta del enhebrado neumático de un solo toque de la PFAFF admire air 6000: las áncoras se enhebran solas con aire.** Trabaja con 5, 4, 3 y 2 hilos y ofrece 23 puntadas, con recubrimiento, cadeneta, puntadas de seguridad de 5 y 4 hilos, flatlock y bordes enrollados.
+
+Su transporte diferencial, la mesa de extensión, el enhebrador de agujas, el brazo libre y la rodillera te dan resultados superiores con total comodidad, y su marco reforzado con potencia de perforación electrónica cose con soltura incluso tejidos gruesos.
+
+Con iluminación excepcional, convertidor de 2 hilos incorporado, cortador de hilo integrado, bandeja de residuos acoplable y asa de transporte.

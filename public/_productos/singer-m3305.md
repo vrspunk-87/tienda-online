@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer M3305
 fabricante: singer
 modelo: M3305
@@ -15,40 +15,65 @@ imagenes:
 - imagen: /img/productos/singer-m3305-4.jpg
 - imagen: /img/productos/singer-m3305-5.jpg
 destacados:
-- texto: '21 puntadas: 6 útiles, 5 elásticas, 9 decorativas y ojal en 1 paso'
-- texto: 'Largo de la puntada ajustable: puede elegir la puntada recta en una de las 3 longitudes disponibles'
-- texto: Ancho de la puntada ajustable (5 mm)
-- texto: Ojal automático en un tiempo
-- texto: 'Enhebrador automático de la aguja: para enhebrar la aguja con un simple toque'
-- texto: Lanzadera Vertical Metálica Oscilante
-- texto: 'Cuchilla Corta-hilo incorporado: para cortar el hilo superior y el de la canilla con un simple gesto'
-- texto: Doble altura del prensatelas
-- texto: 6 Dientes de arrastre de metal
-- texto: Palanca para costura de remate
+- texto: "21 puntadas: 6 útiles, 5 elásticas, 9 decorativas y ojal"
+- texto: Ojal automático en un solo paso
+- texto: Enhebrador automático de la aguja
 - texto: Estructura interna de metal resistente
+- texto: Cuchilla cortahílos incorporada
+- texto: Doble altura del prensatelas
 - texto: Iluminación LED
-- texto: Placa de zurcido
-- texto: Selector de puntadas muy intuitivo y sencillo
-- texto: Costura a elevada velocidad (750 ppm)
-- texto: Placa de metal
-- texto: Brazo libre
-- texto: Amplia área de trabajo
-- texto: 'Asa para el transporte: La cómoda asa retráctil permite el transporte con extrema facilidad'
-- texto: 'Devanador automático: El devanado de la canilla se hace de forma automática manteniendo pulsado el pedal'
-- texto: Prensatelas a presión
-- texto: Función de aguja doble
-- texto: 'Peso: 5,6 kg'
-- texto: 'Tamaño: 37 x 16,4 x 30 cm (largo x profundo x alto)'
-- texto: Prensatelas Universal
-- texto: Prensatelas para cremalleras
-- texto: Prensatelas para ojal automático
-- texto: Prensatelas para botón
-- texto: Guía para bordes/acolhado
-- texto: Juego de agujas
-- texto: 3 canillas
-- texto: Placa cubre dientes de arrastre
-- texto: Destornillador
-- texto: Brocha Descosedor/ Cepillo de Limpieza
-- texto: Funda de Tela Lígera para el polvo
-- texto: Pedal
+- texto: Asa retráctil para transportarla
+description: "Máquina mecánica Singer M3305 con 21 puntadas, ojal en un paso y enhebrador automático: estructura interna de metal, ligera y con asa retráctil."
+caracteristicas:
+- nombre: Tipo
+  valor: mecánica
+- nombre: Puntadas
+  valor: 21 (6 útiles, 5 elásticas, 9 decorativas y ojal)
+- nombre: Ojal
+  valor: automático en un solo paso
+- nombre: Longitud de puntada
+  valor: ajustable (puntada recta en 3 longitudes)
+- nombre: Anchura de puntada
+  valor: ajustable hasta 5 mm
+- nombre: Enhebrador de aguja
+  valor: automático
+- nombre: Lanzadera
+  valor: vertical metálica oscilante
+- nombre: Cortahílos
+  valor: cuchilla incorporada
+- nombre: Altura del prensatelas
+  valor: doble
+- nombre: Dientes de arrastre
+  valor: 6, de metal
+- nombre: Remate
+  valor: palanca
+- nombre: Estructura
+  valor: interna de metal
+- nombre: Placa
+  valor: de metal
+- nombre: Iluminación
+  valor: LED
+- nombre: Velocidad
+  valor: 750 puntadas por minuto
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Asa de transporte
+  valor: retráctil
+- nombre: Devanador
+  valor: automático
+- nombre: Prensatelas
+  valor: de presión
+- nombre: Aguja doble
+  valor: Sí
+- nombre: Peso
+  valor: 5,6 kg
+- nombre: Tamaño
+  valor: 37 × 16,4 × 30 cm (largo × fondo × alto)
+- nombre: Accesorios incluidos
+  valor: prensatelas universal, para cremalleras, para ojal automático y para botón; guía de bordes; agujas; 3 canillas; placa cubredientes; destornillador; descosedor/cepillo; funda de tela y pedal
 ---
+**La Singer M3305 es una máquina mecánica sencilla y resistente, con 21 puntadas para coser todo lo que necesitas: 6 útiles, 5 elásticas, 9 decorativas y un ojal automático en un solo paso.**
+
+Su selector de puntadas es muy intuitivo, el enhebrador automático enhebra la aguja con un simple toque y la cuchilla incorporada corta el hilo superior y el de la canilla con un gesto. Su estructura interna de metal, la placa metálica y los 6 dientes de arrastre de metal le dan robustez.
+
+Ligera (5,6 kg) y con asa retráctil, se transporta con facilidad. Además, tiene doble altura del prensatelas, iluminación LED, brazo libre y devanador automático.

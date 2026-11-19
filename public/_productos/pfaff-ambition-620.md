@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Ambition 620
 fabricante: pfaff
 modelo: Ambition 620
@@ -15,12 +15,16 @@ imagenes:
 - imagen: /img/productos/pfaff-ambition-620-3.jpg
 - imagen: /img/productos/pfaff-ambition-620-4.jpg
 - imagen: /img/productos/pfaff-ambition-620-5.jpg
-description: La herramienta más fiable del artesano, con gran espacio de costura, Original IDT System, 136 puntadas, control deslizante de velocidad y mucho más.
+description: "PFAFF ambition 620: la herramienta más fiable del artesano, con sistema IDT, 136 puntadas, gran espacio de costura de 200 mm y corte automático del hilo."
 destacados:
-- texto: IDT Alimentación doble integrada
-- texto: Gran espacio de costura de 200 mm (casi 8")
-- texto: Pantalla LCD
-- texto: 136 puntos
+- texto: Sistema Original IDT de doble arrastre integrado
+- texto: 136 puntadas y 2 fuentes de costura
+- texto: Gran espacio de costura de 200 mm
+- texto: Corte automático del hilo
+- texto: Tensión automática
+- texto: Bajada automática de los dientes
+- texto: Secuenciación de puntadas
+- texto: Botón start/stop y deslizador de velocidad
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '136'
@@ -61,4 +65,6 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '7'
 ---
-La herramienta más fiable del artesano, con gran espacio de costura, Original IDT System, 136 puntadas, control deslizante de velocidad y mucho más.
+**La PFAFF ambition 620 es la herramienta más fiable del artesano.** Su sistema Original IDT, el doble arrastre integrado de PFAFF, hace avanzar el tejido de forma uniforme por arriba y por abajo, para costuras perfectas en cualquier tela.
+
+Tienes 136 puntadas, 2 fuentes de costura y secuenciación de puntadas, con 200 mm de espacio a la derecha de la aguja. El corte automático del hilo, la tensión automática, la bajada automática de los dientes, el enhebrador incorporado, el botón start/stop y el deslizador de velocidad te ahorran tiempo en cada costura.

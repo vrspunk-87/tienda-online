@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer HD6705C
 fabricante: singer
 modelo: HD6705C
@@ -15,34 +15,57 @@ imagenes:
 - imagen: /img/productos/singer-hd6705c-3.jpg
 - imagen: /img/productos/singer-hd6705c-4.jpg
 - imagen: /img/productos/singer-hd6705c-5.jpg
-description: Con una heavy duty estructura metálica, un potente motor y funciones electrónicas, la máquina Heavy Duty 6705C de SINGER es un caballo de batalla con infinitas posibilidades.
+description: "Singer Heavy Duty HD6705C: bastidor totalmente metálico, motor potente y funciones electrónicas, con 200 puntadas y 7 ojales en un solo paso. Un auténtico caballo de batalla."
 destacados:
 - texto: 200 puntadas (411 aplicaciones de puntada)
-- texto: 7 estilos de ojales de un solo paso
-- texto: La pantalla LCD muestra la imagen de puntada, los ajustes, el prensatelas y mucho más
-- texto: Aplicaciones de puntada (411)
-- texto: Letras incorporadas (1 fuente)
-- texto: Ojal de un solo paso (7 estilos)
+- texto: 7 ojales en un solo paso
+- texto: Bastidor metálico Heavy Duty y bancada de acero inoxidable
+- texto: Potencia de perforación mejorada para tejidos gruesos
+- texto: Hasta 1.100 puntadas por minuto
+- texto: Pantalla LCD con la puntada, los ajustes y el prensatelas
+- texto: 10 prensatelas incluidos, entre ellos el de arrastre uniforme
 - texto: Enhebrador de aguja incorporado
-- texto: Bobina Top Drop In
-- texto: Botón de anudado
-- texto: Alimentación descendente
-- texto: Selección de puntada con botón táctil
-- texto: Longitud de puntada ajustable
-- texto: Ancho de puntada ajustable
-- texto: Bastidor metálico Heavy Duty
-- texto: Bancada de acero inoxidable
-- texto: Costura a alta velocidad (1100/min)
-- texto: Control de velocidad
-- texto: Iluminación LED
-- texto: Pantalla LCD
-- texto: Brazo libre
-- texto: Espacio de Costura (Aguja a Torre) (6.4")
+- texto: Canilla Top Drop-In
 caracteristicas:
-- valor: Espacio de costura de 6,4" (de la aguja a la torre) y 4,6" de altura
-- nombre: Bobinas
-  valor: SINGER clase 15 transparentes
+- nombre: Tipo
+  valor: electrónica Heavy Duty
+- nombre: Puntadas
+  valor: 200 (411 aplicaciones de puntada)
+- nombre: Letras
+  valor: 1 fuente
+- nombre: Ojales
+  valor: 7 estilos, en un solo paso
+- nombre: Selección de puntadas
+  valor: botones táctiles
+- nombre: Pantalla
+  valor: LCD
+- nombre: Longitud y anchura de puntada
+  valor: ajustables
+- nombre: Enhebrador de aguja
+  valor: incorporado
+- nombre: Canilla
+  valor: Top Drop-In, clase 15 transparente
+- nombre: Botón de remate
+  valor: Sí
+- nombre: Bajada de dientes
+  valor: Sí
+- nombre: Control de velocidad
+  valor: Sí
+- nombre: Bastidor
+  valor: metálico Heavy Duty
+- nombre: Bancada
+  valor: de acero inoxidable
+- nombre: Iluminación
+  valor: LED
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Velocidad máxima
+  valor: 1.100 puntadas por minuto
+- nombre: Espacio de costura
+  valor: 6,4" (aguja a torre) y 4,6" de altura
 - nombre: Accesorios incluidos
-  valor: Pie universal, Pie para cremallera, Pie para ojales, Pie para dobladillo ciego, Pie para coser botones, Pie Sew Easy, Pie para puntada de satén, Alimentación uniforme / Pie andante, Pie abierto, Pie para cordón, 4 Bobinas (SINGER Clase 15 transparente), Portabobinas grande, Portabobinas pequeño, Fieltro del portacarretes, Pasador de carrete auxiliar, Destornillador en L, Cepillo / Cortacosturas, Tapa blanda, Paquete de agujas
+  valor: pie universal, para cremallera, para ojales, para dobladillo ciego, para coser botones, Sew Easy, para puntada de satén, de arrastre uniforme, abierto y para cordón; 4 canillas clase 15; portabobinas grande y pequeño; fieltro; pasador auxiliar; destornillador en L; cepillo/cortacosturas; funda blanda y agujas
 ---
-Con una heavy duty estructura metálica, un potente motor y funciones electrónicas, la máquina Heavy Duty 6705C de SINGER es un caballo de batalla con infinitas posibilidades.
+**Con una robusta estructura metálica, un motor potente y funciones electrónicas, la Singer Heavy Duty HD6705C es un caballo de batalla con infinitas posibilidades.** Cose a alta velocidad, hasta 1.100 puntadas por minuto, sobre una bancada de acero inoxidable.
+
+Tienes 200 puntadas, con 411 aplicaciones, una fuente de letras y 7 estilos de ojal en un solo paso, y su pantalla LCD te muestra la puntada, los ajustes y el prensatelas que necesitas. Incluye 10 prensatelas, entre ellos el de arrastre uniforme, para que tengas el adecuado para cada proyecto.

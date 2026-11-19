@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bastidor 8 en 1 magnético para Marsew JP-1500
 fabricante: marsew
 modelo: TR0009
@@ -13,6 +13,22 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/marsew-tr0009-1.jpg
-description: Practico bastidor para poder realizar bordados en todo tipo de prendas, Ideal para sujetar materiales duros tipo loneta, polipiel, etc y bordar prendas con zonas de acceso complicado como las mangas, bolsas, bolsos, mochilas, bolsillos, etc.
+description: "Bastidor magnético 8 en 1 para la Marsew JP-1500: sujeta materiales duros y llega a zonas difíciles como mangas, bolsillos, bolsos o mochilas."
+destacados:
+- texto: Sujeción magnética, ideal para materiales duros como loneta o polipiel
+- texto: "Borda en zonas de acceso complicado: mangas, bolsillos, bolsos, mochilas…"
+- texto: 1 soporte principal y 8 bastidores de distintas medidas
+- texto: Compatible con la Marsew JP-1500
+caracteristicas:
+- nombre: Tipo
+  valor: bastidor magnético 8 en 1
+- nombre: Contenido
+  valor: 1 soporte principal y 8 bastidores
+- nombre: Medidas de los bastidores
+  valor: 175 × 120 mm, 50 × 100 mm, 150 × 150 mm (ovalado), 150 × 200 mm, 100 × 280 mm, 125 × 100 mm, 75 × 1000 mm y 25 × 150 mm
+- nombre: Compatible con
+  valor: Marsew JP-1500
 ---
-Practico bastidor para poder realizar bordados en todo tipo de prendas, Ideal para sujetar materiales duros tipo loneta, polipiel, etc y bordar prendas con zonas de acceso complicado como las mangas, bolsas, bolsos, mochilas, bolsillos, etc. Incorpora 1 soporte principal + 8 bastidores de diferentes medidas… 175x120mm, 50x100mm, 150x150mm ovalado, 150x200mm, 100x280mm, 125x100mm, 75x1000mm y uno de 25x150mm,
+**Con este bastidor magnético 8 en 1 podrás bordar en todo tipo de prendas con tu Marsew JP-1500.** Es ideal para sujetar materiales duros como la loneta o la polipiel y para bordar en zonas de acceso complicado: mangas, bolsas, bolsos, mochilas o bolsillos.
+
+Incluye un soporte principal y 8 bastidores de diferentes medidas: 175 × 120 mm, 50 × 100 mm, 150 × 150 mm ovalado, 150 × 200 mm, 100 × 280 mm, 125 × 100 mm, 75 × 1000 mm y 25 × 150 mm.

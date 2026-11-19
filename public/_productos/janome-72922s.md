@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Janome 72922S
 fabricante: janome
 modelo: 72922S
@@ -11,19 +11,37 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/janome-72922s-1.jpg
-description: Máquina doméstica, mecánica y portátil adaptable a mueble o maleta con carcasa de aluminio.
+description: "Máquina mecánica portátil de base plana y carcasa de aluminio, adaptable a mueble o maleta: 25 puntadas, ojal en un paso y enhebrador automático."
 destacados:
-- texto: Portátil, adaptable a mueble o maleta
+- texto: Portátil y adaptable a mueble o maleta
 - texto: Carcasa de aluminio
 - texto: Base plana
-- texto: 25 funciones diferentes
-- texto: Ojal en 1 solo paso
+- texto: 25 puntadas
+- texto: Ojal en un solo paso
 - texto: Enhebrador automático
-- texto: Funda de plástico blanda
+- texto: Hasta 860 puntadas por minuto
 caracteristicas:
-- nombre: Velocidad máxima
-  valor: 860 PPM
+- nombre: Tipo
+  valor: mecánica
+- nombre: Base
+  valor: plana
+- nombre: Carcasa
+  valor: de aluminio
+- nombre: Instalación
+  valor: portátil, adaptable a mueble o maleta
+- nombre: Lanzadera
+  valor: oscilante
 - nombre: Puntadas
-  valor: A a L
+  valor: 25 (A a L)
+- nombre: Ojal
+  valor: en un solo paso
+- nombre: Enhebrador
+  valor: automático
+- nombre: Velocidad máxima
+  valor: 860 puntadas por minuto
+- nombre: Funda
+  valor: de plástico blanda
 ---
-Máquina doméstica, mecánica y portátil adaptable a mueble o maleta con carcasa de aluminio. Características: base plana, lanzadera oscilante equipada con 25 funciones diferentes, ojal en 1 solo paso, velocidad máxima 860 PPM, enhebrador automático y funda de plástico blanda.
+**La Janome 72922S es una máquina de coser mecánica y portátil, con carcasa de aluminio, que puedes adaptar a un mueble o a una maleta.** Su base plana te da una superficie de trabajo amplia y estable.
+
+Tiene 25 puntadas, ojal en un solo paso y enhebrador automático, con lanzadera oscilante y una velocidad de hasta 860 puntadas por minuto. Incluye funda de plástico blanda.

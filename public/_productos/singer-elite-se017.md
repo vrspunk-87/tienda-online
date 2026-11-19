@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Singer ELITE SE017
 fabricante: singer
 modelo: ELITE SE017
@@ -14,29 +14,43 @@ imagenes:
 - imagen: /img/productos/singer-elite-se017-3.jpg
 - imagen: /img/productos/singer-elite-se017-4.jpg
 - imagen: /img/productos/singer-elite-se017-5.jpg
-description: La remalladora Elite SE017 te permite coser, rematar y recortar costuras y bordes sin rematar con alta precisión y velocidad en todo momento.
+description: "Remalladora Singer Elite SE017 con iluminación LED en la lanzadera inferior: cose, remata y recorta con precisión y velocidad, con 2, 3 y 4 hilos."
 destacados:
-- texto: El primer LED inferior de la industria que aumenta la visibilidad para facilitar el enhebrado
-- texto: Capacidad para hilos de 2, 3 y 4 puntadas
-- texto: Iluminación LED de la lanzadera inferior
-- texto: Alimentación diferencial
-- texto: Ancho de puntada ajustable
-- texto: Presión del prensatelas ajustable
+- texto: "Primera luz LED inferior del sector: enhebrado más fácil"
+- texto: Costuras de 2, 3 y 4 hilos
+- texto: 6 puntadas
+- texto: Transporte diferencial
+- texto: Anchura de puntada y presión del prensatelas ajustables
 - texto: Brazo libre
+- texto: Hasta 1.300 puntadas por minuto
 caracteristicas:
+- nombre: Tipo
+  valor: remalladora
 - nombre: Puntadas
-  valor: '6'
-- nombre: Capacidad
-  valor: 2, 3 y 4 hilos
-- nombre: Longitud de puntada ajustable
-  valor: 1,0 a 4,0 mm
+  valor: "6"
+- nombre: Hilos
+  valor: 2, 3 y 4
+- nombre: Longitud de puntada
+  valor: de 1,0 a 4,0 mm
+- nombre: Anchura de puntada
+  valor: ajustable
+- nombre: Presión del prensatelas
+  valor: ajustable
+- nombre: Transporte diferencial
+  valor: Sí
+- nombre: Iluminación
+  valor: LED, también en la lanzadera inferior
+- nombre: Brazo libre
+  valor: Sí
 - nombre: Velocidad máxima
-  valor: 1300 puntadas por minuto
+  valor: 1.300 puntadas por minuto
 - nombre: Dimensiones
-  valor: 34,0 cm largo, 28,4 cm ancho, 27,2 cm alto
+  valor: 34,0 × 28,4 × 27,2 cm (largo × ancho × alto)
 - nombre: Peso
   valor: 7,2 kg
 - nombre: Accesorios incluidos
-  valor: Convertidor de 2 hilos, Agujas (2 tamaño 14/90, 2 tamaño 14/90), Destornillador, Pinzas, Cepillo para pelusas, Cuchilla inferior de repuesto, Bandeja de residuos
+  valor: convertidor a 2 hilos, agujas, destornillador, pinzas, cepillo, cuchilla inferior de repuesto y bandeja de residuos
 ---
-La remalladora Elite SE017 te permite coser, rematar y recortar costuras y bordes sin rematar con alta precisión y velocidad en todo momento. Es el complemento perfecto para tu máquina de coser.
+**La remalladora Singer Elite SE017 te permite coser, rematar y recortar costuras y bordes con gran precisión y velocidad.** Es el complemento perfecto para tu máquina de coser.
+
+Incorpora la primera luz LED inferior del sector, que ilumina la lanzadera inferior y facilita el enhebrado. Trabaja con 2, 3 y 4 hilos, con transporte diferencial, anchura de puntada y presión del prensatelas ajustables, y brazo libre para puños y mangas. Alcanza hasta 1.300 puntadas por minuto.

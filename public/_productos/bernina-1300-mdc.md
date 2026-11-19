@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Bernina 1300 MDC
 fabricante: bernina
 modelo: 1300 MDC
@@ -11,21 +11,30 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernina-1300-mdc-1.jpg
   alt: Remalladora Bernina 1300 MDC
-description: Remalladora electrónica Bernina 1300 MDC con anchura de overlock de 3 a 9 mm y hasta 1300 puntadas/min.
+description: Remalladora BERNINA 1300 MDC con puntada de seguridad de hasta 5 hilos, anchura de 3 a 9 mm y hasta 1.300 puntadas por minuto.
 destacados:
-- texto: Fácil enhebrado
-- texto: Fácil procesamiento de materiales pesados
-- texto: Anchura de puntadas overlock 3-9 mm
-- texto: Puntada de seguridad hasta 5 hilos
+- texto: Fácil de enhebrar
+- texto: Puntada de seguridad de hasta 5 hilos
+- texto: Anchura de overlock de 3 a 9 mm
+- texto: Maneja con facilidad materiales gruesos
 - texto: Transporte diferencial
-- texto: Recipiente de desechos incluidos
 - texto: Panel de control claro
-- texto: Velocidad de costura de hasta 1300 puntadas/min
+- texto: Hasta 1.300 puntadas por minuto
+- texto: Recipiente para retales incluido
 caracteristicas:
 - nombre: Tipo
-  valor: Remalladora electrónica
-- nombre: Anchura de puntada overlock
-  valor: 3 a 9 mm
+  valor: remalladora electrónica
+- nombre: Hilos
+  valor: hasta 5 (puntada de seguridad)
+- nombre: Anchura de overlock
+  valor: de 3 a 9 mm
+- nombre: Transporte diferencial
+  valor: Sí
 - nombre: Velocidad de costura
-  valor: hasta 1300 puntadas/min
+  valor: hasta 1.300 puntadas por minuto
+- nombre: Accesorios incluidos
+  valor: recipiente para retales
 ---
+**La BERNINA 1300 MDC es una remalladora versátil y fácil de usar, que trabaja con hasta 5 hilos.** Con su puntada de seguridad coserás y rematarás en un solo paso, y su anchura de overlock de 3 a 9 mm se adapta a cada tejido.
+
+Es fácil de enhebrar, maneja con soltura los materiales gruesos y su transporte diferencial te ayuda a conseguir costuras lisas. Con un panel de control claro, hasta 1.300 puntadas por minuto y recipiente para retales incluido.

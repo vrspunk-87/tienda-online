@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina 1008
 fabricante: bernina
 modelo: '1008'
@@ -11,25 +11,30 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernina-1008-1.jpg
   alt: Bernina 1008
-description: Máquina de coser mecánica Bernina 1008 con 17 puntadas, ancho de puntada de 5,5 mm y bobina central.
+description: "BERNINA 1008: la mecánica clásica de BERNINA, robusta y sencilla, con 17 puntadas y sistema manos libres para coser con precisión."
 destacados:
-- texto: Ancho de puntada 5,5 mm
-- texto: Largo de puntada 5 mm
-- texto: Largo brazo libre derecha/aguja (puente) 160 mm
-- texto: Número total de puntadas 17
+- texto: Máquina mecánica, robusta y sencilla
+- texto: 17 puntadas
+- texto: Anchura de puntada de 5,5 mm y longitud de 5 mm
 - texto: Sistema manos libres
 - texto: Bobina central
+- texto: 160 mm de espacio a la derecha de la aguja
 caracteristicas:
 - nombre: Tipo
-  valor: Mecánica
-- nombre: Ancho de puntada
-  valor: 5,5 mm
-- nombre: Largo de puntada
-  valor: 5 mm
-- nombre: Brazo libre, derecha de la aguja (puente)
-  valor: 160 mm
+  valor: mecánica
 - nombre: Número total de puntadas
-  valor: '17'
+  valor: "17"
+- nombre: Anchura de puntada
+  valor: 5,5 mm
+- nombre: Longitud de puntada
+  valor: 5 mm
+- nombre: Espacio a la derecha de la aguja (puente)
+  valor: 160 mm
+- nombre: Sistema manos libres
+  valor: Sí
 - nombre: Lanzadera
-  valor: Bobina central
+  valor: bobina central
 ---
+**La BERNINA 1008 es una máquina mecánica robusta y sencilla, con la calidad de BERNINA.** Sus 17 puntadas, con una anchura de hasta 5,5 mm y una longitud de hasta 5 mm, cubren todas las necesidades de la costura del día a día.
+
+Gracias a su sistema manos libres podrás levantar el prensatelas sin soltar la labor, y la bobina central y los 160 mm de espacio a la derecha de la aguja te dan comodidad y precisión al coser.

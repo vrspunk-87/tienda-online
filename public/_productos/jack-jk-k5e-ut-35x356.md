@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina recubridora de 3 aguas 5.6mm cilíndrica Direc Drive
 fabricante: jack
 modelo: JK-K5E-UT-35X356
@@ -12,6 +12,38 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-k5e-ut-35x356-1.jpg
-description: Máquina recubridora de 3 aguas 5.6mm cilíndrica Direc Drive.
+description: Recubridora industrial Jack de brazo cilíndrico con 3 agujas (5,6 mm), cuchilla izquierda para bajos, aspiración de retales, cortahílos y alzaprensatelas por motor paso a paso y 5.000 ppm.
+destacados:
+- texto: Recubridora cilíndrica de 3 agujas, 5,6 mm
+- texto: Cuchilla a la izquierda para hacer bajos y recortar el sobrante
+- texto: Aspiración neumática de retales
+- texto: Recubrimiento superior e inferior
+- texto: Cortahílos y alzaprensatelas por motor paso a paso
+- texto: Motor Direct Drive, hasta 5.000 puntadas por minuto
+caracteristicas:
+- nombre: Tipo
+  valor: recubridora de brazo cilíndrico
+- nombre: Agujas
+  valor: "3"
+- nombre: Ancho entre agujas
+  valor: 5,6 mm
+- nombre: Cuchilla
+  valor: a la izquierda (bajos y recorte del sobrante)
+- nombre: Aspiración de retales
+  valor: neumática
+- nombre: Recubrimiento
+  valor: superior e inferior
+- nombre: Cortahílos
+  valor: por motor paso a paso
+- nombre: Alzaprensatelas
+  valor: por motor paso a paso
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Velocidad máxima
+  valor: 5.000 puntadas por minuto
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina recubridora de 3 aguas 5.6mm cilíndrica Direc Drive. Con cuchilla a la izquierda para realizar los bajos y recortar el sobrante de tejido. Incluye sistema de aspiración de retales (neumático). Con recubrimiento superior e inferior. Incorpora cortahílos y alzaprensatelas por motor paso a paso. Velocidad máxima de 5000ppm. Con luz LED.
+**Jack JK-K5E-UT-35X356: haz los bajos y recorta el sobrante en una sola máquina.** Esta recubridora cilíndrica de 3 agujas (5,6 mm) lleva cuchilla a la izquierda y aspiración neumática de retales.
+
+Con recubrimiento superior e inferior, cortahílos y alzaprensatelas por motor paso a paso, motor Direct Drive a hasta 5.000 puntadas por minuto y luz LED.

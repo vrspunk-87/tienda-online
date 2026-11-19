@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de botones con ancora (cadeneta) electrónica Direc Drive
 fabricante: jack
 modelo: JK-T1377G-Z
@@ -12,6 +12,25 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t1377g-z-1.jpg
-description: Máquina de botones con ancora (cadeneta) electrónica Direc Drive. Con posibilidad de coser botones con 2 y 4 agujeros, realizar costura normal o costura en forma de X. Con luz LED.
+description: "Máquina de botones electrónica Jack de cadeneta (áncora) con motor Direct Drive: cose botones de 2 y 4 agujeros en costura normal o en X."
+destacados:
+- texto: Cosido de botones con áncora (cadeneta)
+- texto: Electrónica, con motor Direct Drive
+- texto: Botones de 2 y 4 agujeros
+- texto: Costura normal o en forma de X
+- texto: Luz LED
+caracteristicas:
+- nombre: Tipo
+  valor: máquina de botones de cadeneta (áncora)
+- nombre: Control
+  valor: electrónico
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Botones
+  valor: de 2 y 4 agujeros
+- nombre: Costura
+  valor: normal o en forma de X
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina de botones con ancora (cadeneta) electrónica Direc Drive. Con posibilidad de coser botones con 2 y 4 agujeros, realizar costura normal o costura en forma de X. Con luz LED.
+**Jack JK-T1377G-Z: pega botones de 2 y 4 agujeros con rapidez.** Esta máquina electrónica de cadeneta con motor Direct Drive cose en forma normal o en X, para adaptarse a cada prenda. Con luz LED.

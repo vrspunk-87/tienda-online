@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina recubridora de 3 agujas base plana Direc Drive
 fabricante: jack
 modelo: JK-W4D-01
@@ -16,11 +16,27 @@ imagenes:
 - imagen: /img/productos/jack-jk-w4d-01-3.jpg
 - imagen: /img/productos/jack-jk-w4d-01-4.jpg
 - imagen: /img/productos/jack-jk-w4d-01-5.jpg
-description: Máquina recubridora de 3 agujas base plana Direc Drive, con recubrimiento superior e inferior. Con luz LED.
+description: "Recubridora industrial Jack de base plana con 3 agujas, recubrimiento superior e inferior, motor Direct Drive y luz LED: costura de 5,6 o 6,4 mm."
 caracteristicas:
+- nombre: Tipo
+  valor: recubridora de base plana
+- nombre: Agujas
+  valor: "3"
+- nombre: Recubrimiento
+  valor: superior e inferior
+- nombre: Motor
+  valor: Direct Drive
 - nombre: Versión JK-W4D-01X356
-  valor: ref. FJK-W4D-01X356; Costura 5,6mm.
+  valor: ref. FJK-W4D-01X356; costura 5,6 mm
 - nombre: Versión JK-W4D-01X364
-  valor: ref. FJK-W4D-01X364; Costura 6,4mm.
+  valor: ref. FJK-W4D-01X364; costura 6,4 mm
+- nombre: Iluminación
+  valor: LED
+destacados:
+- texto: Recubridora de base plana con 3 agujas
+- texto: Recubrimiento superior e inferior
+- texto: Motor Direct Drive
+- texto: Costura de 5,6 o 6,4 mm, según versión
+- texto: Luz LED
 ---
-Máquina recubridora de 3 agujas base plana Direc Drive, con recubrimiento superior e inferior. Con luz LED.
+**Jack JK-W4D-01: la recubridora de base plana para el día a día del taller.** Con 3 agujas, recubrimiento superior e inferior y motor Direct Drive, está disponible con costura de 5,6 o 6,4 mm. Con luz LED.

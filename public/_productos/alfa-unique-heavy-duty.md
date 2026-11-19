@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Unique Heavy Duty
 fabricante: alfa
 modelo: Unique Heavy Duty
@@ -15,27 +15,52 @@ imagenes:
 - imagen: /img/productos/alfa-unique-heavy-duty-3.jpg
 - imagen: /img/productos/alfa-unique-heavy-duty-4.jpg
 - imagen: /img/productos/alfa-unique-heavy-duty-5.jpg
-description: Máquina de coser Unique Heavy Duty.
+description: "Máquina Heavy Duty con motor servo de 100 W sin escobillas y hasta 1.100 rpm: potencia, eficiencia y 34 puntadas para aficionados y profesionales."
 destacados:
-- texto: 'Motor Servo de 100 W sin escobillas: incrementa la eficiencia y prolonga la vida útil de la máquina'
-- texto: '35% más eficiente: diseñado para sesiones de costura prolongadas con menor consumo de energía'
-- texto: 'Velocidad máxima de 1,100 RPM: cose con rapidez y precisión'
-- texto: 'Penetración de aguja poderosa: mantiene la fuerza de costura incluso a baja velocidad, ideal para telas gruesas'
-- texto: '34 tipos de puntadas: incluye opciones básicas, decorativas y especiales para cada proyecto'
-- texto: 'Control de ancho de zig-zag y longitud de puntada: ajusta el estilo y diseño de tus puntadas con precisión'
-- texto: 'Regulador de densidad de puntada: adapta la calidad y firmeza de cada puntada'
-- texto: 'Selector de puntadas de fácil uso: cambia rápidamente entre estilos para una experiencia de costura ágil'
-- texto: 'Doble altura de prensatelas: permite trabajar cómodamente con telas gruesas y capas múltiples'
-- texto: 'Ajuste de presión del prensatelas: ofrece un control óptimo para cada tipo de tela'
-- texto: 'Brazo libre: facilita las costuras en prendas tubulares y áreas de difícil acceso'
-- texto: 'Mesa de extensión con regla integrada: expande la superficie de trabajo y mide mientras coses'
-- texto: 'Enhebrador automático: simplifica la preparación de la máquina y ahorra tiempo'
-- texto: 'Ojal automático en un solo paso: crea ojales consistentes y precisos con facilidad'
-- texto: 'Lanzadera horizontal: práctica y accesible, facilita el control de hilo'
-- texto: 'Corta-hilos en el cabezal: asegura un acabado limpio sin necesidad de tijeras'
-- texto: '7 filas de dientes de arrastre: asegura un avance de tela uniforme y suave'
-- texto: 'Control de posición de la aguja: permite elegir entre 3 posiciones diferentes para adaptarse a distintas costuras'
+- texto: "Motor servo de 100 W sin escobillas: más eficiencia y vida útil"
+- texto: Un 35 % más eficiente, para sesiones prolongadas
+- texto: Hasta 1.100 rpm
+- texto: Gran penetración de aguja incluso a baja velocidad
+- texto: "34 puntadas: básicas, decorativas y especiales"
+- texto: Enhebrador automático y ojal en un solo paso
+- texto: Doble altura y presión regulable del prensatelas
+- texto: Mesa de extensión con regla integrada
+caracteristicas:
+- nombre: Tipo
+  valor: mecánica Heavy Duty
+- nombre: Motor
+  valor: servo de 100 W sin escobillas
+- nombre: Velocidad máxima
+  valor: 1.100 rpm
+- nombre: Puntadas
+  valor: "34"
+- nombre: Anchura de zigzag y longitud de puntada
+  valor: ajustables
+- nombre: Regulador de densidad de puntada
+  valor: Sí
+- nombre: Altura del prensatelas
+  valor: doble
+- nombre: Presión del prensatelas
+  valor: ajustable
+- nombre: Posición de la aguja
+  valor: 3 posiciones
+- nombre: Dientes de arrastre
+  valor: 7 filas
+- nombre: Lanzadera
+  valor: horizontal
+- nombre: Enhebrador
+  valor: automático
+- nombre: Ojal
+  valor: automático en un solo paso
+- nombre: Cortahílos
+  valor: en el cabezal
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Mesa de extensión
+  valor: con regla integrada
 ---
-Máquina de coser Unique Heavy Duty.
+**La Alfa Unique es la combinación perfecta de rendimiento, durabilidad y versatilidad, para aficionados y profesionales.** Su motor servo de 100 W sin escobillas asegura un rendimiento constante, alarga la vida de la máquina y mejora la eficiencia en un 35 %, para coser durante horas sin comprometer la calidad.
 
-La máquina de coser UNIQUE es la combinación perfecta de rendimiento, durabilidad y versatilidad, diseñada para satisfacer las expectativas tanto de aficionados como de profesionales. Con un motor servo de 100 W sin escobillas, asegura un rendimiento constante y un consumo energético optimizado, no solo aumenta la vida útil del equipo, sino que también mejora la eficiencia en un 35%, permitiendo sesiones prolongadas sin comprometer la calidad.
+Alcanza hasta 1.100 rpm y mantiene la fuerza de penetración incluso a baja velocidad, ideal para telas gruesas. Con 34 puntadas, regulador de densidad, doble altura y presión ajustable del prensatelas y 7 filas de dientes, se adapta a cada tejido.
+
+Enhebrador automático, ojal en un solo paso, lanzadera horizontal, cortahílos en el cabezal, brazo libre y mesa de extensión con regla integrada: todo pensado para que coser sea cómodo y rápido.

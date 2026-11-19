@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernette Sew&Go 3
 fabricante: bernette
 modelo: Sew&Go 3
@@ -15,13 +15,15 @@ imagenes:
 - imagen: /img/productos/bernette-sew-go-3-3.jpg
 - imagen: /img/productos/bernette-sew-go-3-4.jpg
 - imagen: /img/productos/bernette-sew-go-3-5.jpg
-description: La bernette sew&go 3 es el modelo intermedio de los tres mecánicos.
+description: "El modelo intermedio de las sew&go mecánicas: 19 puntadas con ojal, enhebrador semiautomático y ajustes sencillos."
 destacados:
-- texto: Presión del prensatelas
+- texto: 19 puntadas, con ojal
+- texto: Anchura de puntada de hasta 5 mm
+- texto: Enhebrador semiautomático
+- texto: Selección de puntada sencilla
+- texto: Presión del prensatelas ajustable
 - texto: Alzaprensatelas de dos niveles
 - texto: Diseño joven
-- texto: Selección de puntada sencilla
-- texto: Enhebrador semiautomático
 caracteristicas:
 - nombre: Número total de puntadas
   valor: '19'
@@ -36,4 +38,4 @@ caracteristicas:
 - nombre: Presión del prensatelas ajustable
   valor: Sí
 ---
-La bernette sew&go 3 es el modelo intermedio de los tres mecánicos. Su paquete de puntadas incluye 19 puntadas, con un ojal, y una anchura máxima de puntada de 5 mm. Ajustes como la tensión del hilo o la longitud de la puntada, y también la selección de la puntada, se hacen con los dos botones giratorios delanteros y la rueda de la parte superior de la máquina. El enhebrador de aguja manual y el cortahilos ayudan a coser de forma rápida y sencilla. La bernette sew&go 3 se suministra con cuatro prensatelas (suelas).
+**La bernette sew&go 3 es el modelo intermedio de los tres mecánicos.** Su paquete de puntadas incluye 19 puntadas, con un ojal, y una anchura máxima de puntada de 5 mm. Ajustes como la tensión del hilo o la longitud de la puntada, y también la selección de la puntada, se hacen con los dos botones giratorios delanteros y la rueda de la parte superior de la máquina. El enhebrador de aguja manual y el cortahilos ayudan a coser de forma rápida y sencilla. La bernette sew&go 3 se suministra con cuatro prensatelas (suelas).

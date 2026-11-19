@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Mesa extensible bernette para b37/b38
 fabricante: bernette
 modelo: Mesa extensible b37/b38
@@ -15,6 +15,15 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernette-mesa-extensible-b37-b38-1.jpg
   alt: Mesa extensible bernette para b37/b38
-description: La mesa auxiliar permite una superficie de trabajo más extensa y proporciona una unidad de soporte cómoda para proyectos de costura más grandes.
+description: "Mesa extensible bernette para tu b37 o b38: más superficie de trabajo y un apoyo cómodo para los proyectos grandes."
+destacados:
+- texto: Amplía la superficie de trabajo
+- texto: Apoyo cómodo para proyectos grandes
+- texto: La tela se desliza con más facilidad
+caracteristicas:
+- nombre: Tipo
+  valor: mesa extensible
+- nombre: Compatible con
+  valor: bernette b37 y b38
 ---
-La mesa auxiliar permite una superficie de trabajo más extensa y proporciona una unidad de soporte cómoda para proyectos de costura más grandes. La tela puede moverse sobre ella más fácilmente.
+**Gana espacio para tus proyectos más grandes.** La mesa extensible bernette amplía la superficie de trabajo de tu b37 o b38 y te da un apoyo cómodo para que la tela se deslice con más facilidad.

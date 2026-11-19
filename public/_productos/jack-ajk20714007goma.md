@@ -11,6 +11,16 @@ date: '2026-11-09T12:00:00.000+01:00'
 precio: 118.58
 estado: disponible
 condicion: nuevo
-description: Dientes con goma recauchutados para trabajar tejidos muy finos y delicados.
+description: Dientes de arrastre con goma recauchutada Jack para trabajar tejidos muy finos y delicados.
+destacados:
+- texto: Dientes de arrastre con goma recauchutada
+- texto: Para tejidos muy finos y delicados
+caracteristicas:
+- nombre: Tipo
+  valor: dientes de arrastre
+- nombre: Acabado
+  valor: con goma recauchutada
+- nombre: Uso
+  valor: tejidos muy finos y delicados
 ---
-Dientes con goma recauchutados para trabajar tejidos muy finos y delicados.
+**Trata con cuidado los tejidos más delicados.** Estos dientes de arrastre llevan goma recauchutada para trabajar tejidos muy finos y delicados.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking DESIGNER EPIC 3 Nordic Frost
 fabricante: husqvarna
 modelo: DESIGNER EPIC 3 Nordic Frost
@@ -15,17 +15,17 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-epic-3-nordic-frost-3.jpg
 - imagen: /img/productos/husqvarna-designer-epic-3-nordic-frost-4.jpg
 - imagen: /img/productos/husqvarna-designer-epic-3-nordic-frost-5.jpg
-description: El estreno de una nueva experiencia en bordado.
+description: Máquina de coser y bordar de gama alta con la mayor zona de bordado del sector (bastidor de hasta 450 × 450 mm), pantalla táctil de 10,1", inteligencia artificial y proyección del bordado sobre la tela.
 destacados:
-- texto: Nueva unidad de bordado
-- texto: Bordado de brazo libre
-- texto: Bordado en bastidor reversible
-- texto: Bordado y costura Proyección
-- texto: Tecnología de Inteligencia Artificial
-- texto: Tecnología de doble alimentación integrada
-- texto: La mayor zona de bordado del sector
-- texto: Escaneado del bastidor y posicionamiento del diseño
-- texto: Bordar ojales y puntadas decorativas en el bastidor
+- texto: Zona de bordado de hasta 450 × 450 mm, la mayor del sector
+- texto: Nueva unidad de bordado con bordado de brazo libre y bastidor reversible
+- texto: Proyección de bordados y guías de costura sobre la tela
+- texto: Escaneado del bastidor y posicionamiento exacto del diseño
+- texto: Pantalla táctil capacitiva de 10,1" en alta resolución
+- texto: Tecnología de doble arrastre (Dual Feed) integrada
+- texto: 871 puntadas y 912 diseños de bordado incorporados
+- texto: Enhebrador automático y 310 mm de espacio a la derecha de la aguja
+- texto: "Conexión WiFi con creativate: nube, aplicación y actualizaciones"
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 957428096
@@ -235,4 +235,13 @@ caracteristicas:
 - nombre: Bolsa blanda para la unidad de bordado
   valor: Incluido
 ---
-El estreno de una nueva experiencia en bordado. Con una unidad de bordado rediseñada, capacidades de bastidor reversible y el área de bordado más grande de la industria, la máquina de coser y bordar DESIGNER EPIC le permite explorar nuevas técnicas y crear como nunca antes.
+**La DESIGNER EPIC 3 abre una nueva forma de bordar.** Su unidad de bordado rediseñada, el bastidor reversible y el área de bordado más grande del sector (hasta 450 × 450 mm) te permiten abordar proyectos que antes eran impensables en una máquina doméstica.
+
+### Ves el resultado antes de coser
+La máquina proyecta el bordado y las guías de costura directamente sobre la tela, escanea el bastidor para colocar el diseño exactamente donde quieres y te acompaña con el EMBROIDERY ADVISOR y el EXCLUSIVE SEWING ADVISOR, ampliados con JoyOS ADVISOR e inteligencia artificial.
+
+### Costura de alto nivel
+Con 871 puntadas, ancho de 9 mm, 37 posiciones de aguja, doble arrastre integrado y una fuerza de perforación de 150 N, cose con precisión desde tejidos finos hasta capas gruesas. Sus 310 mm de espacio a la derecha de la aguja dan sitio de sobra para colchas y prendas grandes.
+
+### Siempre conectada
+Transfiere diseños por WiFi, guárdalos en la nube de creativate y recibe las actualizaciones por Internet. Incluye 912 diseños de bordado, funda blanda para la máquina y bolsa para la unidad de bordado.

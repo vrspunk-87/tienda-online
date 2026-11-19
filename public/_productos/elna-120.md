@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de brazo libre, con 15 funciones
 fabricante: elna
 modelo: '120'
@@ -15,27 +15,47 @@ imagenes:
 - imagen: /img/productos/elna-120-3.jpg
 - imagen: /img/productos/elna-120-4.jpg
 - imagen: /img/productos/elna-120-5.jpg
-description: De brazo libre, con 15 funciones...
+description: "Máquina de coser mecánica de brazo libre con 15 puntadas y ojal en cuatro fases: sencilla, fiable y con la garantía de Elna."
 destacados:
-- texto: 15 puntadas incluidas, una de ojales en cuatro fases
-- texto: 'Ancho máximo de puntada: 5 mm'
-- texto: 'Longitud máxima de puntada: 4 mm'
-- texto: Longitud puntada ajustable por dial control rotativo
-- texto: Sistema de garfio vertical
+- texto: 15 puntadas
+- texto: Ojal en cuatro fases
 - texto: Devanador de canilla retráctil
-- texto: Lámpara eléctrica incandescente 15W
+- texto: Anchura de puntada de hasta 5 mm
+- texto: Doble altura del prensatelas, hasta 9 mm
 - texto: Brazo libre
+- texto: Garantía de 5 años en piezas
 caracteristicas:
-- valor: Longitud de puntada a 4mm.
-- valor: Ancho de costura de 5mm.
-- valor: Doble altura de prensatelas hasta un máximo de 9mm.
-- valor: Garfio oscilante.
-- valor: Velocidad máxima de 820ppm.
-- valor: Motor de 60w de 5500rpm con una potencia de 0.104Nm
-- valor: Consumo de 60w.
+- nombre: Tipo
+  valor: mecánica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: "15"
+- nombre: Ojal
+  valor: ojal en cuatro fases
+- nombre: Longitud máxima de puntada
+  valor: 4 mm
+- nombre: Anchura máxima de puntada
+  valor: 5 mm
+- nombre: Altura del prensatelas
+  valor: doble, hasta 9 mm
+- nombre: Selector de longitud
+  valor: dial rotativo
+- nombre: Iluminación
+  valor: lámpara de 15 W
+- nombre: Garfio
+  valor: oscilante
+- nombre: Velocidad máxima
+  valor: 820 puntadas por minuto
+- nombre: Motor
+  valor: 60 W, 5.500 rpm, 0,104 Nm
+- nombre: Consumo
+  valor: 60 W
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-De brazo libre, con 15 funciones...
+**La Elna 120 es la mejor opción para tu debut en la costura: una máquina mecánica de brazo libre, sencilla y fiable.** Tiene 15 puntadas y ojal en cuatro fases, con una anchura de hasta 5 mm y una longitud de hasta 4 mm.
 
-Esta máquina de coser elna es la mejor opción para tu debut en la costura.
+La doble altura del prensatelas, de hasta 9 mm, te permite coser tejidos gruesos, y el brazo libre te facilita las mangas, los bajos y las prendas tubulares. Alcanza 820 puntadas por minuto con su motor de 60 W.
+
+Garantía de 5 años en piezas y 3 años en las partes electrónicas.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de brazo libre, con 200 funciones
 fabricante: elna
 modelo: 570α
@@ -15,34 +15,66 @@ imagenes:
 - imagen: /img/productos/elna-570a-3.jpg
 - imagen: /img/productos/elna-570a-4.jpg
 - imagen: /img/productos/elna-570a-5.jpg
-description: De brazo libre, con 200 funciones. Con cortahílos, 12 ojales en un sólo paso y enhebrador automático.
+description: "Máquina electrónica de brazo libre con 200 puntadas, alfabeto, 12 ojales en un paso y cortahílos: funciones inteligentes al alcance de un botón."
 destacados:
-- texto: Con cortahílos, 12 ojales en un sólo paso y enhebrador automático.
-- texto: Motor DC arranque y aceleración más eficiente. Menor consumo.
+- texto: 200 puntadas y alfabeto con mayúsculas, minúsculas, números y símbolos
+- texto: 12 ojales en un solo paso
+- texto: Cortahílos con función de memoria
+- texto: Enhebrador automático
+- texto: Combinación de hasta 50 puntadas y textos
+- texto: 15 posiciones de aguja
+- texto: Botón start/stop y selector de velocidad
+- texto: Base de extensión y maleta dura incluidas
 caracteristicas:
-- valor: Longitud de puntada a 5mm.
-- valor: Ancho de costura de 7mm.
-- valor: 1 Alfabeto con letras mayúsculas/minúsculas, números/símbolos.
-- valor: Combinación hasta 50 funciones y textos.
-- valor: Función de memoria alfanuméricas temporal.
-- valor: Botón Start/Stop.
-- valor: Botón de remate.
-- valor: Botón posicionador de aguja.
-- valor: Selector de velocidad.
-- valor: Tecla de selección directa a 4 funciones.
-- valor: Función memoria para el cortahílos.
-- valor: 15 posiciones de aguja.
-- valor: Garfio rotativo.
-- valor: Doble altura de prensatelas hasta un máximo de 9mm.
-- valor: Garfio rotativo.
-- valor: Velocidad máxima de 820ppm
-- valor: Motor DC arranque y aceleración más eficiente. Menor consumo.
-- valor: Consumo de 70w.
-- valor: Base de extensión.
-- valor: Maleta dura.
+- nombre: Tipo
+  valor: electrónica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: "200"
+- nombre: Ojales
+  valor: 12, en un solo paso
+- nombre: Alfabeto
+  valor: 1, con mayúsculas, minúsculas, números y símbolos
+- nombre: Combinación de puntadas y textos
+  valor: hasta 50
+- nombre: Memoria alfanumérica
+  valor: temporal
+- nombre: Longitud de puntada
+  valor: hasta 5 mm
+- nombre: Anchura de puntada
+  valor: hasta 7 mm
+- nombre: Posiciones de aguja
+  valor: "15"
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Botón de remate
+  valor: Sí
+- nombre: Posicionador de aguja
+  valor: Sí
+- nombre: Selector de velocidad
+  valor: Sí
+- nombre: Selección directa
+  valor: 4 funciones
+- nombre: Cortahílos
+  valor: con función de memoria
+- nombre: Altura del prensatelas
+  valor: doble, hasta 9 mm
+- nombre: Garfio
+  valor: rotativo
+- nombre: Velocidad máxima
+  valor: 820 puntadas por minuto
+- nombre: Motor
+  valor: DC, arranque y aceleración eficientes
+- nombre: Consumo
+  valor: 70 W
+- nombre: Incluye
+  valor: base de extensión y maleta dura
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-De brazo libre, con 200 funciones. Con cortahílos, 12 ojales en un sólo paso y enhebrador automático.
+**La Elna 570α es un modelo computerizado diseñado para adaptarse a múltiples aplicaciones y propósitos.** Sus funciones inteligentes aumentan la eficiencia de tu costura y se activan fácilmente con solo pulsar un botón.
 
-Este modelo computarizado ha sido diseñado para adaptarse a múltiples aplicaciones y propósitos. Una amplia gama de funciones inteligentes que aumentarán la eficiencia de tu costura, pueden accionarse fácilmente con tan solo apretar un botón:
+Dispone de 200 puntadas, un alfabeto completo y 12 ojales en un solo paso, y puedes combinar hasta 50 puntadas y textos. El cortahílos con memoria, el enhebrador automático, las 15 posiciones de aguja y el botón start/stop con selector de velocidad hacen que coser sea rápido y cómodo.
+
+Su motor DC es más eficiente y consume menos, e incluye base de extensión y maleta dura. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

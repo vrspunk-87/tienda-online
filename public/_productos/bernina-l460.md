@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Bernina L460
 fabricante: bernina
 modelo: L460
@@ -13,21 +13,16 @@ imagenes:
   alt: Remalladora Bernina L460 con la base de costura
 - imagen: /img/productos/bernina-l460-2.jpg
   alt: Remalladora Bernina L460 enhebrada
-description: 'La máquina overlock de BERNINA: el complemento perfecto para la máquina de coser.'
+description: 'Remalladora BERNINA L 460: el complemento perfecto de tu máquina de coser, con sistema manos libres, motor CC de hasta 1.500 ppm y control de microenhebrado.'
 destacados:
-- texto: 'Sistema de manos libres (FHS): alzaprensatelas de rodilla'
-- texto: Excelente control de la velocidad con el pedal BERNINA
-- texto: Base de costura grande para una mayor zona de trabajo
+- texto: Sistema manos libres (FHS) con alzaprensatelas de rodilla
+- texto: Hasta 1.500 puntadas por minuto, o puntada a puntada
 - texto: Parada automática de la aguja arriba
-- texto: Coser, cortar y sobrehilar en una operación
-- texto: Ideal para género elástico y tejidos
-- texto: Dobladillos enrollados perfectos
-- texto: Transporte diferencial para costuras planas y sin ondulaciones
-- texto: Fruncir y plisar con el transporte diferencial
-- texto: Numerosas posibilidades de diseño con hilos decorativos
-- texto: Costura precisa de piezas de patchwork
+- texto: 16 puntadas de 2, 3 o 4 hilos
 - texto: Control de microenhebrado (mtc)
-- texto: 2 luces LED de costura
+- texto: Base de costura grande
+- texto: Transporte diferencial para fruncir, plisar o coser sin ondas
+- texto: 2 luces LED
 caracteristicas:
 - nombre: Número total de puntadas
   valor: '16'
@@ -116,9 +111,9 @@ caracteristicas:
 - nombre: Interruptor de seguridad si la tapa está abierta y el prensatelas elevado
   valor: Sí
 ---
-Gracias al sistema de manos libres (FHS) de BERNINA, el prensatelas se sube y se baja con la rodilla, lo que deja ambas manos libres para guiar la tela. ¡Ahorras tiempo y obtienes resultados perfectos!
+**Gracias al sistema de manos libres (FHS) de BERNINA, el prensatelas se sube y se baja con la rodilla, lo que deja ambas manos libres para guiar la tela.** ¡Ahorras tiempo y obtienes resultados perfectos!
 
-El pedal y el motor CC de BERNINA permiten coser tanto a 1500 puntadas por minuto como puntada a puntada, lo que facilita el trabajo con tejidos delicados o gruesos.
+El pedal y el motor CC de BERNINA permiten coser tanto a 1.500 puntadas por minuto como puntada a puntada, lo que facilita el trabajo con tejidos delicados o gruesos.
 
 La base de costura amplía la zona a la izquierda de la aguja: los tejidos grandes se guían con más facilidad y se tiene mejor visión del proyecto. El control de microenhebrado patentado mtc garantiza puntadas uniformes: solo hay que ajustar la tensión del hilo una vez, aunque se modifiquen la anchura de corte y el grosor del tejido.
 

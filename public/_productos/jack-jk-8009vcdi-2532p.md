@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de 25 agujas cadeneta cilíndrica Direc Drive
 fabricante: jack
 modelo: JK-8009VCDI-2532P
@@ -12,11 +12,32 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-8009vcdi-2532p-1.jpg
-description: Máquina de 25 agujas cadeneta cilíndrica Direc Drive. de 1/8 con un ancho total de costura de 76,8mm. Equipada con alzaprensatelas y puler.
+description: Máquina industrial de cadeneta de brazo cilíndrico con 25 agujas de 1/8 (76,8 mm), motor Direct Drive, alzaprensatelas y puller estriado o liso.
 caracteristicas:
+- nombre: Tipo
+  valor: máquina de cadeneta de brazo cilíndrico
+- nombre: Agujas
+  valor: "25"
+- nombre: Separación
+  valor: 1/8
+- nombre: Ancho total de costura
+  valor: 76,8 mm
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Alzaprensatelas
+  valor: Sí
 - nombre: Versión JK-8009VCDI-2532P
-  valor: De 1/8 con puler estriado
+  valor: puller estriado
 - nombre: Versión JK-8009VCDI-2532PR
-  valor: De 1/8 con puler liso
+  valor: puller liso
+destacados:
+- texto: 25 agujas en cadeneta, separación de 1/8
+- texto: Ancho total de costura de 76,8 mm
+- texto: Brazo cilíndrico
+- texto: Motor Direct Drive
+- texto: Alzaprensatelas
+- texto: Puller estriado (P) o liso (PR)
 ---
-Máquina de 25 agujas cadeneta cilíndrica Direc Drive. de 1/8 con un ancho total de costura de 76,8mm. Equipada con alzaprensatelas y puler.
+**Jack JK-8009VCDI-2532P: veinticinco agujas para cubrir 76,8 mm de una sola pasada.** Con separación de 1/8, es la opción para trabajos de muchas líneas muy juntas en producción.
+
+Brazo cilíndrico, motor Direct Drive, alzaprensatelas y puller estriado o liso, a elegir según el tejido.

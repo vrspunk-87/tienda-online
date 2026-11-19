@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer C7225
 fabricante: singer
 modelo: C7225
@@ -15,43 +15,66 @@ imagenes:
 - imagen: /img/productos/singer-c7225-3.jpg
 - imagen: /img/productos/singer-c7225-4.jpg
 - imagen: /img/productos/singer-c7225-5.jpg
-description: Grandes prestaciones, diseño moderno y muchos accesorios.
+description: "Máquina electrónica Singer C7225: grandes prestaciones, diseño moderno y muchos accesorios, con 200 puntadas, cortahílos y bastidor metálico."
 destacados:
-- texto: La pantalla LCD muestra las selecciones de puntada y los ajustes
-- texto: '200 puntadas incorporadas: básicas, elásticas y decorativas'
-- texto: El botón cortahilos recorta los hilos superior e inferior para ahorrar tiempo
-- texto: 163 mm de espacio para coser (de la aguja a la torre) y 111 mm de altura
-- texto: Aplicaciones de puntada (379)
-- texto: Letras incorporadas
-- texto: Capacidad de memoria temporal (40 caracteres)
-- texto: Puntadas incorporadas (200)
-- texto: Ojales de un solo paso (8)
-- texto: Enhebrador de aguja incorporado
-- texto: Cortador de hilo incorporado
-- texto: Bobina superior
-- texto: Dientes de arrastre
-- texto: Selección de puntada con botón táctil
-- texto: Longitud de puntada ajustable (4,5 mm)
-- texto: Anchura de puntada ajustable (7 mm)
-- texto: Reverso (Botón táctil)
+- texto: "200 puntadas: básicas, elásticas y decorativas"
+- texto: 8 ojales en un solo paso
+- texto: Botón cortahílos para hilo superior e inferior
+- texto: Pantalla LCD con la puntada y sus ajustes
 - texto: Bastidor metálico Heavy Duty
-- texto: Control de velocidad (mecánico)
-- texto: Botón de Inicio/Parada
-- texto: Aguja arriba/abajo
-- texto: Aguja arriba/abajo programable
-- texto: Pantalla LCD
-- texto: Brazo libre
+- texto: Enhebrador de aguja y aguja arriba/abajo programable
+- texto: 163 mm de espacio de costura
 - texto: Mesa de extensión incluida
-- texto: Prensatelas a presión
-- texto: Función de aguja gemela
-- texto: Espacio de costura de 163 mm (de la aguja a la torre)
-- texto: Clase de Bobina (15 Transparente)
 caracteristicas:
-- nombre: Bobinas
-  valor: SINGER clase 15 transparentes
-- nombre: Dimensiones (cm)
-  valor: 46,9 largo, 20,1 ancho, 27,9 alto
+- nombre: Tipo
+  valor: electrónica
+- nombre: Puntadas
+  valor: 200 (379 aplicaciones de puntada)
+- nombre: Letras
+  valor: Sí
+- nombre: Ojales
+  valor: 8, en un solo paso
+- nombre: Memoria temporal
+  valor: 40 caracteres
+- nombre: Longitud de puntada
+  valor: ajustable hasta 4,5 mm
+- nombre: Anchura de puntada
+  valor: ajustable hasta 7 mm
+- nombre: Selección de puntada
+  valor: botones táctiles
+- nombre: Enhebrador de aguja
+  valor: incorporado
+- nombre: Cortador de hilo
+  valor: incorporado, corta el hilo superior e inferior
+- nombre: Canilla
+  valor: superior, clase 15 transparente
+- nombre: Bajada de dientes
+  valor: Sí
+- nombre: Botones
+  valor: marcha atrás, inicio/parada y aguja arriba/abajo (programable)
+- nombre: Control de velocidad
+  valor: mecánico
+- nombre: Pantalla
+  valor: LCD
+- nombre: Bastidor
+  valor: metálico Heavy Duty
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Prensatelas
+  valor: de presión
+- nombre: Doble aguja
+  valor: Sí
+- nombre: Espacio de costura
+  valor: 163 mm (aguja a torre) y 111 mm de altura
+- nombre: Mesa de extensión
+  valor: incluida
+- nombre: Dimensiones
+  valor: 46,9 × 20,1 × 27,9 cm (largo × ancho × alto)
 - nombre: Peso
   valor: 6,3 kg
 ---
-Grandes prestaciones, diseño moderno y muchos accesorios. Para su comodidad, su máquina llegará pre-enhebrada. Los accesorios incluidos se encuentran en la zona de almacenamiento de la parte delantera de su máquina.
+**La Singer C7225 reúne grandes prestaciones, un diseño moderno y muchos accesorios.** Sus 200 puntadas básicas, elásticas y decorativas, con letras y 8 ojales en un solo paso, te permiten coser todo tipo de proyectos.
+
+La pantalla LCD te muestra la puntada y sus ajustes, el botón cortahílos recorta los hilos superior e inferior para ahorrarte tiempo y la aguja arriba/abajo es programable. Su bastidor metálico Heavy Duty le da estabilidad, y tienes 163 mm de espacio de costura.
+
+Llega preenhebrada para que empieces enseguida, con los accesorios en el compartimento delantero y mesa de extensión incluida.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Overlock de 4 hilos
 fabricante: juki
 modelo: MO-50eN
@@ -14,22 +14,45 @@ imagenes:
 - imagen: /img/productos/juki-mo-50en-2.jpg
 - imagen: /img/productos/juki-mo-50en-3.jpg
 - imagen: /img/productos/juki-mo-50en-4.jpg
-description: Overlock de 4 hilos. Permite realizar costuras de 3 - 4 hilos.
+description: Overlock Juki MO-50eN de 4 hilos para costuras de 3 y 4 hilos, con transporte diferencial y hasta 1.300 puntadas por minuto.
 destacados:
-- texto: Sistema de enhebrado automático del ancora inferior.
+- texto: Costuras de 3 y 4 hilos
+- texto: Enhebrado automático del áncora inferior
+- texto: Costura flatlock de 3 hilos con cualquiera de las agujas
+- texto: Repulgo de 2 mm con palanca
+- texto: Cajón recolector de retales
+- texto: Transporte diferencial regulable desde el exterior
+- texto: Hasta 1.300 puntadas por minuto
 caracteristicas:
-- valor: Ancho costura 4mm con la aguja derecha y de 6mm con la aguja izq.
-- valor: Costura Flatloock a 3 hilos (tanto con la aguja derecha como la izq.)
-- valor: Placa de agujas con palanca para realizar repulgo de 2mm.
-- valor: Sistema de enhebrado automático del ancora inferior.
-- valor: Regulador exterior ajuste longitud de puntada de 1- 4mm.
-- valor: Regulación del ancho de corte de las cuchillas.
-- valor: Regulación exterior del transporte diferencial de 0,8 - 2mm.
-- valor: Cajón recolector de retales incluido.
-- valor: Velocidad máxima de 1300ppm.
-- valor: Motor de 90w de 7000rpm con una potencia de 0.122Nm
-- valor: Consumo de 90w.
+- nombre: Tipo
+  valor: overlock
+- nombre: Hilos
+  valor: "4"
+- nombre: Costuras
+  valor: 3 y 4 hilos
+- nombre: Ancho de costura
+  valor: 4 mm con la aguja derecha; 6 mm con la izquierda
+- nombre: Costura flatlock
+  valor: 3 hilos, con la aguja derecha o la izquierda
+- nombre: Repulgo
+  valor: 2 mm, con palanca en la placa de agujas
+- nombre: Enhebrado
+  valor: automático del áncora inferior
+- nombre: Longitud de puntada
+  valor: de 1 a 4 mm
+- nombre: Transporte diferencial
+  valor: de 0,8 a 2 mm
+- nombre: Cajón recolector
+  valor: incluido
+- nombre: Ancho de corte
+  valor: regulable
+- nombre: Velocidad máxima
+  valor: 1.300 puntadas por minuto
+- nombre: Motor
+  valor: 90 W, 7.000 rpm, 0,122 Nm
+- nombre: Consumo
+  valor: 90 W
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-Overlock de 4 hilos. Permite realizar costuras de 3 - 4 hilos.
+**La Juki MO-50eN es una overlock de 4 hilos sencilla y eficaz para remallar con 3 o 4 hilos.** Su áncora inferior se enhebra automáticamente, hace flatlock de 3 hilos con cualquiera de las agujas y repulgo de 2 mm con una palanca. Incluye cajón recolector de retales. Alcanza hasta 1.300 puntadas por minuto. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

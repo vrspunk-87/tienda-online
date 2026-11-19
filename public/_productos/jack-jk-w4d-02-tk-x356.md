@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina recubridora de 3 aguas 5.6mm base plana Direc Drive
 fabricante: jack
 modelo: JK-W4D-02/TK-X356
@@ -12,8 +12,38 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-w4d-02-tk-x356-1.jpg
-description: Máquina recubridora de 3 aguas 5.6mm base plana Direc Drive.
+description: Recubridora industrial Jack de base plana con 3 agujas (5,6 mm) para colocar collarines, con cortacintas manual o automático por células y alzaprensatelas.
 destacados:
-- texto: Para collarín con corte
+- texto: Recubridora de base plana con 3 agujas
+- texto: Recubrimiento superior e inferior
+- texto: Motor Direct Drive
+- texto: Para colocar collarines con corte
+- texto: Cortacintas manual o automático por células
+- texto: Alzaprensatelas
+- texto: Necesita compresor
+- texto: Luz LED
+caracteristicas:
+- nombre: Tipo
+  valor: recubridora de base plana
+- nombre: Agujas
+  valor: "3"
+- nombre: Recubrimiento
+  valor: superior e inferior
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Ancho entre agujas
+  valor: 5,6 mm
+- nombre: Uso
+  valor: colocación de collarines
+- nombre: Cortacintas
+  valor: manual o automático por células
+- nombre: Alzaprensatelas
+  valor: Sí
+- nombre: Alimentación de aire
+  valor: necesita compresor
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina recubridora de 3 aguas 5.6mm base plana Direc Drive. Para la colocación de collarines, equipada con corta cintas con accionamiento manual o automático por células, recubrimiento superior e inferior. cintas por células (posibilidad de cortar de forma manual o automática) y alza prensatelas. Con luz LED. Precisa conexión a compresor.
+**Jack JK-W4D-02/TK-X356: coloca collarines y corta la cinta sin parar.** Esta recubridora de base plana con 3 agujas (5,6 mm) y recubrimiento superior e inferior lleva cortacintas que puedes accionar a mano o de forma automática con células.
+
+Con alzaprensatelas, motor Direct Drive y luz LED. Necesita conexión a compresor.

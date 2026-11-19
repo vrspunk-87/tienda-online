@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Creative ICON 3
 fabricante: pfaff
 modelo: Creative ICON 3
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-icon-3-3.jpg
 - imagen: /img/productos/pfaff-creative-icon-3-4.jpg
 - imagen: /img/productos/pfaff-creative-icon-3-5.jpg
-description: Simplemente icónica.
+description: 'PFAFF creative icon 3: simplemente icónica. Inteligencia artificial, pantalla de 10,1", más de 920 diseños y bordado de hasta 450 × 450 mm.'
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 850410096
@@ -67,5 +67,18 @@ caracteristicas:
   valor: con sensor
 - nombre: Idiomas
   valor: chino, danés, neerlandés, inglés, finés, francés, alemán, italiano, noruego, ruso, español, sueco, turco y portugués
+destacados:
+- texto: Inteligencia artificial y máxima conectividad
+- texto: Pantalla de 10,1"
+- texto: Más de 870 puntadas de hasta 9 mm
+- texto: Más de 920 diseños de bordado
+- texto: Área de bordado de hasta 450 × 450 mm
+- texto: 310 mm de espacio de costura
+- texto: Sistema Original IDT con sensor
+- texto: Enhebrador totalmente automático y 34 accesorios
 ---
-Simplemente icónica. Descubre esta revolución, una primicia mundial en el mundo de la costura doméstica. La inteligencia artificial y sus prestaciones de primera categoría te ofrecen la máxima conectividad para alcanzar nuevos niveles en tu arte, sin esfuerzo alguno.
+**Simplemente icónica: la PFAFF creative icon 3 es una revolución, una primicia mundial en la costura doméstica.** Su inteligencia artificial y sus prestaciones de primera categoría, con la máxima conectividad, te llevan a nuevos niveles en tu arte sin esfuerzo.
+
+Borda a lo grande, con más de 920 diseños y un área de hasta 450 × 450 mm, a hasta 1.000 puntadas por minuto. Para coser, más de 870 puntadas de hasta 9 mm y 310 mm de espacio a la derecha de la aguja, con el sistema Original IDT con sensor.
+
+Pantalla de 10,1", enhebrador totalmente automático, tensión automática, corte de hilo Auto Snip, bajada automática de los dientes, rodillera y 34 accesorios incluidos. La unidad de bordado tiene el código 850410096.

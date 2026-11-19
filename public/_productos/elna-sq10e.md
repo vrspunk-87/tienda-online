@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bastidor 100X100mm
 fabricante: elna
 modelo: SQ10e
@@ -14,6 +14,18 @@ estado: disponible
 condicion: nuevo
 imagenes:
   - imagen: /img/productos/elna-sq10e-1.jpg
-description: “SQ10e” Bastidor 100X100mm.
+description: Bastidor «SQ10e» de 100 × 100 mm para las Elna eXpressive 802 y 808.
+destacados:
+  - texto: Bastidor de bordado de 100 × 100 mm
+  - texto: Para las Elna eXpressive 802 y 808
+caracteristicas:
+  - nombre: Tipo
+    valor: bastidor de bordado
+  - nombre: Modelo
+    valor: SQ10e
+  - nombre: Medidas
+    valor: 100 × 100 mm
+  - nombre: Compatible con
+    valor: las Elna eXpressive 802 y 808
 ---
-“SQ10e” Bastidor 100X100mm.
+Bastidor «SQ10e» de 100 × 100 mm para tu Elna eXpressive 802 y 808.

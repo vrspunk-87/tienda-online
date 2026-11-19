@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de brazo libre, con 180 funciones
 fabricante: juki
 modelo: HZL-G220
@@ -12,33 +12,67 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/juki-hzl-g220-1.jpg
 - imagen: /img/productos/juki-hzl-g220-2.jpg
-description: De brazo libre, con 180 funciones. Con cortahílos, 8 ojales en un sólo paso y enhebrador automático.
+description: Máquina de coser electrónica Juki HZL-G220 de brazo libre con 180 puntadas, 8 ojales en un solo paso con prensatelas electrónico y enhebrador automático.
 destacados:
-- texto: Con cortahílos, 8 ojales en un sólo paso y enhebrador automático.
-- texto: Botón función de cortahílos
-- texto: Motor DC arranque y aceleración más eficiente. Menor consumo.
+- texto: 180 puntadas
+- texto: 8 ojales en un solo paso con prensatelas electrónico
+- texto: Enhebrador automático
+- texto: Cortahílos con botón
+- texto: 37 posiciones de aguja
+- texto: Prensatelas de doble arrastre para acolchado y quilting incluido
+- texto: Placa extra de pespunte recto
+- texto: Botón start/stop y selector de velocidad
+- texto: "Motor DC: arranque y aceleración más eficientes, menor consumo"
 caracteristicas:
-- valor: Longitud máxima de puntada 5mm.
-- valor: Ancho de costura máximo de 7mm.
-- valor: 1 Alfabeto con letras mayúsculas/minúsculas, números/símbolo
-- valor: 1 Memoria alfanumérica de hasta 70 caracteres
-- valor: Editor de costuras.
-- valor: Botón función de cortahílos
-- valor: Botón Start/Stop.
-- valor: Botón posicionador de aguja.
-- valor: Botón de remate.
-- valor: Selector de velocidad.
-- valor: Con 37 posiciones de aguja.
-- valor: Garfio rotativo.
-- valor: Extra placa de agujas de pespunte recto.
-- valor: Prensatelas electrónico para realizar los ojales.
-- valor: Prensatelas de acolchado, doble arrastre, para Quilting incluidos.
-- valor: Doble altura de prensatelas hasta un máximo de 12mm.
-- valor: Velocidad máxima de 900ppm.
-- valor: Motor DC arranque y aceleración más eficiente. Menor consumo.
-- valor: Consumo de 65w
-- valor: Base de extensión y funda semi rígida
+- nombre: Tipo
+  valor: electrónica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: "180"
+- nombre: Ojales
+  valor: 8 ojales en un solo paso con prensatelas electrónico
+- nombre: Longitud máxima de puntada
+  valor: 5 mm
+- nombre: Anchura máxima de puntada
+  valor: 7 mm
+- nombre: Alfabeto
+  valor: 1, con mayúsculas, minúsculas, números y símbolos
+- nombre: Memoria
+  valor: 1, de hasta 70 caracteres
+- nombre: Editor de costuras
+  valor: Sí
+- nombre: Cortahílos
+  valor: con botón
+- nombre: Posiciones de aguja
+  valor: "37"
+- nombre: Placa de aguja de pespunte recto
+  valor: incluida
+- nombre: Prensatelas incluidos
+  valor: electrónico para ojales y de doble arrastre para acolchado y quilting
+- nombre: Altura del prensatelas
+  valor: doble, hasta 12 mm
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Botón de remate
+  valor: Sí
+- nombre: Selector de velocidad
+  valor: Sí
+- nombre: Garfio
+  valor: rotativo
+- nombre: Velocidad máxima
+  valor: 900 puntadas por minuto
+- nombre: Motor
+  valor: DC, arranque y aceleración eficientes
+- nombre: Consumo
+  valor: 65 W
+- nombre: Incluye
+  valor: base de extensión y funda semirrígida
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-De brazo libre, con 180 funciones. Con cortahílos, 8 ojales en un sólo paso y enhebrador automático.
+**La Juki HZL-G220 es una máquina de coser electrónica de brazo libre, fácil de usar y pensada para coser con comodidad.** Tiene 180 puntadas, 8 ojales en un solo paso con prensatelas electrónico y enhebrador automático, con una longitud de puntada de hasta 5 mm y una anchura de hasta 7 mm. Cuenta con cortahílos con botón, 37 posiciones de aguja, placa extra de pespunte recto y prensatelas de doble arrastre para acolchar.
+
+El botón start/stop te deja coser sin pedal, el selector de velocidad adapta el ritmo a cada labor y el botón de remate asegura tus costuras. Alcanza 900 puntadas por minuto, y su motor DC arranca y acelera de forma más eficiente y consume menos.
+
+Incluye base de extensión y funda semirrígida. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

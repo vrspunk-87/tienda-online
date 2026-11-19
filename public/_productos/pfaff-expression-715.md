@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Expression 715
 fabricante: pfaff
 modelo: Expression 715
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-expression-715-3.jpg
 - imagen: /img/productos/pfaff-expression-715-4.jpg
 - imagen: /img/productos/pfaff-expression-715-5.jpg
-description: 'La máquina de coser PFAFF expression 715 es donde comienza la perfección: con funciones inteligentes, ingeniería de vanguardia y la tecnología IDT de la firma que ofrece resultados impecables y…'
+description: 'PFAFF expression 715: donde empieza la perfección, con sistema IDT, 600 puntadas de 9 mm, pantalla de 8" y 250 mm de espacio de costura.'
 caracteristicas:
 - nombre: Nº de puntadas
   valor: '600'
@@ -45,5 +45,18 @@ caracteristicas:
   valor: Sí
 - nombre: Tensión del hilo
   valor: automática
+destacados:
+- texto: Sistema Original IDT para resultados impecables
+- texto: 600 puntadas de hasta 9 mm y 4 fuentes
+- texto: Pantalla de 8"
+- texto: 250 mm de espacio a la derecha de la aguja
+- texto: Enhebrador automático y corte de hilo Auto-Snip
+- texto: Elevación automática del prensatelas
+- texto: Tensión automática
+- texto: Hasta 1.050 puntadas por minuto
 ---
-La máquina de coser PFAFF expression 715 es donde comienza la perfección: con funciones inteligentes, ingeniería de vanguardia y la tecnología IDT de la firma que ofrece resultados impecables y uniformes.
+**Con la PFAFF expression 715 empieza la perfección: funciones inteligentes, ingeniería de vanguardia y la tecnología IDT de la marca para resultados impecables y uniformes.**
+
+Tienes 600 puntadas de hasta 9 mm y 4 fuentes, con 250 mm de espacio a la derecha de la aguja para proyectos grandes, y una pantalla de 8" para elegir y ajustar cada puntada.
+
+El enhebrador automático, el corte de hilo Auto-Snip, la elevación automática del prensatelas, la tensión automática y una velocidad de hasta 1.050 puntadas por minuto te permiten coser más rápido y con más comodidad.

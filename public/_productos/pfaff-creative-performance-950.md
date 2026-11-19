@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Creative Performance 950
 fabricante: pfaff
 modelo: Creative Performance 950
@@ -15,35 +15,16 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-performance-950-3.jpg
 - imagen: /img/productos/pfaff-creative-performance-950-4.jpg
 - imagen: /img/productos/pfaff-creative-performance-950-5.jpg
-description: Ideal para costureras apasionadas, la creative performance 950 satisface todas las aspiraciones de costura, ofreciendo funciones para costura utilitaria, confección de prendas, acolchado, bordado…
+description: 'PFAFF creative performance 950 para costureras apasionadas: costura, confección, acolchado y bordado con 800 puntadas, 840 diseños y pantalla de 10,1".'
 destacados:
-- texto: mySewnet Activado
-- texto: Potencia, estabilidad y precisión de costura
-- texto: creative Capacidad de fijación de adornos
-- texto: Gran área de bordado
-- texto: Mejorado Original IDT
-- texto: Pantalla táctil de 10,1
-- texto: Conectividad mySewnet WIFI
-- texto: Tecnología ActivStitch
-- texto: Aguja Arriba Abajo
-- texto: Posicionamiento exacto
-- texto: Botón Start/Stop
-- texto: Prensatelas automático
-- texto: Caída automática de los dientes de arrastre
-- texto: Rodillera electrónica
-- texto: Bobina extragrande
-- texto: Gancho giratorio a prueba de atascos
-- texto: Motor de bobinado separado
-- texto: Dos puertos USB
-- texto: Ojal Sensormatic
-- texto: Programa de agujas gemelas
-- texto: Tensión del hilo
-- texto: Posicionamiento de la puntada
-- texto: Secuenciación de puntadas
-- texto: Puntada cónica
-- texto: Imagen especular de las puntadas
-- texto: Puntadas de salto cortadas
-- texto: Puntadas de salto de bordado de corte automático
+- texto: 800 puntadas de hasta 9 mm y 6 fuentes
+- texto: 840 diseños y 8 fuentes de bordado
+- texto: Gran área de bordado de 350 × 360 mm
+- texto: Sistema IDT mejorado y tecnología ActivStitch
+- texto: Pantalla táctil de 10,1" personalizable
+- texto: Conectividad wifi mySewnet
+- texto: Prensatelas, bajada de dientes y rodillera electrónicos
+- texto: Bobina extragrande y 2 puertos USB
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 850401096
@@ -82,4 +63,8 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '36'
 ---
-Ideal para costureras apasionadas, la creative performance 950 satisface todas las aspiraciones de costura, ofreciendo funciones para costura utilitaria, confección de prendas, acolchado, bordado y mucho más.
+**Ideal para costureras apasionadas, la PFAFF creative performance 950 cumple todas las aspiraciones de costura: costura utilitaria, confección de prendas, acolchado, bordado y mucho más.** Potencia, estabilidad y precisión en una sola máquina.
+
+Para coser, tienes 800 puntadas de hasta 9 mm, 6 fuentes, el sistema IDT mejorado y la tecnología ActivStitch, con 4 modos de movimiento libre, ojal Sensormatic y puntada cónica. Para bordar, 840 diseños, 8 fuentes y un gran área de 350 × 360 mm, con posicionamiento exacto y corte automático de los saltos.
+
+Su pantalla táctil de 10,1", personalizable, la conectividad wifi mySewnet, el prensatelas automático, la rodillera electrónica, la bobina extragrande y el gancho giratorio a prueba de atascos hacen el trabajo cómodo y fluido. Incluye 36 accesorios; la unidad de bordado tiene el código 850401096.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser y bordar fácil de usar, área de bordado 120x180mm
 fabricante: necchi
 modelo: NE210
@@ -15,47 +15,86 @@ imagenes:
 - imagen: /img/productos/necchi-ne210-3.jpg
 - imagen: /img/productos/necchi-ne210-4.jpg
 - imagen: /img/productos/necchi-ne210-5.jpg
-description: Maquina de coser y bordar fácil de usar, área de bordado 120x180mm
+description: Máquina de coser y bordar Necchi fácil de usar, con wifi, 392 puntadas, 100 diseños de Eleonora Galvagno y área de bordado de 120 × 180 mm.
 destacados:
-- texto: Motor DC arranque y aceleración más eficiente. Menor consumo.
+- texto: Coser y bordar, con conexión wifi y USB
+- texto: Área de bordado de 120 × 180 mm, con 2 bastidores
+- texto: 100 diseños de la diseñadora Eleonora Galvagno y 6 fuentes
+- texto: 392 puntadas y 8 ojales con prensatelas electrónico
+- texto: Panel táctil LCD de 3,5" en español
+- texto: Cortahílos automático, tensión automática y sensores de hilo
+- texto: Software Artist Toolkit para PC y app Artist para el móvil
+- texto: Compatible con los formatos de bordado más habituales
 caracteristicas:
-- valor: Funciones de Bordado
-- valor: Área de bordado de 120x180mm.
-- valor: 100 diseños bordados en memoria (diseñadora Eleonora Galvagno)
-- valor: 2 Bastidores incluidos 120x180mm & 50x70mm.
-- valor: 6 fuentes de letras para monogramas y personalización
-- valor: Software Artist Toolkit para PC y App Artist para telefono móvil para edición de diseños.
-- valor: Transferencia de diseños vía WiFi y USB.
-- valor: Compatible con formatos de bordado tzhs, .zhx, .dst, .pes, .exp, .hus, .vip, .jef, .sew, .vp3, .pcs, .xxx, .ent, .pec.
-- valor: Sensor de detección de bastidor y unidad de bordado.
-- valor: Velocidad de bordado hasta 800 ppm.
-- valor: Funciones de Costura
-- valor: 392 Puntadas incorporadas (Creativas, Decorativas, Acolchado…).
-- valor: Longitud máxima de puntada 5mm.
-- valor: Ancho de costura máximo de 7mm.
-- valor: 8 Tipos de ojales con prensatelas electrónico.
-- valor: 3 Alfabetos con letras mayúsculas, minúsculas, números y símbolos.
-- valor: Editor de costuras con posibilidad de combinar hasta 20 tipos.
-- valor: Características de la Máquina
-- valor: De brazo libre.
-- valor: Área de costura ampliada de 170x12cm.
-- valor: Panel táctil LCD 3.5” con idiomas Español, Portugués, Inglés…
-- valor: Enhebrador automático super avanzado.
-- valor: Sensor del hilo superior e inferior.
-- valor: Cortahílos automático.
-- valor: Tensión automática del hilo.
-- valor: Placa aguja extra para coser pespunte recto.
-- valor: Con 5 posiciones de aguja.
-- valor: Pulsador Star/Stop, de remate, de posición aguja y del cortahílos.
-- valor: Dial regulador de velocidad tanto para la costura como el bordado.
-- valor: Sistema de ajuste presión del prensatelas, palanca para subir o bajar los dientes, pulsador para quitar el placa de agujas, etc…
-- valor: Motor DC arranque y aceleración más eficiente. Menor consumo.
-- valor: Consumo de 70w.
-- valor: Con 3 luces LED.
-- valor: Funda de tejido decorada para accesorios.
+- nombre: Tipo
+  valor: máquina de coser y bordar
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Área de bordado
+  valor: 120 × 180 mm
+- nombre: Bastidores incluidos
+  valor: 120 × 180 mm y 50 × 70 mm
+- nombre: Diseños de bordado
+  valor: 100 (diseñadora Eleonora Galvagno)
+- nombre: Fuentes para monogramas
+  valor: "6"
+- nombre: Formatos de bordado
+  valor: .zhs, .zhx, .dst, .pes, .exp, .hus, .vip, .jef, .sew, .vp3, .pcs, .xxx, .ent y .pec
+- nombre: Transferencia de diseños
+  valor: wifi y USB
+- nombre: Software
+  valor: Artist Toolkit para PC y app Artist para el móvil
+- nombre: Sensor de bastidor y de unidad de bordado
+  valor: Sí
+- nombre: Velocidad de bordado
+  valor: hasta 800 puntadas por minuto
+- nombre: Puntadas
+  valor: 392 (creativas, decorativas, acolchado…)
+- nombre: Ojales
+  valor: 8, con prensatelas electrónico
+- nombre: Alfabetos
+  valor: 3, con mayúsculas, minúsculas, números y símbolos
+- nombre: Editor de costuras
+  valor: combina hasta 20 puntadas
+- nombre: Longitud máxima de puntada
+  valor: 5 mm
+- nombre: Anchura máxima de puntada
+  valor: 7 mm
+- nombre: Área de costura
+  valor: ampliada, 170 × 120 mm
+- nombre: Pantalla
+  valor: táctil LCD de 3,5", en español, portugués, inglés…
+- nombre: Enhebrador
+  valor: automático avanzado
+- nombre: Sensores de hilo
+  valor: superior e inferior
+- nombre: Cortahílos
+  valor: automático
+- nombre: Tensión del hilo
+  valor: automática
+- nombre: Placa de aguja para pespunte recto
+  valor: incluida
+- nombre: Posiciones de aguja
+  valor: "5"
+- nombre: Pulsadores
+  valor: start/stop, remate, posición de aguja y cortahílos
+- nombre: Regulador de velocidad
+  valor: dial, para costura y bordado
+- nombre: Presión del prensatelas
+  valor: ajustable
+- nombre: Dientes
+  valor: palanca para subirlos y bajarlos
+- nombre: Motor
+  valor: DC, consumo de 70 W
+- nombre: Iluminación
+  valor: 3 luces LED
+- nombre: Funda
+  valor: de tejido decorada, para accesorios
 - nombre: Garantía
   valor: 3 años
 ---
-Maquina de coser y bordar fácil de usar, área de bordado 120x180mm
+**La Necchi NE210 es una máquina de coser y bordar fácil de usar, con wifi y un panel táctil a color de 3,5".** Para bordar, tienes un área de 120 × 180 mm, 2 bastidores, 6 fuentes y 100 preciosos diseños de la diseñadora Eleonora Galvagno; para coser, 392 puntadas, 8 ojales y 3 alfabetos.
 
-Función WiFi 392 Puntadas Preciosos diseños de bordados de Elenora Galvagno Panel táctil en color de 3,5"
+Pasa tus diseños por wifi o USB, en los formatos más habituales, y edítalos con el software Artist Toolkit en el ordenador o con la app Artist en el móvil. La máquina detecta el bastidor y la unidad de bordado.
+
+El cortahílos automático, la tensión automática, el enhebrador avanzado y los sensores de hilo superior e inferior hacen que coser y bordar sea sencillo. Incluye placa de pespunte recto y una funda de tejido decorada. Garantía de 3 años.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Overlock Janome RE73
 fabricante: janome
 modelo: RE73
@@ -14,30 +14,36 @@ imagenes:
 - imagen: /img/productos/janome-re73-2.jpg
 - imagen: /img/productos/janome-re73-3.jpg
 - imagen: /img/productos/janome-re73-4.jpg
-description: Máquina overlock doméstica de 2 agujas y 4 hilos.
+description: "Overlock doméstica Janome RE73 de 2 agujas y 4 hilos: remalla, cose y repulga con hasta 1.300 puntadas por minuto."
 destacados:
-- texto: Velocidad 1.300 PPM
-- texto: Altura del prensatelas ajustable mediante tornillo
-- texto: Ancho de corte de 3,1 a 7,3mm
-- texto: Diferencial de arrastre de 0,5 a 2,25 mm
-- texto: Corte cadeneta mediante cuchilla ajustable por dial
-- texto: Diferencial y arrastre ajustables mediante 2 diales
+- texto: Con 1 o 2 agujas y hasta 4 hilos
+- texto: 2 agujas y 4 hilos
+- texto: Ancho de corte ajustable de 3,1 a 7,3 mm
+- texto: Transporte diferencial de 0,5 a 2,25 mm
+- texto: Diferencial y arrastre con diales independientes
+- texto: Hasta 1.300 puntadas por minuto
 caracteristicas:
+- nombre: Tipo
+  valor: overlock doméstica
 - nombre: Agujas
-  valor: '2'
+  valor: "2"
 - nombre: Hilos
-  valor: '4'
+  valor: "4"
+- nombre: Puntadas
+  valor: 1 aguja y 3 hilos normal; 1 aguja y 3 hilos repulgo; 1 aguja y 3 hilos puntada decorativa; 1 aguja y 3 hilos costura ancha; 1 aguja y 3 hilos costura estrecha
 - nombre: Velocidad
-  valor: 1.300 PPM
+  valor: 1.300 puntadas por minuto
 - nombre: Ancho de corte
-  valor: 3,1 a 7,3 mm
-- nombre: Diferencial de arrastre
-  valor: 0,5 a 2,25 mm
+  valor: de 3,1 a 7,3 mm, ajustable con dial
+- nombre: Transporte diferencial
+  valor: de 0,5 a 2,25 mm
+- nombre: Altura del prensatelas
+  valor: regulable con tornillo
+- nombre: Corte de cadeneta
+  valor: con cuchilla ajustable por dial
 - nombre: Peso
   valor: 6 kg
-- nombre: Tipos de puntadas
-  valor: 1 aguja 3 hilos normal; 1 aguja 3 hilos repulgo; 1 aguja 3 hilos puntada decorativa; 1 aguja 3 hilos costura ancha; 1 aguja 3 hilos costura estrecha
 ---
-Máquina overlock doméstica de 2 agujas y 4 hilos.
+**La Janome RE73 es una overlock doméstica de 2 agujas y 4 hilos para dar a tus costuras un acabado limpio y profesional.** Trabaja con 1 o 2 agujas y hasta 4 hilos, y te permite remallar, coser y hacer repulgo.
 
-Máquina de coser overlock con 1 ó 2 agujas. Se puede utilizar hasta con 4 hilos diferentes.
+Ajusta el ancho de corte de 3,1 a 7,3 mm con su dial y regula el transporte diferencial, de 0,5 a 2,25 mm, y el arrastre con dos diales independientes, para que los tejidos elásticos no se ondulen. Alcanza hasta 1.300 puntadas por minuto.

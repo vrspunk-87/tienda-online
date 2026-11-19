@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de brazo libre, con 287 funciones
 fabricante: juki
 modelo: HZL-DX7 Quilt & Pro Special
@@ -12,48 +12,85 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/juki-hzl-dx7-quilt-pro-special-1.jpg
 - imagen: /img/productos/juki-hzl-dx7-quilt-pro-special-2.jpg
-description: De brazo libre, con 287 funciones. 16 ojales en un sólo paso...
+description: "Juki HZL-DX7 Quilt & Pro Special: 287 puntadas, 16 ojales en un solo paso con prensatelas electrónico, gran espacio de trabajo de 203 × 112 mm y funciones automáticas como cortahílos por pedal, función pivote y costura flotante."
 destacados:
-- texto: 16 ojales en un sólo paso...
-- texto: Motor DC arranque y aceleración más eficiente, menor consumo 75w.
+- texto: 287 puntadas, 40 para quilting y aplicación
+- texto: 16 ojales en un solo paso con prensatelas electrónico
+- texto: Gran espacio de trabajo de 203 × 112 mm
+- texto: "Placa de agujas con uña retráctil: pespunte sin cambiar de placa"
+- texto: Botón de aguja doble
+- texto: Cortahílos por botón y por pedal
+- texto: Función pivote y costura flotante
+- texto: Pedal programable
+- texto: Hasta 1.050 puntadas por minuto
 caracteristicas:
-- valor: Funciones de Costura
-- valor: 287 Funciones de Costura.
-- valor: 40 funciones de las 185 especiales para Quilting y aplicación
-- valor: Longitud máxima de puntada 5mm.
-- valor: Ancho de costura máximo de 7mm.
-- valor: 16 Ojales en un solo paso con prensatelas electrónico.
-- valor: 4 Alfabetos con letras mayúsculas/minúsculas, números/símbolos.
-- valor: 10 Memorias alfanuméricas de hasta 700 caracteres.
-- valor: Tecla de selección directa a 12 funciones.
-- valor: Editor de costuras.
-- valor: Características de la Máquina
-- valor: Gran espacio de trabajo 203x112mm.
-- valor: Sistema de cortahílos por botón y por pedal.
-- valor: Enhebrador automático.
-- valor: Botón Start/Stop, Botón de atacado.
-- valor: Botón posicionador de aguja con función de memoria.
-- valor: Botón de puntada remate.
-- valor: Botón de aguja doble.
-- valor: Botón alzaprensatelas.
-- valor: Regulador de velocidad hasta 1050ppm.
-- valor: Con 37 posiciones de aguja.
-- valor: Placa de agujas con uña retráctil, para coser pespunte sin cambios.
-- valor: Función de costura flotante ideal para evitar arrugas en tejidos voluminosos o acolchados.
-- valor: Función pivote, la aguja en posición abajo y el prensatelas sube automáticamente, y al iniciar la costura nuevamente, el prensatelas bajará automáticamente.
-- valor: Función de costura lenta por pulsador, ideal para esquinas
-- valor: Programación de la velocidad al inicio y final de la costura
-- valor: Posibilidad de programar las funciones del pedal (atacado, coser una puntada, cortar el hilo, subir el prensatelas y posición de aguja.)
-- valor: Doble altura de prensatelas hasta un máximo de12mm.
-- valor: Bobinador de canilla con motor independiente.
-- valor: Garfio rotativo horizontal de carga superior con tapa transparente.
-- valor: Rodillera.
-- valor: 12 Prensatelas variados incluidos… de ojales electrónico, acolchado, Quilting, puntada invisible, dobladillo, cremallera, zigzag...
-- valor: Luz LED.
-- valor: Motor DC arranque y aceleración más eficiente, menor consumo 75w.
-- valor: Maleta dura.
-- valor: Base de extensión de costura de 550X335mm.
+- nombre: Tipo
+  valor: electrónica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: 287 (40 para quilting y aplicación)
+- nombre: Ojales
+  valor: 16 ojales en un solo paso con prensatelas electrónico
+- nombre: Alfabetos
+  valor: 4, con mayúsculas, minúsculas, números y símbolos
+- nombre: Memorias
+  valor: 10, de hasta 700 caracteres
+- nombre: Selección directa
+  valor: 12 funciones
+- nombre: Editor de costuras
+  valor: Sí
+- nombre: Longitud máxima de puntada
+  valor: 5 mm
+- nombre: Anchura máxima de puntada
+  valor: 7 mm
+- nombre: Espacio de trabajo
+  valor: 203 × 112 mm
+- nombre: Placa de agujas
+  valor: con uña retráctil para coser pespunte sin cambios
+- nombre: Rodillera
+  valor: Sí
+- nombre: Botón de aguja doble
+  valor: Sí
+- nombre: Cortahílos
+  valor: por botón y por pedal
+- nombre: Enhebrador
+  valor: automático
+- nombre: Botones
+  valor: start/stop, atacado, posición de aguja con memoria, remate y alzaprensatelas
+- nombre: Velocidad
+  valor: regulable hasta 1.050 puntadas por minuto
+- nombre: Posiciones de aguja
+  valor: "37"
+- nombre: Costura flotante
+  valor: Sí, para tejidos voluminosos o acolchados
+- nombre: Función pivote
+  valor: Sí
+- nombre: Costura lenta por pulsador
+  valor: Sí
+- nombre: Velocidad programable al inicio y al final de la costura
+  valor: Sí
+- nombre: Pedal programable
+  valor: atacado, una puntada, cortar el hilo, subir el prensatelas y posición de aguja
+- nombre: Altura del prensatelas
+  valor: doble, hasta 12 mm
+- nombre: Bobinador
+  valor: con motor independiente
+- nombre: Garfio
+  valor: rotativo horizontal de carga superior, con tapa transparente
+- nombre: Prensatelas incluidos
+  valor: 12 (ojales electrónico, acolchado, quilting, puntada invisible, dobladillo, cremallera, zigzag…)
+- nombre: Iluminación
+  valor: LED
+- nombre: Motor
+  valor: DC, consumo de 75 W
+- nombre: Incluye
+  valor: maleta dura y base de extensión de 550 × 335 mm
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-De brazo libre, con 287 funciones. 16 ojales en un sólo paso...
+**La Juki HZL-DX7 Quilt & Pro Special es la más completa de su serie, para coser y acolchar sin límites.** Tiene 287 puntadas, 40 de ellas para quilting y aplicación, 16 ojales en un solo paso con prensatelas electrónico y 4 alfabetos, con 10 memorias de hasta 700 caracteres y editor de costuras.
+
+Su gran espacio de trabajo de 203 × 112 mm te deja sitio para proyectos voluminosos, y sus funciones inteligentes te ahorran tiempo: con la función pivote, el prensatelas sube solo con la aguja abajo y baja al volver a coser; la costura flotante evita arrugas en tejidos gruesos y acolchados; y puedes programar el pedal para rematar, cortar el hilo o subir el prensatelas.
+
+Cortahílos por botón y por pedal, enhebrador automático, 37 posiciones de aguja, rodillera, bobinador con motor independiente y hasta 1.050 puntadas por minuto. Incluye 12 prensatelas y maleta dura y base de extensión de 550 × 335 mm. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

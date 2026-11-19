@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Quilt expression 725
 fabricante: pfaff
 modelo: Quilt expression 725
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-quilt-expression-725-3.jpg
 - imagen: /img/productos/pfaff-quilt-expression-725-4.jpg
 - imagen: /img/productos/pfaff-quilt-expression-725-5.jpg
-description: La máquina de coser PFAFF quilt expression 725, hecha a medida para quilters que exigen exactitud, espacio y control.
+description: 'PFAFF quilt expression 725, hecha a medida para quilters que exigen exactitud, espacio y control: 428 puntadas de 9 mm, IDT y pantalla de 8".'
 caracteristicas:
 - nombre: Nº de puntadas
   valor: '428'
@@ -45,5 +45,16 @@ caracteristicas:
   valor: automática
 - nombre: Sensor de placa de aguja de puntada recta
   valor: Sí
+destacados:
+- texto: Hecha a medida para quilters
+- texto: Sistema Original IDT
+- texto: 428 puntadas de hasta 9 mm y 4 fuentes
+- texto: 250 mm de espacio a la derecha de la aguja
+- texto: Pantalla de 8"
+- texto: Enhebrador automático y corte de hilo Auto-Snip
+- texto: Elevación automática del prensatelas y tensión automática
+- texto: Sensor de placa de aguja de puntada recta
 ---
-La máquina de coser PFAFF quilt expression 725, hecha a medida para quilters que exigen exactitud, espacio y control.
+**La PFAFF quilt expression 725 está hecha a medida para quilters que exigen exactitud, espacio y control.** Su sistema Original IDT hace avanzar las capas de forma uniforme, y sus 250 mm de espacio a la derecha de la aguja dan cabida a tus colchas.
+
+Tienes 428 puntadas de hasta 9 mm y 4 fuentes, que eliges desde su pantalla de 8". El enhebrador automático, el corte de hilo Auto-Snip, la elevación automática del prensatelas, la tensión automática y el sensor de placa de aguja de puntada recta te permiten concentrarte en tu labor.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bastidor 7 en 1 para Elna 970
 fabricante: elna
 modelo: EEL0001
@@ -13,6 +13,19 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/elna-eel0001-1.jpg
-description: Practico bastidor para poder realizar bordados en todo tipo de prensas, bolsas, etc, incorpora 1 base principal + 7 bastidores de diferentes medidas.
+description: "Bastidor 7 en 1 para la Elna 970: una base principal y 7 bastidores para bordar en todo tipo de prendas, bolsas y más."
+destacados:
+- texto: 1 base principal y 7 bastidores de distintas medidas
+- texto: Borda en todo tipo de prendas, bolsas, etc.
+- texto: Para la Elna 970 eXpressive
+caracteristicas:
+- nombre: Tipo
+  valor: bastidor 7 en 1
+- nombre: Contenido
+  valor: 1 base principal y 7 bastidores
+- nombre: Medidas
+  valor: 15,3 × 14 cm, 13,5 × 11,8 cm, 18,6 × 18,4 cm, 18,5 × 14,3 cm, 8,7 × 12 cm, 7,4 × 12 cm y 6,2 × 12 cm
+- nombre: Compatible con
+  valor: Elna 970 eXpressive
 ---
-Practico bastidor para poder realizar bordados en todo tipo de prensas, bolsas, etc, incorpora 1 base principal + 7 bastidores de diferentes medidas… 15,3X14cm, 13,5X11,8cm, 18,6X18,4cm, 18,5X14,3cm, 8,7X12cm, 7,4X12cm, 6,2X12cm
+**Un práctico bastidor para bordar en todo tipo de prendas, bolsas y mucho más con tu Elna 970.** Incluye una base principal y 7 bastidores: 15,3 × 14, 13,5 × 11,8, 18,6 × 18,4, 18,5 × 14,3, 8,7 × 12, 7,4 × 12 y 6,2 × 12 cm.

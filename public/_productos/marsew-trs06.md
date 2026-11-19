@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Soporte (aletas) de los bastidores
 fabricante: marsew
 modelo: TRS06
@@ -13,6 +13,14 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/marsew-trs06-1.jpg
-description: Para adaptar distintos bastidores a las máquinas Marsew JP-1500 es necesario aplicar estos soportes.
+description: Soportes (aletas) para adaptar distintos bastidores a las máquinas de bordar Marsew JP-1500 y JP-1500S.
+destacados:
+- texto: Permiten montar distintos bastidores en tu máquina
+- texto: Para Marsew JP-1500 y JP-1500S
+caracteristicas:
+- nombre: Tipo
+  valor: soporte (aletas) de bastidores
+- nombre: Compatible con
+  valor: Marsew JP-1500, JP-1500S, Alfa AX12 y AX15
 ---
-Para adaptar distintos bastidores a las máquinas Marsew JP-1500 es necesario aplicar estos soportes.
+Para adaptar distintos bastidores a las máquinas de bordar Marsew JP-1500 es necesario aplicar estos soportes (aletas). Sirven también para la JP-1500S y las Alfa AX12 y AX15.

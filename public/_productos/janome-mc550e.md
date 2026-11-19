@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de bordar Janome MC550E
 fabricante: janome
 modelo: MC550E
@@ -15,35 +15,56 @@ imagenes:
 - imagen: /img/productos/janome-mc550e-3.jpg
 - imagen: /img/productos/janome-mc550e-4.jpg
 - imagen: /img/productos/janome-mc550e-5.jpg
-description: Explora tu lado creativo con la más avanzada máquina de bordado de Janome, el nuevo modelo Memory Craft 550E con mayor campo de bordado 200x360mm.
+description: La máquina de bordado más avanzada de Janome, la Memory Craft 550E, con un gran campo de bordado de 200 × 360 mm para personalizar prendas, hogar y accesorios.
 destacados:
-- texto: Máquina Bordadora Computarizada
-- texto: Diseño y Tecnología Japonesa
-- texto: Pantalla táctil de color LCD brillante (sensible al tacto)
-- texto: Los diseños del PC se importan a través del Puerto USB
-- texto: 180 diseños de bordados incorporados
-- texto: 6 Fuentes de letras y números en memoria; 8 tipos de 2 y 3 letras; 3 letras turcas; 46 diseños de borde
-- texto: Incluye 3 bastidores, con la opción de incorporar más bastidores con diferentes áreas de bordado
-- texto: Control de tensión de hilo automático
-- texto: Permite ampliar o reducir diseños de 80% hasta 120%
-- texto: Rotación de los diseños hacia la derecha y hacia la izquierda en 1º y 45º
-- texto: Memoria interna para guardar sus propios diseños de 4MB
-- texto: 'Edición en pantalla: ampliar, reducir, rotar, voltear, arrastrar y soltar, arco en palabras, combinar, copiar y pegar, agrupación, diseños en 4 esquinas, incorporar letras, nombres, números, etc.'
-- texto: Devanador automático
-- texto: Enhebrador automático
-- texto: Corte de hilo automático, corta automáticamente el hilo superior e inferior al mismo tiempo, programable
-- texto: Además, capaz de girar grandes diseños en el modo de edición del diseño será gris cuando este fuera del bastidor y color cuando de nuevo esté dentro del bastidor
-- texto: Los diseños se importan de unidad flash USB por el Conector USB.
-- texto: USB con diseños de bordado adicionales.
-- texto: AcuStitch ver. 2.10 incluido.
+- texto: Gran campo de bordado de 200 × 360 mm
+- texto: 180 diseños de bordado incorporados
+- texto: 6 fuentes de letras y números, monogramas y 46 diseños de borde
+- texto: Pantalla táctil a color de 5"
+- texto: "Edición completa en pantalla: ampliar, rotar, voltear, arquear, combinar…"
+- texto: Tensión del hilo y corte de hilo automáticos
+- texto: Memoria interna de 4 MB y puerto USB
+- texto: Incluye 3 bastidores y el software AcuStitch
 caracteristicas:
-- nombre: Velocidad de bordado
-  valor: desde 400 hasta 860 puntadas por minuto
-- nombre: Área de bordado máximo
-  valor: 200 x 360 mm
-- nombre: Pantalla
-  valor: 5 pulgadas
+- nombre: Tipo
+  valor: máquina de bordar
+- nombre: Área máxima de bordado
+  valor: 200 × 360 mm
 - nombre: Bastidores incluidos
-  valor: '3'
+  valor: "3"
+- nombre: Diseños incorporados
+  valor: "180"
+- nombre: Fuentes
+  valor: 6 de letras y números; monogramas de 2 y 3 letras (8 tipos); 3 letras turcas
+- nombre: Diseños de borde
+  valor: "46"
+- nombre: Pantalla
+  valor: táctil a color de 5"
+- nombre: Edición
+  valor: ampliar, reducir, rotar, voltear, arrastrar y soltar, arquear palabras, combinar, copiar y pegar, agrupar, diseños en 4 esquinas…
+- nombre: Ampliar o reducir diseños
+  valor: del 80 % al 120 %
+- nombre: Rotación de diseños
+  valor: en pasos de 1° y 45°
+- nombre: Velocidad de bordado
+  valor: de 400 a 860 puntadas por minuto
+- nombre: Tensión del hilo
+  valor: automática
+- nombre: Corte de hilo
+  valor: automático y programable (superior e inferior a la vez)
+- nombre: Enhebrador
+  valor: automático
+- nombre: Devanador
+  valor: automático
+- nombre: Memoria interna
+  valor: 4 MB
+- nombre: Conexión
+  valor: USB
+- nombre: Incluye
+  valor: USB con diseños de bordado adicionales y software AcuStitch 2.10
 ---
-Explora tu lado creativo con la más avanzada máquina de bordado de Janome, el nuevo modelo Memory Craft 550E con mayor campo de bordado 200x360mm. Esta innovadora máquina de bordado hace que sea fácil de personalizar cualquier proyecto, embellecer, decorar artículos del hogar y prendas de vestir y accesorios.
+**Explora tu lado creativo con la Janome Memory Craft 550E, su máquina de bordado más avanzada, con un gran campo de bordado de 200 × 360 mm.** Personalizar cualquier proyecto es muy fácil: embellece prendas, decora artículos para el hogar y crea accesorios únicos.
+
+Incorpora 180 diseños, 6 fuentes de letras y números, monogramas y 46 diseños de borde, y además incluye un USB con diseños adicionales. En su pantalla táctil a color de 5" puedes ampliar, reducir, rotar, voltear, arquear palabras o combinar diseños, y verás en gris lo que queda fuera del bastidor.
+
+La tensión del hilo, el enhebrado, el devanado y el corte de hilo son automáticos, para que te concentres en crear. Guarda tus diseños en su memoria de 4 MB o cárgalos por USB. Incluye 3 bastidores y el software AcuStitch.

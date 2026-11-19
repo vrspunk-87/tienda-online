@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking OPAL 690Q
 fabricante: husqvarna
 modelo: OPAL 690Q
@@ -15,10 +15,16 @@ imagenes:
 - imagen: /img/productos/husqvarna-opal-690q-3.jpg
 - imagen: /img/productos/husqvarna-opal-690q-4.jpg
 - imagen: /img/productos/husqvarna-opal-690q-5.jpg
-description: Experimente un avance perfecto y uniforme en cualquier grosor de tejido.
+description: Máquina de coser electrónica con EXCLUSIVE SENSOR SYSTEM para un arrastre uniforme en cualquier grosor, 565 puntadas, pantalla táctil y cortahilos automático.
 destacados:
-- texto: Característica cónica
-- texto: Puntadas Pictobram
+- texto: "EXCLUSIVE SENSOR SYSTEM: arrastre uniforme en cualquier grosor de tejido"
+- texto: 565 puntadas en total, 208 utilitarias y decorativas
+- texto: Pantalla táctil de 3" con puntadas a tamaño real
+- texto: Función exclusiva SEWING ADVISOR
+- texto: Cortahilos automático y tensión electrónica autoajustable
+- texto: Puntadas cónicas y puntadas con pictogramas
+- texto: Botón Start/Stop para coser sin pedal
+- texto: 10 prensatelas incluidos
 caracteristicas:
 - nombre: Tecnología EXCLUSIVE SENSOR SYSTEM
   valor: Sí
@@ -87,4 +93,10 @@ caracteristicas:
 - nombre: Peso
   valor: 8,3 kg (18,3 lb.)
 ---
-Experimente un avance perfecto y uniforme en cualquier grosor de tejido. La máquina de coser OPAL 690Q incorpora el increíble EXCLUSIVE SENSOR SYSTEM, antes solo disponible en nuestras máquinas de coser y bordar más avanzadas. Empiece a trabajar con los 25 accesorios gratuitos que se enumeran a continuación.
+**Un arrastre perfecto y uniforme en cualquier grosor de tejido.** La OPAL 690Q incorpora el EXCLUSIVE SENSOR SYSTEM, que antes solo tenían las máquinas de coser y bordar más avanzadas de Husqvarna Viking.
+
+### Pensada también para acolchar
+Con 200 mm de espacio de costura, 29 posiciones de aguja y el prensatelas que se adapta solo al grosor, coser capas de tejido o colchas es mucho más cómodo.
+
+### Todas las ayudas
+565 puntadas (208 utilitarias y decorativas), 4 fuentes programables, 12 memorias en «Mis puntadas», cortahilos automático, tensión electrónica autoajustable, sensor de canilla y EXCLUSIVE SEWING ADVISOR. Incluye 10 prensatelas y tapa blanda.

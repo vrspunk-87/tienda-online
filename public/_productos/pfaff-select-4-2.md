@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Select 4.2
 fabricante: pfaff
 modelo: Select 4.2
@@ -15,11 +15,15 @@ imagenes:
 - imagen: /img/productos/pfaff-select-4-2-3.jpg
 - imagen: /img/productos/pfaff-select-4-2-4.jpg
 - imagen: /img/productos/pfaff-select-4-2-5.jpg
-description: Disfrute de una versatilidad y facilidad inigualables con los sistemas Original IDT y Easy Select, además de un enhebrador de agujas integrado y mucho más.
+description: "PFAFF select 4.2: la comodidad de la tecnología moderna con el sistema Original IDT, 40 puntadas y enhebrador de agujas integrado."
 destacados:
-- texto: El sistema Original IDT
-- texto: Sistema Easy select
+- texto: Sistema Original IDT de doble arrastre integrado
+- texto: 40 puntadas
+- texto: Sistema Easy Select
 - texto: Poder de perforación constante de la aguja
+- texto: Enhebrador de agujas incorporado
+- texto: Hasta 900 puntadas por minuto
+- texto: 173 mm de espacio de costura
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '40'
@@ -46,4 +50,6 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '19'
 ---
-Disfrute de una versatilidad y facilidad inigualables con los sistemas Original IDT y Easy Select, además de un enhebrador de agujas integrado y mucho más. en la sección Qué incluye.
+**La PFAFF select 4.2 te ofrece toda la comodidad de la tecnología moderna, con extras que hacen que coser sea aún más divertido y creativo.** Descubre una versatilidad y una facilidad inigualables con los sistemas Original IDT y Easy Select.
+
+El sistema IDT, el doble arrastre integrado de PFAFF, hace avanzar el tejido de forma uniforme por arriba y por abajo, y la aguja mantiene un poder de perforación constante. Tienes 40 puntadas, enhebrador de agujas incorporado, 173 mm de espacio de costura y una velocidad de hasta 900 puntadas por minuto.

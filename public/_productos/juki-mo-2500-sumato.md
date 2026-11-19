@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Overlock de 4 hilos
 fabricante: juki
 modelo: MO-2500 Sumato
@@ -11,29 +11,57 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/juki-mo-2500-sumato-1.jpg
-description: Overlock de 4 hilos. Permite realizar costuras de 2 - 3 - 4 hilos.
+description: Overlock Juki MO-2500 Sumato de 4 hilos para costuras de 2, 3 y 4 hilos, con transporte diferencial y hasta 1.500 puntadas por minuto.
 destacados:
-- texto: Con sistema TWA que facilita el control del exceso de hilo y las ondulaciones en el tejido para realizar las costuras perfectas.
-- texto: Sistema de enhebrado automático de las ancoras y de las agujas.
+- texto: Costuras de 2, 3 y 4 hilos
+- texto: "Sistema TWA: controla el exceso de hilo y las ondulaciones"
+- texto: Enhebrado automático de las áncoras y de las agujas
+- texto: Palanca para pasar de overlock a repulgo
+- texto: Prensatelas tractor y rodillera
+- texto: Transporte diferencial regulable desde el exterior
+- texto: Hasta 1.500 puntadas por minuto
 caracteristicas:
-- valor: Con sistema TWA que facilita el control del exceso de hilo y las ondulaciones en el tejido para realizar las costuras perfectas.
-- valor: Ancho costura 3,5 - 5,5mm con ag derecha y de 5 - 7,5mm con la izq.
-- valor: Costura Flatloock a 3 hilos.
-- valor: Palanca de selección de realizar overlock o repulgo (2mm) con ajuste automático de la separación de las cuchillas a 2,5mm o 3,5mm.
-- valor: Palanca de liberación de tensión de los hilos para un repulgo perfecto.
-- valor: Sistema de enhebrado automático de las ancoras y de las agujas.
-- valor: Regulador exterior de la longitud de puntada de 0,7-4mm.
-- valor: Regulación del ancho de corte de las cuchillas.
-- valor: Regulación exterior del transporte diferencial de 0,7 - 2mm
-- valor: Regulación de la presión del prensatelas micrométrico, permite elevar la parte trasera para coser perfectos los tejidos elásticos.
-- valor: Prensatelas tractor para mejorar el cruce de las costuras.
-- valor: Convertidor a 2 hilos.
-- valor: Palanca rodillera para levantar el prensatelas hasta 8mm.
-- valor: Con cajón recolector incluido.
-- valor: Velocidad máxima de 1500ppm.
-- valor: Motor de 130w de 7500rpm con una potencia de 0.165Nm
-- valor: Consumo de 130w.
+- nombre: Tipo
+  valor: overlock
+- nombre: Hilos
+  valor: "4"
+- nombre: Costuras
+  valor: 2, 3 y 4 hilos
+- nombre: Sistema TWA
+  valor: Sí, controla el exceso de hilo y las ondulaciones
+- nombre: Ancho de costura
+  valor: 3,5 a 5,5 mm con la aguja derecha; 5 a 7,5 mm con la izquierda
+- nombre: Costura flatlock
+  valor: 3 hilos
+- nombre: Selección overlock/repulgo
+  valor: palanca, con ajuste automático de la cuchilla a 2,5 o 3,5 mm
+- nombre: Liberación de tensión para repulgo
+  valor: palanca
+- nombre: Enhebrado
+  valor: automático de las áncoras y de las agujas
+- nombre: Longitud de puntada
+  valor: de 0,7 a 4 mm
+- nombre: Transporte diferencial
+  valor: de 0,7 a 2 mm
+- nombre: Presión del prensatelas
+  valor: micrométrica, con elevación de la parte trasera para tejidos elásticos
+- nombre: Prensatelas tractor
+  valor: Sí
+- nombre: Convertidor a 2 hilos
+  valor: Sí
+- nombre: Rodillera
+  valor: levanta el prensatelas hasta 8 mm
+- nombre: Cajón recolector
+  valor: incluido
+- nombre: Ancho de corte
+  valor: regulable
+- nombre: Velocidad máxima
+  valor: 1.500 puntadas por minuto
+- nombre: Motor
+  valor: 130 W, 7.500 rpm, 0,165 Nm
+- nombre: Consumo
+  valor: 130 W
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-Overlock de 4 hilos. Permite realizar costuras de 2 - 3 - 4 hilos.
+**La Juki MO-2500 Sumato es una overlock de 4 hilos pensada para conseguir costuras perfectas.** Su sistema TWA controla el exceso de hilo y las ondulaciones del tejido, el enhebrado de áncoras y agujas es automático y una sola palanca te pasa de overlock a repulgo, ajustando la cuchilla automáticamente. El prensatelas tractor mejora el paso de los cruces de costura, la presión micrométrica cuida los tejidos elásticos y la rodillera te deja las manos libres. Alcanza hasta 1.500 puntadas por minuto. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

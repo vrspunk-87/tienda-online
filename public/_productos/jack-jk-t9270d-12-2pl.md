@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de cerrar de brazo tipo de 2 agujas 3/16 con Direc Drive
 fabricante: jack
 modelo: JK-T9270D-12-2PL
@@ -12,9 +12,32 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t9270d-12-2pl-1.jpg
-description: Máquinas de cerrar de brazo tipo de 2 agujas 3/16 con Direc Drive. Equipada con puler, para tejidos finos y medios. Con luz LED.
+description: Máquina industrial de cerrar de brazo con 2 agujas de 3/16, motor Direct Drive, puller y luz LED, para tejidos finos y medios.
 caracteristicas:
+- nombre: Tipo
+  valor: máquina de cerrar de brazo
+- nombre: Agujas
+  valor: "2"
+- nombre: Separación
+  valor: 3/16
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Puller
+  valor: puller
+- nombre: Tejidos
+  valor: tejidos finos y medios
+- nombre: Iluminación
+  valor: LED
 - nombre: Precio completa con bancada EU + tablero doble
   valor: 2.395,80 € (IVA incluido)
+destacados:
+- texto: Máquina de cerrar de brazo
+- texto: 2 agujas, separación de 3/16
+- texto: Motor Direct Drive
+- texto: Puller
+- texto: Para tejidos finos y medios
+- texto: Luz LED integrada
 ---
-Máquinas de cerrar de brazo tipo de 2 agujas 3/16 con Direc Drive. Equipada con puler, para tejidos finos y medios. Con luz LED.
+**Jack JK-T9270D-12-2PL: la máquina de cerrar de brazo para tejidos finos y medios.** Cierra costuras con 2 agujas de 3/16 sobre brazo, con motor Direct Drive y puller para un arrastre firme.
+
+La luz LED integrada ilumina la zona de trabajo. También disponible completa con bancada EU y tablero doble.

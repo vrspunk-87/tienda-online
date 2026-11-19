@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Smarter 160S
 fabricante: pfaff
 modelo: Smarter 160S
@@ -15,11 +15,15 @@ imagenes:
 - imagen: /img/productos/pfaff-smarter-160s-3.jpg
 - imagen: /img/productos/pfaff-smarter-160s-4.jpg
 - imagen: /img/productos/pfaff-smarter-160s-5.jpg
-description: Sea cual sea su pasión, esta máquina de coser tiene lo que necesita para expresarla, incluidas 23 puntadas con anchura ajustable de 6 mm y un enhebrador de agujas fácil de usar.
+description: "PFAFF smarter 160S: 23 puntadas con anchura ajustable de 6 mm y enhebrador de agujas, para desarrollar tus habilidades de costura."
 destacados:
-- texto: Ancho de puntada ajustable de 6 mm
+- texto: 23 puntadas
+- texto: Anchura de puntada ajustable hasta 6 mm
+- texto: Enhebrador de agujas incorporado
 - texto: Luz LED
+- texto: 160 mm de espacio de costura
 - texto: Tapa dura incluida
+- texto: 16 accesorios incluidos
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '23'
@@ -44,4 +48,6 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '16'
 ---
-Sea cual sea su pasión, esta máquina de coser tiene lo que necesita para expresarla, incluidas 23 puntadas con anchura ajustable de 6 mm y un enhebrador de agujas fácil de usar. Empieza a trabajar con los 15 accesorios gratuitos que se incluyen a continuación.
+**Sea cual sea tu pasión, exprésala con la PFAFF smarter 160S.** Sus funciones inteligentes te lo ponen fácil: 23 puntadas con anchura ajustable hasta 6 mm y un enhebrador de agujas fácil de usar.
+
+Con luz LED, 160 mm de espacio de costura y una velocidad de hasta 750 puntadas por minuto. Incluye tapa dura y 16 accesorios para empezar a coser enseguida.

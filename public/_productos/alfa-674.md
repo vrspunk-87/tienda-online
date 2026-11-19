@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser 674
 fabricante: alfa
 modelo: '674'
@@ -14,24 +14,42 @@ imagenes:
 - imagen: /img/productos/alfa-674-2.jpg
 - imagen: /img/productos/alfa-674-3.jpg
 - imagen: /img/productos/alfa-674-4.jpg
-description: Máquina de coser zig-zag doméstica de brazo libre.
+description: "Máquina mecánica de brazo libre con 7 filas de dientes, enhebrador automático y ojal en un paso: para quien cose mucho y prefiere lo mecánico."
 destacados:
-- texto: 19 Diseños de puntada
-- texto: Lanzadera horizontal
-- texto: Bajada de dientes de arrastre
+- texto: 19 puntadas, con puntadas para patchwork
+- texto: 7 filas de dientes de arrastre para telas gruesas
+- texto: Largo y ancho variables en todas las puntadas
 - texto: Enhebrador automático
-- texto: 'Ancho de puntada variable: 0 – 6,5 mm (en todas las puntadas)'
-- texto: Incluye set de accesorios
-- texto: 7 filas de dientes de arrastre
-- texto: Incluye puntadas para Patchwork
-- texto: Luz blanca LED
 - texto: Ojal automático en un paso
-- texto: 'Longitud de puntada variable: 0 – 4 mm (en todas las puntadas)'
+- texto: Lanzadera horizontal
+- texto: Dientes escamoteables
+- texto: Luz LED blanca
 caracteristicas:
 - nombre: Tipo
-  valor: zig-zag doméstica
-- valor: Brazo libre
+  valor: zig-zag doméstica (mecánica)
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: "19"
+- nombre: Anchura de puntada
+  valor: de 0 a 6,5 mm (en todas las puntadas)
+- nombre: Longitud de puntada
+  valor: de 0 a 4 mm (en todas las puntadas)
+- nombre: Dientes de arrastre
+  valor: 7 filas, escamoteables
+- nombre: Lanzadera
+  valor: horizontal
+- nombre: Enhebrador
+  valor: automático
+- nombre: Ojal
+  valor: automático en un paso
+- nombre: Iluminación
+  valor: LED blanca
+- nombre: Accesorios incluidos
+  valor: set de accesorios
 ---
-Máquina de coser zig-zag doméstica de brazo libre.
+**¿Eres modista, coses muchísimo y no te gusta la electrónica? La Alfa 674 es tu máquina.** Trabajarás con telas gruesas sin problema gracias a sus 7 filas de dientes de arrastre, con una puntada de alta calidad y un transporte del tejido muy fluido.
 
-¿Eres modista? ¿Coses muchísimo y no te gusta la electrónica? La Alfa 674 es tu máquina. Vas a poder trabajar con telas gruesas sin problema, gracias a sus 7 filas de dientes de arrastre. Tiene una puntada de alta calidad y un transporte de tejido muy fluido. Podrás hacer labores de Patchwork y bordado, ya que incluye puntadas específicas para ello y además, te permite variar el largo y el ancho de todas ellas. Es una máquina que te aporta comodidad en la costura: incluye enhebrador automático, ojal automático en un solo paso, lanzadera horizontal, luz LED, etc. Si quieres dar un paso más, echa un vistazo a la Alfa 2190 o Alfa 8200 Plus y si buscas una máquina más sencilla, te recomendamos la Alfa 474.
+Podrás hacer patchwork y bordado, porque incluye puntadas específicas para ello y te permite variar el largo y el ancho de todas ellas.
+
+Y es muy cómoda: enhebrador automático, ojal automático en un solo paso, lanzadera horizontal, dientes escamoteables y luz LED.

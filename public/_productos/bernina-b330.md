@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B330
 fabricante: bernina
 modelo: B330
@@ -17,12 +17,16 @@ imagenes:
   alt: 'Bernina B330: prensatelas para ojales'
 - imagen: /img/productos/bernina-b330-4.jpg
   alt: 'Bernina B330: teclas de selección directa y memoria'
-description: 'Fácil manejo, resultados de alta calidad: la BERNINA 330, calidad desde la primera puntada.'
+description: 'Fácil de manejar y con resultados de alta calidad: BERNINA 330, con 97 puntadas, memoria permanente de 30 posiciones y ojal automático.'
 destacados:
-- texto: Función automática para ojales
+- texto: 97 puntadas, con alfabeto, 23 decorativas y 3 de acolchado
+- texto: Ojal automático de longitud memorizada
+- texto: Memoria permanente de 30 posiciones
+- texto: Selección directa de puntadas
 - texto: Enhebrador semiautomático
-- texto: Función de memoria permanente (30 posiciones)
-- texto: Potente luz de costura LED
+- texto: Botón start/stop y regulador de velocidad
+- texto: 9 posiciones de aguja
+- texto: Potente luz LED
 caracteristicas:
 - nombre: Velocidad máxima de costura
   valor: 900 puntadas/min
@@ -81,6 +85,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-La diversidad de puntadas de la BERNINA 330 invita a probar y experimentar. Su memoria permanente tiene 30 posiciones libres para guardar tus propias combinaciones de puntadas y recuperarlas con solo apretar un botón, incluso después de apagar la máquina; también es muy práctica en cursos de costura.
+**La diversidad de puntadas de la BERNINA 330 invita a probar y experimentar.** Su memoria permanente tiene 30 posiciones libres para guardar tus propias combinaciones de puntadas y recuperarlas con solo apretar un botón, incluso después de apagar la máquina; también es muy práctica en cursos de costura.
 
 El enhebrador semiautomático reduce al mínimo el esfuerzo de enhebrar y las posibilidades de error, y la luminosa luz de costura LED permite trabajar con precisión y sin fatiga incluso con poca luz.

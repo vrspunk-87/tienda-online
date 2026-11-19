@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking DESIGNER TOPAZ 25
 fabricante: husqvarna
 modelo: DESIGNER TOPAZ 25
@@ -19,6 +19,10 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-topaz-25-4.jpg
   alt: 'Bordando con la Husqvarna Viking DESIGNER TOPAZ 25'
 caracteristicas:
+- nombre: Tipo
+  valor: máquina de coser y bordar
 - nombre: Unidad de bordado
   valor: código 957156096
+description: Máquina de coser y bordar de la gama DESIGNER de Husqvarna Viking.
 ---
+La DESIGNER TOPAZ 25 forma parte de la gama DESIGNER de Husqvarna Viking, sus máquinas de coser y bordar.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Recubridora 8709 Style
 fabricante: alfa
 modelo: 8709 Style
@@ -15,27 +15,52 @@ imagenes:
 - imagen: /img/productos/alfa-8709-style-3.jpg
 - imagen: /img/productos/alfa-8709-style-4.jpg
 - imagen: /img/productos/alfa-8709-style-5.jpg
-description: Recubridora 8709 Style.
+description: "Recubridora de 1, 2 o 3 agujas con enhebrado por colores e instrucciones en castellano: acabados de aspecto industrial en todas tus prendas elásticas."
 destacados:
-- texto: Máquina recubridora de 1, 2 o 3 agujas (opción de coser cadeneta)
-- texto: Separación de agujas de 3mm
+- texto: Recubre con 1, 2 o 3 agujas, y también cose cadeneta
 - texto: Enhebrado codificado por colores
-- texto: Longitud de puntada de 1 a 4 mm
-- texto: Mando de ajuste de transporte diferencial de 0,5 a 2,0 mm
-- texto: 'Dispositivo de seguridad: Por apertura de tapa Prensatelas arriba/abajo'
-- texto: Espacio amplio de trabajo de 100mm de ancho x 75mm de alto
-- texto: Doble lámpara led
-- texto: Mando para ajustar la presión del prensatelas
-- texto: Áncora inferior desembragable para un fácil enhebrado
-- texto: Cortador de hilo
-- texto: Velocidad máxima de 1.200 ppm
-- texto: Voltaje 220-230V-50Hz-120W
-- texto: 'Dimensión: 35 cm x 29 cm x 31 cm'
-- texto: 'Agujas compatibles: Estuche de 5 agujas «EL x 705» 5/8 (REF.: T795807103) Estuche de 5 agujas «EL x 705» 5/90 (REF.: T795808104)'
+- texto: Instrucciones de enhebrado y combinaciones en castellano en la máquina
+- texto: Áncora inferior desembragable para enhebrar fácilmente
+- texto: Amplio espacio de trabajo de 100 × 75 mm
+- texto: Transporte diferencial ajustable
+- texto: Hasta 1.200 puntadas por minuto
+- texto: Doble lámpara LED
 caracteristicas:
 - nombre: Tipo
   valor: recubridora
+- nombre: Agujas
+  valor: 1, 2 o 3 (opción de cadeneta)
+- nombre: Separación de agujas
+  valor: 3 mm
+- nombre: Agujas compatibles
+  valor: EL × 705 (estuches T795807103 y T795808104)
+- nombre: Longitud de puntada
+  valor: de 1 a 4 mm
+- nombre: Transporte diferencial
+  valor: de 0,5 a 2,0 mm
+- nombre: Velocidad máxima
+  valor: 1.200 puntadas por minuto
+- nombre: Espacio de trabajo
+  valor: 100 mm de ancho × 75 mm de alto
+- nombre: Enhebrado
+  valor: codificado por colores
+- nombre: Áncora inferior
+  valor: desembragable
+- nombre: Presión del prensatelas
+  valor: ajustable con mando
+- nombre: Cortador de hilo
+  valor: Sí
+- nombre: Seguridad
+  valor: al abrir la tapa y con el prensatelas arriba/abajo
+- nombre: Iluminación
+  valor: doble lámpara LED
+- nombre: Alimentación
+  valor: 220-230 V, 50 Hz, 120 W
+- nombre: Dimensiones
+  valor: 35 × 29 × 31 cm
 ---
-Recubridora 8709 Style.
+**¿Buscas la perfección al rematar tus prendas elásticas?** La Alfa Cover Style es la recubridora perfecta si eres modista, tienes una tienda de arreglos o quieres un acabado profesional y de aspecto industrial en punto, camisetas de algodón, bikinis o lencería.
 
-¿Buscas la perfección a la hora de rematar todas tus prendas elásticas? La Alfa Cover Style es la recubridora perfecta si eres modista, tienes una tienda de arreglos o si buscas un acabado profesional y de aspecto industrial en todas tus prendas elásticas (punto, camisetas de algodón, bikinis, lencería, etc). Con ella vas a poder coser dobladillos, pespuntes decorativos, costuras planas, acabados con elásticos y ribetes, etc. Como novedad respecto al resto de recubridoras del mercado, la Alfa Cover Style incluye, en la propia máquina, una pegatina con instrucciones con textos en castellano e iconos descriptivos para un enhebrado más fácil. Además, incluye también descripciones en castellano indicando todas las combinaciones posibles de puntadas.
+Con ella harás dobladillos, pespuntes decorativos, costuras planas, acabados con elásticos y ribetes. Trabaja con 1, 2 o 3 agujas, también en cadeneta, y alcanza hasta 1.200 puntadas por minuto.
+
+Como novedad, incluye en la propia máquina una pegatina con instrucciones en castellano e iconos para enhebrar con facilidad, y la descripción de todas las combinaciones de puntadas posibles. El enhebrado por colores y el áncora desembragable hacen el resto.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernette Sew&Go 8
 fabricante: bernette
 modelo: Sew&Go 8
@@ -15,15 +15,16 @@ imagenes:
 - imagen: /img/productos/bernette-sew-go-8-3.jpg
 - imagen: /img/productos/bernette-sew-go-8-4.jpg
 - imagen: /img/productos/bernette-sew-go-8-5.jpg
-description: La bernette sew&go 8, computerizada, es el modelo superior de esta serie.
+description: "El modelo superior de la serie sew&go: 197 puntadas, alfabeto, memoria y start/stop, con una muy buena relación calidad-precio."
 destacados:
-- texto: Selección de puntada sencilla
-- texto: Alzaprensatelas de dos niveles
-- texto: Diseño joven
-- texto: Enhebrador semiautomático
+- texto: 197 puntadas, con alfabeto, 7 ojales y 1 ojete
+- texto: Puntadas decorativas de hasta 7 mm de anchura
+- texto: Memoria para combinaciones de puntadas
+- texto: Función start/stop para coser sin pedal
 - texto: Regulador de velocidad
-- texto: Vista general de puntadas
-- texto: Función de memoria
+- texto: Parada de aguja arriba/abajo
+- texto: Enhebrador semiautomático
+- texto: 7 prensatelas incluidos
 caracteristicas:
 - nombre: Puntadas de utilidad
   valor: '14'
@@ -52,4 +53,4 @@ caracteristicas:
 - nombre: Stop-aguja arriba/abajo
   valor: Sí
 ---
-La bernette sew&go 8, computerizada, es el modelo superior de esta serie. Ofrece todo lo que necesitan las costureras creativas, con una muy buena relación calidad-precio. En total dispone de 197 puntadas, entre ellas 1 alfabeto, 7 ojales y 1 ojete. Las puntadas decorativas se pueden ajustar a voluntad hasta 7 mm de anchura. Con la función de memoria se pueden guardar combinaciones de puntadas. Además de funciones como el regulador de velocidad, la función start/stop y la parada de aguja arriba/abajo, la bernette sew&go 8 tiene una luz de costura brillante. Se suministra con siete prensatelas (suelas).
+**La bernette sew&go 8, computerizada, es el modelo superior de esta serie.** Ofrece todo lo que necesitan las costureras creativas, con una muy buena relación calidad-precio. En total dispone de 197 puntadas, entre ellas 1 alfabeto, 7 ojales y 1 ojete. Las puntadas decorativas se pueden ajustar a voluntad hasta 7 mm de anchura. Con la función de memoria se pueden guardar combinaciones de puntadas. Además de funciones como el regulador de velocidad, la función start/stop y la parada de aguja arriba/abajo, la bernette sew&go 8 tiene una luz de costura brillante. Se suministra con siete prensatelas (suelas).

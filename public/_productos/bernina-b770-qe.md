@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B770 QE
 fabricante: bernina
 modelo: B770 QE
@@ -17,17 +17,16 @@ imagenes:
   alt: 'Bernina B770 QE: lanzadera'
 - imagen: /img/productos/bernina-b770-qe-4.jpg
   alt: Bernina B770 QE cosiendo una colcha
-description: Máquina de coser electrónica Bernina B770 QE con 992 puntadas y 13 ojales, ancho de puntada de 9 mm y garfio rotativo.
+description: "BERNINA 770 QE: 992 puntadas de hasta 9 mm, arrastre dual, BSR y pie para retales incluidos: la gran aliada del quilting, preparada para bordar."
 destacados:
-- texto: Bastidor de BERNINA con una anchura de puntada de 9 mm
-- texto: Regulador de puntada de BERNINA (BSR) incluido
-- texto: Pie para retales 97D incluido
+- texto: 992 puntadas de hasta 9 mm, con 6 alfabetos y 13 ojales
+- texto: Lanzadera BERNINA, hasta 1.000 puntadas por minuto
 - texto: Arrastre dual BERNINA
-- texto: Apto para bordar
-- texto: Palanca rodillera
-- texto: Cortahilos automático
-- texto: Luz de costura LED
-- texto: Control de velocidad
+- texto: Regulador de puntadas BERNINA (BSR) incluido
+- texto: Pie para retales 97D incluido
+- texto: 254 mm de espacio a la derecha de la aguja
+- texto: Cortahílos y alzaprensatelas automáticos
+- texto: Preparada para bordar con el módulo opcional (hasta 400 × 210 mm)
 caracteristicas:
 - nombre: Espacio de costura a la derecha de la aguja
   valor: 254 mm
@@ -44,11 +43,11 @@ caracteristicas:
 - nombre: Ancho máximo de puntada
   valor: 9 mm
 - nombre: Velocidad máxima de costura
-  valor: 1000 puntadas/min
+  valor: 1.000 puntadas/min
 - nombre: Longitud máxima de puntada
   valor: 6 mm
 - nombre: Posiciones de aguja
-  valor: '11'
+  valor: "11"
 - nombre: Ojal automático/ Ojales automáticos de longitud determinada
   valor: Sí
 - nombre: Costura manual de ojales en varias etapas
@@ -84,31 +83,31 @@ caracteristicas:
 - nombre: Función giratoria/suspensión
   valor: Sí
 - nombre: Número total de puntadas (alfabetos inclusive)
-  valor: '992'
+  valor: "992"
 - nombre: Alfabetos de costura
-  valor: '6'
+  valor: "6"
 - nombre: Puntadas decorativas en total
-  valor: '286'
+  valor: "286"
 - nombre: Programa de coser botones
   valor: Sí
 - nombre: Ojales (ojetes inclusive) en total
-  valor: '13'
+  valor: "13"
 - nombre: Puntadas de utilidad en total
-  valor: '30'
+  valor: "30"
 - nombre: Puntadas de acolchado
-  valor: '50'
+  valor: "50"
 - nombre: Programas de zurcido
-  valor: '2'
+  valor: "2"
 - nombre: Velocidad máxima de bordado (puntadas por minuto)
-  valor: 1000 puntadas/min
+  valor: 1.000 puntadas/min
 - nombre: Superficie máxima de bordado
   valor: 400x210 mm
 - nombre: Bordado con soporte independiente
   valor: Sí
 - nombre: Patrones de bordado integrados
-  valor: '140'
+  valor: "140"
 - nombre: Alfabetos de bordado
-  valor: '6'
+  valor: "6"
 - nombre: Procesamiento de patrones en la pantalla
   valor: reflejar, rotar, escalar
 - nombre: Hilvanar
@@ -152,11 +151,11 @@ caracteristicas:
 - nombre: Cabezales giratorios multifunción
   valor: Sí
 - nombre: Luz de costura
-  valor: '30'
+  valor: "30"
 - nombre: Enhebrador de agujas automático
   valor: Sí
 - nombre: Cortahilos manual
-  valor: '3'
+  valor: "3"
 - nombre: Modificación de puntada durante la costura
   valor: Sí
 - nombre: Control de tensión exclusivo
@@ -184,3 +183,8 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
+**La BERNINA 770 QE está pensada para quien acolcha y cose a lo grande.** Su lanzadera BERNINA cose puntadas de hasta 9 mm de anchura a 1.000 puntadas por minuto, y el control de tensión exclusivo asegura una calidad de puntada excelente.
+
+Con 992 puntadas, 50 de ellas de acolchado, 6 alfabetos y 13 ojales, tendrás recursos para cualquier proyecto. El arrastre dual BERNINA hace avanzar las capas de manera uniforme, el regulador de puntadas BERNINA (BSR) y el pie para retales 97D vienen incluidos, y su brazo libre ofrece 254 mm de espacio a la derecha de la aguja.
+
+Cortahílos y alzaprensatelas automáticos, pedal con función back-kick, pantalla táctil a color de 4,3" y USB completan una máquina que, con el módulo opcional, también borda hasta 400 × 210 mm con 140 diseños integrados.

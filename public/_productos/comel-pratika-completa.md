@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Generador de vapor con una capacidad de 5 litros + depósito de 7 litros inferior
 fabricante: comel
 modelo: Pratika-Completa
@@ -11,9 +11,42 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/comel-pratika-completa-1.jpg
-description: Generador de vapor con una capacidad de 5 litros + depósito de 7 litros inferior, equipado con resistencia externa, indicador luminoso fin agua, visor nivel de agua, manómetro, plancha de mano y apoya plancha de silicona.
+description: Generador de vapor Comel Pratika Completa con caldera de 5 litros, depósito adicional, bomba de carga y manómetro. Incluye plancha de mano y apoyaplancha de silicona.
 caracteristicas:
+- nombre: Tipo
+  valor: generador de vapor
+- nombre: Capacidad de la caldera
+  valor: 5 litros
+- nombre: Depósito adicional
+  valor: 7 litros, inferior
+- nombre: Carga de agua
+  valor: con bomba
+- nombre: Resistencia
+  valor: externa
+- nombre: Manómetro
+  valor: Sí
+- nombre: Visor del nivel de agua
+  valor: Sí
+- nombre: Indicador de fin de agua
+  valor: luminoso
+- nombre: Incluye
+  valor: plancha de mano y apoyaplancha de silicona
 - nombre: Garantía
   valor: 1 año
+destacados:
+- texto: Caldera de 5 litros de capacidad
+- texto: "Depósito de agua adicional: 7 litros, inferior"
+- texto: Bomba de carga de agua
+- texto: Resistencia externa
+- texto: Manómetro para controlar la presión
+- texto: Visor del nivel de agua
+- texto: Indicador luminoso de fin de agua
+- texto: Incluye plancha de mano y apoyaplancha de silicona
 ---
-Generador de vapor con una capacidad de 5 litros + depósito de 7 litros inferior, equipado con resistencia externa, indicador luminoso fin agua, visor nivel de agua, manómetro, plancha de mano y apoya plancha de silicona.
+**Comel Pratika Completa: plancha sin pausas para rellenar.** Su caldera de 5 litros, con resistencia externa, alimenta de vapor la plancha de mano para que planches como en un taller profesional.
+
+Además de la caldera, lleva un depósito inferior de 7 litros con bomba, para que tengas agua de reserva siempre a mano.
+
+El manómetro te muestra la presión en todo momento; el visor te deja ver cuánta agua queda; el indicador luminoso te avisa cuando se acaba el agua.
+
+Incluye plancha de mano y apoyaplancha de silicona. Garantía de 1 año.

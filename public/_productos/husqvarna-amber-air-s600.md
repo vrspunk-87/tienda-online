@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Husqvarna Viking AMBER AIR S600
 fabricante: husqvarna
 modelo: AMBER AIR S600
@@ -15,59 +15,35 @@ imagenes:
 - imagen: /img/productos/husqvarna-amber-air-s600-3.jpg
 - imagen: /img/productos/husqvarna-amber-air-s600-4.jpg
 - imagen: /img/productos/husqvarna-amber-air-s600-5.jpg
-description: Experimenta una tecnología innovadora que incluye el enhebrado sin esfuerzo con solo pulsar un botón, 26 puntadas, una pantalla táctil en color y la exclusiva función SEWING ADVISOR.
+description: Remalladora y recubridora de 5/4/3/2 hilos con enhebrado neumático de un toque, 26 puntadas, pantalla táctil en color, tensión automática y SEWING ADVISOR.
 destacados:
-- texto: Enhebradores electrónicos de aire One-Touch
-- texto: Pantalla táctil en color
-- texto: Exclusivo SEWING ADVISOR
-- texto: Iluminación excepcional
-- texto: Control preciso del hilo
-- texto: Ajustes automáticos de puntada
-- texto: Varios idiomas
-- texto: Selector de puntada
-- texto: Cinco luces LED
-- texto: Brazo libre
-- texto: 26 Puntadas
-- texto: Capacidad de puntada de 5/4/3/2 hilos
-- texto: Coverstitch
-- texto: Punto de cadeneta
-- texto: Puntada de seguridad de 5 hilos (ancha y estrecha)
-- texto: Puntada de seguridad de 4 hilos (ancha y estrecha)
-- texto: Overlock de 4 hilos
-- texto: Overlock de 3 hilos (ancho y estrecho)
-- texto: Borde estrecho de 3 hilos
-- texto: Borde enrollado de 3 hilos
-- texto: Flatlock de 3 hilos (ancho y estrecho)
-- texto: Sobrehilado elástico de 3 hilos
-- texto: Overlock de 2 hilos (ancho y estrecho)
-- texto: Borde enrollado de 2 hilos
-- texto: 2-Hilos Borde Estrecho
-- texto: Flatlock de 2 hilos
-- texto: Marco reforzado
-- texto: Potencia de perforación electrónica
-- texto: Elevación de rodilla
-- texto: Dobladillos fáciles de enrollar
-- texto: Soporte para pinzas y tijeras incorporado
-- texto: Convertidor de 2 hilos integrado
-- texto: Bloqueo de seguridad de puntada
-- texto: Liberación de la tensión
-- texto: Presión del prensatelas ajustable
-- texto: Altura extra del prensatelas
-- texto: Guías de enhebrado para una amplia gama de hilos
-- texto: Volante de agarre suave
-- texto: Longitud de puntada ajustable
-- texto: Anchura de corte ajustable
-- texto: Cortador superior móvil
-- texto: Enhebrador de agujas
-- texto: Accesorio
-- texto: Cortador de hilo integrado
-- texto: Prensatelas a presión
-- texto: Asa de transporte
+- texto: Enhebrado neumático electrónico de los áncoras con un toque
+- texto: Pantalla táctil en color con EXCLUSIVE SEWING ADVISOR
+- texto: Ajustes automáticos de puntada y tensión electrónica
+- texto: Capacidad de 5/4/3/2 hilos con 26 puntadas
+- texto: Recubridora (coverstitch) y punto de cadeneta
+- texto: 30 memorias de puntadas
+- texto: Cinco luces LED, elevador de rodilla y brazo libre
+- texto: Hasta 1.300 puntadas por minuto
 caracteristicas:
 - nombre: Enhebrado neumático electrónico de los áncoras One-Touch
   valor: Sí
 - nombre: Memorias de puntadas
-  valor: '30'
+  valor: "30"
+- nombre: Puntadas
+  valor: 26, con capacidad de 5/4/3/2 hilos
+- nombre: Tipos de puntada
+  valor: recubridora (coverstitch); punto de cadeneta; puntada de seguridad de 5 y 4 hilos (ancha y estrecha); overlock de 4, 3 y 2 hilos; borde estrecho y borde enrollado de 3 y 2 hilos; flatlock de 3 y 2 hilos; sobrehilado elástico de 3 hilos
+- nombre: Pantalla
+  valor: táctil en color
+- nombre: EXCLUSIVE SEWING ADVISOR
+  valor: Sí
+- nombre: Iluminación
+  valor: 5 luces LED
+- nombre: Elevador de rodilla
+  valor: Sí
+- nombre: Brazo libre
+  valor: Sí
 - nombre: Tensión automática
   valor: Electrónica
 - nombre: Alimentación diferencial
@@ -75,7 +51,7 @@ caracteristicas:
 - nombre: Amplia zona de costura
   valor: 64 mm ancho x 123 mm alto
 - nombre: Ajustes para la velocidad máxima
-  valor: '5'
+  valor: "5"
 - nombre: Velocidad de costura
   valor: 1.300 puntadas/minuto
 - nombre: Bandeja de residuos
@@ -85,4 +61,10 @@ caracteristicas:
 - nombre: Dimensiones (largo x ancho x alto)
   valor: 44,2 x 30,3 x 31 cm (17,4" x 11,9" x 12,2")
 ---
-Experimenta una tecnología innovadora que incluye el enhebrado sin esfuerzo con solo pulsar un botón, 26 puntadas, una pantalla táctil en color y la exclusiva función SEWING ADVISOR.
+**Tecnología innovadora en una remalladora:** enhebrado sin esfuerzo con solo pulsar un botón, 26 puntadas, pantalla táctil en color y el exclusivo SEWING ADVISOR.
+
+### La máquina se ajusta sola
+Eliges la puntada en la pantalla y la AMBER Air S600 ajusta automáticamente la tensión electrónica y los parámetros. El SEWING ADVISOR te recomienda la mejor opción para cada tejido, y puedes guardar hasta 30 puntadas en memoria.
+
+### Todas las técnicas
+Overlock, flatlock, bordes enrollados, puntadas de seguridad de 4 y 5 hilos, punto de cadeneta y recubridora. Con elevador de rodilla, brazo libre, cinco luces LED, marco reforzado y hasta 1.300 puntadas por minuto.

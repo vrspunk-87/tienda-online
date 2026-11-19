@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Quilt Ambition 635
 fabricante: pfaff
 modelo: Quilt Ambition 635
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-quilt-ambition-635-3.jpg
 - imagen: /img/productos/pfaff-quilt-ambition-635-4.jpg
 - imagen: /img/productos/pfaff-quilt-ambition-635-5.jpg
-description: 'Disfrute de una experiencia de costura completa e innovadora con una precisión inigualable y una innovación dominante: gran pantalla táctil en color y espacio de costura, el sistema Original IDT,…'
+description: 'PFAFF quilt ambition 635: costura completa e innovadora para quilters, con pantalla táctil a color, sistema IDT, 201 puntadas y 200 mm de espacio de costura.'
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '201'
@@ -55,5 +55,18 @@ caracteristicas:
   valor: 8,8 kg (19,4 lb)
 - nombre: Nº de Accesorios incluidos
   valor: '24'
+destacados:
+- texto: Sistema Original IDT de doble arrastre integrado
+- texto: 201 puntadas y 2 fuentes de costura
+- texto: Pantalla táctil a color de 4,3"
+- texto: Gran espacio de costura de 200 mm
+- texto: Corte automático del hilo y tensión automática
+- texto: Bajada automática de los dientes
+- texto: Secuenciación de puntadas
+- texto: 24 accesorios incluidos
 ---
-Disfrute de una experiencia de costura completa e innovadora con una precisión inigualable y una innovación dominante: gran pantalla táctil en color y espacio de costura, el sistema Original IDT, 201 puntadas y mucho más. Póngase en marcha con los 23 accesorios gratuitos que se enumeran a continuación en Qué incluye.
+**La PFAFF quilt ambition 635 te ofrece una experiencia de costura completa e innovadora, con una precisión inigualable.** Su gran pantalla táctil a color y sus 200 mm de espacio de costura te dan comodidad para tus proyectos de acolchado.
+
+Su sistema Original IDT hace avanzar las capas de forma uniforme por arriba y por abajo. Tienes 201 puntadas, 2 fuentes y secuenciación de puntadas, con corte automático del hilo, tensión automática, bajada automática de los dientes, enhebrador incorporado, start/stop y deslizador de velocidad.
+
+Incluye 24 accesorios para empezar a coser enseguida.

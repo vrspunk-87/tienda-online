@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernette b44 Funlock
 fabricante: bernette
 modelo: b44 Funlock
@@ -13,17 +13,15 @@ imagenes:
   alt: Bernette b44 Funlock
 - imagen: /img/productos/bernette-b44-funlock-2.jpg
 - imagen: /img/productos/bernette-b44-funlock-3.jpg
-description: Tu compacta overlock para costuras limpias, que lleva tus proyectos de tejidos planos a elásticos con estilo
+description: "Overlock compacta para introducirte en el remallado: 15 puntadas de 2, 3 y 4 hilos, enhebrado por colores y arrastre diferencial ajustable al coser."
 destacados:
-- texto: Puntada de overlock de 2, 3 y 4 hilos
-- texto: 'Anchura de puntadas overlock: 3 - 7 mm'
-- texto: 'Anchura de puntadas del dobladillo enrollado: 1,5 mm'
-- texto: Brillante luz LED
-- texto: Velocidad de la costura de hasta 1300 puntadas/minuto
-- texto: Arrastre diferencial infinitamente ajustable durante la costura
-- texto: Fácil enhebrado gracias a su vía de enhebrado con código de color
-- texto: Enhebra agujas manual
-- texto: Accesorios en la tapa de la lanzadera
+- texto: 15 puntadas de overlock de 2, 3 y 4 hilos
+- texto: Anchura de overlock de 3 a 7 mm
+- texto: Dobladillo enrollado de 1,5 mm
+- texto: Arrastre diferencial ajustable mientras coses
+- texto: Enhebrado con código de colores
+- texto: Hasta 1.300 puntadas por minuto
+- texto: Luz LED brillante
 - texto: Incluye recipiente para retales
 caracteristicas:
 - nombre: Número de puntadas
@@ -55,19 +53,19 @@ caracteristicas:
 - nombre: Accesorios incluidos
   valor: Destornillador (grande); Aceitera; Redes para la bobina (4); Repuesto para la cuchilla superior; Arandelas guía-hilo (4); Pincel; Juego de agujas (ELx705); Enhebrador/coloca-agujas; Llave Allen (pequeña); Pinzas; Tapa de la lanzadera superior (ULC); Estabilizadores de bobinas (4); Funda contra el polvo; Recipiente para retales
 ---
-La bernette 44 FUNLOCK ofrece numerosas funciones prácticas para introducirte de forma sencilla en el mundo del overlock. Sus 15 puntadas conforman un conjunto compacto de 15 puntadas que te permitirán realizar todo tipo de costuras overlock. La bernette 44 FUNLOCK enhebra fácilmente el hilo en la lanzadera y la aguja siguiendo las marcas de colores. La cuchilla se acciona desde abajo, lo que permite ajustar las anchuras de las puntadas fácilmente con una mano. Su brillante luz LED también aporta una buena visibilidad. Y además, la bernette 44 FUNLOCK es rápida: cose hasta 1300 puntadas por minuto.
+**La bernette 44 FUNLOCK ofrece numerosas funciones prácticas para introducirte de forma sencilla en el mundo del overlock.** Sus 15 puntadas conforman un conjunto compacto de 15 puntadas que te permitirán realizar todo tipo de costuras overlock. La bernette 44 FUNLOCK enhebra fácilmente el hilo en la lanzadera y la aguja siguiendo las marcas de colores. La cuchilla se acciona desde abajo, lo que permite ajustar las anchuras de las puntadas fácilmente con una mano. Su brillante luz LED también aporta una buena visibilidad. Y además, la bernette 44 FUNLOCK es rápida: cose hasta 1.300 puntadas por minuto.
 
-Maravillosas costuras overlock, incluso para principiantes.
+### Maravillosas costuras overlock, incluso para principiantes
 La bernette 44 FUNLOCK es fácil de manejar, incluso para principiantes, ya que sus 15 puntadas diferentes con 2, 3 o 4 hilos garantizan la máxima flexibilidad a la hora de seleccionar las puntadas. Y, al mismo tiempo, siempre obtendrás una calidad de puntada profesional. Además de las costuras de 2, 3 y 4 hilos, también podrás proporcionar a tus proyectos de costura excelentes dobladillos enrollados con una anchura de hasta 1,5 mm.
 
-Enhebrado simplificado
+### Enhebrado simplificado
 La vía de enhebrado de hilo abierto con código de color sirve para enhebrar fácilmente la bernette 44 FUNLOCK siguiendo las marcas de colores. Lleva un mecanismo enhebra agujas y una lanzadera inferior aparte que también permiten un enhebrado más sencillo.
 
-Mucho espacio para los accesorios
+### Mucho espacio para los accesorios
 Los accesorios principales de la máquina overlock siempre a mano en la tapa de la lanzadera. Otros accesorios se guardan en una caja aparte.
 
-Costura overlock precisa y flexible
-Con la bernette 44 FUNLOCK, siempre coserás de forma uniforme, incluso a una velocidad de 1300 puntadas por minuto. La máquina overlock puede coser y cortar con facilidad y precisión incluso telas gruesas en un único paso. Los márgenes de costura cortados durante la costura caen dentro del recipiente para retales que se suministra con la bernette 44 FUNLOCK.
+### Costura overlock precisa y flexible
+Con la bernette 44 FUNLOCK, siempre coserás de forma uniforme, incluso a una velocidad de 1.300 puntadas por minuto. La máquina overlock puede coser y cortar con facilidad y precisión incluso telas gruesas en un único paso. Los márgenes de costura cortados durante la costura caen dentro del recipiente para retales que se suministra con la bernette 44 FUNLOCK.
 
-¿Qué es el arrastre diferencial?
+### ¿Qué es el arrastre diferencial?
 El arrastre diferencial te garantiza que siempre podrás coser suavemente telas gruesas de punto y costuras sin ondulaciones en telas finas. Pero también puedes crear ondulaciones intencionadamente, por ejemplo para volantes decorativos, ajustando la configuración entre 0,6 y 2.

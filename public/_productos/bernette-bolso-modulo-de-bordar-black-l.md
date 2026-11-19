@@ -1,9 +1,9 @@
 ---
-prueba: true
+prueba: false
 title: Bolso para el módulo de bordar bernette Black «L»
 fabricante: bernette
 modelo: Bolso módulo de bordar Black L
-referencia: 0308955004
+referencia: "0308955004"
 categoria: bolsas-modulo-bordado
 date: '2026-11-19T10:00:00.000+01:00'
 precio: 62.19
@@ -12,6 +12,20 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernette-bolso-modulo-de-bordar-black-l-1.jpg
   alt: Bolso para el módulo de bordar bernette Black «L»
-description: El bolso para su módulo para bordar es el complemento ideal para el bolso de la máquina de coser bernette.
+description: "Bolso bernette Black «L» para el módulo de bordar: el complemento ideal del bolso de la máquina para llevarlo todo a cursos y eventos."
+destacados:
+- texto: Complemento ideal del bolso de la máquina de coser bernette
+- texto: Para transportar o guardar el módulo de bordar
+- texto: Correa de hombro cómoda
+- texto: Reparto interior pensado para los accesorios
+caracteristicas:
+- nombre: Tipo
+  valor: bolso para módulo de bordar
+- nombre: Modelo
+  valor: Black «L»
+- nombre: Correa
+  valor: de hombro
 ---
-El bolso para su módulo para bordar es el complemento ideal para el bolso de la máquina de coser bernette. Con ellos se transportan fácilmente la máquina de coser y el módulo para bordar a eventos, cursos o lugar de trabajo. También es perfecto para el almacenamiento en casa. La correa de hombro cómoda ofrece un excelente confort y sus manos quedan libres para otras cosas. Además, el bolso para el módulo para bordar tiene una repartición interna muy bien pensada para sus accesorios.
+**El bolso Black «L» para el módulo de bordar es el complemento ideal del bolso de la máquina de coser bernette.** Con los dos, llevarás fácilmente la máquina y el módulo de bordar a cursos, eventos o al trabajo, y también es perfecto para guardarlo en casa.
+
+Su cómoda correa de hombro te deja las manos libres, y su reparto interior está muy bien pensado para los accesorios.

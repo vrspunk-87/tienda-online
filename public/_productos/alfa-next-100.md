@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Alfa Next 100
 fabricante: alfa
 modelo: Next 100
@@ -15,26 +15,50 @@ imagenes:
 - imagen: /img/productos/alfa-next-100-3.jpg
 - imagen: /img/productos/alfa-next-100-4.jpg
 - imagen: /img/productos/alfa-next-100-5.jpg
-description: Máquina de coser Alfa Next 100.
+description: "Máquina electrónica con 100 puntadas, enhebrador automático y mesa de extensión: la forma más fácil de iniciarte en las máquinas electrónicas."
 destacados:
-- texto: 100 puntadas
+- texto: "100 puntadas: 16 básicas, 6 elásticas, 7 de acolchado, 64 decorativas y 7 ojales"
 - texto: Enhebrador automático
+- texto: Textos en castellano, fácil e intuitiva
 - texto: 7 filas de dientes de arrastre
-- texto: Doble altura de prensatelas para géneros gruesos
-- texto: Longitud de puntada de 0 a 4,5 mm
-- texto: Ancho de puntada de 0 a 7 mm
-- texto: Bajada de dientes de arrastre, ideal para acolchado libre
-- texto: Lanzadera horizontal
-- texto: Cortador de hilo superior
-- texto: Devanador de canilla
+- texto: Doble altura del prensatelas para géneros gruesos
+- texto: Dientes escamoteables para acolchado libre
 - texto: Brazo libre para prendas tubulares
-- texto: Botón de remate de puntada
-- texto: Pantalla digital LED
-- texto: Luz LED
+- texto: Incluye mesa de extensión
 caracteristicas:
 - nombre: Tipo
   valor: electrónica
+- nombre: Puntadas
+  valor: 100 (16 básicas, 6 elásticas, 7 de acolchado, 64 decorativas y 7 ojales)
+- nombre: Longitud de puntada
+  valor: de 0 a 4,5 mm
+- nombre: Anchura de puntada
+  valor: de 0 a 7 mm
+- nombre: Dientes de arrastre
+  valor: 7 filas, escamoteables
+- nombre: Altura del prensatelas
+  valor: doble, para géneros gruesos
+- nombre: Lanzadera
+  valor: horizontal
+- nombre: Enhebrador
+  valor: automático
+- nombre: Cortador de hilo
+  valor: superior
+- nombre: Devanador de canilla
+  valor: Sí
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Botón de remate
+  valor: Sí
+- nombre: Pantalla
+  valor: digital LED
+- nombre: Iluminación
+  valor: LED
+- nombre: Accesorios incluidos
+  valor: mesa de extensión
 ---
-Máquina de coser Alfa Next 100.
+**La Alfa Next 100 es ideal para iniciarte en el mundo de las máquinas electrónicas.** Es una máquina súper completa, con mesa de extensión incluida y nada menos que 100 puntadas: 16 básicas, 6 elásticas, 7 de acolchado, 64 decorativas y 7 tipos de ojales.
 
-La Alfa Next 100 es ideal para iniciarte en el mundo de las máquinas electrónicas. Una máquina super completa con mesa de extensión incluida y nada menos que 100 tipos de puntadas entre las cuales podemos encontrar 16 puntadas básicas, 6 elásticas, 7 de acolchado, 64 decorativas y 7 tipos de ojales. Además, la numeración, el enhebrador automático y los textos en castellano hacen de esta, una máquina fácil de manejar e intuitiva. Sin perder su capacidad de coser de todo gracias a su robustez, 7 filas de dientes de arrastre y la doble altura del prensatelas para coser varias capas o géneros más gruesos.
+La numeración de las puntadas, el enhebrador automático y los textos en castellano la hacen fácil e intuitiva. Y no renuncia a coser de todo, gracias a su robustez, sus 7 filas de dientes de arrastre y la doble altura del prensatelas para coser varias capas o géneros gruesos.
+
+Además, bajando los dientes podrás hacer acolchado libre, y el brazo libre te facilita coser mangas, perneras y prendas tubulares.

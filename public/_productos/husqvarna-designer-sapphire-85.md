@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking DESIGNER Sapphire 85
 fabricante: husqvarna
 modelo: DESIGNER Sapphire 85
@@ -15,14 +15,21 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-sapphire-85-3.jpg
 - imagen: /img/productos/husqvarna-designer-sapphire-85-4.jpg
 - imagen: /img/productos/husqvarna-designer-sapphire-85-5.jpg
-description: Con funciones líderes en el sector, la máquina de coser y bordar HUSQVARNA VIKING DESIGNER SAPPHIRE 85 le inspirará para crear el siguiente capítulo de su historia de costura.
+description: Máquina de coser y bordar con pantalla táctil de 8", WiFi, bastidor de hasta 360 × 350 mm, 680 puntadas, 629 diseños y doble arrastre integrado.
 destacados:
-- texto: JoyOS ADVISOR
-- texto: Gran pantalla táctil en color de 8
+- texto: Pantalla táctil capacitiva a todo color de 8"
+- texto: JoyOS ADVISOR y EXCLUSIVE SEWING ADVISOR
+- texto: Bastidor de bordado de hasta 360 × 350 mm
+- texto: 680 puntadas y 629 diseños de bordado incorporados
+- texto: Tecnología de doble arrastre integrada
+- texto: "Conexión WiFi con mySewnet: nube, aplicación y transferencia de diseños"
+- texto: Cortahilos automático con recorte de puntadas de salto
+- texto: 250 mm de espacio a la derecha de la aguja
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 957178096
-- valor: mySewnet Compatible con la suscripción
+- nombre: Compatible con la suscripción mySewnet
+  valor: Sí
 - nombre: mySewnet Almacenamiento en la nube
   valor: Sí
 - nombre: Blog mySewnet
@@ -38,7 +45,7 @@ caracteristicas:
 - nombre: Diseños incluidos
   valor: 629 diseños incorporados
 - nombre: Fuentes de bordado multitamaño
-  valor: '8'
+  valor: "8"
 - nombre: Design-Select - Seleccione uno o más bordados para editarlos
   valor: Sí
 - nombre: Combine diseños de bordado en pantalla
@@ -66,13 +73,13 @@ caracteristicas:
 - nombre: Cambiar orden de puntada de diseño
   valor: Sí
 - nombre: Agrupación de diseños
-  valor: 'cree un grupo de diseños seleccionados en pantalla para su edición.: Sí'
+  valor: "cree un grupo de diseños seleccionados en pantalla para su edición.: Sí"
 - nombre: Deshacer / Rehacer al crear combinaciones de diseños
   valor: Sí
 - nombre: Ordenación por bloques de colores - Elimina los cambios de color con un toque
   valor: Sí
 - nombre: Combinación de bloques de color
-  valor: 'elimine las paradas de color en diseños grandes o combinados: Sí'
+  valor: "elimine las paradas de color en diseños grandes o combinados: Sí"
 - nombre: Ir al número exacto de puntada de bordado
   valor: Sí
 - nombre: Cuenta atrás del tiempo de bordado por color
@@ -98,9 +105,9 @@ caracteristicas:
 - nombre: Tecnología de doble alimentación
   valor: Tecnología de doble alimentación integrada
 - nombre: Técnicas de puntada exclusivas
-  valor: '5'
+  valor: "5"
 - nombre: Puntadas incorporadas
-  valor: '680'
+  valor: "680"
 - nombre: Fuentes de costura programables
   valor: 5, también se puede bordar
 - nombre: Sistema de puntadas deLuxe
@@ -118,11 +125,11 @@ caracteristicas:
 - nombre: Costura de movimiento lateral
   valor: Sí
 - nombre: Costura a mano alzada
-  valor: '3 Modos: Free-Motion Pie Regla, Free-Motion Flotante y Free-Motion Muelle'
+  valor: "3 Modos: Free-Motion Pie Regla, Free-Motion Flotante y Free-Motion Muelle"
 - nombre: Posicionamiento de la puntada
   valor: Sí
 - nombre: Posiciones de la aguja
-  valor: '29'
+  valor: "29"
 - nombre: Ojales perfectamente equilibrados con el prensatelas para ojales Sensor One-Step
   valor: 16 ojales + 2 ojales + botón cosido
 - nombre: La luz indica la parada de la aguja arriba/abajo
@@ -136,7 +143,7 @@ caracteristicas:
 - nombre: Selección de ángulos de puntada cónica - Elija entre 18 ángulos diferentes
   valor: Una categoría
 - nombre: Costura Direccional
-  valor: '4 y 8 vías: Sí'
+  valor: "4 y 8 vías: Sí"
 - nombre: Menú Mis puntadas
   valor: 100 MB de memoria disponibles mediante WiFi/una memoria USB
 - nombre: Puntadas mostradas en pantalla
@@ -149,7 +156,7 @@ caracteristicas:
   valor: Sí
 - nombre: Visualización en pantalla de la vida útil de la aguja gemela
   valor: Sí
-- valor: 'Ajuste la longitud y la anchura de la puntada, la imagen reflejada de lado a lado y de extremo a extremo. Seguridad de anchura de puntada.: Sí'
+- valor: "Ajuste la longitud y la anchura de la puntada, la imagen reflejada de lado a lado y de extremo a extremo. Seguridad de anchura de puntada.: Sí"
 - nombre: Potencia de perforación electrónica
   valor: 94 N
 - nombre: Tipo de pantalla
@@ -191,7 +198,7 @@ caracteristicas:
 - nombre: Actualizaciones por Internet
   valor: A través de WiFi o USB Embroidery Stick
 - nombre: Varios idiomas
-  valor: '13'
+  valor: "13"
 - nombre: Funciones de memoria en pantalla
   valor: mySewnet Cloud y memoria USB de bordado
 - nombre: Elija la combinación de colores en pantalla
@@ -206,7 +213,14 @@ caracteristicas:
   valor: Incluye
 - nombre: Peso
   valor: 11,4 kg (25,1 lb.)
-- nombre: Dimensiones
-  valor: (largo x ancho x alto)
 ---
-Con funciones líderes en el sector, la máquina de coser y bordar HUSQVARNA VIKING DESIGNER SAPPHIRE 85 le inspirará para crear el siguiente capítulo de su historia de costura.
+**La DESIGNER SAPPHIRE 85 reúne funciones de primer nivel para que escribas el siguiente capítulo de tu historia con la costura.** Su pantalla táctil de 8" y el asistente JoyOS ADVISOR te guían en cada paso, tanto al coser como al bordar.
+
+### Bordados grandes y bien colocados
+Con un bastidor de hasta 360 × 350 mm y 629 diseños incorporados, puedes combinar, girar, escalar y agrupar diseños en la pantalla. La clasificación por bloques de color elimina cambios de hilo innecesarios y el cortahilos automático recorta las puntadas de salto.
+
+### Costura cómoda y precisa
+680 puntadas de hasta 7 mm, 29 posiciones de aguja, doble arrastre integrado y el EXCLUSIVE SENSOR SYSTEM ajustan la máquina al tejido. Tienes 3 modos de costura a mano alzada, costura direccional y 250 mm de espacio a la derecha de la aguja.
+
+### Conectada
+Transfiere diseños por WiFi, guárdalos en la nube de mySewnet y actualiza la máquina por Internet. Incluye tapa dura y bolsa para la unidad de bordado.

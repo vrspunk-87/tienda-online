@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Practik 5
 fabricante: alfa
 modelo: Practik 5
@@ -15,33 +15,50 @@ imagenes:
 - imagen: /img/productos/alfa-practik-5-3.jpg
 - imagen: /img/productos/alfa-practik-5-4.jpg
 - imagen: /img/productos/alfa-practik-5-5.jpg
-description: Máquina de coser zig-zag doméstica de brazo libre.
+description: "Máquina de coser mecánica de brazo libre, robusta y estable, con enhebrador automático y ojal en un paso: perfecta para empezar a coser."
 destacados:
+- texto: 12 puntadas para todo tipo de labores
 - texto: Enhebrador automático
-- texto: Ojal automático en 1 solo paso
-- texto: Visor de puntada retroiluminado con Backlight LED
-- texto: Potencia de costura 70W aprovechados al 100%
-- texto: 6 filas de dientes de arrastre
-- texto: '12 puntadas para todo tipo de labores: Ojal automático en 1 paso, Básicas, Decorativas, Festones, Zig-zag'
-- texto: 'Largo variable en todas las puntadas: 0-4 mm'
-- texto: 'Ancho variable en puntada zig-zag: 0-5 mm'
+- texto: Ojal automático en un solo paso
+- texto: Visor de puntada retroiluminado con LED
 - texto: Chasis metálico de gran rigidez
+- texto: Motor protegido, muy silenciosa
+- texto: Luz LED blanca que no cansa la vista
 - texto: Pie regulable para evitar el balanceo
-- texto: Superficie de apoyo 100% aprovechada
-- texto: Portacarretes metálico
-- texto: Enmangue del prénsatelas metálico
-- texto: Bombilla LED de larga duración
-- texto: Máquina muy silenciosa gracias a motor protegido
-- texto: Luz blanca que mejora la visibilidad y no cansa la vista
-- texto: Diales soft touch e inversión de puntada accesible
-- texto: Visor de puntada BlackLight LED
-- texto: Mayor área de trabajo
-- texto: Buena visibilidad de todo el área de trabajo
 caracteristicas:
 - nombre: Tipo
-  valor: zig-zag doméstica
-- valor: Brazo libre
+  valor: zig-zag doméstica (mecánica)
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: 12 (ojal automático en 1 paso, básicas, decorativas, festones y zig-zag)
+- nombre: Longitud de puntada
+  valor: de 0 a 4 mm (en todas las puntadas)
+- nombre: Anchura de zigzag
+  valor: de 0 a 5 mm
+- nombre: Dientes de arrastre
+  valor: 6 filas
+- nombre: Potencia de costura
+  valor: 70 W
+- nombre: Enhebrador
+  valor: automático
+- nombre: Ojal
+  valor: automático en 1 paso
+- nombre: Visor de puntada
+  valor: retroiluminado LED
+- nombre: Chasis
+  valor: metálico
+- nombre: Portacarretes
+  valor: metálico
+- nombre: Enmangue del prensatelas
+  valor: metálico
+- nombre: Pie
+  valor: regulable antibalanceo
+- nombre: Iluminación
+  valor: LED blanca de larga duración
 ---
-Máquina de coser zig-zag doméstica de brazo libre.
+**La Alfa Practik 5 es perfecta si estás empezando en el apasionante mundo de la costura.** Es una máquina robusta y muy estable con la que podrás hacer todo tipo de tareas: coser vaqueros, poner cremalleras o decorar tus prendas.
 
-La Alfa Practik 5 es perfecta si estás empezando en el apasionante mundo de la costura. Es una máquina robusta y muy estable con la que podrás realizar todo tipo de tareas: coser vaqueros, poner cremalleras, decorar tus prendas de cuero, etc. Además es una máquina súper práctica ya que incluye enhebrador automático y la posibilidad de hacer los ojales en un solo paso (¡y que te queden todos iguales y perfectos!). Tiene también un visor de puntada LED para que puedas ver fácilmente qué puntada has elegido. Más abajo podrás ver en detalle las características y vídeos de uso.
+Es súper práctica: tiene enhebrador automático y hace los ojales en un solo paso (¡y te quedan todos iguales y perfectos!). Su visor de puntada retroiluminado te muestra de un vistazo la puntada elegida.
+
+Su chasis metálico le da gran rigidez, el motor protegido la hace muy silenciosa y la luz LED blanca ilumina bien la zona de trabajo sin cansar la vista.

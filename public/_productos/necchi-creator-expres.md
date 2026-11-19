@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Plotter de corte de máxima precisión
 fabricante: necchi
 modelo: Creator Expres
@@ -13,21 +13,43 @@ imagenes:
 - imagen: /img/productos/necchi-creator-expres-1.jpg
 - imagen: /img/productos/necchi-creator-expres-2.jpg
 - imagen: /img/productos/necchi-creator-expres-3.jpg
-description: Plotter de corte de máxima precisión.
+description: "Plotter de corte Necchi Creator Express de máxima precisión: corta telas, cuero, papel, vinilo, fieltro y mucho más, con cámara integrada y software Necchi Create."
 destacados:
-- texto: Software Necchi Create incluido.
-- texto: Software Necchi Create, con funciones de galería de imágenes, creación de proyectos, añadir textos, convertir el texto en contornos para recortar, insertar formas geométricas básicas (círculos, cuadrados, rectángulos, triángulos) o formas complejas predefinidas, importa imágenes o archivos (SVG, PNG o JPG), seleccionar el material a trabajar (software ajusta automáticamente la velocidad, la presión y el número de pasadas óptimos), añadir materiales, etc..
+- texto: Corta telas, cuero, polipiel, papel, cartulina, fieltro, corcho, vinilo, madera fina…
+- texto: Ancho de corte de hasta 305 mm
+- texto: Cámara integrada para detectar marcas y calibrar
+- texto: Función de impresión y corte
+- texto: Memoria para 4 proyectos y 4 archivos
+- texto: Software Necchi Create incluido
+- texto: Wifi, Windows, macOS, iOS y Android
 caracteristicas:
-- valor: Ancho de corte hasta 305mm sin base y 301mm con base.
-- valor: Cámara integrada, para la detección de marcas durante la impresión y el corte, así como para una calibración precisa durante las operaciones de corte.
-- valor: Función de impresión y corte para obtener resultados perfectos.
-- valor: Permite repetir el último diseño sin salir del programa.
-- valor: Memoria interna del plotter para hasta 4 proyectos y 4 archivos, permite repetir el trabajo fácilmente sin tener que volver al software.
-- valor: Fácil cambio de la presión, la velocidad y el número de pasadas, para cortar cualquier material y proyecto.
-- valor: Software Necchi Create, con funciones de galería de imágenes, creación de proyectos, añadir textos, convertir el texto en contornos para recortar, insertar formas geométricas básicas (círculos, cuadrados, rectángulos, triángulos) o formas complejas predefinidas, importa imágenes o archivos (SVG, PNG o JPG), seleccionar el material a trabajar (software ajusta automáticamente la velocidad, la presión y el número de pasadas óptimos), añadir materiales, etc..
-- valor: Equipada con 1 Tapete adhesivo de corte de 30,5 X 30,5cm.
-- valor: Equipada con 2 cuchillas estándar de 45° + 1 cuchilla de 60º para corte profundo + 1 rotulador marcador
-- valor: Opcionalmente dispone de cuchilla circular para telas, cuchillas de 45º y 60º, punzón de grabado, cuchilla de gofrado/rayado, cuchilla de corte profundo, marcador de tela resistente al calor, tapetes, etc...
-- valor: 'Conexión Wi-Fi, compatibilidad software Windows y macOS y aplicaciones móviles: iOS y Android'
+- nombre: Tipo
+  valor: plotter de corte
+- nombre: Ancho de corte
+  valor: hasta 305 mm sin base; 301 mm con base
+- nombre: Cámara
+  valor: integrada, para detectar marcas y calibrar
+- nombre: Impresión y corte
+  valor: Sí
+- nombre: Repetir el último diseño
+  valor: Sí
+- nombre: Memoria interna
+  valor: 4 proyectos y 4 archivos
+- nombre: Ajustes
+  valor: presión, velocidad y número de pasadas
+- nombre: Software
+  valor: Necchi Create (galería de imágenes, textos, formas, importación de SVG, PNG y JPG, ajuste automático por material)
+- nombre: Conectividad
+  valor: wifi
+- nombre: Compatibilidad
+  valor: Windows, macOS, iOS y Android
+- nombre: Incluye
+  valor: tapete adhesivo de 30,5 × 30,5 cm, 2 cuchillas de 45°, 1 cuchilla de 60° para corte profundo y 1 rotulador
+- nombre: Accesorios opcionales
+  valor: cuchilla circular para telas, cuchillas de 45° y 60°, punzón de grabado, cuchilla de gofrado, cuchilla de corte profundo, marcador de tela, tapetes…
 ---
-Plotter de corte de máxima precisión. Permite cortar infinidad de materiales, telas, cuero, poli piel, papel, cartulinas, cartón prensado, fieltro, gomaespuma, corcho, vinilos, madera fina, etc… Perfecto para el sector del Hobby&Craft. Software Necchi Create incluido.
+**El Necchi Creator Express es un plotter de corte de máxima precisión, perfecto para el mundo del hobby y las manualidades.** Corta infinidad de materiales: telas, cuero, polipiel, papel, cartulina, cartón prensado, fieltro, gomaespuma, corcho, vinilo o madera fina.
+
+Su cámara integrada detecta las marcas para imprimir y cortar con resultados perfectos y calibra cada corte con precisión. Guarda hasta 4 proyectos y 4 archivos en su memoria para repetir trabajos sin volver al software, y ajusta fácilmente la presión, la velocidad y el número de pasadas.
+
+Incluye el software Necchi Create: galería de imágenes, textos, formas y la importación de SVG, PNG o JPG, y al elegir el material, ajusta solo la velocidad, la presión y las pasadas. Funciona por wifi con Windows, macOS, iOS y Android, e incluye tapete de corte, cuchillas y rotulador.

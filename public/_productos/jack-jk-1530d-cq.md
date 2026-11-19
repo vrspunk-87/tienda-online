@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina zigzag cortahílos Direc Drive, con garfio gran capacidad
 fabricante: jack
 modelo: JK-1530D-CQ
@@ -14,6 +14,37 @@ imagenes:
 - imagen: /img/productos/jack-jk-1530d-cq-1.jpg
 - imagen: /img/productos/jack-jk-1530d-cq-2.jpg
 - imagen: /img/productos/jack-jk-1530d-cq-3.jpg
-description: Máquina zigzag cortahílos Direc Drive, con garfio gran capacidad. Ancho costura 8mm, longitud puntada 5mm, altura del prensatelas 9mm y engrase automático. Velocidad máxima 2200ppm. Con luz LED.
+description: Máquina de zigzag industrial Jack con cortahílos, motor Direct Drive, garfio de gran capacidad, ancho de 8 mm, engrase automático y hasta 2.200 ppm.
+destacados:
+- texto: Zigzag con cortahílos
+- texto: Garfio de gran capacidad
+- texto: Ancho de costura de 8 mm y longitud de puntada de 5 mm
+- texto: Altura del prensatelas de 9 mm
+- texto: Engrase automático
+- texto: Motor Direct Drive, hasta 2.200 puntadas por minuto
+- texto: Luz LED
+caracteristicas:
+- nombre: Tipo
+  valor: máquina de zigzag
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Cortahílos
+  valor: Sí
+- nombre: Garfio
+  valor: de gran capacidad
+- nombre: Ancho de costura
+  valor: 8 mm
+- nombre: Longitud de puntada
+  valor: 5 mm
+- nombre: Altura del prensatelas
+  valor: 9 mm
+- nombre: Engrase
+  valor: automático
+- nombre: Velocidad máxima
+  valor: 2.200 puntadas por minuto
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina zigzag cortahílos Direc Drive, con garfio gran capacidad. Ancho costura 8mm, longitud puntada 5mm, altura del prensatelas 9mm y engrase automático. Velocidad máxima 2200ppm. Con luz LED.
+**Jack JK-1530D-CQ: zigzag robusto con corte de hilo automático.** Con garfio de gran capacidad, ancho de costura de 8 mm, puntadas de hasta 5 mm y prensatelas que sube 9 mm.
+
+Engrase automático, motor Direct Drive a hasta 2.200 puntadas por minuto y luz LED.

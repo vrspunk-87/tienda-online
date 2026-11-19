@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer HD500
 fabricante: singer
 modelo: HD500
@@ -10,6 +10,40 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/singer-hd500-1.jpg
-description: La máquina de coser Singer HD500 Classic Negra combina un diseño vintage con funcionalidades modernas, ofreciendo una experiencia de costura eficiente y versátil.
+description: "El encanto de las Singer clásicas con la potencia de hoy: 32 puntadas, hasta 1.100 puntadas por minuto y estructura metálica interna para coser rápido y con estabilidad."
+destacados:
+- texto: "32 puntadas: básicas, elásticas y decorativas"
+- texto: Hasta 1.100 puntadas por minuto con motor de 90 W
+- texto: "Estructura metálica interna: durabilidad y estabilidad"
+- texto: Enhebrador automático
+- texto: Ojal automático en un solo paso
+- texto: Longitud y anchura de puntada ajustables
+- texto: Brazo libre
+- texto: Diseño vintage en negro mate con detalles dorados
+caracteristicas:
+- nombre: Tipo
+  valor: mecánica
+- nombre: Puntadas
+  valor: 32 (básicas, elásticas y decorativas)
+- nombre: Velocidad máxima
+  valor: 1.100 puntadas por minuto
+- nombre: Motor
+  valor: 90 W
+- nombre: Estructura
+  valor: metálica interna
+- nombre: Enhebrador
+  valor: automático
+- nombre: Ojal
+  valor: automático en un solo paso
+- nombre: Longitud y anchura de puntada
+  valor: ajustables
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Acabado
+  valor: negro mate con detalles dorados
 ---
-La máquina de coser Singer HD500 Classic Negra combina un diseño vintage con funcionalidades modernas, ofreciendo una experiencia de costura eficiente y versátil. Su acabado en negro mate con detalles dorados evoca las clásicas máquinas Singer, aportando elegancia y estilo al espacio de costura. Equipada con un potente motor de 90 vatios, es capaz de realizar hasta 1.100 puntadas por minuto, lo que permite completar proyectos de manera más rápida y eficiente. Su estructura metálica interna proporciona durabilidad y estabilidad durante la costura, asegurando un rendimiento consistente incluso en tejidos gruesos. Además, cuenta con 32 puntadas incorporadas, incluyendo opciones utilitarias, elásticas y decorativas, adaptándose a diversas necesidades y tipos de tela.
+**La Singer HD500 Classic une el encanto de las Singer de siempre con las prestaciones de una máquina actual.** Su acabado negro mate con detalles dorados recuerda a las clásicas máquinas Singer y aporta elegancia y estilo a tu rincón de costura.
+
+Por dentro es pura eficacia: su motor de 90 W alcanza hasta 1.100 puntadas por minuto para que termines tus proyectos antes, y su estructura metálica interna le da durabilidad y estabilidad, con un rendimiento constante incluso en tejidos gruesos.
+
+Con 32 puntadas incorporadas, entre básicas, elásticas y decorativas, se adapta a todo tipo de telas y trabajos. El enhebrador automático, el ojal en un solo paso, la longitud y anchura de puntada ajustables y el brazo libre hacen que coser sea más fácil y cómodo.

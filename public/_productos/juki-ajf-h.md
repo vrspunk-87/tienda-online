@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Base de extensión
 fabricante: juki
 modelo: AJF-H
@@ -17,6 +17,14 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/juki-ajf-h-1.jpg
-description: Base de extensión para máquinas… HZL-353, 355, 357, 60H, 80H
+description: Base de extensión Juki para las HZL-353, 355, 357, 60H y 80H.
+destacados:
+- texto: Amplía la superficie de trabajo
+- texto: Para las Juki HZL-353, 355, 357, 60H y 80H
+caracteristicas:
+- nombre: Tipo
+  valor: base de extensión
+- nombre: Compatible con
+  valor: Juki HZL-353, HZL-355, HZL-357, HZL-60H y HZL-80H
 ---
-Base de extensión para máquinas… HZL-353, 355, 357, 60H, 80H
+Base de extensión para tu Juki HZL-353, 355, 357, 60H u 80H: más superficie de trabajo para coser con comodidad.

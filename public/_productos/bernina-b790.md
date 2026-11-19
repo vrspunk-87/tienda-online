@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B790
 fabricante: bernina
 modelo: B790
@@ -19,23 +19,25 @@ imagenes:
   alt: 'Bernina B790: diseñador de puntadas'
 - imagen: /img/productos/bernina-b790-5.jpg
   alt: Bordado hecho con la Bernina B790
-description: 'BERNINA 790: coser y bordar al máximo nivel.'
+description: 'BERNINA 790: coser y bordar al máximo nivel, con 1.352 puntadas, diseñador de puntadas, tensión adaptable y pantalla táctil de 7".'
 destacados:
-- texto: Diseñador de puntadas de BERNINA
-- texto: Máxima calidad de puntadas gracias a la tensión de hilo adaptable
-- texto: Regulador de puntada de BERNINA (BSR) incluido
-- texto: Lanzadera BERNINA con una anchura de puntada de 9 mm
-- texto: Transporte dual BERNINA
-- texto: Cortahilos y bajada del prensatelas automáticos
+- texto: 1.352 puntadas, con 505 decorativas y 15 ojales
+- texto: Diseñador de puntadas en la pantalla
+- texto: Tensión del hilo adaptable para la máxima calidad
+- texto: "Lanzadera BERNINA de 9 mm: un 70 % más de hilo en la bobina"
+- texto: Regulador de puntadas BERNINA (BSR) y arrastre dual
+- texto: 254 mm de espacio a la derecha de la aguja
+- texto: Cortahílos y bajada del prensatelas automáticos
+- texto: Pantalla táctil a color de 7" y 270 diseños de bordado
 caracteristicas:
 - nombre: Velocidad máxima de costura
-  valor: 1000 puntadas/min
+  valor: 1.000 puntadas/min
 - nombre: Ancho máximo de puntada
   valor: 9 mm
 - nombre: Longitud máxima de puntada
   valor: 6 mm
 - nombre: Posiciones de aguja
-  valor: '11'
+  valor: "11"
 - nombre: Transporte transversal
   valor: Sí
 - nombre: Ojal automático/ Ojales automáticos de longitud determinada
@@ -75,37 +77,37 @@ caracteristicas:
 - nombre: Monogramas (sólo para transporte transversal)
   valor: Sí
 - nombre: Número total de puntadas (alfabetos inclusive)
-  valor: '1352'
+  valor: "1352"
 - nombre: Alfabetos de costura
   valor: 7/1
 - nombre: Puntadas decorativas en total
-  valor: '505'
+  valor: "505"
 - nombre: Programa de coser botones
   valor: Sí
 - nombre: Ojales (ojetes inclusive) en total
-  valor: '15'
+  valor: "15"
 - nombre: Puntadas de utilidad en total
-  valor: '32'
+  valor: "32"
 - nombre: Puntadas de decoración transporte transversal en total
-  valor: '117'
+  valor: "117"
 - nombre: Puntadas de acolchado
-  valor: '34'
+  valor: "34"
 - nombre: Puntadas Tassel, Tapering y Skyline
   valor: 0/28/27
 - nombre: Programas de zurcido
-  valor: '2'
+  valor: "2"
 - nombre: Costura a 360 grados
   valor: Sí
 - nombre: Velocidad máxima de bordado (puntadas por minuto)
-  valor: '1000'
+  valor: "1000"
 - nombre: Superficie máxima de bordado
   valor: 400x210 mm
 - nombre: Bordado con soporte independiente
   valor: Sí
 - nombre: Patrones de bordado integrados
-  valor: '270'
+  valor: "270"
 - nombre: Alfabetos de bordado
-  valor: '8'
+  valor: "8"
 - nombre: Procesamiento de patrones en la pantalla
   valor: reflejar, rotar, escalar
 - nombre: Bordado de orlas
@@ -155,7 +157,7 @@ caracteristicas:
 - nombre: Enhebrador de agujas automático
   valor: Sí
 - nombre: Cortahilos manual
-  valor: '3'
+  valor: "3"
 - nombre: Modificación de puntada durante la costura
   valor: Sí
 - nombre: Control de tensión exclusivo
@@ -187,6 +189,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-La lanzadera BERNINA cose puntadas de alta precisión de hasta 9 mm de ancho a 1000 puntadas por minuto, y su bobina recoge un 70 % más de hilo que las estándar. El brazo libre ofrece 254 mm de espacio a la derecha de la aguja, ideal para bordar diseños grandes y manejar proyectos voluminosos.
+**La lanzadera BERNINA cose puntadas de alta precisión de hasta 9 mm de ancho a 1.000 puntadas por minuto, y su bobina recoge un 70 % más de hilo que las estándar.** El brazo libre ofrece 254 mm de espacio a la derecha de la aguja, ideal para bordar diseños grandes y manejar proyectos voluminosos.
 
 Con el diseñador de puntadas se dibujan puntadas propias directamente en la pantalla. El tensor de hilo adaptable comprueba y ajusta la tensión constantemente, el regulador de puntadas BERNINA (BSR) mantiene la longitud de puntada uniforme al coser con movimiento libre y el transporte dual arrastra con suavidad seda, cuero y tejidos delicados. El hilo se corta solo al terminar la costura o al cambiar de color en el bordado, y el prensatelas baja solo al empezar.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora PFAFF Admire Air 5000
 fabricante: pfaff
 modelo: Admire Air 5000
@@ -16,22 +16,32 @@ imagenes:
 - imagen: /img/productos/pfaff-admire-air-5000-4.jpg
 - imagen: /img/productos/pfaff-admire-air-5000-5.jpg
 destacados:
-- texto: Sistema de enhebrado rápido y sencillo con solo pulsar un botón
-- texto: Enhebrado de áncoras sin esfuerzo, eliminando la frustración
-- texto: Amplia variedad de puntadas para diferentes tipos de costura y acabados
-- texto: Puntadas de 4, 3 y 2 hilos para mayor versatilidad
-- texto: Control preciso de la alimentación de la tela para evitar fruncidos o estiramientos
-- texto: Ideal para trabajar con tejidos elásticos y delicados
-- texto: Personaliza tus costuras para adaptarlas a cada proyecto
-- texto: Acabados perfectos en diferentes tipos de tejidos
-- texto: Iluminación brillante y uniforme del área de costura para una mejor visibilidad
-- texto: Reduce la fatiga visual durante largas sesiones de costura
-- texto: Facilita la costura de prendas tubulares como mangas y bajos de pantalones
-- texto: Agiliza el proceso de enhebrado de las agujas
-- texto: Corta los hilos de forma rápida y sencilla al finalizar la costura
-- texto: Mantiene el área de trabajo limpia y ordenada
-- texto: Facilidad de Uso
-- texto: 'Resultados Profesionales: Obtén acabados de alta calidad en todos tus proyectos'
-- texto: 'Versatilidad: Amplia gama de puntadas y ajustes para adaptarse a diferentes tipos de tejidos y proyectos'
-- texto: 'Durabilidad: Construcción robusta y materiales de alta calidad garantizan una larga vida útil'
+- texto: Enhebrado de áncoras por aire con solo pulsar un botón
+- texto: Puntadas de 4, 3 y 2 hilos
+- texto: Transporte diferencial para evitar fruncidos o estiramientos
+- texto: Ideal para tejidos elásticos y delicados
+- texto: Iluminación brillante y uniforme
+- texto: Brazo libre para mangas y bajos
+- texto: Cortahílos y bandeja para mantener la zona limpia
+description: "Remalladora PFAFF admire air 5000 con enhebrado de áncoras por aire con solo pulsar un botón: puntadas de 4, 3 y 2 hilos y acabados profesionales."
+caracteristicas:
+- nombre: Tipo
+  valor: remalladora
+- nombre: Hilos
+  valor: 4, 3 y 2
+- nombre: Enhebrado de áncoras
+  valor: por aire, con un botón
+- nombre: Transporte diferencial
+  valor: Sí
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Iluminación
+  valor: brillante y uniforme
+- nombre: Cortahílos
+  valor: Sí
 ---
+**Con la PFAFF admire air 5000, enhebrar las áncoras es cuestión de pulsar un botón: su sistema por aire elimina la frustración del enhebrado.**
+
+Trabaja con 4, 3 y 2 hilos y ofrece una amplia variedad de puntadas para distintos acabados. Su transporte diferencial controla el avance de la tela para evitar fruncidos o estiramientos, ideal para tejidos elásticos y delicados.
+
+La iluminación brillante y uniforme reduce la fatiga visual, el brazo libre te facilita las mangas y los bajos, y el cortahílos te deja el área de trabajo limpia. Una remalladora robusta, versátil y fácil de usar, para resultados profesionales en todos tus proyectos.

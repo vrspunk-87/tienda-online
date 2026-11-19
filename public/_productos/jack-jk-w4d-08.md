@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina recubridora de 3 agujas base plana Direc Drive
 fabricante: jack
 modelo: JK-W4D-08
@@ -13,17 +13,41 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-w4d-08-1.jpg
 - imagen: /img/productos/jack-jk-w4d-08-2.jpg
-description: Máquina recubridora de 3 agujas base plana Direc Drive. Equipada con 4 equipos de costura, y recubrimiento superior e inferior. Con luz LED.
+description: "Recubridora industrial Jack multifunción de base plana con 3 agujas y 4 equipos de costura: costura normal, collarines, morrongado y bajos. Costura de 5,6 o 6,4 mm."
 destacados:
-- texto: Multifunción
+- texto: Recubridora de base plana con 3 agujas
+- texto: Recubrimiento superior e inferior
+- texto: Motor Direct Drive
+- texto: "Multifunción: 4 equipos de costura"
+- texto: Costura normal, collarines, morrongado y bajos
+- texto: Costura de 5,6 o 6,4 mm, según versión
+- texto: Luz LED
 caracteristicas:
-- valor: Para Trabajar normal -01
-- valor: Para trabajar tipo collarines -02
-- valor: Para realizar morrongado (sobre cargar costuras). -03
-- valor: Para realizar bajos (dobladillos). -08
+- nombre: Tipo
+  valor: recubridora de base plana
+- nombre: Agujas
+  valor: "3"
+- nombre: Recubrimiento
+  valor: superior e inferior
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Equipos de costura
+  valor: "4"
+- nombre: Equipo 01
+  valor: trabajo normal
+- nombre: Equipo 02
+  valor: collarines
+- nombre: Equipo 03
+  valor: morrongado (sobrecargar costuras)
+- nombre: Equipo 08
+  valor: bajos (dobladillos)
 - nombre: Versión JK-W4D-08X356
-  valor: ref. FJK-W4D-08X356; Costura 5,6mm
+  valor: ref. FJK-W4D-08X356; costura 5,6 mm
 - nombre: Versión JK-W4D-08X364
-  valor: ref. FJK-W4D-08X364; Costura 6,4mm
+  valor: ref. FJK-W4D-08X364; costura 6,4 mm
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina recubridora de 3 agujas base plana Direc Drive. Equipada con 4 equipos de costura, y recubrimiento superior e inferior. Con luz LED.
+**Jack JK-W4D-08: cuatro trabajos con una sola recubridora.** Viene con 4 equipos de costura para trabajar en normal, poner collarines, hacer morrongado (sobrecargar costuras) y hacer bajos.
+
+De base plana, con 3 agujas, recubrimiento superior e inferior, motor Direct Drive y luz LED. Disponible con costura de 5,6 o 6,4 mm.

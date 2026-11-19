@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Casquillo superior de 1/4 24 hilos
 fabricante: jack
 modelo: AJK2808CASQUILLO
@@ -13,6 +13,19 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-ajk2808casquillo-1.jpg
-description: Casquillo superior de 1/4 24 hilos. Para fornituras fabricación nacional.
+description: Casquillo superior de 1/4 24 hilos para la remachadora Jack JK-2808. Para fornituras de fabricación nacional.
+destacados:
+- texto: Casquillo superior de 1/4 24 hilos
+- texto: Para la remachadora Jack JK-2808
+- texto: Para fornituras de fabricación nacional
+caracteristicas:
+- nombre: Tipo
+  valor: casquillo superior
+- nombre: Medida
+  valor: 1/4 24 hilos
+- nombre: Compatible con
+  valor: remachadora Jack JK-2808
+- nombre: Uso
+  valor: fornituras de fabricación nacional
 ---
-Casquillo superior de 1/4 24 hilos. Para fornituras fabricación nacional.
+**Casquillo superior de 1/4 24 hilos para tu remachadora Jack.** Recambio para la remachadora JK-2808. Pensado para fornituras de fabricación nacional.

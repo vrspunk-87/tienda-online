@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser electrónica 8200 Plus Horizon
 fabricante: alfa
 modelo: 8200 Plus Horizon
@@ -14,41 +14,67 @@ imagenes:
 - imagen: /img/productos/alfa-8200-plus-horizon-2.jpg
 - imagen: /img/productos/alfa-8200-plus-horizon-3.jpg
 - imagen: /img/productos/alfa-8200-plus-horizon-4.jpg
-description: Máquina de coser electrónica de brazo libre.
+description: "Máquina electrónica de brazo libre con gran espacio de trabajo de 28 × 12 cm, 170 puntadas, zigzag de 9 mm y doble arrastre: pensada para patchwork y acolchado."
 destacados:
-- texto: Amplia superficie de 28 x 12 cm para trabajar cómodamente con telas y prendas de gran tamaño
-- texto: Incluye 170 puntadas, 10 tipos de ojales para dar rienda suelta a tu creatividad
-- texto: 3 lámparas LED para que puedas ver mejor la labor que estés realizando
-- texto: Velocidad de hasta 1000 puntadas por minuto.Te permite variar el ancho de zig-zag hasta 9 mm, lo que es ideal para acolchados libres
-- texto: Gran capacidad de arrastre con 7 filas de dientes de arrastre, para coser con facilidad tejidos gruesos
-- texto: 'Gran espacio de trabajo: 280 x 120 mm (ideal para acolchado)'
-- texto: 170 Puntadas + 10 tipos de ojales ¡NUEVO!
-- texto: Velocidad máxima de hasta 1000 puntadas por minuto ¡NUEVO!
-- texto: Pantalla táctil intuitiva con 4 botones de acceso directo a las puntadas principales ¡NUEVO!
-- texto: Alfabeto (¡NUEVO! Incluye alfabeto cirílico)
-- texto: 'Placa de aguja de puntada recta con tres posiciones: izquierda, centro y derecha (perfecto para Patchwork) ¡NUEVO!'
-- texto: Fácil colocación de canilla ¡NUEVO!
-- texto: Incluye prensatelas automático para ojales con estabilizador para telas gruesas ¡NUEVO!
-- texto: 'Ancho de puntada variable: 0 – 9 mm (en todas las puntadas)'
-- texto: 'Longitud de puntada variable: 0 – 5 mm (en todas las puntadas)'
-- texto: Tensión superior automática
-- texto: Pantalla LCD con memoria
-- texto: Botón Start/Stop
-- texto: Regulador de velocidad
-- texto: Enhebrador automático
-- texto: Aguja arriba/abajo
-- texto: Corte de hilo automático
-- texto: Remate automático
-- texto: 7 filas de dientes de arrastre
-- texto: 'Acufeed Flex: sistema de alimentación de doble arrastre adaptable en cualquier momento'
-- texto: Cambio de la placa de aguja rápida con un solo toque (sin destornillador)
+- texto: Gran espacio de trabajo de 280 × 120 mm, ideal para acolchado
+- texto: 170 puntadas y 10 tipos de ojales
+- texto: Anchura de zigzag de hasta 9 mm en todas las puntadas
+- texto: Doble arrastre Acufeed Flex y 7 filas de dientes
+- texto: Hasta 1.000 puntadas por minuto
+- texto: Pantalla táctil con 4 accesos directos a las puntadas principales
+- texto: Corte de hilo, remate y enhebrado automáticos
+- texto: Placa de aguja de puntada recta con 3 posiciones, ideal para patchwork
 - texto: Rodillera para elevar el prensatelas
-- texto: 3 lámparas LED
 caracteristicas:
 - nombre: Tipo
   valor: electrónica
-- valor: Brazo libre
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: "170"
+- nombre: Ojales
+  valor: 10 tipos (prensatelas automático para ojales con estabilizador para telas gruesas)
+- nombre: Alfabeto
+  valor: Sí, también cirílico
+- nombre: Anchura de puntada
+  valor: de 0 a 9 mm (en todas las puntadas)
+- nombre: Longitud de puntada
+  valor: de 0 a 5 mm (en todas las puntadas)
+- nombre: Velocidad máxima
+  valor: 1.000 puntadas por minuto
+- nombre: Espacio de trabajo
+  valor: 280 × 120 mm
+- nombre: Dientes de arrastre
+  valor: 7 filas
+- nombre: Doble arrastre
+  valor: Acufeed Flex
+- nombre: Pantalla
+  valor: táctil LCD con memoria, 4 botones de acceso directo
+- nombre: Tensión superior
+  valor: automática
+- nombre: Enhebrador
+  valor: automático
+- nombre: Corte de hilo
+  valor: automático
+- nombre: Remate
+  valor: automático
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Regulador de velocidad
+  valor: Sí
+- nombre: Aguja arriba/abajo
+  valor: Sí
+- nombre: Placa de aguja de puntada recta
+  valor: 3 posiciones (izquierda, centro y derecha)
+- nombre: Cambio de placa de aguja
+  valor: rápido, sin destornillador
+- nombre: Rodillera alzaprensatelas
+  valor: Sí
+- nombre: Iluminación
+  valor: 3 lámparas LED
 ---
-Máquina de coser electrónica de brazo libre.
+**La Alfa 8200 Plus Horizon es la máquina profesional para tus proyectos de patchwork.** Tiene una base de costura amplísima, de 28 × 12 cm, para trabajar cómodamente con telas grandes, y un zigzag de hasta 9 mm en todas las puntadas, ideal para el acolchado libre.
 
-La Alfa Horizon 8200 Plus es ideal si estás buscando una máquina profesional con la que trabajar todos tus proyectos de Patchwork. Tiene una base de costura amplísima (28 x 12 cm), especial para coser telas muy grandes y la posibilidad de variar el ancho de zig-zag hasta 9 mm, lo que es ideal para acolchados libres. Tiene una gran capacidad de arrastre con 7 filas de dientes, para coser con facilidad tejidos gruesos como cueros y telas de tapicerías con un acabado muy profesional. Incluye 170 puntadas y 10 tipos de ojales para dar rienda suelta a tu creatividad. Es una máquina que te ofrece muchísimas comodidades: vas a poder regular la velocidad de la costura, coser sin pedal e incluso cortar el hilo de manera automática.
+Su gran capacidad de arrastre, con 7 filas de dientes y el doble arrastre Acufeed Flex, te permite coser con facilidad tejidos gruesos como el cuero o las telas de tapicería, con un acabado muy profesional. Incluye 170 puntadas y 10 tipos de ojales para dar rienda suelta a tu creatividad.
+
+Y te lo pone muy fácil: pantalla táctil con accesos directos, hasta 1.000 puntadas por minuto con regulador de velocidad, start/stop para coser sin pedal, corte de hilo y remate automáticos, rodillera para levantar el prensatelas y placa de puntada recta con tres posiciones.

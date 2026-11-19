@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser electrónica Janome Skyline S5
 fabricante: janome
 modelo: Skyline S5
@@ -15,32 +15,64 @@ imagenes:
 - imagen: /img/productos/janome-skyline-s5-3.jpg
 - imagen: /img/productos/janome-skyline-s5-4.jpg
 - imagen: /img/productos/janome-skyline-s5-5.jpg
-description: Máquina de coser electrónica de brazo libre y alta calidad con mesa de extensión, 170 tipos de puntadas, elevador de prensatelas por rodillera.
+description: Máquina electrónica de brazo libre para patchwork y acolchado, con 170 puntadas de 9 mm, 10 ojales en un paso, rodillera y mesa de extensión.
 destacados:
-- texto: Adecuado para todo tipo de tejidos
-- texto: 170 puntadas incorporadas y 91 posiciones de aguja
-- texto: 10 tipos de ojales en un solo paso
-- texto: Velocidad de 1.000 PPM
-- texto: 9 mm máximo ancho de puntada
-- texto: Sistema de Tensión automático
-- texto: Pantalla retroiluminada LCD digital
-- texto: Cortador automático del hilo
-- texto: Aguja arriba / abajo
-- texto: Placa especial de cambio en un paso
-- texto: Sistema de caja bobinas de fácil enhebrado
-- texto: Ideal para Quilting y Patchwork
-- texto: Presión de prensatelas regulable en 6 puntos
-- texto: Incorpora alfabeto con letras y números
-- texto: Control de crucero, botón de encendido / botón de parada, posición de la aguja empezar
-- texto: Enhebrador de aguja
+- texto: Adecuada para todo tipo de tejidos, ideal para quilting y patchwork
+- texto: 170 puntadas de hasta 9 mm y 91 posiciones de aguja
+- texto: 10 ojales en un solo paso
+- texto: Hasta 1.000 puntadas por minuto, con inicio a velocidad lenta
+- texto: Tensión automática y cortahílos automático
+- texto: Elevador del prensatelas por rodillera
 - texto: Iluminación LED en 3 posiciones
-- texto: Inicio con velocidad lenta
-- texto: Brazo libre
-- texto: Altura del prensatelas extra
-- texto: Elevador prensatelas de rodilla
-- texto: Función de aguja doble
-- texto: Mesa extensión
-- texto: Maleta rígida
-- texto: Cortahilos automático
+- texto: Mesa de extensión y maleta rígida incluidas
+caracteristicas:
+- nombre: Tipo
+  valor: electrónica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: 170 (incluye alfabeto con letras y números)
+- nombre: Ojales
+  valor: 10, en un solo paso
+- nombre: Posiciones de aguja
+  valor: "91"
+- nombre: Anchura máxima de puntada
+  valor: 9 mm
+- nombre: Velocidad
+  valor: 1.000 puntadas por minuto
+- nombre: Inicio a velocidad lenta
+  valor: Sí
+- nombre: Tensión
+  valor: automática
+- nombre: Pantalla
+  valor: LCD digital retroiluminada
+- nombre: Cortahílos
+  valor: automático
+- nombre: Aguja arriba/abajo
+  valor: Sí
+- nombre: Placa de aguja
+  valor: cambio en un paso
+- nombre: Canilla
+  valor: caja de fácil enhebrado
+- nombre: Presión del prensatelas
+  valor: regulable en 6 puntos
+- nombre: Altura extra del prensatelas
+  valor: Sí
+- nombre: Elevador del prensatelas
+  valor: por rodillera
+- nombre: Función de aguja doble
+  valor: Sí
+- nombre: Control de crucero y botón start/stop
+  valor: Sí
+- nombre: Enhebrador de aguja
+  valor: Sí
+- nombre: Iluminación
+  valor: LED en 3 posiciones
+- nombre: Incluye
+  valor: mesa de extensión y maleta rígida
 ---
-Máquina de coser electrónica de brazo libre y alta calidad con mesa de extensión, 170 tipos de puntadas, elevador de prensatelas por rodillera. Especial para patchwork, acolchados etc...
+**La Janome Skyline S5 es una máquina electrónica de brazo libre y alta calidad, especial para patchwork y acolchado y adecuada para todo tipo de tejidos.** Tiene 170 puntadas de hasta 9 mm, un alfabeto, 10 ojales en un solo paso y 91 posiciones de aguja.
+
+Cose a hasta 1.000 puntadas por minuto y arranca a velocidad lenta para empezar con precisión. La tensión automática, el cortahílos automático, la presión del prensatelas regulable en 6 puntos y la rodillera te dan comodidad y control, y la iluminación LED en 3 posiciones te deja ver bien cada detalle.
+
+Incluye mesa de extensión y maleta rígida.

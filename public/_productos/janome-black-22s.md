@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Janome Black 22S
 fabricante: janome
 modelo: Black 22S
@@ -11,18 +11,40 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/janome-black-22s-1.jpg
-description: Máquina doméstica de brazo libre y lanzadera central oscilante equipada con 25 funciones diferentes.
+description: "Máquina de coser mecánica Janome Black 22S de brazo libre con 25 puntadas y ojal en un solo paso: robusta, sencilla y con portaconos y prensatelas metálicos."
 destacados:
-- texto: 25 funciones diferentes
-- texto: Ojal en 1 solo paso
+- texto: 25 puntadas
+- texto: Ojal en un solo paso
 - texto: Enhebrador automático
 - texto: Funda de plástico dura
-- texto: Portaconos metálico
-- texto: Prensatelas metálico
+- texto: Portaconos y prensatelas metálicos
+- texto: Hasta 860 puntadas por minuto
 caracteristicas:
-- nombre: Velocidad máxima
-  valor: 860 PPM
+- nombre: Tipo
+  valor: mecánica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Lanzadera
+  valor: central oscilante
 - nombre: Puntadas
-  valor: A a L
+  valor: 25 (A a L)
+- nombre: Ojal
+  valor: en un solo paso
+- nombre: Enhebrador
+  valor: automático
+- nombre: Color
+  valor: negro
+- nombre: Volante y protector del tirahilos
+  valor: Sí
+- nombre: Funda
+  valor: de plástico dura
+- nombre: Portaconos
+  valor: metálico
+- nombre: Prensatelas
+  valor: metálico
+- nombre: Velocidad máxima
+  valor: 860 puntadas por minuto
 ---
-Máquina doméstica de brazo libre y lanzadera central oscilante equipada con 25 funciones diferentes. Ojal en 1 solo paso, velocidad máxima 860 PPM, enhebrador automático y funda de plástico dura. Volante y protector del tirahilos.
+**La Janome Black 22S es una máquina de coser mecánica de brazo libre con 25 puntadas, ojal en un solo paso y enhebrador automático.** En color negro. Coser es más rápido y cómodo, y los ojales salen iguales a la primera.
+
+Su lanzadera central oscilante, el prensatelas metálico y el portaconos metálico le dan solidez. Alcanza hasta 860 puntadas por minuto e incluye funda de plástico dura.

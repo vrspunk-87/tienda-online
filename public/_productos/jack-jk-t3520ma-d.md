@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de costura programable Direc Drive
 fabricante: jack
 modelo: JK-T3520MA-D
@@ -11,6 +11,41 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t3520ma-d-1.jpg
-description: Máquina de costura programable Direc Drive.
+description: "Máquina de costura programable Jack con motor Direct Drive y área de 350 × 200 mm: panel táctil, USB y hasta 2.700 puntadas por minuto."
+destacados:
+- texto: Área útil de costura de 350 × 200 mm
+- texto: Motor Direct Drive
+- texto: Bastidor de 1 pieza
+- texto: Panel táctil para programar cualquier diseño
+- texto: Motores paso a paso para el movimiento X-Y
+- texto: Detector de rotura del hilo de la aguja
+- texto: Entrada USB para cargar diseños
+- texto: Hasta 2.700 puntadas por minuto
+- texto: Para tejidos finos y medios
+caracteristicas:
+- nombre: Tipo
+  valor: máquina de costura programable
+- nombre: Área útil de costura
+  valor: 350 × 200 mm
+- nombre: Bastidor
+  valor: de 1 pieza
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Movimiento X-Y
+  valor: motores paso a paso
+- nombre: Panel de control
+  valor: táctil
+- nombre: Conexión
+  valor: USB
+- nombre: Garfio
+  valor: rotativo de gran capacidad
+- nombre: Detector de rotura del hilo de la aguja
+  valor: Sí
+- nombre: Velocidad máxima
+  valor: 2.700 puntadas por minuto
+- nombre: Tejidos
+  valor: finos y medios
 ---
-Máquina de costura programable Direc Drive. Área útil de costura de 350x200mm, con bastidor de 1 pieza. Incorpora panel táctil para realizar cualquier tipo de programación o diseño, motores paso a paso para el movimiento X-Y, detector de rotura hilo de la aguja, entrada de USB para cargar diseños y garfio rotativo de gran capacidad. Velocidad máxima 2700ppm. Generos Finos - Medios
+**Jack JK-T3520MA-D: repite el mismo diseño una y otra vez con precisión.** Esta máquina de costura programable con motor Direct Drive trabaja en un área útil de 350 × 200 mm, con bastidor de una pieza.
+
+Programas cualquier diseño desde el panel táctil o lo cargas por USB. Los motores paso a paso del movimiento X-Y, el detector de rotura del hilo y el garfio rotativo de gran capacidad mantienen la producción a hasta 2.700 puntadas por minuto, en tejidos finos y medios.

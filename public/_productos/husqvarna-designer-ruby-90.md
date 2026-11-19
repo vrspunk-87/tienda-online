@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking DESIGNER RUBY 90
 fabricante: husqvarna
 modelo: DESIGNER RUBY 90
@@ -15,99 +15,17 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-ruby-90-3.jpg
 - imagen: /img/productos/husqvarna-designer-ruby-90-4.jpg
 - imagen: /img/productos/husqvarna-designer-ruby-90-5.jpg
-description: Cosa a nuevos destinos con la máquina de coser y bordar DESIGNER RUBY 90 habilitada con Wifi.
+description: Máquina de coser y bordar con WiFi, bastidor de hasta 360 × 350 mm, 817 puntadas, 651 diseños de bordado y doble arrastre integrado.
 destacados:
-- texto: Blog mySewnet
-- texto: Diseños de transferencia con WiFi
-- texto: Compatibilidad con la aplicación mySewnet
-- texto: Software de bordado mySewnet para descargar
-- texto: Capacidad de enganche de bordado de cinta
-- texto: Diseño / Posicionamiento exacto
-- texto: Asistencia completa y mySewnet App
-- texto: Design-Select
-- texto: Combine diseños de bordado en pantalla
-- texto: Añadir cuadrícula a la pantalla para la colocación
-- texto: Cortador de hilo selectivo / automático con recorte automático de puntadas de salto
-- texto: Posibilidad de bordar ojales en el bastidor
-- texto: Conicidad en modo bordado
-- texto: Redimensionar diseño con recálculo de puntadas
-- texto: Cambiar orden de puntada de diseño
-- texto: Agrupación de diseños
-- texto: Deshacer / Rehacer al crear combinaciones de diseños
-- texto: Ordenación por bloques de colores
-- texto: Combinación de bloques de color
-- texto: Ir al número exacto de puntada de bordado
-- texto: Cuenta atrás del tiempo de bordado por color
-- texto: Bordado paso a paso por colores y puntada a puntada
-- texto: Seleccionar diseños a partir de imágenes en miniatura
-- texto: Carga y visualización de diseños multiformato
-- texto: Diseño a escala
-- texto: Rotar diseños
-- texto: Incrementos de un grado
-- texto: Edición de color
-- texto: Cambia los colores del diseño, cambia el color de fondo selecciona monocromo
-- texto: Zoom y panorámica
-- texto: Marca del cursor en pantalla mientras se borda
-- texto: Mis bastidores
-- texto: Tecnología de doble alimentación
-- texto: Tecnología de doble alimentación integrada
-- texto: Sistema de puntadas deLuxe
-- texto: Tensión de hilo electrónica autoajustable
-- texto: Sistema de puntadas Plus deLuxe
-- texto: Sistema exclusivo de sensores
-- texto: + Caída de los dientes de alimentación con elevación adicional
-- texto: EXCLUSIVO SEWING ADVISOR
-- texto: Caída automática de los dientes de alimentación
-- texto: Costura y bordado
-- texto: Costura de movimiento lateral
-- texto: Costura a mano alzada
-- texto: 3 Modos
-- texto: Posicionamiento de la puntada
-- texto: La luz indica la parada de la aguja arriba/abajo
-- texto: Función STOP
-- texto: Función FIX Tie-Off
-- texto: Reinicio del patrón de puntadas
-- texto: Selección de ángulos de puntada cónica
-- texto: Una categoría
-- texto: Costura Direccional
-- texto: Menú Mis puntadas
-- texto: 100 MB de memoria disponibles mediante WiFi/una memoria USB
-- texto: Puntadas mostradas en pantalla
-- texto: Puntadas mostradas en tamaño real
-- texto: Punto inicial de la puntada indicado en pantalla
-- texto: Ajuste de agujas gemelas
-- texto: Visualización en pantalla de la vida útil de la aguja gemela
-- texto: Potencia de perforación electrónica
-- texto: Fuerza de la aguja pulsante 150 N
-- texto: Tipo de pantalla
-- texto: Coser con la unidad de bordado acoplada
-- texto: Placa de puntada recta con sensor
-- texto: Sistema de iluminación
-- texto: Luz LED líder del mercado, con intensidad regulable
-- texto: Sensor de hilo superior y de bobina
-- texto: Coser y Bordar Con o Sin Pedal
-- texto: Pedal multifunción
-- texto: Inversión instantánea y permanente
-- texto: Placa de doble puntada extendida
-- texto: Directrices de hasta 65 mm a ambos lados de la aguja
-- texto: Motor independiente para bobinar mientras cose o borda
-- texto: Sistema de ayuda rápida directamente en pantalla
-- texto: Guía de accesorios en pantalla
-- texto: Toque y sujete para manipular fácilmente diseños, archivos y mucho más
-- texto: Opción de pantalla de bloqueo
-- texto: Protector de pantalla con pantalla de inicio
-- texto: Actualizaciones por Internet
-- texto: A través de WiFi o USB Embroidery Stick
-- texto: Funciones de memoria en pantalla
-- texto: mySewnet Cloud y memoria USB de bordado
-- texto: Elija la combinación de colores en pantalla
-- texto: Ahorro inteligente
-- texto: Conectividad USB
-- texto: 2 puertos USB para memorias USB y accesorios opcionales
-- texto: Funda blanda de tela a medida
-- texto: Unidad de bordado Bolsa blanda
-- texto: Incluye
-- texto: Dimensiones (largo x ancho x alto)
+- texto: "Conexión WiFi con mySewnet: nube, biblioteca y aplicación"
+- texto: Bastidor de bordado de hasta 360 × 350 mm
+- texto: 817 puntadas y 651 diseños de bordado incorporados
+- texto: Tecnología de doble arrastre integrada
+- texto: Tensión del hilo electrónica autoajustable (sistema deLuxe Plus)
+- texto: EXCLUSIVE SEWING ADVISOR y EMBROIDERY ADVISOR con JoyOS ADVISOR
+- texto: Cortahilos automático con recorte de puntadas de salto
+- texto: Fuerza de perforación de 150 N
+- texto: 310 mm de espacio a la derecha de la aguja
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 957976096
@@ -120,7 +38,7 @@ caracteristicas:
 - nombre: Diseños incluidos
   valor: 651 diseños incorporados
 - nombre: Fuentes de bordado multitamaño
-  valor: '8'
+  valor: "8"
 - nombre: Velocidad de bordado
   valor: 1.000 puntadas / minuto
 - nombre: Diseñar la forma / Crear la forma
@@ -132,15 +50,15 @@ caracteristicas:
 - nombre: Hilvanar en bastidor
   valor: 2 opciones
 - nombre: Técnicas de puntada exclusivas
-  valor: '5'
+  valor: "5"
 - nombre: Puntadas incorporadas
-  valor: '817'
+  valor: "817"
 - nombre: Fuentes de costura programables
   valor: 5, también se puede bordar
 - nombre: Ancho de puntada
   valor: 7 mm
 - nombre: Posiciones de la aguja
-  valor: '29'
+  valor: "29"
 - nombre: Ojales perfectamente equilibrados con el prensatelas para ojales Sensor One-Step
   valor: 16 ojales + 3 ojales + botón cosido
 - nombre: Control de velocidad
@@ -150,8 +68,33 @@ caracteristicas:
 - nombre: Espacio para coser a la derecha de la aguja
   valor: 310 mm (más de 12")
 - nombre: Varios idiomas
-  valor: '14'
+  valor: "14"
 - nombre: Peso
   valor: 14,2 kg (20,8 lb.)
+- nombre: Fuerza de perforación de la aguja
+  valor: 150 N
+- nombre: Tensión del hilo
+  valor: electrónica autoajustable (sistema deLuxe Plus)
+- nombre: Costura a mano alzada
+  valor: 3 modos
+- nombre: Placa de doble puntada
+  valor: guías de hasta 65 mm a ambos lados de la aguja
+- nombre: Iluminación
+  valor: LED de intensidad regulable
+- nombre: Memoria «Mis puntadas»
+  valor: 100 MB por WiFi o memoria USB
+- nombre: Conectividad USB
+  valor: 2 puertos
+- nombre: Incluye
+  valor: funda blanda de tela y bolsa para la unidad de bordado
 ---
-Cosa a nuevos destinos con la máquina de coser y bordar DESIGNER RUBY 90 habilitada con Wifi.
+**Cose y borda sin límites con la DESIGNER RUBY 90, conectada por WiFi.** Su bastidor de hasta 360 × 350 mm, sus 651 diseños de bordado y sus 817 puntadas te dan todo lo que necesitas para proyectos grandes y detallados.
+
+### Bordado fácil de controlar
+Combina, gira grado a grado, cambia de tamaño con recálculo de puntadas y reordena tus diseños en la pantalla. La cuenta atrás por color, la guía puntada a puntada y el cortahilos automático con recorte de saltos hacen el resto.
+
+### Costura precisa en cualquier tejido
+El doble arrastre integrado, la tensión electrónica autoajustable y una fuerza de perforación de 150 N mantienen las costuras uniformes. Además tienes 3 modos de costura a mano alzada, costura direccional y 310 mm de espacio a la derecha de la aguja.
+
+### Conectada con mySewnet
+Envía diseños por WiFi, guárdalos en la nube y recibe actualizaciones por Internet. Incluye funda blanda de tela y bolsa para la unidad de bordado.

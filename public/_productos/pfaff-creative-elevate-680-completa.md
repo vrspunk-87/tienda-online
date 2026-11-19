@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Creative Elevate 680 con unidad de bordado
 fabricante: pfaff
 modelo: Creative Elevate 680 Completa
@@ -15,9 +15,10 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-elevate-680-completa-3.jpg
 - imagen: /img/productos/pfaff-creative-elevate-680-completa-4.jpg
 - imagen: /img/productos/pfaff-creative-elevate-680-completa-5.jpg
-description: La máquina creative elevate 680 ofrece un rendimiento de costura excepcional para creadores de todos los niveles.
+description: 'PFAFF creative elevate 680 con unidad de bordado: más de 400 puntadas, más de 330 diseños de bordado, sistema IDT y pantalla táctil de 7", para creadores de todos los niveles.'
 caracteristicas:
-- valor: Incluye la unidad de bordado (código 850408096)
+- nombre: Unidad de bordado
+  valor: incluida (código 850408096)
 - nombre: Nº de puntadas
   valor: más de 400
 - nombre: Ancho máximo de puntada
@@ -25,7 +26,7 @@ caracteristicas:
 - nombre: Sistema IDT original
   valor: Sí
 - nombre: Nº de tipos de letra de costura
-  valor: '4'
+  valor: "4"
 - nombre: Superficie de costura a la derecha de la aguja
   valor: 9,8" (250 mm)
 - nombre: Tamaño de la pantalla
@@ -59,18 +60,33 @@ caracteristicas:
 - nombre: Posicionamiento preciso de la puntada
   valor: avanzado
 - nombre: Opciones de movimiento libre
-  valor: '4'
+  valor: "4"
 - nombre: Estilos de ojal
-  valor: '9'
+  valor: "9"
 - nombre: Ojal Sensormatic en un solo paso
   valor: Sí
 - nombre: Nº de diseños de bordado integrados
   valor: más de 330
 - nombre: Nº de fuentes de bordado
-  valor: '8'
+  valor: "8"
 - nombre: Posiciones de la aguja
-  valor: '37'
+  valor: "37"
 - nombre: CREATIVATE
   valor: Sí
+destacados:
+- texto: Unidad de bordado incluida
+- texto: Más de 330 diseños y 8 fuentes de bordado
+- texto: Más de 400 puntadas y 4 fuentes de costura
+- texto: Sistema Original IDT
+- texto: Pantalla táctil capacitiva a color de 7"
+- texto: 250 mm de espacio a la derecha de la aguja
+- texto: Tensión automática, enhebrador y corte de hilo automáticos
+- texto: Elevación automática del prensatelas
+- texto: Ojal Sensormatic en un solo paso, 9 estilos
+- texto: 37 posiciones de aguja y conectividad CREATIVATE
 ---
-La máquina creative elevate 680 ofrece un rendimiento de costura excepcional para creadores de todos los niveles. Añade la unidad de bordado opcional para descubrir un mundo de posibilidades en el bordado y ampliar aún más tu potencial creativo.
+**La PFAFF creative elevate 680 ofrece un rendimiento de costura excepcional para creadores de todos los niveles, y con la unidad de bordado incluida te abre todo un mundo de posibilidades en el bordado.**
+
+Para coser, tienes más de 400 puntadas de hasta 9 mm, 4 fuentes, 9 estilos de ojal con el ojal Sensormatic en un solo paso y 37 posiciones de aguja, con 250 mm de espacio a la derecha de la aguja. Su sistema Original IDT hace avanzar el tejido de forma uniforme, y la tensión automática, el enhebrador automático, el corte de hilo y la elevación automática del prensatelas te ahorran tiempo.
+
+Para bordar, cuenta con más de 330 diseños y 8 fuentes. Todo se controla desde su pantalla táctil capacitiva a color de 7", con conectividad CREATIVATE.

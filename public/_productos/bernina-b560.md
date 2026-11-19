@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B560
 fabricante: bernina
 modelo: B560
@@ -15,23 +15,24 @@ imagenes:
   alt: Bernina B560 con el módulo de bordado opcional
 - imagen: /img/productos/bernina-b560-3.jpg
   alt: 'Bernina B560: pantalla táctil'
-description: 'BERNINA 560: la multitalento para la costura, el bordado y el quilting.'
+description: 'BERNINA 560: la multitalento para coser, bordar y acolchar, con 700 puntadas de hasta 9 mm, pantalla táctil y función de bordado integrada.'
 destacados:
-- texto: Función de bordado integrada (módulo de bordado opcional)
-- texto: Función BSR integrada (regulador de puntada BERNINA opcional)
-- texto: Moderna pantalla táctil de alta resolución
-- texto: Función de memoria para todas las puntadas
-- texto: Gran selección de puntadas y motivos de bordado
-- texto: Mesa de costura y armario de accesorios
+- texto: 700 puntadas de hasta 9 mm de anchura, con 5 alfabetos
+- texto: Función de bordado integrada (módulo opcional) con 70 diseños
+- texto: Pantalla táctil de alta resolución
+- texto: Memoria para todas las puntadas
+- texto: Función BSR integrada (regulador opcional)
+- texto: Cortahílos automático y sensores de hilo
+- texto: Mesa de costura y armario de accesorios incluidos
 caracteristicas:
 - nombre: Velocidad máxima de costura
-  valor: 1000 puntadas/min
+  valor: 1.000 puntadas/min
 - nombre: Ancho máximo de puntada
   valor: 9 mm
 - nombre: Longitud máxima de puntada
   valor: 5 mm
 - nombre: Posiciones de aguja
-  valor: '11'
+  valor: "11"
 - nombre: Ojal automático/ Ojales automáticos de longitud determinada
   valor: Sí
 - nombre: Costura manual de ojales en varias etapas
@@ -55,29 +56,29 @@ caracteristicas:
 - nombre: Botón de arranque/parada (costura sin pedal de arranque)
   valor: Sí
 - nombre: Número total de puntadas (alfabetos inclusive)
-  valor: '700'
+  valor: "700"
 - nombre: Alfabetos de costura
-  valor: '5'
+  valor: "5"
 - nombre: Puntadas decorativas en total
-  valor: '184'
+  valor: "184"
 - nombre: Programa de coser botones
   valor: Sí
 - nombre: Ojales (ojetes inclusive) en total
-  valor: '11'
+  valor: "11"
 - nombre: Puntadas de utilidad en total
-  valor: '29'
+  valor: "29"
 - nombre: Puntadas de acolchado
-  valor: '24'
+  valor: "24"
 - nombre: Programas de zurcido
-  valor: '3'
+  valor: "3"
 - nombre: Velocidad máxima de bordado (puntadas por minuto)
-  valor: '680'
+  valor: "680"
 - nombre: Bordado con soporte independiente
   valor: Opcional
 - nombre: Patrones de bordado integrados
-  valor: '70'
+  valor: "70"
 - nombre: Alfabetos de bordado
-  valor: '4'
+  valor: "4"
 - nombre: Hilvanar
   valor: Sí
 - nombre: Memoria para patrones de bordado propios
@@ -105,7 +106,7 @@ caracteristicas:
 - nombre: Luz de costura
   valor: Sí
 - nombre: Cortahilos manual
-  valor: '3'
+  valor: "3"
 - nombre: Modificación de puntada durante la costura
   valor: Sí
 - nombre: Sistema de lanzadera
@@ -133,6 +134,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-La BERNINA 560 ofrece una amplia gama de puntadas, todas con un ancho de hasta 9 mm, y alfabetos para coser y bordar. En el modo de bordado (con el módulo opcional) tiene 70 motivos que se pueden girar, reflejar, cambiar de tamaño o de tipo de puntada en la pantalla táctil; con el software de bordado BERNINA, de venta aparte, se pueden crear diseños propios y pasarlos por USB.
+**La BERNINA 560 ofrece una amplia gama de puntadas, todas con un ancho de hasta 9 mm, y alfabetos para coser y bordar.** En el modo de bordado (con el módulo opcional) tiene 70 motivos que se pueden girar, reflejar, cambiar de tamaño o de tipo de puntada en la pantalla táctil; con el software de bordado BERNINA, de venta aparte, se pueden crear diseños propios y pasarlos por USB.
 
 Su memoria inteligente guarda las puntadas y combinaciones personalizadas incluso después de apagarla. Tiene integrada la función BSR, así que se le puede añadir en cualquier momento el regulador de puntada BERNINA para acolchar con manos libres con puntadas siempre iguales. Incluye mesa de costura y armario de accesorios con cajones.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de pespunte de 1 aguja Solo cortahílos
 fabricante: jack
 modelo: JK-A2C-C
@@ -16,29 +16,48 @@ imagenes:
 - imagen: /img/productos/jack-jk-a2c-c-3.jpg
 - imagen: /img/productos/jack-jk-a2c-c-4.jpg
 - imagen: /img/productos/jack-jk-a2c-c-5.jpg
-description: Máquina de pespunte de 1 aguja Solo cortahílos.
+description: "Máquina industrial de pespunte Jack de 1 aguja con cortahílos, motor Direct Drive «Mighty Ape», sistema FST y arrastre AMH1: hasta 5.000 ppm para tejidos finos y medios."
 caracteristicas:
+- nombre: Tipo
+  valor: máquina de pespunte
 - nombre: Agujas
   valor: 287 WH 75-110
 - nombre: Hilos
-  valor: '2'
+  valor: "2"
+- nombre: Motor
+  valor: Direct Drive «Mighty Ape»
+- nombre: Sistemas
+  valor: FST y arrastre AMH1
+- nombre: Cortahílos
+  valor: Sí
 - nombre: Longitud de puntada (mm)
-  valor: '5'
+  valor: "5"
 - nombre: Altura del prensatelas (mm)
   valor: 1-13
 - nombre: Velocidad costura (s.p.m)
-  valor: '5000'
+  valor: "5.000"
 - nombre: Fino
   valor: Sí
 - nombre: Medio
   valor: Sí
 - nombre: Grueso
-  valor: 'No'
+  valor: No
+- nombre: Lubricación
+  valor: cárter de aceite
 - nombre: Volumen (mm)
-  valor: 645x248x550
+  valor: 645 × 248 × 550
 - nombre: Peso Kg
-  valor: 30/36.5
+  valor: 30/36,5
+- nombre: Iluminación
+  valor: LED
+destacados:
+- texto: Cortahílos automático
+- texto: Motor Direct Drive «Mighty Ape» de mayor potencia
+- texto: "Sistema FST y arrastre AMH1: pasa las costuras con facilidad"
+- texto: Hasta 5.000 puntadas por minuto
+- texto: Para tejidos finos y medios
+- texto: Cárter de aceite y luz LED
 ---
-Máquina de pespunte de 1 aguja Solo cortahílos. Direc Drive. con carter de aceite. Equipada con Sistema FST, que combinado con su potente motor “Mighty Ape” y el sistema de arrastre AMH1 permite coser todo tipo de tejidos y pasar las costuras con suma facilidad. Con luz LED
+**Jack A2C: velocidad, precisión y durabilidad en una máquina de pespunte.** Diseñada para profesionales, combina el corte automático del hilo con un motor Direct Drive «Mighty Ape» de mayor potencia.
 
-La Jack A2C es una máquina de coser industrial de alto rendimiento diseñada para profesionales que buscan velocidad, precisión y durabilidad. Diseñada con corte automático de hilo y motor de mayor potencia.
+Su sistema FST y el arrastre AMH1 le permiten coser todo tipo de tejidos y pasar las costuras con suma facilidad, a hasta 5.000 puntadas por minuto. Con cárter de aceite y luz LED.

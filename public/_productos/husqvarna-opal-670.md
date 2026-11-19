@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking Opal 670
 fabricante: husqvarna
 modelo: Opal 670
@@ -15,10 +15,17 @@ imagenes:
 - imagen: /img/productos/husqvarna-opal-670-3.jpg
 - imagen: /img/productos/husqvarna-opal-670-4.jpg
 - imagen: /img/productos/husqvarna-opal-670-5.jpg
-description: Nuestra máquina de coser computerizada OPAL 670 es extra eficiente con un montón de ayudas incorporadas para cambiar su forma de coser a mejor.
+description: Máquina de coser electrónica con 557 puntadas, pantalla táctil, cortahilos automático, tensión autoajustable y EXCLUSIVE SEWING ADVISOR.
 destacados:
-- texto: Característica cónica
-- texto: Puntadas con pictogramas
+- texto: 557 puntadas en total, 200 utilitarias y decorativas
+- texto: Pantalla táctil de 3" con puntadas a tamaño real
+- texto: Función exclusiva SEWING ADVISOR
+- texto: Cortahilos automático
+- texto: Tensión del hilo electrónica autoajustable
+- texto: Sensor del hilo de la canilla
+- texto: Puntadas cónicas y puntadas con pictogramas
+- texto: Botón Start/Stop para coser sin pedal
+- texto: 200 mm de espacio de costura
 caracteristicas:
 - nombre: Función Start/Stop (coser sin pedal de control)
   valor: Sí
@@ -85,4 +92,10 @@ caracteristicas:
 - nombre: Peso
   valor: 8,5 kg (18,7 lb.)
 ---
-Nuestra máquina de coser computerizada OPAL 670 es extra eficiente con un montón de ayudas incorporadas para cambiar su forma de coser a mejor.
+**La OPAL 670 es una máquina extraeficiente, con un montón de ayudas integradas que cambian tu forma de coser a mejor.**
+
+### Te ahorra pasos
+El cortahilos automático, la tensión electrónica autoajustable, el sensor del hilo de la canilla y el EXCLUSIVE SEWING ADVISOR, que elige los ajustes según el tejido, te dejan concentrarte en el proyecto.
+
+### Creatividad a mano
+557 puntadas (200 utilitarias y decorativas), 4 fuentes programables, puntadas cónicas y con pictogramas, y 8 memorias en «Mis puntadas». Las eliges en la pantalla táctil y las ves a tamaño real. Ojales de un paso con el prensatelas Sensor, 200 mm de espacio de costura, 7 prensatelas y tapa blanda incluidos.

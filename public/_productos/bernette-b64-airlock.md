@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernette b64 Airlock
 fabricante: bernette
 modelo: b64 Airlock
@@ -15,18 +15,16 @@ imagenes:
 - imagen: /img/productos/bernette-b64-airlock-3.jpg
 - imagen: /img/productos/bernette-b64-airlock-4.jpg
 - imagen: /img/productos/bernette-b64-airlock-5.jpg
-description: Tu genial overlock para todo, desde sudadera hasta denim, para que cada costura sea tu sello personal
+description: "Overlock con enhebrado automático por aire de las áncoras: 16 puntadas para todo, de la sudadera al denim, con brazo libre y gran espacio de trabajo."
 destacados:
 - texto: Enhebrador automático por aire para los hilos del áncora
-- texto: Brazo libre
-- texto: Vías de enhebrado marcadas con colores
-- texto: Activación de tensión con el prensatelas alzado
-- texto: Longitud de puntada ajustable mientras se cose
-- texto: Accesorios bajo la tapa del áncora
-- texto: Luz de costura
-- texto: Interruptor de seguridad activado cuando la tapa está abierta
+- texto: 16 puntadas de overlock de 2, 3 y 4 hilos
 - texto: Control de microenhebrado (mtc)
-- texto: Sistema manos libres (FHS) incluido el alzaprensatelas de rodilla
+- texto: Brazo libre para mangas y puños
+- texto: 130 mm de espacio a la derecha de la aguja
+- texto: Sistema manos libres con alzaprensatelas de rodilla
+- texto: Longitud de puntada ajustable mientras coses
+- texto: 5 luces de costura
 caracteristicas:
 - nombre: Número de puntadas
   valor: '16'
@@ -69,25 +67,25 @@ caracteristicas:
 - nombre: Accesorios incluidos
   valor: Prensatelas para puntada overlock estándar; Destornillador; Aceitera; Red para bobinas (4); Cuchilla superior de repuesto (fija); Tapa de bobina (4); Pincel; Juego de agujas BERNINA (ELx705); Enhebrador/insertador de aguja; Destornillador Allen (pequeño); Pinzas; Convertidor del áncora superior (ULC); Estabilizador de bobinas (4); Recipiente de residuos; Tapa de brazo libre; Guía de hilo decorativo; Alambre de enhebrado
 ---
-La máquina de overlock con enhebrador por aire para enhebrar las áncoras automáticamente. Empezar a coser nunca ha sido tan fácil. La b64 AIRLOCK tiene aún más que ofrecer: el brazo libre facilita la costura de mangas y puños. La gran superficie de trabajo disponible a la derecha de la aguja y la mesa extraíble te van a encantar. Las cinco luces LED garantizan que la zona de trabajo esté intensamente iluminada. El prensatelas se puede bajar y elevar temporalmente utilizando el sistema de mano libre bernette, de manera que tendrás las manos libres para guiar la tela. Con 16 puntadas diferentes entre las que elegir y una velocidad de costura de hasta 1300 puntadas por minuto, ¡finalizarás tus proyectos en poco tiempo!
+**La máquina de overlock con enhebrador por aire para enhebrar las áncoras automáticamente.** Empezar a coser nunca ha sido tan fácil. La b64 AIRLOCK tiene aún más que ofrecer: el brazo libre facilita la costura de mangas y puños. La gran superficie de trabajo disponible a la derecha de la aguja y la mesa extraíble te van a encantar. Las cinco luces LED garantizan que la zona de trabajo esté intensamente iluminada. El prensatelas se puede bajar y elevar temporalmente utilizando el sistema de mano libre bernette, de manera que tendrás las manos libres para guiar la tela. Con 16 puntadas diferentes entre las que elegir y una velocidad de costura de hasta 1.300 puntadas por minuto, ¡finalizarás tus proyectos en poco tiempo!
 
-Enhebrador por aire automático
+### Enhebrador por aire automático
 Enhebrar el áncora nunca ha sido tan fácil y rápido gracias a las vías de enhebrado marcadas con colores. Enhebra cada áncora por separado o ambas a la vez con un solo toque.
 
-5 luces LED en la zona de trabajo y la aguja
+### 5 luces LED en la zona de trabajo y la aguja
 El espacio de trabajo bien iluminado de la máquina bernette 64 AIRLOCK facilita la costura así como el enhebrado de áncoras y agujas. Las cinco luces LED facilitan un trabajo cuidado y preciso.
 
-Control de microenhebrado (mtc)
+### Control de microenhebrado (mtc)
 El control de microenhebrado patentado mtc, que se incorpora por primera vez a una máquina bernette, te ahorra un tiempo y esfuerzo considerables a la vez que garantiza puntadas uniformes de alta calidad, ya que solo necesitas ajustar la tensión del hilo una vez, incluso aunque modifiques la anchura de corte y el grosor del tejido.
 
-Mucho espacio gracias a la gran superficie de trabajo (130 mm)
+### Mucho espacio gracias a la gran superficie de trabajo (130 mm)
 Los 130 mm de espacio a la derecha de la aguja brindan una nueva dimensión a las labores de overlock. La amplia zona de trabajo es ideal para dirigir y sujetar los proyectos de costura pesados por detrás de la aguja y te brinda espacio para todas las tareas en la zona de la aguja y el áncora: cambiar el prensatelas, acoplar el convertidor del áncora superior y mucho más.
 
-Brazo libre integrado
+### Brazo libre integrado
 La costura de proyectos tubulares como puños, perneras y escotes resultará más fácil gracias al brazo libre integrado.
 
-Mesa extraíble supergrande
+### Mesa extraíble supergrande
 La mesa extraíble incluida y fácil de acoplar hace que la costura y el guiado de la tela resulten aún más cómodos, especialmente en los proyectos de costura grandes. La tela se deslizará suavemente sobre la mesa de forma redondeada.
 
-Sistema de mano libre (FHS)
+### Sistema de mano libre (FHS)
 Con el alzaprensatelas de rodilla incluido, las manos quedan libres para colocar cómodamente la tela bajo el prensatelas. Además, puedes levantar fácilmente el prensatelas con la rodilla empujando el elevador hacia la derecha.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de brazo libre, con 120 funciones
 fabricante: elna
 modelo: 580+
@@ -15,31 +15,68 @@ imagenes:
 - imagen: /img/productos/elna-580-plus-3.jpg
 - imagen: /img/productos/elna-580-plus-4.jpg
 - imagen: /img/productos/elna-580-plus-5.jpg
-description: De brazo libre, con 120 funciones. Con cortahílos, 7 ojale en un sólo paso y enhebrador automático.
+description: "Máquina electrónica robusta y eficiente con 120 puntadas, 2 alfabetos y gran espacio de trabajo de 210 × 120 mm: ideal tanto para profesionales como para principiantes."
 destacados:
-- texto: Con cortahílos, 7 ojale en un sólo paso y enhebrador automático.
-- texto: Motor DC arranque y aceleración más eficiente. Menor consumo.
+- texto: 120 puntadas y 2 alfabetos
+- texto: 7 ojales en un solo paso
+- texto: Gran espacio de trabajo de 210 × 120 mm
+- texto: Cortahílos con función de memoria
+- texto: Enhebrador automático
+- texto: Botón start/stop y selector de velocidad
+- texto: Luz LED en 2 zonas
+- texto: Base de extensión de 50 × 30 cm y maleta dura incluidas
 caracteristicas:
-- valor: Gran espacio de trabajo 210x120mm.
-- valor: Longitud de puntada a 5mm.
-- valor: Ancho de costura de 7mm.
-- valor: 2 Alfabeto con letras mayúsculas/minúsculas, números/símbolos.
-- valor: Combinación hasta 50 funciones y textos.
-- valor: Función de memoria alfanuméricas temporal.
-- valor: Botón Start/Stop, Botón de remate, Botón posicionador de aguja.
-- valor: Selector de velocidad.
-- valor: Tecla de selección directa a 4 funciones.
-- valor: Función memoria para el cortahílos.
-- valor: Garfio rotativo.
-- valor: Doble altura de prensatelas hasta un máximo de 9mm.
-- valor: Luz LED en 2 zonas con 4 leds
-- valor: Velocidad máxima de 820ppm
-- valor: Motor DC arranque y aceleración más eficiente. Menor consumo.
-- valor: Consumo de 70w.
-- valor: Base de extensión de 50x30cm y Maleta dura.
+- nombre: Tipo
+  valor: electrónica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Puntadas
+  valor: "120"
+- nombre: Ojales
+  valor: 7, en un solo paso
+- nombre: Alfabetos
+  valor: 2, con mayúsculas, minúsculas, números y símbolos
+- nombre: Combinación de puntadas y textos
+  valor: hasta 50
+- nombre: Memoria alfanumérica
+  valor: temporal
+- nombre: Espacio de trabajo
+  valor: 210 × 120 mm
+- nombre: Longitud de puntada
+  valor: hasta 5 mm
+- nombre: Anchura de puntada
+  valor: hasta 7 mm
+- nombre: Botón start/stop
+  valor: Sí
+- nombre: Botón de remate
+  valor: Sí
+- nombre: Posicionador de aguja
+  valor: Sí
+- nombre: Selector de velocidad
+  valor: Sí
+- nombre: Selección directa
+  valor: 4 funciones
+- nombre: Cortahílos
+  valor: con función de memoria
+- nombre: Altura del prensatelas
+  valor: doble, hasta 9 mm
+- nombre: Garfio
+  valor: rotativo
+- nombre: Iluminación
+  valor: LED en 2 zonas, 4 LED
+- nombre: Velocidad máxima
+  valor: 820 puntadas por minuto
+- nombre: Motor
+  valor: DC, arranque y aceleración eficientes
+- nombre: Consumo
+  valor: 70 W
+- nombre: Incluye
+  valor: base de extensión de 50 × 30 cm y maleta dura
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-De brazo libre, con 120 funciones. Con cortahílos, 7 ojale en un sólo paso y enhebrador automático.
+**La Elna eXcellence 580+ está diseñada para darte un apoyo incondicional: su robustez garantiza una eficiencia impecable en cualquier situación.** Te ayudará a descubrir tu talento para la costura, y es ideal para profesionales que buscan comodidad y una calidad de trabajo perfecta, aunque también es adecuada para principiantes.
 
-Diseñada con el objetivo de brindar un apoyo incondicional a los usuarios, su robustez garantiza una eficiencia impecable en cualquier situación. La eXcellence 580+ te permitirá descubrir tu talento para la costura, y es ideal para profesionales que busquen comodidad y una calidad de trabajo perfecta, pero también es adecuada para principiantes.
+Tiene 120 puntadas, 2 alfabetos y 7 ojales en un solo paso, y un gran espacio de trabajo de 210 × 120 mm. El cortahílos con memoria, el enhebrador automático, el botón start/stop con selector de velocidad y la luz LED en dos zonas hacen el trabajo más cómodo.
+
+Incluye base de extensión de 50 × 30 cm y maleta dura. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

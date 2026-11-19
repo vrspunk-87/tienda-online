@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B380
 fabricante: bernina
 modelo: B380
@@ -17,12 +17,15 @@ imagenes:
   alt: 'Bernina B380: mesa móvil'
 - imagen: /img/productos/bernina-b380-4.jpg
   alt: 'Bernina B380: pantalla'
-description: 'La BERNINA 380: el mejor inicio para las más ambiciosas.'
+description: 'BERNINA 380: el mejor inicio para las costureras ambiciosas, con 221 puntadas, sistema manos libres, mesa móvil y memoria de 30 puntadas.'
 destacados:
-- texto: Sistema de manos libres (FHS)
-- texto: Mesa móvil
-- texto: Función de memoria (30 puntadas)
+- texto: 221 puntadas, con 2 alfabetos, 91 decorativas y 5 ojales
+- texto: Fácil de usar incluso para principiantes
+- texto: Sistema manos libres (FHS) con alzaprensatelas de rodilla
+- texto: Mesa móvil que se pone y se quita con un gesto
+- texto: Memoria permanente de 30 puntadas
 - texto: Función de reflejo
+- texto: Enhebrador semiautomático y display LED
 caracteristicas:
 - nombre: Velocidad máxima de costura
   valor: 900 puntadas/min
@@ -85,6 +88,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-La BERNINA 380 ofrece a las costureras ambiciosas una gran variedad de prestaciones y es fácil de usar incluso para principiantes. La mesa móvil aumenta la superficie de trabajo con un solo gesto y se quita igual de fácil cuando se necesita el brazo libre.
+**La BERNINA 380 ofrece a las costureras ambiciosas una gran variedad de prestaciones y es fácil de usar incluso para principiantes.** La mesa móvil aumenta la superficie de trabajo con un solo gesto y se quita igual de fácil cuando se necesita el brazo libre.
 
 Con el sistema de manos libres de BERNINA se levanta el prensatelas y se baja el arrastre con la rodilla, con las manos siempre sobre la labor: más control de la tela, sobre todo al girar el proyecto. Su memoria interna guarda de forma permanente hasta 30 puntadas.

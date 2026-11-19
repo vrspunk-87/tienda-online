@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Recubridora Singer 14T968DC
 fabricante: singer
 modelo: 14T968DC
@@ -14,41 +14,56 @@ imagenes:
 - imagen: /img/productos/singer-14t968dc-3.jpg
 - imagen: /img/productos/singer-14t968dc-4.jpg
 - imagen: /img/productos/singer-14t968dc-5.jpg
-description: La Singer 14T968DC Professional 5 le ahorra tiempo ya que se trata de una máquina Remalladora y Recubridora a la vez.
+description: "Singer 14T968DC Professional 5: remalladora y recubridora en una sola máquina, con 2, 3, 4 o 5 hilos y enhebrador automático de áncoras."
 destacados:
-- texto: Remalladora 5 hilos
-- texto: Overlock de 2, 3, 4 y 5 hilos
-- texto: Velocidad 1300 p.p.m
-- texto: Largo de Puntada Regulable (Remalladora) de 1 a 4mm
-- texto: Ancho de Puntada Regulable (Remalladora) de 3 a 9,8 mm
-- texto: Puntada festón o cordoncillo "repulgo"
-- texto: Puntada Recubridora (Estrecha, Ancha y Triple)
-- texto: Ancho de Puntada (Recubridora) de 2,8mm (estrecha) y 5,6 mm (ancha)
-- texto: Fácil enhebrado (Codificado por colores)
+- texto: Remalladora y recubridora en una
+- texto: Costuras de 2, 3, 4 y 5 hilos, con puntada de seguridad
+- texto: Recubierto estrecho, ancho y triple
+- texto: Enhebrado por colores y enhebrador automático de áncoras
 - texto: Tensión automática
-- texto: Diagramas de puntadas sobre la máquina
-- texto: Cuchilla Desembragable
-- texto: Posibilidad de costura de hasta tres agujas
-- texto: Puntada de seguridad
-- texto: Cortador superior e inferior
-- texto: Ancho de corte ajustable
-- texto: Transporte Diferencial (Diferencial Feed)
-- texto: Enhebrador de ancoras automático
-- texto: Incluye bandeja para los sobrantes
-- texto: Destornillador grande
-- texto: Cuchilla Fija
-- texto: Discos para los Carretes (5)
-- texto: Redes para los Carretes (5)
-- texto: Aceite
-- texto: Destornillador Pequeño
-- texto: Pinzas
-- texto: Caja de Agujas
-- texto: Brocha
-- texto: Pieza de Crentraje del Portacarrete (5)
-- texto: Bandeja de Recortes
-- texto: Funda blanda
-- texto: Cubierta de la cuchilla
-- texto: Manual de Instrucciones en Castellano
-- texto: Pedal
+- texto: Cuchilla desembragable y ancho de corte ajustable
+- texto: Transporte diferencial
+- texto: Hasta 1.300 puntadas por minuto
+caracteristicas:
+- nombre: Tipo
+  valor: remalladora y recubridora
+- nombre: Hilos
+  valor: 2, 3, 4 y 5
+- nombre: Agujas
+  valor: hasta 3
+- nombre: Velocidad
+  valor: 1.300 puntadas por minuto
+- nombre: Longitud de puntada (remalladora)
+  valor: de 1 a 4 mm
+- nombre: Anchura de puntada (remalladora)
+  valor: de 3 a 9,8 mm
+- nombre: Repulgo (cordoncillo)
+  valor: Sí
+- nombre: Recubierto
+  valor: estrecho (2,8 mm), ancho (5,6 mm) y triple
+- nombre: Puntada de seguridad
+  valor: Sí
+- nombre: Enhebrado
+  valor: codificado por colores
+- nombre: Enhebrador de áncoras
+  valor: automático
+- nombre: Tensión
+  valor: automática
+- nombre: Diagramas de puntadas en la máquina
+  valor: Sí
+- nombre: Cuchilla
+  valor: desembragable
+- nombre: Cortador superior e inferior
+  valor: Sí
+- nombre: Ancho de corte
+  valor: ajustable
+- nombre: Transporte diferencial
+  valor: Sí
+- nombre: Accesorios incluidos
+  valor: bandeja para retales, destornilladores, cuchilla fija, discos y redes para carretes (5), aceite, pinzas, caja de agujas, brocha, piezas de centraje del portacarrete (5), funda blanda, cubierta de la cuchilla, manual en castellano y pedal
 ---
-La Singer 14T968DC Professional 5 le ahorra tiempo ya que se trata de una máquina Remalladora y Recubridora a la vez. Puede usar 2, 3, 4 o 5 hilos para una gran variedad de combinaciones de puntadas. Desde hacer un dobladillo estrecho en un conjunto de servilleta o cualquier prenda de punto, hasta realizar el repulgo (cordoncillo decorativo al borde) alrededor de una manta de lana para dar un toque extra a sus acabados. Elija entre una variedad de puntadas como Cadeneta, Sobrehilado con 2, 3, 4 hilos (y puntada seguridad), Puntada de recubierto estrecha, ancha y triple, dobladillos enrrollados....
+**La Singer 14T968DC Professional 5 te ahorra tiempo, porque es remalladora y recubridora a la vez.** Puede usar 2, 3, 4 o 5 hilos para una gran variedad de combinaciones de puntadas.
+
+Haz un dobladillo estrecho en unas servilletas o en cualquier prenda de punto, o un repulgo alrededor de una manta de lana para darle un toque especial. Elige entre cadeneta, sobrehilado de 2, 3 y 4 hilos, puntada de seguridad, recubierto estrecho, ancho y triple y dobladillos enrollados.
+
+El enhebrado por colores, el enhebrador automático de áncoras, la tensión automática y los diagramas de puntadas en la propia máquina te lo ponen fácil. Alcanza hasta 1.300 puntadas por minuto e incluye bandeja para retales y manual en castellano.

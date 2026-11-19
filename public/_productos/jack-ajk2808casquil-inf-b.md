@@ -11,6 +11,16 @@ date: '2026-11-09T12:00:00.000+01:00'
 precio: 72.6
 estado: disponible
 condicion: nuevo
-description: Casquillo inferior de 12.34mm.
+description: Casquillo inferior de 12,34 mm para la remachadora Jack JK-2808.
+destacados:
+- texto: Casquillo inferior de 12,34 mm
+- texto: Para la remachadora Jack JK-2808
+caracteristicas:
+- nombre: Tipo
+  valor: casquillo inferior
+- nombre: Medida
+  valor: 12,34 mm
+- nombre: Compatible con
+  valor: remachadora Jack JK-2808
 ---
-Casquillo inferior de 12.34mm.
+**Casquillo inferior de 12,34 mm para tu remachadora Jack.** Recambio para la remachadora JK-2808.

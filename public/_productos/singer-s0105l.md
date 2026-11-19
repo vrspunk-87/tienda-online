@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Singer S0105L
 fabricante: singer
 modelo: S0105L
@@ -14,34 +14,53 @@ imagenes:
 - imagen: /img/productos/singer-s0105l-3.jpg
 - imagen: /img/productos/singer-s0105l-4.jpg
 - imagen: /img/productos/singer-s0105l-5.jpg
-description: Consigue acabados profesionales y un enhebrado perfecto gracias a la luz LED de sus ganchos inferiores.
+description: "Remalladora Singer S0105L con luz LED en los ganchos inferiores: enhebrado perfecto y acabados profesionales con 2, 3 o 4 hilos."
 destacados:
-- texto: Puntadas de 2, 3 ó 4 hilos para distintos acabados
-- texto: El avance diferencial ajusta el tejido para obtener costuras suaves y resultados profesionales
-- texto: El brazo libre proporciona movilidad adicional para coser dobladillos y puños con facilidad
-- texto: Alta velocidad 1300 puntadas por minuto
-- texto: El sistema de enhebrado codificado por colores simplifica el enhebrado
-- texto: Puntadas incorporadas (6)
-- texto: Longitud de puntada ajustable
-- texto: Anchura de puntada ajustable
-- texto: Capacidad de enhebrado
-- texto: Sistema de enhebrado por colores
-- texto: Avance diferencial
-- texto: Dobladillo enrollado incorporado
-- texto: Cuchilla superior móvil
-- texto: Bastidor metálico Heavy Duty
-- texto: Alta velocidad de costura (1300/min)
-- texto: Control de velocidad (Digital)
-- texto: Iluminación LED (2)
-- texto: Elevador de prensatelas extra alto
+- texto: Luz LED en los ganchos inferiores para enhebrar mejor
+- texto: Costuras de 2, 3 o 4 hilos
+- texto: 6 puntadas, con dobladillo enrollado incorporado
+- texto: Transporte diferencial para costuras suaves
+- texto: Brazo libre para dobladillos y puños
+- texto: Enhebrado codificado por colores
+- texto: Hasta 1.300 puntadas por minuto
 caracteristicas:
-- nombre: Tamaño de la máquina (cm)
-  valor: 34,2 largo, 27,7 ancho, 29,3 alto
-- nombre: Peso de la máquina
+- nombre: Tipo
+  valor: remalladora
+- nombre: Puntadas
+  valor: "6"
+- nombre: Hilos
+  valor: 2, 3 o 4
+- nombre: Longitud y anchura de puntada
+  valor: ajustables
+- nombre: Enhebrado
+  valor: codificado por colores
+- nombre: Transporte diferencial
+  valor: Sí
+- nombre: Dobladillo enrollado
+  valor: incorporado
+- nombre: Cuchilla superior
+  valor: móvil
+- nombre: Bastidor
+  valor: metálico Heavy Duty
+- nombre: Velocidad
+  valor: 1.300 puntadas por minuto
+- nombre: Control de velocidad
+  valor: digital
+- nombre: Iluminación
+  valor: 2 LED
+- nombre: Prensatelas
+  valor: elevación extra alta
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Tamaño
+  valor: 34,2 × 27,7 × 29,3 cm (largo × ancho × alto)
+- nombre: Peso
   valor: 7,2 kg
 - nombre: Potencia
   valor: 120 W
 - nombre: Accesorios incluidos
-  valor: Pie de uso general, Pinzas, Agujas adicionales, Adaptadores cónicos (en máquina), Destornillador, Controlador de pie
+  valor: pie de uso general, pinzas, agujas adicionales, adaptadores cónicos, destornillador y pedal
 ---
-Consigue acabados profesionales y un enhebrado perfecto gracias a la luz LED de sus ganchos inferiores.
+**Consigue acabados profesionales y un enhebrado perfecto gracias a la luz LED de los ganchos inferiores de la Singer S0105L.** Trabaja con 2, 3 o 4 hilos para distintos acabados, y el sistema de enhebrado codificado por colores lo simplifica todo.
+
+Su transporte diferencial ajusta el tejido para lograr costuras suaves, el brazo libre te da movilidad para dobladillos y puños, y el dobladillo enrollado viene incorporado. Con bastidor metálico Heavy Duty y hasta 1.300 puntadas por minuto.

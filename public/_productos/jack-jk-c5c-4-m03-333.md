@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina overlock de 4 hilos cortahílos Direc Drive
 fabricante: jack
 modelo: JK-C5C-4-M03/333
@@ -12,13 +12,43 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-c5c-4-m03-333-1.jpg
-description: Máquina overlock de 4 hilos cortahílos Direc Drive. Equipada con palanca de ajuste de inclinación de los dientes, velocidad máxima de 7000ppm y luz LED.
+description: Overlock industrial Jack de 4 hilos con inteligencia artificial, motor Direct Drive, cortahílos y hasta 7.000 puntadas por minuto.
 destacados:
-- texto: Con A.I. (inteligencia artificial)
+- texto: Overlock de 4 hilos con cortahílos
+- texto: "Inteligencia artificial: chip Octopus con arrastre SRF"
+- texto: Se adapta automáticamente al tejido y pasa los cruces de costura a toda velocidad
+- texto: Presión del prensatelas ajustada automáticamente al coser
+- texto: Cortacintas automático por células o por pulsador
+- texto: Alzaprensatelas electrónico con 10 posiciones
+- texto: Hasta 7.000 puntadas por minuto, luz LED
 caracteristicas:
-- valor: Con chip de A.I. Octopus, que combinado con su potente motor + el Su sistema de arrastre SRF, se adapta de forma automática en milésimas de segundo al tejido a trabajar y permite pasar los cruces de las costuras con suma facilidad a toda velocidad.
-- valor: Presión del prensatelas ajustable automáticamente durante la costura
-- valor: Cortacintas automático por células o por pulsador.
-- valor: Alza prensatelas electrónico con 10 posiciones.
+- nombre: Tipo
+  valor: máquina overlock
+- nombre: Hilos
+  valor: "4"
+- nombre: Cortahílos
+  valor: Sí
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Inteligencia artificial
+  valor: chip Octopus con sistema de arrastre SRF
+- nombre: Presión del prensatelas
+  valor: ajuste automático durante la costura
+- nombre: Cortacintas
+  valor: automático, por células o por pulsador
+- nombre: Alzaprensatelas
+  valor: electrónico, 10 posiciones
+- nombre: Inclinación de los dientes
+  valor: ajustable con palanca
+- nombre: Velocidad máxima
+  valor: 7.000 puntadas por minuto
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina overlock de 4 hilos cortahílos Direc Drive. Equipada con palanca de ajuste de inclinación de los dientes, velocidad máxima de 7000ppm y luz LED.
+**Jack JK-C5C-4: overlock de 4 hilos que se adapta sola a cada tejido.**
+
+### Inteligencia artificial
+Su chip Octopus, junto con el potente motor Direct Drive y el sistema de arrastre SRF, se adapta automáticamente al tejido en milésimas de segundo y pasa los cruces de costura con suma facilidad, a toda velocidad. La presión del prensatelas se ajusta sola mientras coses.
+
+### Equipamiento
+Cortacintas automático por células o por pulsador, alzaprensatelas electrónico con 10 posiciones, palanca de ajuste de la inclinación de los dientes, hasta 7.000 puntadas por minuto y luz LED.

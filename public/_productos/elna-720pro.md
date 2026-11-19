@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser de base plana, con estructura de aluminio y doble arrastre integrado
 fabricante: elna
 modelo: 720Pro
@@ -14,46 +14,80 @@ imagenes:
 - imagen: /img/productos/elna-720pro-2.jpg
 - imagen: /img/productos/elna-720pro-3.jpg
 - imagen: /img/productos/elna-720pro-4.jpg
-description: De base plana, con estructura de aluminio y doble arrastre integrado.
+description: "Máquina de base plana con estructura de aluminio y doble arrastre integrado: 200 puntadas de 9 mm, hasta 1.200 ppm y base de extensión extragrande."
 destacados:
-- texto: Doble arrastre integrado. (I.A.F)
-- texto: Motor DC arranque y aceleración más eficiente, menor consumo 70w.
+- texto: Base plana y estructura de aluminio
+- texto: Doble arrastre integrado (IAF)
+- texto: 200 puntadas de hasta 9 mm, 40 para quilting y aplicación
+- texto: 9 ojales en un solo paso y 3 alfabetos
+- texto: Gran espacio de trabajo de 255 × 120 mm
+- texto: Hasta 1.200 puntadas por minuto
+- texto: Tensión del hilo y cortahílos automáticos
+- texto: 14 prensatelas, maleta dura y base de extensión de 50 × 30 cm
 caracteristicas:
-- valor: Funciones de Costura
-- valor: 200 Funciones de Costura.
-- valor: 40 funciones de las 200 especiales para Quilting y aplicación
-- valor: Longitud máxima de puntada 5mm.
-- valor: Ancho de costura máximo de 9mm.
-- valor: 9 Ojales en un solo paso.
-- valor: 3 Alfabetos con letras mayúsculas/minúsculas, números hasta 9mm.
-- valor: Combinación hasta 50 funciones y textos.
-- valor: Función de memoria alfanuméricas de 20 patrones y combinaciones.
-- valor: (FS) Función de puntada favorita personalizadas.
-- valor: Tecla de selección directa a 10 funciones.
-- valor: Características de la Máquina
-- valor: Gran espacio de trabajo 255x120mm.
-- valor: Doble arrastre integrado. (I.A.F)
-- valor: Sistema de cortahílos automático avanzado y programable.
-- valor: Sistema de tensión del hilo automático.
-- valor: Enhebrador automático.
-- valor: Botón Start/Stop, Botón de atacado.
-- valor: Botón posicionador de aguja con función de memoria.
-- valor: Botón de puntada remate
-- valor: Botón alzaprensatelas.
-- valor: Regulador de velocidad hasta 1200ppm.
-- valor: Con 91 posiciones de aguja.
-- valor: Sensor de los dientes de arrastre integrado.
-- valor: Doble altura de prensatelas hasta un máximo de 9mm.
-- valor: Bobinador de canilla desembragable con motor independiente.
-- valor: Garfio rotativo horizontal de carga superior con tapa transparente.
-- valor: Placa aguja extra para coser pespunte recto.
-- valor: Rodillera ajustable.
-- valor: 14 Prensatelas variados incluidos… de ojales electrónico, acolchado, Quilting, puntada invisible, dobladillo, cremallera, puntadas realce...
-- valor: Luz LED en 3 zonas con un total de 3 leds
-- valor: Motor DC arranque y aceleración más eficiente, menor consumo 70w.
-- valor: Maleta Dura.
-- valor: Base de extensión extra grande incluida de 50x30cm.
+- nombre: Tipo
+  valor: electrónica
+- nombre: Base
+  valor: plana, con estructura de aluminio
+- nombre: Puntadas
+  valor: 200 (40 para quilting y aplicación)
+- nombre: Ojales
+  valor: 9, en un solo paso
+- nombre: Alfabetos
+  valor: 3, con mayúsculas, minúsculas y números de hasta 9 mm
+- nombre: Combinación de puntadas y textos
+  valor: hasta 50
+- nombre: Memoria
+  valor: 20 patrones y combinaciones
+- nombre: Puntada favorita personalizada (FS)
+  valor: Sí
+- nombre: Selección directa
+  valor: 10 funciones
+- nombre: Longitud de puntada
+  valor: hasta 5 mm
+- nombre: Anchura de puntada
+  valor: hasta 9 mm
+- nombre: Espacio de trabajo
+  valor: 255 × 120 mm
+- nombre: Doble arrastre
+  valor: integrado (IAF)
+- nombre: Cortahílos
+  valor: automático avanzado y programable
+- nombre: Tensión del hilo
+  valor: automática
+- nombre: Enhebrador
+  valor: automático
+- nombre: Botones
+  valor: start/stop, atacado, posición de aguja con memoria, remate y alzaprensatelas
+- nombre: Velocidad
+  valor: regulable hasta 1.200 puntadas por minuto
+- nombre: Posiciones de aguja
+  valor: "91"
+- nombre: Sensor de dientes de arrastre
+  valor: integrado
+- nombre: Altura del prensatelas
+  valor: doble, hasta 9 mm
+- nombre: Bobinador
+  valor: desembragable, con motor independiente
+- nombre: Garfio
+  valor: rotativo horizontal de carga superior, con tapa transparente
+- nombre: Placa de aguja para pespunte recto
+  valor: incluida
+- nombre: Rodillera
+  valor: ajustable
+- nombre: Prensatelas incluidos
+  valor: 14 (ojales electrónico, acolchado, quilting, puntada invisible, dobladillo, cremallera, realce…)
+- nombre: Iluminación
+  valor: LED en 3 zonas
+- nombre: Motor
+  valor: DC, consumo de 70 W
+- nombre: Incluye
+  valor: maleta dura y base de extensión extragrande de 50 × 30 cm
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-De base plana, con estructura de aluminio y doble arrastre integrado.
+**La Elna 720PRO tiene base plana, estructura de aluminio y doble arrastre integrado: una máquina sólida para coser con precisión todo tipo de tejidos.** Ofrece 200 puntadas de hasta 9 mm, 40 de ellas para quilting y aplicación, 9 ojales en un solo paso y 3 alfabetos.
+
+Su espacio de trabajo de 255 × 120 mm y su velocidad de hasta 1.200 puntadas por minuto la hacen perfecta para proyectos grandes. La tensión automática del hilo, el cortahílos avanzado y programable, el enhebrador automático, las 91 posiciones de aguja y el bobinador con motor independiente te ahorran tiempo.
+
+Incluye 14 prensatelas, placa de aguja para pespunte recto, rodillera ajustable, maleta dura y base de extensión extragrande de 50 × 30 cm. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

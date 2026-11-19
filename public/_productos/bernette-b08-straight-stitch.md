@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernette b08 Straight Stitch
 fabricante: bernette
 modelo: b08 Straight Stitch
@@ -15,14 +15,15 @@ imagenes:
 - imagen: /img/productos/bernette-b08-straight-stitch-3.jpg
 - imagen: /img/productos/bernette-b08-straight-stitch-4.jpg
 - imagen: /img/productos/bernette-b08-straight-stitch-5.jpg
-description: Tu máquina de coser rápida y potente con canilla extragrande
+description: "Máquina de puntada recta rápida y potente: 1.600 puntadas por minuto, canilla extragrande, cortahílos automático y carcasa metálica sin vibraciones."
 destacados:
-- texto: 1.600 puntadas por minuto
-- texto: Motor potente
-- texto: Canilla extragrande
-- texto: Motor de devanado de canilla independiente
-- texto: Corta-hilos automático
-- texto: Mesa de extensión
+- texto: Hasta 1.600 puntadas por minuto
+- texto: Potente motor de corriente continua
+- texto: Canilla extragrande y motor de devanado independiente
+- texto: Cortahílos automático
+- texto: Robusta carcasa metálica que evita las vibraciones
+- texto: 6 luces LED y 225 mm de espacio a la derecha de la aguja
+- texto: Alzaprensatelas de rodilla y mesa de extensión de 60 × 40 cm incluidos
 caracteristicas:
 - nombre: Patrones de puntadas
   valor: '1'
@@ -61,4 +62,8 @@ caracteristicas:
 - nombre: Accesorios incluidos
   valor: Mesa de extensión (60x40cm); Prensatelas para puntada recta; Placa-aguja de puntada recta estándar; Prensatelas para puntada recta estrecho; Pedal; Palanca Alza-prensatelas de rodilla; Canillas (3 unidades); Juego de agujas BERNINA Highspeed HLx5; Hilo Mettler, kit de inicio (3 bobinas); Cable de corriente; Caja de accesorios; Destornillador (grande); Destornillador (pequeño); Cepillo para pelusas; Guía para telas; Disco sujeta bobinas (grande); Base de apoyo para cono; Red para la bobina; Aceite
 ---
-La b08 Straight Stitch es una máquina potente con una velocidad de 1.600 puntadas por minuto, lo que la convierte en una de las máquinas de coser domésticas más rápidas del mercado. Equipada con un potente motor de corriente continua, esta máquina garantiza un rendimiento eficaz para todos tus proyectos de costura. El cortahílos automático proporciona una comodidad adicional, mientras que la canilla extragrande y el motor de devanado de canillas independiente permiten sesiones de costura más largas sin interrupciones. La robusta carcasa metálica de la b08 evita las vibraciones y garantiza así una costura impecable: la elección perfecta.
+**La bernette b08 Straight Stitch es una máquina potente, capaz de coser a 1.600 puntadas por minuto: una de las máquinas de coser domésticas más rápidas del mercado.** Su motor de corriente continua garantiza un rendimiento eficaz en todos tus proyectos.
+
+El cortahílos automático te da una comodidad extra, y la canilla extragrande, junto con el motor de devanado independiente, te permite coser durante más tiempo sin interrupciones. Su robusta carcasa metálica evita las vibraciones y asegura una costura impecable.
+
+Con 225 mm de espacio a la derecha de la aguja, 6 luces LED, presión del prensatelas ajustable, pretensado industrial y una mesa de extensión de 60 × 40 cm incluida, es la elección perfecta para coser en recto con rapidez y precisión.

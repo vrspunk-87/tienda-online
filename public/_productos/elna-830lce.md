@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de bordar de alta calidad con un área máxima de bordado de 200x360mm y con base de extensión extra grande
 fabricante: elna
 modelo: 830LCE
@@ -14,39 +14,64 @@ imagenes:
 - imagen: /img/productos/elna-830lce-2.jpg
 - imagen: /img/productos/elna-830lce-3.jpg
 - imagen: /img/productos/elna-830lce-4.jpg
-description: Maquina de bordar de alta calidad con un área máxima de bordado de 200x360mm y con base de extensión extra grande.
+description: Máquina de bordar de alta calidad con área de hasta 200 × 360 mm, base de extensión extragrande, software de bordado y colección de diseños de gran tamaño.
 destacados:
-- texto: Área máxima de bordado de 200x360mm
-- texto: Editor de bordados 3.0 para PC con guía de instalación.
-- texto: USB con colección de diseños de gran tamaño “Creative Edition”.
-- texto: Programa eXuberance Junior de bordado, funciona con Windows y Mac con “instalaciones ilimitadas”, de 1 sólo usuario, actualizaciones automáticas, con video tutoriales…
-- texto: Bastidores 140x140, 140x200, 200x200, 200x360mm.
+- texto: Área máxima de bordado de 200 × 360 mm
+- texto: Base de extensión extragrande
+- texto: 8 monogramas, 46 diseños de bordes y 102 diseños de bordado
+- texto: "Bastidores incluidos: 140 × 140, 140 × 200, 200 × 200 y 200 × 360 mm"
+- texto: Pantalla LCD táctil en 14 idiomas, también en español
+- texto: Cortahílos automático y programable y tensión del hilo automática
+- texto: Incluye editor de bordados 3.0 y el programa eXuberance Junior
+- texto: USB con la colección de diseños de gran tamaño «Creative Edition»
 caracteristicas:
-- valor: Equipada con
-- valor: Editor de bordados 3.0 para PC con guía de instalación.
-- valor: USB con colección de diseños de gran tamaño “Creative Edition”.
-- valor: 8 monogramas, 46 diseños de bordes y 102 diseños de bordados
-- valor: 2 Alfabetos (Latín y Cirílico) con 3 fuentes cada uno.
-- valor: USB con colección de bordados de gran tamaño.
-- valor: 3 placas leed con 5 bombillas cada una.
-- valor: Programa eXuberance Junior de bordado, funciona con Windows y Mac con “instalaciones ilimitadas”, de 1 sólo usuario, actualizaciones automáticas, con video tutoriales…
-- valor: Panel LCD táctil con 14 idiomas (Español, Portugués, Alemán…)
-- valor: Cortahílos automático y programable.
-- valor: Sistema de tensión del hilo automático.
-- valor: Conexión USB
-- valor: Enhebrador de aguja y Sensor de prensatelas.
-- valor: Sensores de hilo canilla e hilo aguja.
-- valor: Bastidores 140x140, 140x200, 200x200, 200x360mm.
-- valor: Pulsador Star/Stop.
-- valor: Funciones de Bordado
-- valor: Sistema lectura de diseños en .JEF (Sistema universal)
-- valor: Sistema automático de paro y retorno en caso de romper hilo.
-- valor: Funciones de edición. (Redimensionar, rotar, voltear, duplicar, arquear, agrupar, mover, secuencia orden bordado, etc…)
-- valor: Corte del hiloautomático después de un salto o cambio de color.
-- valor: Funciones de memoria. (Grabar los diseños en el USB o en la memoria de la máquina de 4MB, renombrar, borrar y reemplazar…)
-- valor: Información detallada en el panel LCD del tiempo de bordado, número de colores, dimensiones del motivo…
-- valor: Ajustes de Preferencias. (Selector de velocidad hasta 860ppm, selección de sonido off/on, ajuste en centímetros o pulgadas, ajuste de las tensiones según tipo de hilo utilizado...)
+- nombre: Tipo
+  valor: máquina de bordar
+- nombre: Área máxima de bordado
+  valor: 200 × 360 mm
+- nombre: Bastidores incluidos
+  valor: 140 × 140, 140 × 200, 200 × 200 y 200 × 360 mm
+- nombre: Diseños incorporados
+  valor: 8 monogramas, 46 diseños de bordes y 102 diseños de bordado
+- nombre: Alfabetos
+  valor: 2 (latino y cirílico), con 3 fuentes cada uno
+- nombre: Formato de diseños
+  valor: .JEF
+- nombre: Funciones de edición
+  valor: redimensionar, rotar, voltear, duplicar, arquear, agrupar, mover, orden de bordado…
+- nombre: Memoria
+  valor: 4 MB en la máquina, y grabación en USB
+- nombre: Pantalla
+  valor: LCD táctil, 14 idiomas (español, portugués, alemán…)
+- nombre: Información en pantalla
+  valor: tiempo de bordado, número de colores y dimensiones del motivo
+- nombre: Velocidad
+  valor: seleccionable hasta 860 puntadas por minuto
+- nombre: Cortahílos
+  valor: automático y programable (tras salto o cambio de color)
+- nombre: Tensión del hilo
+  valor: automática, ajustable según el tipo de hilo
+- nombre: Paro y retorno automáticos si se rompe el hilo
+  valor: Sí
+- nombre: Sensores
+  valor: hilo de la canilla, hilo de la aguja y prensatelas
+- nombre: Enhebrador de aguja
+  valor: Sí
+- nombre: Pulsador start/stop
+  valor: Sí
+- nombre: Iluminación
+  valor: 3 placas LED con 5 bombillas cada una
+- nombre: Conexión
+  valor: USB
+- nombre: Software incluido
+  valor: editor de bordados 3.0 para PC y eXuberance Junior (Windows y Mac, instalaciones ilimitadas para 1 usuario)
+- nombre: Diseños adicionales
+  valor: USB con la colección «Creative Edition»
 - nombre: Garantía
-  valor: 5 años (piezas); partes electrónicas, 3 años
+  valor: 5 años en piezas; 3 años en partes electrónicas
 ---
-Maquina de bordar de alta calidad con un área máxima de bordado de 200x360mm y con base de extensión extra grande.
+**La Elna 830LCE es una máquina de bordar de alta calidad para quien quiere bordar a lo grande.** Su área máxima de bordado de 200 × 360 mm y su base de extensión extragrande te permiten trabajar diseños de gran tamaño con comodidad.
+
+Incluye 8 monogramas, 46 diseños de bordes y 102 diseños de bordado, 2 alfabetos con 3 fuentes cada uno y bastidores de 140 × 140, 140 × 200, 200 × 200 y 200 × 360 mm. Además, viene con un USB con la colección de diseños de gran tamaño «Creative Edition», el editor de bordados 3.0 para PC y el programa eXuberance Junior, que funciona en Windows y Mac, con instalaciones ilimitadas, actualizaciones automáticas y videotutoriales.
+
+Todo se maneja desde una pantalla LCD táctil en 14 idiomas, que te informa del tiempo de bordado, los colores y las dimensiones del motivo. El cortahílos automático y programable, la tensión automática del hilo y los sensores de hilo y prensatelas te permiten bordar con tranquilidad. Garantía de 5 años en piezas y 3 años en las partes electrónicas.

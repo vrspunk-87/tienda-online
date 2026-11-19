@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Creative Ambition 640
 fabricante: pfaff
 modelo: Creative Ambition 640
@@ -15,12 +15,16 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-ambition-640-3.jpg
 - imagen: /img/productos/pfaff-creative-ambition-640-4.jpg
 - imagen: /img/productos/pfaff-creative-ambition-640-5.jpg
-description: ¡Cree diseños únicos!
+description: "Máquina de coser y bordar PFAFF creative ambition 640 con sistema IDT, 150 puntadas, 101 diseños y área de bordado de 240 × 150 mm: crea diseños únicos."
 destacados:
-- texto: Botón Start/Stop
-- texto: Tensión del hilo
+- texto: Coser y bordar en una sola máquina
+- texto: Sistema Original IDT de doble arrastre integrado
+- texto: 150 puntadas y 2 fuentes de costura
+- texto: 101 diseños de bordado y área de 240 × 150 mm
+- texto: Corte automático de hilo y de saltos de bordado
 - texto: Secuenciación de puntadas
-- texto: Puntadas de salto de bordado de corte automático
+- texto: 200 mm de espacio de costura
+- texto: Bajada automática de los dientes
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '150'
@@ -57,4 +61,8 @@ caracteristicas:
 - nombre: Peso
   valor: 8,8 kg (19,4 lb)
 ---
-¡Cree diseños únicos! La máquina de coser y bordar PFAFF creative ambition 640 es una carta de amor a este legado.
+**Crea diseños únicos con la PFAFF creative ambition 640, una máquina de coser y bordar fiel al legado de PFAFF.** Su sistema Original IDT, el doble arrastre integrado de la marca, hace avanzar el tejido de forma uniforme por arriba y por abajo para una costura perfecta.
+
+Para coser, tienes 150 puntadas y 2 fuentes, con secuenciación de puntadas y 200 mm de espacio a la derecha de la aguja. Para bordar, 101 diseños integrados y un área de hasta 240 × 150 mm.
+
+El enhebrador incorporado, el corte automático del hilo, también en los saltos del bordado, el botón start/stop, el deslizador de velocidad y la bajada automática de los dientes hacen que todo sea más fácil.

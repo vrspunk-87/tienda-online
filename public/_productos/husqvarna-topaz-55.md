@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking Topaz 55
 fabricante: husqvarna
 modelo: Topaz 55
@@ -14,34 +14,16 @@ imagenes:
 - imagen: /img/productos/husqvarna-topaz-55-2.jpg
 - imagen: /img/productos/husqvarna-topaz-55-3.jpg
 - imagen: /img/productos/husqvarna-topaz-55-4.jpg
-description: La máquina de coser HUSQVARNA VIKING TOPAZ 55Q está diseñada para las costureras que desean avanzar en sus habilidades y beneficiarse de una máquina de coser realmente extraordinaria.
+description: "Máquina de coser con 472 puntadas, gran pantalla táctil en color, EXCLUSIVE SENSOR SYSTEM y 250 mm de espacio: ideal para avanzar en costura y en acolchado."
 destacados:
-- texto: JoyOS ADVISOR
-- texto: Gran pantalla táctil en color
-- texto: EXCLUSIVE SENSOR SYSTEM
-- texto: Enhebrador automático de agujas
-- texto: CREATIVATE Conectividad habilitada
-- texto: Fuerte poder de perforación
-- texto: Cortador de hilo automático
+- texto: 472 puntadas de hasta 7 mm de ancho
+- texto: Gran pantalla táctil en color con JoyOS ADVISOR
+- texto: EXCLUSIVE SENSOR SYSTEM y tensión automática del hilo
+- texto: Enhebrador automático y cortahilos automático
 - texto: Elevación automática del prensatelas
-- texto: Ahusamiento en puntadas decorativas
-- texto: Tensión automática del hilo
-- texto: Crear secuencia
-- texto: Ojal Sensor de un paso
-- texto: Posicionamiento de puntada
-- texto: Balance de puntada
-- texto: Costura de movimiento libre con puntadas decorativas
-- texto: Seguridad para agujas gemelas
-- texto: Seguridad de ancho de puntada
-- texto: Ayuda rápida
-- texto: Sensores de hilo superior y de bobina
-- texto: Guardado inteligente
-- texto: Iluminación LED
-- texto: Bobinado a través de la aguja
-- texto: Gancho rotativo a prueba de atascos
-- texto: Puerto USB
-- texto: Bandeja para accesorios
-- texto: Regla en pulgadas/cm en la placa base
+- texto: 250 mm de espacio a la derecha de la aguja
+- texto: Conectividad creativate
+- texto: 32 accesorios incluidos
 caracteristicas:
 - nombre: Tamaño del área de costura
   valor: 250 mm (Casi 10") a la derecha de la aguja
@@ -58,4 +40,10 @@ caracteristicas:
 - nombre: Dimensiones de la máquina
   valor: 535 x 251 x 310 mm
 ---
-La máquina de coser HUSQVARNA VIKING TOPAZ 55Q está diseñada para las costureras que desean avanzar en sus habilidades y beneficiarse de una máquina de coser realmente extraordinaria. También es perfecta para quilters que exigen precisión, amplio espacio y control.
+**La TOPAZ 55Q está pensada para quien quiere avanzar en la costura con una máquina de verdad extraordinaria.** También es perfecta para el acolchado (quilting), donde se pide precisión, espacio y control.
+
+### Espacio y control
+Sus 250 mm a la derecha de la aguja dan cabida a colchas y prendas voluminosas. Con 472 puntadas de hasta 7 mm, 29 posiciones de aguja, balance de puntada y costura de movimiento libre con puntadas decorativas, tienes margen para cualquier técnica.
+
+### Ayudas que se notan
+El JoyOS ADVISOR en la gran pantalla táctil, el EXCLUSIVE SENSOR SYSTEM, la tensión automática, el enhebrador automático, el cortahilos y la elevación automática del prensatelas hacen que cada costura sea más fácil. Cose hasta 1.000 puntadas por minuto e incluye 32 accesorios.

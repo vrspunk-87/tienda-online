@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Prensatelas de doble arrastre bernette para b05, Chicago y Sew&Go
 fabricante: bernette
 modelo: Prensatelas doble arrastre b05/Chicago/Sew&Go
@@ -23,10 +23,16 @@ imagenes:
 - imagen: /img/productos/bernette-prensatelas-doble-arrastre-b05-chicago-sew-go-1.jpg
   alt: Prensatelas de doble arrastre bernette para b05, Chicago y Sew&Go
 - imagen: /img/productos/bernette-prensatelas-doble-arrastre-b05-chicago-sew-go-2.jpg
-description: Tejidos difíciles se cosen mucho mejor con el prensatelas de doble arrastre.
+description: "Prensatelas de doble arrastre bernette para b05, Chicago 5 y 7 y sew&go 1, 3, 5, 7 y 8: cose tejidos difíciles sin que se desplacen las capas."
 destacados:
-- texto: 'Materiales que tienden a adherirse: cuero y cuero artificial'
-- texto: 'Telas que tienden a deslizarse: p. ej., satén y terciopelo'
-- texto: Acolchar, puntada en acolchado con surcos, acolchado en cuadrícula (utilizando la guía de costura)
+- texto: Arrastra la tela por arriba y por abajo a la vez
+- texto: Ideal para cuero y cuero artificial
+- texto: Perfecto para telas que se deslizan, como el satén o el terciopelo
+- texto: Imprescindible para acolchar patchwork (surcos y cuadrícula, con guía)
+caracteristicas:
+- nombre: Tipo
+  valor: prensatelas de doble arrastre
+- nombre: Compatible con
+  valor: bernette b05, Chicago 5 y 7 y sew&go 1, 3, 5, 7 y 8
 ---
-Tejidos difíciles se cosen mucho mejor con el prensatelas de doble arrastre. El arrastre de la parte superior ayuda a transportar el tejido de forma uniforme, de manera que avanzan a la vez la tela superior y la tela inferior, garantizando así una costura perfecta sin desplazarse las telas. Este prensatelas también es imprescindible para acolchar tus proyectos de Patchwork.
+**Tejidos difíciles se cosen mucho mejor con el prensatelas de doble arrastre.** El arrastre de la parte superior ayuda a transportar el tejido de forma uniforme, de manera que avanzan a la vez la tela superior y la tela inferior, garantizando así una costura perfecta sin desplazarse las telas. Este prensatelas también es imprescindible para acolchar tus proyectos de Patchwork.

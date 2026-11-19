@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: eXcellence 790PRO dressmaker edition
 fabricante: elna
 modelo: 790PRO
@@ -14,29 +14,17 @@ imagenes:
   - imagen: /img/productos/elna-790pro-3.jpg
   - imagen: /img/productos/elna-790pro-4.jpg
   - imagen: /img/productos/elna-790pro-5.jpg
-description: ¿Buscas un espacio increíble, una potencia prodigiosa y
-  posibilidades técnicas y creativas ilimitadas?
+description: "Elna eXcellence 790PRO Dressmaker Edition: base plana de aluminio, 400 puntadas de 9 mm, 1.300 ppm y un espacio de costura extragrande de 343 × 140 mm."
 destacados:
-  - texto: Diseño de base plana inspirado en las máquinas de coser profesionales.
-  - texto: Estructura totalmente de aluminio.
-  - texto: 400 patrones de puntada con un ancho de 9 mm.
-  - texto: 12 ojales con sensor, 1 ojal automático.
-  - texto: Alfabeto en 3 tipos de letra y mayúsculas disponibles en 9 mm.
-  - texto: Velocidad de costura ajustable que alcanza las 1300 puntadas/minuto
-  - texto: Espacio de costura extragrande (343 x 140 mm).
-  - texto: Pantalla táctil HD en color de 7 pulgadas.
-  - texto: Devanador de bobina con motor independiente.
-  - texto: Sistema de alimentación superior con ADF y bajada automática de los
-      dientes de arrastre.
-  - texto: Sistema avanzado de doble alimentación con control directo en pantalla.
-  - texto: Sistema Dual Feed Plus con prensatelas anchos y estrechos extraíbles.
-  - texto: Sistema automático de conversión de la placa de aguja en un solo paso.
-  - texto: Control automático de la tensión del hilo.
-  - texto: Elevador automático del prensatelas y ajuste de la presión del prensatelas.
-  - texto: 9 LED de alta luminosidad en 4 áreas.
-  - texto: Memoria integrada de 3 MB y 1 puerto USB.
-  - texto: Amplio paquete de accesorios estándar, que incluye 22 prensatelas y 3
-      placas de aguja.
+  - texto: Base plana inspirada en las máquinas profesionales
+  - texto: "Estructura totalmente de aluminio: suave, silenciosa y sin vibraciones"
+  - texto: 400 puntadas de 9 mm y 13 ojales
+  - texto: Hasta 1.300 puntadas por minuto
+  - texto: Espacio de costura extragrande de 343 × 140 mm
+  - texto: Pantalla táctil HD a color de 7"
+  - texto: Doble arrastre avanzado con control en pantalla (Dual Feed Plus)
+  - texto: Tensión, presión y elevación del prensatelas automáticas
+  - texto: 22 prensatelas y 3 placas de aguja incluidos
 caracteristicas:
   - nombre: Tamaño máquina
     valor: W 650 × H 371 × D 259 mm
@@ -127,7 +115,7 @@ caracteristicas:
   - nombre: Longitud máxima de puntada
     valor: 5 mm
   - nombre: Velocidad máxima de costura
-    valor: 1300 spm
+    valor: 1.300 spm
   - nombre: Ojales en un solo paso
     valor: 12 sensor, 1 automático
   - nombre: Alfabetos
@@ -140,8 +128,7 @@ caracteristicas:
     valor: 3 MB
   - nombre: Combinación de patrones
     valor: Hasta 100 puntadas
-  - nombre: Función Favorite Stitch (FS) (para personalizar y guardar los ajustes de
-      puntada)
+  - nombre: Función Favorite Stitch (FS) (para personalizar y guardar los ajustes de puntada)
     valor: Sí
   - nombre: Modo flotante
     valor: No
@@ -160,4 +147,8 @@ caracteristicas:
   - nombre: Posiciones variables de la aguja
     valor: "91"
 ---
-¿Buscas un espacio increíble, una potencia prodigiosa y posibilidades técnicas y creativas ilimitadas? La elna eXcellence 790PRO satisface a la perfección las más altas expectativas de costureras y modistas. Disfrutarás de un funcionamiento único, suave, silencioso y sin vibraciones, gracias a su robustez y estabilidad. Las funciones automatizadas te ayudarán a aumentar la perfección, el rendimiento y la facilidad de uso, incluso en los proyectos de costura más ambiciosos.
+**¿Buscas un espacio increíble, una potencia prodigiosa y posibilidades técnicas y creativas ilimitadas?** La Elna eXcellence 790PRO satisface a la perfección las más altas expectativas de costureras y modistas, con un funcionamiento suave, silencioso y sin vibraciones gracias a su robustez y estabilidad.
+
+Su base plana, inspirada en las máquinas profesionales, y su estructura totalmente de aluminio le dan un aplomo excepcional. Cose 400 puntadas de 9 mm a hasta 1.300 puntadas por minuto, en un espacio de costura extragrande de 343 × 140 mm, y se maneja desde una pantalla táctil HD a color de 7".
+
+Las funciones automatizadas aumentan la perfección y la facilidad de uso incluso en los proyectos más ambiciosos: doble arrastre avanzado con control en pantalla, bajada automática de los dientes, cambio de placa de aguja en un solo paso, tensión del hilo, presión y elevación del prensatelas automáticas. Incluye 22 prensatelas y 3 placas de aguja.

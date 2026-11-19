@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer EM9305
 fabricante: singer
 modelo: EM9305
@@ -14,38 +14,58 @@ imagenes:
 - imagen: /img/productos/singer-em9305-3.jpg
 - imagen: /img/productos/singer-em9305-4.jpg
 - imagen: /img/productos/singer-em9305-5.jpg
-description: La Singer EM9305 es una máquina de bordar diseñada para ser la herramienta ideal tanto para el principiante como para el que busca resultados profesionales.
+description: "Máquina de bordar Singer EM9305 con gran área de 240 × 150 mm a un precio accesible: estructura metálica, 150 diseños, USB y software de edición gratuito."
 destacados:
-- texto: Área de bordado 240 x 150 mm (24 x 15 cm)
-- texto: Pantalla táctil LCD a color de 3,5” (resolución 320 x 240)
-- texto: 'Cortador de Hilo Automático: Ahorra hilo y agiliza su bordado'
-- texto: 'Puerto USB para añadir más bordados. Acepta los formatos de bordado con extensión: XXX y DST'
-- texto: Botón "Iniciar / Parar"
-- texto: Botón de Regulador de Velocidad
-- texto: Funciones básicas
-- texto: 'Posicionamiento Preciso Básico: combina los bordados en la misma pantalla con total precisión'
-- texto: Tensión automática con ajuste en la pantalla LCD
-- texto: Ajusta el brillo de la pantalla
-- texto: 'Enhebrador de hilo en la aguja: La guía pasa el hilo por el ojo de la aguja'
-- texto: 'Iluminación LED: Facilita la visualización de bordados mientras se realizan'
-- texto: Velocidad de hasta 800 puntadas por minuto
-- texto: 'Medida SIN la Unidad de Bordado: 31cm x 43cm x 20cm (Alto x Largo x Profundo)'
-- texto: 'Medida CON la Unidad de Bordado: 31cm x 70,5cm x 43cm (Alto x Largo x Profundo)'
-- texto: 'Peso: 11,5 Kg'
-- texto: Prénsatelas para bordado a presión R
-- texto: Bastidor grande (240 × 150 mm)
-- texto: Canillas
-- texto: USB de 1 GB
-- texto: Fieltros
-- texto: Destornillador
-- texto: Destornillador para placa de agujas
-- texto: Cortador de hilo
-- texto: Estuche de Agujas
-- texto: Cepillo de limpieza
-- texto: Pasador de soporte de carrete auxiliar
-- texto: Tapa de carrete pequeña
-- texto: Tapa de carrete grande
-- texto: Red de retención de hilo de la bobina
-- texto: Lápiz para la pantalla táctil
+- texto: Gran área de bordado de 240 × 150 mm
+- texto: 150 diseños de bordado y 1 alfabeto incluidos
+- texto: Pantalla táctil LCD a color de 3,5"
+- texto: Cortahílos automático
+- texto: Tensión automática ajustable en pantalla
+- texto: Puerto USB para añadir diseños (formatos XXX y DST)
+- texto: Estructura metálica robusta
+- texto: Software de edición gratuito descargable
+caracteristicas:
+- nombre: Tipo
+  valor: máquina de bordar
+- nombre: Área de bordado
+  valor: 240 × 150 mm (bastidor incluido)
+- nombre: Diseños incluidos
+  valor: "150"
+- nombre: Alfabetos
+  valor: 1 (más fuentes con el software gratuito)
+- nombre: Pantalla
+  valor: táctil LCD a color de 3,5" (320 × 240)
+- nombre: Cortahílos
+  valor: automático
+- nombre: Tensión
+  valor: automática, ajustable en pantalla
+- nombre: Enhebrador de aguja
+  valor: Sí
+- nombre: Posicionamiento preciso básico
+  valor: Sí
+- nombre: Formatos
+  valor: XXX y DST
+- nombre: Conexión
+  valor: USB
+- nombre: Botón iniciar/parar
+  valor: Sí
+- nombre: Regulador de velocidad
+  valor: Sí
+- nombre: Velocidad
+  valor: hasta 800 puntadas por minuto
+- nombre: Iluminación
+  valor: LED
+- nombre: Medidas sin unidad de bordado
+  valor: 31 × 43 × 20 cm (alto × largo × fondo)
+- nombre: Medidas con unidad de bordado
+  valor: 31 × 70,5 × 43 cm (alto × largo × fondo)
+- nombre: Peso
+  valor: 11,5 kg
+- nombre: Accesorios incluidos
+  valor: prensatelas de bordado R, bastidor grande (240 × 150 mm), canillas, USB de 1 GB, fieltros, destornilladores, cortador de hilo, estuche de agujas, cepillo, pasador de carrete auxiliar, tapas de carrete, red para la bobina y lápiz para la pantalla
 ---
-La Singer EM9305 es una máquina de bordar diseñada para ser la herramienta ideal tanto para el principiante como para el que busca resultados profesionales. Se diferencia por ofrecer un área de bordado generosa de 240 x 150 mm en un segmento de precio accesible. Con su estructura metálica robusta, un práctico puerto USB para transferencia de diseños y un software de edición gratuito incluido, la EM9305 transforma la personalización de prendas y proyectos de decoración en un proceso sencillo, intuitivo y eficiente. Funciones y caracteristicas principales: Gran Área de Bordado: Permite bordar diseños de hasta 240 x 150 mm (9.5” x 6”) con el bastidor incluido. 150 diseños de bordado incluidos en la máquina. (Incluye 1 Fuente de abecedario, se pueden bordar más fuentes con el software gratuito descargable incluido) Pantalla táctil LCD a color de 3,5” con una resolución de 320 x 240 Cortahilos Automático: Ahorra hilo y agiliza su bordado. Puerto USB para añadir más bordados. Acepta los formatos de bordado con extensión: XXX y DST. Botón "Iniciar / Parar". Botón de Regulador de Velocidad.
+**La Singer EM9305 es una máquina de bordar pensada tanto para quien empieza como para quien busca resultados profesionales.** Se distingue por ofrecer una generosa área de bordado de 240 × 150 mm a un precio accesible.
+
+Incluye 150 diseños y un alfabeto, y con el software de edición gratuito podrás añadir más fuentes y crear tus propios diseños. Pásalos a la máquina por USB y colócalos con precisión en su pantalla táctil a color de 3,5".
+
+Su estructura metálica robusta, el cortahílos automático, la tensión automática y el enhebrador de aguja hacen que personalizar prendas y proyectos de decoración sea sencillo, intuitivo y eficiente. Borda a hasta 800 puntadas por minuto, con iluminación LED.

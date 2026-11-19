@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Husqvarna Viking OPAL 650
 fabricante: husqvarna
 modelo: OPAL 650
@@ -15,14 +15,16 @@ imagenes:
 - imagen: /img/productos/husqvarna-opal-650-3.jpg
 - imagen: /img/productos/husqvarna-opal-650-4.jpg
 - imagen: /img/productos/husqvarna-opal-650-5.jpg
-description: Deje que su máquina de coser Husqvarna Viking OPAL 650 se centre en ofrecer los mejores resultados mientras usted se relaja y se centra en el placer de coser.
+description: Máquina de coser electrónica con 420 puntadas, EXCLUSIVE SEWING ADVISOR, 200 mm de espacio de costura y botón Start/Stop para coser sin pedal.
 destacados:
-- texto: Gran superficie de costura
-- texto: Fuentes incorporadas programables
-- texto: Guardar en la utilidad "Mis puntadas
-- texto: Puntadas especiales y fuentes incorporadas
-- texto: Botón Start/Stop
-- texto: Programa Sew On Button
+- texto: 420 puntadas en total, 160 utilitarias y decorativas
+- texto: 3 fuentes programables
+- texto: Función exclusiva SEWING ADVISOR
+- texto: Botón Start/Stop para coser sin pedal
+- texto: 200 mm de espacio de costura
+- texto: Prensatelas Sensor One-Step para ojales (7 estilos)
+- texto: Menú «Mis puntadas» para guardar tus secuencias
+- texto: Iluminación LED en 3 puntos
 caracteristicas:
 - nombre: Función Start/Stop (coser sin pedal de control)
   valor: Sí
@@ -83,4 +85,10 @@ caracteristicas:
 - nombre: Dimensiones (largo x ancho x alto)
   valor: 44 x 22 x 30 cm (17,3" x 8,7" x 11,8")
 ---
-Deje que su máquina de coser Husqvarna Viking OPAL 650 se centre en ofrecer los mejores resultados mientras usted se relaja y se centra en el placer de coser.
+**Con la OPAL 650 la máquina se ocupa de los resultados y tú disfrutas de coser.** El EXCLUSIVE SEWING ADVISOR te propone la puntada, la longitud y el ancho según el tejido y la técnica.
+
+### Mucha variedad, fácil de manejar
+Tienes 420 puntadas (160 utilitarias y decorativas), 3 fuentes programables y el menú «Mis puntadas» para guardar tus combinaciones. La pantalla gráfica muestra las puntadas a tamaño real.
+
+### Comodidad en cada costura
+Botón Start/Stop para coser sin pedal, 5 velocidades, parada de aguja arriba/abajo, ojales de un paso con el prensatelas Sensor, enhebrador incorporado y 200 mm de espacio de costura. Incluye 7 prensatelas y tapa blanda.

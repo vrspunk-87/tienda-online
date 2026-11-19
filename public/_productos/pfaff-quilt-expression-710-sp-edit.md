@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Quilt expression 710 SP Edit
 fabricante: pfaff
 modelo: Quilt expression 710 SP Edit
@@ -15,16 +15,16 @@ imagenes:
 - imagen: /img/productos/pfaff-quilt-expression-710-sp-edit-3.jpg
 - imagen: /img/productos/pfaff-quilt-expression-710-sp-edit-4.jpg
 - imagen: /img/productos/pfaff-quilt-expression-710-sp-edit-5.jpg
-description: Aproveche la versatilidad y la precisión con el hermoso color y diseño de la edición especial, además de la refinada tecnología, que incluye pantalla táctil en color, gran espacio de costura, el…
+description: "PFAFF quilt expression 710 Special Edition: color y diseño exclusivos, sistema IDT, 247 puntadas de 9 mm, 250 mm de espacio y personalización Creative Signature."
 destacados:
-- texto: Pantalla táctil en color PFAFF
-- texto: El sistema Original IDT
-- texto: Amplio espacio de costura
-- texto: 247 puntadas
-- texto: Deslizador de velocidad
-- texto: Tensión autoajustable
+- texto: Edición especial con color y diseño exclusivos
+- texto: Sistema Original IDT
+- texto: 247 puntadas de hasta 9 mm y 3 fuentes
+- texto: Amplio espacio de costura de 250 mm
+- texto: Pantalla táctil a color
 - texto: Personalización de puntadas Creative Signature
-- texto: 3 fuentes de costura incorporadas
+- texto: Tensión autoajustable y prensatelas automático
+- texto: Hasta 1.050 puntadas por minuto
 caracteristicas:
 - nombre: Nº de Puntadas
   valor: '247'
@@ -71,4 +71,6 @@ caracteristicas:
 - nombre: Nº de Accesorios incluidos
   valor: '13'
 ---
-Aproveche la versatilidad y la precisión con el hermoso color y diseño de la edición especial, además de la refinada tecnología, que incluye pantalla táctil en color, gran espacio de costura, el sistema Original IDT y mucho más. Póngase en marcha con los 27 accesorios gratuitos que se enumeran a continuación.
+**Aprovecha la versatilidad y la precisión de la PFAFF quilt expression 710 en una edición especial con un color y un diseño preciosos.** Su refinada tecnología incluye pantalla táctil a color, un gran espacio de costura de 250 mm y el sistema Original IDT.
+
+Tienes 247 puntadas de hasta 9 mm y 3 fuentes, con personalización Creative Signature y puntada cónica. La tensión autoajustable, el prensatelas automático, la bajada automática de los dientes, el sensor del hilo de la canilla y el corte automático del hilo te ahorran tiempo, y cose a hasta 1.050 puntadas por minuto.

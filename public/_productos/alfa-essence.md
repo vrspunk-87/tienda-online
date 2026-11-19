@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Alfa Essence
 fabricante: alfa
 modelo: Essence
@@ -15,48 +15,58 @@ imagenes:
 - imagen: /img/productos/alfa-essence-3.jpg
 - imagen: /img/productos/alfa-essence-4.jpg
 - imagen: /img/productos/alfa-essence-5.jpg
-description: Remalladora doméstica de 2, 3 y 4 hilos.
+description: "Remalladora de 2, 3 y 4 hilos con motor servo sin escobillas de 100 W: potencia, gran penetración y facilidad de uso para acabados profesionales en casa."
 destacados:
-- texto: Enhebrado codificado por colores que facilita la puesta en marcha
-- texto: Etiqueta de instrucciones de enhebrado
-- texto: Viene semi enhebrada para facilitar la puesta en marcha
+- texto: Motor servo sin escobillas de 100 W, más potente y rápida
+- texto: Gran penetración incluso a baja velocidad
+- texto: Remalla con 2, 3 o 4 hilos
+- texto: Enhebrado por colores; viene semienhebrada
 - texto: Textos en castellano
-- texto: Máquina overlock más potente y rápida gracias a su Motor Servo de última generación
-- texto: Permite trabajar con 2 o 3 hilos al mismo tiempo
-- texto: Brazo libre extraíble para facilitar el transporte de prendas tubulares
-- texto: Cuchilla superior abatible para técnicas decorativas y limpieza rápida
-- texto: Mesa extensible incluida para facilitar la costura
-- texto: Caja de accesorios
-- texto: Luz LED para no cansar la vista
-- texto: Asa para transporte
-- texto: Mando para ajustar la presión del prensatelas
-- texto: Servomotor sin escobillas
-- texto: Alta penetración a velocidad reducida
-- texto: Ajuste del transporte diferencial de 0,7 a 2 mm
+- texto: Brazo libre extraíble para prendas tubulares
+- texto: Cuchilla superior abatible
+- texto: Incluye mesa extensible
 caracteristicas:
 - nombre: Tipo
   valor: remalladora doméstica
 - nombre: Hilos
   valor: 2, 3 y 4
+- nombre: Motor
+  valor: servo sin escobillas de 100 W
+- nombre: Velocidad máxima
+  valor: 1.300 rpm
+- nombre: Ancho de overlock
+  valor: de 3,5 a 7 mm
+- nombre: Longitud de puntada
+  valor: de 0,8 a 4 mm
+- nombre: Transporte diferencial
+  valor: de 0,7 a 2 mm
+- nombre: Presión del prensatelas
+  valor: ajustable con mando
+- nombre: Cuchilla superior
+  valor: abatible
+- nombre: Brazo libre
+  valor: extraíble
+- nombre: Enhebrado
+  valor: codificado por colores
+- nombre: Iluminación
+  valor: LED
+- nombre: Asa de transporte
+  valor: Sí
+- nombre: Accesorios incluidos
+  valor: mesa extensible y caja de accesorios
 - nombre: Peso de la máquina
   valor: 6,3 kg
 - nombre: Peso total
   valor: 8,5 kg
-- nombre: Velocidad máxima
-  valor: 1300 rpm
-- nombre: Potencia del motor
-  valor: 100 W
-- nombre: Ancho de overlock
-  valor: de 3,5 a 7 mm
-- nombre: Ajuste de la longitud de la puntada
-  valor: 0,8-4 mm
-- nombre: Dimensiones (sin soporte de hilos)
-  valor: 38,5 x 28 x 32,5 cm
-- nombre: Dimensiones (con soporte de hilos)
-  valor: 38,5 x 28 x 38,5 cm
+- nombre: Dimensiones sin soporte de hilos
+  valor: 38,5 × 28 × 32,5 cm
+- nombre: Dimensiones con soporte de hilos
+  valor: 38,5 × 28 × 38,5 cm
 - nombre: Dimensiones de la caja
-  valor: 45 x 37 x 34,5 cm
+  valor: 45 × 37 × 34,5 cm
 ---
-Remalladora doméstica de 2, 3 y 4 hilos.
+**La Alfa Precise Essence combina potencia y facilidad de uso para ofrecer acabados profesionales en casa.** Su motor servo sin escobillas de 100 W alcanza hasta 1.300 puntadas por minuto y garantiza precisión y una gran penetración incluso a baja velocidad.
 
-La Alfa PRECISE Essence Overlock combina potencia y facilidad de uso para ofrecer acabados profesionales en casa. Su Motor Servo brushless sin escobillas de 100 W alcanza hasta 1300 puntadas por minuto, garantizando precisión y una gran penetración incluso a baja velocidad. Permite trabajar con 2, 3 o 4 hilos, e incluye cuchilla abatible, brazo libre y mesa extensible para facilitar cualquier proyecto.
+Trabaja con 2, 3 o 4 hilos, y su enhebrado por colores, la etiqueta de instrucciones y los textos en castellano te ponen en marcha enseguida (además, viene semienhebrada).
+
+Incluye cuchilla superior abatible para técnicas decorativas y limpieza rápida, brazo libre extraíble para prendas tubulares, mesa extensible y caja de accesorios. Con luz LED y asa para transportarla.

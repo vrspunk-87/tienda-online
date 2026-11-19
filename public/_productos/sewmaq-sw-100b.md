@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bobinadora Sewmaq SW-100B
 fabricante: sewmaq
 modelo: SW-100B
@@ -12,8 +12,20 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/sewmaq-sw-100b-1.jpg
   alt: 'Bobinadora Sewmaq SW-100B'
-description: Máquina de rellenar bobinas de hilo con canilla de tamaño normal.
+description: Bobinadora Sewmaq para rellenar canillas de tamaño normal, con sensor que la para al llenarse.
 destacados:
-- texto: Sensor que para la máquina cuando la bobina está llena
+- texto: Rellena canillas de tamaño normal
+- texto: Sensor que para la máquina cuando la canilla está llena
+caracteristicas:
+- nombre: Tipo
+  valor: bobinadora (devanador de canillas)
+- nombre: Canilla
+  valor: de tamaño normal
+- nombre: Parada automática con la canilla llena
+  valor: Sí, por sensor
+- nombre: Marca
+  valor: Sewmaq (fundada en 1985)
 ---
-Máquina de rellenar bobinas de hilo con canilla de tamaño normal. Sensor que para la máquina, cuando está la bobina llena.
+**Ahorra tiempo en el taller llenando las canillas aparte.** La bobinadora Sewmaq SW-100B rellena canillas de hilo de tamaño normal y, gracias a su sensor, se para sola cuando la canilla está llena.
+
+Sewmaq es una marca de equipos de costura fundada en 1985.

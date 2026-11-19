@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Brazo para mesas Comelux y Futura
 fabricante: comel
 modelo: AA0709
@@ -19,6 +19,17 @@ estado: disponible
 condicion: nuevo
 imagenes:
   - imagen: /img/productos/comel-aa0709-1.jpg
-description: Brazo para mesas Comelux, Futura. 50x10cm
+description: "Brazo de planchado de 50 × 10 cm para las mesas Comel Comelux y Futura: ideal para mangas y piezas estrechas."
+destacados:
+  - texto: Brazo de planchado de 50 × 10 cm
+  - texto: Compatible con las mesas Comel Comelux y Futura
+  - texto: Para mangas, perneras y piezas estrechas
+caracteristicas:
+  - nombre: Tipo
+    valor: brazo de planchado
+  - nombre: Medidas
+    valor: 50 × 10 cm
+  - nombre: Compatible con
+    valor: mesas Comel Comelux y Futura
 ---
-Brazo para mesas Comelux, Futura. 50x10cm
+**Completa tu mesa Comelux o Futura con el brazo Comel AA0709.** Sus 50 × 10 cm te permiten planchar mangas, perneras y piezas estrechas sin arrugar el resto de la prenda.

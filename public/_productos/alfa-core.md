@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser electrónica Core Heavy Duty
 fabricante: alfa
 modelo: Core
@@ -15,36 +15,60 @@ imagenes:
 - imagen: /img/productos/alfa-core-3.jpg
 - imagen: /img/productos/alfa-core-4.jpg
 - imagen: /img/productos/alfa-core-5.jpg
-description: Máquina de coser electrónica Heavy Duty.
+description: "Máquina electrónica Heavy Duty con motor DC de 60 W y 408 puntadas: potencia para coser y acolchar desde tejidos finos hasta vaqueros y lonas."
 destacados:
-- texto: Eco motor DC de 60W que aumenta un 25% la velocidad sin perder rendimiento
-- texto: 'Más eficiente: diseñado para sesiones de costura prolongadas con menor consumo de energía'
-- texto: Velocidad máxima de 1.000 RPM
-- texto: Alta penetración en tejidos gruesos y pesados como vaqueros o lonas
-- texto: '7 filas de dientes de arrastre: asegura un avance de tela uniforme'
-- texto: Enmangue del prensatelas metálico
-- texto: '408 tipos de puntadas: incluye 40 puntadas específicas para quilting, además de opciones básicas y decorativas'
-- texto: Nuevo botón para ajustar el ancho de los labios del ojal
-- texto: Nuevo sensor de posición del prensatelas (arriba/abajo)
-- texto: Nuevo pie para ojales electrónico
-- texto: Sistema de placa de puntada recta para mayor precisión en tejidos finos
-- texto: 'Control de ancho de zig-zag (0-7 mm) y longitud de puntada (0-4,5 mm): ajusta el estilo y diseño de tus puntadas con precisión'
-- texto: Inversión de puntada para puntadas de remate
-- texto: Ajuste manual de tensión superior del hilo
-- texto: 'Doble altura de prensatelas: permite trabajar cómodamente con telas gruesas y capas múltiples'
-- texto: 'Brazo libre: facilita las costuras en prendas tubulares y áreas de difícil acceso'
-- texto: 'Mesa de extensión con regla integrada: expande la superficie de trabajo y mide mientras coses'
-- texto: Pantalla LCD con memoria de puntadas (4 grupos x 20 patrones) para visualización y selección intuitiva de puntadas
-- texto: Bobina Drop-in con visión clara del hilo
-- texto: Regulador de tensión de hilo automática
-- texto: Enhebrador automático
+- texto: "Eco motor DC de 60 W: un 25 % más de velocidad sin perder rendimiento"
+- texto: Menor consumo, pensada para sesiones de costura prolongadas
+- texto: Alta penetración en tejidos gruesos como vaqueros o lonas
+- texto: 408 puntadas, con 40 específicas para quilting
 - texto: Ojal automático electrónico en un solo paso
-- texto: 2 luces LED ubicadas estratégicamente
+- texto: "Memoria de puntadas: 4 grupos de 20"
+- texto: Doble altura del prensatelas y 7 filas de dientes
+- texto: Mesa de extensión con regla integrada
 caracteristicas:
 - nombre: Tipo
-  valor: electrónica
-- valor: Heavy Duty
+  valor: electrónica Heavy Duty
+- nombre: Motor
+  valor: eco DC de 60 W
+- nombre: Velocidad máxima
+  valor: 1.000 rpm
+- nombre: Puntadas
+  valor: 408 (incluye 40 de quilting)
+- nombre: Anchura de zigzag
+  valor: de 0 a 7 mm
+- nombre: Longitud de puntada
+  valor: de 0 a 4,5 mm
+- nombre: Dientes de arrastre
+  valor: 7 filas
+- nombre: Altura del prensatelas
+  valor: doble
+- nombre: Enmangue del prensatelas
+  valor: metálico
+- nombre: Sensor de posición del prensatelas
+  valor: Sí (arriba/abajo)
+- nombre: Ojal
+  valor: automático electrónico en un solo paso, con ajuste del ancho de los labios
+- nombre: Placa de puntada recta
+  valor: Sí
+- nombre: Tensión del hilo
+  valor: superior manual; regulación automática
+- nombre: Pantalla
+  valor: LCD
+- nombre: Memoria de puntadas
+  valor: 4 grupos × 20
+- nombre: Enhebrador
+  valor: automático
+- nombre: Canilla
+  valor: drop-in con visor
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Mesa de extensión
+  valor: con regla integrada
+- nombre: Iluminación
+  valor: 2 luces LED
 ---
-Máquina de coser electrónica Heavy Duty.
+**La Alfa Core Heavy Duty es la máquina para coser y acolchar que combina eficiencia, precisión y resistencia.** Está pensada para quien busca resultados profesionales incluso en los proyectos más exigentes.
 
-La ALFA CORE – heavy duty es la máquina para coser y acolchar que combina eficiencia, precisión y resistencia. Pensada para quienes buscan resultados profesionales incluso en los proyectos más exigentes, gracias a su motor DC de 60 W asegura un rendimiento constante para coser desde los tejidos más finos hasta materiales gruesos. Lo que mejora la eficiencia, permitiendo sesiones prolongadas sin comprometer la calidad y aumenta la velocidad sin perder rendimiento.
+Su eco motor DC de 60 W aumenta un 25 % la velocidad sin perder rendimiento y consume menos, así que podrás coser durante horas sin comprometer la calidad. Ofrece una alta penetración en tejidos gruesos y pesados como vaqueros o lonas, y la doble altura del prensatelas y sus 7 filas de dientes aseguran un avance uniforme incluso con varias capas.
+
+Con 408 puntadas, 40 de ellas para quilting, ojal automático en un solo paso, placa de puntada recta para tejidos finos, memoria de puntadas, enhebrador automático y mesa de extensión con regla, tendrás todo lo necesario para cualquier proyecto.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Creative Expect 350
 fabricante: pfaff
 modelo: Creative Expect 350
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-expect-350-3.jpg
 - imagen: /img/productos/pfaff-creative-expect-350-4.jpg
 - imagen: /img/productos/pfaff-creative-expect-350-5.jpg
-description: La máquina de coser y bordar PFAFF creative expect 350 tiene características modernas que permiten crear diseños personalizados.
+description: Máquina de coser y bordar PFAFF creative expect 350 con pantalla de 7", wifi mySewnet, 250 puntadas y 180 diseños, para crear diseños personalizados.
 caracteristicas:
 - nombre: Conectividad mySewnet
   valor: Sí
@@ -71,5 +71,18 @@ caracteristicas:
   valor: '20'
 - nombre: Selección de idioma
   valor: Sí (visualización en 1 de 14 idiomas)
+destacados:
+- texto: Coser y bordar, con conectividad mySewnet
+- texto: Pantalla de 7" con información en 14 idiomas
+- texto: 250 puntadas y 4 fuentes de costura
+- texto: 180 diseños y 10 fuentes de bordado
+- texto: Área de bordado de 170 × 100 mm
+- texto: Enhebrador automático y cortador de hilo
+- texto: "Edición de diseños en pantalla: mover, combinar, rotar, reflejar"
+- texto: 20 accesorios incluidos
 ---
-La máquina de coser y bordar PFAFF creative expect 350 tiene características modernas que permiten crear diseños personalizados. Comience con 20 accesorios de cortesía que se enumeran en Lo que se incluye a continuación.
+**La PFAFF creative expect 350 es una máquina de coser y bordar con funciones modernas para crear diseños personalizados.** Con la conectividad mySewnet, tus diseños y tu máquina están siempre conectados.
+
+Para coser, tienes 250 puntadas y 4 fuentes, con seguridad de anchura de puntada para proteger la aguja, memorias para tus secuencias y remate automático. Para bordar, 180 diseños, 10 fuentes y un área de 170 × 100 mm; mueve, combina, gira o refleja los diseños en su pantalla de 7", que te ofrece además ayuda en 14 idiomas.
+
+Enhebrador automático, cortador de hilo, canilla de carga superior con sensor, start/stop y deslizador de velocidad. Empieza a crear con los 20 accesorios incluidos.

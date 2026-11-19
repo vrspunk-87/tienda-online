@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Mesa de extensión para Skyline
 fabricante: janome
 modelo: 0A7976A
@@ -16,10 +16,20 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 202
 estado: disponible
 condicion: nuevo
-description: Mesa de extensión para todas las máquinas de la serie Skyline.
+description: Mesa de extensión translúcida de 50 × 30 cm para todas las máquinas de la serie Janome Skyline.
 caracteristicas:
+- nombre: Tipo
+  valor: mesa de extensión
 - nombre: Medidas
-  valor: 50x30 cm
-- valor: Mesa translúcida
+  valor: 50 × 30 cm
+- nombre: Material
+  valor: translúcido
+- nombre: Compatible con
+  valor: Janome Skyline S3, S5 y S9
+destacados:
+- texto: Amplía la superficie de trabajo
+- texto: "Medidas: 50 × 30 cm"
+- texto: Translúcida
+- texto: Para toda la serie Skyline
 ---
-Mesa de extensión para todas las máquinas de la serie Skyline. Medidas: 50x30 cm. Mesa translúcida.
+Mesa de extensión translúcida de 50 × 30 cm para todas las máquinas de la serie Janome Skyline: más superficie para tus proyectos de costura y acolchado.

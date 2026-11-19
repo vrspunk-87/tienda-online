@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Creative Elevate 680 (máquina sola, sin unidad de bordado)
 fabricante: pfaff
 modelo: Creative Elevate 680
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-elevate-680-3.jpg
 - imagen: /img/productos/pfaff-creative-elevate-680-4.jpg
 - imagen: /img/productos/pfaff-creative-elevate-680-5.jpg
-description: La máquina creative elevate 680 ofrece un rendimiento de costura excepcional para creadores de todos los niveles.
+description: 'PFAFF creative elevate 680: más de 400 puntadas, sistema IDT, pantalla táctil de 7" y 250 mm de espacio de costura, preparada para añadir la unidad de bordado.'
 caracteristicas:
 - nombre: Nº de puntadas
   valor: más de 400
@@ -73,5 +73,19 @@ caracteristicas:
   valor: '37'
 - nombre: CREATIVATE
   valor: Sí
+destacados:
+- texto: Más de 400 puntadas y 4 fuentes de costura
+- texto: Sistema Original IDT
+- texto: Pantalla táctil capacitiva a color de 7"
+- texto: 250 mm de espacio a la derecha de la aguja
+- texto: Tensión automática, enhebrador y corte de hilo automáticos
+- texto: Elevación automática del prensatelas
+- texto: Ojal Sensormatic en un solo paso, 9 estilos
+- texto: 37 posiciones de aguja y conectividad CREATIVATE
+- texto: Unidad de bordado opcional
 ---
-La máquina creative elevate 680 ofrece un rendimiento de costura excepcional para creadores de todos los niveles. Añade la unidad de bordado opcional para descubrir un mundo de posibilidades en el bordado y ampliar aún más tu potencial creativo.
+**La PFAFF creative elevate 680 ofrece un rendimiento de costura excepcional para creadores de todos los niveles.** Tienes más de 400 puntadas de hasta 9 mm, 4 fuentes, 9 estilos de ojal con el ojal Sensormatic en un solo paso y 37 posiciones de aguja, con 250 mm de espacio a la derecha de la aguja.
+
+Su sistema Original IDT hace avanzar el tejido de forma uniforme por arriba y por abajo, y la tensión automática, el enhebrador automático, el corte de hilo y la elevación automática del prensatelas te ahorran tiempo. Todo se controla desde su pantalla táctil capacitiva a color de 7", con conectividad CREATIVATE.
+
+Y cuando quieras bordar, añade la unidad de bordado opcional para descubrir un mundo de posibilidades y ampliar aún más tu potencial creativo.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Mesa de extensión 1030MX
 fabricante: janome
 modelo: 0A7987A
@@ -14,9 +14,17 @@ date: '2026-11-18T10:00:00.000+01:00'
 precio: 55
 estado: disponible
 condicion: nuevo
-description: Mesa de extensión para la máquina 1030MX de color blanco.
+description: Mesa de extensión blanca para la Janome 1030MX.
 caracteristicas:
+- nombre: Tipo
+  valor: mesa de extensión
 - nombre: Color
   valor: blanco
+- nombre: Compatible con
+  valor: Janome 1030MX
+destacados:
+- texto: Amplía la superficie de trabajo
+- texto: Color blanco
+- texto: Para la Janome 1030MX
 ---
-Mesa de extensión para la máquina 1030MX de color blanco.
+Mesa de extensión blanca para tu Janome 1030MX: amplía la superficie de trabajo para coser con más comodidad.

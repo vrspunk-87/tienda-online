@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de botones con canilla electrónica Direc Drive
 fabricante: jack
 modelo: JK-T1903GR-D
@@ -11,11 +11,30 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t1903gr-d-1.jpg
-description: Máquina de botones con canilla electrónica Direc Drive. Con Torva de alimentación de botones. Velocidad 3000rpm.
+description: "Máquina de botones electrónica Jack con canilla con motor Direct Drive y tolva de alimentación de botones: 3.000 rpm."
 caracteristicas:
-- valor: Fácil sistema de regulación del tamaño del botón.
-- valor: Fácil sistema de regulación del grosor del botón.
-- valor: Sistema de alimentación plano del botón.
-- valor: Posibilidad de crear patrones de costura mediante el programador.
+- nombre: Tipo
+  valor: máquina de botones con canilla
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Velocidad
+  valor: 3.000 rpm
+- nombre: Alimentación
+  valor: tolva de botones, alimentación plana del botón
+- nombre: Regulación del tamaño del botón
+  valor: sistema fácil
+- nombre: Regulación del grosor del botón
+  valor: sistema fácil
+- nombre: Programador
+  valor: creación de patrones de costura
+destacados:
+- texto: Cosido de botones con canilla
+- texto: Tolva de alimentación de botones
+- texto: Alimentación plana del botón
+- texto: Regulación fácil del tamaño y del grosor del botón
+- texto: Patrones de costura creados con el programador
+- texto: Motor Direct Drive, 3.000 rpm
 ---
-Máquina de botones con canilla electrónica Direc Drive. Con Torva de alimentación de botones. Velocidad 3000rpm.
+**Jack JK-T1903GR-D: pega botones sin cargarlos a mano.** Su tolva alimenta los botones de forma automática y plana, y el tamaño y el grosor del botón se regulan con facilidad.
+
+Con el programador puedes crear tus propios patrones de costura. Motor Direct Drive y 3.000 rpm.

@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina overlock de 4 hilos Direc Drive
 fabricante: jack
 modelo: JK-C4-4-M03/333
@@ -12,6 +12,33 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-c4-4-m03-333-1.jpg
-description: Máquina overlock de 4 hilos Direc Drive.
+description: Overlock industrial Jack de 4 hilos con motor Direct Drive, cortacintas automático, alzaprensatelas electrónico y hasta 7.000 puntadas por minuto.
+destacados:
+- texto: Overlock de 4 hilos
+- texto: Motor Direct Drive
+- texto: Cortacintas automático por células o por pulsador
+- texto: Alzaprensatelas electrónico
+- texto: Palanca de ajuste de la inclinación de los dientes
+- texto: Hasta 7.000 puntadas por minuto
+- texto: Luz LED
+caracteristicas:
+- nombre: Tipo
+  valor: máquina overlock
+- nombre: Hilos
+  valor: "4"
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Cortacintas
+  valor: automático, por células o por pulsador
+- nombre: Alzaprensatelas
+  valor: electrónico
+- nombre: Inclinación de los dientes
+  valor: ajustable con palanca
+- nombre: Velocidad máxima
+  valor: 7.000 puntadas por minuto
+- nombre: Iluminación
+  valor: LED
 ---
-Máquina overlock de 4 hilos Direc Drive. Con cortacintas automático por células o por pulsador, alza prensatelas electrónico y palanca de ajuste inclinación de los dientes. Velocidad máxima de 7000ppm Con luz LED.
+**Jack JK-C4-4: overlock de 4 hilos rápida y cómoda.**
+
+Con motor Direct Drive alcanza 7.000 puntadas por minuto. El cortacintas automático funciona por células o por pulsador, el alzaprensatelas es electrónico y la palanca de inclinación de los dientes ajusta el arrastre al tejido. Con luz LED.

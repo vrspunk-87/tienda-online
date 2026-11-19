@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernette b35
 fabricante: bernette
 modelo: b35
@@ -15,13 +15,14 @@ imagenes:
 - imagen: /img/productos/bernette-b35-3.jpg
 - imagen: /img/productos/bernette-b35-4.jpg
 - imagen: /img/productos/bernette-b35-5.jpg
-description: Tu máquina para principiantes con la que incluso coser ojales es un juego de niños
+description: "Máquina mecánica para principiantes con la que incluso coser ojales es un juego de niños: 23 puntadas, ojal automático y 7 prensatelas."
 destacados:
+- texto: 23 puntadas de utilidad y decorativas
 - texto: Ojal automático
 - texto: Longitud y anchura de puntada ajustables
-- texto: Incluye 7 prensatelas (suelas)
 - texto: Alzaprensatelas de 2 niveles
-- texto: Con un total de 23 puntadas de utilidad y decorativas
+- texto: Dientes de arrastre escamoteables
+- texto: 7 prensatelas incluidos
 caracteristicas:
 - nombre: Puntadas de utilidad
   valor: '14'
@@ -46,16 +47,16 @@ caracteristicas:
 - nombre: Accesorios incluidos
   valor: Bobinas (4); Abreojales; Destornillador (grande); Destornillador (pequeño); Juego de agujas; Prensatelas para dobladillo; Prensatelas para cremallera; Prensatelas para satén; Prensatelas para botones; Prensatelas para puntada invisible; Prensatelas para ojales
 ---
-La bernette 35 es una máquina de coser automática sin controles computerizados. La anchura, la longitud y el patrón de la puntada pueden ajustarse fácilmente girando sus tres botones. También puedes ajustar la tensión durante la costura mediante una rueda de fácil acceso. La bernette 35 también cuenta con una función automática de ojales en un paso de fácil y rápido uso. Con un total de 23 puntadas, incluyendo las de utilidad y decorativas, podrás poner en práctica tus ideas de diseño de forma rápida, sencilla y con una calidad de puntada excelente.
+**La bernette 35 es una máquina de coser automática sin controles computerizados.** La anchura, la longitud y el patrón de la puntada pueden ajustarse fácilmente girando sus tres botones. También puedes ajustar la tensión durante la costura mediante una rueda de fácil acceso. La bernette 35 también cuenta con una función automática de ojales en un paso de fácil y rápido uso. Con un total de 23 puntadas, incluyendo las de utilidad y decorativas, podrás poner en práctica tus ideas de diseño de forma rápida, sencilla y con una calidad de puntada excelente.
 
-Ojal automático – costura profesional rápida y fácil de ojales
+### Ojal automático – costura profesional rápida y fácil de ojales
 La bernette 35 te permite incluir fácilmente ojales en tu proyecto de costura. Sin necesidad de levantar la aguja ni cambiar el ajuste de la máquina. La máquina de coser coserá los cuatro pasos del ojal de forma automática.
 
-Muchos accesorios útiles – para que la costura sea aun más divertida
+### Muchos accesorios útiles – para que la costura sea aun más divertida
 Además de la función de ojal de un paso y las 23 puntadas de utilidad y decorativas, la bernette 35 también cuenta con un enhebra agujas manual y un cortahilos manual. Estas funciones permiten que la costura sea más rápida y eficiente. La caja de accesorios de la bernette 35 proporciona mucho espacio para almacenar los utensilios de costura, como canillas, cepillos de limpieza, prensatelas e hilos.
 
-Incluye siete prensatelas (suelas) – el prensatelas correcto para cada aplicación
+### Incluye siete prensatelas (suelas) – el prensatelas correcto para cada aplicación
 Con la bernette 35 dispones de siete prensatelas (suelas) y un robusto prensatelas de eje. Así podrás elegir el prensatelas apropiado para lo que desees coser. Por ejemplo, puedes elegir el prensatelas para puntadas en zigzag, el prensatelas para puntadas de satén y el de coser ojales. Con el prensatelas adecuado realizarás tu proyecto de costura de forma rápida y con una calidad de puntada excelente.
 
-Alzaprensatelas de 2 niveles - para coser capas de tela gruesa
+### Alzaprensatelas de 2 niveles - para coser capas de tela gruesa
 El alzaprensatelas con 2 niveles tiene la ventaja de que te permite coser varias capas de tela con facilidad. Esto resulta especialmente útil si necesitas coser o acolchar telas gruesas o varias capas de denim. La gran potencia de perforación de la bernette 35 te permite trabajar con una amplia gama de materiales, desde materiales finos hasta gruesos.

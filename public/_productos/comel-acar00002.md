@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Carro con ruedas para caldera Pratika
 fabricante: comel
 modelo: ACAR00002
@@ -13,6 +13,15 @@ estado: disponible
 condicion: nuevo
 imagenes:
   - imagen: /img/productos/comel-acar00002-1.jpg
-description: Carro con ruedas para caldera Pratika.
+description: "Carro con ruedas para el generador de vapor Comel Pratika: muévelo con facilidad por el taller o la casa."
+destacados:
+  - texto: Carro con ruedas
+  - texto: Diseñado para el generador de vapor Comel Pratika
+  - texto: Permite desplazar el generador con facilidad
+caracteristicas:
+  - nombre: Tipo
+    valor: carro con ruedas
+  - nombre: Compatible con
+    valor: generador de vapor Comel Pratika
 ---
-Carro con ruedas para caldera Pratika.
+**Lleva tu Comel Pratika donde lo necesites.** Este carro con ruedas está hecho para el generador de vapor Comel Pratika y te permite moverlo con comodidad sin tener que cargarlo.

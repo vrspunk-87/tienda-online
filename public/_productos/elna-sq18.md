@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bastidor 184X184mm
 fabricante: elna
 modelo: SQ18
@@ -16,8 +16,23 @@ imagenes:
 - imagen: /img/productos/elna-sq18-1.jpg
 - imagen: /img/productos/elna-sq18-2.jpg
 - imagen: /img/productos/elna-sq18-3.jpg
-description: “SQ18” Bastidor 184X184mm.
+description: Set de quilting con bastidor cuadrado «SQ18» de 184 × 184 mm, plantilla, sujetadores magnéticos y diseños para acolchar colchas de cualquier tamaño.
+destacados:
+- texto: Bastidor cuadrado para quilting de 184 × 184 mm
+- texto: Plantilla cuadrada y sujetadores magnéticos
+- texto: Colección de diseños de bordado para quilting
+- texto: Plantillas imprimibles y calculadora para Windows
+- texto: Para las Elna 830CE y 830LCE
+caracteristicas:
+- nombre: Tipo
+  valor: set de bastidor para quilting
+- nombre: Modelo
+  valor: SQ18
+- nombre: Medidas
+  valor: 184 × 184 mm (7,2" × 7,2")
+- nombre: Contenido
+  valor: bastidor, plantilla cuadrada, sujetadores magnéticos, diseños de quilting, plantillas imprimibles y calculadora (Windows)
+- nombre: Compatible con
+  valor: Elna 830CE y 830LCE
 ---
-“SQ18” Bastidor 184X184mm.
-
-Este set contiene un bastidor cuadrado para quilting de 7.2” x 7.2” (184 mm x 184 mm), una plantilla cuadrada, sujetadores magnéticos, una colección de diseños de bordado para quilting, plantillas imprimibles y una función de calculadora (compatible con Windows) para ayudarte a posicionar tu diseño de quilting en colchas de cualquier tamaño.
+**Acolcha colchas de cualquier tamaño con tu Elna 830CE o 830LCE.** Este set contiene un bastidor cuadrado para quilting de 184 × 184 mm, una plantilla cuadrada, sujetadores magnéticos, una colección de diseños de bordado para quilting, plantillas imprimibles y una calculadora, compatible con Windows, que te ayuda a colocar cada diseño en la colcha.

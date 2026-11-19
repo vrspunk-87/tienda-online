@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de bordar Janome MB7
 fabricante: janome
 modelo: MB7
@@ -15,30 +15,54 @@ imagenes:
 - imagen: /img/productos/janome-mb7-3.jpg
 - imagen: /img/productos/janome-mb7-4.jpg
 - imagen: /img/productos/janome-mb7-5.jpg
-description: Máquina de bordar semi industrial de 7 agujas equipada con cortahilos automático.
+description: Máquina de bordar semiindustrial de 7 agujas, compacta y portátil, con cortahílos automático, conexión a PC y USB y bastidores compatibles con Tajima.
 destacados:
-- texto: Semi industrial de 7 agujas
-- texto: Cortahilos automático
-- texto: Compacta y portátil
-- texto: Conexión a PC
-- texto: Puerto USB
-- texto: Compatible con tarjetas ATA
-- texto: Bastidores compatibles con Tajima
-- texto: 3MB de memoria interna, donde almacenaremos gran cantidad de diseños
-- texto: Sistema de lectura de motivos en JEF (Sistema universal, utilizando en el 97% de los programas de edición y picaje.), JEF+ y .DST (Tajima)
-- texto: 50 x 50 mm, 126 x 110 mm y 240 x 200 mm (compatible con los bastidores de las máquinas industriales Tajima)
-- texto: Panel de LCD con 10 idiomas (Español, Portugués, Inglés, Francés…)
-- texto: Tecnología “RCS” control total, con conexión USB, conexión por cable a PC
-- texto: 'Información en el panel LCD: tiempo de bordado, dimensiones…'
+- texto: 7 agujas, semiindustrial
+- texto: Compacta, ligera y portátil
+- texto: Cortahílos automático
+- texto: "Bastidores compatibles con Tajima: 3 incluidos"
+- texto: Lee diseños .JEF, .JEF+ y .DST
+- texto: Pantalla LCD en 10 idiomas, también en español
 - texto: Detectores de hilo y de prensatelas
-- texto: Posibilidad de realizar bordados en gorras
-- texto: Velocidad ajustable hasta un máximo de 800ppm
+- texto: Puede bordar gorras
 caracteristicas:
+- nombre: Tipo
+  valor: máquina de bordar semiindustrial
+- nombre: Agujas
+  valor: "7"
+- nombre: Cabezales
+  valor: "1"
 - nombre: Bastidores incluidos
-  valor: M1 (240x200 mm), M2 (126x110 mm) y M3 (50x50 mm)
-- nombre: Opciones
-  valor: MB4001 Bastidor plano para gorras; MB4002 Bastidor para calcetines
+  valor: M1 (240 × 200 mm), M2 (126 × 110 mm) y M3 (50 × 50 mm), compatibles con Tajima
+- nombre: Bastidores opcionales
+  valor: MB4001 plano para gorras y MB4002 para calcetines
+- nombre: Diseños incorporados
+  valor: 100 motivos y 18 contornos
+- nombre: Letras
+  valor: 3 estilos en 3 tamaños (30, 20 y 10 mm), mayúsculas o minúsculas
+- nombre: Monogramas
+  valor: horizontales, verticales y arqueados; 10 tipografías
+- nombre: Formatos
+  valor: .JEF, .JEF+ y .DST (Tajima)
+- nombre: Memoria interna
+  valor: 3 MB
+- nombre: Pantalla
+  valor: LCD, 10 idiomas (español, portugués, inglés, francés…)
+- nombre: Información en pantalla
+  valor: tiempo de bordado, dimensiones…
+- nombre: Control
+  valor: tecnología RCS
+- nombre: Conexión
+  valor: USB, cable a PC y tarjetas ATA
+- nombre: Cortahílos
+  valor: automático
+- nombre: Detectores
+  valor: hilo y prensatelas
+- nombre: Velocidad
+  valor: ajustable hasta 800 puntadas por minuto
 ---
-Máquina de bordar semi industrial de 7 agujas equipada con cortahilos automático. Máquina compacta y portátil. Incorpora conexión a PC, puerto USB, compatible con tarjetas ATA. Incluye 3 bastidores: M1 (240x200 mm), M2 (126x110 mm) y M3 (50x50 mm). Bastidores compatibles con Tajima.
+**La Janome MB7 es una máquina de bordar semiprofesional de 7 agujas, compacta, ligera y portátil, equipada con cortahílos automático.** Con sus 7 agujas bordarás diseños de varios colores sin cambiar el hilo a cada paso.
 
-Máquina de bordar semi-profesional de 7 agujas, compacta, ligera, portable, equipada con cortahilos automático, 3 estilos de letras con 3 tamaños (30-20-10mm), mayúscula o minúsculas, 100 motivos, 18 contornos, monogramas: horizontales, verticales, arqueados, 10 tipografías…
+Incluye 3 bastidores compatibles con los de las máquinas industriales Tajima (240 × 200, 126 × 110 y 50 × 50 mm), 100 motivos, 18 contornos, 3 estilos de letra en 3 tamaños y monogramas horizontales, verticales y arqueados con 10 tipografías. También puede bordar gorras con el bastidor opcional.
+
+Se conecta por USB, por cable al PC o con tarjetas ATA, y lee los formatos .JEF, .JEF+ y .DST. Su pantalla LCD en 10 idiomas te informa del tiempo de bordado y las dimensiones, y los detectores de hilo y de prensatelas te ayudan a bordar sin sorpresas, a hasta 800 puntadas por minuto.

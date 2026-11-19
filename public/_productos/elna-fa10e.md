@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bastidor de brazo libre 100X40mm
 fabricante: elna
 modelo: FA10e
@@ -16,6 +16,18 @@ imagenes:
   - imagen: /img/productos/elna-fa10e-1.jpg
   - imagen: /img/productos/elna-fa10e-2.jpg
   - imagen: /img/productos/elna-fa10e-3.jpg
-description: “FA10e” Bastidor de brazo libre 100X40mm.
+description: Bastidor de brazo libre «FA10e» de 100 × 40 mm para las Elna eXpressive 802 y 808.
+destacados:
+  - texto: Bastidor de brazo libre de 100 × 40 mm
+  - texto: Para las Elna eXpressive 802 y 808
+caracteristicas:
+  - nombre: Tipo
+    valor: bastidor de brazo libre
+  - nombre: Modelo
+    valor: FA10e
+  - nombre: Medidas
+    valor: 100 × 40 mm
+  - nombre: Compatible con
+    valor: las Elna eXpressive 802 y 808
 ---
-“FA10e” Bastidor de brazo libre 100X40mm.
+Bastidor de brazo libre «FA10e» de 100 × 40 mm para tu Elna eXpressive 802 y 808. Ideal para bordar mangas, perneras y piezas tubulares.

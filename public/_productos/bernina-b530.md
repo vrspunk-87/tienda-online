@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Bernina B530
 fabricante: bernina
 modelo: B530
@@ -17,12 +17,16 @@ imagenes:
   alt: 'Bernina B530: costura decorativa y botones'
 - imagen: /img/productos/bernina-b530-4.jpg
   alt: Bernina B530 cosiendo tela fina
-description: 'La BERNINA 530: creatividad y precisión para costureras ambiciosas.'
+description: 'BERNINA 530: creatividad y precisión para costureras ambiciosas, con 395 puntadas, 9 ojales, 11 posiciones de aguja y preparada para el regulador BSR.'
 destacados:
-- texto: Óptimo control de puntada
-- texto: Regulador de puntadas BERNINA (BSR) opcional
+- texto: 395 puntadas, con 4 alfabetos, 117 decorativas y 9 ojales
+- texto: "Control total de la puntada: longitud, anchura y 11 posiciones de aguja"
 - texto: Ojales automáticos en un paso
-- texto: Versátil gama de puntadas
+- texto: Preparada para el regulador de puntadas BERNINA (BSR)
+- texto: Enhebrador automático
+- texto: Sistema manos libres (FHS)
+- texto: 190 mm de espacio a la derecha de la aguja
+- texto: Pantalla LCD y asesor de costura
 caracteristicas:
 - nombre: Velocidad máxima de costura
   valor: 900 puntadas/min
@@ -95,6 +99,6 @@ caracteristicas:
 - nombre: Regulador de velocidad
   valor: Sí
 ---
-La BERNINA 530 se ha desarrollado con gran pasión por el detalle, para costureras que buscan precisión y versatilidad. Su amplio repertorio de puntadas de utilidad y decorativas se ajusta a medida: longitud, ancho y once posiciones de aguja que se pueden guardar en la memoria de forma temporal o permanente.
+**La BERNINA 530 se ha desarrollado con gran pasión por el detalle, para costureras que buscan precisión y versatilidad.** Su amplio repertorio de puntadas de utilidad y decorativas se ajusta a medida: longitud, ancho y once posiciones de aguja que se pueden guardar en la memoria de forma temporal o permanente.
 
 El panel de control da acceso rápido a todas las puntadas y ajustes (retroceso, reflejo, ojales manuales o automáticos…). Con el regulador de puntadas BERNINA (BSR), también se puede coser y acolchar con manos libres con la máxima precisión.

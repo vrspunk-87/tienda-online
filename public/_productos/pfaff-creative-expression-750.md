@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: PFAFF Creative Expression 750
 fabricante: pfaff
 modelo: Creative Expression 750
@@ -15,26 +15,22 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-expression-750-3.jpg
 - imagen: /img/productos/pfaff-creative-expression-750-4.jpg
 - imagen: /img/productos/pfaff-creative-expression-750-5.jpg
-description: La PFAFF creative expression 750 combina costura y bordado y ofrece pantalla táctil capacitiva en color de 8 pulgadas, sistema IDT, conectividad CREATIVATE y funciones avanzadas de bordado.
+description: 'PFAFF creative expression 750: coser y bordar con pantalla táctil capacitiva de 8", sistema IDT, tecnología ActivStitch, 789 diseños y escaneo de bastidor.'
 destacados:
-- texto: Tecnología ActivStitch Patentada
-- texto: Gran Área de Bordado
-- texto: 'Diseños y Fuentes: Incluye 789 diseños de bordado y 8 fuentes de bordado integradas para personalización inmediata'
-- texto: Escaneo de Bastidor (Hoop Scanning)
+- texto: Coser y bordar con pantalla táctil capacitiva a color de 8"
+- texto: Sistema Original IDT y tecnología ActivStitch patentada
+- texto: 789 diseños y 8 fuentes de bordado
+- texto: Gran área de bordado y escaneo de bastidor
+- texto: Guía láser de costura ajustable
+- texto: STITCH CREATOR para crear puntadas
 - texto: Conectividad CREATIVATE
-- texto: Sistema IDT Original
-- texto: Guía Láser de Costura Ajustable
-- texto: STITCH CREATOR
-- texto: Gran Espacio de Costura
-- texto: Control Inteligente
-- texto: Pantalla Táctil a Color
-- texto: 'Centro de Ayuda Integrado: Tutoriales y asistencia técnica disponibles directamente en pantalla'
-- texto: 'Cortador de Hilo y Enhebrador Automático: Ahorro de tiempo en la preparación y el acabado de cada proyecto'
-- texto: Regulación Activa de Hilo
-- texto: Precisión Visual
-- texto: Versatilidad Total
+- texto: Enhebrador y cortador de hilo automáticos
 caracteristicas:
 - nombre: Unidad de bordado
   valor: código 850340096
 ---
-La PFAFF creative expression 750 combina costura y bordado y ofrece pantalla táctil capacitiva en color de 8 pulgadas, sistema IDT, conectividad CREATIVATE y funciones avanzadas de bordado.
+**La PFAFF creative expression 750 combina costura y bordado en una máquina avanzada, con una pantalla táctil capacitiva a color de 8".** Su sistema Original IDT y la tecnología ActivStitch patentada, que regula activamente el hilo, te dan puntadas perfectas en cualquier tejido.
+
+Para bordar, cuenta con 789 diseños, 8 fuentes, una gran área de bordado y escaneo de bastidor para colocar cada diseño con precisión visual. Para coser, un gran espacio de trabajo, la guía láser de costura ajustable y STITCH CREATOR para diseñar tus propias puntadas.
+
+Con conectividad CREATIVATE, centro de ayuda integrado con tutoriales, enhebrador y cortador de hilo automáticos. La unidad de bordado tiene el código 850340096.

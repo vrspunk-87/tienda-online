@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer C430
 fabricante: singer
 modelo: C430
@@ -14,53 +14,74 @@ imagenes:
 - imagen: /img/productos/singer-c430-3.jpg
 - imagen: /img/productos/singer-c430-4.jpg
 - imagen: /img/productos/singer-c430-5.jpg
-description: La máquina de coser computarizada C430 ofrece funciones muy fáciles de usar, además de una amplia gama de puntadas y fuentes, lo que le ofrece infinitas posibilidades creativas.
+description: "Máquina computerizada Singer C430 con 810 puntadas y 5 alfabetos, 13 ojales en un paso y bastidor metálico: infinitas posibilidades creativas, muy fácil de usar."
 destacados:
-- texto: 13 accesorios esenciales incluidos
-- texto: Permite una creatividad asombrosa con 810 puntadas y 5 fuentes
-- texto: Memoria de secuencia de puntadas para crear combinaciones únicas
-- texto: Ojal sencillo de un solo paso para obtener siempre resultados uniformes
-- texto: La pantalla LCD muestra las selecciones de puntada y los ajustes
-- texto: Muchos patrones de puntadas pueden alargarse para ofrecer más posibilidades creativas
-- texto: Letras incorporadas (5 alfabetos)
-- texto: Imagen especular
-- texto: Puntadas incorporadas (810)
-- texto: Ojal de un paso (13)
-- texto: Enhebrador de agujas incorporado
-- texto: Bobina Top Drop In
-- texto: Cortador de hilo incorporado
-- texto: Botón de remate
-- texto: Alimentación por caída
-- texto: Longitud de puntada ajustable
-- texto: Ancho de puntada ajustable (7 mm)
-- texto: Sistema de tensión autoajustable
-- texto: Marcha atrás (Botón táctil)
+- texto: 810 puntadas y 5 alfabetos
+- texto: 13 ojales en un solo paso
+- texto: Memoria de secuencia de puntadas
+- texto: Muchas puntadas se pueden alargar
 - texto: Bastidor metálico Heavy Duty
-- texto: Costura a alta velocidad (850/min)
-- texto: Control de velocidad (mecánico)
-- texto: Botón Start/Stop
-- texto: Aguja arriba/abajo
-- texto: Pantalla LCD
-- texto: Brazo libre
-- texto: Prensatelas Snap-On
-- texto: Elevador de prensatelas extra alto
-- texto: Sensor de prensatelas
-- texto: Posiciones variables de la aguja (25)
-- texto: Función de doble aguja
-- texto: 168 mm Espacio de costura (de la aguja a la torre)
+- texto: Enhebrador de aguja y tensión autoajustable
+- texto: 25 posiciones de aguja y función de doble aguja
+- texto: 13 accesorios esenciales incluidos
 caracteristicas:
-- valor: Espacio de costura de 6,6" (de la aguja a la torre) y 4,25" de altura
-- nombre: Bobinas
-  valor: SINGER clase 15 transparentes
-- nombre: Clase Bobina
-  valor: 15 Transparente
-- nombre: Tamaño de la máquina
-  valor: 43,1 largo, 20,8 ancho, 29,5 alto
-- nombre: Peso de la máquina
+- nombre: Tipo
+  valor: electrónica (computerizada)
+- nombre: Puntadas
+  valor: "810"
+- nombre: Alfabetos
+  valor: "5"
+- nombre: Ojales
+  valor: 13, en un solo paso
+- nombre: Memoria de secuencia de puntadas
+  valor: Sí
+- nombre: Imagen especular
+  valor: Sí
+- nombre: Alargamiento de puntadas
+  valor: Sí
+- nombre: Anchura de puntada
+  valor: ajustable hasta 7 mm
+- nombre: Longitud de puntada
+  valor: ajustable
+- nombre: Tensión
+  valor: autoajustable
+- nombre: Enhebrador de aguja
+  valor: incorporado
+- nombre: Canilla
+  valor: Top Drop-In, clase 15 transparente
+- nombre: Cortador de hilo
+  valor: incorporado
+- nombre: Botones
+  valor: remate, marcha atrás, start/stop y aguja arriba/abajo
+- nombre: Control de velocidad
+  valor: mecánico
+- nombre: Velocidad
+  valor: 850 puntadas por minuto
+- nombre: Pantalla
+  valor: LCD
+- nombre: Bastidor
+  valor: metálico Heavy Duty
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Prensatelas
+  valor: de presión (snap-on), con sensor y elevador extra alto
+- nombre: Posiciones de aguja
+  valor: "25"
+- nombre: Doble aguja
+  valor: Sí
+- nombre: Espacio de costura
+  valor: 168 mm (aguja a torre) y 108 mm de altura
+- nombre: Dimensiones
+  valor: 43,1 × 20,8 × 29,5 cm (largo × ancho × alto)
+- nombre: Peso
   valor: 9,4 kg
 - nombre: Potencia
   valor: 55 W
 - nombre: Accesorios incluidos
-  valor: Pie universal, Pie para ojales, Pie para puntada de satén, Pie para cremallera, Pie para dobladillo ciego, Tapón de carrete de hilo pequeño, Tapa de carrete de hilo grande, Destornillador para placa de agujas, Pasador de carrete auxiliar con arandela de fieltro, Cepillo, Desgarrador de costuras, Bobinas (4 Clase 15), Agujas
+  valor: pie universal, para ojales, para puntada de satén, para cremallera y para dobladillo ciego; tapas de carrete; destornillador; pasador de carrete auxiliar con fieltro; cepillo; descosedor; 4 canillas clase 15 y agujas
 ---
-La máquina de coser computarizada C430 ofrece funciones muy fáciles de usar, además de una amplia gama de puntadas y fuentes, lo que le ofrece infinitas posibilidades creativas. Para su comodidad, su máquina puede venir preenhebrada. Los accesorios incluidos se encuentran en el compartimento de almacenamiento en la parte frontal de la máquina.
+**La Singer C430 es una máquina computerizada muy fácil de usar, con una amplia gama de puntadas y fuentes que te dan infinitas posibilidades creativas.** Tienes 810 puntadas, 5 alfabetos y 13 ojales en un solo paso, y muchas puntadas se pueden alargar para crear efectos únicos.
+
+Guarda tus combinaciones con la memoria de secuencia de puntadas y consulta en la pantalla LCD la puntada elegida y sus ajustes. El enhebrador de aguja, la tensión autoajustable, la canilla de carga superior, el cortador de hilo y las 25 posiciones de aguja te hacen la costura más fácil.
+
+Su bastidor metálico Heavy Duty le da estabilidad, y alcanza 850 puntadas por minuto. Puede venir preenhebrada, y los 13 accesorios incluidos se guardan en el compartimento frontal.

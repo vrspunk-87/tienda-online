@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Remalladora Husqvarna Viking AMBER S100
 fabricante: husqvarna
 modelo: AMBER S100
@@ -15,37 +15,16 @@ imagenes:
 - imagen: /img/productos/husqvarna-amber-s100-3.jpg
 - imagen: /img/productos/husqvarna-amber-s100-4.jpg
 - imagen: /img/productos/husqvarna-amber-s100-5.jpg
-description: La máquina overlock AMBER S | 100 tiene capacidad para 4, 3 y 2 hilos con 16 puntadas diferentes.
+description: Remalladora de 4/3/2 hilos con 16 puntadas, acceso completo a los áncoras para enhebrar fácil y alimentación diferencial.
 destacados:
-- texto: Capacidad de 4/3/2 hilos para 16 puntadas
-- texto: Enhebrado Full Access Looper
-- texto: Alimentación diferencial
-- texto: Guía de costura integrada
-- texto: Selector de puntada
-- texto: 16 Puntadas
-- texto: Punto de cadeneta
-- texto: Bloqueo de seguridad de puntada
-- texto: Overlock de 4 hilos
-- texto: Overlock de 3 hilos (ancho y estrecho)
-- texto: Borde estrecho de 3 hilos
-- texto: Borde enrollado de 3 hilos
-- texto: Flatlock de 3 hilos (ancho y estrecho)
-- texto: Sobrehilado elástico de 3 hilos
-- texto: Overlock de 2 hilos (ancho y estrecho)
-- texto: Borde enrollado de 2 hilos
-- texto: 2-Hilos Borde Estrecho
-- texto: Flatlock de 2 hilos
-- texto: Dobladillos fáciles de enrollar
+- texto: Capacidad de 4/3/2 hilos con 16 puntadas
+- texto: Enhebrado de los áncoras con acceso completo (Full Access)
+- texto: Alimentación diferencial para costuras uniformes
 - texto: Convertidor de 2 hilos
-- texto: Liberación de la tensión
-- texto: Presión del prensatelas ajustable
-- texto: Altura extra del prensatelas
-- texto: Tensión de colocación y recorridos del hilo codificados por colores
-- texto: Longitud de puntada ajustable
-- texto: Anchura de corte ajustable
-- texto: Cortador superior móvil
-- texto: Cortador de hilo integrado
-- texto: Prensatelas a presión
+- texto: Recorridos del hilo codificados por colores
+- texto: Guía de costura integrada
+- texto: Altura extra del prensatelas y presión ajustable
+- texto: Cortahilos integrado
 caracteristicas:
 - nombre: Accesorios incluidos
   valor: Sí
@@ -53,6 +32,16 @@ caracteristicas:
   valor: 1 LED
 - nombre: Capacidad de puntada de 4/3/2 hilos
   valor: Manual
+- nombre: Puntadas
+  valor: 16 (overlock, flatlock, borde enrollado, borde estrecho, sobrehilado elástico y punto de cadeneta)
+- nombre: Alimentación diferencial
+  valor: Sí
+- nombre: Convertidor de 2 hilos
+  valor: Sí
+- nombre: Longitud de puntada y anchura de corte
+  valor: ajustables
+- nombre: Cuchilla superior
+  valor: móvil
 - nombre: Velocidad de costura
   valor: 1.300 puntadas/minuto
 - nombre: Bandeja de residuos
@@ -62,4 +51,10 @@ caracteristicas:
 - nombre: Peso
   valor: 9 kg (19,8 lb.)
 ---
-La máquina overlock AMBER S | 100 tiene capacidad para 4, 3 y 2 hilos con 16 puntadas diferentes. Tanto la cubierta frontal izquierda como la derecha se abren para proporcionar un acceso completo a la zona de la lanzadera y el arrastre diferencial le proporciona costuras perfectamente uniformes. Póngase en marcha con los 14 accesorios gratuitos que se enumeran a continuación.
+**La AMBER S100 es la forma sencilla de dar a tus prendas un acabado profesional.** Con capacidad de 4, 3 y 2 hilos ofrece 16 puntadas diferentes.
+
+### Enhebrar ya no es un problema
+Las tapas frontales izquierda y derecha se abren para darte acceso completo a la zona de los áncoras, y los recorridos del hilo están codificados por colores.
+
+### Costuras perfectas
+La alimentación diferencial te da costuras perfectamente uniformes, también en tejidos de punto. Longitud de puntada, anchura de corte y presión del prensatelas ajustables, dobladillos enrollados fáciles y hasta 1.300 puntadas por minuto. Incluye 14 accesorios.

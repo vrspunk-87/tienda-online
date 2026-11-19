@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Precise Denim Studio
 fabricante: alfa
 modelo: Precise Denim Studio
@@ -15,27 +15,50 @@ imagenes:
 - imagen: /img/productos/alfa-precise-denim-studio-3.jpg
 - imagen: /img/productos/alfa-precise-denim-studio-4.jpg
 - imagen: /img/productos/alfa-precise-denim-studio-5.jpg
-description: Máquina de coser Precise Denim Studio con motor servo.
+description: "Máquina mecánica con motor eco DC pensada para vaqueros, cuero y telas resistentes: 31 puntadas, gran penetración y acabados profesionales con menos consumo."
 destacados:
-- texto: 'Motor DC Eco: Mayor eficiencia y estabilidad, ideal para sesiones de costura prolongadas'
-- texto: 'Potencia para telas gruesas: diseñada para coser vaqueros, cuero y otros materiales resistentes'
-- texto: 'Velocidad controlada: ajusta la rapidez para una costura precisa y uniforme'
-- texto: '31 tipos de puntadas: incluye opciones básicas, decorativas y especializadas'
-- texto: 'Largo variable (0-4mm) y ancho variable (0-5mm): personaliza cada puntada según tu necesidad'
-- texto: 'Ojal automático en 4 pasos: logra ojales uniformes y profesionales con facilidad'
-- texto: 'Doble altura de prensatelas: permite trabajar con telas gruesas o varias capas sin esfuerzo'
-- texto: '6 filas de dientes de arrastre: asegura un arrastre uniforma del tejido'
-- texto: 'Luz led blanca: ilumina la zona de costura para mayor precisión'
-- texto: 'Regulador de tensión de hilo: ajusta la firmeza de cada puntada para acabados perfectos'
-- texto: 'Devanador de canillas: sistema eficiente para cargar el hilo de manera rápida y sencill'
-- texto: 'Botón de retroceso: facilita el refuerzo de costuras con un solo toque'
-- texto: 'Indicador en volante: muestra la dirección del giro para mayor control'
-- texto: 'Regla de medición integrada: con medidas en cm y pulgadas para mayor precisión'
-- texto: 'Mesa de extensión (opcional): expande la superficie de trabajo para proyectos más grandes'
+- texto: "Motor eco DC de 45 W: un 35,7 % de ahorro de energía"
+- texto: Mayor torsión para atravesar varias capas de tela
+- texto: Diseñada para vaqueros, cuero y materiales resistentes
+- texto: "31 puntadas: básicas, decorativas y especiales"
+- texto: Velocidad controlada para una costura precisa
+- texto: Ojal automático en 4 pasos
+- texto: Doble altura del prensatelas
+- texto: Regla de medición integrada en cm y pulgadas
 caracteristicas:
+- nombre: Tipo
+  valor: mecánica
 - nombre: Motor
-  valor: servo
+  valor: eco DC de 45 W
+- nombre: Puntadas
+  valor: "31"
+- nombre: Longitud de puntada
+  valor: de 0 a 4 mm
+- nombre: Anchura de puntada
+  valor: de 0 a 5 mm
+- nombre: Ojal
+  valor: automático en 4 pasos
+- nombre: Altura del prensatelas
+  valor: doble
+- nombre: Dientes de arrastre
+  valor: 6 filas
+- nombre: Regulador de tensión del hilo
+  valor: Sí
+- nombre: Devanador de canillas
+  valor: Sí
+- nombre: Botón de retroceso
+  valor: Sí
+- nombre: Indicador de giro en el volante
+  valor: Sí
+- nombre: Regla integrada
+  valor: cm y pulgadas
+- nombre: Iluminación
+  valor: LED blanca
+- nombre: Accesorio opcional
+  valor: mesa de extensión
 ---
-Máquina de coser Precise Denim Studio con motor servo.
+**La Alfa Precise Denim Studio está diseñada para afrontar las telas más resistentes, como vaqueros y cuero, con acabados profesionales.** Su motor eco DC de 45 W ofrece un 35,7 % de ahorro de energía y una torsión superior que asegura una mejor penetración, incluso en varias capas, sin comprometer la calidad.
 
-La máquina de coser ALFA DENIM PRECISE esta diseñada para enfrentar los desafíos de las telas más resistentes, como vaqueros y cuero, garantizando acabados profesionales. Su motor ECO DC DE 45 W ofrece un 35,7% de ahorro de energía y una torsión superior que asegura una mejor penetración en las telas, incluso en capas múltiples, sin comprometer la calidad.
+Ajusta la velocidad para coser con precisión y regularidad, y elige entre sus 31 puntadas básicas, decorativas y especiales, con largo y ancho variables. El ojal automático en 4 pasos, la doble altura del prensatelas y las 6 filas de dientes de arrastre te ayudan a lograr resultados uniformes.
+
+Detalles prácticos como la regla integrada en cm y pulgadas, el indicador de giro en el volante o la luz LED completan una máquina pensada para durar. Puedes ampliar la superficie con la mesa de extensión opcional.

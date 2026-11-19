@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Singer HD 4523
 fabricante: singer
 modelo: HD 4523
@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/singer-hd-4523-3.jpg
 - imagen: /img/productos/singer-hd-4523-4.jpg
 - imagen: /img/productos/singer-hd-4523-5.jpg
-description: La máquina de coser SINGER Heavy Duty 4523 combina potencia, control y un amplio abanico de opciones creativas, lo que te ofrece la flexibilidad necesaria para coser con precisión desde proyectos…
+description: "Singer Heavy Duty 4523: potencia, control y 23 puntadas, con estructura interior totalmente metálica, ojal en un paso y hasta 1.000 ppm."
 caracteristicas:
 - nombre: Número de puntos
   valor: '23'
@@ -47,5 +47,18 @@ caracteristicas:
   valor: integrado
 - nombre: Accesorios incluidos
   valor: Pie universal, Pie para ojales, Pie para cremallera, Pie para dobladillo ciego, Paquete de 3 agujas, 4 bobinas transparentes de clase 15, Tapas de carrete, Pasador de carrete auxiliar, Fieltro del portacarretes, Placa de aguja Destornillador, Guía de bordes y acolchado, Descosedor con cepillo para pelusas
+destacados:
+- texto: 23 puntadas
+- texto: Ojal en un solo paso
+- texto: Estructura interior totalmente metálica
+- texto: Base de acero inoxidable
+- texto: Hasta 1.000 puntadas por minuto
+- texto: Enhebrador de agujas integrado
+- texto: Más de 6" de espacio a la derecha de la aguja
+- texto: Presión del prensatelas ajustable y bajada de dientes
 ---
-La máquina de coser SINGER Heavy Duty 4523 combina potencia, control y un amplio abanico de opciones creativas, lo que te ofrece la flexibilidad necesaria para coser con precisión desde proyectos cotidianos hasta diseños más detallados.
+**La Singer Heavy Duty 4523 combina potencia, control y un amplio abanico de opciones creativas para coser con precisión, desde los proyectos cotidianos hasta los diseños más detallados.**
+
+Sus 23 puntadas, con ojal en un solo paso, te dan más formas de personalizar tus labores sin renunciar a la durabilidad de las Singer Heavy Duty: estructura interior totalmente metálica, base de acero inoxidable y hasta 1.000 puntadas por minuto.
+
+Con enhebrador de agujas integrado, canilla de carga superior, 3 posiciones de aguja, presión del prensatelas ajustable, bajada de dientes y más de 6" de espacio a la derecha de la aguja.

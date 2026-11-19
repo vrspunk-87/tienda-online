@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de zig-zag de 1 y 3 puntadas cortahílos Direc Drive
 fabricante: jack
 modelo: JK-T2284B-4E
@@ -13,10 +13,18 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t2284b-4e-1.jpg
 - imagen: /img/productos/jack-jk-t2284b-4e-2.jpg
-description: Máquina de zig-zag de 1 y 3 puntadas cortahílos Direc Drive, ancho costura 8mm, longitud de puntada 2.5mm.
+description: "Máquina de zigzag industrial Jack de 1 y 3 puntadas con cortahílos, remate automático, tensión electrónica y motor Direct Drive: ancho de 8 mm y hasta 4.500 ppm."
 caracteristicas:
-- nombre: Longitud de puntada (mm)
-  valor: '8'
+- nombre: Tipo
+  valor: máquina de zigzag
+- nombre: Motor
+  valor: Direct Drive
+- nombre: Zigzag
+  valor: normal (1 puntada) y de 3 puntadas
+- nombre: Ancho de costura
+  valor: 8 mm
+- nombre: Longitud de puntada
+  valor: 2,5 mm
 - nombre: Altura prensatelas (mm)
   valor: 5,5 - 10
 - nombre: Remate automático
@@ -30,8 +38,19 @@ caracteristicas:
 - nombre: Prensatelas automático
   valor: Sí
 - nombre: Velocidad (ppm)
-  valor: '4500'
+  valor: "4.500"
+- nombre: Iluminación
+  valor: LED
+destacados:
+- texto: Zigzag de 1 y de 3 puntadas
+- texto: Cortahílos y wiper (aparta hilos)
+- texto: Remate automático
+- texto: Tensión electrónica
+- texto: Prensatelas automático
+- texto: Ancho de costura de 8 mm
+- texto: Motor Direct Drive, hasta 4.500 puntadas por minuto
+- texto: Luz LED
 ---
-Máquina de zig-zag de 1 y 3 puntadas cortahílos Direc Drive, ancho costura 8mm, longitud de puntada 2.5mm.
+**Jack JK-T2284B-4E: zigzag de 1 y 3 puntadas, totalmente automatizado.** Corta el hilo, remata y sube el prensatelas sola, con tensión electrónica y wiper.
 
-Equipada con luz LED integrada y motor Direct Drive. Ancho de costura 8 mm y longitud máxima de puntada 2,5 mm.
+Ancho de costura de 8 mm, puntada de 2,5 mm, motor Direct Drive a hasta 4.500 puntadas por minuto y luz LED.

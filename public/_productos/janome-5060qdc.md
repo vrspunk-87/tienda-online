@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser electrónica Janome 5060QDC
 fabricante: janome
 modelo: 5060QDC
@@ -14,26 +14,46 @@ imagenes:
 - imagen: /img/productos/janome-5060qdc-2.jpg
 - imagen: /img/productos/janome-5060qdc-3.jpg
 - imagen: /img/productos/janome-5060qdc-4.jpg
-description: Nuevo modelo de máquina electrónica JANOME que cose en todo tipo de tejidos, desde ligeros algodones para acolchar hasta vaqueros gruesos.
+description: "Máquina electrónica que cose de todo, del algodón ligero para acolchar al vaquero grueso: 60 puntadas, 6 ojales automáticos y garfio a prueba de atascos."
 destacados:
-- texto: 'Placa de cubierta del garfio: compruebe fácilmente la cantidad de hilo que queda en la bobina; la tapa emergente permite acceder fácilmente a la bobina'
-- texto: 'Cortador de hilo: corta y sujeta hilos, listo para que empieces a coser, sin hilos enredados'
-- texto: 'Alimentador de 7 piezas: le permite coser desde el mismo borde de la tela y ayuda a mantener las puntadas uniformes'
-- texto: 'Caja de accesorios: práctico almacenamiento que mantiene a mano todo su desempañador, bobinas, cepillo para pelusa, etc.'
-- texto: 'Bobina de carga superior: la caída de carga fácil en la bobina y el conjunto de gancho giratorio a prueba de atascos'
-- texto: 'Poner / quitar los pies: baje el vástago para colocarlo, presione el botón rojo para soltarlo'
-- texto: 'Ojal de 1 paso: mide automáticamente el ojal para que coincida con el tamaño de su botón'
-- texto: 'Base plana / brazo libre: la caja de accesorios desmontable se quita para revelar el brazo libre'
+- texto: Cose desde algodones ligeros hasta vaqueros gruesos
+- texto: 60 puntadas, con 6 ojales automáticos en 1 paso
+- texto: Mayor poder de penetración de la aguja
+- texto: Garfio rotativo de carga superior a prueba de atascos
+- texto: Dientes de arrastre de 7 piezas
+- texto: Enhebrador automático y control de velocidad deslizante
+- texto: Base plana o brazo libre
+- texto: Accesorios de acolchado y funda dura incluidos
 caracteristicas:
-- nombre: Puntadas preprogramadas
-  valor: '60'
+- nombre: Tipo
+  valor: electrónica
+- nombre: Puntadas
+  valor: "60"
 - nombre: Ojales automáticos
-  valor: '6'
+  valor: 6, en 1 paso
+- nombre: Pantalla
+  valor: LCD (puntada, anchura y longitud)
+- nombre: Anchura y longitud de puntada
+  valor: ajustables
+- nombre: Garfio
+  valor: rotativo de carga superior, magnético, a prueba de atascos
+- nombre: Dientes de arrastre
+  valor: 7 piezas, escamoteables
+- nombre: Enhebrador
+  valor: automático
+- nombre: Control de velocidad
+  valor: deslizante
+- nombre: Cortador de hilo
+  valor: Sí
+- nombre: Base
+  valor: plana, convertible en brazo libre
+- nombre: Caja de accesorios
+  valor: desmontable
+- nombre: Incluye
+  valor: accesorios de acolchado y funda dura
 ---
-Nuevo modelo de máquina electrónica JANOME que cose en todo tipo de tejidos, desde ligeros algodones para acolchar hasta vaqueros gruesos. El modelo Janome 5060QDC es ideal para la confección de vestidos, costura hobby, reparaciones generales y con los accesorios de acolchado incluidos con este modelo es incluso ideal para acolchar o como segunda máquina para llevar a clases.
+**La Janome 5060QDC cose todo tipo de tejidos, desde los algodones ligeros para acolchar hasta los vaqueros gruesos.** Es ideal para confeccionar ropa, para la costura como hobby y para arreglos, y con los accesorios de acolchado incluidos, también para acolchar o como segunda máquina para llevar a clase.
 
-La Janome 5060QDC le ofrece costura computarizada con 60 puntadas preprogramadas, incluidos 6 ojales completamente automáticos diferentes.
+Tiene 60 puntadas, entre ellas 6 ojales completamente automáticos, y su pantalla LCD te muestra la puntada elegida, su anchura y su longitud, totalmente ajustables.
 
-La pantalla LCD hace que sea fácil ver qué puntada ha elegido, así como el ancho y largo de la puntada, que son totalmente ajustables.
-
-Un sistema de garfio giratorio está hecho a prueba de atascos, magnético, de carga superior, elimina la necesidad de una caja de bobina extraíble. La placa de la cubierta del gancho se abre con solo tocar un botón, y el poder de penetración adicional de la aguja de la 5060QDC le permite coser telas más pesadas y múltiples capas. Esta máquina también cuenta con un mecanismo de alimentación de siete piezas, una instalación de alimentación por caída, enhebrador automático de agujas, un control de velocidad de deslizamiento y viene con una cubierta dura.
+Su garfio rotativo de carga superior, magnético y a prueba de atascos, no necesita caja de bobina, y la tapa se abre con solo tocar un botón. El poder de penetración extra de la aguja te permite coser telas pesadas y varias capas. Con dientes de arrastre de 7 piezas, enhebrador automático, control de velocidad deslizante y funda dura.

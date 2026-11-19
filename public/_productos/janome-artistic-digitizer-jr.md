@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Programa de bordado Artistic Digitizer Jr
 fabricante: janome
 modelo: Artistic Digitizer Jr
@@ -12,19 +12,35 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/janome-artistic-digitizer-jr-1.jpg
   alt: 'Programa de bordado Janome Artistic Digitizer Jr'
-description: Programa de Software semi-Profesional de bordado, que permite crear diseños importando imágenes bmp y cliparts que simula las puntadas en 3D.
+description: "Programa de bordado semiprofesional Artistic Digitizer Jr: convierte imágenes y cliparts en bordados, con simulación de puntadas en 3D."
 destacados:
-- texto: Posibilidad de editar imágenes dando la opción de cambiar los colores, colocar puntadas y contornos en forma automática
-- texto: Permite cambiar el tamaño de los diseños, colocar diferentes rellenos de puntadas y combinar con otros diseños
-- texto: Posibilidad de combinar letras de diferentes formas y tamaño
-- texto: Posee amplia gama de colores, puntadas y herramientas para hacer los diseños de bordados, una vez terminado el diseño, o matriz, guardar en un pendrive en formato Jef
-- texto: Se pueden importar imágenes en formato (.bmp) (.jpeg) (.emf) y clipart en formato (.wmf) desde un PC y el programa los transforma en patrones de bordado
-- texto: 3 tipos de puntadas diferentes
-- texto: Opción de rotar, voltear imágenes (espejo)
-- texto: Permite realizar digitalizaciones automáticas, semiautomática de imágenes de mapa de bits y de dibujos vectoriales
-- texto: Posibilidad de diseñar bordados de hasta 9 DinA-4
-- texto: 12 estilos de tipografías (fuentes) diferentes
-- texto: Compatible con Windows 95, 98, NT, 2000, ME, XP, VISTA y con IOS instalando Windows en el sistema operativo
-- texto: Es el complemento perfecto para tu bordadora
+- texto: Crea bordados a partir de imágenes BMP, JPEG, EMF y cliparts WMF
+- texto: Digitalización automática y semiautomática
+- texto: Simulación de las puntadas en 3D
+- texto: Cambia colores, rellenos, contornos y tamaños
+- texto: 12 tipografías y combinación de letras
+- texto: Diseños de hasta 9 DIN A4
+- texto: Guarda en formato .JEF
+caracteristicas:
+- nombre: Tipo
+  valor: programa de bordado semiprofesional
+- nombre: Importa
+  valor: .bmp, .jpeg, .emf y cliparts .wmf
+- nombre: Digitalización
+  valor: automática y semiautomática (mapa de bits y vectorial)
+- nombre: Tipos de puntada
+  valor: "3"
+- nombre: Tipografías
+  valor: "12"
+- nombre: Tamaño máximo de diseño
+  valor: 9 DIN A4
+- nombre: Formato de salida
+  valor: .JEF
+- nombre: Sistemas
+  valor: Windows (95, 98, NT, 2000, ME, XP y Vista); en Mac, instalando Windows
 ---
-Programa de Software semi-Profesional de bordado, que permite crear diseños importando imágenes bmp y cliparts que simula las puntadas en 3D.
+**Artistic Digitizer Jr es un programa de bordado semiprofesional que convierte tus imágenes en bordados.** Importa imágenes BMP, JPEG o EMF y cliparts WMF, y el programa los transforma en patrones de bordado, con simulación de las puntadas en 3D.
+
+Edita los colores, coloca puntadas y contornos de forma automática, cambia el tamaño, aplica distintos rellenos, gira o refleja las imágenes y combina letras de diferentes formas y tamaños con sus 12 tipografías. Puedes diseñar bordados de hasta 9 DIN A4.
+
+Cuando termines, guarda tu diseño en un pendrive en formato .JEF y llévalo a tu bordadora. Es el complemento perfecto para tu máquina de bordar.

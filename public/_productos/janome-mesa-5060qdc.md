@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Mesa de extensión 5060QDC
 fabricante: janome
 modelo: Mesa 5060QDC
@@ -13,9 +13,17 @@ estado: disponible
 condicion: nuevo
 imagenes:
   - imagen: /img/productos/janome-mesa-5060qdc-1.jpg
-description: Mesa de extensión para la máquina 5060QDC color blanco.
+description: Mesa de extensión blanca para la Janome 5060QDC.
 caracteristicas:
+  - nombre: Tipo
+    valor: mesa de extensión
   - nombre: Color
     valor: blanco
+  - nombre: Compatible con
+    valor: Janome 5060QDC
+destacados:
+  - texto: Amplía la superficie de trabajo
+  - texto: Color blanco
+  - texto: Para la Janome 5060QDC
 ---
-Mesa de extensión para la máquina 5060QDC color blanco.
+Mesa de extensión blanca para tu Janome 5060QDC: amplía la superficie de trabajo para coser y acolchar con más comodidad.

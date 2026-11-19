@@ -1,5 +1,5 @@
 ---
-prueba: true
+prueba: false
 title: Máquina de coser Janome Pink 12
 fabricante: janome
 modelo: Pink 12
@@ -11,16 +11,34 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/janome-pink-12-1.jpg
-description: Máquina doméstica de brazo libre y lanzadera central oscilante equipada con 15 funciones diferentes.
+description: "Máquina de coser mecánica Janome Pink 12 de brazo libre con 15 puntadas y ojal en 4 pasos: robusta, sencilla y con portaconos y prensatelas metálicos."
 destacados:
-- texto: 15 funciones diferentes
+- texto: 15 puntadas
 - texto: Ojal en 4 pasos
-- texto: Portaconos metálico
-- texto: Prensatelas metálico
+- texto: Portaconos y prensatelas metálicos
+- texto: Hasta 860 puntadas por minuto
 caracteristicas:
-- nombre: Velocidad máxima
-  valor: 860 PPM
+- nombre: Tipo
+  valor: mecánica
+- nombre: Brazo libre
+  valor: Sí
+- nombre: Lanzadera
+  valor: central oscilante
 - nombre: Puntadas
-  valor: A a G
+  valor: 15 (A a G)
+- nombre: Ojal
+  valor: en 4 pasos
+- nombre: Color
+  valor: rosa
+- nombre: Funda
+  valor: de plástico
+- nombre: Portaconos
+  valor: metálico
+- nombre: Prensatelas
+  valor: metálico
+- nombre: Velocidad máxima
+  valor: 860 puntadas por minuto
 ---
-Máquina doméstica de brazo libre y lanzadera central oscilante equipada con 15 funciones diferentes. Ojal en 4 pasos, velocidad máxima 860 PPM, funda de plástico y soportes para poner los conos de hilo en metal (no plástico).
+**La Janome Pink 12 es una máquina de coser mecánica de brazo libre, robusta y sencilla, en color rosa.** Con sus 15 puntadas y el ojal en 4 pasos tendrás todo lo necesario para la costura del día a día.
+
+Su lanzadera central oscilante, el prensatelas metálico y los soportes de conos de hilo en metal, no de plástico, le dan solidez. Alcanza hasta 860 puntadas por minuto e incluye funda de plástico.
