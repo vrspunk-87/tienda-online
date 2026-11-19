@@ -9,7 +9,7 @@ compatible_con:
 - jack-jk-t5878-78b-f54
 date: '2026-11-09T12:00:00.000+01:00'
 precio: 1452.0
-estado: disponible
+estado: no_disponible
 condicion: nuevo
 description: Apilador por rodillo para piezas pequeñas, opcional para los autómatas de bolsillos de vivo Jack JK-T5878-68B y JK-T5878-78B.
 destacados:

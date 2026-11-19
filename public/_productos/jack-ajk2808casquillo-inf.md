@@ -9,7 +9,7 @@ compatible_con:
 - jack-jk-2808
 date: '2026-11-09T12:00:00.000+01:00'
 precio: 72.6
-estado: disponible
+estado: no_disponible
 condicion: nuevo
 description: Casquillo inferior de 11,5 mm para la remachadora Jack JK-2808.
 destacados:

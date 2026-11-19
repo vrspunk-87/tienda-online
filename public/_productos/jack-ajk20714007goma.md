@@ -9,7 +9,7 @@ compatible_con:
 - jack-jk-e4s-3-32r2-233
 date: '2026-11-09T12:00:00.000+01:00'
 precio: 118.58
-estado: disponible
+estado: no_disponible
 condicion: nuevo
 description: Dientes de arrastre con goma recauchutada Jack para trabajar tejidos muy finos y delicados.
 destacados:
