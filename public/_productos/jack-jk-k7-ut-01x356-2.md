@@ -2,8 +2,8 @@
 prueba: true
 title: Máquina recubridora de 3 aguas 5.6mm cilíndrica Direc Drive
 fabricante: jack
-modelo: JK-K7-UT-01X356
-referencia: FJK-K7-UT-01X356
+modelo: JK-K7-UT-35X356
+referencia: FJK-K7-UT-35X356
 categoria: overlock-y-recubridoras
 date: '2026-11-09T12:00:00.000+01:00'
 precio: 3418.25

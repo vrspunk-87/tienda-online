@@ -10,11 +10,11 @@ precio: 450.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/elna-340s-1.jpg
 - imagen: /img/productos/elna-340s-2.jpg
 - imagen: /img/productos/elna-340s-3.jpg
 - imagen: /img/productos/elna-340s-4.jpg
 - imagen: /img/productos/elna-340s-5.jpg
-- imagen: /img/productos/elna-340s-6.jpg
 description: De brazo libre, con 23 funciones, Ojal en un sólo paso y enhebrador automático.
 destacados:
 - texto: Ojal en un sólo paso y enhebrador automático.

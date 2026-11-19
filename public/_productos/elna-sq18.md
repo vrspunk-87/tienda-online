@@ -13,9 +13,9 @@ precio: 273.46
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/elna-sq18-1.jpg
 - imagen: /img/productos/elna-sq18-2.jpg
 - imagen: /img/productos/elna-sq18-3.jpg
-- imagen: /img/productos/elna-sq18-1.jpg
 description: “SQ18” Bastidor 184X184mm.
 ---
 “SQ18” Bastidor 184X184mm.

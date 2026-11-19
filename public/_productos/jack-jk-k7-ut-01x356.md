@@ -11,10 +11,10 @@ precio_cabezal: 2873.75
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-k7-ut-01x356-1.jpg
 - imagen: /img/productos/jack-jk-k7-ut-01x356-2.jpg
 - imagen: /img/productos/jack-jk-k7-ut-01x356-3.jpg
 - imagen: /img/productos/jack-jk-k7-ut-01x356-4.jpg
-- imagen: /img/productos/jack-jk-k7-ut-01x356-1.jpg
 description: Máquina recubridora de 3 aguas 5.6mm cilíndrica Direc Drive.
 destacados:
 - texto: Con A.I. (inteligencia artificial)

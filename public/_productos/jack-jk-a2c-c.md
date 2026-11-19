@@ -11,11 +11,11 @@ precio_cabezal: 514.25
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-a2c-c-1.jpg
 - imagen: /img/productos/jack-jk-a2c-c-2.jpg
 - imagen: /img/productos/jack-jk-a2c-c-3.jpg
 - imagen: /img/productos/jack-jk-a2c-c-4.jpg
 - imagen: /img/productos/jack-jk-a2c-c-5.jpg
-- imagen: /img/productos/jack-jk-a2c-c-1.jpg
 description: Máquina de pespunte de 1 aguja Solo cortahílos.
 caracteristicas:
 - nombre: Agujas

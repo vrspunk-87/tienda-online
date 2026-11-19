@@ -13,9 +13,9 @@ precio: 124.82
 estado: disponible
 condicion: nuevo
 imagenes:
-  - imagen: /img/productos/bastidor-de-bordado-fa10e-10040-janome-y-elna.webp
-  - imagen: /img/productos/bastidor-de-bordado-fa10e-10040-janome-y-elna-1-.webp
-  - imagen: /img/productos/bastidor-de-bordado-fa10e-10040-janome-y-elna-2-.webp
+  - imagen: /img/productos/elna-fa10e-1.jpg
+  - imagen: /img/productos/elna-fa10e-2.jpg
+  - imagen: /img/productos/elna-fa10e-3.jpg
 description: “FA10e” Bastidor de brazo libre 100X40mm.
 ---
 “FA10e” Bastidor de brazo libre 100X40mm.

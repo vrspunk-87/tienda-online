@@ -10,10 +10,10 @@ precio: 2300.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/elna-830lce-1.jpg
 - imagen: /img/productos/elna-830lce-2.jpg
 - imagen: /img/productos/elna-830lce-3.jpg
 - imagen: /img/productos/elna-830lce-4.jpg
-- imagen: /img/productos/elna-830lce-5.jpg
 description: Maquina de bordar de alta calidad con un área máxima de bordado de 200x360mm y con base de extensión extra grande.
 destacados:
 - texto: Área máxima de bordado de 200x360mm

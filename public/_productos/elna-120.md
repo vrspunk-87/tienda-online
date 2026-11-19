@@ -10,11 +10,11 @@ precio: 245.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/elna-120-1.jpg
 - imagen: /img/productos/elna-120-2.jpg
 - imagen: /img/productos/elna-120-3.jpg
 - imagen: /img/productos/elna-120-4.jpg
 - imagen: /img/productos/elna-120-5.jpg
-- imagen: /img/productos/elna-120-6.jpg
 description: De brazo libre, con 15 funciones...
 destacados:
 - texto: 15 puntadas incluidas, una de ojales en cuatro fases

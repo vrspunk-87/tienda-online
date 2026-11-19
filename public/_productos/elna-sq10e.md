@@ -13,7 +13,7 @@ precio: 116.65
 estado: disponible
 condicion: nuevo
 imagenes:
-  - imagen: /img/productos/250a93c1-26a6-44dc-96dc-bd9dd4374452.jpg.400x400_q87_crop.jpg
+  - imagen: /img/productos/elna-sq10e-1.jpg
 description: “SQ10e” Bastidor 100X100mm.
 ---
 “SQ10e” Bastidor 100X100mm.

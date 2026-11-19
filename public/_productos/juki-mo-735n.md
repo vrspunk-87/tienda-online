@@ -10,10 +10,10 @@ precio: 1225.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/juki-mo-735n-1.jpg
 - imagen: /img/productos/juki-mo-735n-2.jpg
 - imagen: /img/productos/juki-mo-735n-3.jpg
 - imagen: /img/productos/juki-mo-735n-4.jpg
-- imagen: /img/productos/juki-mo-735n-5.jpg
 description: Overlock & Recubridora.
 destacados:
 - texto: Sistema de enhebrado semi automático del ancora inferior.

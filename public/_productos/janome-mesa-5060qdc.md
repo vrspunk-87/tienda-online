@@ -3,7 +3,7 @@ prueba: true
 title: Mesa de extensión 5060QDC
 fabricante: janome
 modelo: Mesa 5060QDC
-referencia: J7100014
+referencia: "808401003"
 categoria: mesa-extraible
 compatible_con:
   - janome-5060qdc
@@ -12,7 +12,7 @@ precio: 58
 estado: disponible
 condicion: nuevo
 imagenes:
-  - imagen: /img/productos/15dccc94-80d0-4444-b557-eb24c8a3f858.webp
+  - imagen: /img/productos/janome-mesa-5060qdc-1.jpg
 description: Mesa de extensión para la máquina 5060QDC color blanco.
 caracteristicas:
   - nombre: Color

@@ -10,10 +10,10 @@ precio: 500.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/elna-664-1.jpg
 - imagen: /img/productos/elna-664-2.jpg
 - imagen: /img/productos/elna-664-3.jpg
 - imagen: /img/productos/elna-664-4.jpg
-- imagen: /img/productos/elna-664-1.jpg
 - imagen: /img/productos/elna-664-5.jpg
 description: Overlock de 4 hilos. Permite realizar costuras de 3 - 4 hilos.
 destacados:

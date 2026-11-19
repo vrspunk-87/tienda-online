@@ -11,10 +11,10 @@ precio_cabezal: 2147.75
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-2060-ghc-4uq-1.jpg
 - imagen: /img/productos/jack-jk-2060-ghc-4uq-2.jpg
 - imagen: /img/productos/jack-jk-2060-ghc-4uq-3.jpg
 - imagen: /img/productos/jack-jk-2060-ghc-4uq-4.jpg
-- imagen: /img/productos/jack-jk-2060-ghc-4uq-1.jpg
 description: Máquina de 1 aguja triple arrastre cortahílos Direc Drive, brazo de 335mm.
 caracteristicas:
 - nombre: Agujas

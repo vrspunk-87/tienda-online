@@ -10,11 +10,11 @@ precio: 199.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/necchi-m213a-1.jpg
 - imagen: /img/productos/necchi-m213a-2.jpg
 - imagen: /img/productos/necchi-m213a-3.jpg
 - imagen: /img/productos/necchi-m213a-4.jpg
 - imagen: /img/productos/necchi-m213a-5.jpg
-- imagen: /img/productos/necchi-m213a-1.jpg
 description: De brazo libre, con 13 funciones.
 caracteristicas:
 - valor: Longitud máxima de puntada a 4mm.

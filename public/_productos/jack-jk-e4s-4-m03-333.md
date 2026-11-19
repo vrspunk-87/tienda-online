@@ -11,9 +11,9 @@ precio_cabezal: 732.05
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-e4s-4-m03-333-1.jpg
 - imagen: /img/productos/jack-jk-e4s-4-m03-333-2.jpg
 - imagen: /img/productos/jack-jk-e4s-4-m03-333-3.jpg
-- imagen: /img/productos/jack-jk-e4s-4-m03-333-1.jpg
 description: Máquina overlock de 4 hilos Direc Drive. Equipada con palanca de ajuste de inclinación de los dientes para trabajar con tejidos finos, medios o gruesos. Velocidad máxima de 6000ppm. Con luz LED.
 caracteristicas:
 - nombre: Agujas

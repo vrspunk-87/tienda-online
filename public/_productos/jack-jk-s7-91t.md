@@ -11,8 +11,8 @@ precio_cabezal: 2178.0
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-s7-91t-2.jpg
 - imagen: /img/productos/jack-jk-s7-91t-1.jpg
+- imagen: /img/productos/jack-jk-s7-91t-2.jpg
 description: Máquina de columna de 1 aguja cortahílos Direc Drive.
 caracteristicas:
 - nombre: Agujas

@@ -11,7 +11,7 @@ precio_cabezal: 1246.3
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-a5e-b-n-2.jpg
+- imagen: /img/productos/jack-jk-a5e-b-n-1.jpg
 description: Máquina de pespunte de 1 aguja cortahílos Direc Drive, con carter de aceite cerrado. Con luz LED.
 destacados:
 - texto: Con doble A.I. (inteligencia artificial)

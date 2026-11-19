@@ -10,10 +10,10 @@ precio: 350.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/necchi-nl-11c-1.jpg
 - imagen: /img/productos/necchi-nl-11c-2.jpg
 - imagen: /img/productos/necchi-nl-11c-3.jpg
 - imagen: /img/productos/necchi-nl-11c-4.jpg
-- imagen: /img/productos/necchi-nl-11c-5.jpg
 description: Overlock de 4 hilos, con brazo libre
 destacados:
 - texto: Con brazo libre

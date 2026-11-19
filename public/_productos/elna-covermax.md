@@ -10,11 +10,11 @@ precio: 1090.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/elna-covermax-1.jpg
 - imagen: /img/productos/elna-covermax-2.jpg
 - imagen: /img/productos/elna-covermax-3.jpg
 - imagen: /img/productos/elna-covermax-4.jpg
 - imagen: /img/productos/elna-covermax-5.jpg
-- imagen: /img/productos/elna-covermax-1.jpg
 description: Recubridora de 3 agujas con brazo libre, con recubierto superior.
 destacados:
 - texto: Enhebrador automático de la aguja.

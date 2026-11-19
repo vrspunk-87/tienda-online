@@ -11,8 +11,8 @@ precio_cabezal: 6534.0
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-z7-18100-2.jpg
 - imagen: /img/productos/jack-jk-z7-18100-1.jpg
+- imagen: /img/productos/jack-jk-z7-18100-2.jpg
 description: Máquina de 1 aguja triple arrastre digital con cortahílos Direc Drive.
 destacados:
 - texto: Con A.I. (inteligencia artificial)

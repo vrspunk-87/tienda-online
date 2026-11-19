@@ -11,11 +11,11 @@ precio_cabezal: 1905.75
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-2030ghc-4q-1.jpg
 - imagen: /img/productos/jack-jk-2030ghc-4q-2.jpg
 - imagen: /img/productos/jack-jk-2030ghc-4q-3.jpg
 - imagen: /img/productos/jack-jk-2030ghc-4q-4.jpg
 - imagen: /img/productos/jack-jk-2030ghc-4q-5.jpg
-- imagen: /img/productos/jack-jk-2030ghc-4q-1.jpg
 description: Máquina de 1 aguja cortahílos de doble arrastre por pata y dientes Direc Drive, con mayor área de costura de 33,5cm.
 caracteristicas:
 - nombre: Agujas

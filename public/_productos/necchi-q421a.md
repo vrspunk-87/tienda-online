@@ -10,11 +10,11 @@ precio: 265.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/necchi-q421a-1.jpg
 - imagen: /img/productos/necchi-q421a-2.jpg
 - imagen: /img/productos/necchi-q421a-3.jpg
 - imagen: /img/productos/necchi-q421a-4.jpg
 - imagen: /img/productos/necchi-q421a-5.jpg
-- imagen: /img/productos/necchi-q421a-1.jpg
 description: De brazo libre, con 21 funciones...
 caracteristicas:
 - valor: Longitud máxima de puntada a 4,5mm.

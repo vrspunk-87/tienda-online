@@ -11,7 +11,7 @@ precio_cabezal: 2534.95
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-s7-92t-2.jpg
+- imagen: /img/productos/jack-jk-s7-92t-1.jpg
 description: Máquina de columna de 2 agujas cortahílos Direc Drive.
 caracteristicas:
 - nombre: Agujas

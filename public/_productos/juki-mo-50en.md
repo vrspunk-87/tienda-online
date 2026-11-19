@@ -10,10 +10,10 @@ precio: 530.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/juki-mo-50en-1.jpg
 - imagen: /img/productos/juki-mo-50en-2.jpg
 - imagen: /img/productos/juki-mo-50en-3.jpg
 - imagen: /img/productos/juki-mo-50en-4.jpg
-- imagen: /img/productos/juki-mo-50en-5.jpg
 description: Overlock de 4 hilos. Permite realizar costuras de 3 - 4 hilos.
 destacados:
 - texto: Sistema de enhebrado automático del ancora inferior.

@@ -11,10 +11,10 @@ precio_cabezal: 1064.8
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-8558g-1-wz-1.jpg
 - imagen: /img/productos/jack-jk-8558g-1-wz-2.jpg
 - imagen: /img/productos/jack-jk-8558g-1-wz-3.jpg
 - imagen: /img/productos/jack-jk-8558g-1-wz-4.jpg
-- imagen: /img/productos/jack-jk-8558g-1-wz-1.jpg
 description: Máquina de 1 aguja cadeneta Direc Drive con 2 hilos. Con luz LED.
 caracteristicas:
 - nombre: Agujas

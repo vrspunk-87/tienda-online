@@ -12,11 +12,11 @@ precio: 6352.5
 estado: disponible
 condicion: nuevo
 imagenes:
-  - imagen: /img/productos/moxie_xl_004-700x700.webp
-  - imagen: /img/productos/ps_lite_room.jpg
-  - imagen: /img/productos/brother_cs5055_new_3.webp
-  - imagen: /img/productos/kai_5028_watermarked_1.webp
-  - imagen: /img/productos/ps-lite-tablet-screen-closeup-straight-on-web.webp
+  - imagen: /img/productos/handi-quilter-pro-stitcher-lite-1.jpg
+  - imagen: /img/productos/handi-quilter-pro-stitcher-lite-2.jpg
+  - imagen: /img/productos/handi-quilter-pro-stitcher-lite-3.jpg
+  - imagen: /img/productos/handi-quilter-pro-stitcher-lite-4.jpg
+  - imagen: /img/productos/handi-quilter-pro-stitcher-lite-5.jpg
 description: Pro-Stitcher Lite (FHQPRO-LM), Tablet de 11” adaptada a la máquina
   con regulación de puntada.
 ---

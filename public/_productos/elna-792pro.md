@@ -10,11 +10,11 @@ precio: 4525.0
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/elna-792pro-5.jpg
-- imagen: /img/productos/elna-792pro-6.jpg
+- imagen: /img/productos/elna-792pro-1.jpg
 - imagen: /img/productos/elna-792pro-2.jpg
 - imagen: /img/productos/elna-792pro-3.jpg
 - imagen: /img/productos/elna-792pro-4.jpg
+- imagen: /img/productos/elna-792pro-5.jpg
 description: De base plana, doble arrastre integrado y regulador de puntada ASR
 destacados:
 - texto: Doble arrastre integrado con bajada automática de los dientes (ADF)

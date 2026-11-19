@@ -10,9 +10,9 @@ precio: 680.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/juki-mo-654dn-1.jpg
 - imagen: /img/productos/juki-mo-654dn-2.jpg
 - imagen: /img/productos/juki-mo-654dn-3.jpg
-- imagen: /img/productos/juki-mo-654dn-4.jpg
 description: Overlock de 4 hilos. Permite realizar costuras de 2 - 3 - 4 hilos.
 destacados:
 - texto: Sistema de enhebrado semi automático del ancora inferior.

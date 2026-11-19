@@ -11,8 +11,8 @@ precio_cabezal: 1978.35
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-t9280d-73-2pl-q-2.jpg
 - imagen: /img/productos/jack-jk-t9280d-73-2pl-q-1.jpg
+- imagen: /img/productos/jack-jk-t9280d-73-2pl-q-2.jpg
 description: Máquinas de cerrar de brazo con 3 agujas de 1/8 Direc Drive. Equipada con puler metálico estriado. Para tejidos tipo Jeans o ropa laboral. Con luz LED.
 caracteristicas:
 - nombre: Precio completa con bancada EU + tablero doble

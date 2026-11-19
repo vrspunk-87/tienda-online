@@ -10,10 +10,10 @@ precio: 565.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/juki-mo-644dn-1.jpg
 - imagen: /img/productos/juki-mo-644dn-2.jpg
 - imagen: /img/productos/juki-mo-644dn-3.jpg
 - imagen: /img/productos/juki-mo-644dn-4.jpg
-- imagen: /img/productos/juki-mo-644dn-5.jpg
 description: Overlock de 4 hilos. Permite realizar costuras de 2 - 3 - 4 hilos.
 caracteristicas:
 - valor: Ancho costura 4mm con la aguja derecha y de 6mm con la aguja izq.

@@ -10,11 +10,11 @@ precio: 725.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/elna-easycover-1.jpg
 - imagen: /img/productos/elna-easycover-2.jpg
 - imagen: /img/productos/elna-easycover-3.jpg
 - imagen: /img/productos/elna-easycover-4.jpg
 - imagen: /img/productos/elna-easycover-5.jpg
-- imagen: /img/productos/elna-easycover-6.jpg
 description: Recubridora de 3 agujas con brazo libre.
 destacados:
 - texto: Sistema de enhebrado semi automático del ancora.

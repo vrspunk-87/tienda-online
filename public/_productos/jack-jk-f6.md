@@ -11,10 +11,10 @@ precio_cabezal: 441.65
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-f6-1.jpg
 - imagen: /img/productos/jack-jk-f6-2.jpg
 - imagen: /img/productos/jack-jk-f6-3.jpg
 - imagen: /img/productos/jack-jk-f6-4.jpg
-- imagen: /img/productos/jack-jk-f6-1.jpg
 - imagen: /img/productos/jack-jk-f6-5.jpg
 description: Máquina de pespunte de 1 aguja Direc Drive con posicionador de aguja, longitud de puntada 5mm. y luz LED.
 caracteristicas:

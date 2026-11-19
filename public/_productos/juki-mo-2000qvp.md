@@ -10,7 +10,7 @@ precio: 1540.0
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/juki-mo-2000qvp-2.jpg
+- imagen: /img/productos/juki-mo-2000qvp-1.jpg
 description: Overlock de 4 hilos. Permite realizar costuras de 2 - 3 - 4 hilos.
 destacados:
 - texto: Sistema de enhebrado automático de las ancoras y de las agujas.

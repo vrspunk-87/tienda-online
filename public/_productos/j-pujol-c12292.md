@@ -10,7 +10,7 @@ precio: 168.19
 estado: disponible
 condicion: nuevo
 imagenes:
-  - imagen: /img/productos/captura-12-300x242-1.webp
+  - imagen: /img/productos/j-pujol-c12292-1.jpg
 description: Compuesto con 15 bobinas de bordar colores variados + carta de
   colores + rollo de entretela de 50g + rollo de entretela de 55g + 1 rollo de
   entretela soluble + spray adhesivo + spray lubricante + spray lubricante

@@ -10,11 +10,11 @@ precio: 185.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/necchi-m108a-1.jpg
 - imagen: /img/productos/necchi-m108a-2.jpg
 - imagen: /img/productos/necchi-m108a-3.jpg
 - imagen: /img/productos/necchi-m108a-4.jpg
 - imagen: /img/productos/necchi-m108a-5.jpg
-- imagen: /img/productos/necchi-m108a-1.jpg
 description: De brazo libre, con 8 funciones.
 caracteristicas:
 - valor: Longitud de puntada a 4mm (fija).

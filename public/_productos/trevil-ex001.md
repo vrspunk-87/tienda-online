@@ -11,6 +11,8 @@ date: '2026-11-09T10:00:00.000+01:00'
 precio: 160.93
 estado: disponible
 condicion: nuevo
+imagenes:
+- imagen: /img/productos/trevil-ex001-1.jpg
 description: Carro con ruedas para caldera Faber 1230.
 ---
 Carro con ruedas para caldera Faber 1230.

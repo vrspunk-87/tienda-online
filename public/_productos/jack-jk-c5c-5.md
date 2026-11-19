@@ -3,7 +3,7 @@ prueba: true
 title: Máquina overlock de 5 hilos cortahílos Direc Drive
 fabricante: jack
 modelo: JK-C5C-5
-referencia: FJK-C4-5-03-333 / FJK-C4-5-03-233
+referencia: FJK-C5C-5-03-333 / FJK-C5C-5-03-233
 categoria: overlock-y-recubridoras
 date: '2026-11-09T12:00:00.000+01:00'
 precio: 1391.5

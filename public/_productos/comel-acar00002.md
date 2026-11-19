@@ -12,7 +12,7 @@ precio: 102.85
 estado: disponible
 condicion: nuevo
 imagenes:
-  - imagen: /img/productos/carrello-x-pratika-con-rotelle.png
+  - imagen: /img/productos/comel-acar00002-1.jpg
 description: Carro con ruedas para caldera Pratika.
 ---
 Carro con ruedas para caldera Pratika.

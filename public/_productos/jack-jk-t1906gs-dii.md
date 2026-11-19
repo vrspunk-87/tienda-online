@@ -11,9 +11,9 @@ precio_cabezal: 5082.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-t1906gs-dii-1.jpg
 - imagen: /img/productos/jack-jk-t1906gs-dii-2.jpg
 - imagen: /img/productos/jack-jk-t1906gs-dii-3.jpg
-- imagen: /img/productos/jack-jk-t1906gs-dii-4.jpg
 description: Máquina tipo presillas electrónica Direc Drive. Con área útil de costura de 60X50mm. Incorpora panel táctil para realizar cualquier tipo de programación y prensatelas. Velocidad máxima de 3000ppm.
 ---
 Máquina tipo presillas electrónica Direc Drive. Con área útil de costura de 60X50mm. Incorpora panel táctil para realizar cualquier tipo de programación y prensatelas. Velocidad máxima de 3000ppm.

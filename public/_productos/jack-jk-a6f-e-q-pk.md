@@ -11,8 +11,8 @@ precio_cabezal: 2044.9
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-a6f-e-q-pk-2.jpg
 - imagen: /img/productos/jack-jk-a6f-e-q-pk-1.jpg
+- imagen: /img/productos/jack-jk-a6f-e-q-pk-2.jpg
 description: Máquina de pespunte de 1 aguja doble arrastre por aguja y dientes con cortahílos Direc Drive, longitud de puntada de 4,5mm y carter de aceite cerrado.
 destacados:
 - texto: Con puler

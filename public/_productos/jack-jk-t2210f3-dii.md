@@ -10,8 +10,8 @@ precio: 10043.0
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-t2210f3-dii-2.jpg
 - imagen: /img/productos/jack-jk-t2210f3-dii-1.jpg
+- imagen: /img/productos/jack-jk-t2210f3-dii-2.jpg
 description: Máquina de costura programable Direc Drive.
 ---
 Máquina de costura programable Direc Drive. Área útil de costura de 220x100mm. Con volteador desplazable lateralmente de un área máxima de 180x80mm. Con panel táctil para realizar cualquier tipo de programación o diseño, motores paso a paso para el movimiento X-Y, detector de rotura hilo de la aguja, entrada de USB para cargar diseños, garfio de gran capacidad. Velocidad máxima 2700ppm. Generos Finos - Medios - Gruesos.

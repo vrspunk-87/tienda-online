@@ -12,8 +12,8 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/necchi-c400-1.jpg
 - imagen: /img/productos/necchi-c400-2.jpg
+- imagen: /img/productos/necchi-c400-3.jpg
 - imagen: /img/productos/necchi-c400-4.jpg
-- imagen: /img/productos/necchi-c400-5.jpg
 description: De brazo libre, con gran espacio de trabajo 230x120mm.
 destacados:
 - texto: Doble arrastre integrado.

@@ -10,11 +10,11 @@ precio: 285.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/necchi-q132a-1.jpg
 - imagen: /img/productos/necchi-q132a-2.jpg
 - imagen: /img/productos/necchi-q132a-3.jpg
 - imagen: /img/productos/necchi-q132a-4.jpg
 - imagen: /img/productos/necchi-q132a-5.jpg
-- imagen: /img/productos/necchi-q132a-6.jpg
 description: De brazo libre, con 32 funciones. Ojal en un sólo paso y enhebrador automático.
 destacados:
 - texto: Ojal en un sólo paso y enhebrador automático.

@@ -11,11 +11,11 @@ precio_cabezal: 665.5
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-a4c-c-1.jpg
 - imagen: /img/productos/jack-jk-a4c-c-2.jpg
 - imagen: /img/productos/jack-jk-a4c-c-3.jpg
 - imagen: /img/productos/jack-jk-a4c-c-4.jpg
 - imagen: /img/productos/jack-jk-a4c-c-5.jpg
-- imagen: /img/productos/jack-jk-a4c-c-1.jpg
 description: Máquina de pespunte de 1 aguja cortahílos Direc Drive, con carter de aceite y luz LED.
 destacados:
 - texto: Con A.I. (inteligencia artificial)

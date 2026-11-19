@@ -1,0 +1,67 @@
+---
+prueba: true
+title: Bernette Chicago 7
+fabricante: bernette
+modelo: Chicago 7
+categoria: bordadoras-domesticas
+date: '2026-11-19T10:00:00.000+01:00'
+precio: 1060
+estado: disponible
+condicion: nuevo
+imagenes:
+- imagen: /img/productos/bernette-chicago-7-1.jpg
+  alt: Bernette Chicago 7
+- imagen: /img/productos/bernette-chicago-7-2.jpg
+- imagen: /img/productos/bernette-chicago-7-3.jpg
+- imagen: /img/productos/bernette-chicago-7-4.jpg
+- imagen: /img/productos/bernette-chicago-7-5.jpg
+description: Coser y bordar
+destacados:
+- texto: 100 fantásticos diseños de bordado
+- texto: Enhebrado semiautomático
+- texto: Teclas de selección directa
+- texto: Ancho de puntada de 7 mm
+caracteristicas:
+- nombre: Puntadas de utilidad
+  valor: '14'
+- nombre: Número total de puntadas
+  valor: '200'
+- nombre: Puntadas de acolchado
+  valor: '20'
+- nombre: Diseños de bordado
+  valor: '100'
+- nombre: Velocidad de la costura (puntadas/minuto)
+  valor: '800'
+- nombre: Visor de puntada
+  valor: LED
+- nombre: Ojales
+  valor: '1'
+- nombre: Sistema de lanzadera
+  valor: Drop-in
+- nombre: Stop-aguja arriba/abajo
+  valor: Sí
+- nombre: Sistema de bordado incluido
+  valor: Sí
+- nombre: Superficie de bordado
+  valor: 110 x 170 mm
+- nombre: Conexión USB
+  valor: Sí
+- nombre: Edición (voltear, rotar, escalar)
+  valor: Sí
+---
+La bernette Chicago 7 es la primera bernette que puede coser y bordar. Hace realidad cualquier deseo creativo y convence por su sólida estructura y su diseño atractivo y juvenil.
+
+Módulo de bordado
+Si se retira la mesa de extensión, se puede acoplar de forma fácil y rápida el módulo de bordar con una superficie máxima de bordado de 110 x 170 mm.
+
+100 fantásticos diseños de bordado
+Aproveche los 100 diseños de bordado exclusivos no modificables y disfrute de la calidad de bordado fina y precisa de la bernette Chicago 7.
+
+Sensor del hilo superior y control del hilo inferior
+El sensor del hilo superior detiene automáticamente el proceso de bordado cuando se rompe el hilo superior o cuando la bobina está vacía. También se controla la bobina del hilo inferior antes de cada proceso de bordado. Así se garantiza un bordado seguro.
+
+Enhebrador semiautomático
+Enhebrado rápido y fácil. Introduzca el hilo en el ojo de la aguja como por arte de magia.
+
+Ancho de puntada de 7 mm
+Especialmente práctico para la costura decorativa. Crear hermosas orlas y aplicaciones con poco esfuerzo.

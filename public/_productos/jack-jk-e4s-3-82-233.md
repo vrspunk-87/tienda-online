@@ -11,8 +11,8 @@ precio_cabezal: 937.75
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-e4s-3-82-233-1.jpg
 - imagen: /img/productos/jack-jk-e4s-3-82-233-2.jpg
-- imagen: /img/productos/jack-jk-e4s-3-82-233-3.jpg
 description: Máquina overlock de 3 hilos con atacador manual de cadeneta.
 caracteristicas:
 - nombre: Agujas

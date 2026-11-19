@@ -11,8 +11,8 @@ precio_cabezal: 1494.35
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-58420b-a-2.jpg
 - imagen: /img/productos/jack-jk-58420b-a-1.jpg
+- imagen: /img/productos/jack-jk-58420b-a-2.jpg
 description: Máquina de 2 agujas fijas doble arrastre Direc Drive. Carter cerrado y con luz LED.
 ---
 Máquina de 2 agujas fijas doble arrastre Direc Drive. Carter cerrado y con luz LED.

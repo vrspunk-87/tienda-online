@@ -11,9 +11,9 @@ precio_cabezal: 1270.5
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/jack-jk-c7-4-m03-333-1.jpg
 - imagen: /img/productos/jack-jk-c7-4-m03-333-2.jpg
 - imagen: /img/productos/jack-jk-c7-4-m03-333-3.jpg
-- imagen: /img/productos/jack-jk-c7-4-m03-333-1.jpg
 description: Máquina overlock de 4 hilos con cortahílos y motor Direc Drive.
 destacados:
 - texto: Con A.I. (inteligencia artificial)

@@ -11,8 +11,8 @@ precio_cabezal: 2238.5
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-8009vcdi-12064p-2.jpg
 - imagen: /img/productos/jack-jk-8009vcdi-12064p-1.jpg
+- imagen: /img/productos/jack-jk-8009vcdi-12064p-2.jpg
 description: Máquina de 12 agujas de cadeneta cilíndrica Direc Drive con puler.
 caracteristicas:
 - nombre: Versión JK-8009VCDI-12064P

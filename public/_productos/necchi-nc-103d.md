@@ -10,11 +10,11 @@ precio: 420.0
 estado: disponible
 condicion: nuevo
 imagenes:
+- imagen: /img/productos/necchi-nc-103d-1.jpg
 - imagen: /img/productos/necchi-nc-103d-2.jpg
 - imagen: /img/productos/necchi-nc-103d-3.jpg
 - imagen: /img/productos/necchi-nc-103d-4.jpg
 - imagen: /img/productos/necchi-nc-103d-5.jpg
-- imagen: /img/productos/necchi-nc-103d-6.jpg
 description: De brazo libre, con 316 funciones. 10 ojales en un sólo paso y enhebrador automático.
 destacados:
 - texto: 10 ojales en un sólo paso y enhebrador automático.

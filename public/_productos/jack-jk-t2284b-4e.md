@@ -11,8 +11,8 @@ precio_cabezal: 3630.0
 estado: disponible
 condicion: nuevo
 imagenes:
-- imagen: /img/productos/jack-jk-t2284b-4e-2.jpg
 - imagen: /img/productos/jack-jk-t2284b-4e-1.jpg
+- imagen: /img/productos/jack-jk-t2284b-4e-2.jpg
 description: Máquina de zig-zag de 1 y 3 puntadas cortahílos Direc Drive, ancho costura 8mm, longitud de puntada 2.5mm.
 caracteristicas:
 - nombre: Longitud de puntada (mm)
