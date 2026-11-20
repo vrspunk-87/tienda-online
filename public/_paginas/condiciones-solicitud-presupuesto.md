@@ -18,7 +18,7 @@ En esta web puedes consultar nuestros productos y **solicitar presupuesto** de l
 1. En la ficha de cada producto que te interese, pulsa **«Añadir a la solicitud»**. En «Mi solicitud de presupuesto» puedes indicar cuántas unidades quieres de cada uno.
 2. Rellena el formulario con tu **nombre, correo electrónico y teléfono**, indica cómo prefieres que te contestemos (llamada, WhatsApp o correo) y, si quieres, añade tus observaciones. Después, envíalo.
 3. Recibirás un **correo de acuse de recibo** con el número de tu solicitud y los productos elegidos.
-4. La tienda se pondrá en contacto contigo, por el medio que hayas elegido, en un plazo de [2 días laborables] para darte el presupuesto y resolver tus dudas.
+4. La tienda se pondrá en contacto contigo, por el medio que hayas elegido, en breve para darte el presupuesto y resolver tus dudas.
 5. Si los dos estamos de acuerdo, **se acuerda la venta fuera de la web** (en la tienda, por teléfono o por correo).
 
 Para solicitar presupuesto debes ser **mayor de edad**.
@@ -39,7 +39,7 @@ Antes de cerrar la venta, la tienda te facilitará, en papel o en otro soporte d
 
 ## 7. Derecho de desistimiento
 
-- **Si la venta se acuerda a distancia** (por teléfono o por correo, sin que estemos los dos presentes a la vez), puedes **desistir sin dar explicaciones en un plazo de 14 días naturales** desde el día en que recibes el producto. Para hacerlo, comunícanoslo de forma clara (por ejemplo, por correo a {correo}); puedes usar el modelo de formulario que hay al final de esta página. Te devolveremos lo pagado, incluidos los gastos de entrega iniciales, en un plazo máximo de 14 días naturales desde que nos comuniques tu decisión, por el mismo medio de pago que usaste salvo que acordemos otro.
+- **Si la venta se acuerda a distancia** (por teléfono, por WhatsApp o por correo, sin que estemos los dos presentes a la vez), puedes **desistir sin dar explicaciones en un plazo de 14 días naturales** desde el día en que recibes el producto. Para hacerlo, comunícanoslo de forma clara (por ejemplo, por correo a {correo}); puedes usar el modelo de formulario que hay al final de esta página. Te devolveremos lo pagado, incluidos los gastos de entrega iniciales, en un plazo máximo de 14 días naturales desde que nos comuniques tu decisión, por el mismo medio de pago que usaste salvo que acordemos otro.
 - **Devolución del producto:** debes devolverlo en un plazo de 14 días naturales desde que nos comuniques que desistes. **Los gastos de devolución corren de tu cuenta.** Podemos **retener el reembolso hasta recibir el producto** (o hasta que nos presentes una prueba de su envío) y **revisarlo al recibirlo**. Si el producto ha perdido valor por una manipulación distinta de la necesaria para comprobar su naturaleza, sus características o su funcionamiento (lo que podrías hacer en una tienda), descontaremos del reembolso esa pérdida de valor.
 - **Si la venta se acuerda en la tienda**, en persona, no hay derecho legal de desistimiento. [Si la tienda ofrece igualmente devoluciones, indicar aquí sus condiciones.]
 - [Revisar si algún producto está excluido, por ejemplo si se hace o se modifica a medida.]
@@ -51,11 +51,15 @@ Los productos tienen la garantía legal prevista en el texto refundido de la Ley
 - **Productos nuevos:** 3 años desde la entrega.
 - **Productos de segunda mano:** se indica en su ficha («Segunda mano») junto con su estado y el plazo de garantía, que se confirma por escrito al acordar la venta y nunca es inferior a 1 año. [Revisar la redacción con quien revise: el plazo reducido debe pactarse con el cliente.]
 
-## 9. Dudas y reclamaciones
+## 9. Si compras para tu empresa o tu negocio
+
+El derecho de desistimiento (apartado 7) y la garantía legal (apartado 8) son derechos de los **consumidores**: las personas que compran para su uso personal o familiar. Si compras como **empresa o profesional** para tu actividad (por ejemplo, un taller de confección o de tapicería), no se aplican; la garantía del producto y las demás condiciones de la venta se acuerdan por escrito al cerrarla. [Indicar, si se quiere, la garantía que ofrece la tienda a los profesionales.]
+
+## 10. Dudas y reclamaciones
 
 Puedes escribirnos a {correo}, llamarnos al {telefono} o visitarnos en {direccion}. En la tienda tienes a tu disposición **hojas de reclamaciones**. [Confirmar que la tienda dispone de ellas. Si está adherida al Sistema Arbitral de Consumo, indicarlo aquí.]
 
-## 10. Legislación aplicable
+## 11. Legislación aplicable
 
 Estas condiciones se rigen por la legislación española. Si eres consumidor, se aplican además las normas de protección de los consumidores de tu lugar de residencia.
 

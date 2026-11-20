@@ -16,7 +16,7 @@ El responsable es el titular de la tienda, que ejerce la actividad como empresar
 
 ## Qué datos tratamos y para qué
 
-**Solicitud de presupuesto.** Cuando solicitas presupuesto tratamos tu **nombre**, tu **correo electrónico**, tu **teléfono**, **cómo prefieres que te contestemos** (llamada, WhatsApp o correo), las **observaciones** y las **notas de cada producto** que escribas (si lo haces) y los **productos** que has elegido, con su precio orientativo. Junto a la solicitud guardamos la fecha, el número de solicitud y la versión del texto que aceptaste. **No guardamos tu dirección IP.**
+**Solicitud de presupuesto.** Cuando solicitas presupuesto tratamos tu **nombre**, tu **correo electrónico**, tu **teléfono**, **cómo prefieres que te contestemos** (llamada, WhatsApp o correo), las **observaciones** y las **notas de cada producto** que escribas (si lo haces) y los **productos** que has elegido, con su precio orientativo. Junto a la solicitud guardamos la fecha, el número de solicitud y la versión del texto que aceptaste. **No guardamos tu dirección IP**: el servidor la usa solo en el momento del envío, sin guardarla, para limitar los envíos seguidos desde una misma conexión y evitar abusos.
 
 Los usamos para:
 

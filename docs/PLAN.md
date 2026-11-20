@@ -4,6 +4,69 @@ Plan de trabajo acordado a partir de las respuestas de Víctor (5 de noviembre d
 termina con algo que se puede probar en local y con su documentación en `README.md` o en `docs/`.
 Las fases se hacen en orden; dentro de cada una, los pasos también.
 
+## Salida a producción y plan para después (20-11-2026)
+
+**Ya resuelto (20-11-2026):** permiso para las fotos y textos de tiendas (Víctor); 514 productos publicados, todos con foto
+y precio; NIF, «Cómo llegar» y Sobre nosotros rellenos; `main` al día con GitHub. Último build de producción en
+Cloudflare: **6 min 40 s** (límite: 20 min).
+
+**Antes de salir:** revisión legal de los textos (exportarlos a Word y pasarlos a la asesoría) y rellenar sus huecos.
+
+**El día de la salida** (en este orden):
+1. Textos legales revisados: rellenar los [corchetes], poner la fecha de «Última actualización» y quitar los avisos
+   «Borrador pendiente de revisión legal».
+2. Ajustes del sitio → Avanzado → activar «Permitir que Google indexe la web» (`indexable: true`).
+3. Redirigir la dirección `maquinas-de-coser-zafra.pages.dev` de producción a `https://www.maquinasdecoserzafra.es`.
+4. Solicitud real de prueba de principio a fin en producción (acuse, aviso a la tienda, fila en la hoja); después,
+   borrar la fila y la propiedad `contador-2026` del script.
+
+**Después de salir — plan único**
+
+*Semana 1: comprobar y limpiar*
+1. Google Search Console: dar de alta `https://www.maquinasdecoserzafra.es` y enviar el sitemap.
+2. Comprobar en el navegador si aparece la cookie `__cf_bm`; si aparece, describirla en la política de cookies.
+3. App OAuth de GitHub: quitar la URL de vuelta de `pages.dev` (comprobar antes el login del panel desde el dominio).
+4. Borrar las 3 entradas del blog de prueba (los 4 fabricantes de prueba sin productos, Brother, Prym, Sigma y
+   SIP Italy, se borraron el 20-11-2026).
+5. Pruebas pendientes en producción y dev-victor: login de GitHub, flujo editorial, móvil de verdad y lo del panel
+   del 19-11 (informe de importación, acciones en bloque, enlaces de Ajustes).
+6. Correo con el dominio (opcional): remitente y dirección de los avisos en el script de Google; SPF, DKIM y DMARC si
+   se usa el correo de Strato.
+
+*Catálogo: proveedores (Jack y J. Pujol)*
+7. Datos contradictorios de Jack: JK-76-2, JK-2030GHC-4Q, A6F-E-Q, A4C-C, A4C-CHL-7, Z7-18100, JK-T2284B-4E,
+   versiones de JK-C5C-5 y JK-C7-6, galgas del autómata (68B / 78B).
+8. Referencias deducidas (JK-C5C-5, JK-E4S-5-516-4, JK-K7-UT-35X356) y piezas con referencia parecida
+   (140315005, 140315006, 140316003/004); FEL970 (Moxie ST o Elna 970 eXpresive).
+9. Los 15 productos Jack sin foto (galgas, casquillos, apilador, bases, prensatelas, autómata JK-T5878-68B) y la Elna
+   eXpressive 850 se **borraron el 20-11-2026** (estaban «No disponible»). Si Jack manda fotos, volver a darlos de alta
+   desde `input/TARIFA_JACK_11_25_importacion.xlsx` (siguen en el historial de Git).
+10. Precios con fecha antigua: Janome (2022), PFAFF (04-2026), Bernina (sin fecha); vigencia de los catálogos
+    Bernina y bernette.
+11. Sin web oficial con datos: Topaz 25, Sewmaq SW-100B/200/400, Donna.
+
+*Catálogo: ampliar y pulir*
+12. bernette: cargada en la web (44 productos); revisar sus avisos («Precio 01-2025», textos traducidos, descatalogados).
+13. Fotos para revisar: Elna 1000 («Sew Fun» y «Sew Green»), carro Comel ACAR00002, Jack JK-C7-02X250, casquillo
+    JK-2808, foto compartida PFAFF Ambition 610 / Passport 2.0.
+14. Fichas técnicas de Singer, PFAFF y Husqvarna Viking (la web de SVP mezcla datos y traduce mal algunos términos).
+15. La tienda revisa las descripciones y textos de los 60 tipos, categorías y subcategorías.
+16. Herramienta de fabricantes: decidir si se mejora (páginas antiguas, webs oficiales internacionales o API de imágenes).
+
+*Desarrollo*
+17. Los 15 matices (⚠️) de `docs/pruebas/RESULTADOS-2026-11-18.md`.
+18. Caché de imágenes entre despliegues (GitHub Actions + `wrangler pages deploy`): hoy no hace falta (6 min 40 s);
+    hacerla si el build pasa de unos 12 minutos o al cargar bernette, y vigilarlo en cada carga grande.
+19. Compresión automática de las fotos al publicar (acción de GitHub con `scripts/comprimir-imagenes.js`).
+20. Textos alternativos de las fotos (fase 6, punto 4).
+21. Volver a generar `public/img/compartir.jpg` si cambia el nombre o el logo.
+
+*Documentación y entrega*
+22. Documentación completa de la web y del panel, y manuales de usuario (quien compra y quien edita); enlazarlos
+    desde las burbujas ⓘ de Ajustes.
+23. Guía de gestión de solicitudes para la tienda: estados, borrado a los [6 meses] de las que no acaban en venta
+    (también en el correo) y registro de actividades de tratamiento (lo indica la asesoría).
+
 ## Estado y pendientes (18-11-2026) — para retomar en otra sesión
 
 **Hecho:** fases 0, 1 (1a local y 1b Cloudflare Pages), 2, 4, 5 (envío real; producción configurada con
