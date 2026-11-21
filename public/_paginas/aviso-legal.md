@@ -28,10 +28,6 @@ Los precios que se muestran son **orientativos e incluyen el IVA**. No constituy
 
 El acceso a esta web es gratuito e implica la aceptación de estas condiciones. Las personas usuarias se comprometen a hacer un uso adecuado de los contenidos y a no emplearlos para actividades ilícitas o contrarias a la buena fe, ni a enviar solicitudes con datos de otras personas o con datos falsos.
 
-## Propiedad intelectual e industrial
-
-Los textos, fotografías, logotipos y diseño de esta web pertenecen a su titular o se usan con autorización. Las marcas y logotipos de los fabricantes pertenecen a sus respectivos titulares y se muestran solo para identificar los productos. No se permite reproducir los contenidos con fines comerciales sin autorización.
-
 ## Enlaces a otros sitios
 
 Esta web puede contener enlaces a sitios de terceros (por ejemplo, las webs de los fabricantes, mapas o redes sociales). El titular no se responsabiliza de sus contenidos ni de sus políticas de privacidad.

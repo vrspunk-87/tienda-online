@@ -70,7 +70,7 @@ modifica `web-plataforma` desde este proyecto.** Lo que se reaprovecha:
 
 **Identidad (10-11-2026): logo con letra Courgette roja `#c1121f` y aguja con hilo (`public/img/logo.svg`, clase `.marca-texto` en layout.js), insignias gris claro (`--insignia-fondo`), `.titulo-marca` en los h1 de listados; ver docs/PLAN.md fase 6.**
 
-**Datos legales (10-11-2026):** los textos legales (_paginas) y los de la solicitud usan marcadores {titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono} que el build rellena con contacto.yml (`rellenarDatos`); si falta un dato sale «[NIF]»… y un aviso agrupado.
+**Datos legales (10-11-2026):** los textos legales (_paginas) y los de la solicitud usan marcadores {titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono} que el build rellena con contacto.yml (`rellenarDatos`); si falta un dato sale «[NIF]»… y un aviso agrupado. **{conservacion}** (21-11-2026): plazo de conservación de las solicitudes sin venta, de solicitud.yml `conservacion_meses` (1-60, por defecto 6; «6 meses» / «1 mes»); el marcador está también en vista-previa.js y word.js.
 
 **Panel (17-11-2026):** vistas previas con plantillas propias en public/admin/vista-previa.js para blog, páginas (marcadores rellenos), productos, contacto, sobre_nosotros y la solicitud (fichero «ajustes»); datos del último despliegue en dist/admin/datos-panel.json (build.js). Productos: agrupación «Clasificación» por defecto, con la ruta del catálogo y el orden del menú (public/admin/campos.js; Decap muestra «Group by» sin traducir).
 

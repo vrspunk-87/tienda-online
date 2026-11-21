@@ -192,9 +192,18 @@ const CONTACTO = {
 CONTACTO.direccionCompleta = [CONTACTO.direccion, [CONTACTO.cp, CONTACTO.localidad].filter(Boolean).join(' '), CONTACTO.provincia && CONTACTO.provincia !== CONTACTO.localidad ? `(${CONTACTO.provincia})` : ''].filter(Boolean).join(', ').replace(', (', ' (');
 // Datos de la tienda en los textos legales y en los de la solicitud: se escriben con marcadores
 // ({titular}, {nif}, {nombre_comercial}, {direccion}, {correo}, {telefono}) y se rellenan con los de
-// «Contacto y horario». Así se cambian en un solo sitio. Si falta un dato, queda
+// «Contacto y horario». Así se cambian en un solo sitio. {conservacion} es el plazo de conservación de las
+// solicitudes sin venta («6 meses»), de «Solicitud de presupuesto» (`conservacion_meses`, de 1 a 60; vacío, 6). Si falta un dato, queda
 // un hueco visible ([NIF]…) y el build avisa de dónde.
 const sinCorchetes = v => (/\[[^\]]*\]/.test(v) ? '' : v);
+const MESES_CONSERVACION = (() => {
+  const v = DATOS_SOLICITUD.conservacion_meses;
+  if (v === undefined || v === null || v === '') return 6;
+  const n = Number(v);
+  if (Number.isInteger(n) && n >= 1 && n <= 60) return n;
+  console.warn(`Aviso: «Solicitud de presupuesto» → «Conservación de las solicitudes sin venta» debe ser un número de meses entre 1 y 60 (pone «${v}»); se usan 6.`);
+  return 6;
+})();
 const DATOS_LEGALES = {
   titular: sinCorchetes(String(DATOS_CONTACTO.titular || '').trim()),
   nif: sinCorchetes(String(DATOS_CONTACTO.nif || '').trim()),
@@ -202,11 +211,12 @@ const DATOS_LEGALES = {
   direccion: sinCorchetes(CONTACTO.direccion) ? CONTACTO.direccionCompleta : '',
   correo: CONTACTO.correo,
   telefono: CONTACTO.telefono,
+  conservacion: `${MESES_CONSERVACION} ${MESES_CONSERVACION === 1 ? 'mes' : 'meses'}`,
 };
-const HUECOS_LEGALES = { titular: 'Titular (nombre o razón social)', nif: 'NIF', nombre_comercial: 'Nombre comercial', direccion: 'Dirección', correo: 'Correo', telefono: 'Teléfono' };
+const HUECOS_LEGALES = { titular: 'Titular (nombre o razón social)', nif: 'NIF', nombre_comercial: 'Nombre comercial', direccion: 'Dirección', correo: 'Correo', telefono: 'Teléfono', conservacion: 'Plazo de conservación' };
 const datosSinRellenar = new Map(); // dato → dónde se usa
 function rellenarDatos(texto, donde) {
-  return String(texto ?? '').replace(/\{(titular|nif|nombre_comercial|direccion|correo|telefono)\}/g, (m, k) => {
+  return String(texto ?? '').replace(/\{(titular|nif|nombre_comercial|direccion|correo|telefono|conservacion)\}/g, (m, k) => {
     if (DATOS_LEGALES[k]) return DATOS_LEGALES[k];
     if (!datosSinRellenar.has(k)) datosSinRellenar.set(k, new Set());
     datosSinRellenar.get(k).add(donde);

@@ -19,7 +19,7 @@ La casilla del formulario (ALTCHA) funciona en tu propio navegador, sin cookies 
 
 ## Alojamiento
 
-La web está alojada en Cloudflare, que no instala cookies con la configuración actual. [Revisar al conectar el dominio propio: si se activa la protección frente a robots de Cloudflare, puede instalar una cookie técnica (__cf_bm); en ese caso, describirla aquí.]
+La web está alojada en Cloudflare, que no instala cookies con la configuración actual.
 
 ## Mapa de Google en «Contacto y horario»
 

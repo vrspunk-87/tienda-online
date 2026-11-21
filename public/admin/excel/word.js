@@ -115,5 +115,5 @@ export async function crearDocx({ JSZip, marked, titulo, descripcion, cuerpo, we
 
 // Marcadores de los textos legales ({titular}, {nif}…) con los datos de la tienda, como en la web
 export function rellenarDatos(texto, legales = {}, huecos = {}) {
-  return String(texto ?? '').replace(/\{(titular|nif|nombre_comercial|direccion|correo|telefono)\}/g, (m, k) => legales[k] || `[${huecos[k] || k}]`);
+  return String(texto ?? '').replace(/\{(titular|nif|nombre_comercial|direccion|correo|telefono|conservacion)\}/g, (m, k) => legales[k] || `[${huecos[k] || k}]`);
 }

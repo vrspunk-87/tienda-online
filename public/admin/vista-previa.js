@@ -59,8 +59,8 @@
   const icono = (clase, extra) => h('i', { className: `bi ${clase}${extra ? ' ' + extra : ''}`, 'aria-hidden': 'true' });
   const nota = texto => h('p', { className: 'vp-nota' }, h('b', null, 'Vista previa aproximada. '), texto || 'La página real se genera al publicar.');
 
-  // Marcadores de los textos legales ({titular}, {correo}…), como hace el build
-  const MARCADORES = /\{(titular|nif|nombre_comercial|direccion|correo|telefono)\}/g;
+  // Marcadores de los textos legales ({titular}, {correo}, {conservacion}…), como hace el build
+  const MARCADORES = /\{(titular|nif|nombre_comercial|direccion|correo|telefono|conservacion)\}/g;
   const rellenar = texto => String(texto ?? '').replace(MARCADORES, (m, k) =>
     (DATOS.legales && DATOS.legales[k]) || `[${(DATOS.huecos && DATOS.huecos[k]) || k}]`);
   // En el texto ya convertido de Markdown (widgetFor) se rellenan recorriendo sus nodos de texto

@@ -223,6 +223,9 @@ con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/
   «No soy un robot» (ALTCHA), recalcula precios y ofertas con el catálogo publicado y la pasa al
   script de Google de la hoja (número `S-AAAA-NNNN`, aviso a la tienda y acuse al cliente).
   Configuración: [docs/solicitudes/CONFIGURAR.md](docs/solicitudes/CONFIGURAR.md). Pruebas: `npm test`.
+- **Plazo de conservación** (21-11-2026): panel → «Solicitud de presupuesto» → «Conservación de las solicitudes
+  sin venta (meses)» (`conservacion_meses`, de 1 a 60; vacío, 6). Sale en la política de privacidad con el marcador
+  `{conservacion}` («6 meses»), que el build, la vista previa del panel y «Exportar a Word» rellenan como los datos de la tienda.
 
 **Prueba realizada (solicitud):** con Playwright en escritorio y móvil: añadir dos veces el mismo
 producto (2 ud.), añadir otros dos, un identificador inexistente se quita con aviso, totales

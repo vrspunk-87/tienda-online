@@ -24,7 +24,7 @@ Los usamos para:
 - **ponernos en contacto contigo** por el medio que hayas elegido para darte el presupuesto y, si estás de acuerdo, acordar la venta;
 - si se acuerda la venta, gestionarla (entrega, facturación y garantía).
 
-No usamos tus datos para enviarte publicidad. [Si en el futuro se quiere enviar publicidad, hará falta una casilla aparte, no marcada de antemano, y añadir esa finalidad aquí.]
+No usamos tus datos para enviarte publicidad.
 
 **Correo electrónico, teléfono y WhatsApp.** Si nos escribes o nos llamas directamente, tratamos los datos que nos facilites para atender tu consulta.
 
@@ -39,15 +39,15 @@ Los datos marcados como obligatorios son necesarios para poder contestar a tu so
 
 ## Cuánto tiempo los conservamos
 
-- Si **no se acuerda la venta**: [6 meses] desde la solicitud; después se borran, también de la hoja de solicitudes y del correo de la tienda.
+- Si **no se acuerda la venta**: {conservacion} desde la solicitud; después se borran, también de la hoja de solicitudes y del correo de la tienda.
 - Si **se acuerda la venta**: durante el tiempo que exijan las obligaciones legales (con carácter general, 4 años a efectos fiscales y 6 años a efectos mercantiles) y los plazos de garantía.
 
 ## Quién puede verlos y con quién los compartimos
 
-Las solicitudes solo las consulta el titular de la tienda [y, en su caso, las personas que trabajan en ella]. No cedemos tus datos a terceros salvo obligación legal. Usamos estos proveedores, que tratan datos por cuenta nuestra:
+Las solicitudes solo las consulta el titular de la tienda y, en su caso, las personas que trabajan en ella. No cedemos tus datos a terceros salvo obligación legal. Usamos estos proveedores, que tratan datos por cuenta nuestra:
 
 - **Cloudflare, Inc.**: alojamiento de la web y recepción del formulario, que lo envía a la hoja de cálculo. Los servidores que lo procesan pueden estar en cualquier país; normalmente, el más cercano a ti.
-- **Google** (Hojas de cálculo de Google, Apps Script y Gmail): almacenamiento de las solicitudes en una hoja de cálculo de la cuenta de la tienda y envío de los correos (el acuse de recibo y el aviso de cada solicitud a la tienda). [Revisar: con una cuenta gratuita de Google no se firma un contrato de encargado del tratamiento; valorar Google Workspace.]
+- **Google** (Hojas de cálculo de Google, Apps Script y Gmail): almacenamiento de las solicitudes en una hoja de cálculo de la cuenta de la tienda y envío de los correos (el acuse de recibo y el aviso de cada solicitud a la tienda).
 - **WhatsApp** (Meta Platforms Ireland): solo si eliges que te contestemos por WhatsApp o nos escribes por esa vía.
 
 Algunos de estos proveedores pueden tratar datos fuera del Espacio Económico Europeo, con las garantías previstas en el RGPD (por ejemplo, el Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo). [Comprobar las garantías vigentes de cada proveedor.]

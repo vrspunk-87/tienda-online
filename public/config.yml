@@ -86,7 +86,7 @@ collections:
       - { label: "Descripción para Google", name: "descripcion_google", widget: "text", required: false, hint: "Solo si quieres controlar lo que sale en Google y al compartir por WhatsApp o Facebook: 1-2 frases, unos 150 caracteres. Si lo dejas vacío, se usa la descripción o el resumen, acortado automáticamente si es largo." }
       - { label: "Imagen de cabecera", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } }, required: false }
       - { label: "Descripción de la imagen (texto alternativo)", name: "imagen_alt", widget: "string", required: false, hint: "Qué se ve en la imagen." }
-      - { label: "Contenido", name: "body", widget: "markdown", required: false, hint: "En los textos legales, los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y horario»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}." }
+      - { label: "Contenido", name: "body", widget: "markdown", required: false, hint: "En los textos legales, los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y horario»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}; y {conservacion}, el plazo de conservación de las solicitudes sin venta (de «Solicitud de presupuesto»)." }
       - { label: "Ocultar en buscadores", name: "noindex", widget: "boolean", default: false, required: false, hint: "Para páginas como el aviso legal: no aparecen en Google ni en el sitemap." }
 
   # ------------------------------------------------------------------
@@ -317,7 +317,8 @@ collections:
           - { label: "Título de la página", name: "titulo", widget: "string", default: "Mi solicitud de presupuesto" }
           - { label: "Introducción", name: "introduccion", widget: "text", required: false }
           - { label: "Texto de la casilla de aceptación", name: "aceptacion", widget: "text", hint: "Casilla obligatoria. Se añaden solos los enlaces a las condiciones y a la política de privacidad, que se abren en una ventana con dos pestañas: hay que abrir las dos para poder aceptar. Pendiente de revisión legal (docs/BORRADORES-LEGALES.md)." }
-          - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y horario»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}. Pendiente de revisión legal." }
+          - { label: "Información básica de protección de datos", name: "info_privacidad", widget: "text", hint: "Sale debajo del botón, en letra pequeña. Los datos de la tienda se escriben con marcadores que se rellenan solos con los de «Contacto y horario»: {titular}, {nif}, {nombre_comercial}, {direccion}, {correo} y {telefono}; y {conservacion}, el plazo de conservación de las solicitudes sin venta (de «Solicitud de presupuesto»). Pendiente de revisión legal." }
+          - { label: "Conservación de las solicitudes sin venta (meses)", name: "conservacion_meses", widget: "number", value_type: "int", min: 1, max: 60, default: 6, required: false, hint: "Meses que se guardan las solicitudes que no acaban en venta; después se borran de la hoja y del correo de la tienda. Sale en la política de privacidad (marcador {conservacion}, p. ej. «6 meses»). Vacío: 6." }
           - { label: "Texto del botón", name: "boton", widget: "string", default: "Enviar solicitud" }
           - label: "Frases bajo el resumen"
             name: "ventajas"

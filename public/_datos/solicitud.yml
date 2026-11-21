@@ -10,6 +10,7 @@ info_privacidad: "Responsable: {titular}. Finalidad: responder a tu solicitud de
   precontractuales a petición tuya. Destinatarios: no se ceden datos salvo
   obligación legal; proveedores de alojamiento y correo (Cloudflare y Google).
   Derechos: acceso, rectificación, supresión y otros, en {correo}."
+conservacion_meses: 6
 boton: Enviar solicitud
 ventajas:
   - texto: "Sin compromiso: no pagas nada ahora"
