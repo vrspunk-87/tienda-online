@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-m5-plus-f11af13f25-x-1.jpg
-description: Máquina de costura programable Jack de 1 aguja con motor Direct Drive, área de 800 × 350 mm, garfio de gran capacidad y RFID para trabajar con plantillas a hasta 3.500 rpm, con aspiración y corte láser.
+description: "Costura programable Jack de 1 aguja, Direct Drive, área de 800 × 350 mm y RFID para plantillas a hasta 3.500 rpm, con aspiración y corte láser."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de costura programable

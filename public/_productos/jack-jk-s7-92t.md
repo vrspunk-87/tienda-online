@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-s7-92t-1.jpg
-description: Máquina industrial de columna de 2 agujas con motor Direct Drive, cortahílos, arrastre por doble ruleta y aguja controlado por motores paso a paso y hasta 2.200 puntadas por minuto.
+description: "Máquina industrial de columna de 2 agujas con Direct Drive, cortahílos, arrastre por doble ruleta y aguja con motores paso a paso y 2.200 ppm."
 caracteristicas:
 - nombre: Agujas
   valor: "2"

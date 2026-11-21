@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-a4c-chl-7-1.jpg
-description: 'Máquina industrial de pespunte Jack de 1 aguja con inteligencia artificial (Octopus Nine-Brain), cortahílos, motor Direct Drive, garfio de gran capacidad y puntada de 7 mm.'
+description: "Pespunte industrial Jack de 1 aguja con inteligencia artificial (Octopus Nine-Brain), cortahílos, Direct Drive, garfio grande y puntada de 7 mm."
 destacados:
 - texto: "Inteligencia artificial: chip Octopus Nine-Brain con arrastre AMH1"
 - texto: Se adapta automáticamente al tejido y pasa los cruces de costura

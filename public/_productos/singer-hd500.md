@@ -10,7 +10,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/singer-hd500-1.jpg
-description: "El encanto de las Singer clásicas con la potencia de hoy: 32 puntadas, hasta 1.100 puntadas por minuto y estructura metálica interna para coser rápido y con estabilidad."
+description: "El encanto de las Singer clásicas con la potencia de hoy: 32 puntadas, hasta 1.100 puntadas por minuto y estructura metálica interna."
 destacados:
 - texto: "32 puntadas: básicas, elásticas y decorativas"
 - texto: Hasta 1.100 puntadas por minuto con motor de 90 W

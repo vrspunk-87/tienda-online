@@ -16,7 +16,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-2030ghc-4q-3.jpg
 - imagen: /img/productos/jack-jk-2030ghc-4q-4.jpg
 - imagen: /img/productos/jack-jk-2030ghc-4q-5.jpg
-description: Máquina industrial de pespunte de 1 aguja con doble arrastre por pata y dientes, motor Direct Drive, cortahílos, alzaprensatelas automático y gran área de costura de 33,5 cm, para tejidos gruesos.
+description: "Pespunte industrial de 1 aguja con doble arrastre por pata y dientes, motor Direct Drive, cortahílos y área de costura de 33,5 cm, para tejidos gruesos."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de pespunte de doble arrastre (pata y dientes)

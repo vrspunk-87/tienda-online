@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-epic-3-nordic-frost-3.jpg
 - imagen: /img/productos/husqvarna-designer-epic-3-nordic-frost-4.jpg
 - imagen: /img/productos/husqvarna-designer-epic-3-nordic-frost-5.jpg
-description: Máquina de coser y bordar de gama alta con la mayor zona de bordado del sector (bastidor de hasta 450 × 450 mm), pantalla táctil de 10,1", inteligencia artificial y proyección del bordado sobre la tela.
+description: "Máquina de coser y bordar de gama alta: bastidor de hasta 450 × 450 mm, pantalla táctil de 10,1\", inteligencia artificial y proyección del bordado."
 destacados:
 - texto: Zona de bordado de hasta 450 × 450 mm, la mayor del sector
 - texto: Nueva unidad de bordado con bordado de brazo libre y bastidor reversible

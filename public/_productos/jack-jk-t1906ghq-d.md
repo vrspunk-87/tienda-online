@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t1906ghq-d-1.jpg
-description: "Máquina de presillas electrónica Jack con motor Direct Drive para géneros gruesos o voluminosos: prensatelas neumáticos, área de 60 × 50 mm, panel táctil y hasta 3.000 ppm."
+description: "Presilladora electrónica Jack con Direct Drive para géneros gruesos: prensatelas neumáticos, área de 60 × 50 mm, panel táctil y hasta 3.000 ppm."
 destacados:
 - texto: Para géneros gruesos o voluminosos
 - texto: Motor Direct Drive

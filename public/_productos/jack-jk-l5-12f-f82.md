@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-l5-12f-f82-1.jpg
-description: Mesa de planchar rectangular Jack «Hurricane» de 120 × 80 cm con brazo y chimenea, aspiración ultrapotente de 4 velocidades y motor ciclónico que ahorra un 40 % de energía.
+description: "Mesa de planchar Jack «Hurricane» de 120 × 80 cm con brazo y chimenea, aspiración de 4 velocidades y motor ciclónico que ahorra un 40 % de energía."
 destacados:
 - texto: Mesa rectangular de 120 × 80 cm
 - texto: Sistema de aspiración ultrapotente con 4 velocidades

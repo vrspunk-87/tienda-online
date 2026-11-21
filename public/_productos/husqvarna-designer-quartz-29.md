@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/husqvarna-designer-quartz-29-3.jpg
 - imagen: /img/productos/husqvarna-designer-quartz-29-4.jpg
 - imagen: /img/productos/husqvarna-designer-quartz-29-5.jpg
-description: 'Máquina de coser y bordar con pantalla táctil de 7", WiFi mySewnet, 180 diseños de bordado, 250 puntadas y enhebrador automático: fácil incluso para principiantes.'
+description: "Máquina de coser y bordar con pantalla táctil de 7\", WiFi mySewnet, 180 diseños, 250 puntadas y enhebrador automático, fácil para principiantes."
 caracteristicas:
 - nombre: Conectividad mySewnet
   valor: Sí, incluida la biblioteca mySewnet, la aplicación y la nube

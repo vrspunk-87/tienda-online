@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-76-2-1.jpg
-description: Generador de vapor Jack JK-76-2 con caldera de 2 litros, carcasa de acero inoxidable y manómetro. Incluye plancha de mano, antena, apoyaplancha de silicona y plantilla antibrillo.
+description: "Generador de vapor Jack JK-76-2: caldera de 2 litros, carcasa de acero inoxidable y manómetro, con plancha de mano, antena y apoyaplancha."
 destacados:
 - texto: Caldera de 2 litros de capacidad
 - texto: Carcasa exterior de acero inoxidable

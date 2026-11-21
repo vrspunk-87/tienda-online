@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/singer-hd6705c-3.jpg
 - imagen: /img/productos/singer-hd6705c-4.jpg
 - imagen: /img/productos/singer-hd6705c-5.jpg
-description: "Singer Heavy Duty HD6705C: bastidor totalmente metálico, motor potente y funciones electrónicas, con 200 puntadas y 7 ojales en un solo paso. Un auténtico caballo de batalla."
+description: "Singer Heavy Duty HD6705C: bastidor totalmente metálico, motor potente, 200 puntadas y 7 ojales en un paso. Un auténtico caballo de batalla."
 destacados:
 - texto: 200 puntadas (411 aplicaciones de puntada)
 - texto: 7 ojales en un solo paso

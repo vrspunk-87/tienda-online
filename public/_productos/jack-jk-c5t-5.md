@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-c5t-5-1.jpg
-description: Overlock industrial Jack de 5 hilos con doble arrastre con motor Direct Drive, cortacintas automático, alzaprensatelas electrónico y hasta 6.000 puntadas por minuto.
+description: "Overlock industrial Jack de 5 hilos con doble arrastre, Direct Drive, cortacintas automático, alzaprensatelas electrónico y hasta 6.000 ppm."
 caracteristicas:
 - nombre: Tipo
   valor: máquina overlock

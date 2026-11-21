@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/alfa-next-200-3.jpg
 - imagen: /img/productos/alfa-next-200-4.jpg
 - imagen: /img/productos/alfa-next-200-5.jpg
-description: "Máquina de coser electrónica con 404 puntadas, enhebrador automático y pantalla LCD: todo lo que necesitas para coser cualquier proyecto, del arreglo diario al acolchado libre."
+description: "Máquina de coser electrónica con 404 puntadas, enhebrador automático y pantalla LCD: del arreglo diario al acolchado libre."
 destacados:
 - texto: 404 puntadas incorporadas, agrupadas por complejidad
 - texto: Enhebrador automático de la aguja

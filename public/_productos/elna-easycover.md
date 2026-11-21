@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/elna-easycover-3.jpg
 - imagen: /img/productos/elna-easycover-4.jpg
 - imagen: /img/productos/elna-easycover-5.jpg
-description: "La recubridora más sencilla de Elna: 3 agujas, brazo libre y motor de última generación para dobladillos y cadenetas perfectos, del jersey fino al tejido grueso."
+description: "La recubridora más sencilla de Elna: 3 agujas, brazo libre y motor de última generación para dobladillos y cadenetas, del jersey fino al grueso."
 destacados:
 - texto: La recubridora más sencilla de utilizar
 - texto: Recubre con 2 agujas (3 o 6 mm) o 3 agujas (6 mm), y cose cadeneta

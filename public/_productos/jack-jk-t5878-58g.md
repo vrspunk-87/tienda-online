@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t5878-58g-1.jpg
-description: "Autómata Jack para tapetas de polo: hacer 12 costuras distintas de tapeta, panel a todo color con vídeos explicativos, sensores de hilo y marcador láser de inicio de costura."
+description: "Autómata Jack para tapetas de polo: 12 costuras de tapeta distintas, panel a color con vídeos, sensores de hilo y marcador láser de inicio."
 destacados:
 - texto: Autómata para tapetas de polo
 - texto: Hacer 12 costuras distintas de tapeta

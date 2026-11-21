@@ -14,7 +14,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-e4s-4-m03-333-1.jpg
 - imagen: /img/productos/jack-jk-e4s-4-m03-333-2.jpg
 - imagen: /img/productos/jack-jk-e4s-4-m03-333-3.jpg
-description: Overlock industrial Jack de 4 hilos con motor Direct Drive, palanca de inclinación de los dientes para tejidos finos, medios o gruesos y hasta 6.000 puntadas por minuto.
+description: "Overlock industrial Jack de 4 hilos con Direct Drive, inclinación de los dientes para tejidos finos, medios o gruesos y hasta 6.000 ppm."
 caracteristicas:
 - nombre: Tipo
   valor: máquina overlock

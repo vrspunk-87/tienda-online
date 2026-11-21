@@ -14,7 +14,7 @@ imagenes:
 - imagen: /img/productos/singer-hd6805c-3.jpg
 - imagen: /img/productos/singer-hd6805c-4.jpg
 - imagen: /img/productos/singer-hd6805c-5.jpg
-description: "Singer Heavy Duty HD6805C: bastidor totalmente metálico, motor potente y funciones electrónicas, con 300 puntadas y 9 ojales en un solo paso. Un auténtico caballo de batalla."
+description: "Singer Heavy Duty HD6805C: bastidor totalmente metálico, motor potente, 300 puntadas y 9 ojales en un paso. Un auténtico caballo de batalla."
 destacados:
 - texto: 300 puntadas (586 aplicaciones de puntada)
 - texto: 9 ojales en un solo paso

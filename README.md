@@ -154,6 +154,15 @@ en producción. Los productos y la entrada del blog de prueba se borraron el 8-1
 | Todo el catálogo: categorías y ofertas (o productos al azar) | — | `/catalogo/` |
 | Todas las ofertas vigentes, con filtros (enlace «Ver todas las ofertas» en la portada y en `/catalogo/`) | — | `/ofertas/` |
 
+**Fotos sin descripción** (21-11-2026): si una foto de producto no tiene «Descripción de la foto», el build pone
+de texto alternativo el nombre del producto con su fabricante («Máquina de coser electrónica 2160 de Alfa») y, desde
+la segunda foto, «…, foto 2 de 4». Ya no da nota. **Descripción para Google**: hasta 155 caracteres (si pasa de 160,
+el build la acorta y lo anota).
+
+**Miniaturas de Medios** (21-11-2026): Medios enseña la WebP de 480 px de cada foto. Las fotos de menos de 480 px de
+ancho solo tienen la de su propio ancho, así que el build la anota en `dist/admin/medios.json` (`_miniaturas`) y
+Medios la usa. El original no sirve de reserva: el build no lo publica si no lo usa nada.
+
 **Carga y cambios en bloque** (fase 3): engranaje en la lista de cada sección del panel (de momento,
 Fabricantes, tipos de producto, categorías, subcategorías, productos, blog y páginas; en páginas, también a Word) con «Exportar a Excel», «Importar Excel», «Solo para pruebas» en bloque y «Eliminar»; todo
 con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/CARGA-EN-BLOQUE.md).

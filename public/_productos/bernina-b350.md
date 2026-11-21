@@ -17,7 +17,7 @@ imagenes:
   alt: 'Bernina B350: prensatelas para ojales'
 - imagen: /img/productos/bernina-b350-4.jpg
   alt: 'Bernina B350: pantalla'
-description: 'BERNINA 350 Special Edition: diseño único, 191 puntadas y un equipo de serie pensado para el patchwork, con mesa móvil, alzaprensatelas de rodilla y doble arrastre.'
+description: "BERNINA 350 Special Edition: 191 puntadas y equipo de serie para patchwork, con mesa móvil, alzaprensatelas de rodilla y doble arrastre."
 destacados:
 - texto: "Diseño especial: Special Edition"
 - texto: 191 puntadas, con 2 alfabetos, 63 decorativas y 11 de acolchado

@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-c5t-5-a04-233-1.jpg
-description: Overlock industrial Jack de 5 hilos con doble arrastre para vaqueros con motor Direct Drive, cortacintas automático, alzaprensatelas electrónico y hasta 6.000 puntadas por minuto.
+description: "Overlock industrial Jack de 5 hilos con doble arrastre para vaqueros, Direct Drive, cortacintas automático, alzaprensatelas electrónico y 6.000 ppm."
 destacados:
 - texto: Overlock de 5 hilos para vaqueros
 - texto: Doble arrastre

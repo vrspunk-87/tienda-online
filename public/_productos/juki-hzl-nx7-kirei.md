@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/juki-hzl-nx7-kirei-3.jpg
 - imagen: /img/productos/juki-hzl-nx7-kirei-4.jpg
 - imagen: /img/productos/juki-hzl-nx7-kirei-5.jpg
-description: "Juki HZL-NX7 Kirei: 351 puntadas, 20 ojales en un solo paso con prensatelas electrónico, gran espacio de trabajo de 304 × 120 mm y funciones automáticas como cortahílos por pedal, función pivote y costura flotante."
+description: "Juki HZL-NX7 Kirei: 351 puntadas, 20 ojales en un paso, espacio de 304 × 120 mm, cortahílos por pedal, función pivote y costura flotante."
 destacados:
 - texto: 351 puntadas, 60 para quilting y aplicación
 - texto: 20 ojales en un solo paso con prensatelas electrónico

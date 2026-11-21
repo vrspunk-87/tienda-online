@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-w4d-08-1.jpg
 - imagen: /img/productos/jack-jk-w4d-08-2.jpg
-description: "Recubridora industrial Jack multifunción de base plana con 3 agujas y 4 equipos de costura: costura normal, collarines, morrongado y bajos. Costura de 5,6 o 6,4 mm."
+description: "Recubridora industrial Jack de base plana con 3 agujas y 4 equipos: costura normal, collarines, morrongado y bajos. Costura de 5,6 o 6,4 mm."
 destacados:
 - texto: Recubridora de base plana con 3 agujas
 - texto: Recubrimiento superior e inferior

@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-e4s-3-82-233-1.jpg
 - imagen: /img/productos/jack-jk-e4s-3-82-233-2.jpg
-description: Overlock industrial Jack de 3 hilos con atacador manual de cadeneta con motor Direct Drive, palanca de inclinación de los dientes para tejidos finos, medios o gruesos y hasta 6.000 puntadas por minuto.
+description: "Overlock industrial Jack de 3 hilos con atacador manual de cadeneta, Direct Drive, inclinación de los dientes según el tejido y hasta 6.000 ppm."
 caracteristicas:
 - nombre: Tipo
   valor: máquina overlock

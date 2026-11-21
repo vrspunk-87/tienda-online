@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/elna-580-plus-3.jpg
 - imagen: /img/productos/elna-580-plus-4.jpg
 - imagen: /img/productos/elna-580-plus-5.jpg
-description: "Máquina electrónica robusta y eficiente con 120 puntadas, 2 alfabetos y gran espacio de trabajo de 210 × 120 mm: ideal tanto para profesionales como para principiantes."
+description: "Máquina electrónica robusta con 120 puntadas, 2 alfabetos y espacio de trabajo de 210 × 120 mm: para profesionales y principiantes."
 destacados:
 - texto: 120 puntadas y 2 alfabetos
 - texto: 7 ojales en un solo paso

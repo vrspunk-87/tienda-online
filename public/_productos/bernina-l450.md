@@ -11,7 +11,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernina-l450-1.jpg
   alt: Remalladora Bernina L450
-description: "Remalladora BERNINA L 450: cose, corta y remata de una vez, con control de microenhebrado (mtc) para puntadas de calidad profesional, fácil incluso para principiantes."
+description: "Remalladora BERNINA L 450: cose, corta y remata de una vez, con microenhebrado (mtc) y puntadas profesionales, fácil incluso para principiantes."
 destacados:
 - texto: Cose, corta y remata en una sola operación
 - texto: 16 puntadas de 2, 3 o 4 hilos

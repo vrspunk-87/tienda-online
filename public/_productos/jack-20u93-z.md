@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-20u93-z-1.jpg
-description: Máquina de zigzag semiindustrial Jack con motor Direct Drive, engrase automático, ancho de costura de 8 mm, pulsador de media puntada y palanca de posición de aguja.
+description: "Zigzag semiindustrial Jack con motor Direct Drive, engrase automático, costura de 8 mm, pulsador de media puntada y palanca de posición de aguja."
 destacados:
 - texto: Zigzag semiindustrial
 - texto: Engrase automático

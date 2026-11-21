@@ -14,7 +14,7 @@ imagenes:
 - imagen: /img/productos/alfa-a9900-2.jpg
 - imagen: /img/productos/alfa-a9900-3.jpg
 - imagen: /img/productos/alfa-a9900-4.jpg
-description: "Máquina de coser y bordar electrónica con 200 puntadas, pantalla táctil, doble arrastre Acufeed Flex y corte de hilo automático: calidad profesional para coser y bordar."
+description: "Máquina de coser y bordar con 200 puntadas, pantalla táctil, doble arrastre Acufeed Flex y corte de hilo automático: calidad profesional."
 destacados:
 - texto: Coser y bordar en una sola máquina
 - texto: 200 puntadas, con 6 tipos de ojales, y 3 tipos de letras

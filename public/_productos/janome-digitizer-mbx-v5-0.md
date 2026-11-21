@@ -12,7 +12,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/janome-digitizer-mbx-v5-0-1.jpg
   alt: 'Programa de bordado Janome Digitizer MBX V5'
-description: "Programa profesional de bordado Digitizer MBX V5.0, desarrollado por Wilcom: crea bordados originales, de puntadas sencillas a grandes diseños con varios encuadres."
+description: "Programa profesional de bordado Digitizer MBX V5.0, de Wilcom: crea bordados originales, de puntadas sencillas a diseños con varios encuadres."
 destacados:
 - texto: Desarrollado por Wilcom International
 - texto: 700 dibujos (clip art) y 100 tipografías

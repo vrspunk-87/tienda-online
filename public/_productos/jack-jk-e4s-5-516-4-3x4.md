@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-e4s-5-516-4-3x4-1.jpg
-description: Overlock industrial Jack de 5 hilos con fruncidor con motor Direct Drive, palanca de inclinación de los dientes para tejidos finos, medios o gruesos y hasta 6.000 puntadas por minuto.
+description: "Overlock industrial Jack de 5 hilos con fruncidor, Direct Drive, inclinación de los dientes para tejidos finos, medios o gruesos y hasta 6.000 ppm."
 destacados:
 - texto: Overlock de 5 hilos con fruncidor
 - texto: Motor Direct Drive

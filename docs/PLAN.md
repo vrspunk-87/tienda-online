@@ -19,15 +19,18 @@ Cloudflare: **6 min 40 s** (límite: 20 min).
 3. Redirigir la dirección `maquinas-de-coser-zafra.pages.dev` de producción a `https://www.maquinasdecoserzafra.es`.
 4. Solicitud real de prueba de principio a fin en producción (acuse, aviso a la tienda, fila en la hoja); después,
    borrar la fila y la propiedad `contador-2026` del script.
+5. Blog: en la entrada «Estrenamos web» (ya creada, «Solo para pruebas»), poner la fecha del día y desmarcar «Solo
+   para pruebas».
+6. Redes sociales: publicar en Facebook e Instagram los textos de [SALIDA-BLOG-Y-REDES.md](SALIDA-BLOG-Y-REDES.md), poner la
+   web en los perfiles y en el Perfil de Empresa de Google.
 
 **Después de salir — plan único**
 
 *Semana 1: comprobar y limpiar*
 1. Google Search Console: dar de alta `https://www.maquinasdecoserzafra.es` y enviar el sitemap.
-2. Comprobar en el navegador si aparece la cookie `__cf_bm`; si aparece, describirla en la política de cookies.
+2. ~~Comprobar la cookie `__cf_bm`~~ (hecho el 21-11-2026: no aparece; quitado el corchete de la política de cookies).
 3. App OAuth de GitHub: quitar la URL de vuelta de `pages.dev` (comprobar antes el login del panel desde el dominio).
-4. Borrar las 3 entradas del blog de prueba (los 4 fabricantes de prueba sin productos, Brother, Prym, Sigma y
-   SIP Italy, se borraron el 20-11-2026).
+4. ~~Borrar las 3 entradas del blog de prueba~~ (hecho el 21-11-2026; los 4 fabricantes de prueba se borraron el 20-11-2026).
 5. Pruebas pendientes en producción y dev-victor: login de GitHub, flujo editorial, móvil de verdad y lo del panel
    del 19-11 (informe de importación, acciones en bloque, enlaces de Ajustes).
 6. Correo con el dominio (opcional): remitente y dirección de los avisos en el script de Google; SPF, DKIM y DMARC si
@@ -60,11 +63,14 @@ Cloudflare: **6 min 40 s** (límite: 20 min).
 19. Compresión automática de las fotos al publicar (acción de GitHub con `scripts/comprimir-imagenes.js`).
 20. Textos alternativos de las fotos (fase 6, punto 4).
 21. Volver a generar `public/img/compartir.jpg` si cambia el nombre o el logo.
+22. **Precio en los resultados de Google** (21-11-2026; esperar a que la asesoría conteste la pregunta 1, precios
+    orientativos): añadir `offers` al JSON-LD de `Product` en build.js con el precio que ya se ve en la ficha (con IVA,
+    `priceCurrency: EUR`, `availability: InStock`). Hoy va sin `offers` y Search Console avisará de que falta.
 
 *Documentación y entrega*
-22. Documentación completa de la web y del panel, y manuales de usuario (quien compra y quien edita); enlazarlos
+23. Documentación completa de la web y del panel, y manuales de usuario (quien compra y quien edita); enlazarlos
     desde las burbujas ⓘ de Ajustes.
-23. Guía de gestión de solicitudes para la tienda: estados, borrado a los [6 meses] de las que no acaban en venta
+24. Guía de gestión de solicitudes para la tienda: estados, borrado a los [6 meses] de las que no acaban en venta
     (también en el correo) y registro de actividades de tratamiento (lo indica la asesoría).
 
 ## Estado y pendientes (18-11-2026) — para retomar en otra sesión

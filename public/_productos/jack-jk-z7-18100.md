@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-z7-18100-1.jpg
 - imagen: /img/productos/jack-jk-z7-18100-2.jpg
-description: "Máquina industrial Jack de 1 aguja con triple arrastre digital e inteligencia artificial, motor «Mighty Ape» de 850 W, garfio XXL y puntada de 9 mm: para automóvil, sofás, bolsos y colchones."
+description: "Máquina industrial Jack de 1 aguja con triple arrastre digital e IA, motor de 850 W, garfio XXL y puntada de 9 mm: automóvil, sofás, bolsos y colchones."
 destacados:
 - texto: Triple arrastre digital (aguja y pies)
 - texto: "Inteligencia artificial: chip Octopus Nine-Brain"

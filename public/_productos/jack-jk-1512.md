@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-1512-1.jpg
-description: "Fresa de corte Jack para fabricar plantillas de costura: área de 1.500 × 1.200 mm, motores paso a paso, aspiración y corte de hasta 10 mm en cartón prensado, PVC, PET o metacrilato."
+description: "Fresa de corte Jack para plantillas de costura: área de 1.500 × 1.200 mm, aspiración y corte de hasta 10 mm en cartón prensado, PVC, PET o metacrilato."
 destacados:
 - texto: Área de corte de 1.500 × 1.200 mm
 - texto: Motores paso a paso para cortes precisos

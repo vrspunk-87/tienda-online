@@ -16,7 +16,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-a2c-c-3.jpg
 - imagen: /img/productos/jack-jk-a2c-c-4.jpg
 - imagen: /img/productos/jack-jk-a2c-c-5.jpg
-description: "Máquina industrial de pespunte Jack de 1 aguja con cortahílos, motor Direct Drive «Mighty Ape», sistema FST y arrastre AMH1: hasta 5.000 ppm para tejidos finos y medios."
+description: "Pespunte industrial Jack de 1 aguja con cortahílos, motor «Mighty Ape», sistema FST y arrastre AMH1: hasta 5.000 ppm para tejidos finos y medios."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de pespunte

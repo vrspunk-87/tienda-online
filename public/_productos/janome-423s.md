@@ -14,7 +14,7 @@ imagenes:
 - imagen: /img/productos/janome-423s-2.jpg
 - imagen: /img/productos/janome-423s-3.jpg
 - imagen: /img/productos/janome-423s-4.jpg
-description: "Máquina de coser mecánica Janome 423S con carcasa de aluminio, 25 puntadas, ojal en un solo paso y enhebrador automático: ideal para modistas y tiendas de arreglos."
+description: "Máquina mecánica Janome 423S con carcasa de aluminio, 25 puntadas, ojal en un paso y enhebrador automático: para modistas y tiendas de arreglos."
 destacados:
 - texto: 25 puntadas
 - texto: Ojal en un solo paso

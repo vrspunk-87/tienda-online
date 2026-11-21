@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t9280d-73-2pl-q-1.jpg
 - imagen: /img/productos/jack-jk-t9280d-73-2pl-q-2.jpg
-description: Máquina industrial de cerrar de brazo con 3 agujas de 1/8, motor Direct Drive, puller metálico estriado y luz LED, para tejidos gruesos tipo vaquero o ropa laboral.
+description: "Máquina de cerrar de brazo con 3 agujas de 1/8, Direct Drive, puller metálico estriado y luz LED, para vaquero o ropa laboral."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de cerrar de brazo

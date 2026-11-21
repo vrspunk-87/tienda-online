@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-5558g-wt-1.jpg
-description: Máquina industrial de pespunte de coser y cortar Jack de 1 aguja (3/16) con motor Direct Drive, cortahílos, cabezal semiseco y puntada de 5 mm regulable por pantalla.
+description: "Pespunte industrial de coser y cortar Jack de 1 aguja (3/16) con motor Direct Drive, cortahílos, cabezal semiseco y puntada de 5 mm por pantalla."
 destacados:
 - texto: Coser y cortar, separación de 3/16
 - texto: "Súper silenciosa y semiseca: sin aceite en la zona de la barra de agujas"

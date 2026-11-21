@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t2210dii-1.jpg
-description: "Máquina de costura programable Direct Drive con área de 220 × 100 mm y panel táctil: repite etiquetas, remates y pespuntes decorativos con precisión, a hasta 2.700 ppm."
+description: "Costura programable Direct Drive con área de 220 × 100 mm y panel táctil: etiquetas, remates y pespuntes decorativos a hasta 2.700 ppm."
 destacados:
 - texto: Área útil de costura de 220 × 100 mm
 - texto: Motor Direct Drive integrado en el cabezal

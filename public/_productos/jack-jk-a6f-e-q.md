@@ -16,7 +16,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-a6f-e-q-3.jpg
 - imagen: /img/productos/jack-jk-a6f-e-q-4.jpg
 - imagen: /img/productos/jack-jk-a6f-e-q-5.jpg
-description: Máquina industrial de pespunte de 1 aguja con doble arrastre por aguja y dientes, motor Direct Drive, cortahílos doble, cabezal semiseco y área de costura de 305 × 130 mm.
+description: "Pespunte industrial de 1 aguja con doble arrastre por aguja y dientes, Direct Drive, cortahílos doble, cabezal semiseco y área de 305 × 130 mm."
 destacados:
 - texto: Doble arrastre por aguja y dientes
 - texto: "Súper silenciosa y semiseca: sin aceite en la zona de la barra de agujas"

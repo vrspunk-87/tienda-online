@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-k7-ut-01x356-2.jpg
 - imagen: /img/productos/jack-jk-k7-ut-01x356-3.jpg
 - imagen: /img/productos/jack-jk-k7-ut-01x356-4.jpg
-description: "Recubridora industrial Jack de brazo cilíndrico con 3 agujas (5,6 mm) e inteligencia artificial: motor Direct Drive de 750 W, cortahílos y alzaprensatelas eléctricos y 6.000 ppm."
+description: "Recubridora industrial Jack de brazo cilíndrico, 3 agujas (5,6 mm) e IA: Direct Drive de 750 W, cortahílos y alzaprensatelas eléctricos y 6.000 ppm."
 destacados:
 - texto: Recubridora cilíndrica de 3 agujas, 5,6 mm
 - texto: "Inteligencia artificial: chip Octopus con motor de 750 W y arrastre SRF"

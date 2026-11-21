@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t6040-m-1.jpg
-description: "Máquina de costura programable Jack con motor Direct Drive y área de 600 × 400 mm, RFID y plantillas tipo M5/M9: panel táctil, USB y hasta 2.800 puntadas por minuto."
+description: "Costura programable Jack con Direct Drive, área de 600 × 400 mm, RFID y plantillas tipo M5/M9: panel táctil, USB y hasta 2.800 ppm."
 destacados:
 - texto: Área útil de costura de 600 × 400 mm
 - texto: Motor Direct Drive

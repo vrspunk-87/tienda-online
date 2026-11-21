@@ -19,6 +19,9 @@ const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const sinTildes = t => String(t ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const tam = b => (b === null || b === undefined ? '' : b < 1024 ? `${b} B` : b < 1024 * 1024 ? `${Math.round(b / 1024)} KB` : `${(b / 1024 / 1024).toFixed(1).replace('.', ',')} MB`);
 const EXT_IMG = /\.(jpe?g|png|webp|gif|svg|avif)$/i;
+// Miniaturas que no son «-480.webp» (fotos de menos de 480 px de ancho: el build solo hace la de su ancho), según el
+// último build (medios.json → _miniaturas). El original no sirve de reserva: el build no lo publica si no lo usa nada.
+let MINIATURAS = {};
 const POR_PAGINA = 48;
 const NOMBRES = { 'public/img/catalogo': 'Catálogo', 'public/img/fichas': 'Fichas PDF', 'public/img/productos': 'Productos', 'public/img/fabricantes': 'Fabricantes' };
 
@@ -125,6 +128,7 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
     try {
       const m = await (await fetch('/admin/medios.json', { cache: 'no-store' })).json();
       for (const r of m._codigo || []) anotar(r, { titulo: 'La propia web (iconos, imagen al compartir…)', seccion: 'código', href: '' });
+      MINIATURAS = m._miniaturas || {};
     } catch { /* sin lista del build */ }
     return enlaces;
   }
@@ -208,7 +212,7 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
     const miniatura = f => {
       if (!EXT_IMG.test(f.nombre)) return `<div class="xl-med-img">${esc((f.nombre.split('.').pop() || '').toUpperCase())}</div>`;
       const base = f.ruta.replace(/^\/img\//, '').replace(/\.[^.]+$/, '').replace(/[/\\]+/g, '-');
-      const opt = /\.(jpe?g|png|webp)$/i.test(f.nombre) ? `/img/opt/${base}-480.webp` : f.ruta;
+      const opt = /\.(jpe?g|png|webp)$/i.test(f.nombre) ? (MINIATURAS[f.ruta] || `/img/opt/${base}-480.webp`) : f.ruta;
       return `<div class="xl-med-img"><img loading="lazy" alt="" src="${esc(opt)}" data-original="${esc(f.ruta)}"></div>`;
     };
 

@@ -12,7 +12,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t2210f3-dii-1.jpg
 - imagen: /img/productos/jack-jk-t2210f3-dii-2.jpg
-description: "Máquina de costura programable Jack con motor Direct Drive y área de 220 × 100 mm con volteador desplazable: panel táctil, USB y hasta 2.700 puntadas por minuto."
+description: "Costura programable Jack con Direct Drive y área de 220 × 100 mm con volteador desplazable: panel táctil, USB y hasta 2.700 puntadas por minuto."
 destacados:
 - texto: Área útil de costura de 220 × 100 mm
 - texto: Motor Direct Drive

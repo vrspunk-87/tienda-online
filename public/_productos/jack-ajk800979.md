@@ -14,7 +14,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-ajk800979-1.jpg
-description: 'Galga completa de 3/16" (4,8 mm) para las máquinas Jack de 2 agujas fijas JK-58420B-A y JK-58720B-A: cambia la separación entre agujas (referencia alternativa C3083A).'
+description: "Galga completa de 3/16\" (4,8 mm) para las Jack de 2 agujas fijas JK-58420B-A y JK-58720B-A: cambia la separación entre agujas (ref. C3083A)."
 destacados:
 - texto: Galga completa de 3/16" (4,8 mm)
 - texto: Para las máquinas Jack de 2 agujas fijas JK-58420B-A y JK-58720B-A

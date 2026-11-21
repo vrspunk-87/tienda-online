@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/bernette-b77-3.jpg
 - imagen: /img/productos/bernette-b77-4.jpg
 - imagen: /img/productos/bernette-b77-5.jpg
-description: 'Máquina de coser y acolchar con pantalla táctil de 5", 500 puntadas, arrastre dual y asesor de costura: trabaja con todo tipo de tejidos con una calidad de puntada impresionante.'
+description: "Máquina de coser y acolchar con pantalla táctil de 5\", 500 puntadas, arrastre dual y asesor de costura, para todo tipo de tejidos."
 destacados:
 - texto: Pantalla táctil a color de 5" y botones multifunción
 - texto: 500 puntadas, con 17 ojales, 133 decorativas y 35 de acolchado

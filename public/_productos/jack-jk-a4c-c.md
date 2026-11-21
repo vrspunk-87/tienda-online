@@ -16,7 +16,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-a4c-c-3.jpg
 - imagen: /img/productos/jack-jk-a4c-c-4.jpg
 - imagen: /img/productos/jack-jk-a4c-c-5.jpg
-description: Máquina industrial de pespunte Jack de 1 aguja con inteligencia artificial (Octopus Nine-Brain), cortahílos, motor Direct Drive, puntada electrónica de 0,1 a 5 mm y alzaprensatelas programable.
+description: "Pespunte industrial Jack de 1 aguja con inteligencia artificial (Octopus Nine-Brain), cortahílos, Direct Drive y puntada electrónica de 0,1 a 5 mm."
 destacados:
 - texto: "Inteligencia artificial: chip Octopus Nine-Brain con arrastre AMH1"
 - texto: Se adapta automáticamente al grosor del tejido

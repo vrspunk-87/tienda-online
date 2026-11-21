@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/elna-802-expressive-1.jpg
-description: "Máquina de bordar con área de 140 × 140 mm, 274 diseños en memoria, pantalla táctil y cortahílos automático: bordados de calidad profesional, fáciles de personalizar."
+description: "Máquina de bordar con área de 140 × 140 mm, 274 diseños, pantalla táctil y cortahílos automático: bordados profesionales fáciles de personalizar."
 destacados:
 - texto: Área de bordado de 140 × 140 mm (bastidor SQ14E)
 - texto: 274 diseños de bordado en memoria, con emblemas y bordes

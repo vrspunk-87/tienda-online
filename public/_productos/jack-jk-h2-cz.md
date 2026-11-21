@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-h2-cz-1.jpg
 - imagen: /img/productos/jack-jk-h2-cz-2.jpg
-description: Máquina industrial de pespunte de 1 aguja con doble arrastre por pata y dientes, motor Direct Drive, garfio de gran capacidad, puntada de 8 mm y engrase automático.
+description: "Pespunte industrial de 1 aguja con doble arrastre por pata y dientes, Direct Drive, garfio de gran capacidad, puntada de 8 mm y engrase automático."
 destacados:
 - texto: Doble arrastre por pata y dientes
 - texto: Motor Direct Drive

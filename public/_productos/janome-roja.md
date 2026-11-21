@@ -16,7 +16,7 @@ imagenes:
   alt: 'Caja de la Janome Roja'
 - imagen: /img/productos/janome-roja-3.jpg
   alt: 'Puntadas de la Janome Roja'
-description: "Máquina de coser mecánica Janome Roja de brazo libre con 15 puntadas y ojal en 4 pasos, edición limitada: robusta, sencilla y con portaconos y prensatelas metálicos."
+description: "Máquina mecánica Janome Roja de brazo libre, edición limitada: 15 puntadas, ojal en 4 pasos, portaconos y prensatelas metálicos."
 destacados:
 - texto: Edición limitada
 - texto: 15 puntadas

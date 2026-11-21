@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-creative-elevate-680-completa-3.jpg
 - imagen: /img/productos/pfaff-creative-elevate-680-completa-4.jpg
 - imagen: /img/productos/pfaff-creative-elevate-680-completa-5.jpg
-description: 'PFAFF creative elevate 680 con unidad de bordado: más de 400 puntadas, más de 330 diseños de bordado, sistema IDT y pantalla táctil de 7", para creadores de todos los niveles.'
+description: "PFAFF creative elevate 680 con unidad de bordado: más de 400 puntadas, más de 330 diseños, sistema IDT y pantalla táctil de 7\"."
 caracteristicas:
 - nombre: Unidad de bordado
   valor: incluida (código 850408096)

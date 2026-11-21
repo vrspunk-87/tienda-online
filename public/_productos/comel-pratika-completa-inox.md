@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/comel-pratika-completa-inox-1.jpg
-description: Generador de vapor Comel Pratika Completa INOX con caldera de 5 litros, depósito adicional, bomba de carga, carcasa de acero inoxidable y manómetro. Incluye plancha de mano y apoyaplancha de silicona.
+description: "Generador de vapor Comel Pratika Completa INOX: caldera de 5 l, depósito adicional, bomba de carga, acero inoxidable, manómetro y plancha de mano."
 destacados:
 - texto: Caldera de 5 litros de capacidad
 - texto: "Depósito de agua adicional: 7 litros, inferior"

@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-h6-cz-4-1.jpg
-description: Máquina industrial de pespunte de 1 aguja con doble arrastre por pata y dientes, motor Direct Drive, cortahílos, puntada electrónica de hasta 10 mm e instrucciones habladas.
+description: "Pespunte industrial de 1 aguja con doble arrastre por pata y dientes, Direct Drive, cortahílos, puntada electrónica de 10 mm e instrucciones habladas."
 destacados:
 - texto: Doble arrastre por pata y dientes
 - texto: Motor Direct Drive, hasta 2.200 puntadas por minuto

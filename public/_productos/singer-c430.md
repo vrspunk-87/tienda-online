@@ -14,7 +14,7 @@ imagenes:
 - imagen: /img/productos/singer-c430-3.jpg
 - imagen: /img/productos/singer-c430-4.jpg
 - imagen: /img/productos/singer-c430-5.jpg
-description: "Máquina computerizada Singer C430 con 810 puntadas y 5 alfabetos, 13 ojales en un paso y bastidor metálico: infinitas posibilidades creativas, muy fácil de usar."
+description: "Máquina computerizada Singer C430 con 810 puntadas, 5 alfabetos, 13 ojales en un paso y bastidor metálico: muy creativa y fácil de usar."
 destacados:
 - texto: 810 puntadas y 5 alfabetos
 - texto: 13 ojales en un solo paso

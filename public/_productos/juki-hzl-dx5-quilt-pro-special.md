@@ -12,7 +12,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/juki-hzl-dx5-quilt-pro-special-1.jpg
 - imagen: /img/productos/juki-hzl-dx5-quilt-pro-special-2.jpg
-description: "Juki HZL-DX5 Quilt & Pro Special: 185 puntadas, 16 ojales en un solo paso con prensatelas electrónico, gran espacio de trabajo de 203 × 112 mm y funciones automáticas como cortahílos por pedal, función pivote y costura flotante."
+description: "Juki HZL-DX5 Quilt & Pro Special: 185 puntadas, 16 ojales en un paso, espacio de 203 × 112 mm, cortahílos por pedal, pivote y costura flotante."
 destacados:
 - texto: 185 puntadas, 40 para quilting y aplicación
 - texto: 16 ojales en un solo paso con prensatelas electrónico

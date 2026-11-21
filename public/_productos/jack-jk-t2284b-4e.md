@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t2284b-4e-1.jpg
 - imagen: /img/productos/jack-jk-t2284b-4e-2.jpg
-description: "Máquina de zigzag industrial Jack de 1 y 3 puntadas con cortahílos, remate automático, tensión electrónica y motor Direct Drive: ancho de 8 mm y hasta 4.500 ppm."
+description: "Zigzag industrial Jack de 1 y 3 puntadas con cortahílos, remate automático, tensión electrónica y Direct Drive: ancho de 8 mm y hasta 4.500 ppm."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de zigzag

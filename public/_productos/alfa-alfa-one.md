@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/alfa-alfa-one-3.jpg
 - imagen: /img/productos/alfa-alfa-one-4.jpg
 - imagen: /img/productos/alfa-alfa-one-5.jpg
-description: "Máquina de bordar con pantalla táctil, edición en la propia máquina, Wi-Fi y USB: área de 160 × 260 mm y 250 diseños para crear sin depender del ordenador ni del móvil."
+description: "Máquina de bordar con pantalla táctil, edición en la máquina, Wi-Fi y USB: área de 160 × 260 mm y 250 diseños, sin depender del ordenador."
 destacados:
 - texto: Área máxima de bordado de 160 × 260 mm
 - texto: 250 diseños, 7 fuentes, 120 marcos decorativos y 12 patrones creativos

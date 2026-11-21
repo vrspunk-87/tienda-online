@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-w5e-ut-01-1.jpg
-description: Recubridora industrial Jack de base plana con 3 agujas, motor Direct Drive, cortahílos superior e inferior y alzaprensatelas por motor paso a paso, 5.500 ppm e instrucciones habladas.
+description: "Recubridora industrial Jack de base plana con 3 agujas, Direct Drive, cortahílos superior e inferior, 5.500 ppm e instrucciones habladas."
 caracteristicas:
 - nombre: Tipo
   valor: recubridora de base plana

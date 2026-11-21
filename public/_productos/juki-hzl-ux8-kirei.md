@@ -13,7 +13,7 @@ imagenes:
 - imagen: /img/productos/juki-hzl-ux8-kirei-1.jpg
 - imagen: /img/productos/juki-hzl-ux8-kirei-2.jpg
 - imagen: /img/productos/juki-hzl-ux8-kirei-3.jpg
-description: "Juki HZL-UX8 Kirei: 368 puntadas, 20 ojales en un solo paso con prensatelas electrónico, gran espacio de trabajo de 305 × 120 mm y funciones automáticas como cortahílos por pedal, función pivote y costura flotante."
+description: "Juki HZL-UX8 Kirei: 368 puntadas, 20 ojales en un paso, espacio de 305 × 120 mm, cortahílos por pedal, función pivote y costura flotante."
 destacados:
 - texto: 368 puntadas, 60 para quilting y aplicación
 - texto: 20 ojales en un solo paso con prensatelas electrónico

@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-h7-1.jpg
-description: Máquina industrial de pespunte de 1 aguja con inteligencia artificial (chip Octopus Nine-Brain), motor Direct Drive, cortahílos, puntada electrónica de 0,1 a 8 mm y alzaprensatelas electrónico de hasta 16 mm.
+description: "Pespunte industrial de 1 aguja con IA (Octopus Nine-Brain), Direct Drive, cortahílos, puntada electrónica de 0,1 a 8 mm y alzaprensatelas de 16 mm."
 destacados:
 - texto: "Inteligencia artificial: chip Octopus Nine-Brain"
 - texto: Se adapta automáticamente al tejido y pasa los cruces de costura con facilidad

@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-c7-4-83-bk-1.jpg
 - imagen: /img/productos/jack-jk-c7-4-83-bk-2.jpg
-description: Overlock industrial Jack de 4 hilos con atacado de cadeneta automático, abretensiones, aspiración de hilos, inteligencia artificial, motor Direct Drive y cortahílos.
+description: "Overlock industrial Jack de 4 hilos con atacado de cadeneta automático, abretensiones, aspiración de hilos, IA, Direct Drive y cortahílos."
 destacados:
 - texto: Overlock de 4 hilos con cortahílos
 - texto: Atacado (remate) de cadeneta automático

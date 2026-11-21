@@ -13,7 +13,7 @@ imagenes:
 - imagen: /img/productos/necchi-creator-expres-1.jpg
 - imagen: /img/productos/necchi-creator-expres-2.jpg
 - imagen: /img/productos/necchi-creator-expres-3.jpg
-description: "Plotter de corte Necchi Creator Express de máxima precisión: corta telas, cuero, papel, vinilo, fieltro y mucho más, con cámara integrada y software Necchi Create."
+description: "Plotter de corte Necchi Creator Express: corta telas, cuero, papel, vinilo, fieltro y más, con cámara integrada y software Necchi Create."
 destacados:
 - texto: Corta telas, cuero, polipiel, papel, cartulina, fieltro, corcho, vinilo, madera fina…
 - texto: Ancho de corte de hasta 305 mm

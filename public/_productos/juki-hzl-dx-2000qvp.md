@@ -14,7 +14,7 @@ imagenes:
 - imagen: /img/productos/juki-hzl-dx-2000qvp-2.jpg
 - imagen: /img/productos/juki-hzl-dx-2000qvp-3.jpg
 - imagen: /img/productos/juki-hzl-dx-2000qvp-4.jpg
-description: "Juki HZL-DX-2000QVP: 287 puntadas, 16 ojales en un solo paso con prensatelas electrónico, gran espacio de trabajo de 203 × 112 mm y funciones automáticas como cortahílos por pedal, función pivote y costura flotante."
+description: "Juki HZL-DX-2000QVP: 287 puntadas, 16 ojales en un paso, espacio de 203 × 112 mm, cortahílos por pedal, función pivote y costura flotante."
 destacados:
 - texto: 287 puntadas, 40 para quilting y aplicación
 - texto: 16 ojales en un solo paso con prensatelas electrónico

@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t3520ma-f4-d-1.jpg
-description: "Máquina de costura programable Jack con motor Direct Drive y área de 350 × 200 mm con volteador desplazable: panel táctil, USB y hasta 2.700 puntadas por minuto."
+description: "Costura programable Jack con Direct Drive y área de 350 × 200 mm con volteador desplazable: panel táctil, USB y hasta 2.700 puntadas por minuto."
 destacados:
 - texto: Área útil de costura de 350 × 200 mm
 - texto: Motor Direct Drive

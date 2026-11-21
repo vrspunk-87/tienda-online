@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-quilt-expression-710-sp-edit-3.jpg
 - imagen: /img/productos/pfaff-quilt-expression-710-sp-edit-4.jpg
 - imagen: /img/productos/pfaff-quilt-expression-710-sp-edit-5.jpg
-description: "PFAFF quilt expression 710 Special Edition: color y diseño exclusivos, sistema IDT, 247 puntadas de 9 mm, 250 mm de espacio y personalización Creative Signature."
+description: "PFAFF quilt expression 710 Special Edition: diseño exclusivo, sistema IDT, 247 puntadas de 9 mm, 250 mm de espacio y Creative Signature."
 destacados:
 - texto: Edición especial con color y diseño exclusivos
 - texto: Sistema Original IDT

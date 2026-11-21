@@ -12,7 +12,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/bernina-software-de-bordado-9-designerplus-1.jpg
   alt: Software de bordado BERNINA 9 DesignerPlus (versión completa)
-description: "Software de bordado BERNINA 9 DesignerPlus en versión completa: más de 100 tipos de letras, digitalización automática y manual y wifi, para expertos y recién llegados."
+description: "Software de bordado BERNINA 9 DesignerPlus completo: más de 100 tipos de letras, digitalización automática y manual y wifi."
 destacados:
 - texto: Versión completa
 - texto: Instalación sencilla y funcionalidad wifi

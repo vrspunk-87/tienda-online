@@ -19,7 +19,7 @@ En esta web puedes consultar nuestros productos y **solicitar presupuesto** de l
 2. Rellena el formulario con tu **nombre, correo electrónico y teléfono**, indica cómo prefieres que te contestemos (llamada, WhatsApp o correo) y, si quieres, añade tus observaciones. Después, envíalo.
 3. Recibirás un **correo de acuse de recibo** con el número de tu solicitud y los productos elegidos.
 4. La tienda se pondrá en contacto contigo, por el medio que hayas elegido, en breve para darte el presupuesto y resolver tus dudas.
-5. Si los dos estamos de acuerdo, **se acuerda la venta fuera de la web** (en la tienda, por teléfono o por correo).
+5. Si los dos estamos de acuerdo, **se acuerda la venta fuera de la web** (en la tienda, por teléfono, por WhatsApp o por correo).
 
 Para solicitar presupuesto debes ser **mayor de edad**.
 

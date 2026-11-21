@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-e4s-3-32r2-233-1.jpg
   alt: 'Overlock Jack JK-E4S de 3 hilos (foto del modelo JK-E4S-3-02/233)'
-description: Overlock industrial Jack de 3 hilos para repulgo con motor Direct Drive, palanca de inclinación de los dientes para tejidos finos, medios o gruesos y hasta 6.000 puntadas por minuto.
+description: "Overlock industrial Jack de 3 hilos para repulgo, con Direct Drive, inclinación de los dientes para tejidos finos, medios o gruesos y hasta 6.000 ppm."
 destacados:
 - texto: Overlock de 3 hilos para repulgo
 - texto: Motor Direct Drive

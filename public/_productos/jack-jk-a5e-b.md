@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-a5e-b-2.jpg
 - imagen: /img/productos/jack-jk-a5e-b-3.jpg
 - imagen: /img/productos/jack-jk-a5e-b-4.jpg
-description: Máquina industrial de pespunte Jack de 1 aguja con doble inteligencia artificial (Octopus Dual-Core), motor Ape Dual-Drive, cortahílos, cabezal semiseco y área de costura de 305 × 130 mm.
+description: "Pespunte industrial Jack de 1 aguja con doble IA (Octopus Dual-Core), motor Ape Dual-Drive, cortahílos, cabezal semiseco y área de 305 × 130 mm."
 destacados:
 - texto: "Doble inteligencia artificial: chip Octopus Dual-Core"
 - texto: Motor Ape Dual-Drive (+22,5 % de potencia) y arrastre AMH2

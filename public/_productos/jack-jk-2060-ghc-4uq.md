@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/jack-jk-2060-ghc-4uq-2.jpg
 - imagen: /img/productos/jack-jk-2060-ghc-4uq-3.jpg
 - imagen: /img/productos/jack-jk-2060-ghc-4uq-4.jpg
-description: "Máquina industrial Jack de 1 aguja con triple arrastre, cortahílos, motor Direct Drive y brazo de 335 mm: puntada de hasta 9 mm y garfio vertical de gran capacidad para tejidos gruesos."
+description: "Máquina industrial Jack de 1 aguja con triple arrastre, cortahílos, motor Direct Drive, brazo de 335 mm y puntada de hasta 9 mm, para tejidos gruesos."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de triple arrastre

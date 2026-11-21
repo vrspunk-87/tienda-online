@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-8670g-01-1.jpg
-description: Recubridora industrial Jack de 3 agujas (5,6 mm) con morro cilíndrico superreducido de 180 mm, motor Direct Drive, recubrimiento superior e inferior, cortahílos y 4.000 ppm.
+description: "Recubridora industrial Jack de 3 agujas (5,6 mm) con morro cilíndrico de 180 mm, motor Direct Drive, recubrimiento superior e inferior y cortahílos."
 caracteristicas:
 - nombre: Tipo
   valor: recubridora de morro cilíndrico

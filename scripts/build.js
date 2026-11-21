@@ -676,9 +676,17 @@ for (const p of productosTodos) {
   p.dosPrecios = !!TIPO_DOS_PRECIOS && raiz?.slug === TIPO_DOS_PRECIOS && p.precioCabezal != null;
 }
 
+// Texto alternativo automático de las fotos sin descripción (21-11-2026): nombre del producto y, si no
+// lo lleva ya, el fabricante; desde la segunda foto, «foto N de M» para que no se repitan. La descripción
+// escrita en el panel («Descripción de la foto») siempre manda.
+for (const p of productosTodos) {
+  const fab = p.fabricante?.nombre || '';
+  const base = fab && !p.nombre.toLowerCase().includes(fab.toLowerCase()) ? `${p.nombre} de ${fab}` : p.nombre;
+  p.imagenes.forEach((im, k) => { if (!im.alt) im.alt = k ? `${base}, foto ${k + 1} de ${p.imagenes.length}` : base; });
+}
+
 // Validaciones (avisos para quien edita: el producto se publica igualmente salvo que se diga)
 const refsVistas = new Map();
-let productosFotosSinAlt = 0; // se avisa en una sola línea al final (si no, una por producto)
 const productosSinFotos = []; // ídem
 for (const p of productosTodos) {
   // «No disponible»: no se publica en ningún sitio, así que no avisa de nada (19-11-2026)
@@ -690,7 +698,6 @@ for (const p of productosTodos) {
   if (!p.categoria) console.warn(`Aviso: ${p.categoriaSlug ? `la categoría «${p.categoriaSlug}» no existe` : 'falta la categoría'} en ${donde}; solo saldrá en «Todo el catálogo».`);
   else if (p.categoria.hijos.length) nota(`${donde} está en «${p.categoria.titulo}», que tiene subcategorías: mejor elegir una subcategoría.`);
   if (p.estado !== 'no_disponible' && !p.imagenes.length) productosSinFotos.push(p);
-  if (p.imagenes.some(i => !i.alt)) productosFotosSinAlt++;
   if ((Array.isArray(p.meta.imagenes) ? p.meta.imagenes.length : 0) > 5) console.warn(`Aviso: ${donde} tiene más de 5 fotos; solo se publican las 5 primeras.`);
   if (p.meta.precio != null && p.meta.precio !== '' && p.precio == null) console.warn(`Aviso: el precio ${del} no es un número.`);
   if (p.segundaMano && (p.garantia == null || p.garantia < 12)) console.warn(`Aviso: la garantía ${del} (segunda mano) es ${p.garantia ?? 'vacía'}: tiene que ser de 12 meses como mínimo.`);
@@ -718,7 +725,6 @@ if (productosSinFotos.length) {
   const ej = productosSinFotos.slice(0, 3).map(p => p.fichero).join(', ');
   console.warn(`Aviso: ${n} producto${n === 1 ? ' no tiene' : 's no tienen'} fotos (p. ej. ${ej}${n > 3 ? '…' : ''}).`);
 }
-if (productosFotosSinAlt) nota(`${productosFotosSinAlt} producto${productosFotosSinAlt === 1 ? ' tiene' : 's tienen'} alguna foto sin descripción (texto alternativo); se usa el nombre del producto.`);
 // Oferta vigente hoy (fechas incluidas, hora de Madrid). Con dos precios (máquinas industriales:
 // completa y cabezal) cada uno puede tener su precio de oferta; basta con uno para estar en oferta.
 for (const p of productosTodos) {
@@ -3305,6 +3311,9 @@ if (AJUSTES.favicon && sharp) {
   };
   ['scripts', 'lib', 'functions', PUB].forEach(leerCodigo);
   medios._codigo = [...codigo].sort();
+  // Miniatura de Medios: la WebP más pequeña. Solo las que no son «-480.webp» (fotos de menos de 480 px de ancho)
+  medios._miniaturas = Object.fromEntries([...optimizadas].map(([ruta, o]) => [ruta, o.fuentes[0]?.url])
+    .filter(([, url]) => url && !url.endsWith('-480.webp')));
   fs.writeFileSync(path.join(DIST, 'admin/medios.json'), JSON.stringify(medios));
 }
 

@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-8009vcdi-12064p-utl-1.jpg
-description: Máquina industrial de cadeneta de brazo cilíndrico con 12 agujas de 1/4 (70,4 mm), motor Direct Drive, cortahílos neumático, alzaprensatelas y puller dentado de teflón.
+description: "Cadeneta industrial de brazo cilíndrico con 12 agujas de 1/4 (70,4 mm), motor Direct Drive, cortahílos neumático, alzaprensatelas y puller de teflón."
 destacados:
 - texto: 12 agujas en cadeneta, separación de 1/4
 - texto: Ancho total de costura de 70,4 mm

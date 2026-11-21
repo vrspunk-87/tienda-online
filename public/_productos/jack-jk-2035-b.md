@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-2035-b-1.jpg
-description: Generador de vapor Jack JK-2035-B con caldera de 3,5 litros, depósito adicional, bomba de carga automática y manómetro. Incluye plancha de mano, antena, apoyaplancha de silicona y plantilla antibrillo.
+description: "Generador de vapor Jack JK-2035-B: caldera de 3,5 litros, depósito adicional, bomba de carga automática y manómetro, con plancha de mano y antena."
 destacados:
 - texto: Caldera de 3,5 litros de capacidad
 - texto: "Depósito de agua adicional: externo (bidón junto a la máquina)"

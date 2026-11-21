@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/pfaff-admire-air-7000-3.jpg
 - imagen: /img/productos/pfaff-admire-air-7000-4.jpg
 - imagen: /img/productos/pfaff-admire-air-7000-5.jpg
-description: "PFAFF admire air 7000: funciones de primera línea y fáciles de usar, con 26 puntadas, enhebrado neumático de un toque, pantalla táctil a color y mesa extensible."
+description: "PFAFF admire air 7000: 26 puntadas, enhebrado neumático de un toque, pantalla táctil a color y mesa extensible, de primera línea y fácil de usar."
 destacados:
 - texto: 26 puntadas
 - texto: Enhebrado neumático de un toque

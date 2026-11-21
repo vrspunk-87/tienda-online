@@ -12,7 +12,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t9820g-1.jpg
 - imagen: /img/productos/jack-jk-t9820g-2.jpg
-description: "Máquina de ojal de sastrería electrónica Jack con motor Direct Drive: ojal de pera, recto, con o sin cola, con presilla o terminación redonda, y corte antes, después o sin corte."
+description: "Ojaladora de sastrería electrónica Jack con Direct Drive: ojal de pera o recto, con o sin cola, con presilla o redondo, y corte antes, después o sin corte."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de ojal de sastrería electrónica

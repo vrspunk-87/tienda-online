@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-k5e-ut-35x356-1.jpg
-description: Recubridora industrial Jack de brazo cilíndrico con 3 agujas (5,6 mm), cuchilla izquierda para bajos, aspiración de retales, cortahílos y alzaprensatelas por motor paso a paso y 5.000 ppm.
+description: "Recubridora industrial Jack de brazo cilíndrico, 3 agujas (5,6 mm), cuchilla para bajos, aspiración de retales, cortahílos y alzaprensatelas por motor."
 destacados:
 - texto: Recubridora cilíndrica de 3 agujas, 5,6 mm
 - texto: Cuchilla a la izquierda para hacer bajos y recortar el sobrante

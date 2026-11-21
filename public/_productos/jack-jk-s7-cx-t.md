@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-s7-cx-t-1.jpg
-description: Máquina industrial de columna de 1 aguja con motor Direct Drive, cortahílos con hilo corto, arrastre por doble ruleta y aguja controlado por motores paso a paso y hasta 2.500 puntadas por minuto.
+description: "Máquina industrial de columna de 1 aguja con Direct Drive, cortahílos con hilo corto, arrastre por doble ruleta y aguja y hasta 2.500 ppm."
 destacados:
 - texto: Máquina de columna de 1 aguja
 - texto: Arrastre por doble ruleta sincronizada y por aguja

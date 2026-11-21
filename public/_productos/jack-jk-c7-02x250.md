@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-c7-02x250-1.jpg
-description: Overlock industrial Jack de 2 agujas de cadeneta con embudo de 30 mm para vivear bolsillos, inteligencia artificial, motor Direct Drive, cortahílos y hasta 7.000 ppm.
+description: "Overlock industrial Jack de 2 agujas de cadeneta con embudo de 30 mm para vivear bolsillos, inteligencia artificial, Direct Drive y cortahílos."
 destacados:
 - texto: Overlock de 2 agujas de cadeneta con cortahílos
 - texto: Embudo de 30 mm que dobla en 4 para vivear bolsillos

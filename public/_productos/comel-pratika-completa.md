@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/comel-pratika-completa-1.jpg
-description: Generador de vapor Comel Pratika Completa con caldera de 5 litros, depósito adicional, bomba de carga y manómetro. Incluye plancha de mano y apoyaplancha de silicona.
+description: "Generador de vapor Comel Pratika Completa: caldera de 5 litros, depósito adicional, bomba de carga y manómetro, con plancha de mano y apoyaplancha."
 caracteristicas:
 - nombre: Tipo
   valor: generador de vapor

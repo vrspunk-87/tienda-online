@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-t5878-78b-f54-1.jpg
-description: "Autómata Jack para bolsillos de vivo, con agujas desembragables para bolsillos inclinados: poner un vivo o doble vivo, con o sin tapeta, panel a todo color con vídeos explicativos, sensores de hilo y marcador láser de inicio de costura."
+description: "Autómata Jack para bolsillos de vivo o doble vivo, con o sin tapeta y agujas desembragables para inclinados: panel con vídeos y marcador láser."
 destacados:
 - texto: Autómata para bolsillos de vivo
 - texto: Poner un vivo o doble vivo, con o sin tapeta

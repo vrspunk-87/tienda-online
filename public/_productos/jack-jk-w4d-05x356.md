@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-w4d-05x356-1.jpg
-description: Recubridora industrial Jack de base plana con 3 agujas (5,6 mm) para colocar puntilla, con cuchillas que recortan el sobrante y alimentador de puntilla con regulación electrónica.
+description: "Recubridora industrial Jack de base plana con 3 agujas (5,6 mm) para puntilla, con cuchillas para el sobrante y alimentador de puntilla electrónico."
 destacados:
 - texto: Recubridora de base plana con 3 agujas
 - texto: Recubrimiento superior e inferior

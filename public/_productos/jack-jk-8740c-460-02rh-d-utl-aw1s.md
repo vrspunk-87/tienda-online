@@ -12,7 +12,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-8740c-460-02rh-d-utl-aw1s-1.jpg
-description: "Recubridora industrial Jack de 4 agujas de brazo para costuras planas tipo flatlock, con motor Direct Drive, corte del tejido por 2 lados, cortahílos por célula y aspiración: para ropa interior y deportiva."
+description: "Recubridora industrial Jack de 4 agujas para flatlock, con Direct Drive, corte del tejido por 2 lados, cortahílos y aspiración: ropa interior y deportiva."
 caracteristicas:
 - nombre: Tipo
   valor: recubridora de brazo para costura plana (flatlock)

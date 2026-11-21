@@ -15,7 +15,7 @@ imagenes:
 - imagen: /img/productos/husqvarna-amber-air-s500-3.jpg
 - imagen: /img/productos/husqvarna-amber-air-s500-4.jpg
 - imagen: /img/productos/husqvarna-amber-air-s500-5.jpg
-description: Remalladora y recubridora de 5/4/3/2 hilos con enhebrado neumático de un toque, 23 puntadas (incluida la recubridora), alimentación diferencial y elevador de rodilla.
+description: "Remalladora y recubridora de 5/4/3/2 hilos con enhebrado neumático de un toque, 23 puntadas, alimentación diferencial y elevador de rodilla."
 destacados:
 - texto: Enhebrado neumático de los áncoras con un toque
 - texto: Capacidad de 5/4/3/2 hilos con 23 puntadas

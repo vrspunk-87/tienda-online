@@ -264,7 +264,7 @@ collections:
         hint: "De 1 a 5. La primera es la principal (la de las tarjetas). Arrastra para cambiar el orden."
         fields:
           - { label: "Foto", name: "imagen", widget: "image", media_library: { config: { max_file_size: 8000000 } } }
-          - { label: "Descripción de la foto (texto alternativo)", name: "alt", widget: "string", required: false, hint: "Qué se ve, p. ej. «Vista frontal con el prensatelas bajado». Si lo dejas vacío se usa el nombre del producto." }
+          - { label: "Descripción de la foto (texto alternativo)", name: "alt", widget: "string", required: false, hint: "Qué se ve, p. ej. «Vista frontal con el prensatelas bajado». Si lo dejas vacío se pone solo: el nombre del producto con su fabricante y, desde la segunda foto, «foto 2 de 4»…" }
       - { label: "Resumen", name: "description", widget: "text", required: false, hint: "1-2 frases para Google y al compartir. Si lo dejas vacío se usa el principio de la descripción." }
       - label: "Características (puntos clave)"
         name: "destacados"

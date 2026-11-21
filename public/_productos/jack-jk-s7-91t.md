@@ -13,7 +13,7 @@ condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-s7-91t-1.jpg
 - imagen: /img/productos/jack-jk-s7-91t-2.jpg
-description: Máquina industrial de columna de 1 aguja con motor Direct Drive, cortahílos, arrastre por doble ruleta y aguja controlado por motores paso a paso y hasta 2.500 puntadas por minuto.
+description: "Máquina industrial de columna de 1 aguja con Direct Drive, cortahílos, arrastre por doble ruleta y aguja con motores paso a paso y 2.500 ppm."
 caracteristicas:
 - nombre: Agujas
   valor: "1"

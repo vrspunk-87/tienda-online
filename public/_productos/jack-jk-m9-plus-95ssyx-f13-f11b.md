@@ -11,7 +11,7 @@ estado: disponible
 condicion: nuevo
 imagenes:
 - imagen: /img/productos/jack-jk-m9-plus-95ssyx-f13-f11b-1.jpg
-description: Máquina de costura programable Jack de 1 aguja con cabezal rotativo 360º, motor Direct Drive y gran área de 1.400 × 950 mm, para costuras decorativas y trabajo con plantillas y corte láser de 120 W.
+description: "Costura programable Jack de 1 aguja con cabezal rotativo 360º, Direct Drive, área de 1.400 × 950 mm y corte láser de 120 W, para plantillas."
 caracteristicas:
 - nombre: Tipo
   valor: máquina de costura programable con cabezal rotativo
