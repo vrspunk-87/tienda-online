@@ -73,7 +73,7 @@ flowchart TB
 | `almacen.js` | En local, decap-server; en la web, API de GitHub con el token de la sesión de Decap. Lee con una consulta por carpeta (GraphQL/árboles) y **guarda todo en un único commit** en la rama del panel, reintentando si otra persona guardó a la vez |
 | `panel.js` | Engranaje de cada lista (Exportar/Importar Excel, «Solo para pruebas» y «No disponible» en bloque, Eliminar), informes en pestañas con tablas, cabecera (Acceso rápido, buscador, engranaje de Ajustes solo para `ADMINISTRADORES`), Ajustes en pestañas Web/Panel/General (`PESTANAS_AJUSTES`), burbujas ⓘ, confirmaciones con avisos |
 | `tablas.js` | Sustituye las listas de Decap en Productos, Fabricantes, Tipos, Categorías y Subcategorías: grupos, filtros, orden, paginación, columna de avisos (⚠), estado al volver de una ficha; buscador general con tablas |
-| `medios.js` | «Medios» con pestañas por carpeta (General, Catálogo, Productos, Fichas PDF, Fabricantes) y **Manuales** (`docs/manuales`, solo lectura: abrir y descargar); En uso/Sin usar, subir (reduce fotos a 1600 px), descargar, reemplazar, eliminar solo lo no usado |
+| `medios.js` | «Medios» con pestañas por carpeta (General, Catálogo, Productos, Fichas PDF, Fabricantes) y **Manuales** (los PDF sueltos de `docs/manuales`, solo lectura: abrir y descargar; no lista la subcarpeta `fuentes/`); En uso/Sin usar, subir (reduce fotos a 1600 px), descargar, reemplazar, eliminar solo lo no usado |
 | `eliminar.js` | Intercepta «Eliminar entrada publicada»: comprueba dependencias (accesorios, productos de un fabricante o categoría, menú, fotos) y lo hace en un único cambio o explica por qué no |
 | `word.js` | «Exportar a Word» de las páginas, con marcadores rellenos y huecos en amarillo |
 

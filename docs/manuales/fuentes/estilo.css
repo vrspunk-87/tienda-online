@@ -1,0 +1,52 @@
+@font-face{font-family:Nunito;src:url(fuentes/nunito-latin-wght-normal.woff2) format('woff2');font-weight:200 1000}
+@font-face{font-family:Nunito;font-style:italic;src:url(fuentes/nunito-latin-wght-italic.woff2) format('woff2');font-weight:200 1000}
+@font-face{font-family:Courgette;src:url(fuentes/courgette-latin-400-normal.woff2) format('woff2')}
+@page{size:A4;margin:16mm 16mm 18mm 16mm}
+:root{--rojo:#c1121f;--azul:#1565c0;--gris:#5f6368}
+*{box-sizing:border-box}
+body{font-family:Nunito,Arial,sans-serif;font-size:11.5pt;line-height:1.5;color:#222;margin:0}
+h1{font-family:Courgette,serif;color:var(--rojo);font-weight:400;font-size:26pt;margin:0 0 6pt;break-after:avoid}
+h2{font-size:15pt;margin:18pt 0 6pt;color:#111;break-after:avoid;border-bottom:2px dashed #f1a9ae;padding-bottom:3pt}
+h3{font-size:12.5pt;margin:0 0 3pt;break-after:avoid}
+p{margin:0 0 7pt}
+.cap{break-before:page}
+.intro{font-size:12.5pt;color:#444;margin-bottom:12pt}
+.portada{height:257mm;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.portada img.logo{width:70mm;margin-bottom:10mm}
+.portada .marca{font-family:Courgette,serif;color:var(--rojo);font-size:24pt}
+.portada .titulo{font-size:30pt;font-weight:900;margin:8mm 0 4mm;line-height:1.15}
+.portada .sub{font-size:14pt;color:#555;max-width:140mm}
+.portada .fecha{margin-top:14mm;color:#888;font-size:11pt}
+.indice{list-style:none;padding:0;margin:8pt 0;font-size:12.5pt}
+.indice li{padding:5pt 0;border-bottom:1px dotted #ccc;display:flex;gap:8pt}
+.indice li b{color:var(--rojo);min-width:18pt}
+.paso{display:flex;gap:10pt;margin:12pt 0 6pt;break-inside:avoid;break-after:avoid}
+.paso .n{flex:0 0 26pt;height:26pt;border-radius:50%;background:var(--rojo);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:13pt;margin-top:1pt}
+.paso>div{flex:1}
+figure{margin:6pt 0 10pt;break-inside:avoid}
+figure img{width:100%;max-height:88mm;object-fit:contain;border:1px solid #ddd;border-radius:6pt;display:block}
+figure.media img{width:75%;margin:0 auto}
+figure.estrecha img{width:52%;margin:0 auto}
+figcaption{font-size:9.5pt;color:var(--gris);margin-top:3pt;text-align:center;font-style:italic}
+.fila{display:flex;gap:8pt;break-inside:avoid}
+.fila figure{flex:1}
+ol.leyenda{list-style:none;padding:0;margin:2pt 0 10pt;counter-reset:l;break-inside:avoid}
+ol.leyenda li{counter-increment:l;position:relative;padding-left:24pt;margin:4pt 0}
+ol.leyenda li::before{content:counter(l);position:absolute;left:0;top:1.5pt;width:17pt;height:17pt;border-radius:50%;background:var(--azul);color:#fff;font-weight:800;font-size:9.5pt;display:flex;align-items:center;justify-content:center}
+.consejo,.ojo,.importante{border-radius:7pt;padding:8pt 11pt;margin:8pt 0 10pt;break-inside:avoid}
+.consejo{background:#eef6ee;border-left:5px solid #2e7d32}
+.ojo{background:#fff4e5;border-left:5px solid #ef8c00}
+.importante{background:#fdecee;border-left:5px solid var(--rojo)}
+.consejo::before{content:"Consejo";font-weight:800;display:block;color:#2e7d32;margin-bottom:2pt}
+.ojo::before{content:"Cuidado";font-weight:800;display:block;color:#b26a00;margin-bottom:2pt}
+.importante::before{content:"Importante";font-weight:800;display:block;color:var(--rojo);margin-bottom:2pt}
+.boton{display:inline-block;border:1px solid #bbb;border-radius:4pt;padding:0 5pt;background:#f6f6f6;font-weight:700;font-size:10.5pt;white-space:nowrap}
+.camino{font-weight:700;color:#0b4f9c}
+table.t{border-collapse:collapse;width:100%;margin:6pt 0 10pt;font-size:10.5pt;break-inside:auto}
+table.t th,table.t td{border:1px solid #ddd;padding:4pt 6pt;text-align:left;vertical-align:top}
+table.t th{background:#f4f4f4}
+table.t tr{break-inside:avoid}
+ul,ol{margin:2pt 0 8pt;padding-left:18pt}
+li{margin:2pt 0}
+.check li{list-style:"☐  "}
+.url{font-family:monospace;font-size:10.5pt;background:#f3f3f3;padding:1pt 4pt;border-radius:3pt}

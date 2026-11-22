@@ -20,7 +20,7 @@ Repositorio privado `vrspunk-87/tienda-online` · Cloudflare Pages `maquinas-de-
 | [docs/diseno/DESPLIEGUE.md](docs/diseno/DESPLIEGUE.md) | Desarrollo | Cloudflare Pages, variables, dominio, GitHub Actions |
 | [docs/diseno/SEGURIDAD.md](docs/diseno/SEGURIDAD.md) | Desarrollo | Login del panel, CSP, antispam, claves y datos personales |
 | [docs/PLAN.md](docs/PLAN.md) | Todos | Plan por fases, decisiones con fecha, salida a producción y pendientes |
-| [docs/manuales/](docs/manuales/) (PDF, también en el panel: Medios → Manuales) | La tienda | Manual de la web, manual del panel y guía de solicitudes |
+| [docs/manuales/](docs/manuales/) (PDF, también en el panel: Medios → Manuales) | La tienda | Manual de la web, manual del panel y guía de solicitudes. Fuentes y cómo regenerarlos: [docs/manuales/fuentes/LEEME.md](docs/manuales/fuentes/LEEME.md) |
 | [docs/GUIA-EDICION.md](docs/GUIA-EDICION.md) | Quien edita | Guía breve del panel (texto) |
 | [docs/CARGA-EN-BLOQUE.md](docs/CARGA-EN-BLOQUE.md) | Quien edita | Excel, cambios en bloque y borrado desde el panel |
 | [docs/solicitudes/CONFIGURAR.md](docs/solicitudes/CONFIGURAR.md) | Desarrollo | Configurar la hoja de Google, el script y las variables |

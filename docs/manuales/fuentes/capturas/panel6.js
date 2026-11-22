@@ -1,0 +1,20 @@
+const { abrirPanel, marcas, foto } = require('./panel-comun');
+const lab = (p, t) => p.locator('label:visible').filter({ hasText: t }).first();
+(async () => {
+  const { b, p, ir } = await abrirPanel();
+  await ir('#/collections/productos/entries/alfa-525', 6000);
+  await lab(p, 'Resumen').scrollIntoViewIfNeeded(); await p.mouse.move(300, 400); await p.mouse.wheel(0, 150); await p.waitForTimeout(600);
+  await marcas(p, [{ loc: lab(p, 'Resumen'), n: 1, pad: 5 }, { loc: lab(p, 'Características (puntos clave)'), n: 2, pad: 5 }]);
+  await foto(p, 'panel-ficha-textos');
+  await lab(p, 'Ficha técnica (opcional)').scrollIntoViewIfNeeded(); await p.mouse.wheel(0, 100); await p.waitForTimeout(500);
+  await marcas(p, [{ loc: lab(p, 'Ficha técnica (opcional)'), n: 3, pad: 5 }]);
+  await foto(p, 'panel-ficha-tecnica');
+  await lab(p, 'Descripción (opcional)').scrollIntoViewIfNeeded(); await p.mouse.wheel(0, 100); await p.waitForTimeout(500);
+  await marcas(p, [{ loc: lab(p, 'Descripción (opcional)'), n: 4, pad: 5 }]);
+  await foto(p, 'panel-ficha-descripcion');
+  await p.goto('about:blank'); await ir('#/collections/productos/entries/elna-ael494710003', 6000);
+  await lab(p, 'Compatible con').scrollIntoViewIfNeeded(); await p.mouse.move(300, 400); await p.mouse.wheel(0, 60); await p.waitForTimeout(600);
+  await marcas(p, [{ loc: lab(p, 'Compatible con'), n: '', pad: 5 }]);
+  await foto(p, 'panel-ficha-compatible');
+  await b.close();
+})();
