@@ -21,6 +21,41 @@ de cambiar algo que no conozcas**.
 
 `.claude/settings.json` bloquea además esas órdenes de Git, por si acaso.
 
+## Forma de trabajar con Víctor (recogida el 22-11-2026 al cerrar el proyecto de Claude)
+
+**Cómo trabajar**
+- Víctor hace los commits y el push: al terminar, dale siempre **los comandos de PowerShell listos para copiar**
+  (carpeta `C:\Users\victor.ruanosantana\Downloads\tienda-online`), con el mensaje del commit. Lo mismo para
+  cualquier cosa que tenga que hacer él (npm, git…).
+- **Enséñale un prototipo antes** de cualquier cambio visual o del panel, y espera su visto bueno.
+- Cuando revisa una lista de propuestas, **lo que no comenta queda aprobado** tal como se propuso.
+- **Avísale antes de cargar datos de prueba** en el panel, para que exporte antes lo que haya.
+- **No lances builds** en su carpeta (ver «Norma principal»); las comprobaciones, en una copia aparte.
+- **Excel**: pídele que las cierre antes de escribirlas; las que lee el panel, escríbelas con **ExcelJS**
+  (openpyxl las deja ilegibles para ExcelJS); comprueba el fichero después de guardarlo.
+- Desde una máquina Linux sobre su carpeta (Cowork): nada de `sed -i` (deja temporales que no se pueden
+  borrar); edita con Python respetando CRLF y comprueba con `git diff --ignore-cr-at-eol`. Borrar ficheros en su
+  carpeta necesita su permiso.
+- Lo de la tienda que tiene que hacer o entender **Pedro** (el contacto de la tienda, trato informal): Pedro no
+  sabe de informática ni de temas legales; todo (manuales, correos, instrucciones) debe poder hacerlo él solo.
+
+**Datos y contenido**
+- **No inventar datos.** Al pasar tarifas de proveedores a Excel (`input/`, ignorada por Git: llevan **precios
+  netos de distribuidor que nunca se publican**), lo dudoso va en una columna «Observaciones» y en «Revisar (avisos)».
+- Fuentes oficiales para completar fichas: la web del fabricante; **Sewmaq → zojespain.com**; **Comel y Donna →
+  jpujol.com** (J. Pujol, distribuidor). Lo que salga de otras tiendas, marcado como tal (hay permiso para sus fotos
+  desde el 20-11-2026).
+- En la «Ficha técnica» de un producto, quitar líneas de precio **solo** si repiten exactamente el precio de los
+  campos de precio (que no se tocan).
+- El NIF del titular solo va en el aviso legal. Textos legales para un autónomo, con venta a profesionales y plazo
+  de respuesta «en breve».
+- Decisiones de negocio con fecha: [docs/PLAN.md](docs/PLAN.md) (fase 0 y «Estado y pendientes»).
+
+**Relacionado**
+- La herramienta de consulta de fabricantes es **otro proyecto** (repositorio
+  `vrspunk-87/herramienta-consulta-fabricantes`, carpeta hermana `..\herramienta-consulta-fabricantes`, con su
+  propio CLAUDE.md). `web-plataforma` (`..\plataforma-politica\web-plataforma`) solo se consulta.
+
 ## Qué es el proyecto
 
 Una **tienda online sin venta ni pago en la web**: un catálogo con **precios orientativos** en el
