@@ -4,26 +4,49 @@ Web de la tienda: un **catálogo con precios orientativos** en el que el cliente
 **solicitud de presupuesto** (productos y unidades) y la envía (no se compra ni se paga en la web). Plan completo y decisiones: [docs/PLAN.md](docs/PLAN.md). Normas para Claude Code:
 [CLAUDE.md](CLAUDE.md).
 
-## Estado
+Producción: https://www.maquinasdecoserzafra.es · Panel: https://www.maquinasdecoserzafra.es/admin/ ·
+Repositorio privado `vrspunk-87/tienda-online` · Cloudflare Pages `maquinas-de-coser-zafra`.
 
-- **Fase 0 (decisiones):** cerrada.
-- **Fase 1a (base en local):** hecha. Generador, panel, tema provisional, blog, páginas legales
-  (borradores) y funciones del login del panel en formato de Cloudflare, probadas en local.
-- **Fase 2 (catálogo en el panel) y parte de la 4:** hechas. Fabricantes, categorías y productos en
-  el panel; menú del catálogo; portada con resumen del catálogo y ofertas; páginas de categoría;
-  ficha básica de producto; página de ofertas. Ver «Catálogo» más abajo.
-- **Fase 5:** parte visual hecha y envío real hecho en código (10-11-2026): número de solicitud,
-  hoja de Google, aviso a la tienda y acuse al cliente. Falta configurarlo en Google y Cloudflare
-  (primero en `develop` con una cuenta de pruebas): [docs/solicitudes/CONFIGURAR.md](docs/solicitudes/CONFIGURAR.md).
-- **Fase 1b (despliegue):** pendiente. Crear el proyecto en Cloudflare Pages, la aplicación OAuth
-  de GitHub, las variables, los entornos de prueba y la reconstrucción diaria.
+## Documentación
+
+| Documento | Para quién | Contenido |
+|---|---|---|
+| [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md) | Desarrollo | Piezas, flujos, entornos, dónde vive cada dato, decisiones y límites |
+| [docs/diseno/MODELO-DE-DATOS.md](docs/diseno/MODELO-DE-DATOS.md) | Desarrollo | Colecciones, campos, relaciones y reglas del catálogo |
+| [docs/diseno/GENERADOR.md](docs/diseno/GENERADOR.md) | Desarrollo | `scripts/build.js` paso a paso: imágenes, SEO, buscador, avisos |
+| [docs/diseno/FRONTEND.md](docs/diseno/FRONTEND.md) | Desarrollo | Estilos y scripts del navegador, atributos `data-*`, CSP |
+| [docs/diseno/PANEL.md](docs/diseno/PANEL.md) | Desarrollo | Decap, configuración por entorno, campos propios y módulos del engranaje |
+| [docs/diseno/SOLICITUDES.md](docs/diseno/SOLICITUDES.md) | Desarrollo | Solicitud de presupuesto: API, validación, antispam, script de Google, correos |
+| [docs/diseno/DESPLIEGUE.md](docs/diseno/DESPLIEGUE.md) | Desarrollo | Cloudflare Pages, variables, dominio, GitHub Actions |
+| [docs/diseno/SEGURIDAD.md](docs/diseno/SEGURIDAD.md) | Desarrollo | Login del panel, CSP, antispam, claves y datos personales |
+| [docs/PLAN.md](docs/PLAN.md) | Todos | Plan por fases, decisiones con fecha, salida a producción y pendientes |
+| [docs/manuales/](docs/manuales/) (PDF, también en el panel: Medios → Manuales) | La tienda | Manual de la web, manual del panel y guía de solicitudes |
+| [docs/GUIA-EDICION.md](docs/GUIA-EDICION.md) | Quien edita | Guía breve del panel (texto) |
+| [docs/CARGA-EN-BLOQUE.md](docs/CARGA-EN-BLOQUE.md) | Quien edita | Excel, cambios en bloque y borrado desde el panel |
+| [docs/solicitudes/CONFIGURAR.md](docs/solicitudes/CONFIGURAR.md) | Desarrollo | Configurar la hoja de Google, el script y las variables |
+| [docs/BORRADORES-LEGALES.md](docs/BORRADORES-LEGALES.md) | Tienda y asesoría | Textos legales y preguntas para la revisión |
+| [docs/SALIDA-BLOG-Y-REDES.md](docs/SALIDA-BLOG-Y-REDES.md) | Tienda | Entrada del blog y textos de redes para el día de la salida |
+| [docs/pruebas/](docs/pruebas/README.md) | Desarrollo | Planes de prueba de la web y del panel (ordenador y móvil) y resultados |
+| [docs/PRUEBA-DE-CARGA.md](docs/PRUEBA-DE-CARGA.md) | Desarrollo | Hasta cuántos productos aguanta y por qué |
+
+## Estado (22-11-2026)
+
+- **Hecho:** fases 0 a 5 (catálogo, panel, Excel y cambios en bloque, solicitud de presupuesto real con hoja de
+  Google y correos), identidad visual, dominio propio y entornos de prueba. Catálogo cargado: **513 productos
+  publicados de 19 marcas**. Manuales de uso en PDF y documentación técnica.
+- **Antes de abrir al público:** revisión legal de los textos (Word entregado a la asesoría) y checklist del
+  día de la salida (activar «indexable», redirigir `pages.dev`, solicitud real de prueba, blog y redes).
+- **Después:** plan único en [docs/PLAN.md](docs/PLAN.md) → «Salida a producción y plan para después».
 
 ## Cómo funciona
 
 ```
  Decap (/admin/) ──commit──▶ GitHub ──▶ Cloudflare Pages: npm run build ──▶ dist/ ──▶ web
-                                          (scripts/build.js)       + functions/api/ (login del panel)
+                                          (scripts/build.js)       + functions/api/ (login del panel
+                                                                     y solicitudes → hoja de Google)
 ```
+
+Detalle completo, con diagramas: [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md).
 
 1. Quien edita escribe en el panel `/admin/`. Decap guarda los cambios como ficheros en GitHub.
 2. Cada cambio en el repositorio lanza un despliegue en Cloudflare Pages, que ejecuta
@@ -32,48 +55,55 @@ Web de la tienda: un **catálogo con precios orientativos** en el que el cliente
    dentro de `dist/`** (se crea desde cero en cada build y no está en el repositorio).
 
 Se parte de la web de la plataforma (`web-plataforma`), copiada y adaptada. Lo que **no** se ha
-traído: propuestas, temas, actividades y calendario, formulario de propuestas (volverá adaptado
-como solicitud de presupuesto en la fase 5), canales de WhatsApp/Telegram, estadísticas de Vercel,
+traído: propuestas, temas, actividades y calendario, formulario de propuestas (adaptado como
+solicitud de presupuesto), canales de WhatsApp/Telegram, estadísticas de Vercel,
 el despliegue por GitHub Actions y la marca «Otra Zafra». Las noticias son ahora el **blog**.
 
 ## Estructura del proyecto
 
 ```
+.github/workflows/                  Reconstrucción diaria, sincronizar ramas, comprobación diaria
+.github/dependabot.yml              Actualizaciones mensuales contra develop (14 días de espera)
 functions/api/auth.js, callback.js  Login del panel con GitHub (funciones de Cloudflare Pages)
-lib/origenes.js                     Webs que pueden usar el login (lista exacta) y ramas con panel
-scripts/build.js                    Generador: crea dist/ a partir de public/ (también el catálogo)
+functions/api/solicitud.js          Recibe las solicitudes de presupuesto
+functions/api/desafio.js            Desafío de «No soy un robot» (ALTCHA)
+functions/api/estado-solicitudes.js Diagnóstico de la solicitud (con clave)
+lib/origenes.js                     Webs que pueden usar el login (lista exacta), ramas con panel y dominio
+lib/solicitud.js, solicitud-api.js  Validación, precios y lógica del servidor de la solicitud
+lib/verificacion.js                 ALTCHA con Web Crypto
+lib/correos.js                      Correos de la solicitud (aviso y acuse) en HTML y texto
+lib/generado/                       Catálogo para las funciones (lo crea el build; no se sube)
+lib/*.test.mjs                      Pruebas (npm test): solicitud y Excel del panel
+scripts/build.js                    Generador: crea dist/ a partir de public/
 scripts/layout.js                   Cabecera y pie (a partir de los Ajustes del sitio)
-scripts/temas/tienda.css            Tema «Tienda» (provisional y neutro)
+scripts/temas/tienda.css            Tema «Tienda» (variables de la marca)
 scripts/comprimir-imagenes.js       Compresión de imágenes grandes (node scripts/comprimir-imagenes.js)
+scripts/generar-imagen-compartir.js Genera public/img/compartir.jpg (a mano, si cambia el logo o el nombre)
 scripts/pruebas-carga.mjs           Entorno local de pruebas con carga (ver «Probar con volumen»)
-docs/PRUEBA-DE-CARGA.md             Prueba de carga: hasta cuántos productos aguanta y por qué
 plantillas/articulo.html            Plantilla de las entradas del blog y las páginas
-docs/PLAN.md                        Plan por fases y decisiones
-docs/BORRADORES-LEGALES.md          Guía de los textos legales y preguntas para quien los revise
-docs/GUIA-EDICION.md                Guía para quien edita en el panel
+docs/                               Documentación (ver «Documentación»); docs/diseno/: diseños técnicos;
+                                    docs/manuales/: manuales en PDF; docs/solicitudes/: script de Google
 
 public/                             ← LO QUE SE EDITA
   index.html                        Portada (el build rellena las secciones dinámicas)
   404.html, buscar/index.html       Página de error y buscador
   config.yml                        ← CONFIGURACIÓN DE DECAP (colecciones y campos)
-  _datos/sitio.yml                  ← AJUSTES DEL SITIO: nombre, portada, tema, colores, menú, pie, redes
-  _posts/blog/<año>/                Entradas del blog (las crea Decap)
-  _paginas/                         Páginas de texto libre (las crea Decap): los borradores legales
+  _datos/sitio.yml                  ← AJUSTES DEL SITIO: nombre, portada, tema, colores, menú, pie, redes, panel
   _datos/contacto.yml, sobre-nosotros.yml  Contacto y horario, y Sobre nosotros (páginas con datos)
-  _productos/, _categorias/,        Catálogo (los crea Decap). Ahora, datos «Solo para pruebas»
+  _datos/solicitud.yml              Solicitud de presupuesto: textos, opciones, conservación y límites
+  _posts/blog/<año>/                Entradas del blog (las crea Decap)
+  _paginas/                         Páginas de texto libre: los textos legales
+  _productos/, _categorias/,        Catálogo (los crea Decap o el Excel del panel)
   _fabricantes/
-  js/catalogo.js                    Rejillas de productos: paginación, orden al azar y filtro
   _headers, _redirects              Cabeceras de seguridad y caché, y redirecciones (Cloudflare)
-  css/estilos.css, js/              Estilos y scripts propios (sin scripts en línea: CSP)
-  img/                              Imágenes; logo.png, compartir.jpg e iconos/ son PROVISIONALES
-  admin/                            Panel de Decap (servido desde la propia web); campos.js: campos
-                                    propios (categoría del producto con desplegables dependientes);
-                                    excel/: engranaje de cada sección (Excel y cambios en bloque),
-                                    tablas.js: listas del catálogo y buscador como tablas, con avisos;
-                                    medios.js: «Medios» con pestañas por carpeta; eliminar.js:
-                                    «Eliminar entrada» de una ficha, mirando antes qué depende
-                                    de ella (docs/CARGA-EN-BLOQUE.md → Borrar); tema-panel.css:
-                                    estética de la web y panel en el móvil (docs/pruebas/)
+  css/estilos.css                   Estilos propios
+  js/                               extras.js (todas las páginas), catalogo.js, buscar.js, presupuesto.js
+                                    (sin scripts en línea: CSP)
+  img/                              Imágenes: logo.svg, compartir.jpg, iconos/, productos/, fabricantes/,
+                                    fichas/ (PDF), catalogo/
+  admin/                            Panel de Decap (servido desde la propia web): vendor/ (Decap),
+                                    vista-previa.js, campos.js, tema-panel.css, ayuda-ajustes.yml y
+                                    excel/ (engranaje, tablas, Medios, eliminar, Word; ver docs/diseno/PANEL.md)
 ```
 
 ## Trabajar en local
@@ -142,7 +172,7 @@ El build deduce el entorno de la rama que le pasa Cloudflare (`CF_PAGES_BRANCH`)
 | (en tu equipo) | local | no | con `npm run panel` |
 
 El contenido marcado como «Solo para pruebas» se ve en local y en los entornos de prueba, nunca
-en producción. Los productos y la entrada del blog de prueba se borraron el 8-11-2026.
+en producción.
 
 ## Catálogo
 
@@ -220,8 +250,8 @@ con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/
   repetidas; garantía de segunda mano menor de 12 meses; ofertas incompletas o mal escritas;
   «Compatible con» a productos que no existen. Una **oferta terminada** no es un aviso: el producto
   se muestra solo como disponible, con su precio normal (el build lo anota como información).
-- **Datos de prueba**: borrados el 8-11-2026 (17 productos, sus fotos y la entrada del blog). Para
-  probar cambios con datos, crea productos con «Solo para pruebas» marcado: no salen en producción.
+- **Datos de prueba**: para probar cambios con datos, crea fichas con «Solo para pruebas» marcado: no
+  salen en producción.
 - Ficha: «Añadir a la solicitud»; si ya está, «Añadir otra unidad» y «Ver mi solicitud».
 - Menú: icono con el número de productos (en el móvil, junto al botón del menú).
 - `/presupuesto/`: productos con unidades (1-99), subtotales y total orientativo, quitar, aviso si
@@ -259,8 +289,8 @@ máquinas; la búsqueda «HD 100» y la de la referencia «PRE-002» encuentran 
 
 Desde Decap → Ajustes del sitio: nombre, descripción, logo, imagen para compartir, colores de la
 marca (texto, fondo y acento; el build avisa si no se leen bien), menú, enlaces legales del pie,
-redes y dirección pública. El logo, los iconos y los colores son **provisionales** hasta tener
-los definitivos (el tema se llama «Tienda» internamente).
+redes y dirección pública. Identidad definida el 10-11-2026: logo `public/img/logo.svg` con la letra
+Courgette en rojo `#c1121f` y la aguja con hilo (el tema se llama «Tienda» internamente).
 
 Desde el 18-11-2026 la ficha se ve en tres pestañas (solo en el panel; `sitio.yml` no cambia de forma):
 **Web** (identidad, icono de la pestaña —`favicon`, el build genera los tamaños—, apariencia, **franja de
