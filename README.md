@@ -163,6 +163,10 @@ el build la acorta y lo anota).
 ancho solo tienen la de su propio ancho, así que el build la anota en `dist/admin/medios.json` (`_miniaturas`) y
 Medios la usa. El original no sirve de reserva: el build no lo publica si no lo usa nada.
 
+**Manuales en Medios** (21-11-2026): pestaña «Manuales» de solo lectura con `docs/manuales/` (manual de la web, del
+panel y guía de solicitudes, en PDF). No se publican en la web; se abren («Abrir») y se descargan desde el panel. El build
+anota su lista en `medios.json` para el panel en local (`MANUALES` en public/admin/excel/medios.js).
+
 **Carga y cambios en bloque** (fase 3): engranaje en la lista de cada sección del panel (de momento,
 Fabricantes, tipos de producto, categorías, subcategorías, productos, blog y páginas; en páginas, también a Word) con «Exportar a Excel», «Importar Excel», «Solo para pruebas» en bloque y «Eliminar»; todo
 con informe previo y en un único commit. Guía: [docs/CARGA-EN-BLOQUE.md](docs/CARGA-EN-BLOQUE.md).

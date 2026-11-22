@@ -3298,6 +3298,9 @@ if (AJUSTES.favicon && sharp) {
   }
   // Carpeta general del panel (Medios → «General»)
   if (cfgMedios.media_folder) { const g = String(cfgMedios.media_folder).replace(/^\/+|\/+$/g, ''); if (!medios[g] && fs.existsSync(g)) medios[g] = fs.readdirSync(g, { withFileTypes: true }).filter(d => d.isFile() && !d.name.startsWith('.')).map(d => ({ nombre: d.name, bytes: fs.statSync(path.join(g, d.name)).size })); }
+  // Manuales de uso en PDF (Medios → «Manuales», solo lectura; no se publican en la web)
+  medios['docs/manuales'] = fs.existsSync('docs/manuales') ? fs.readdirSync('docs/manuales', { withFileTypes: true }).filter(d => d.isFile() && !d.name.startsWith('.'))
+    .map(d => ({ nombre: d.name, bytes: fs.statSync(path.join('docs/manuales', d.name)).size })) : [];
   // Archivos que usa el propio código (favicon, imagen al compartir por defecto…): Medios no deja borrarlos
   const codigo = new Set();
   const leerCodigo = dir => {

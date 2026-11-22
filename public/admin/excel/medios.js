@@ -24,6 +24,9 @@ const EXT_IMG = /\.(jpe?g|png|webp|gif|svg|avif)$/i;
 let MINIATURAS = {};
 const POR_PAGINA = 48;
 const NOMBRES = { 'public/img/catalogo': 'Catálogo', 'public/img/fichas': 'Fichas PDF', 'public/img/productos': 'Productos', 'public/img/fabricantes': 'Fabricantes' };
+// Manuales de uso en PDF (docs/manuales, 21-11-2026): pestaña de solo lectura. No se publican en la web; se abren y se
+// descargan desde el panel. Sin «Subir», «Eliminar», «Reemplazar» ni «Copiar ruta»: los prepara Víctor
+const MANUALES = { carpeta: 'docs/manuales', publica: '/docs/manuales', nombre: 'Manuales', soloLectura: true };
 
 const css = `
 .xl-med-tabs{display:flex;gap:6px;flex-wrap:wrap;align-items:center;align-self:stretch;flex:none;width:100%;box-sizing:border-box;padding:0 0 10px;margin-bottom:10px;border-bottom:2px dashed var(--xl-pespunte,#e3e3df)}
@@ -89,7 +92,7 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
     // Ruta pública (/img/…): la carpeta sin «public»
     for (const m of mapa.values()) m.publica = `/${m.carpeta.replace(/^public\//, '')}`;
     // «General» (la carpeta de medios de todo el panel): solo sus archivos sueltos, no las subcarpetas
-    return [{ carpeta: general, publica: `/${general.replace(/^public\//, '')}`, nombre: 'General' }, ...mapa.values()];
+    return [{ carpeta: general, publica: `/${general.replace(/^public\//, '')}`, nombre: 'General' }, ...mapa.values(), { ...MANUALES }];
   }
 
   // Qué ficha usa cada archivo: se buscan las rutas /img/… en el texto de todas las fichas
@@ -196,7 +199,9 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
     // Fabricantes de los productos que usan los archivos de esta carpeta (nombres del último despliegue)
     let nombresFab = {};
     try { nombresFab = (await (await fetch('/admin/datos-panel.json', { cache: 'no-store' })).json()).fabricantes || {}; } catch { /* sin nombres */ }
-    let lista = ficheros.map(f => ({ ...f, ruta: `${info.publica}/${f.nombre}`, usos: enlaces.get(`${info.publica}/${f.nombre}`) || [] }))
+    const soloLectura = !!info.soloLectura;
+    const USO_MANUAL = [{ titulo: 'Manual de uso (se abre y se descarga desde aquí)', seccion: 'manuales', href: '' }];
+    let lista = ficheros.map(f => ({ ...f, ruta: `${info.publica}/${f.nombre}`, usos: soloLectura ? USO_MANUAL : enlaces.get(`${info.publica}/${f.nombre}`) || [] }))
       .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { numeric: true }));
     info.n = lista.length; pintarTabs();
     const repo = nombre => `${info.carpeta}/${nombre}`;
@@ -226,24 +231,24 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
         <div class="xl-med-barra">
           <input type="search" placeholder="Buscar por nombre o por la ficha que lo usa" value="${esc(v.buscar)}" data-buscar aria-label="Buscar">
           ${fabricantesCarpeta.length ? `<select data-fab aria-label="Fabricante"><option value="">Todos los fabricantes</option>${fabricantesCarpeta.map(([s, n]) => `<option value="${esc(s)}" ${v.fab === s ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select>` : ''}
-          <select data-filtro aria-label="Filtrar"><option value="">Todos</option><option value="uso" ${v.filtro === 'uso' ? 'selected' : ''}>En uso</option><option value="libre" ${v.filtro === 'libre' ? 'selected' : ''}>Sin usar</option></select>
-          <button type="button" data-subir>Subir…</button>
+          ${soloLectura ? '' : `<select data-filtro aria-label="Filtrar"><option value="">Todos</option><option value="uso" ${v.filtro === 'uso' ? 'selected' : ''}>En uso</option><option value="libre" ${v.filtro === 'libre' ? 'selected' : ''}>Sin usar</option></select>
+          <button type="button" data-subir>Subir…</button>`}
           <button type="button" data-bajar ${v.elegidos.size ? '' : 'disabled'}>Descargar</button>
-          <button type="button" class="xl-rojo-b" data-borrar ${v.elegidos.size ? '' : 'disabled'}>Eliminar…</button>
+          ${soloLectura ? '' : `<button type="button" class="xl-rojo-b" data-borrar ${v.elegidos.size ? '' : 'disabled'}>Eliminar…</button>`}
           <input type="file" multiple hidden data-fichero>
         </div>
-        ${L.almacen.listaAlDia ? '' : '<div class="xl-med-msj">En local, la lista es la del último «npm run build» (lo que subas o borres aquí se ve en tu carpeta al momento).</div>'}
+        ${soloLectura ? '<div class="xl-med-msj">Manuales de uso de la web y del panel. Pulsa uno y luego <b>«Abrir»</b> para leerlo o <b>«Descargar»</b> para guardarlo en tu ordenador.</div>' : L.almacen.listaAlDia ? '' : '<div class="xl-med-msj">En local, la lista es la del último «npm run build» (lo que subas o borres aquí se ve en tu carpeta al momento).</div>'}
         ${v.msj ? `<div class="xl-med-msj ${v.msj.clase || ''}">${v.msj.html}</div>` : ''}
         ${v.conf ? `<div class="xl-med-conf">${v.conf}</div>` : ''}
         ${lista.length > GRANDE && !hayEleccion() ? `<div class="xl-med-msj">Hay <b>${lista.length}</b> archivos en esta carpeta. Para ir más rápido, elige un fabricante, busca por nombre o por la ficha, o filtra «Sin usar»; o <a href="#" data-ver-todos>ver todos</a>.</div>` : `<div class="xl-med-rejilla">${l.slice(ini, ini + POR_PAGINA).map(f => `
           <div class="xl-med-f ${v.elegidos.has(f.nombre) ? 'xl-on' : ''}" data-n="${esc(f.nombre)}" title="${esc(f.nombre)}">
             <input type="checkbox" ${v.elegidos.has(f.nombre) ? 'checked' : ''} aria-label="Elegir ${esc(f.nombre)}">
             ${miniatura(f)}<b>${esc(f.nombre)}</b>
-            <span class="xl-med-p ${f.usos.length ? 'xl-uso' : 'xl-libre'}">${f.usos.length ? 'En uso' : 'Sin usar'}</span> <small class="xl-gris">${tam(f.bytes)}</small>
+            <span class="xl-med-p ${f.usos.length ? 'xl-uso' : 'xl-libre'}">${soloLectura ? 'Manual' : f.usos.length ? 'En uso' : 'Sin usar'}</span> <small class="xl-gris">${tam(f.bytes)}</small>
           </div>`).join('') || '<p class="xl-gris">No hay archivos. «Subir…» los guarda en esta carpeta.</p>'}</div>`}
-        ${det ? `<div class="xl-med-det"><b>${esc(det.nombre)}</b> · ${esc(tam(det.bytes))} · <code>${esc(det.ruta)}</code><br>
-          ${det.usos.length ? `Lo usa: ${det.usos.map(u => `${u.href ? `<a href="${esc(u.href)}" data-ir>${esc(u.titulo)}</a>` : esc(u.titulo)} <span class="xl-gris">(${esc(u.seccion)})</span>`).join(', ')}` : 'No lo usa ninguna ficha publicada: se puede eliminar.'}
-          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><button type="button" data-uno-bajar>Descargar</button><button type="button" data-reemplazar>Reemplazar…</button><button type="button" data-copiar>Copiar ruta</button><input type="file" hidden data-fichero-uno></div></div>` : ''}
+        ${det ? `<div class="xl-med-det"><b>${esc(det.nombre)}</b> · ${esc(tam(det.bytes))} · ${soloLectura ? '' : `<code>${esc(det.ruta)}</code>`}<br>
+          ${soloLectura ? '' : det.usos.length ? `Lo usa: ${det.usos.map(u => `${u.href ? `<a href="${esc(u.href)}" data-ir>${esc(u.titulo)}</a>` : esc(u.titulo)} <span class="xl-gris">(${esc(u.seccion)})</span>`).join(', ')}` : 'No lo usa ninguna ficha publicada: se puede eliminar.'}
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">${soloLectura && /\.pdf$/i.test(det.nombre) ? '<button type="button" data-uno-abrir>Abrir</button>' : ''}<button type="button" data-uno-bajar>Descargar</button>${soloLectura ? '' : '<button type="button" data-reemplazar>Reemplazar…</button><button type="button" data-copiar>Copiar ruta</button><input type="file" hidden data-fichero-uno>'}</div></div>` : ''}
         <div class="xl-med-pie"><span>Mostrando ${l.length ? ini + 1 : 0}–${Math.min(ini + POR_PAGINA, l.length)} de ${l.length} · ${v.elegidos.size} elegidos${l.length ? ` · <a href="#" data-todos>${l.every(f => v.elegidos.has(f.nombre)) ? 'Quitar la selección' : 'Elegir todos los de la lista'}</a>` : ''}</span><span>${paginas(v.pag, total)}</span></div>`;
       enlazar(l);
     };
@@ -254,7 +259,7 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
       }));
       const b = panel.querySelector('[data-buscar]');
       b.addEventListener('input', () => { const pos = b.selectionStart; v.buscar = b.value; v.pag = 1; pintar(); const n = panel.querySelector('[data-buscar]'); n.focus(); n.setSelectionRange(pos, pos); });
-      panel.querySelector('[data-filtro]').addEventListener('change', e => { v.filtro = e.target.value; v.pag = 1; pintar(); });
+      panel.querySelector('[data-filtro]')?.addEventListener('change', e => { v.filtro = e.target.value; v.pag = 1; pintar(); });
       panel.querySelector('[data-fab]')?.addEventListener('change', e => { v.fab = e.target.value; v.pag = 1; pintar(); });
       panel.querySelector('[data-ver-todos]')?.addEventListener('click', e => { e.preventDefault(); v.verTodos = true; pintar(); });
       panel.querySelectorAll('.xl-med-f').forEach(c => c.addEventListener('click', e => {
@@ -276,11 +281,20 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
       }));
       // Subir
       const input = panel.querySelector('[data-fichero]');
-      panel.querySelector('[data-subir]').addEventListener('click', () => input.click());
-      input.addEventListener('change', () => subir([...input.files]));
+      panel.querySelector('[data-subir]')?.addEventListener('click', () => input.click());
+      input?.addEventListener('change', () => subir([...input.files]));
       // Descargar (una: tal cual; varias: en un ZIP)
       panel.querySelector('[data-bajar]').addEventListener('click', () => bajar([...v.elegidos]));
       panel.querySelector('[data-uno-bajar]')?.addEventListener('click', () => bajar([v.detalle]));
+      // Abrir un PDF en otra pestaña (la ventana se abre ya, para que el navegador no la bloquee)
+      panel.querySelector('[data-uno-abrir]')?.addEventListener('click', async () => {
+        const w = window.open('', '_blank');
+        try {
+          const bytes = await L.almacen.leerBinario(repo(v.detalle));
+          const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+          if (w) w.location.href = url; else window.open(url, '_blank');
+        } catch (e) { w?.close(); v.msj = { html: `No se ha podido abrir: ${esc(e.message || e)}`, clase: 'xl-mal' }; pintar(); }
+      });
       panel.querySelector('[data-copiar]')?.addEventListener('click', async () => {
         const f = lista.find(x => x.nombre === v.detalle);
         try { await navigator.clipboard.writeText(f.ruta); v.msj = { html: `Copiada la ruta <code>${esc(f.ruta)}</code>.`, clase: 'xl-bien' }; } catch { v.msj = { html: `Ruta: <code>${esc(f.ruta)}</code>` }; }
@@ -290,7 +304,7 @@ export function crearMedios({ cargarLibrerias, reducirImagen, descargar, nombreI
       panel.querySelector('[data-reemplazar]')?.addEventListener('click', () => uno.click());
       uno?.addEventListener('change', () => { if (uno.files[0]) subir([uno.files[0]], v.detalle); });
       // Eliminar: primero se confirma
-      panel.querySelector('[data-borrar]').addEventListener('click', () => {
+      panel.querySelector('[data-borrar]')?.addEventListener('click', () => {
         const el = lista.filter(f => v.elegidos.has(f.nombre));
         const libres = el.filter(f => !f.usos.length);
         const usados = el.filter(f => f.usos.length);

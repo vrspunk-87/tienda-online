@@ -70,6 +70,8 @@ Cloudflare: **6 min 40 s** (límite: 20 min).
 *Documentación y entrega*
 23. Documentación completa de la web y del panel, y manuales de usuario (quien compra y quien edita); enlazarlos
     desde las burbujas ⓘ de Ajustes.
+    **Primera versión hecha (21-11-2026)**: `docs/manuales/` con el Manual de la web, el Manual del panel y la Guía de
+    solicitudes (borrador), en PDF con capturas de una copia local. Falta la documentación técnica completa.
 24. Guía de gestión de solicitudes para la tienda: estados, borrado a los [6 meses] de las que no acaban en venta
     (también en el correo) y registro de actividades de tratamiento (lo indica la asesoría).
 
